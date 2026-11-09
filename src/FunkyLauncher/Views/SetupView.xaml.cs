@@ -18,12 +18,15 @@ public partial class SetupView : UserControl
 
     private Modlist Ml => _main.Selected;
     private bool Installed => _main.Settings.IsInstalled(Ml);
+    /// <summary>A modlist folder the launcher did not install — offer "check and use" or "install again", never PLAY.</summary>
+    private bool Found => _main.Settings.FoundUnknown(Ml);
 
     public SetupView(MainWindow main)
     {
         InitializeComponent();
         _main = main;
         Loc.Changed += () => { ApplyTexts(); _ = RunChecksAsync(); };
+        _main.Activated += OnMainActivated;
         ResetForModlist();
     }
 
@@ -76,14 +79,17 @@ public partial class SetupView : UserControl
     {
         var installed = Installed;
         var updating = Updating;
-        InstallButton.Content = updating ? Loc.F("setup.update", Ml.Version) : installed ? Loc.T("setup.verify") : Loc.T("setup.install");
-        InstalledNote.Visibility = installed ? Visibility.Visible : Visibility.Collapsed;
+        var found = Found;
+        InstallButton.Content = updating ? Loc.F("setup.update", Ml.Version) : installed ? Loc.T("setup.verify")
+            : found ? Loc.T("setup.found.use") : Loc.T("setup.install");
+        InstalledNote.Visibility = installed || found ? Visibility.Visible : Visibility.Collapsed;
         InstalledText.Text = updating
             ? Loc.F("setup.update.note", Ml.Version, _main.Settings.UpdateDir(Ml), _main.Settings.InstalledVersion(Ml) ?? "")
+            : found ? Loc.F("setup.found", _main.Settings.InstallDir(Ml))
             : Loc.T("setup.installed");
         InstalledText.TextWrapping = TextWrapping.Wrap;
-        ReinstallButton.Content = updating ? Loc.T("setup.verify.small") : Loc.T("setup.reinstall");
-        ReinstallButton.Visibility = installed && !_busy ? Visibility.Visible : Visibility.Collapsed;
+        ReinstallButton.Content = updating ? Loc.T("setup.verify.small") : found ? Loc.T("setup.found.reinstall") : Loc.T("setup.reinstall");
+        ReinstallButton.Visibility = (installed || found) && !_busy ? Visibility.Visible : Visibility.Collapsed;
         // installed (and not updating): PLAY is the main action here too; verify becomes a secondary button
         var canPlay = installed && !updating;
         PlayButton.Content = Loc.T("home.play");
@@ -205,12 +211,53 @@ public partial class SetupView : UserControl
         ProgressText.Text = Loc.T("nexus.login.opening");
         PlayService.OpenWabbajackGui();
         _ = RunChecksAsync();
+        WaitForNexusLogin();
+    }
+
+    private System.Windows.Threading.DispatcherTimer? _nexusTimer;
+
+    /// <summary>
+    /// After "Log in to Nexus" the player logs in inside Wabbajack. Watch for the login file and re-run the
+    /// checks the moment it appears — so INSTALL lights up by itself, no need to close Wabbajack or click anything.
+    /// </summary>
+    private void WaitForNexusLogin()
+    {
+        if (WabbajackService.IsNexusLoggedIn) return;
+        _nexusTimer?.Stop();
+        var started = DateTime.Now;
+        _nexusTimer = new System.Windows.Threading.DispatcherTimer { Interval = TimeSpan.FromSeconds(2) };
+        _nexusTimer.Tick += (_, _) =>
+        {
+            if (WabbajackService.IsNexusLoggedIn)
+            {
+                _nexusTimer!.Stop();
+                ProgressText.Text = Loc.T("nexus.login.done");
+                _main.RefreshNexus();
+                if (!_busy) _ = RunChecksAsync();
+            }
+            else if (DateTime.Now - started > TimeSpan.FromMinutes(20)) _nexusTimer!.Stop();
+        };
+        _nexusTimer.Start();
+    }
+
+    /// <summary>The window got focus again (e.g. after Wabbajack): if the Nexus login appeared meanwhile, re-check.</summary>
+    private void OnMainActivated(object? sender, EventArgs e)
+    {
+        if (!IsVisible || _busy || _checking) return;
+        var shownMissing = _checks.Any(c => c.State == CheckState.Error && c.Title == Loc.T("check.nexus.no"));
+        if (shownMissing && WabbajackService.IsNexusLoggedIn)
+        {
+            _nexusTimer?.Stop();
+            ProgressText.Text = Loc.T("nexus.login.done");
+            _main.RefreshNexus();
+            _ = RunChecksAsync();
+        }
     }
 
     private void Install_Click(object sender, RoutedEventArgs e)
     {
         if (Updating) _ = InstallAsync(_main.Settings.UpdateDir(Ml));
-        else if (Installed) _ = VerifyAsync();
+        else if (Installed || Found) _ = VerifyAsync();
         else _ = InstallAsync();
     }
 
@@ -278,8 +325,7 @@ public partial class SetupView : UserControl
                         s.InstallDirs[Ml.Id] = updateDir;
                         FolderBox.Text = updateDir;
                     }
-                    s.InstalledVersions[Ml.Id] = Ml.Version;
-                    s.Save();
+                    s.MarkInstalled(Ml, s.InstallDir(Ml), Ml.Version);
                 }
                 ProgressText.Text = outcome switch
                 {
@@ -321,11 +367,14 @@ public partial class SetupView : UserControl
 
     private async Task VerifyAsync()
     {
+        var adopting = Found; // a folder the launcher did not install: it becomes "installed" only if the check passes
         BeginBusy();
         try
         {
             var (ok, problems, ignored) = await InstallService.VerifyAsync(_main.Settings, Ml, MakeProgress(), _cts!.Token);
-            ProgressText.Text = !ok ? Loc.F("inst.verify.fail", problems)
+            if (ok && adopting) _main.Settings.MarkInstalled(Ml, _main.Settings.InstallDir(Ml), Ml.Version);
+            ProgressText.Text = !ok ? Loc.F(adopting ? "inst.found.fail" : "inst.verify.fail", problems)
+                : adopting ? Loc.T("inst.found.ok")
                 : ignored > 0 ? Loc.F("inst.verify.ok.ignored", ignored)
                 : Loc.T("inst.verify.ok");
             if (ok) FillDone();

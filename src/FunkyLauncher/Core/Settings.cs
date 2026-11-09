@@ -73,9 +73,32 @@ public sealed class Settings
     public string DownloadsDir(Modlist m) =>
         DownloadDirs.TryGetValue(m.Id, out var d) && !string.IsNullOrWhiteSpace(d) ? d : Path.Combine(InstallDir(m), "downloads");
 
-    public static bool IsInstalledIn(string dir) => File.Exists(Path.Combine(dir, "ModOrganizer.exe"));
+    /// <summary>File the launcher writes into a folder after it installed (or checked) the modlist there.</summary>
+    public const string MarkerName = "funkylauncher.json";
+
+    private static bool HasMo2(string dir) =>
+        !string.IsNullOrWhiteSpace(dir) && File.Exists(Path.Combine(dir, "ModOrganizer.exe"));
+
+    /// <summary>Installed = Mod Organizer is there AND the launcher put it there (marker file).</summary>
+    public static bool IsInstalledIn(string dir) => HasMo2(dir) && File.Exists(Path.Combine(dir, MarkerName));
 
     public bool IsInstalled(Modlist m) => IsInstalledIn(InstallDir(m));
+
+    /// <summary>
+    /// A modlist folder the launcher did not install (left from an old launcher version or copied by hand):
+    /// no PLAY button for it — the player either verifies it ("check and use") or installs again.
+    /// </summary>
+    public bool FoundUnknown(Modlist m) => HasMo2(InstallDir(m)) && !IsInstalled(m);
+
+    /// <summary>Remembers that this folder holds a working modlist of this version.</summary>
+    public void MarkInstalled(Modlist m, string dir, string version)
+    {
+        File.WriteAllText(Path.Combine(dir, MarkerName), JsonSerializer.Serialize(
+            new { modlist = m.Id, version, date = DateTime.Now.ToString("yyyy-MM-dd HH:mm") },
+            new JsonSerializerOptions { WriteIndented = true }));
+        InstalledVersions[m.Id] = version;
+        Save();
+    }
 
     /// <summary>Installed version; installs made before version tracking count as the catalog version.</summary>
     public string? InstalledVersion(Modlist m) =>

@@ -79,7 +79,7 @@ public partial class LibraryView : UserControl
         StatusList.Children.Clear();
         if (m.IsReleased)
         {
-            AddStatus(installed, installed ? s.InstallDir(m) : Loc.T("home.notready"));
+            AddStatus(installed, installed ? s.InstallDir(m) : s.FoundUnknown(m) ? Loc.F("lib.found", s.InstallDir(m)) : Loc.T("home.notready"));
             AddStatus(WabbajackService.IsNexusLoggedIn, WabbajackService.IsNexusLoggedIn ? Loc.T("check.nexus.ok") : Loc.T("check.nexus.no"));
             if (update) AddStatus(false, Loc.F("lib.update.available", m.Version));
             if (prev != null) AddStatus(true, Loc.F("lib.previous", prev.Version));
