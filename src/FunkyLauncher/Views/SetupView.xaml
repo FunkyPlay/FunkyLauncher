@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Grid>
     <!-- Welcome background: night city on top, fades into the launcher color -->
-    <Image Source="/Assets/welcome.jpg" Stretch="UniformToFill" VerticalAlignment="Top" Opacity="0.35" IsHitTestVisible="False"/>
+    <Image Source="/Assets/home_bg.jpg" Stretch="UniformToFill" VerticalAlignment="Top" Opacity="0.35" IsHitTestVisible="False"/>
     <Grid Margin="40,32">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

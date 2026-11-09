@@ -156,6 +156,12 @@ public partial class MainWindow : Window
         ShowLibrary();
     }
 
+    public void ShowSoft()
+    {
+        if (NavSoft.IsChecked == true) { _soft.Refresh(); Page.Content = _soft; }
+        else NavSoft.IsChecked = true;
+    }
+
     public void ShowLibrary()
     {
         if (NavLibrary.IsChecked == true) { _library.Refresh(); Page.Content = _library; }

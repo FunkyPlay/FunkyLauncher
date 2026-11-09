@@ -39,6 +39,13 @@ public static class Loc
         ["lib.setup"] = ("Установка и проверка", "Install and verify"),
 
         ["start.title"] = ("FUNKY LAUNCHER", "FUNKY LAUNCHER"),
+        ["start.brand"] = ("FUNKYPLAY  ·  ИГРЫ  ·  МОДЫ  ·  СОФТ", "FUNKYPLAY  ·  GAMES  ·  MODS  ·  SOFTWARE"),
+        ["tile.mods"] = ("Сборки модов", "Mod packs"),
+        ["tile.mods.text"] = ("Neon Nights для Cyberpunk 2077, дальше — новые игры", "Neon Nights for Cyberpunk 2077, more games coming"),
+        ["tile.soft"] = ("Софт", "Software"),
+        ["tile.soft.text"] = ("Полезные программы для игр и ПК", "Useful programs for games and PC"),
+        ["tile.video"] = ("Видео и обзоры", "Videos and reviews"),
+        ["tile.video.text"] = ("Гайды, обзоры модов и софта на YouTube", "Guides, mod and software reviews on YouTube"),
         ["start.text"] = ("Сборки модов от Funky в один клик: проверка совместимости, установка, запуск и починка. Сама игра не меняется — моды живут в отдельной папке, поэтому всегда можно вернуться к чистой игре. От вас потребуется только установленная игра на вашем ПК, дальше Launcher установит всё сам.", "Mod packs by Funky in one click: compatibility check, install, launch and repair. Your game is never changed — mods live in their own folder, so you can always go back to the clean game. All you need is the game installed on your PC — the Launcher does the rest."),
         ["start.premium"] = ("⚡ Nexus Premium — быстро: все моды скачаются сами, без единого клика.", "⚡ Nexus Premium — fast: every mod downloads by itself, no clicks."),
         ["start.free"] = ("🆓 Бесплатный аккаунт Nexus — тоже работает: у каждого мода нажать «Slow download», это дольше.", "🆓 Free Nexus account — works too: click “Slow download” for each mod, it takes longer."),

@@ -26,7 +26,9 @@ public partial class HomeView : UserControl
 
     public void Refresh()
     {
+        BrandTag.Text = Loc.T("start.brand");
         StartTitle.Text = Loc.T("start.title");
+        RenderTiles();
         StartText.Text = Loc.T("start.text");
         PremiumText.Text = Loc.T("start.premium");
         FreeText.Text = Loc.T("start.free");
@@ -40,6 +42,44 @@ public partial class HomeView : UserControl
         SupportButton.Content = Loc.T("start.support.write");
         ReportButton.Content = Loc.T("start.support.report");
         RenderNews();
+    }
+
+    /// <summary>Three FunkyPlay directions: modlists, software, videos.</summary>
+    private void RenderTiles()
+    {
+        Tiles.Children.Clear();
+        Tiles.Children.Add(Tile("🎮", "tile.mods", "#FF3CC8", () => _main.ShowLibrary()));
+        Tiles.Children.Add(Tile("🧰", "tile.soft", "#3CE6FF", () => _main.ShowSoft()));
+        Tiles.Children.Add(Tile("▶", "tile.video", "#A07CFF", () => PlayService.OpenUrl(AppConfig.YouTubeUrl)));
+    }
+
+    private Border Tile(string icon, string key, string color, Action open)
+    {
+        var accent = (Brush)new BrushConverter().ConvertFrom(color)!;
+        var iconBox = new Border
+        {
+            Width = 46, Height = 46, CornerRadius = new CornerRadius(12), Margin = new Thickness(0, 0, 14, 0),
+            Background = new SolidColorBrush(((SolidColorBrush)accent).Color) { Opacity = 0.18 },
+            BorderBrush = accent, BorderThickness = new Thickness(1),
+            Child = new TextBlock { Text = icon, FontSize = 20, Foreground = accent, HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center },
+        };
+        var texts = new StackPanel { VerticalAlignment = VerticalAlignment.Center };
+        texts.Children.Add(new TextBlock { Text = Loc.T(key), FontSize = 16, FontWeight = FontWeights.Bold });
+        texts.Children.Add(new TextBlock { Text = Loc.T(key + ".text"), FontSize = 12.5, Foreground = (Brush)FindResource("Muted"), TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 3, 0, 0) });
+        var row = new DockPanel();
+        DockPanel.SetDock(iconBox, Dock.Left);
+        row.Children.Add(iconBox);
+        row.Children.Add(texts);
+        var tile = new Border
+        {
+            Style = (Style)FindResource("CardBorder"), Padding = new Thickness(18, 14, 18, 14), Margin = new Thickness(0, 0, 14, 0),
+            Cursor = System.Windows.Input.Cursors.Hand, Child = row,
+            BorderBrush = (Brush)new BrushConverter().ConvertFrom("#2A2A36")!, BorderThickness = new Thickness(1),
+        };
+        tile.MouseEnter += (_, _) => tile.BorderBrush = accent;
+        tile.MouseLeave += (_, _) => tile.BorderBrush = (Brush)new BrushConverter().ConvertFrom("#2A2A36")!;
+        tile.MouseLeftButtonUp += (_, _) => open();
+        return tile;
     }
 
     private async Task LoadNewsAsync()

@@ -21,6 +21,7 @@
     <Resource Include="Assets\launcher.ico" />
     <Resource Include="Assets\icon.png" />
     <Resource Include="Assets\welcome.jpg" />
+    <Resource Include="Assets\home_bg.jpg" />
     <Resource Include="..\..\catalog.json" Link="catalog.json" />
   </ItemGroup>
 
