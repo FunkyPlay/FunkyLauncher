@@ -40,15 +40,19 @@ public partial class MainWindow : Window
         // developer test: FunkyLauncher.exe --test-manual N  → manual download of the N smallest Nexus files into %TEMP%
         var args = Environment.GetCommandLineArgs();
         var i = Array.IndexOf(args, "--test-manual");
-        if (i >= 0) Loaded += (_, _) => TestManual(i + 1 < args.Length && int.TryParse(args[i + 1], out var n) ? n : 2);
+        // "--test-manual N big" → N-1 smallest files + one file of about 500 MB (slow download test)
+        if (i >= 0) Loaded += (_, _) => TestManual(i + 1 < args.Length && int.TryParse(args[i + 1], out var n) ? n : 2,
+                                                   args.Contains("big"));
     }
 
-    private void TestManual(int count)
+    private void TestManual(int count, bool big)
     {
         var file = Settings.ResolveWabbajack(Selected);
         if (file == null) return;
         var dir = Path.Combine(Path.GetTempPath(), "FunkyManualTest");
-        var items = ManualQueue.Build(file, dir).OrderBy(x => x.Size).Take(count).ToList();
+        var all = ManualQueue.Build(file, dir).OrderBy(x => x.Size).ToList();
+        var items = all.Take(big ? count - 1 : count).ToList();
+        if (big && all.Count > 0) items.Add(all.OrderBy(x => Math.Abs(x.Size - 500L * 1024 * 1024)).First());
         new ManualDownloadWindow(items, dir) { Owner = this }.ShowDialog();
     }
 

@@ -51,6 +51,13 @@ public partial class ManualDownloadWindow : Window
         Web.CoreWebView2.DownloadStarting += OnDownloadStarting;
         Web.CoreWebView2.NewWindowRequested += (_, e) => { e.Handled = true; Web.CoreWebView2.Navigate(e.Uri); };
         Web.CoreWebView2.SourceChanged += (_, _) => AddressText.Text = Web.CoreWebView2.Source;
+        // after logging in Nexus lands on its home page — go back to the current mod's file page
+        Web.CoreWebView2.NavigationCompleted += (_, _) =>
+        {
+            if (_current == null || !Uri.TryCreate(Web.CoreWebView2.Source, UriKind.Absolute, out var u)) return;
+            if (u.Host == "www.nexusmods.com" && u.AbsolutePath.Trim('/') is "" or "cyberpunk2077")
+                Web.CoreWebView2.Navigate(_current.PageUrl);
+        };
         Next();
     }
 
