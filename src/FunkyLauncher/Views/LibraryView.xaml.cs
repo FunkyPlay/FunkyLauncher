@@ -4,10 +4,11 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using FunkyLauncher.Core;
+using FunkyLauncher.Services;
 
 namespace FunkyLauncher.Views;
 
-/// <summary>Grid of all FunkyPlay modlists from the catalog.</summary>
+/// <summary>Library: all FunkyPlay modlists on top, the selected one below with PLAY.</summary>
 public partial class LibraryView : UserControl
 {
     private readonly MainWindow _main;
@@ -26,67 +27,116 @@ public partial class LibraryView : UserControl
         Subtitle.Text = Loc.T("lib.subtitle");
         Cards.Children.Clear();
         foreach (var m in Catalog.Items) Cards.Children.Add(Card(m));
+        RefreshSelected();
     }
+
+    private void RefreshSelected()
+    {
+        var s = _main.Settings;
+        var m = _main.Selected;
+        var installed = m.IsReleased && s.IsInstalled(m);
+        var img = Images.Load(m.Banner);
+        Banner.Background = img != null
+            ? new ImageBrush(img) { Stretch = Stretch.UniformToFill, AlignmentY = AlignmentY.Center }
+            : new LinearGradientBrush(Color.FromRgb(0x2A, 0x14, 0x26), Color.FromRgb(0x0F, 0x2A, 0x33), 45);
+        TitleText.Text = m.Title;
+        TagText.Text = m.Tag.ToString();
+        Description.Text = m.Description.ToString();
+        Sub.Text = !m.IsReleased ? Loc.F("home.sub.soon", m.Author)
+            : installed ? Loc.F("home.sub.installed", m.Author, m.Version, s.InstallDir(m))
+            : Loc.F("home.sub.notinstalled", m.Author, m.Version);
+        MainButton.Content = installed ? Loc.T("home.play") : !m.IsReleased ? Loc.T("lib.soon") : Loc.T("home.install");
+        MainButton.IsEnabled = m.IsReleased;
+        FolderButton.Content = Loc.T("home.folder");
+        Mo2Button.Content = Loc.T("home.mo2");
+        FolderButton.IsEnabled = Mo2Button.IsEnabled = installed;
+        FolderButton.Visibility = Mo2Button.Visibility = installed ? Visibility.Visible : Visibility.Collapsed;
+        StatusTitle.Text = installed ? Loc.T("home.ready") : Loc.T("home.notready");
+        SetupButton.Content = Loc.T("lib.setup");
+        SetupButton.IsEnabled = m.IsReleased;
+
+        StatusList.Children.Clear();
+        if (m.IsReleased)
+        {
+            AddStatus(installed, installed ? s.InstallDir(m) : Loc.T("home.notready"));
+            AddStatus(WabbajackService.IsNexusLoggedIn, WabbajackService.IsNexusLoggedIn ? Loc.T("check.nexus.ok") : Loc.T("check.nexus.no"));
+        }
+        PlayMessage.Text = "";
+    }
+
+    private void AddStatus(bool ok, string text) =>
+        StatusList.Children.Add(new TextBlock
+        {
+            Text = (ok ? "✓  " : "•  ") + text,
+            FontSize = 13,
+            TextWrapping = TextWrapping.Wrap,
+            Margin = new Thickness(0, 0, 0, 6),
+            Foreground = ok ? new SolidColorBrush(Color.FromRgb(0xC9, 0xC9, 0xD6)) : (Brush)FindResource("Pink"),
+        });
 
     private Border Card(Modlist m)
     {
         var installed = m.IsReleased && _main.Settings.IsInstalled(m);
         var selected = m.Id == _main.Selected.Id;
-
-        // picture
         var img = Images.Load(m.Banner);
-        var picture = new Border
-        {
-            Height = 170,
-            CornerRadius = new CornerRadius(14, 14, 0, 0),
-            Background = img != null
-                ? new ImageBrush(img) { Stretch = Stretch.UniformToFill }
-                : new LinearGradientBrush(Color.FromRgb(0x2A, 0x14, 0x26), Color.FromRgb(0x0F, 0x2A, 0x33), 45),
-        };
-        var pictureGrid = new Grid();
-        pictureGrid.Children.Add(picture);
-        if (img == null)
-            pictureGrid.Children.Add(new TextBlock
-            {
-                Text = m.Title, FontFamily = (FontFamily)FindResource("TitleFont"), FontSize = 26, Opacity = 0.55,
-                HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center,
-            });
 
-        // status chip
         var (chipText, chipFg, chipBg) = !m.IsReleased
-            ? (Loc.T("lib.soon"), "#C9C9D6", "#33333F")
-            : installed ? (Loc.T("lib.installed"), "#9AF2FF", "#243CE6FF") : (Loc.F("lib.available", m.SizeGb), "#FF7AD9", "#2A1426");
-        var chip = new Border
+            ? (Loc.T("lib.soon"), "#C9C9D6", "#CC33333F")
+            : installed ? (Loc.T("lib.installed"), "#9AF2FF", "#CC0F2A33") : (Loc.F("lib.available", m.SizeGb), "#FF7AD9", "#CC2A1426");
+        var bc = new BrushConverter();
+
+        var grid = new Grid();
+        grid.Children.Add(new Border
         {
-            HorizontalAlignment = HorizontalAlignment.Left, CornerRadius = new CornerRadius(10), Padding = new Thickness(10, 3, 10, 3),
-            Background = (Brush)new BrushConverter().ConvertFrom(chipBg)!, Margin = new Thickness(0, 10, 0, 0),
-            Child = new TextBlock { Text = chipText, FontSize = 12, FontWeight = FontWeights.SemiBold, Foreground = (Brush)new BrushConverter().ConvertFrom(chipFg)! },
-        };
-
-        var info = new StackPanel { Margin = new Thickness(16, 12, 16, 16) };
-        info.Children.Add(new TextBlock { Text = m.Title, FontFamily = (FontFamily)FindResource("TitleFont"), FontSize = 20 });
-        info.Children.Add(new TextBlock { Text = m.Tag.ToString(), FontSize = 13, Foreground = (Brush)FindResource("Muted"), Margin = new Thickness(0, 4, 0, 0) });
-        if (m.ModCount > 0)
-            info.Children.Add(new TextBlock { Text = $"by {m.Author} · {Loc.F("lib.mods", m.ModCount)}", FontSize = 12, Foreground = (Brush)FindResource("Muted"), Margin = new Thickness(0, 2, 0, 0) });
-        info.Children.Add(chip);
-
-        var stack = new StackPanel();
-        stack.Children.Add(pictureGrid);
-        stack.Children.Add(info);
+            CornerRadius = new CornerRadius(13),
+            Background = new LinearGradientBrush(Color.FromArgb(0x10, 0x0F, 0x0F, 0x14), Color.FromArgb(0xF0, 0x0F, 0x0F, 0x14), 90),
+        });
+        var info = new StackPanel { VerticalAlignment = VerticalAlignment.Bottom, Margin = new Thickness(14, 0, 14, 12) };
+        info.Children.Add(new Border
+        {
+            HorizontalAlignment = HorizontalAlignment.Left, CornerRadius = new CornerRadius(8), Padding = new Thickness(8, 2, 8, 2),
+            Background = (Brush)bc.ConvertFrom(chipBg)!,
+            Child = new TextBlock { Text = chipText, FontSize = 11, FontWeight = FontWeights.SemiBold, Foreground = (Brush)bc.ConvertFrom(chipFg)! },
+        });
+        info.Children.Add(new TextBlock { Text = m.Title, FontFamily = (FontFamily)FindResource("TitleFont"), FontSize = 19, Margin = new Thickness(0, 6, 0, 0) });
+        info.Children.Add(new TextBlock { Text = m.Tag.ToString(), FontSize = 11.5, Foreground = (Brush)FindResource("Muted"), TextTrimming = TextTrimming.CharacterEllipsis });
+        grid.Children.Add(info);
 
         var card = new Border
         {
-            Width = 300, Margin = new Thickness(0, 0, 20, 20), CornerRadius = new CornerRadius(14),
-            Background = (Brush)FindResource("Card"), Child = stack,
-            BorderThickness = new Thickness(selected ? 2 : 1),
-            BorderBrush = selected ? (Brush)FindResource("Pink") : (Brush)new BrushConverter().ConvertFrom("#2A2A36")!,
-            Opacity = m.IsReleased ? 1 : 0.7,
+            Width = 270, Height = 130, Margin = new Thickness(0, 0, 16, 0), CornerRadius = new CornerRadius(14),
+            Background = img != null
+                ? new ImageBrush(img) { Stretch = Stretch.UniformToFill }
+                : new LinearGradientBrush(Color.FromRgb(0x2A, 0x14, 0x26), Color.FromRgb(0x0F, 0x2A, 0x33), 45),
+            BorderThickness = new Thickness(2),
+            BorderBrush = selected ? (Brush)FindResource("Pink") : (Brush)bc.ConvertFrom("#2A2A36")!,
+            Opacity = m.IsReleased ? 1 : 0.75,
+            Cursor = Cursors.Hand,
+            Child = grid,
         };
-        if (m.IsReleased)
-        {
-            card.Cursor = Cursors.Hand;
-            card.MouseLeftButtonUp += (_, _) => _main.Select(m);
-        }
+        card.MouseLeftButtonUp += (_, _) => _main.Select(m);
         return card;
+    }
+
+    private void MainButton_Click(object sender, RoutedEventArgs e)
+    {
+        var m = _main.Selected;
+        if (!_main.Settings.IsInstalled(m)) { _main.ShowSetup(); return; }
+        try
+        {
+            PlayService.Play(_main.Settings, m);
+            PlayMessage.Text = Loc.T("home.play.started");
+        }
+        catch (Exception ex)
+        {
+            PlayMessage.Text = Loc.F("home.play.error", ex.Message);
+        }
+    }
+
+    private void Setup_Click(object sender, RoutedEventArgs e) => _main.ShowSetup();
+    private void FolderButton_Click(object sender, RoutedEventArgs e) => PlayService.OpenFolder(_main.Settings.InstallDir(_main.Selected));
+    private void Mo2Button_Click(object sender, RoutedEventArgs e)
+    {
+        try { PlayService.OpenMo2(_main.Settings, _main.Selected); } catch (Exception ex) { PlayMessage.Text = Loc.F("home.play.error", ex.Message); }
     }
 }

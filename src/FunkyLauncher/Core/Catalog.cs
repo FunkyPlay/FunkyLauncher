@@ -48,10 +48,23 @@ public sealed class Modlist
     public long RequiredFreeBytes => (SizeGb + 5L) * 1024 * 1024 * 1024;
 }
 
+/// <summary>A useful program on the Software page. The button opens the official site — we never rehost installers.</summary>
+public sealed class SoftwareItem
+{
+    [JsonPropertyName("id")] public string Id { get; set; } = "";
+    [JsonPropertyName("name")] public string Name { get; set; } = "";
+    [JsonPropertyName("category")] public LocText Category { get; set; } = new();
+    [JsonPropertyName("description")] public LocText Description { get; set; } = new();
+    [JsonPropertyName("url")] public string Url { get; set; } = "";
+    /// <summary>Tile color, e.g. "#FF3CC8".</summary>
+    [JsonPropertyName("color")] public string Color { get; set; } = "#3CE6FF";
+}
+
 public sealed class CatalogFile
 {
     [JsonPropertyName("version")] public int Version { get; set; } = 1;
     [JsonPropertyName("modlists")] public List<Modlist> Modlists { get; set; } = new();
+    [JsonPropertyName("software")] public List<SoftwareItem> Software { get; set; } = new();
 }
 
 /// <summary>
@@ -61,6 +74,7 @@ public sealed class CatalogFile
 public static class Catalog
 {
     public static List<Modlist> Items { get; private set; } = new();
+    public static List<SoftwareItem> Software { get; private set; } = new();
     public static string Source { get; private set; } = "";
 
     private static string CachePath => Path.Combine(AppConfig.DataDir, "catalog.json");
@@ -69,7 +83,7 @@ public static class Catalog
     {
         var uri = new Uri("pack://application:,,,/catalog.json");
         using var s = System.Windows.Application.GetResourceStream(uri)!.Stream;
-        Items = Parse(s);
+        Apply(Parse(s));
         Source = "built-in";
         if (File.Exists(CachePath))
         {
@@ -77,10 +91,16 @@ public static class Catalog
             {
                 using var f = File.OpenRead(CachePath);
                 var cached = Parse(f);
-                if (cached.Count > 0) { Items = cached; Source = "cache"; }
+                if (cached.Modlists.Count > 0) { Apply(cached); Source = "cache"; }
             }
             catch { }
         }
+    }
+
+    private static void Apply(CatalogFile c)
+    {
+        Items = c.Modlists;
+        Software = c.Software.Where(x => x.Name.Length > 0 && x.Url.StartsWith("https://")).ToList();
     }
 
     /// <summary>Tries to refresh from the internet. Returns true if the list changed source.</summary>
@@ -94,8 +114,8 @@ public static class Catalog
             var json = await http.GetStringAsync(AppConfig.CatalogUrl, token);
             using var ms = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(json));
             var items = Parse(ms);
-            if (items.Count == 0) return false;
-            Items = items;
+            if (items.Modlists.Count == 0) return false;
+            Apply(items);
             Source = "online";
             Directory.CreateDirectory(AppConfig.DataDir);
             File.WriteAllText(CachePath, json);
@@ -109,6 +129,10 @@ public static class Catalog
 
     public static Modlist? Find(string? id) => Items.FirstOrDefault(m => m.Id == id);
 
-    private static List<Modlist> Parse(Stream s) =>
-        JsonSerializer.Deserialize<CatalogFile>(s)?.Modlists.Where(m => m.Id.Length > 0).ToList() ?? new();
+    private static CatalogFile Parse(Stream s)
+    {
+        var c = JsonSerializer.Deserialize<CatalogFile>(s) ?? new CatalogFile();
+        c.Modlists = c.Modlists.Where(m => m.Id.Length > 0).ToList();
+        return c;
+    }
 }

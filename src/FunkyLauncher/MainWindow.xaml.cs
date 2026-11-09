@@ -17,6 +17,7 @@ public partial class MainWindow : Window
     private readonly HomeView _home;
     private readonly LibraryView _library;
     private readonly SetupView _setup;
+    private readonly SoftView _soft;
     private readonly SettingsView _settingsView;
 
     public MainWindow()
@@ -29,6 +30,7 @@ public partial class MainWindow : Window
         _home = new HomeView(this);
         _library = new LibraryView(this);
         _setup = new SetupView(this);
+        _soft = new SoftView();
         _settingsView = new SettingsView(this);
 
         (Loc.Lang == "en" ? LangEn : LangRu).IsChecked = true;
@@ -62,6 +64,7 @@ public partial class MainWindow : Window
         {
             _home.Refresh();
             _library.Refresh();
+            _soft.Refresh();
         }
     }
 
@@ -69,7 +72,7 @@ public partial class MainWindow : Window
     {
         NavHome.Content = Loc.T("nav.home");
         NavLibrary.Content = Loc.T("nav.library");
-        NavSetup.Content = Loc.T("nav.setup");
+        NavSoft.Content = Loc.T("nav.soft");
         NavSettings.Content = Loc.T("nav.settings");
         RefreshNexus();
     }
@@ -81,23 +84,35 @@ public partial class MainWindow : Window
         NexusStatus.Foreground = (Brush)FindResource(ok ? "Cyan" : "Pink");
     }
 
-    /// <summary>Opens a modlist from the library on the Home page.</summary>
+    /// <summary>Selects a modlist in the library.</summary>
     public void Select(Modlist m)
     {
         Settings.SelectedId = m.Id;
         Settings.Save();
         _setup.ResetForModlist();
-        if (NavHome.IsChecked == true) _home.Refresh(); else NavHome.IsChecked = true;
+        ShowLibrary();
     }
 
-    public void ShowSetup() { NavSetup.IsChecked = true; }
+    public void ShowLibrary()
+    {
+        if (NavLibrary.IsChecked == true) { _library.Refresh(); Page.Content = _library; }
+        else NavLibrary.IsChecked = true;
+    }
+
+    /// <summary>Install / verify page of the selected modlist (opened from the library).</summary>
+    public void ShowSetup()
+    {
+        if (NavLibrary.IsChecked != true) NavLibrary.IsChecked = true;
+        Page.Content = _setup;
+        _setup.OnShown();
+    }
 
     private void Nav_Checked(object sender, RoutedEventArgs e)
     {
         if (Page == null) return;
         if (sender == NavHome) { _home.Refresh(); Page.Content = _home; }
         else if (sender == NavLibrary) { _library.Refresh(); Page.Content = _library; }
-        else if (sender == NavSetup) { Page.Content = _setup; _setup.OnShown(); }
+        else if (sender == NavSoft) { _soft.Refresh(); Page.Content = _soft; }
         else if (sender == NavSettings) { _settingsView.Refresh(); Page.Content = _settingsView; }
     }
 

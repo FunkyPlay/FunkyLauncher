@@ -1,4 +1,5 @@
 // Funky Launcher — Copyright (C) 2026 Funky. Licensed under GPL-3.0-or-later.
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -7,6 +8,7 @@ using FunkyLauncher.Services;
 
 namespace FunkyLauncher.Views;
 
+/// <summary>Home: about Funky Launcher, FunkyPlay news, what's new, support.</summary>
 public partial class HomeView : UserControl
 {
     private readonly MainWindow _main;
@@ -24,42 +26,18 @@ public partial class HomeView : UserControl
 
     public void Refresh()
     {
-        var s = _main.Settings;
-        var m = _main.Selected;
-        var installed = m.IsReleased && s.IsInstalled(m);
-        var img = Images.Load(m.Banner);
-        Banner.Background = img != null
-            ? new ImageBrush(img) { Stretch = Stretch.UniformToFill, AlignmentY = AlignmentY.Center }
-            : new SolidColorBrush(Color.FromRgb(0x1D, 0x1D, 0x26));
-        TitleText.Text = m.Title;
-        TagText.Text = m.Tag.ToString();
-        Sub.Text = !m.IsReleased ? Loc.F("home.sub.soon", m.Author)
-            : installed ? Loc.F("home.sub.installed", m.Author, m.Version, s.InstallDir(m))
-            : Loc.F("home.sub.notinstalled", m.Author, m.Version);
-        MainButton.Content = installed ? Loc.T("home.play") : !m.IsReleased ? Loc.T("lib.soon") : Loc.T("home.install");
-        MainButton.IsEnabled = m.IsReleased;
-        FolderButton.Content = Loc.T("home.folder");
-        Mo2Button.Content = Loc.T("home.mo2");
-        FolderButton.IsEnabled = Mo2Button.IsEnabled = installed;
+        StartTitle.Text = Loc.T("start.title");
+        StartText.Text = Loc.T("start.text");
+        LibraryButton.Content = Loc.T("start.library");
         NewsTitle.Text = Loc.T("home.news");
         AllNews.Text = Loc.T("home.news.all");
-        StatusTitle.Text = installed ? Loc.T("home.ready") : Loc.T("home.notready");
-
-        StatusList.Children.Clear();
-        AddStatus(installed, installed ? s.InstallDir(m) : Loc.T("home.notready"));
-        AddStatus(WabbajackService.IsNexusLoggedIn, WabbajackService.IsNexusLoggedIn ? Loc.T("check.nexus.ok") : Loc.T("check.nexus.no"));
+        WhatsNewTitle.Text = Loc.F("start.whatsnew", AppConfig.Version);
+        WhatsNewText.Text = Loc.T("start.whatsnew.items");
+        SupportTitle.Text = Loc.T("start.support");
+        SupportText.Text = Loc.T("start.support.text");
+        SupportButton.Content = Loc.T("start.support.write");
+        ReportButton.Content = Loc.T("start.support.report");
         RenderNews();
-    }
-
-    private void AddStatus(bool ok, string text)
-    {
-        StatusList.Children.Add(new TextBlock
-        {
-            Text = (ok ? "✓  " : "•  ") + text,
-            FontSize = 13,
-            Margin = new Thickness(0, 0, 0, 6),
-            Foreground = ok ? new SolidColorBrush(Color.FromRgb(0xC9, 0xC9, 0xD6)) : (Brush)FindResource("Pink"),
-        });
     }
 
     private async Task LoadNewsAsync()
@@ -82,7 +60,7 @@ public partial class HomeView : UserControl
         var panel = new StackPanel();
         if (date != null)
             panel.Children.Add(new TextBlock { Text = date.Value.ToLocalTime().ToString("dd.MM.yyyy"), FontSize = 12, FontWeight = FontWeights.SemiBold, Foreground = new SolidColorBrush(Color.FromRgb(0xFF, 0x7A, 0xD9)), Margin = new Thickness(0, 0, 0, 6) });
-        panel.Children.Add(new TextBlock { Text = text, FontSize = 13, LineHeight = 19, Foreground = new SolidColorBrush(Color.FromRgb(0xE2, 0xE2, 0xEA)) });
+        panel.Children.Add(new TextBlock { Text = text, FontSize = 13, LineHeight = 19, TextWrapping = TextWrapping.Wrap, TextTrimming = TextTrimming.WordEllipsis, Foreground = new SolidColorBrush(Color.FromRgb(0xE2, 0xE2, 0xEA)) });
         var card = new Border { Style = (Style)FindResource("CardBorder"), Margin = new Thickness(0, 0, 14, 0), Child = panel };
         if (url != null)
         {
@@ -92,27 +70,27 @@ public partial class HomeView : UserControl
         return card;
     }
 
-    private void MainButton_Click(object sender, RoutedEventArgs e)
+    private async void Report_Click(object sender, RoutedEventArgs e)
     {
-        var m = _main.Selected;
-        if (!_main.Settings.IsInstalled(m)) { _main.ShowSetup(); return; }
+        ReportButton.IsEnabled = false;
+        ReportText.Text = Loc.T("start.report.working");
         try
         {
-            PlayService.Play(_main.Settings, m);
-            PlayMessage.Text = Loc.T("home.play.started");
+            var file = await ReportService.CreateAsync(_main.Settings, _main.Selected, CancellationToken.None);
+            ReportText.Text = Loc.F("start.report.done", Path.GetFileName(file));
+            Process.Start(new ProcessStartInfo("explorer.exe", $"/select,\"{file}\"") { UseShellExecute = true });
         }
         catch (Exception ex)
         {
-            PlayMessage.Text = Loc.F("home.play.error", ex.Message);
+            ReportText.Text = Loc.F("start.report.error", ex.Message);
         }
+        ReportButton.IsEnabled = true;
     }
 
-    private void FolderButton_Click(object sender, RoutedEventArgs e) => PlayService.OpenFolder(_main.Settings.InstallDir(_main.Selected));
-    private void Mo2Button_Click(object sender, RoutedEventArgs e)
-    {
-        try { PlayService.OpenMo2(_main.Settings, _main.Selected); } catch (Exception ex) { PlayMessage.Text = Loc.F("home.play.error", ex.Message); }
-    }
+    private void Library_Click(object sender, RoutedEventArgs e) => _main.ShowLibrary();
+    private void Support_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(AppConfig.SupportUrl);
     private void Telegram_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(AppConfig.TelegramUrl);
     private void YouTube_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(AppConfig.YouTubeUrl);
+    private void GitHub_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(AppConfig.GitHubUrl);
     private void AllNews_Click(object sender, System.Windows.Input.MouseButtonEventArgs e) => PlayService.OpenUrl(AppConfig.TelegramUrl);
 }

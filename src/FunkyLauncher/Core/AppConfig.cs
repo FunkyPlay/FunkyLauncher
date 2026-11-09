@@ -7,6 +7,12 @@ public static class AppConfig
     public const string TelegramChannel = "FunkyPlayTV";
     public const string TelegramUrl = "https://t.me/" + TelegramChannel;
     public const string YouTubeUrl = "https://www.youtube.com/@" + TelegramChannel;
+    /// <summary>Launcher community in Telegram: download + support.</summary>
+    public const string SupportUrl = "https://t.me/FunkyLauncher";
+    public const string GitHubUrl = "https://github.com/FunkyPlay/FunkyLauncher";
+
+    public static string Version =>
+        System.Reflection.Assembly.GetExecutingAssembly().GetName().Version?.ToString(3) ?? "0.1.0";
 
     /// <summary>
     /// Online catalog of modlists (raw catalog.json on GitHub). If it can't be loaded,

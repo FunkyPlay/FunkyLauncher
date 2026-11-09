@@ -12,6 +12,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Margin="0,0,0,20">
+            <TextBlock x:Name="BackLink" FontSize="13" Foreground="{StaticResource Cyan}" Cursor="Hand" Margin="0,0,0,8" HorizontalAlignment="Left" MouseLeftButtonUp="Back_Click"/>
             <TextBlock x:Name="PageTitle" FontFamily="{StaticResource TitleFont}" FontSize="30"/>
             <TextBlock x:Name="Subtitle" FontSize="15" Foreground="#C9C9D6" Margin="0,6,0,0"/>
         </StackPanel>

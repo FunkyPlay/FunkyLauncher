@@ -23,7 +23,7 @@
 
                 <RadioButton x:Name="NavHome" DockPanel.Dock="Top" Style="{StaticResource NavButton}" GroupName="nav" IsChecked="True" Checked="Nav_Checked"/>
                 <RadioButton x:Name="NavLibrary" DockPanel.Dock="Top" Style="{StaticResource NavButton}" GroupName="nav" Checked="Nav_Checked"/>
-                <RadioButton x:Name="NavSetup" DockPanel.Dock="Top" Style="{StaticResource NavButton}" GroupName="nav" Checked="Nav_Checked"/>
+                <RadioButton x:Name="NavSoft" DockPanel.Dock="Top" Style="{StaticResource NavButton}" GroupName="nav" Checked="Nav_Checked"/>
                 <RadioButton x:Name="NavSettings" DockPanel.Dock="Top" Style="{StaticResource NavButton}" GroupName="nav" Checked="Nav_Checked"/>
 
                 <UniformGrid DockPanel.Dock="Bottom" Columns="2" Margin="0,10,0,0">

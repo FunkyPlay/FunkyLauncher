@@ -27,10 +27,31 @@ public static class Loc
     private static readonly Dictionary<string, (string Ru, string En)> Texts = new()
     {
         ["nav.home"] = ("Главная", "Home"),
-        ["nav.library"] = ("Сборки", "Modlists"),
+        ["nav.library"] = ("Библиотека", "Library"),
+        ["nav.soft"] = ("Софт", "Software"),
 
-        ["lib.title"] = ("Сборки FunkyPlay", "FunkyPlay modlists"),
-        ["lib.subtitle"] = ("Все наши проекты. Новые сборки появляются здесь сами — лаунчер обновлять не нужно.", "All our projects. New modlists appear here automatically — no need to update the launcher."),
+        ["lib.title"] = ("Библиотека", "Library"),
+        ["lib.subtitle"] = ("Все сборки FunkyPlay. Новые появляются здесь сами — лаунчер обновлять не нужно.", "All FunkyPlay modlists. New ones appear here automatically — no need to update the launcher."),
+        ["lib.setup"] = ("Установка и проверка", "Install and verify"),
+
+        ["start.title"] = ("FUNKY LAUNCHER", "FUNKY LAUNCHER"),
+        ["start.text"] = ("Сборки модов FunkyPlay в один клик: проверка компьютера, установка, запуск и починка. Сама игра не меняется — моды живут в отдельной папке, поэтому всегда можно вернуться к чистой игре.", "FunkyPlay modlists in one click: PC check, install, launch and repair. Your game is never changed — mods live in their own folder, so you can always go back to the clean game."),
+        ["start.library"] = ("ОТКРЫТЬ БИБЛИОТЕКУ", "OPEN LIBRARY"),
+        ["start.whatsnew"] = ("Что нового · версия {0}", "What's new · version {0}"),
+        ["start.whatsnew.items"] = ("• Новая главная, библиотека и раздел «Софт»\n• Скачивание модов с бесплатным аккаунтом Nexus\n• Каталог сборок обновляется с GitHub\n• Проверка файлов сборки", "• New home page, library and Software section\n• Mod downloads with a free Nexus account\n• Modlist catalog updates from GitHub\n• Modlist file verification"),
+        ["start.support"] = ("Поддержка", "Support"),
+        ["start.support.text"] = ("Что-то не работает? Соберите отчёт и отправьте его нам в Telegram — разберёмся.", "Something not working? Make a report and send it to us on Telegram — we'll sort it out."),
+        ["start.support.write"] = ("Написать в поддержку", "Contact support"),
+        ["start.support.report"] = ("Собрать отчёт об ошибке", "Make an error report"),
+        ["start.report.working"] = ("Собираем отчёт…", "Making the report…"),
+        ["start.report.done"] = ("Отчёт сохранён на рабочий стол: {0}. Отправьте этот файл в поддержку.", "Report saved to the Desktop: {0}. Send this file to support."),
+        ["start.report.error"] = ("Не удалось собрать отчёт: {0}", "Could not make the report: {0}"),
+
+        ["soft.title"] = ("Полезный софт", "Useful software"),
+        ["soft.subtitle"] = ("Проверенные программы для игр и модов. Кнопка открывает официальный сайт программы.", "Trusted programs for games and mods. The button opens the program's official website."),
+        ["soft.open"] = ("Скачать с сайта", "Get from website"),
+
+        ["setup.back"] = ("← Библиотека", "← Library"),
         ["lib.installed"] = ("Установлено", "Installed"),
         ["lib.available"] = ("Доступно · {0} ГБ", "Available · {0} GB"),
         ["lib.soon"] = ("Скоро", "Coming soon"),
@@ -107,7 +128,7 @@ public static class Loc
         ["inst.verify.ok.ignored"] = ("Файлы в порядке. Изменились только файлы, которые моды сами пишут во время игры ({0} шт.) — это нормально.", "Files are OK. Only files that mods write while you play have changed ({0}) — that is normal."),
         ["inst.verify.fail"] = ("Найдены повреждённые или изменённые файлы: {0}. Нажмите «Переустановить», чтобы исправить.", "Damaged or changed files found: {0}. Click “Reinstall” to fix."),
         ["inst.downloaded"] = ("Скачано модов: {0} из {1}", "Mods downloaded: {0} of {1}"),
-        ["inst.done"] = ("Готово! Сборка установлена. Жмите ИГРАТЬ на главной.", "Done! The modlist is installed. Press PLAY on Home."),
+        ["inst.done"] = ("Готово! Сборка установлена. Жмите ИГРАТЬ в библиотеке.", "Done! The modlist is installed. Press PLAY in the Library."),
         ["inst.manual"] = ("Осталось скачать вручную: {0} шт. Нажмите «УСТАНОВИТЬ», чтобы продолжить с того же места.", "Still to download by hand: {0}. Click “INSTALL” to continue where you left off."),
         ["inst.failed"] = ("Установка не удалась (код {0}). Подробности — в журнале ниже.", "Install failed (code {0}). See the log below."),
         ["inst.stopped"] = ("Остановлено. При следующем запуске установка продолжится.", "Stopped. Next time the install continues where it left off."),

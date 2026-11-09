@@ -36,6 +36,8 @@ public partial class SetupView : UserControl
         ApplyTexts();
     }
 
+    private void Back_Click(object sender, System.Windows.Input.MouseButtonEventArgs e) => _main.ShowLibrary();
+
     public void OnShown()
     {
         if (!_busy) _ = RunChecksAsync();
@@ -43,6 +45,7 @@ public partial class SetupView : UserControl
 
     private void ApplyTexts()
     {
+        BackLink.Text = Loc.T("setup.back");
         PageTitle.Text = Loc.F("setup.title", Ml.Title);
         Subtitle.Text = Loc.T("setup.subtitle");
         CheckTitle.Text = Loc.T("setup.check");
