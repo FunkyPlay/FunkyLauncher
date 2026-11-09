@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>FunkyLauncher</AssemblyName>
+    <RootNamespace>FunkyLauncher</RootNamespace>
+    <Version>0.1.0</Version>
+    <Product>Funky Launcher</Product>
+    <Company>FunkyPlay</Company>
+    <Authors>Funky</Authors>
+    <Copyright>Copyright (C) 2026 Funky. GPL-3.0-or-later.</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\banner.jpg" />
+  </ItemGroup>
+
+</Project>

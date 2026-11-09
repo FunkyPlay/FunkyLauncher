@@ -1,0 +1,46 @@
+﻿<Window x:Class="FunkyLauncher.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Funky Launcher" Width="1280" Height="760"
+        WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize"
+        Background="{StaticResource Bg}" FontFamily="{StaticResource UiFont}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="232"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Sidebar -->
+        <Border Grid.Column="0" Background="{StaticResource Panel}" Padding="16,24">
+            <DockPanel LastChildFill="False">
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="8,0,0,24">
+                    <Border Width="36" Height="36" CornerRadius="10" Background="{StaticResource Pink}">
+                        <TextBlock Text="F" FontFamily="{StaticResource TitleFont}" FontSize="20" Foreground="{StaticResource OnPink}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <StackPanel Margin="10,0,0,0" VerticalAlignment="Center">
+                        <TextBlock Text="FUNKY" FontFamily="{StaticResource TitleFont}" FontSize="16"/>
+                        <TextBlock Text="LAUNCHER" FontSize="11" Foreground="{StaticResource Muted}"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <RadioButton x:Name="NavHome" DockPanel.Dock="Top" Style="{StaticResource NavButton}" GroupName="nav" IsChecked="True" Checked="Nav_Checked"/>
+                <RadioButton x:Name="NavSetup" DockPanel.Dock="Top" Style="{StaticResource NavButton}" GroupName="nav" Checked="Nav_Checked"/>
+                <RadioButton x:Name="NavSettings" DockPanel.Dock="Top" Style="{StaticResource NavButton}" GroupName="nav" Checked="Nav_Checked"/>
+
+                <UniformGrid DockPanel.Dock="Bottom" Columns="2" Margin="0,10,0,0">
+                    <RadioButton x:Name="LangRu" Content="RU" Style="{StaticResource LangButton}" GroupName="lang" Margin="0,0,3,0" Checked="Lang_Checked"/>
+                    <RadioButton x:Name="LangEn" Content="EN" Style="{StaticResource LangButton}" GroupName="lang" Margin="3,0,0,0" Checked="Lang_Checked"/>
+                </UniformGrid>
+                <Border DockPanel.Dock="Bottom" Style="{StaticResource CardBorder}" Padding="14">
+                    <StackPanel>
+                        <TextBlock Text="Nexus Mods" FontSize="12" Foreground="{StaticResource Muted}"/>
+                        <TextBlock x:Name="NexusStatus" FontSize="13" FontWeight="SemiBold" Margin="0,4,0,0"/>
+                    </StackPanel>
+                </Border>
+            </DockPanel>
+        </Border>
+
+        <!-- Pages -->
+        <ContentControl x:Name="Page" Grid.Column="1"/>
+    </Grid>
+</Window>

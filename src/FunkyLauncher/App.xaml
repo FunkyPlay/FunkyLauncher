@@ -1,0 +1,173 @@
+﻿<Application x:Class="FunkyLauncher.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <!-- Palette (Neon Nights) -->
+        <Color x:Key="BgColor">#0F0F14</Color>
+        <Color x:Key="PanelColor">#15151C</Color>
+        <Color x:Key="CardColor">#1D1D26</Color>
+        <Color x:Key="CardActiveColor">#262632</Color>
+        <Color x:Key="TextColor">#F2F2F7</Color>
+        <Color x:Key="MutedColor">#A3A3B5</Color>
+        <Color x:Key="PinkColor">#FF3CC8</Color>
+        <Color x:Key="CyanColor">#3CE6FF</Color>
+        <SolidColorBrush x:Key="Bg" Color="{StaticResource BgColor}"/>
+        <SolidColorBrush x:Key="Panel" Color="{StaticResource PanelColor}"/>
+        <SolidColorBrush x:Key="Card" Color="{StaticResource CardColor}"/>
+        <SolidColorBrush x:Key="CardActive" Color="{StaticResource CardActiveColor}"/>
+        <SolidColorBrush x:Key="Text" Color="{StaticResource TextColor}"/>
+        <SolidColorBrush x:Key="Muted" Color="{StaticResource MutedColor}"/>
+        <SolidColorBrush x:Key="Pink" Color="{StaticResource PinkColor}"/>
+        <SolidColorBrush x:Key="Cyan" Color="{StaticResource CyanColor}"/>
+        <SolidColorBrush x:Key="PinkSoft" Color="#2A1426"/>
+        <SolidColorBrush x:Key="Line" Color="#44445A"/>
+        <SolidColorBrush x:Key="OnPink" Color="#14000F"/>
+
+        <FontFamily x:Key="UiFont">Segoe UI Variable Text, Segoe UI</FontFamily>
+        <FontFamily x:Key="TitleFont">Segoe UI Black, Segoe UI</FontFamily>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource Text}"/>
+            <Setter Property="FontFamily" Value="{StaticResource UiFont}"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+
+        <!-- Big pink action button -->
+        <Style x:Key="PrimaryButton" TargetType="Button">
+            <Setter Property="Foreground" Value="{StaticResource OnPink}"/>
+            <Setter Property="Background" Value="{StaticResource Pink}"/>
+            <Setter Property="FontFamily" Value="{StaticResource TitleFont}"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Height" Value="54"/>
+            <Setter Property="Padding" Value="40,0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="b" Background="{TemplateBinding Background}" CornerRadius="12" Padding="{TemplateBinding Padding}">
+                            <Border.Effect>
+                                <DropShadowEffect Color="#FF3CC8" BlurRadius="26" ShadowDepth="0" Opacity="0.55"/>
+                            </Border.Effect>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="b" Property="Background" Value="#FF66D6"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="b" Property="Background" Value="#3A2236"/>
+                                <Setter Property="Foreground" Value="#9C7A92"/>
+                                <Setter TargetName="b" Property="Effect" Value="{x:Null}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Outline button -->
+        <Style x:Key="SecondaryButton" TargetType="Button">
+            <Setter Property="Foreground" Value="{StaticResource Text}"/>
+            <Setter Property="Background" Value="#CC15151C"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Line}"/>
+            <Setter Property="FontFamily" Value="{StaticResource UiFont}"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Height" Value="48"/>
+            <Setter Property="Padding" Value="20,0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="b" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" CornerRadius="12" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="b" Property="BorderBrush" Value="{StaticResource Pink}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" Value="0.45"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Sidebar navigation button -->
+        <Style x:Key="NavButton" TargetType="RadioButton">
+            <Setter Property="Foreground" Value="#C9C9D6"/>
+            <Setter Property="FontFamily" Value="{StaticResource UiFont}"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Height" Value="46"/>
+            <Setter Property="Margin" Value="0,0,0,6"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Border x:Name="b" Background="Transparent" CornerRadius="10" Padding="14,0">
+                            <Grid>
+                                <Border x:Name="mark" Width="3" Height="20" HorizontalAlignment="Left" Margin="-10,0,0,0" CornerRadius="2" Background="{StaticResource Pink}" Visibility="Collapsed"/>
+                                <ContentPresenter VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="b" Property="Background" Value="{StaticResource CardActive}"/>
+                                <Setter TargetName="mark" Property="Visibility" Value="Visible"/>
+                                <Setter Property="Foreground" Value="{StaticResource Text}"/>
+                                <Setter Property="FontWeight" Value="SemiBold"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="{StaticResource Text}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Language toggle -->
+        <Style x:Key="LangButton" TargetType="RadioButton">
+            <Setter Property="Foreground" Value="{StaticResource Muted}"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Height" Value="34"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Border x:Name="b" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="8" Background="Transparent">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="b" Property="BorderBrush" Value="{StaticResource Pink}"/>
+                                <Setter TargetName="b" Property="Background" Value="{StaticResource PinkSoft}"/>
+                                <Setter Property="Foreground" Value="{StaticResource Text}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="CardBorder" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource Card}"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Padding" Value="16"/>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="{StaticResource Card}"/>
+            <Setter Property="Foreground" Value="{StaticResource Text}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Line}"/>
+            <Setter Property="CaretBrush" Value="{StaticResource Text}"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Padding" Value="12,0"/>
+            <Setter Property="Height" Value="48"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+    </Application.Resources>
+</Application>
