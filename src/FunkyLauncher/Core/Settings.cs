@@ -15,6 +15,12 @@ public sealed class Settings
     public string Language { get; set; } = "";
     public string SelectedId { get; set; } = "neon-nights";
 
+    /// <summary>Privacy: load Telegram news on start / refresh the modlist catalog from GitHub on start.</summary>
+    public bool LoadNews { get; set; } = true;
+    public bool UpdateCatalog { get; set; } = true;
+    /// <summary>The privacy notice was shown on the first start.</summary>
+    public bool PrivacyNoticeShown { get; set; }
+
     /// <summary>Last window position and size (null = centered default).</summary>
     public double? WindowLeft { get; set; }
     public double? WindowTop { get; set; }

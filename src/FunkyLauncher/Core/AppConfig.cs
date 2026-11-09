@@ -10,6 +10,7 @@ public static class AppConfig
     /// <summary>Launcher community in Telegram: download + support.</summary>
     public const string SupportUrl = "https://t.me/FunkyLauncher";
     public const string GitHubUrl = "https://github.com/FunkyPlay/FunkyLauncher";
+    public const string PrivacyUrl = GitHubUrl + "/blob/main/PRIVACY.md";
     /// <summary>Start page of the built-in browser.</summary>
     public const string BrowserHome = "https://www.nexusmods.com/games/cyberpunk2077";
 

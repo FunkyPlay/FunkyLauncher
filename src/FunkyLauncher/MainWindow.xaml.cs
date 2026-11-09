@@ -41,6 +41,7 @@ public partial class MainWindow : Window
         Activated += (_, _) => RefreshNexus(); // e.g. after logging in through Wabbajack
         RestoreWindow();
         Closing += (_, _) => SaveWindow();
+        ContentRendered += (_, _) => ShowPrivacyNoticeOnce();
 
         // developer test: FunkyLauncher.exe --test-manual N  → manual download of the N smallest Nexus files into %TEMP%
         var args = Environment.GetCommandLineArgs();
@@ -92,8 +93,25 @@ public partial class MainWindow : Window
         new ManualDownloadWindow(items, dir) { Owner = this }.ShowDialog();
     }
 
+    /// <summary>Settings → privacy switches changed.</summary>
+    public void OnPrivacyChanged()
+    {
+        _home.ReloadNews();
+        if (Settings.UpdateCatalog) _ = RefreshCatalogAsync();
+    }
+
+    /// <summary>First start: tell what the launcher connects to and where to turn it off.</summary>
+    private void ShowPrivacyNoticeOnce()
+    {
+        if (Settings.PrivacyNoticeShown) return;
+        MessageBox.Show(this, Loc.T("privacy.notice"), Loc.T("settings.privacy"), MessageBoxButton.OK, MessageBoxImage.Information);
+        Settings.PrivacyNoticeShown = true;
+        Settings.Save();
+    }
+
     private async Task RefreshCatalogAsync()
     {
+        if (!Settings.UpdateCatalog) return; // privacy: use the cached / built-in catalog only
         if (await Catalog.RefreshAsync(CancellationToken.None))
         {
             _home.Refresh();

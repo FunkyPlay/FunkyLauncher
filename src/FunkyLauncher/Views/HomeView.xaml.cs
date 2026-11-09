@@ -82,8 +82,17 @@ public partial class HomeView : UserControl
         return tile;
     }
 
+    /// <summary>Called when "Load news" is switched in Settings.</summary>
+    public void ReloadNews()
+    {
+        _news = null;
+        _newsFailed = false;
+        _ = LoadNewsAsync();
+    }
+
     private async Task LoadNewsAsync()
     {
+        if (!_main.Settings.LoadNews) { RenderNews(); return; } // privacy: news turned off
         try { _news = await NewsService.LoadAsync(3, CancellationToken.None); }
         catch { _newsFailed = true; }
         RenderNews();
@@ -92,6 +101,7 @@ public partial class HomeView : UserControl
     private void RenderNews()
     {
         NewsGrid.Children.Clear();
+        if (!_main.Settings.LoadNews) { NewsGrid.Children.Add(NewsCard(null, Loc.T("home.news.off"), null)); return; }
         if (_news == null && !_newsFailed) { NewsGrid.Children.Add(NewsCard(null, Loc.T("home.news.loading"), null)); return; }
         if (_news == null || _news.Count == 0) { NewsGrid.Children.Add(NewsCard(null, Loc.T("home.news.empty"), null)); return; }
         foreach (var p in _news) NewsGrid.Children.Add(NewsCard(p.Date, p.Text, p.Url));
