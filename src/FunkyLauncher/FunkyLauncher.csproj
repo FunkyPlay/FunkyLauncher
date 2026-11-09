@@ -9,6 +9,7 @@
     <AssemblyName>FunkyLauncher</AssemblyName>
     <RootNamespace>FunkyLauncher</RootNamespace>
     <Version>0.1.0</Version>
+    <ApplicationIcon>Assets\launcher.ico</ApplicationIcon>
     <Product>Funky Launcher</Product>
     <Company>FunkyPlay</Company>
     <Authors>Funky</Authors>
@@ -17,6 +18,9 @@
 
   <ItemGroup>
     <Resource Include="Assets\banner.jpg" />
+    <Resource Include="Assets\launcher.ico" />
+    <Resource Include="Assets\icon.png" />
+    <Resource Include="Assets\welcome.jpg" />
     <Resource Include="..\..\catalog.json" Link="catalog.json" />
   </ItemGroup>
 

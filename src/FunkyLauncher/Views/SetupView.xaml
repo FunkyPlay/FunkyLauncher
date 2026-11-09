@@ -1,6 +1,9 @@
 <UserControl x:Class="FunkyLauncher.Views.SetupView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid>
+    <!-- Welcome background: night city on top, fades into the launcher color -->
+    <Image Source="/Assets/welcome.jpg" Stretch="UniformToFill" VerticalAlignment="Top" Opacity="0.35" IsHitTestVisible="False"/>
     <Grid Margin="40,32">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -71,5 +74,6 @@
             <TextBlock x:Name="LogLine" FontSize="12" Foreground="{StaticResource Muted}" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap"/>
             <TextBlock x:Name="ContinueHint" FontSize="12" Foreground="{StaticResource Muted}" Margin="0,4,0,0"/>
         </StackPanel>
+    </Grid>
     </Grid>
 </UserControl>
