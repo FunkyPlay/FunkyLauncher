@@ -23,20 +23,25 @@
                         </LinearGradientBrush>
                     </Border.Background>
                 </Border>
-                <StackPanel VerticalAlignment="Center" Margin="36,0,36,0" MaxWidth="780" HorizontalAlignment="Left">
+                <StackPanel VerticalAlignment="Center" Margin="36,0,170,0" MaxWidth="780" HorizontalAlignment="Left">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Assets/icon.png" Width="52" Height="52" RenderOptions.BitmapScalingMode="HighQuality"/>
                         <TextBlock x:Name="StartTitle" FontFamily="{StaticResource TitleFont}" FontSize="42" Margin="14,0,0,0" VerticalAlignment="Center"/>
                     </StackPanel>
                     <TextBlock x:Name="StartText" FontSize="14.5" LineHeight="21" Foreground="#D6D6E2" TextWrapping="Wrap" Margin="0,12,0,0"/>
-                    <StackPanel Orientation="Horizontal" Margin="0,14,0,0">
-                        <Border CornerRadius="10" Background="#C02A1426" BorderBrush="#66FF3CC8" BorderThickness="1" Padding="12,7" MaxWidth="380">
+                    <Grid Margin="0,14,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border CornerRadius="10" Background="#C02A1426" BorderBrush="#66FF3CC8" BorderThickness="1" Padding="12,7">
                             <TextBlock x:Name="PremiumText" FontSize="12.5" Foreground="#FFC6EE" TextWrapping="Wrap"/>
                         </Border>
-                        <Border CornerRadius="10" Background="#C00F2A33" BorderBrush="#663CE6FF" BorderThickness="1" Padding="12,7" Margin="10,0,0,0" MaxWidth="380">
+                        <Border Grid.Column="2" CornerRadius="10" Background="#C00F2A33" BorderBrush="#663CE6FF" BorderThickness="1" Padding="12,7">
                             <TextBlock x:Name="FreeText" FontSize="12.5" Foreground="#C6F7FF" TextWrapping="Wrap"/>
                         </Border>
-                    </StackPanel>
+                    </Grid>
                     <Button x:Name="LibraryButton" Style="{StaticResource PrimaryButton}" HorizontalAlignment="Left" Margin="0,18,0,0" Click="Library_Click"/>
                 </StackPanel>
 

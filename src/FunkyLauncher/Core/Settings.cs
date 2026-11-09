@@ -15,6 +15,13 @@ public sealed class Settings
     public string Language { get; set; } = "";
     public string SelectedId { get; set; } = "neon-nights";
 
+    /// <summary>Last window position and size (null = centered default).</summary>
+    public double? WindowLeft { get; set; }
+    public double? WindowTop { get; set; }
+    public double? WindowWidth { get; set; }
+    public double? WindowHeight { get; set; }
+    public bool WindowMaximized { get; set; }
+
     /// <summary>Install folder per modlist id.</summary>
     public Dictionary<string, string> InstallDirs { get; set; } = new();
 

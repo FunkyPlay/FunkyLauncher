@@ -39,6 +39,8 @@ public partial class MainWindow : Window
         Page.Content = _home;
         _ = RefreshCatalogAsync();
         Activated += (_, _) => RefreshNexus(); // e.g. after logging in through Wabbajack
+        RestoreWindow();
+        Closing += (_, _) => SaveWindow();
 
         // developer test: FunkyLauncher.exe --test-manual N  → manual download of the N smallest Nexus files into %TEMP%
         var args = Environment.GetCommandLineArgs();
@@ -49,6 +51,34 @@ public partial class MainWindow : Window
             Loaded += (_, _) => new LaunchProblemWindow(new LaunchReport(LaunchResult.Crashed, TimeSpan.FromMinutes(7), @"C:\Games\NeonNights\overwrite\red4ext\...\crash-test.txt"), Settings.PreviousOf(Selected)) { Owner = this }.ShowDialog();
         if (i >= 0) Loaded += (_, _) => TestManual(i + 1 < args.Length && int.TryParse(args[i + 1], out var n) ? n : 2,
                                                    args.Contains("big"));
+    }
+
+    /// <summary>Opens where it was closed last time, if that place is still on a screen.</summary>
+    private void RestoreWindow()
+    {
+        var s = Settings;
+        if (s.WindowWidth is double w && s.WindowHeight is double h && s.WindowLeft is double l && s.WindowTop is double t)
+        {
+            var visible = l + 100 < SystemParameters.VirtualScreenLeft + SystemParameters.VirtualScreenWidth
+                          && t + 50 < SystemParameters.VirtualScreenTop + SystemParameters.VirtualScreenHeight
+                          && l + w - 100 > SystemParameters.VirtualScreenLeft && t >= SystemParameters.VirtualScreenTop - 10;
+            if (visible)
+            {
+                WindowStartupLocation = WindowStartupLocation.Manual;
+                Left = l; Top = t;
+                Width = Math.Max(MinWidth, w); Height = Math.Max(MinHeight, h);
+            }
+        }
+        if (s.WindowMaximized) WindowState = WindowState.Maximized;
+    }
+
+    private void SaveWindow()
+    {
+        var r = WindowState == WindowState.Normal ? new Rect(Left, Top, Width, Height) : RestoreBounds;
+        Settings.WindowLeft = r.Left; Settings.WindowTop = r.Top;
+        Settings.WindowWidth = r.Width; Settings.WindowHeight = r.Height;
+        Settings.WindowMaximized = WindowState == WindowState.Maximized;
+        Settings.Save();
     }
 
     private void TestManual(int count, bool big)

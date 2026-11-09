@@ -21,9 +21,9 @@
         <!-- Selected modlist -->
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="22"/>
-                <ColumnDefinition Width="330"/>
+                <ColumnDefinition Width="*" MinWidth="270" MaxWidth="360"/>
             </Grid.ColumnDefinitions>
 
             <Border x:Name="Banner" Grid.Column="0" CornerRadius="18" ClipToBounds="True" Background="#1D1D26">
@@ -53,15 +53,18 @@
                         <Border HorizontalAlignment="Left" CornerRadius="12" Background="#243CE6FF" Padding="12,5">
                             <TextBlock x:Name="TagText" FontSize="13" FontWeight="SemiBold" Foreground="#9AF2FF"/>
                         </Border>
-                        <TextBlock x:Name="TitleText" FontFamily="{StaticResource TitleFont}" FontSize="54" Margin="0,10,0,4"/>
+                        <!-- the title shrinks in a small window instead of wrapping -->
+                        <Viewbox StretchDirection="DownOnly" HorizontalAlignment="Left" Margin="0,10,0,4">
+                            <TextBlock x:Name="TitleText" FontFamily="{StaticResource TitleFont}" FontSize="54" TextWrapping="NoWrap"/>
+                        </Viewbox>
                         <TextBlock x:Name="Description" FontSize="14" Foreground="#D6D6E2" TextWrapping="Wrap" MaxWidth="560" HorizontalAlignment="Left"/>
                         <TextBlock x:Name="MoreLink" FontSize="13" FontWeight="SemiBold" Foreground="{StaticResource Cyan}" Cursor="Hand" Margin="0,6,0,0" HorizontalAlignment="Left" MouseLeftButtonUp="Details_Toggle"/>
                         <TextBlock x:Name="Sub" FontSize="13" Foreground="{StaticResource Muted}" Margin="0,6,0,0"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,16,0,0">
-                            <Button x:Name="MainButton" Style="{StaticResource PrimaryButton}" Click="MainButton_Click"/>
-                            <Button x:Name="FolderButton" Style="{StaticResource SecondaryButton}" Height="54" Margin="12,0,0,0" Click="FolderButton_Click"/>
-                            <Button x:Name="Mo2Button" Style="{StaticResource SecondaryButton}" Height="54" Margin="12,0,0,0" Click="Mo2Button_Click"/>
-                        </StackPanel>
+                        <WrapPanel Orientation="Horizontal" Margin="0,16,0,0">
+                            <Button x:Name="MainButton" Style="{StaticResource PrimaryButton}" Margin="0,0,12,8" Click="MainButton_Click"/>
+                            <Button x:Name="FolderButton" Style="{StaticResource SecondaryButton}" Height="54" Margin="0,0,12,8" Click="FolderButton_Click"/>
+                            <Button x:Name="Mo2Button" Style="{StaticResource SecondaryButton}" Height="54" Margin="0,0,0,8" Click="Mo2Button_Click"/>
+                        </WrapPanel>
                         <TextBlock x:Name="PlayMessage" FontSize="13" Foreground="{StaticResource Muted}" Margin="0,10,0,0" TextWrapping="Wrap"/>
                     </StackPanel>
                 </Grid>

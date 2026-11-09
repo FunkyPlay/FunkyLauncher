@@ -2,7 +2,8 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Funky Launcher" Width="1280" Height="760" Icon="/Assets/launcher.ico"
-        WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize"
+        MinWidth="1100" MinHeight="700"
+        WindowStartupLocation="CenterScreen" ResizeMode="CanResize"
         Background="{StaticResource Bg}" FontFamily="{StaticResource UiFont}">
     <Grid>
         <Grid.ColumnDefinitions>

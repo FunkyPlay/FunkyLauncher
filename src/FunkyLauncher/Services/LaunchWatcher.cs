@@ -23,25 +23,36 @@ public static class LaunchWatcher
         var name = Path.GetFileNameWithoutExtension(ml.GameExe);
         if (string.IsNullOrEmpty(name)) return new LaunchReport(LaunchResult.Ok, TimeSpan.Zero, null);
 
+        // MO2's splash and "waiting for the game to close" window are hidden while we watch
+        var mo2 = new Mo2Windows(settings.InstallDir(ml));
+
         // 1) wait for the game to appear
         Process? game = null;
         while (game == null)
         {
+            mo2.HideAll();
             game = Process.GetProcessesByName(name).FirstOrDefault();
             if (game != null) break;
             if (DateTime.Now - launched > StartTimeout)
+            {
+                mo2.ShowAll(); // the game never started — MO2 may be showing an error, let the player see it
                 return new LaunchReport(LaunchResult.NotStarted, TimeSpan.Zero, FindCrash(settings, ml, launched));
-            await Task.Delay(2000, token);
+            }
+            await Task.Delay(300, token);
         }
 
         // 2) wait for it to close
         var started = DateTime.Now;
         while (Process.GetProcessesByName(name).Length > 0)
-            await Task.Delay(3000, token);
+        {
+            mo2.HideAll();
+            await Task.Delay(1000, token);
+        }
         var runTime = DateTime.Now - started;
 
         // 3) normal exit or a problem?
         await Task.Delay(3000, token); // crash reporters write their files right after the exit
+        mo2.ShowAll(); // MO2 normally exits with the game; if it is still there, it should be visible again
         var crash = FindCrash(settings, ml, launched);
         if (crash != null) return new LaunchReport(LaunchResult.Crashed, runTime, crash);
         if (runTime < EarlyExit) return new LaunchReport(LaunchResult.ClosedEarly, runTime, null);
