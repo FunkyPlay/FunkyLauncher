@@ -57,6 +57,8 @@
             <Border Grid.Column="2" Style="{StaticResource CardBorder}" Padding="18,16">
                 <DockPanel>
                     <Button x:Name="SetupButton" DockPanel.Dock="Bottom" Style="{StaticResource SecondaryButton}" Height="42" Click="Setup_Click"/>
+                    <Button x:Name="DeleteOldButton" DockPanel.Dock="Bottom" Style="{StaticResource SecondaryButton}" Height="38" Margin="0,0,0,8" Click="DeleteOld_Click"/>
+                    <Button x:Name="RollbackButton" DockPanel.Dock="Bottom" Style="{StaticResource SecondaryButton}" Height="38" Margin="0,0,0,8" Click="Rollback_Click"/>
                     <StackPanel>
                         <TextBlock x:Name="StatusTitle" FontSize="16" FontWeight="Bold" Margin="0,0,0,8"/>
                         <StackPanel x:Name="StatusList"/>

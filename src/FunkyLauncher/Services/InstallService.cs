@@ -37,18 +37,21 @@ public static partial class InstallService
         return file ?? throw new InvalidOperationException(Loc.T("check.modlist.no"));
     }
 
+    /// <param name="targetDir">Install folder; null = the current one. Updates go into a new folder.</param>
     public static async Task<(InstallOutcome Outcome, int ExitCode, int Manual)> RunAsync(
-        Settings settings, Modlist ml, IProgress<InstallProgress> progress, CancellationToken token)
+        Settings settings, Modlist ml, IProgress<InstallProgress> progress, CancellationToken token, string? targetDir = null)
     {
         string file;
         try { file = await PrepareAsync(settings, ml, progress, token); }
         catch (OperationCanceledException) { return (InstallOutcome.Cancelled, -1, 0); }
 
         var total = WabbajackService.CountArchives(file);
-        var installDir = settings.InstallDir(ml);
+        var installDir = targetDir ?? settings.InstallDir(ml);
         var downloads = settings.DownloadsDir(ml);
         Directory.CreateDirectory(installDir);
         Directory.CreateDirectory(downloads);
+        // pin the archives folder so a future update (new install folder) reuses these archives
+        if (!settings.DownloadDirs.ContainsKey(ml.Id)) { settings.DownloadDirs[ml.Id] = downloads; settings.Save(); }
 
         var downloaded = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         var manual = new HashSet<string>(StringComparer.OrdinalIgnoreCase);

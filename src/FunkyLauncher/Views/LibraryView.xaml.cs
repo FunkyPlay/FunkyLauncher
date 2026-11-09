@@ -52,17 +52,31 @@ public partial class LibraryView : UserControl
         FolderButton.IsEnabled = Mo2Button.IsEnabled = installed;
         FolderButton.Visibility = Mo2Button.Visibility = installed ? Visibility.Visible : Visibility.Collapsed;
         StatusTitle.Text = installed ? Loc.T("home.ready") : Loc.T("home.notready");
-        SetupButton.Content = Loc.T("lib.setup");
+        var update = s.NeedsUpdate(m);
+        SetupButton.Content = update ? Loc.F("lib.update", m.Version) : Loc.T("lib.setup");
         SetupButton.IsEnabled = m.IsReleased;
+        if (installed) Sub.Text = Loc.F("home.sub.installed", m.Author, s.InstalledVersion(m) ?? m.Version, s.InstallDir(m));
+
+        var prev = s.PreviousOf(m);
+        RollbackButton.Visibility = DeleteOldButton.Visibility = prev != null ? Visibility.Visible : Visibility.Collapsed;
+        if (prev != null)
+        {
+            RollbackButton.Content = Loc.F("lib.rollback", prev.Version);
+            DeleteOldButton.Content = Loc.T("lib.deleteold");
+        }
 
         StatusList.Children.Clear();
         if (m.IsReleased)
         {
             AddStatus(installed, installed ? s.InstallDir(m) : Loc.T("home.notready"));
             AddStatus(WabbajackService.IsNexusLoggedIn, WabbajackService.IsNexusLoggedIn ? Loc.T("check.nexus.ok") : Loc.T("check.nexus.no"));
+            if (update) AddStatus(false, Loc.F("lib.update.available", m.Version));
+            if (prev != null) AddStatus(true, Loc.F("lib.previous", prev.Version));
         }
-        PlayMessage.Text = "";
+        if (!_watching) PlayMessage.Text = "";
     }
+
+    private bool _watching;
 
     private void AddStatus(bool ok, string text) =>
         StatusList.Children.Add(new TextBlock
@@ -118,19 +132,128 @@ public partial class LibraryView : UserControl
         return card;
     }
 
-    private void MainButton_Click(object sender, RoutedEventArgs e)
+    private async void MainButton_Click(object sender, RoutedEventArgs e)
     {
         var m = _main.Selected;
-        if (!_main.Settings.IsInstalled(m)) { _main.ShowSetup(); return; }
+        var s = _main.Settings;
+        if (!s.IsInstalled(m)) { _main.ShowSetup(); return; }
+        if (_watching) return;
+        MainButton.IsEnabled = false;
         try
         {
-            PlayService.Play(_main.Settings, m);
-            PlayMessage.Text = Loc.T("home.play.started");
+            // 1) the game was updated by Steam / Epic / GOG → mods may break
+            PlayMessage.Text = Loc.T("play.checking");
+            var game = await SystemCheck.FindGameAsync(m.Game, CancellationToken.None);
+            if (game != null && !LaunchWatcher.SameGameVersion(game.Version, m.GameVersion))
+            {
+                var answer = MessageBox.Show(_main, Loc.F("play.version.text", m.Game, game.Version, m.Title, m.GameVersion),
+                    Loc.T("play.version.title"), MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No);
+                if (answer != MessageBoxResult.Yes) { PlayMessage.Text = ""; return; }
+            }
+
+            // 2) start and watch
+            PlayService.Play(s, m);
+            PlayMessage.Text = Loc.T("play.watch");
+            _watching = true;
+            var report = await LaunchWatcher.WatchAsync(s, m, CancellationToken.None);
+            _watching = false;
+            PlayMessage.Text = "";
+            if (report.Result != LaunchResult.Ok) await HandleProblemAsync(m, report);
         }
         catch (Exception ex)
         {
+            _watching = false;
             PlayMessage.Text = Loc.F("home.play.error", ex.Message);
         }
+        finally
+        {
+            MainButton.IsEnabled = true;
+        }
+    }
+
+    private async Task HandleProblemAsync(Modlist m, LaunchReport report)
+    {
+        var win = new LaunchProblemWindow(report, _main.Settings.PreviousOf(m)) { Owner = _main };
+        win.ShowDialog();
+        switch (win.Choice)
+        {
+            case ProblemChoice.Repair:
+                _main.ShowSetup(startVerify: true);
+                break;
+            case ProblemChoice.Rollback:
+                Rollback(m, ask: false);
+                break;
+            case ProblemChoice.Report:
+                try
+                {
+                    var file = await ReportService.CreateAsync(_main.Settings, m, CancellationToken.None);
+                    PlayMessage.Text = Loc.F("start.report.done", Path.GetFileName(file));
+                    System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("explorer.exe", $"/select,\"{file}\"") { UseShellExecute = true });
+                }
+                catch (Exception ex) { PlayMessage.Text = Loc.F("start.report.error", ex.Message); }
+                break;
+        }
+    }
+
+    private void Rollback(Modlist m, bool ask)
+    {
+        var s = _main.Settings;
+        var prev = s.PreviousOf(m);
+        if (prev == null) return;
+        if (ask && MessageBox.Show(_main, Loc.F("lib.rollback.confirm", prev.Version, prev.Dir, s.InstalledVersion(m) ?? ""),
+                Loc.T("lib.rollback.title"), MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes) return;
+        s.SwapWithPrevious(m);
+        Refresh();
+        PlayMessage.Text = Loc.F("lib.rollback.done", s.InstalledVersion(m) ?? "");
+    }
+
+    private void Rollback_Click(object sender, RoutedEventArgs e) => Rollback(_main.Selected, ask: true);
+
+    private async void DeleteOld_Click(object sender, RoutedEventArgs e)
+    {
+        var m = _main.Selected;
+        var s = _main.Settings;
+        var prev = s.PreviousOf(m);
+        if (prev == null) return;
+        // never delete the current install or something like "C:\"
+        var target = Path.GetFullPath(prev.Dir).TrimEnd('\\');
+        if (string.Equals(target, Path.GetFullPath(s.InstallDir(m)).TrimEnd('\\'), StringComparison.OrdinalIgnoreCase)
+            || Path.GetPathRoot(target)?.TrimEnd('\\') == target) return;
+        if (MessageBox.Show(_main, Loc.F("lib.deleteold.confirm", prev.Version, prev.Dir), Loc.T("lib.deleteold"),
+                MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No) != MessageBoxResult.Yes) return;
+        DeleteOldButton.IsEnabled = RollbackButton.IsEnabled = false;
+        PlayMessage.Text = Loc.T("lib.deleting");
+        var keep = Path.GetFullPath(s.DownloadsDir(m)).TrimEnd('\\');
+        try
+        {
+            await Task.Run(() => DeleteExcept(prev.Dir, keep));
+            s.Previous.Remove(m.Id);
+            s.Save();
+            PlayMessage.Text = Loc.T("lib.deleted");
+        }
+        catch (Exception ex)
+        {
+            PlayMessage.Text = Loc.F("lib.delete.error", ex.Message);
+        }
+        DeleteOldButton.IsEnabled = RollbackButton.IsEnabled = true;
+        var msg = PlayMessage.Text;
+        Refresh();
+        PlayMessage.Text = msg;
+    }
+
+    /// <summary>Deletes an old install folder but never the mod archives folder (it may live inside it).</summary>
+    private static void DeleteExcept(string dir, string keep)
+    {
+        foreach (var f in Directory.EnumerateFiles(dir)) { File.SetAttributes(f, FileAttributes.Normal); File.Delete(f); }
+        foreach (var d in Directory.EnumerateDirectories(dir))
+        {
+            var full = Path.GetFullPath(d).TrimEnd('\\');
+            if (string.Equals(full, keep, StringComparison.OrdinalIgnoreCase)) continue;
+            if (keep.StartsWith(full + "\\", StringComparison.OrdinalIgnoreCase)) { DeleteExcept(d, keep); continue; }
+            foreach (var f in Directory.EnumerateFiles(d, "*", SearchOption.AllDirectories)) File.SetAttributes(f, FileAttributes.Normal);
+            Directory.Delete(d, true);
+        }
+        if (!Directory.EnumerateFileSystemEntries(dir).Any()) Directory.Delete(dir);
     }
 
     private void Setup_Click(object sender, RoutedEventArgs e) => _main.ShowSetup();

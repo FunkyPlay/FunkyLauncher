@@ -42,6 +42,8 @@ public sealed class Modlist
 
     [JsonPropertyName("mo2Profile")] public string Mo2Profile { get; set; } = "Wabbajack";
     [JsonPropertyName("mo2Executable")] public string Mo2Executable { get; set; } = "";
+    /// <summary>Game process file name, e.g. "Cyberpunk2077.exe" — the launcher watches it after PLAY.</summary>
+    [JsonPropertyName("gameExe")] public string GameExe { get; set; } = "";
     [JsonPropertyName("defaultInstallDir")] public string DefaultInstallDir { get; set; } = "";
 
     public bool IsReleased => Status == "released";

@@ -40,8 +40,18 @@ public partial class SetupView : UserControl
 
     public void OnShown()
     {
+        ApplyTexts();
         if (!_busy) _ = RunChecksAsync();
     }
+
+    /// <summary>"Repair" from the launch-problem window: verify the files right away.</summary>
+    public void StartRepair()
+    {
+        ApplyTexts();
+        if (!_busy) _ = VerifyAsync();
+    }
+
+    private bool Updating => Installed && _main.Settings.NeedsUpdate(Ml);
 
     private void ApplyTexts()
     {
@@ -65,8 +75,14 @@ public partial class SetupView : UserControl
     private void ApplyMode()
     {
         var installed = Installed;
-        InstallButton.Content = installed ? Loc.T("setup.verify") : Loc.T("setup.install");
+        var updating = Updating;
+        InstallButton.Content = updating ? Loc.F("setup.update", Ml.Version) : installed ? Loc.T("setup.verify") : Loc.T("setup.install");
         InstalledNote.Visibility = installed ? Visibility.Visible : Visibility.Collapsed;
+        InstalledText.Text = updating
+            ? Loc.F("setup.update.note", Ml.Version, _main.Settings.UpdateDir(Ml), _main.Settings.InstalledVersion(Ml) ?? "")
+            : Loc.T("setup.installed");
+        InstalledText.TextWrapping = TextWrapping.Wrap;
+        ReinstallButton.Content = updating ? Loc.T("setup.verify.small") : Loc.T("setup.reinstall");
         ReinstallButton.Visibility = installed && !_busy ? Visibility.Visible : Visibility.Collapsed;
         var noErrors = _checks.Count > 0 && _checks.All(c => c.State != CheckState.Error);
         InstallButton.IsEnabled = !_busy && Ml.IsReleased && noErrors;
@@ -153,11 +169,16 @@ public partial class SetupView : UserControl
 
     private void Install_Click(object sender, RoutedEventArgs e)
     {
-        if (Installed) _ = VerifyAsync();
+        if (Updating) _ = InstallAsync(_main.Settings.UpdateDir(Ml));
+        else if (Installed) _ = VerifyAsync();
         else _ = InstallAsync();
     }
 
-    private void Reinstall_Click(object sender, RoutedEventArgs e) => _ = InstallAsync();
+    private void Reinstall_Click(object sender, RoutedEventArgs e)
+    {
+        if (Updating) _ = VerifyAsync();
+        else _ = InstallAsync();
+    }
 
     private void BeginBusy()
     {
@@ -194,18 +215,33 @@ public partial class SetupView : UserControl
         ProgressFill.Width = ((FrameworkElement)ProgressFill.Parent).ActualWidth;
     }
 
-    private async Task InstallAsync()
+    /// <param name="updateDir">Update: install the new version into this new folder and keep the current one for rollback.</param>
+    private async Task InstallAsync(string? updateDir = null)
     {
         BeginBusy();
         try
         {
             while (true)
             {
-                var (outcome, code, manual) = await InstallService.RunAsync(_main.Settings, Ml, MakeProgress(), _cts!.Token);
+                var (outcome, code, manual) = await InstallService.RunAsync(_main.Settings, Ml, MakeProgress(), _cts!.Token, updateDir);
                 if (outcome == InstallOutcome.NeedsManualDownloads && OpenManualDownloads())
                     continue; // everything was downloaded by hand — run the install again
+                var s = _main.Settings;
+                if (outcome == InstallOutcome.Success)
+                {
+                    if (updateDir != null)
+                    {
+                        // keep the old working version; the new one becomes current
+                        s.Previous[Ml.Id] = new PreviousInstall { Dir = s.InstallDir(Ml), Version = s.InstalledVersion(Ml) ?? "" };
+                        s.InstallDirs[Ml.Id] = updateDir;
+                        FolderBox.Text = updateDir;
+                    }
+                    s.InstalledVersions[Ml.Id] = Ml.Version;
+                    s.Save();
+                }
                 ProgressText.Text = outcome switch
                 {
+                    InstallOutcome.Success when updateDir != null => Loc.F("inst.update.done", Ml.Version),
                     InstallOutcome.Success => Loc.T("inst.done"),
                     InstallOutcome.NeedsManualDownloads => Loc.F("inst.manual", manual),
                     InstallOutcome.Cancelled => Loc.T("inst.stopped"),

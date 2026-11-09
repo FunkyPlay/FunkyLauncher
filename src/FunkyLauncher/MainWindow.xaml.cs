@@ -43,6 +43,9 @@ public partial class MainWindow : Window
         var args = Environment.GetCommandLineArgs();
         var i = Array.IndexOf(args, "--test-manual");
         // "--test-manual N big" → N-1 smallest files + one file of about 500 MB (slow download test)
+        // developer test: FunkyLauncher.exe --test-problem → shows the "game crashed" window
+        if (args.Contains("--test-problem"))
+            Loaded += (_, _) => new LaunchProblemWindow(new LaunchReport(LaunchResult.Crashed, TimeSpan.FromMinutes(7), @"C:\Games\NeonNights\overwrite\red4ext\...\crash-test.txt"), Settings.PreviousOf(Selected)) { Owner = this }.ShowDialog();
         if (i >= 0) Loaded += (_, _) => TestManual(i + 1 < args.Length && int.TryParse(args[i + 1], out var n) ? n : 2,
                                                    args.Contains("big"));
     }
@@ -100,11 +103,11 @@ public partial class MainWindow : Window
     }
 
     /// <summary>Install / verify page of the selected modlist (opened from the library).</summary>
-    public void ShowSetup()
+    public void ShowSetup(bool startVerify = false)
     {
         if (NavLibrary.IsChecked != true) NavLibrary.IsChecked = true;
         Page.Content = _setup;
-        _setup.OnShown();
+        if (startVerify) _setup.StartRepair(); else _setup.OnShown();
     }
 
     private void Nav_Checked(object sender, RoutedEventArgs e)
