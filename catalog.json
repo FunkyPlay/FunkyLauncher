@@ -26,7 +26,7 @@
       },
       "banner": "res:/Assets/banner.jpg",
       "wabbajackFile": "Neon Nights.wabbajack",
-      "wabbajackUrl": null,
+      "wabbajackUrl": "https://github.com/FunkyPlay/FunkyLauncher/releases/download/v0.1.0/NeonNights-0.1.0.wabbajack",
       "sizeGb": 40,
       "modCount": 436,
       "mo2Profile": "Wabbajack",
