@@ -7,22 +7,22 @@ namespace FunkyLauncher.Services;
 /// <summary>Starts the game through Mod Organizer 2 with the modlist profile.</summary>
 public static class PlayService
 {
-    public static void Play(Settings settings)
+    public static void Play(Settings settings, Modlist ml)
     {
-        var mo2 = Path.Combine(settings.InstallDir, "ModOrganizer.exe");
+        var dir = settings.InstallDir(ml);
         // MO2: -p <profile> picks the profile, moshortcut://:<title> runs that executable
-        var psi = new ProcessStartInfo(mo2, $"-p \"{AppConfig.Mo2Profile}\" \"moshortcut://:{AppConfig.Mo2GameExecutable}\"")
+        var psi = new ProcessStartInfo(Path.Combine(dir, "ModOrganizer.exe"), $"-p \"{ml.Mo2Profile}\" \"moshortcut://:{ml.Mo2Executable}\"")
         {
-            WorkingDirectory = settings.InstallDir,
+            WorkingDirectory = dir,
             UseShellExecute = false,
         };
         Process.Start(psi);
     }
 
-    public static void OpenMo2(Settings settings)
+    public static void OpenMo2(Settings settings, Modlist ml)
     {
-        var mo2 = Path.Combine(settings.InstallDir, "ModOrganizer.exe");
-        Process.Start(new ProcessStartInfo(mo2, $"-p \"{AppConfig.Mo2Profile}\"") { WorkingDirectory = settings.InstallDir, UseShellExecute = false });
+        var dir = settings.InstallDir(ml);
+        Process.Start(new ProcessStartInfo(Path.Combine(dir, "ModOrganizer.exe"), $"-p \"{ml.Mo2Profile}\"") { WorkingDirectory = dir, UseShellExecute = false });
     }
 
     public static void OpenFolder(string dir)

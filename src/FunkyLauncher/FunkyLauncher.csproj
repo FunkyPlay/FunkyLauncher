@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <Resource Include="Assets\banner.jpg" />
+    <Resource Include="..\..\catalog.json" Link="catalog.json" />
   </ItemGroup>
 
 </Project>

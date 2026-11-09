@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "modlists": [
+    {
+      "id": "neon-nights",
+      "title": "NEON NIGHTS",
+      "author": "Funky",
+      "version": "0.1.0",
+      "status": "released",
+      "game": "Cyberpunk 2077",
+      "gameVersion": "2.5",
+      "dlcName": { "ru": "Phantom Liberty", "en": "Phantom Liberty" },
+      "dlcCheckPath": "archive/pc/ep1",
+      "tag": { "ru": "Cyberpunk 2077 · 2.5 + Phantom Liberty", "en": "Cyberpunk 2077 · 2.5 + Phantom Liberty" },
+      "description": {
+        "ru": "Большая сборка: новая графика и погода, живой город, квартиры, сотни вещей, романы, машины. Полностью на русском.",
+        "en": "A large modlist: reworked visuals and weather, a livelier city, apartments, hundreds of outfits, romances, cars. Russian localization included."
+      },
+      "banner": "res:/Assets/banner.jpg",
+      "wabbajackFile": "Neon Nights.wabbajack",
+      "wabbajackUrl": null,
+      "sizeGb": 40,
+      "modCount": 436,
+      "mo2Profile": "Wabbajack",
+      "mo2Executable": "Cyberpunk 2077",
+      "defaultInstallDir": "C:\\Games\\NeonNights"
+    },
+    {
+      "id": "starfield",
+      "title": "STARFIELD",
+      "author": "Funky",
+      "version": "",
+      "status": "soon",
+      "game": "Starfield",
+      "tag": { "ru": "Starfield · в работе", "en": "Starfield · in progress" },
+      "description": { "ru": "Следующая сборка FunkyPlay. Скоро.", "en": "The next FunkyPlay modlist. Coming soon." },
+      "banner": "",
+      "wabbajackFile": "",
+      "sizeGb": 0
+    }
+  ]
+}

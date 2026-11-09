@@ -12,33 +12,23 @@ public sealed class GameInfo
 {
     public string Version { get; init; } = "";
     public string Path { get; init; } = "";
-    public bool HasPhantomLiberty { get; init; }
 }
 
 /// <summary>Everything the launcher checks before installing.</summary>
-public static partial class SystemCheck
+public static class SystemCheck
 {
-    [GeneratedRegex(@"\[X\]\s+Cyberpunk 2077\s+(?<ver>\S+)\s+->\s+Path:\s+(?<path>.+)$")]
-    private static partial Regex GameLine();
-
     /// <summary>Asks wabbajack-cli which games are installed (Steam, GOG, Epic).</summary>
-    public static async Task<GameInfo?> FindGameAsync(CancellationToken token)
+    public static async Task<GameInfo?> FindGameAsync(string game, CancellationToken token)
     {
         if (WabbajackService.FindCli() == null) return null;
+        // line: "[X] Cyberpunk 2077 2.5 -> Path: C:\..." (X = installed)
+        var rx = new Regex(@"\[X\]\s+" + Regex.Escape(game) + @"\s+(?<ver>\S+)\s+->\s+Path:\s+(?<path>.+)$");
         GameInfo? found = null;
         await WabbajackService.RunAsync("list-games", line =>
         {
-            var m = GameLine().Match(line.Trim());
+            var m = rx.Match(line.Trim());
             if (m.Success && found == null)
-            {
-                var path = m.Groups["path"].Value.Trim();
-                found = new GameInfo
-                {
-                    Version = m.Groups["ver"].Value,
-                    Path = path,
-                    HasPhantomLiberty = Directory.Exists(System.IO.Path.Combine(path, "archive", "pc", "ep1")),
-                };
-            }
+                found = new GameInfo { Version = m.Groups["ver"].Value, Path = m.Groups["path"].Value.Trim() };
         }, token);
         return found;
     }
@@ -78,14 +68,16 @@ public static partial class SystemCheck
         }
     }
 
-    public static async Task<List<CheckItem>> RunAllAsync(Settings settings, CancellationToken token)
+    public static async Task<List<CheckItem>> RunAllAsync(Settings settings, Modlist ml, CancellationToken token)
     {
         var items = new List<CheckItem>();
+        var installDir = settings.InstallDir(ml);
+        var installed = settings.IsInstalled(ml);
 
-        var modlist = settings.ResolveModlist();
-        items.Add(modlist != null
-            ? new CheckItem(CheckState.Ok, Loc.T("check.modlist.ok"), modlist)
-            : new CheckItem(CheckState.Error, Loc.T("check.modlist.no"), Loc.T("check.modlist.hint")));
+        var file = settings.ResolveWabbajack(ml);
+        if (file != null) items.Add(new CheckItem(CheckState.Ok, Loc.T("check.modlist.ok"), file));
+        else if (!string.IsNullOrEmpty(ml.WabbajackUrl)) items.Add(new CheckItem(CheckState.Warning, Loc.T("check.modlist.download")));
+        else items.Add(new CheckItem(CheckState.Error, Loc.T("check.modlist.no"), Loc.T("check.modlist.hint")));
 
         var wjVer = WabbajackService.CliVersion();
         items.Add(wjVer != null
@@ -95,34 +87,39 @@ public static partial class SystemCheck
         GameInfo? game = null;
         if (wjVer != null)
         {
-            try { game = await FindGameAsync(token); } catch (OperationCanceledException) { throw; } catch { }
+            try { game = await FindGameAsync(ml.Game, token); } catch (OperationCanceledException) { throw; } catch { }
         }
 
         if (game == null)
         {
             items.Add(new CheckItem(wjVer == null ? CheckState.Warning : CheckState.Error,
-                Loc.T("check.game.no"), Loc.T("check.game.hint")));
+                Loc.F("check.game.no", ml.Game), Loc.T("check.game.hint")));
         }
         else
         {
-            items.Add(new CheckItem(CheckState.Ok, Loc.T("check.game.ok"), game.Path));
-            items.Add(game.Version == AppConfig.RequiredGameVersion
-                ? new CheckItem(CheckState.Ok, Loc.F("check.version.ok", game.Version))
-                : new CheckItem(CheckState.Error, Loc.F("check.version.no", game.Version, AppConfig.RequiredGameVersion), Loc.T("check.version.hint")));
-            items.Add(game.HasPhantomLiberty
-                ? new CheckItem(CheckState.Ok, Loc.T("check.pl.ok"))
-                : new CheckItem(CheckState.Error, Loc.T("check.pl.no"), Loc.T("check.pl.hint")));
+            items.Add(new CheckItem(CheckState.Ok, Loc.F("check.game.ok", ml.Game), game.Path));
+            if (!string.IsNullOrEmpty(ml.GameVersion))
+                items.Add(game.Version == ml.GameVersion
+                    ? new CheckItem(CheckState.Ok, Loc.F("check.version.ok", game.Version))
+                    : new CheckItem(CheckState.Error, Loc.F("check.version.no", game.Version, ml.GameVersion), Loc.T("check.version.hint")));
+            if (!string.IsNullOrEmpty(ml.DlcCheckPath))
+            {
+                var dlc = ml.DlcName?.ToString() ?? "DLC";
+                items.Add(Directory.Exists(System.IO.Path.Combine(game.Path, ml.DlcCheckPath))
+                    ? new CheckItem(CheckState.Ok, Loc.F("check.dlc.ok", dlc))
+                    : new CheckItem(CheckState.Error, Loc.F("check.dlc.no", dlc), Loc.T("check.dlc.hint")));
+            }
         }
 
-        items.Add(IsBadFolder(settings.InstallDir, game?.Path)
+        items.Add(IsBadFolder(installDir, game?.Path)
             ? new CheckItem(CheckState.Error, Loc.T("check.folder.bad"), Loc.T("check.folder.hint"))
-            : new CheckItem(CheckState.Ok, Loc.T("check.folder.ok"), settings.InstallDir));
+            : new CheckItem(CheckState.Ok, Loc.T("check.folder.ok"), installDir));
 
-        var (free, drive) = FreeSpace(settings.InstallDir);
+        var (free, drive) = FreeSpace(installDir);
         var gb = free / (1024 * 1024 * 1024);
-        items.Add(free >= AppConfig.RequiredFreeBytes || settings.IsInstalled
+        items.Add(free >= ml.RequiredFreeBytes || installed
             ? new CheckItem(CheckState.Ok, Loc.F("check.disk.ok", gb, drive))
-            : new CheckItem(CheckState.Error, Loc.F("check.disk.no", gb, drive), Loc.T("check.disk.hint")));
+            : new CheckItem(CheckState.Error, Loc.F("check.disk.no", gb, drive, ml.SizeGb + 5), Loc.T("check.disk.hint")));
 
         items.Add(WabbajackService.IsNexusLoggedIn
             ? new CheckItem(CheckState.Ok, Loc.T("check.nexus.ok"))

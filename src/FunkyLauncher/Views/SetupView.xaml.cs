@@ -14,47 +14,72 @@ public partial class SetupView : UserControl
     private List<CheckItem> _checks = new();
     private CancellationTokenSource? _cts;
     private bool _checking;
-    private bool _installing;
+    private bool _busy;
+
+    private Modlist Ml => _main.Selected;
+    private bool Installed => _main.Settings.IsInstalled(Ml);
 
     public SetupView(MainWindow main)
     {
         InitializeComponent();
         _main = main;
-        FolderBox.Text = main.Settings.InstallDir;
         Loc.Changed += () => { ApplyTexts(); _ = RunChecksAsync(); };
+        ResetForModlist();
+    }
+
+    /// <summary>Called when another modlist is selected in the library.</summary>
+    public void ResetForModlist()
+    {
+        FolderBox.Text = _main.Settings.InstallDir(Ml);
+        ProgressPanel.Visibility = Visibility.Collapsed;
+        _checks.Clear();
         ApplyTexts();
     }
 
     public void OnShown()
     {
-        if (!_installing) _ = RunChecksAsync();
+        if (!_busy) _ = RunChecksAsync();
     }
 
     private void ApplyTexts()
     {
-        PageTitle.Text = Loc.T("setup.title");
+        PageTitle.Text = Loc.F("setup.title", Ml.Title);
         Subtitle.Text = Loc.T("setup.subtitle");
         CheckTitle.Text = Loc.T("setup.check");
         RecheckButton.Content = Loc.T("setup.recheck");
         FolderLabel.Text = Loc.T("setup.folder");
         BrowseButton.Content = Loc.T("setup.browse");
-        DownloadsText.Text = Loc.F("setup.downloads", _main.Settings.DownloadsDir);
+        DownloadsText.Text = Loc.F("setup.downloads", _main.Settings.DownloadsDir(Ml));
         NexusButton.Content = Loc.T("setup.nexus.login");
-        InstallButton.Content = Loc.T("setup.install");
         CancelButton.Content = Loc.T("setup.cancel");
         ContinueHint.Text = Loc.T("inst.continue");
+        InstalledText.Text = Loc.T("setup.installed");
+        ReinstallButton.Content = Loc.T("setup.reinstall");
+        ApplyMode();
+    }
+
+    /// <summary>Not installed: big INSTALL. Installed: big VERIFY FILES + small Reinstall.</summary>
+    private void ApplyMode()
+    {
+        var installed = Installed;
+        InstallButton.Content = installed ? Loc.T("setup.verify") : Loc.T("setup.install");
+        InstalledNote.Visibility = installed ? Visibility.Visible : Visibility.Collapsed;
+        ReinstallButton.Visibility = installed && !_busy ? Visibility.Visible : Visibility.Collapsed;
+        var noErrors = _checks.Count > 0 && _checks.All(c => c.State != CheckState.Error);
+        InstallButton.IsEnabled = !_busy && Ml.IsReleased && noErrors;
+        ReinstallButton.IsEnabled = InstallButton.IsEnabled;
     }
 
     private async Task RunChecksAsync()
     {
-        if (_checking) return;
+        if (_checking || !Ml.IsReleased) return;
         _checking = true;
         CheckList.Children.Clear();
         CheckList.Children.Add(new TextBlock { Text = Loc.T("check.running"), Foreground = (Brush)FindResource("Muted") });
-        InstallButton.IsEnabled = false;
+        InstallButton.IsEnabled = ReinstallButton.IsEnabled = false;
         try
         {
-            _checks = await SystemCheck.RunAllAsync(_main.Settings, CancellationToken.None);
+            _checks = await SystemCheck.RunAllAsync(_main.Settings, Ml, CancellationToken.None);
         }
         catch (Exception ex)
         {
@@ -64,34 +89,24 @@ public partial class SetupView : UserControl
         {
             _checking = false;
         }
-        RenderChecks();
-        _main.RefreshNexus();
-    }
-
-    private void RenderChecks()
-    {
         CheckList.Children.Clear();
         foreach (var c in _checks) CheckList.Children.Add(CheckRow(c));
-        // a missing Wabbajack is only a warning: the install downloads it
-        InstallButton.IsEnabled = !_installing && _checks.All(c => c.State != CheckState.Error);
+        ApplyMode();
+        _main.RefreshNexus();
     }
 
     private Border CheckRow(CheckItem c)
     {
-        var (mark, color, bg) = c.State switch
-        {
-            CheckState.Ok => ("✓", "Cyan", "Card"),
-            CheckState.Warning => ("i", "Cyan", "Card"),
-            _ => ("!", "Pink", "PinkSoft"),
-        };
+        var error = c.State == CheckState.Error;
         var icon = new Border
         {
             Width = 28, Height = 28, CornerRadius = new CornerRadius(14), Margin = new Thickness(0, 0, 14, 0),
-            Background = c.State == CheckState.Error ? (Brush)FindResource("Pink") : new SolidColorBrush(Color.FromArgb(0x29, 0x3C, 0xE6, 0xFF)),
+            Background = error ? (Brush)FindResource("Pink") : new SolidColorBrush(Color.FromArgb(0x29, 0x3C, 0xE6, 0xFF)),
             Child = new TextBlock
             {
-                Text = mark, FontWeight = FontWeights.Bold, HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center,
-                Foreground = c.State == CheckState.Error ? (Brush)FindResource("OnPink") : (Brush)FindResource(color),
+                Text = c.State switch { CheckState.Ok => "✓", CheckState.Warning => "i", _ => "!" },
+                FontWeight = FontWeights.Bold, HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center,
+                Foreground = error ? (Brush)FindResource("OnPink") : (Brush)FindResource("Cyan"),
             },
         };
         var texts = new StackPanel();
@@ -104,8 +119,8 @@ public partial class SetupView : UserControl
         row.Children.Add(texts);
         return new Border
         {
-            Background = (Brush)FindResource(bg), CornerRadius = new CornerRadius(12), Padding = new Thickness(16, 12, 16, 12), Margin = new Thickness(0, 0, 0, 8),
-            BorderThickness = new Thickness(c.State == CheckState.Error ? 1 : 0), BorderBrush = (Brush)FindResource("Pink"),
+            Background = (Brush)FindResource(error ? "PinkSoft" : "Card"), CornerRadius = new CornerRadius(12), Padding = new Thickness(16, 12, 16, 12), Margin = new Thickness(0, 0, 0, 8),
+            BorderThickness = new Thickness(error ? 1 : 0), BorderBrush = (Brush)FindResource("Pink"),
             Child = row,
         };
     }
@@ -114,10 +129,9 @@ public partial class SetupView : UserControl
 
     private void ApplyFolder(string dir)
     {
-        _main.Settings.InstallDir = dir.Trim();
-        _main.Settings.Save();
-        FolderBox.Text = _main.Settings.InstallDir;
-        DownloadsText.Text = Loc.F("setup.downloads", _main.Settings.DownloadsDir);
+        _main.Settings.SetInstallDir(Ml, dir);
+        FolderBox.Text = _main.Settings.InstallDir(Ml);
+        DownloadsText.Text = Loc.F("setup.downloads", _main.Settings.DownloadsDir(Ml));
         _ = RunChecksAsync();
     }
 
@@ -129,35 +143,60 @@ public partial class SetupView : UserControl
 
     private void FolderBox_LostFocus(object sender, RoutedEventArgs e)
     {
-        if (FolderBox.Text.Trim() != _main.Settings.InstallDir) ApplyFolder(FolderBox.Text);
+        if (FolderBox.Text.Trim() != _main.Settings.InstallDir(Ml)) ApplyFolder(FolderBox.Text);
     }
 
-    private void Nexus_Click(object sender, RoutedEventArgs e)
+    private void Nexus_Click(object sender, RoutedEventArgs e) => PlayService.OpenWabbajackGui();
+
+    private void Install_Click(object sender, RoutedEventArgs e)
     {
-        PlayService.OpenWabbajackGui();
+        if (Installed) _ = VerifyAsync();
+        else _ = InstallAsync();
     }
 
-    private async void Install_Click(object sender, RoutedEventArgs e)
+    private void Reinstall_Click(object sender, RoutedEventArgs e) => _ = InstallAsync();
+
+    private void BeginBusy()
     {
-        _installing = true;
+        _busy = true;
         _cts = new CancellationTokenSource();
-        InstallButton.IsEnabled = false;
         RecheckButton.IsEnabled = BrowseButton.IsEnabled = FolderBox.IsEnabled = false;
         CancelButton.Visibility = Visibility.Visible;
         ProgressPanel.Visibility = Visibility.Visible;
+        ProgressPercent.Text = "";
+        ProgressFill.Width = 0;
+        ApplyMode();
+    }
 
-        var progress = new Progress<InstallProgress>(p =>
-        {
-            ProgressText.Text = p.Total > 0 ? $"{p.Status} · {Loc.F("inst.downloaded", p.Downloaded, p.Total)}" : p.Status;
-            var pct = p.Total > 0 ? Math.Min(100, p.Downloaded * 100 / p.Total) : 0;
-            ProgressPercent.Text = p.Total > 0 ? pct + "%" : "";
-            ProgressFill.Width = ((FrameworkElement)ProgressFill.Parent).ActualWidth * pct / 100.0;
-            if (!string.IsNullOrWhiteSpace(p.LogLine)) LogLine.Text = p.LogLine;
-        });
+    private async Task EndBusyAsync()
+    {
+        _busy = false;
+        CancelButton.Visibility = Visibility.Collapsed;
+        RecheckButton.IsEnabled = BrowseButton.IsEnabled = FolderBox.IsEnabled = true;
+        await RunChecksAsync();
+    }
 
+    private Progress<InstallProgress> MakeProgress() => new(p =>
+    {
+        ProgressText.Text = p.Total > 0 ? $"{p.Status} · {Loc.F("inst.downloaded", p.Downloaded, p.Total)}" : p.Status;
+        var pct = p.Total > 0 ? Math.Min(100, p.Downloaded * 100 / p.Total) : 0;
+        ProgressPercent.Text = p.Total > 0 ? pct + "%" : "";
+        ProgressFill.Width = ((FrameworkElement)ProgressFill.Parent).ActualWidth * pct / 100.0;
+        if (!string.IsNullOrWhiteSpace(p.LogLine)) LogLine.Text = p.LogLine;
+    });
+
+    private void FillDone()
+    {
+        ProgressPercent.Text = "100%";
+        ProgressFill.Width = ((FrameworkElement)ProgressFill.Parent).ActualWidth;
+    }
+
+    private async Task InstallAsync()
+    {
+        BeginBusy();
         try
         {
-            var (outcome, code, manual) = await InstallService.RunAsync(_main.Settings, progress, _cts.Token);
+            var (outcome, code, manual) = await InstallService.RunAsync(_main.Settings, Ml, MakeProgress(), _cts!.Token);
             ProgressText.Text = outcome switch
             {
                 InstallOutcome.Success => Loc.T("inst.done"),
@@ -165,11 +204,7 @@ public partial class SetupView : UserControl
                 InstallOutcome.Cancelled => Loc.T("inst.stopped"),
                 _ => Loc.F("inst.failed", code),
             };
-            if (outcome == InstallOutcome.Success)
-            {
-                ProgressPercent.Text = "100%";
-                ProgressFill.Width = ((FrameworkElement)ProgressFill.Parent).ActualWidth;
-            }
+            if (outcome == InstallOutcome.Success) FillDone();
         }
         catch (Exception ex)
         {
@@ -177,10 +212,32 @@ public partial class SetupView : UserControl
         }
         finally
         {
-            _installing = false;
-            CancelButton.Visibility = Visibility.Collapsed;
-            RecheckButton.IsEnabled = BrowseButton.IsEnabled = FolderBox.IsEnabled = true;
-            await RunChecksAsync();
+            await EndBusyAsync();
+        }
+    }
+
+    private async Task VerifyAsync()
+    {
+        BeginBusy();
+        try
+        {
+            var (ok, problems, ignored) = await InstallService.VerifyAsync(_main.Settings, Ml, MakeProgress(), _cts!.Token);
+            ProgressText.Text = !ok ? Loc.F("inst.verify.fail", problems)
+                : ignored > 0 ? Loc.F("inst.verify.ok.ignored", ignored)
+                : Loc.T("inst.verify.ok");
+            if (ok) FillDone();
+        }
+        catch (OperationCanceledException)
+        {
+            ProgressText.Text = Loc.T("inst.stopped");
+        }
+        catch (Exception ex)
+        {
+            ProgressText.Text = Loc.F("inst.failed", ex.Message);
+        }
+        finally
+        {
+            await EndBusyAsync();
         }
     }
 

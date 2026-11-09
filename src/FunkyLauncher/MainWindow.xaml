@@ -24,6 +24,7 @@
                 </StackPanel>
 
                 <RadioButton x:Name="NavHome" DockPanel.Dock="Top" Style="{StaticResource NavButton}" GroupName="nav" IsChecked="True" Checked="Nav_Checked"/>
+                <RadioButton x:Name="NavLibrary" DockPanel.Dock="Top" Style="{StaticResource NavButton}" GroupName="nav" Checked="Nav_Checked"/>
                 <RadioButton x:Name="NavSetup" DockPanel.Dock="Top" Style="{StaticResource NavButton}" GroupName="nav" Checked="Nav_Checked"/>
                 <RadioButton x:Name="NavSettings" DockPanel.Dock="Top" Style="{StaticResource NavButton}" GroupName="nav" Checked="Nav_Checked"/>
 

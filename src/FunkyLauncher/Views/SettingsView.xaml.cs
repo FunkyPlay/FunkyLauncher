@@ -21,20 +21,21 @@ public partial class SettingsView : UserControl
 
     public void Refresh()
     {
+        var m = _main.Selected;
         PageTitle.Text = Loc.T("settings.title");
-        ModlistLabel.Text = Loc.T("settings.modlist");
+        ModlistLabel.Text = Loc.F("settings.modlist.for", m.Title);
         ModlistBrowse.Content = Loc.T("setup.browse");
-        ModlistBox.Text = _main.Settings.ResolveModlist() ?? "—";
+        ModlistBox.Text = _main.Settings.ResolveWabbajack(m) ?? "—";
         AboutLabel.Text = Loc.T("settings.about");
         var ver = Assembly.GetExecutingAssembly().GetName().Version?.ToString(3) ?? "0.1.0";
-        AboutText.Text = Loc.F("settings.about.text", ver);
+        AboutText.Text = Loc.F("settings.about.text", ver, Catalog.Source);
     }
 
     private void ModlistBrowse_Click(object sender, RoutedEventArgs e)
     {
         var dlg = new OpenFileDialog { Filter = "Wabbajack (*.wabbajack)|*.wabbajack" };
         if (dlg.ShowDialog() != true) return;
-        _main.Settings.ModlistPath = dlg.FileName;
+        _main.Settings.ModlistFiles[_main.Selected.Id] = dlg.FileName;
         _main.Settings.Save();
         Refresh();
     }

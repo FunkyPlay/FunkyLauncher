@@ -25,18 +25,28 @@ public partial class HomeView : UserControl
     public void Refresh()
     {
         var s = _main.Settings;
-        TagText.Text = Loc.T("home.tag");
-        Sub.Text = s.IsInstalled ? Loc.F("home.sub.installed", AppConfig.ModlistVersion, s.InstallDir) : Loc.F("home.sub.notinstalled", AppConfig.ModlistVersion);
-        MainButton.Content = s.IsInstalled ? Loc.T("home.play") : Loc.T("home.install");
+        var m = _main.Selected;
+        var installed = m.IsReleased && s.IsInstalled(m);
+        var img = Images.Load(m.Banner);
+        Banner.Background = img != null
+            ? new ImageBrush(img) { Stretch = Stretch.UniformToFill, AlignmentY = AlignmentY.Center }
+            : new SolidColorBrush(Color.FromRgb(0x1D, 0x1D, 0x26));
+        TitleText.Text = m.Title;
+        TagText.Text = m.Tag.ToString();
+        Sub.Text = !m.IsReleased ? Loc.F("home.sub.soon", m.Author)
+            : installed ? Loc.F("home.sub.installed", m.Author, m.Version, s.InstallDir(m))
+            : Loc.F("home.sub.notinstalled", m.Author, m.Version);
+        MainButton.Content = installed ? Loc.T("home.play") : !m.IsReleased ? Loc.T("lib.soon") : Loc.T("home.install");
+        MainButton.IsEnabled = m.IsReleased;
         FolderButton.Content = Loc.T("home.folder");
         Mo2Button.Content = Loc.T("home.mo2");
-        FolderButton.IsEnabled = Mo2Button.IsEnabled = s.IsInstalled;
+        FolderButton.IsEnabled = Mo2Button.IsEnabled = installed;
         NewsTitle.Text = Loc.T("home.news");
         AllNews.Text = Loc.T("home.news.all");
-        StatusTitle.Text = s.IsInstalled ? Loc.T("home.ready") : Loc.T("home.notready");
+        StatusTitle.Text = installed ? Loc.T("home.ready") : Loc.T("home.notready");
 
         StatusList.Children.Clear();
-        AddStatus(s.IsInstalled, s.IsInstalled ? s.InstallDir : Loc.T("home.notready"));
+        AddStatus(installed, installed ? s.InstallDir(m) : Loc.T("home.notready"));
         AddStatus(WabbajackService.IsNexusLoggedIn, WabbajackService.IsNexusLoggedIn ? Loc.T("check.nexus.ok") : Loc.T("check.nexus.no"));
         RenderNews();
     }
@@ -84,10 +94,11 @@ public partial class HomeView : UserControl
 
     private void MainButton_Click(object sender, RoutedEventArgs e)
     {
-        if (!_main.Settings.IsInstalled) { _main.ShowSetup(); return; }
+        var m = _main.Selected;
+        if (!_main.Settings.IsInstalled(m)) { _main.ShowSetup(); return; }
         try
         {
-            PlayService.Play(_main.Settings);
+            PlayService.Play(_main.Settings, m);
             PlayMessage.Text = Loc.T("home.play.started");
         }
         catch (Exception ex)
@@ -96,10 +107,10 @@ public partial class HomeView : UserControl
         }
     }
 
-    private void FolderButton_Click(object sender, RoutedEventArgs e) => PlayService.OpenFolder(_main.Settings.InstallDir);
+    private void FolderButton_Click(object sender, RoutedEventArgs e) => PlayService.OpenFolder(_main.Settings.InstallDir(_main.Selected));
     private void Mo2Button_Click(object sender, RoutedEventArgs e)
     {
-        try { PlayService.OpenMo2(_main.Settings); } catch (Exception ex) { PlayMessage.Text = Loc.F("home.play.error", ex.Message); }
+        try { PlayService.OpenMo2(_main.Settings, _main.Selected); } catch (Exception ex) { PlayMessage.Text = Loc.F("home.play.error", ex.Message); }
     }
     private void Telegram_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(AppConfig.TelegramUrl);
     private void YouTube_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(AppConfig.YouTubeUrl);

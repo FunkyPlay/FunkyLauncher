@@ -40,8 +40,12 @@
                 </DockPanel>
                 <TextBlock x:Name="DownloadsText" FontSize="12" Foreground="{StaticResource Muted}" Margin="0,8,0,0"/>
 
-                <Button x:Name="NexusButton" Style="{StaticResource SecondaryButton}" Margin="0,24,0,0" Click="Nexus_Click"/>
+                <Border x:Name="InstalledNote" Style="{StaticResource CardBorder}" Margin="0,20,0,0" BorderBrush="{StaticResource Cyan}" BorderThickness="1" Visibility="Collapsed">
+                    <TextBlock x:Name="InstalledText" FontSize="13" Foreground="#9AF2FF"/>
+                </Border>
+                <Button x:Name="NexusButton" Style="{StaticResource SecondaryButton}" Margin="0,20,0,0" Click="Nexus_Click"/>
                 <Button x:Name="InstallButton" Style="{StaticResource PrimaryButton}" Margin="0,14,0,0" Click="Install_Click"/>
+                <Button x:Name="ReinstallButton" Style="{StaticResource SecondaryButton}" Margin="0,10,0,0" Visibility="Collapsed" Click="Reinstall_Click"/>
                 <Button x:Name="CancelButton" Style="{StaticResource SecondaryButton}" Margin="0,10,0,0" Visibility="Collapsed" Click="Cancel_Click"/>
             </StackPanel>
         </Grid>

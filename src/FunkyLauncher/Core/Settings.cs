@@ -7,10 +7,13 @@ namespace FunkyLauncher.Core;
 public sealed class Settings
 {
     public string Language { get; set; } = "";
-    public string InstallDir { get; set; } = AppConfig.DefaultInstallDir;
+    public string SelectedId { get; set; } = "neon-nights";
 
-    /// <summary>Path to the .wabbajack file. Empty = look next to the launcher.</summary>
-    public string ModlistPath { get; set; } = "";
+    /// <summary>Install folder per modlist id.</summary>
+    public Dictionary<string, string> InstallDirs { get; set; } = new();
+
+    /// <summary>A .wabbajack file the user picked by hand, per modlist id.</summary>
+    public Dictionary<string, string> ModlistFiles { get; set; } = new();
 
     private static string FilePath => Path.Combine(AppConfig.DataDir, "settings.json");
 
@@ -34,19 +37,29 @@ public sealed class Settings
         File.WriteAllText(FilePath, JsonSerializer.Serialize(this, new JsonSerializerOptions { WriteIndented = true }));
     }
 
-    public string DownloadsDir => Path.Combine(InstallDir, "downloads");
+    public string InstallDir(Modlist m) =>
+        InstallDirs.TryGetValue(m.Id, out var d) && !string.IsNullOrWhiteSpace(d) ? d : m.DefaultInstallDir;
 
-    public bool IsInstalled => File.Exists(Path.Combine(InstallDir, "ModOrganizer.exe"));
+    public void SetInstallDir(Modlist m, string dir) { InstallDirs[m.Id] = dir.Trim(); Save(); }
 
-    /// <summary>Finds the .wabbajack file: settings, next to the exe, then the developer output folder.</summary>
-    public string? ResolveModlist()
+    public string DownloadsDir(Modlist m) => Path.Combine(InstallDir(m), "downloads");
+
+    public bool IsInstalled(Modlist m) => File.Exists(Path.Combine(InstallDir(m), "ModOrganizer.exe"));
+
+    /// <summary>Where a downloaded .wabbajack file for this modlist version is kept.</summary>
+    public static string CachedWabbajack(Modlist m) =>
+        Path.Combine(AppConfig.DataDir, "modlists", m.Id, $"{m.Version}.wabbajack");
+
+    /// <summary>Finds the .wabbajack file: picked by hand, downloaded, next to the exe, developer folder.</summary>
+    public string? ResolveWabbajack(Modlist m)
     {
+        ModlistFiles.TryGetValue(m.Id, out var picked);
         var candidates = new[]
         {
-            ModlistPath,
-            Path.Combine(AppContext.BaseDirectory, AppConfig.ModlistFileName),
-            Path.Combine(AppConfig.DataDir, AppConfig.ModlistFileName),
-            Path.Combine(@"C:\Games\Wabbajack_out", AppConfig.ModlistFileName),
+            picked,
+            CachedWabbajack(m),
+            string.IsNullOrEmpty(m.WabbajackFile) ? null : Path.Combine(AppContext.BaseDirectory, m.WabbajackFile),
+            string.IsNullOrEmpty(m.WabbajackFile) ? null : Path.Combine(@"C:\Games\Wabbajack_out", m.WabbajackFile),
         };
         return candidates.FirstOrDefault(p => !string.IsNullOrWhiteSpace(p) && File.Exists(p));
     }

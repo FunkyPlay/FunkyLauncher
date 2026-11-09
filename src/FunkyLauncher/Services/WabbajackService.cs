@@ -52,7 +52,7 @@ public static class WabbajackService
     public static async Task<string> DownloadAsync(IProgress<int> progress, CancellationToken token)
     {
         using var http = new HttpClient();
-        http.DefaultRequestHeaders.UserAgent.ParseAdd("FunkyLauncher/" + AppConfig.ModlistVersion);
+        http.DefaultRequestHeaders.UserAgent.ParseAdd("FunkyLauncher");
         var json = await http.GetStringAsync(AppConfig.WabbajackReleasesApi, token);
         using var doc = JsonDocument.Parse(json);
         var tag = doc.RootElement.GetProperty("tag_name").GetString()!;
@@ -84,6 +84,32 @@ public static class WabbajackService
         ZipFile.ExtractToDirectory(zipPath, target);
         File.Delete(zipPath);
         return FindCli() ?? throw new InvalidOperationException("wabbajack-cli.exe not found after unpacking");
+    }
+
+    /// <summary>Downloads any file (used for .wabbajack files from GitHub Releases).</summary>
+    public static async Task DownloadFileAsync(string url, string target, IProgress<int> progress, CancellationToken token)
+    {
+        using var http = new HttpClient();
+        http.DefaultRequestHeaders.UserAgent.ParseAdd("FunkyLauncher");
+        using var resp = await http.GetAsync(url, HttpCompletionOption.ResponseHeadersRead, token);
+        resp.EnsureSuccessStatusCode();
+        var size = resp.Content.Headers.ContentLength ?? 0;
+        Directory.CreateDirectory(Path.GetDirectoryName(target)!);
+        var tmp = target + ".part";
+        await using (var src = await resp.Content.ReadAsStreamAsync(token))
+        await using (var dst = File.Create(tmp))
+        {
+            var buffer = new byte[1 << 16];
+            long done = 0;
+            int read;
+            while ((read = await src.ReadAsync(buffer, token)) > 0)
+            {
+                await dst.WriteAsync(buffer.AsMemory(0, read), token);
+                done += read;
+                if (size > 0) progress.Report((int)(done * 100 / size));
+            }
+        }
+        File.Move(tmp, target, true);
     }
 
     /// <summary>Runs wabbajack-cli and streams every output line.</summary>
