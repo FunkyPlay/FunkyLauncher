@@ -36,6 +36,20 @@ public partial class MainWindow : Window
         ApplyTexts();
         Page.Content = _home;
         _ = RefreshCatalogAsync();
+
+        // developer test: FunkyLauncher.exe --test-manual N  → manual download of the N smallest Nexus files into %TEMP%
+        var args = Environment.GetCommandLineArgs();
+        var i = Array.IndexOf(args, "--test-manual");
+        if (i >= 0) Loaded += (_, _) => TestManual(i + 1 < args.Length && int.TryParse(args[i + 1], out var n) ? n : 2);
+    }
+
+    private void TestManual(int count)
+    {
+        var file = Settings.ResolveWabbajack(Selected);
+        if (file == null) return;
+        var dir = Path.Combine(Path.GetTempPath(), "FunkyManualTest");
+        var items = ManualQueue.Build(file, dir).OrderBy(x => x.Size).Take(count).ToList();
+        new ManualDownloadWindow(items, dir) { Owner = this }.ShowDialog();
     }
 
     private async Task RefreshCatalogAsync()

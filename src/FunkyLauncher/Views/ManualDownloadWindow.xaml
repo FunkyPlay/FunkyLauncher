@@ -1,0 +1,73 @@
+<Window x:Class="FunkyLauncher.Views.ManualDownloadWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+        Title="Funky Launcher" Width="1280" Height="800" WindowStartupLocation="CenterOwner"
+        Background="{StaticResource Bg}" FontFamily="{StaticResource UiFont}">
+    <Grid Margin="28,24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <DockPanel Grid.Row="0" Margin="0,0,0,16">
+            <StackPanel DockPanel.Dock="Right" Width="320" Margin="24,0,0,0" VerticalAlignment="Center">
+                <DockPanel>
+                    <TextBlock x:Name="Percent" DockPanel.Dock="Right" FontWeight="Bold" Foreground="#FF7AD9"/>
+                    <TextBlock x:Name="ProgressText" FontWeight="SemiBold"/>
+                </DockPanel>
+                <Border Height="10" CornerRadius="5" Background="{StaticResource CardActive}" Margin="0,8,0,0" ClipToBounds="True">
+                    <Border x:Name="Fill" HorizontalAlignment="Left" Width="0" CornerRadius="5">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="#FF3CC8" Offset="0"/>
+                                <GradientStop Color="#3CE6FF" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                    </Border>
+                </Border>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock x:Name="TitleText" FontFamily="{StaticResource TitleFont}" FontSize="26"/>
+                <TextBlock x:Name="HintText" FontSize="14" Foreground="#C9C9D6" Margin="0,6,0,0"/>
+            </StackPanel>
+        </DockPanel>
+
+        <!-- Queue + browser -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="18"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" Background="{StaticResource Panel}" CornerRadius="14" Padding="14">
+                <DockPanel>
+                    <TextBlock x:Name="QueueTitle" DockPanel.Dock="Top" FontSize="13" FontWeight="SemiBold" Foreground="{StaticResource Muted}" Margin="4,0,0,8"/>
+                    <TextBlock x:Name="TiredText" DockPanel.Dock="Bottom" FontSize="12" Foreground="#C9C9D6" Margin="4,10,0,0"/>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <StackPanel x:Name="QueueList"/>
+                    </ScrollViewer>
+                </DockPanel>
+            </Border>
+            <Border Grid.Column="2" Background="{StaticResource Card}" CornerRadius="14" ClipToBounds="True">
+                <DockPanel>
+                    <Border DockPanel.Dock="Top" Background="{StaticResource Panel}" Padding="14,10">
+                        <TextBlock x:Name="AddressText" FontSize="12" Foreground="{StaticResource Muted}" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap"/>
+                    </Border>
+                    <Border DockPanel.Dock="Bottom" Background="{StaticResource Panel}" Padding="14,8">
+                        <TextBlock x:Name="StatusText" FontSize="13" Foreground="#FF7AD9"/>
+                    </Border>
+                    <wv2:WebView2 x:Name="Web"/>
+                </DockPanel>
+            </Border>
+        </Grid>
+
+        <!-- Footer -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,16,0,0">
+            <Button x:Name="SkipButton" Style="{StaticResource SecondaryButton}" Margin="0,0,10,0" Click="Skip_Click"/>
+            <Button x:Name="CloseButton" Style="{StaticResource SecondaryButton}" Click="Close_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

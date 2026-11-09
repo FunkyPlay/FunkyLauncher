@@ -196,15 +196,21 @@ public partial class SetupView : UserControl
         BeginBusy();
         try
         {
-            var (outcome, code, manual) = await InstallService.RunAsync(_main.Settings, Ml, MakeProgress(), _cts!.Token);
-            ProgressText.Text = outcome switch
+            while (true)
             {
-                InstallOutcome.Success => Loc.T("inst.done"),
-                InstallOutcome.NeedsManualDownloads => Loc.F("inst.manual", manual),
-                InstallOutcome.Cancelled => Loc.T("inst.stopped"),
-                _ => Loc.F("inst.failed", code),
-            };
-            if (outcome == InstallOutcome.Success) FillDone();
+                var (outcome, code, manual) = await InstallService.RunAsync(_main.Settings, Ml, MakeProgress(), _cts!.Token);
+                if (outcome == InstallOutcome.NeedsManualDownloads && OpenManualDownloads())
+                    continue; // everything was downloaded by hand — run the install again
+                ProgressText.Text = outcome switch
+                {
+                    InstallOutcome.Success => Loc.T("inst.done"),
+                    InstallOutcome.NeedsManualDownloads => Loc.F("inst.manual", manual),
+                    InstallOutcome.Cancelled => Loc.T("inst.stopped"),
+                    _ => Loc.F("inst.failed", code),
+                };
+                if (outcome == InstallOutcome.Success) FillDone();
+                break;
+            }
         }
         catch (Exception ex)
         {
@@ -214,6 +220,18 @@ public partial class SetupView : UserControl
         {
             await EndBusyAsync();
         }
+    }
+
+    /// <summary>Shows the manual download window. True = every missing file is now downloaded.</summary>
+    private bool OpenManualDownloads()
+    {
+        var file = _main.Settings.ResolveWabbajack(Ml);
+        if (file == null) return false;
+        var items = ManualQueue.Build(file, _main.Settings.DownloadsDir(Ml));
+        if (items.Count == 0) return false;
+        var win = new ManualDownloadWindow(items, _main.Settings.DownloadsDir(Ml)) { Owner = _main };
+        win.ShowDialog();
+        return win.AllDone;
     }
 
     private async Task VerifyAsync()
