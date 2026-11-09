@@ -28,6 +28,8 @@ public partial class HomeView : UserControl
     {
         StartTitle.Text = Loc.T("start.title");
         StartText.Text = Loc.T("start.text");
+        PremiumText.Text = Loc.T("start.premium");
+        FreeText.Text = Loc.T("start.free");
         LibraryButton.Content = Loc.T("start.library");
         NewsTitle.Text = Loc.T("home.news");
         AllNews.Text = Loc.T("home.news.all");

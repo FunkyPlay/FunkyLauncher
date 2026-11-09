@@ -10,6 +10,8 @@ public static class AppConfig
     /// <summary>Launcher community in Telegram: download + support.</summary>
     public const string SupportUrl = "https://t.me/FunkyLauncher";
     public const string GitHubUrl = "https://github.com/FunkyPlay/FunkyLauncher";
+    /// <summary>Start page of the built-in browser.</summary>
+    public const string BrowserHome = "https://www.nexusmods.com/games/cyberpunk2077";
 
     public static string Version =>
         System.Reflection.Assembly.GetExecutingAssembly().GetName().Version?.ToString(3) ?? "0.1.0";

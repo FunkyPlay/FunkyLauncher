@@ -42,6 +42,17 @@ public partial class LibraryView : UserControl
         TitleText.Text = m.Title;
         TagText.Text = m.Tag.ToString();
         Description.Text = m.Description.ToString();
+        var details = m.Details?.ToString() ?? "";
+        MoreLink.Text = Loc.T("lib.more");
+        MoreLink.Visibility = details.Length > 0 ? Visibility.Visible : Visibility.Collapsed;
+        LessLink.Text = Loc.T("lib.less");
+        DetailsTitle.Text = m.Title;
+        DetailsText.Text = details;
+        DetailsPanel.Visibility = Visibility.Collapsed;
+        var req = m.Requirements?.ToString() ?? "";
+        ReqPanel.Visibility = req.Length > 0 ? Visibility.Visible : Visibility.Collapsed;
+        ReqTitle.Text = Loc.T("lib.requirements");
+        ReqText.Text = req;
         Sub.Text = !m.IsReleased ? Loc.F("home.sub.soon", m.Author)
             : installed ? Loc.F("home.sub.installed", m.Author, m.Version, s.InstallDir(m))
             : Loc.F("home.sub.notinstalled", m.Author, m.Version);
@@ -112,13 +123,13 @@ public partial class LibraryView : UserControl
             Background = (Brush)bc.ConvertFrom(chipBg)!,
             Child = new TextBlock { Text = chipText, FontSize = 11, FontWeight = FontWeights.SemiBold, Foreground = (Brush)bc.ConvertFrom(chipFg)! },
         });
-        info.Children.Add(new TextBlock { Text = m.Title, FontFamily = (FontFamily)FindResource("TitleFont"), FontSize = 19, Margin = new Thickness(0, 6, 0, 0) });
+        info.Children.Add(new TextBlock { Text = m.Title, FontFamily = (FontFamily)FindResource("TitleFont"), FontSize = m.Title.Length > 14 ? 14 : 18, Margin = new Thickness(0, 6, 0, 0), TextWrapping = TextWrapping.NoWrap, TextTrimming = TextTrimming.CharacterEllipsis });
         info.Children.Add(new TextBlock { Text = m.Tag.ToString(), FontSize = 11.5, Foreground = (Brush)FindResource("Muted"), TextTrimming = TextTrimming.CharacterEllipsis });
         grid.Children.Add(info);
 
         var card = new Border
         {
-            Width = 270, Height = 130, Margin = new Thickness(0, 0, 16, 0), CornerRadius = new CornerRadius(14),
+            Width = 226, Height = 124, Margin = new Thickness(0, 0, 16, 0), CornerRadius = new CornerRadius(14),
             Background = img != null
                 ? new ImageBrush(img) { Stretch = Stretch.UniformToFill }
                 : new LinearGradientBrush(Color.FromRgb(0x2A, 0x14, 0x26), Color.FromRgb(0x0F, 0x2A, 0x33), 45),
@@ -255,6 +266,9 @@ public partial class LibraryView : UserControl
         }
         if (!Directory.EnumerateFileSystemEntries(dir).Any()) Directory.Delete(dir);
     }
+
+    private void Details_Toggle(object sender, MouseButtonEventArgs e) =>
+        DetailsPanel.Visibility = DetailsPanel.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
 
     private void Setup_Click(object sender, RoutedEventArgs e) => _main.ShowSetup();
     private void FolderButton_Click(object sender, RoutedEventArgs e) => PlayService.OpenFolder(_main.Settings.InstallDir(_main.Selected));

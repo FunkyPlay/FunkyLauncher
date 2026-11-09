@@ -38,6 +38,7 @@ public partial class MainWindow : Window
         ApplyTexts();
         Page.Content = _home;
         _ = RefreshCatalogAsync();
+        Activated += (_, _) => RefreshNexus(); // e.g. after logging in through Wabbajack
 
         // developer test: FunkyLauncher.exe --test-manual N  → manual download of the N smallest Nexus files into %TEMP%
         var args = Environment.GetCommandLineArgs();
@@ -85,6 +86,35 @@ public partial class MainWindow : Window
         var ok = WabbajackService.IsNexusLoggedIn;
         NexusStatus.Text = "● " + Loc.T(ok ? "check.nexus.ok" : "check.nexus.no");
         NexusStatus.Foreground = (Brush)FindResource(ok ? "Cyan" : "Pink");
+        NexusAction.Text = Loc.T(ok ? "nexus.logout" : "nexus.login");
+    }
+
+    private BrowserWindow? _browser;
+
+    private void Browser_Click(object sender, RoutedEventArgs e)
+    {
+        if (_browser is { IsLoaded: true }) { _browser.Activate(); return; }
+        _browser = new BrowserWindow(AppConfig.BrowserHome) { Owner = this };
+        _browser.Show();
+    }
+
+    private void Nexus_Click(object sender, System.Windows.Input.MouseButtonEventArgs e)
+    {
+        if (WabbajackService.IsNexusLoggedIn)
+        {
+            if (MessageBox.Show(this, Loc.T("nexus.logout.confirm"), Loc.T("nexus.logout.title"),
+                    MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No) != MessageBoxResult.Yes) return;
+            try { WebProfile.LogOutNexus(); }
+            catch (Exception ex) { MessageBox.Show(this, Loc.F("nexus.logout.error", ex.Message), "Funky Launcher"); }
+        }
+        else
+        {
+            if (MessageBox.Show(this, Loc.T("nexus.login.info"), Loc.T("nexus.login"),
+                    MessageBoxButton.OKCancel, MessageBoxImage.Information) != MessageBoxResult.OK) return;
+            PlayService.OpenWabbajackGui();
+        }
+        RefreshNexus();
+        _library.Refresh();
     }
 
     /// <summary>Selects a modlist in the library.</summary>

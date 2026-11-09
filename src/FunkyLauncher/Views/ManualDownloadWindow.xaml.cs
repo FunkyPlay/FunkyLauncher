@@ -39,9 +39,8 @@ public partial class ManualDownloadWindow : Window
     {
         try
         {
-            // a separate browser profile so the Nexus login is remembered between runs
-            var env = await CoreWebView2Environment.CreateAsync(null, Path.Combine(AppConfig.DataDir, "WebView2"));
-            await Web.EnsureCoreWebView2Async(env);
+            // the launcher's own browser profile, so the Nexus login is remembered between runs
+            await WebProfile.InitAsync(Web);
         }
         catch (Exception ex)
         {

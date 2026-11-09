@@ -31,6 +31,10 @@ public sealed class Modlist
 
     [JsonPropertyName("tag")] public LocText Tag { get; set; } = new();
     [JsonPropertyName("description")] public LocText Description { get; set; } = new();
+    /// <summary>Full description shown under "More ▾" in the library.</summary>
+    [JsonPropertyName("details")] public LocText? Details { get; set; }
+    /// <summary>Requirements block (game version, recommended PC, disk space).</summary>
+    [JsonPropertyName("requirements")] public LocText? Requirements { get; set; }
 
     /// <summary>Banner: "res:/Assets/x.jpg" for a bundled image or an https URL.</summary>
     [JsonPropertyName("banner")] public string Banner { get; set; } = "";
