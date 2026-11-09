@@ -9,10 +9,10 @@ public static class AppConfig
     public const string YouTubeUrl = "https://www.youtube.com/@" + TelegramChannel;
 
     /// <summary>
-    /// Online catalog of modlists (raw catalog.json on GitHub). Empty until the GitHub repository exists —
-    /// then the built-in copy is used.
+    /// Online catalog of modlists (raw catalog.json on GitHub). If it can't be loaded,
+    /// the cached or built-in copy is used.
     /// </summary>
-    public const string CatalogUrl = "";
+    public const string CatalogUrl = "https://raw.githubusercontent.com/FunkyPlay/FunkyLauncher/main/catalog.json";
 
     /// <summary>Official Wabbajack releases (we download it, never repackage it).</summary>
     public const string WabbajackReleasesApi = "https://api.github.com/repos/wabbajack-tools/wabbajack/releases/latest";
