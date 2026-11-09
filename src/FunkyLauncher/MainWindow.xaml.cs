@@ -141,6 +141,13 @@ public partial class MainWindow : Window
         {
             if (MessageBox.Show(this, Loc.T("nexus.login.info"), Loc.T("nexus.login"),
                     MessageBoxButton.OKCancel, MessageBoxImage.Information) != MessageBoxResult.OK) return;
+            if (WabbajackService.FindGui() == null)
+            {
+                // a new player: Wabbajack is downloaded first, with progress on the install page
+                ShowSetup();
+                _setup.StartNexusLogin();
+                return;
+            }
             PlayService.OpenWabbajackGui();
         }
         RefreshNexus();

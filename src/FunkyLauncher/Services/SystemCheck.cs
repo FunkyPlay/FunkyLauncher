@@ -90,16 +90,20 @@ public static class SystemCheck
             try { game = await FindGameAsync(ml.Game, token); } catch (OperationCanceledException) { throw; } catch { }
         }
 
-        if (game == null)
+        if (game == null && wjVer == null)
         {
-            items.Add(new CheckItem(wjVer == null ? CheckState.Warning : CheckState.Error,
-                Loc.F("check.game.no", ml.Game), Loc.T("check.game.hint")));
+            // the game is found through wabbajack-cli; a new player gets it with the first step of INSTALL
+            items.Add(new CheckItem(CheckState.Warning, Loc.F("check.game.later", ml.Game), Loc.T("check.game.later.hint")));
+        }
+        else if (game == null)
+        {
+            items.Add(new CheckItem(CheckState.Error, Loc.F("check.game.no", ml.Game), Loc.T("check.game.hint")));
         }
         else
         {
             items.Add(new CheckItem(CheckState.Ok, Loc.F("check.game.ok", ml.Game), game.Path));
             if (!string.IsNullOrEmpty(ml.GameVersion))
-                items.Add(game.Version == ml.GameVersion
+                items.Add(LaunchWatcher.SameGameVersion(game.Version, ml.GameVersion)
                     ? new CheckItem(CheckState.Ok, Loc.F("check.version.ok", game.Version))
                     : new CheckItem(CheckState.Error, Loc.F("check.version.no", game.Version, ml.GameVersion), Loc.T("check.version.hint")));
             if (!string.IsNullOrEmpty(ml.DlcCheckPath))
@@ -127,4 +131,25 @@ public static class SystemCheck
 
         return items;
     }
+
+    /// <summary>
+    /// Before installing (Wabbajack is on disk by now): the game, its version and the DLC must be there.
+    /// Throws GameCheckException with a message for the player.
+    /// </summary>
+    public static async Task EnsureGameReadyAsync(Modlist ml, CancellationToken token)
+    {
+        var game = await FindGameAsync(ml.Game, token);
+        if (game == null)
+            throw new GameCheckException(Loc.F("check.game.no", ml.Game) + ". " + Loc.T("check.game.hint"));
+        if (!string.IsNullOrEmpty(ml.GameVersion) && !LaunchWatcher.SameGameVersion(game.Version, ml.GameVersion))
+            throw new GameCheckException(Loc.F("check.version.no", game.Version, ml.GameVersion) + ". " + Loc.T("check.version.hint"));
+        if (!string.IsNullOrEmpty(ml.DlcCheckPath) && !Directory.Exists(System.IO.Path.Combine(game.Path, ml.DlcCheckPath)))
+        {
+            var dlc = ml.DlcName?.ToString() ?? "DLC";
+            throw new GameCheckException(Loc.F("check.dlc.no", dlc) + ". " + Loc.T("check.dlc.hint"));
+        }
+    }
 }
+
+/// <summary>The game is missing / wrong version / no DLC — shown to the player as is.</summary>
+public sealed class GameCheckException(string message) : Exception(message);

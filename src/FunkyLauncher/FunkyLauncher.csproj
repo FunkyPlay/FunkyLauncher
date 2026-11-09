@@ -8,7 +8,7 @@
     <UseWPF>true</UseWPF>
     <AssemblyName>FunkyLauncher</AssemblyName>
     <RootNamespace>FunkyLauncher</RootNamespace>
-    <Version>0.1.0</Version>
+    <Version>0.1.1</Version>
     <ApplicationIcon>Assets\launcher.ico</ApplicationIcon>
     <Product>Funky Launcher</Product>
     <Company>FunkyPlay</Company>

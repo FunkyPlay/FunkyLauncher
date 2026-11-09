@@ -170,7 +170,42 @@ public partial class SetupView : UserControl
         if (FolderBox.Text.Trim() != _main.Settings.InstallDir(Ml)) ApplyFolder(FolderBox.Text);
     }
 
-    private void Nexus_Click(object sender, RoutedEventArgs e) => PlayService.OpenWabbajackGui();
+    private void Nexus_Click(object sender, RoutedEventArgs e) => StartNexusLogin();
+
+    /// <summary>
+    /// Nexus login happens in the Wabbajack app. A new player does not have it yet — download it first
+    /// (otherwise the "login required" check would block INSTALL forever).
+    /// </summary>
+    public async void StartNexusLogin()
+    {
+        if (_busy) return;
+        if (WabbajackService.FindGui() == null)
+        {
+            NexusButton.IsEnabled = InstallButton.IsEnabled = false;
+            ProgressPanel.Visibility = Visibility.Visible;
+            ProgressPercent.Text = "";
+            ContinueHint.Text = ""; // "the install continues next time" is about installing, not this download
+            try
+            {
+                var dl = new Progress<int>(p =>
+                {
+                    ProgressText.Text = Loc.F("inst.wj.download", p);
+                    ProgressFill.Width = ((FrameworkElement)ProgressFill.Parent).ActualWidth * p / 100.0;
+                });
+                await WabbajackService.DownloadAsync(dl, CancellationToken.None);
+            }
+            catch (Exception ex)
+            {
+                ProgressText.Text = Loc.F("inst.failed", ex.Message);
+                NexusButton.IsEnabled = true;
+                return;
+            }
+            NexusButton.IsEnabled = true;
+        }
+        ProgressText.Text = Loc.T("nexus.login.opening");
+        PlayService.OpenWabbajackGui();
+        _ = RunChecksAsync();
+    }
 
     private void Install_Click(object sender, RoutedEventArgs e)
     {
@@ -257,6 +292,10 @@ public partial class SetupView : UserControl
                 if (outcome == InstallOutcome.Success) FillDone();
                 break;
             }
+        }
+        catch (GameCheckException ex)
+        {
+            ProgressText.Text = ex.Message;
         }
         catch (Exception ex)
         {

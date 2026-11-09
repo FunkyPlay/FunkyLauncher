@@ -103,7 +103,7 @@ public sealed class Settings
     public static string CachedWabbajack(Modlist m) =>
         Path.Combine(AppConfig.DataDir, "modlists", m.Id, $"{m.Version}.wabbajack");
 
-    /// <summary>Finds the .wabbajack file: picked by hand, downloaded, next to the exe, developer folder.</summary>
+    /// <summary>Finds the .wabbajack file: picked by hand, downloaded for this version, next to the exe.</summary>
     public string? ResolveWabbajack(Modlist m)
     {
         ModlistFiles.TryGetValue(m.Id, out var picked);
@@ -112,7 +112,6 @@ public sealed class Settings
             picked,
             CachedWabbajack(m),
             string.IsNullOrEmpty(m.WabbajackFile) ? null : Path.Combine(AppContext.BaseDirectory, m.WabbajackFile),
-            string.IsNullOrEmpty(m.WabbajackFile) ? null : Path.Combine(@"C:\Games\Wabbajack_out", m.WabbajackFile),
         };
         return candidates.FirstOrDefault(p => !string.IsNullOrWhiteSpace(p) && File.Exists(p));
     }

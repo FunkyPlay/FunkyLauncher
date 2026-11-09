@@ -45,6 +45,10 @@ public static partial class InstallService
         try { file = await PrepareAsync(settings, ml, progress, token); }
         catch (OperationCanceledException) { return (InstallOutcome.Cancelled, -1, 0); }
 
+        // a new player had no Wabbajack during the checks, so the game was not checked yet — do it now
+        progress.Report(new InstallProgress(Loc.T("inst.checkgame"), 0, 0, null));
+        await SystemCheck.EnsureGameReadyAsync(ml, token);
+
         var total = WabbajackService.CountArchives(file);
         var installDir = targetDir ?? settings.InstallDir(ml);
         var downloads = settings.DownloadsDir(ml);
