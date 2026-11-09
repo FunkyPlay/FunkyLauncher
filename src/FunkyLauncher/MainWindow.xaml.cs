@@ -176,6 +176,23 @@ public partial class MainWindow : Window
         if (startVerify) _setup.StartRepair(); else _setup.OnShown();
     }
 
+    /// <summary>
+    /// A click on the already selected menu item (e.g. "Library" while the install page is open inside it)
+    /// does not raise Checked — show that page anyway.
+    /// </summary>
+    private void Nav_Click(object sender, RoutedEventArgs e)
+    {
+        var target = sender == NavHome ? (object)_home : sender == NavLibrary ? _library : sender == NavSoft ? _soft : _settingsView;
+        if (!ReferenceEquals(Page.Content, target)) Nav_Checked(sender, e);
+    }
+
+    /// <summary>PLAY from the install page: go to the library and start the game the usual way (with all checks).</summary>
+    public void PlaySelected()
+    {
+        ShowLibrary();
+        _library.Play();
+    }
+
     private void Nav_Checked(object sender, RoutedEventArgs e)
     {
         if (Page == null) return;

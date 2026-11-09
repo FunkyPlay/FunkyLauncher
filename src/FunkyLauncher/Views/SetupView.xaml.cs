@@ -84,6 +84,11 @@ public partial class SetupView : UserControl
         InstalledText.TextWrapping = TextWrapping.Wrap;
         ReinstallButton.Content = updating ? Loc.T("setup.verify.small") : Loc.T("setup.reinstall");
         ReinstallButton.Visibility = installed && !_busy ? Visibility.Visible : Visibility.Collapsed;
+        // installed (and not updating): PLAY is the main action here too; verify becomes a secondary button
+        var canPlay = installed && !updating;
+        PlayButton.Content = Loc.T("home.play");
+        PlayButton.Visibility = canPlay && !_busy ? Visibility.Visible : Visibility.Collapsed;
+        InstallButton.Style = (Style)FindResource(canPlay ? "SecondaryButton" : "PrimaryButton");
         var noErrors = _checks.Count > 0 && _checks.All(c => c.State != CheckState.Error);
         InstallButton.IsEnabled = !_busy && Ml.IsReleased && noErrors;
         ReinstallButton.IsEnabled = InstallButton.IsEnabled;
@@ -173,6 +178,8 @@ public partial class SetupView : UserControl
         else if (Installed) _ = VerifyAsync();
         else _ = InstallAsync();
     }
+
+    private void Play_Click(object sender, RoutedEventArgs e) => _main.PlaySelected();
 
     private void Reinstall_Click(object sender, RoutedEventArgs e)
     {

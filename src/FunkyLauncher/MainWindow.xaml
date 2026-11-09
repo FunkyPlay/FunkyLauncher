@@ -1,4 +1,4 @@
-﻿<Window x:Class="FunkyLauncher.MainWindow"
+<Window x:Class="FunkyLauncher.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Funky Launcher" Width="1280" Height="760" Icon="/Assets/launcher.ico"
@@ -26,10 +26,10 @@
                     </StackPanel>
                 </DockPanel>
 
-                <RadioButton x:Name="NavHome" DockPanel.Dock="Top" Style="{StaticResource NavButton}" GroupName="nav" IsChecked="True" Checked="Nav_Checked"/>
-                <RadioButton x:Name="NavLibrary" DockPanel.Dock="Top" Style="{StaticResource NavButton}" GroupName="nav" Checked="Nav_Checked"/>
-                <RadioButton x:Name="NavSoft" DockPanel.Dock="Top" Style="{StaticResource NavButton}" GroupName="nav" Checked="Nav_Checked"/>
-                <RadioButton x:Name="NavSettings" DockPanel.Dock="Top" Style="{StaticResource NavButton}" GroupName="nav" Checked="Nav_Checked"/>
+                <RadioButton x:Name="NavHome" DockPanel.Dock="Top" Style="{StaticResource NavButton}" GroupName="nav" IsChecked="True" Checked="Nav_Checked" Click="Nav_Click"/>
+                <RadioButton x:Name="NavLibrary" DockPanel.Dock="Top" Style="{StaticResource NavButton}" GroupName="nav" Checked="Nav_Checked" Click="Nav_Click"/>
+                <RadioButton x:Name="NavSoft" DockPanel.Dock="Top" Style="{StaticResource NavButton}" GroupName="nav" Checked="Nav_Checked" Click="Nav_Click"/>
+                <RadioButton x:Name="NavSettings" DockPanel.Dock="Top" Style="{StaticResource NavButton}" GroupName="nav" Checked="Nav_Checked" Click="Nav_Click"/>
 
                 <UniformGrid DockPanel.Dock="Bottom" Columns="2" Margin="0,10,0,0">
                     <RadioButton x:Name="LangRu" Content="RU" Style="{StaticResource LangButton}" GroupName="lang" Margin="0,0,3,0" Checked="Lang_Checked"/>

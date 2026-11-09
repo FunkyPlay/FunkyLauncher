@@ -143,6 +143,8 @@ public partial class LibraryView : UserControl
         return card;
     }
 
+    public void Play() => MainButton_Click(this, new RoutedEventArgs());
+
     private async void MainButton_Click(object sender, RoutedEventArgs e)
     {
         var m = _main.Selected;
