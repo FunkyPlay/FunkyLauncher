@@ -16,6 +16,14 @@
         "ru": "Большая сборка: новая графика и погода, живой город, квартиры, сотни вещей, романы, машины. Полностью на русском.",
         "en": "A large modlist: reworked visuals and weather, a livelier city, apartments, hundreds of outfits, romances, cars. Russian localization included."
       },
+      "details": {
+        "ru": "Сборку я собирал и тестировал сам. Цель — сделать Найт-Сити красивее, живее и интереснее, но без перекоса в «другую игру». Всё настроено, совместимо и проверено в игре.\n\n🌆 Графика, свет и погода — HD-текстуры, новое освещение Найт-Сити и Догтауна, погода, дождь и вода, LUT-фильтры, дальние тени.\n🏙 Живой город и геймплей — события на улицах, умнее банды и полиция, такси, рулетка и блэкджек, новые квесты и контракты, наёмники-союзники, тренеры навыков, рэгдолл-физика, ближний бой.\n👗 Магазины и одежда — виртуальные магазины в компьютере V: сотни вещей, обувь, аксессуары, украшения.\n💇 Причёски — больше 50 новых, многие с физикой волос.\n🧑 Тело и лицо — детальные лица и кожа, глаза, макияж, тату, тело от первого лица, Appearance Menu Mod.\n❤️ Романы и NPC — Джуди, Панам, Ривер и Керри: свидания, ночёвки, новые разговоры.\n🍸 Персонажи — с фиксерами, барменами, торговцами и риперами можно говорить.\n🏠 Квартиры — улучшенные стандартные и новые: вилла, особняк, пентхаус с гаражом.\n🚗 Машины — реальные суперкары и классика, автосалон, вид из кабины, вызов машины.\n📸 Фоторежим, 📻 радио на русском, 🖥 настраиваемый HUD и удобные меню.\n🔧 Все фреймворки (CET, RED4ext, ArchiveXL, TweakXL, Codeware), фиксы и защита от вылетов.\n\nНе входит: 18+ контент (будет отдельным дополнением), русская озвучка DreamVoice (ставится отдельно со страницы авторов).\n\nВсе моды скачиваются со страниц авторов на Nexus Mods — поддержите их Endorse.",
+        "en": "I built and tested this modlist myself. The goal: a more beautiful, alive and interesting Night City without turning it into a different game. Everything is configured, compatible and tested in-game.\n\n🌆 Visuals, lighting & weather — HD textures, new lighting for Night City and Dogtown, weather, rain and water, LUTs, distant shadows.\n🏙 Living city & gameplay — street events, smarter gangs and police, taxi work, roulette and blackjack, new quests and contracts, merc allies, skill trainers, ragdoll physics, melee.\n👗 Shops & clothing — virtual shops on V's computer: hundreds of items, shoes, accessories, jewelry.\n💇 Hair — 50+ new hairstyles, many with physics.\n🧑 Body & face — detailed faces and skin, eyes, makeup, tattoos, first-person body, Appearance Menu Mod.\n❤️ Romance & NPCs — Judy, Panam, River and Kerry: dates, sleepovers, new conversations.\n🍸 Characters — talk to fixers, bartenders, vendors and ripperdocs.\n🏠 Apartments — upgraded vanilla ones and new homes: villa, mansion, penthouse with garage.\n🚗 Cars — real supercars and classics, car dealer, cockpit view, vehicle summoning.\n📸 Photo mode, 📻 radio, 🖥 customizable HUD and handy menus.\n🔧 All frameworks (CET, RED4ext, ArchiveXL, TweakXL, Codeware), fixes and crash protection.\n\nNot included: 18+ content (separate add-on later), DreamVoice Russian voice-over (install it from the authors' page).\n\nAll mods are downloaded from their authors' Nexus Mods pages — please endorse them."
+      },
+      "requirements": {
+        "ru": "Игра: Cyberpunk 2077 версии 2.5 + Phantom Liberty (Steam, GOG или Epic)\n\nПК — рекомендуемые CD Projekt RED (High, 1080p, 60 FPS):\n• Windows 10/11 64-bit\n• Core i7-12700 или Ryzen 7 7800X3D\n• RTX 2060 Super / RX 5700 XT / Arc A770, 8 ГБ видеопамяти\n• 16 ГБ ОЗУ\n• SSD: 70 ГБ игра + ~40 ГБ сборка и архивы модов\n\nДля 2K и 4K нужна видеокарта мощнее (сборка проверена на RTX 4080).",
+        "en": "Game: Cyberpunk 2077 version 2.5 + Phantom Liberty (Steam, GOG or Epic)\n\nPC — CD Projekt RED recommended (High, 1080p, 60 FPS):\n• Windows 10/11 64-bit\n• Core i7-12700 or Ryzen 7 7800X3D\n• RTX 2060 Super / RX 5700 XT / Arc A770, 8 GB VRAM\n• 16 GB RAM\n• SSD: 70 GB game + ~40 GB modlist and mod archives\n\nFor 1440p and 4K you need a stronger GPU (tested on an RTX 4080)."
+      },
       "banner": "res:/Assets/banner.jpg",
       "wabbajackFile": "Neon Nights.wabbajack",
       "wabbajackUrl": null,
@@ -35,6 +43,32 @@
       "game": "Starfield",
       "tag": { "ru": "Starfield · в работе", "en": "Starfield · in progress" },
       "description": { "ru": "Следующая сборка FunkyPlay. Скоро.", "en": "The next FunkyPlay modlist. Coming soon." },
+      "banner": "",
+      "wabbajackFile": "",
+      "sizeGb": 0
+    },
+    {
+      "id": "witcher3",
+      "title": "THE WITCHER 3",
+      "author": "Funky",
+      "version": "",
+      "status": "soon",
+      "game": "The Witcher 3: Wild Hunt",
+      "tag": { "ru": "The Witcher 3 · в планах", "en": "The Witcher 3 · planned" },
+      "description": { "ru": "Сборка для The Witcher 3: Wild Hunt. Скоро.", "en": "A modlist for The Witcher 3: Wild Hunt. Coming soon." },
+      "banner": "",
+      "wabbajackFile": "",
+      "sizeGb": 0
+    },
+    {
+      "id": "rdr2",
+      "title": "RED DEAD REDEMPTION 2",
+      "author": "Funky",
+      "version": "",
+      "status": "soon",
+      "game": "Red Dead Redemption 2",
+      "tag": { "ru": "Red Dead Redemption 2 · в планах", "en": "Red Dead Redemption 2 · planned" },
+      "description": { "ru": "Сборка для Red Dead Redemption 2. Скоро.", "en": "A modlist for Red Dead Redemption 2. Coming soon." },
       "banner": "",
       "wabbajackFile": "",
       "sizeGb": 0
