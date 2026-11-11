@@ -82,6 +82,7 @@
                         <TextBlock x:Name="SupportText" FontSize="12.5" Foreground="#C9C9D6" TextWrapping="Wrap" Margin="0,0,0,10"/>
                         <Button x:Name="SupportButton" Style="{StaticResource SecondaryButton}" Height="38" Click="Support_Click"/>
                         <Button x:Name="ReportButton" Style="{StaticResource SecondaryButton}" Height="38" Margin="0,8,0,0" Click="Report_Click"/>
+                        <Button x:Name="HelpButton" Style="{StaticResource SecondaryButton}" Height="38" Margin="0,8,0,0" Click="Help_Click"/>
                         <TextBlock x:Name="ReportText" FontSize="12" Foreground="{StaticResource Cyan}" TextWrapping="Wrap" Margin="0,6,0,0"/>
                     </StackPanel>
                 </Border>

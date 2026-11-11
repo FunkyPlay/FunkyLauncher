@@ -98,6 +98,18 @@ public sealed class CatalogFile
     [JsonPropertyName("software")] public List<SoftwareItem> Software { get; set; } = new();
     /// <summary>Where the player engine is downloaded from (can be updated on GitHub without a new launcher).</summary>
     [JsonPropertyName("playerEngine")] public PlayerEngineSources? PlayerEngine { get; set; }
+    /// <summary>"Funky Help": the official RustDesk client and our own RustDesk server (address + public key).</summary>
+    [JsonPropertyName("remoteHelp")] public RemoteHelpSource? RemoteHelp { get; set; }
+}
+
+public sealed class RemoteHelpSource
+{
+    [JsonPropertyName("url")] public string Url { get; set; } = "";
+    [JsonPropertyName("sha256")] public string Sha256 { get; set; } = "";
+    [JsonPropertyName("version")] public string Version { get; set; } = "";
+    [JsonPropertyName("host")] public string Host { get; set; } = "";
+    /// <summary>The server's PUBLIC key (safe to publish): clients refuse servers without it.</summary>
+    [JsonPropertyName("key")] public string Key { get; set; } = "";
 }
 
 /// <summary>One downloadable part of the player engine: URL, SHA-256 and what to take out of the archive.</summary>
@@ -128,6 +140,8 @@ public static class Catalog
     /// <summary>Player engine sources: online/cached catalog first, else the ones built into this launcher.</summary>
     public static PlayerEngineSources? PlayerEngine { get; private set; }
     private static PlayerEngineSources? BuiltInPlayerEngine;
+    public static RemoteHelpSource? RemoteHelp { get; private set; }
+    private static RemoteHelpSource? BuiltInRemoteHelp;
     public static string Source { get; private set; } = "";
 
     private static string CachePath => Path.Combine(AppConfig.DataDir, "catalog.json");
@@ -140,6 +154,7 @@ public static class Catalog
         BuiltInSaveFolders = builtIn.Modlists.Where(m => !string.IsNullOrWhiteSpace(m.SaveFolder)).ToDictionary(m => m.Id, m => m.SaveFolder!);
         BuiltInPcChecks = builtIn.Modlists.Where(m => m.PcCheck != null).ToDictionary(m => m.Id, m => m.PcCheck!);
         BuiltInPlayerEngine = builtIn.PlayerEngine;
+        BuiltInRemoteHelp = builtIn.RemoteHelp;
         Apply(builtIn);
         Source = "built-in";
         if (File.Exists(CachePath))
@@ -168,6 +183,7 @@ public static class Catalog
         Items = c.Modlists;
         Software = c.Software.Where(x => x.Name.Length > 0 && x.Url.StartsWith("https://")).ToList();
         PlayerEngine = c.PlayerEngine is { Mpv.Url.Length: > 0 } ? c.PlayerEngine : BuiltInPlayerEngine;
+        RemoteHelp = c.RemoteHelp is { Url.Length: > 0, Host.Length: > 0 } ? c.RemoteHelp : BuiltInRemoteHelp;
     }
 
     /// <summary>Tries to refresh from the internet. Returns true if the list changed source.</summary>

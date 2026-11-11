@@ -41,7 +41,36 @@ public partial class HomeView : UserControl
         SupportText.Text = Loc.T("start.support.text");
         SupportButton.Content = Loc.T("start.support.write");
         ReportButton.Content = Loc.T("start.support.report");
+        HelpButton.Content = Loc.T(_helpOn ? "help.stop" : "help.button");
+        HelpButton.Visibility = RemoteHelp.Available ? Visibility.Visible : Visibility.Collapsed;
         RenderNews();
+    }
+
+    private bool _helpOn;
+
+    /// <summary>Funky Help: lets support connect to this PC with RustDesk — only while its window is open.</summary>
+    private async void Help_Click(object sender, RoutedEventArgs e)
+    {
+        if (_helpOn)
+        {
+            RemoteHelp.Stop();
+            _helpOn = false;
+            HelpButton.Content = Loc.T("help.button");
+            ReportText.Text = Loc.T("help.stopped");
+            return;
+        }
+        if (MessageBox.Show(Window.GetWindow(this), Loc.T("help.confirm"), Loc.T("help.title"),
+                MessageBoxButton.YesNo, MessageBoxImage.Information, MessageBoxResult.No) != MessageBoxResult.Yes) return;
+        HelpButton.IsEnabled = false;
+        try
+        {
+            await RemoteHelp.StartAsync(new Progress<int>(p => ReportText.Text = Loc.F("help.downloading", p)), CancellationToken.None);
+            _helpOn = true;
+            HelpButton.Content = Loc.T("help.stop");
+            ReportText.Text = Loc.T("help.started");
+        }
+        catch (Exception ex) { ReportText.Text = Loc.F("help.error", ex.Message); }
+        HelpButton.IsEnabled = true;
     }
 
     /// <summary>Three FunkyPlay directions: modlists, software, videos.</summary>

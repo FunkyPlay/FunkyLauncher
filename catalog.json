@@ -1,5 +1,12 @@
 {
   "version": 1,
+  "remoteHelp": {
+    "url": "https://github.com/rustdesk/rustdesk/releases/download/1.5.3/rustdesk-1.5.3-x86_64.exe",
+    "sha256": "523ba0efbf62a21739961b62c7daaffb44d3da86139c546b364fd4e1333ed249",
+    "version": "1.5.3",
+    "host": "2.31.81.143",
+    "key": "agFbQRKKLcXZP3VoO6G5gr1NI+dwZ6k9QDxc6MewBfs="
+  },
   "playerEngine": {
     "version": "mpv-20261111+ffmpeg-9.0.2",
     "sevenZip": {
