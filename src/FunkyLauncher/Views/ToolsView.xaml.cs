@@ -45,9 +45,12 @@ public partial class ToolsView : UserControl
         ToolCards.Children.Add(ToolCard("⟲", Loc.T("tools.backup"), Loc.T("tools.backup.text"), "#FF3CC8", "backup", null));
         ToolCards.Children.Add(ToolCard("●", Loc.T("tools.shoot"), Loc.T("tools.shoot.text"), "#3CE6FF", "shoot",
             RecordingMode.IsActive ? Loc.T("tools.on") : null));
+        ToolCards.Children.Add(ToolCard("✓", Loc.T("tools.pc"), Loc.T("tools.pc.text"), "#A07CFF", "pc", null));
         BackupPanel.Visibility = _tool == "backup" ? Visibility.Visible : Visibility.Collapsed;
         ShootPanel.Visibility = _tool == "shoot" ? Visibility.Visible : Visibility.Collapsed;
+        PcPanel.Visibility = _tool == "pc" ? Visibility.Visible : Visibility.Collapsed;
         RefreshShoot();
+        RefreshPc();
 
         BackupTitle.Text = Loc.T("tools.backup");
         AutoCheck.Content = Loc.F("backup.auto", BackupService.KeepAuto);
@@ -122,6 +125,111 @@ public partial class ToolsView : UserControl
         };
         card.MouseLeftButtonUp += (_, _) => { _tool = id; Refresh(); };
         return card;
+    }
+
+    // ---------- can my PC run it ----------
+
+    private string? _pcModlistId;
+    private PcResult? _pcResult;
+    private string? _pcResultFor;
+
+    private static List<Modlist> PcModlists => Catalog.Items.Where(m => m.IsReleased && m.PcCheck != null).ToList();
+
+    private Modlist? PcCurrent => PcModlists.FirstOrDefault(m => m.Id == _pcModlistId) ?? PcModlists.FirstOrDefault(m => m.Id == _main.Selected.Id) ?? PcModlists.FirstOrDefault();
+
+    /// <summary>Opens the PC check panel (e.g. from the developer test argument).</summary>
+    public void ShowPc() { _tool = "pc"; Refresh(); }
+
+    private void RefreshPc()
+    {
+        var m = PcCurrent;
+        PcTitle.Text = Loc.T("tools.pc");
+        PcButton.Content = Loc.T("pc.run");
+        PcModlistRow.Children.Clear();
+        PcButton.IsEnabled = m != null;
+        if (m == null) { PcIntro.Text = Loc.T("pc.none"); return; }
+        PcIntro.Text = Loc.T("pc.intro");
+        PcModlistRow.Children.Add(new TextBlock { Text = Loc.T("backup.for"), FontSize = 13, Foreground = (Brush)FindResource("Muted"), VerticalAlignment = VerticalAlignment.Center, Margin = new Thickness(0, 0, 10, 0) });
+        foreach (var x in PcModlists)
+        {
+            var chip = new Button
+            {
+                Content = x.Title, Style = (Style)FindResource("SecondaryButton"), Height = 32, Padding = new Thickness(14, 0, 14, 0),
+                Margin = new Thickness(0, 0, 8, 0), BorderBrush = x.Id == m.Id ? (Brush)FindResource("Pink") : (Brush)FindResource("Line"),
+            };
+            chip.Click += (_, _) => { _pcModlistId = x.Id; RefreshPc(); };
+            PcModlistRow.Children.Add(chip);
+        }
+        ShowPcResult(_pcResultFor == m.Id ? _pcResult : null);
+    }
+
+    public void RunPcCheck() => Pc_Click(this, new RoutedEventArgs());
+
+    private async void Pc_Click(object sender, RoutedEventArgs e)
+    {
+        var m = PcCurrent;
+        if (m?.PcCheck == null) return;
+        PcButton.IsEnabled = false;
+        PcVerdict.Text = "";
+        PcVerdictText.Text = Loc.T("pc.running");
+        PcRows.Children.Clear();
+        var installed = S.IsInstalled(m);
+        var dir = S.InstallDir(m);
+        try
+        {
+            var hw = await Task.Run(() => PcCheck.Read(dir));
+            _pcResult = PcCheck.Evaluate(hw, m.PcCheck, m, installed, DateTime.Now);
+            _pcResultFor = m.Id;
+            ShowPcResult(_pcResult);
+        }
+        catch (Exception ex) { PcVerdictText.Text = ex.Message; }
+        PcButton.IsEnabled = true;
+    }
+
+    private void ShowPcResult(PcResult? r)
+    {
+        PcRows.Children.Clear();
+        if (r == null) { PcVerdict.Text = ""; PcVerdictText.Text = ""; return; }
+        PcVerdict.Text = Loc.T(r.Verdict switch { CheckState.Ok => "pc.verdict.ok", CheckState.Warning => "pc.verdict.warn", _ => "pc.verdict.err" });
+        PcVerdict.Foreground = r.Verdict switch
+        {
+            CheckState.Ok => (Brush)FindResource("Cyan"),
+            CheckState.Warning => new SolidColorBrush(Color.FromRgb(0xFF, 0xC8, 0x3C)),
+            _ => (Brush)FindResource("Pink"),
+        };
+        PcVerdictText.Text = Loc.T(r.Verdict switch { CheckState.Ok => "pc.verdict.ok.text", CheckState.Warning => "pc.verdict.warn.text", _ => "pc.verdict.err.text" });
+        foreach (var row in r.Rows) PcRows.Children.Add(PcRowView(row));
+    }
+
+    private Border PcRowView(PcRow row)
+    {
+        var (mark, color) = row.State switch
+        {
+            CheckState.Ok => ("✓", (Brush)FindResource("Cyan")),
+            CheckState.Warning => ("!", (Brush)new SolidColorBrush(Color.FromRgb(0xFF, 0xC8, 0x3C))),
+            _ => ("✖", (Brush)FindResource("Pink")),
+        };
+        var grid = new Grid();
+        grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(34) });
+        grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+        grid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+        grid.Children.Add(new TextBlock { Text = mark, FontSize = 18, FontWeight = FontWeights.Bold, Foreground = color, VerticalAlignment = VerticalAlignment.Top });
+        var text = new StackPanel();
+        text.Children.Add(new TextBlock { Text = row.Title, FontSize = 14.5, FontWeight = FontWeights.SemiBold, TextWrapping = TextWrapping.Wrap });
+        text.Children.Add(new TextBlock { Text = row.Detail, FontSize = 12.5, Foreground = (Brush)FindResource("Muted"), TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 2, 0, 0) });
+        if (!string.IsNullOrEmpty(row.AdviceText) && row.SoftId == null)
+            text.Children.Add(new TextBlock { Text = row.AdviceText, FontSize = 12.5, Foreground = (Brush)FindResource("Cyan"), TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 2, 0, 0) });
+        Grid.SetColumn(text, 1);
+        grid.Children.Add(text);
+        var soft = row.SoftId == null ? null : Catalog.Software.FirstOrDefault(s => s.Id == row.SoftId);
+        if (soft != null)
+        {
+            var b = new Button { Content = Loc.F("pc.open", soft.Name), ToolTip = row.AdviceText, Style = (Style)FindResource("SecondaryButton"), Height = 34, Padding = new Thickness(14, 0, 14, 0), Margin = new Thickness(10, 0, 0, 0), VerticalAlignment = VerticalAlignment.Center };
+            b.Click += (_, _) => PlayService.OpenUrl(soft.Url);
+            Grid.SetColumn(b, 2);
+            grid.Children.Add(b);
+        }
+        return new Border { Background = (Brush)FindResource("CardActive"), CornerRadius = new CornerRadius(10), Padding = new Thickness(14, 10, 14, 10), Margin = new Thickness(0, 0, 0, 8), Child = grid };
     }
 
     // ---------- recording mode ----------

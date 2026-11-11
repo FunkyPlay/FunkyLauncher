@@ -56,6 +56,9 @@ public sealed class Modlist
     /// </summary>
     [JsonPropertyName("saveFolder")] public string? SaveFolder { get; set; }
 
+    /// <summary>"Can my PC run it?" requirements for this modlist (null = no check).</summary>
+    [JsonPropertyName("pcCheck")] public PcRequirements? PcCheck { get; set; }
+
     /// <summary>The real save folder on this PC (Documents may live in OneDrive), or null if unknown.</summary>
     public string? ResolveSaveFolder()
     {
@@ -113,6 +116,7 @@ public static class Catalog
         using var s = System.Windows.Application.GetResourceStream(uri)!.Stream;
         var builtIn = Parse(s);
         BuiltInSaveFolders = builtIn.Modlists.Where(m => !string.IsNullOrWhiteSpace(m.SaveFolder)).ToDictionary(m => m.Id, m => m.SaveFolder!);
+        BuiltInPcChecks = builtIn.Modlists.Where(m => m.PcCheck != null).ToDictionary(m => m.Id, m => m.PcCheck!);
         Apply(builtIn);
         Source = "built-in";
         if (File.Exists(CachePath))
@@ -129,11 +133,15 @@ public static class Catalog
 
     /// <summary>Save folders known to this launcher version — used when an online/cached catalog has none.</summary>
     private static Dictionary<string, string> BuiltInSaveFolders = new();
+    private static Dictionary<string, PcRequirements> BuiltInPcChecks = new();
 
     private static void Apply(CatalogFile c)
     {
         foreach (var m in c.Modlists)
+        {
             if (string.IsNullOrWhiteSpace(m.SaveFolder) && BuiltInSaveFolders.TryGetValue(m.Id, out var f)) m.SaveFolder = f;
+            if (m.PcCheck == null && BuiltInPcChecks.TryGetValue(m.Id, out var pc)) m.PcCheck = pc;
+        }
         Items = c.Modlists;
         Software = c.Software.Where(x => x.Name.Length > 0 && x.Url.StartsWith("https://")).ToList();
     }
