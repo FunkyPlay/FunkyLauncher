@@ -43,7 +43,7 @@ public partial class MainWindow : Window
         Activated += (_, _) => RefreshNexus(); // e.g. after logging in through Wabbajack
         RestoreWindow();
         Closing += (_, _) => SaveWindow();
-        ContentRendered += (_, _) => ShowPrivacyNoticeOnce();
+        ContentRendered += (_, _) => { ShowPrivacyNoticeOnce(); RemindRecordingMode(); };
 
         // developer test: FunkyLauncher.exe --test-manual N  → manual download of the N smallest Nexus files into %TEMP%
         var args = Environment.GetCommandLineArgs();
@@ -128,7 +128,7 @@ public partial class MainWindow : Window
         NavHome.Content = Loc.T("nav.home");
         NavLibrary.Content = Loc.T("nav.library");
         NavSoft.Content = Loc.T("nav.soft");
-        NavTools.Content = Loc.T("nav.tools");
+        RefreshToolsDot();
         NavSettings.Content = Loc.T("nav.settings");
         RefreshNexus();
     }
@@ -189,6 +189,22 @@ public partial class MainWindow : Window
     {
         if (NavSoft.IsChecked == true) { _soft.Refresh(); Page.Content = _soft; }
         else NavSoft.IsChecked = true;
+    }
+
+    /// <summary>"Tools ●" while recording mode is on — something on the PC is changed.</summary>
+    public void RefreshToolsDot() =>
+        NavTools.Content = Loc.T("nav.tools") + (RecordingMode.IsActive ? "  ●" : "");
+
+    /// <summary>Recording mode was left on (launcher closed, PC restarted): offer to put everything back.</summary>
+    private void RemindRecordingMode()
+    {
+        var st = RecordingMode.Load();
+        if (st?.Active != true) return;
+        if (MessageBox.Show(this, Loc.F("shoot.reminder", ToolsView.When(st.Started)), Loc.T("tools.shoot"),
+                MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes) return;
+        NavTools.IsChecked = true;
+        _tools.ShowShoot();
+        _tools.TurnOffShoot();
     }
 
     /// <summary>Tools page (save backup) — e.g. from the backup line in the library.</summary>

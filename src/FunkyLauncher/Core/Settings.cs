@@ -19,6 +19,13 @@ public sealed class Settings
     public bool AutoBackup { get; set; } = true;
     public string BackupDir { get; set; } = "";
 
+    /// <summary>Recording mode options; ShootWallpaperFile "" = the FunkyPlay wallpaper.</summary>
+    public bool ShootIcons { get; set; } = true;
+    public bool ShootWallpaper { get; set; } = true;
+    public bool ShootWindows { get; set; } = true;
+    public bool ShootTaskbar { get; set; }
+    public string ShootWallpaperFile { get; set; } = "";
+
     /// <summary>Privacy: load Telegram news on start / refresh the modlist catalog from GitHub on start.</summary>
     public bool LoadNews { get; set; } = true;
     public bool UpdateCatalog { get; set; } = true;

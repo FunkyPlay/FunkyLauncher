@@ -42,8 +42,12 @@ public partial class ToolsView : UserControl
         PageTitle.Text = Loc.T("tools.title");
         Subtitle.Text = Loc.T("tools.subtitle");
         ToolCards.Children.Clear();
-        ToolCards.Children.Add(ToolCard("⟲", Loc.T("tools.backup"), Loc.T("tools.backup.text"), "#FF3CC8", active: true));
-        ToolCards.Children.Add(ToolCard("●", Loc.T("tools.shoot"), Loc.T("tools.shoot.text"), "#3CE6FF", active: false));
+        ToolCards.Children.Add(ToolCard("⟲", Loc.T("tools.backup"), Loc.T("tools.backup.text"), "#FF3CC8", "backup", null));
+        ToolCards.Children.Add(ToolCard("●", Loc.T("tools.shoot"), Loc.T("tools.shoot.text"), "#3CE6FF", "shoot",
+            RecordingMode.IsActive ? Loc.T("tools.on") : null));
+        BackupPanel.Visibility = _tool == "backup" ? Visibility.Visible : Visibility.Collapsed;
+        ShootPanel.Visibility = _tool == "shoot" ? Visibility.Visible : Visibility.Collapsed;
+        RefreshShoot();
 
         BackupTitle.Text = Loc.T("tools.backup");
         AutoCheck.Content = Loc.F("backup.auto", BackupService.KeepAuto);
@@ -91,8 +95,9 @@ public partial class ToolsView : UserControl
         foreach (var b in list) ListPanel.Children.Add(Row(m, b));
     }
 
-    private Border ToolCard(string icon, string title, string text, string color, bool active)
+    private Border ToolCard(string icon, string title, string text, string color, string id, string? badge)
     {
+        var active = _tool == id;
         var bc = new BrushConverter();
         var head = new DockPanel();
         var tile = new Border
@@ -104,16 +109,116 @@ public partial class ToolsView : UserControl
         head.Children.Add(tile);
         var names = new StackPanel { Margin = new Thickness(12, 0, 0, 0), VerticalAlignment = VerticalAlignment.Center };
         names.Children.Add(new TextBlock { Text = title, FontSize = 16, FontWeight = FontWeights.Bold });
-        if (!active) names.Children.Add(new TextBlock { Text = Loc.T("tools.soon"), FontSize = 12, Foreground = (Brush)FindResource("Muted") });
+        if (badge != null) names.Children.Add(new TextBlock { Text = "● " + badge, FontSize = 12, FontWeight = FontWeights.SemiBold, Foreground = (Brush)FindResource("Pink") });
         head.Children.Add(names);
         var body = new StackPanel();
         body.Children.Add(head);
         body.Children.Add(new TextBlock { Text = text, FontSize = 13, Foreground = new SolidColorBrush(Color.FromRgb(0xC9, 0xC9, 0xD6)), TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 10, 0, 0) });
-        return new Border
+        var card = new Border
         {
             Style = (Style)FindResource("CardBorder"), Padding = new Thickness(18, 16, 18, 16), Margin = new Thickness(0, 0, 16, 8),
-            BorderThickness = new Thickness(active ? 2 : 0), BorderBrush = (Brush)FindResource("Pink"), Opacity = active ? 1 : 0.6, Child = body,
+            BorderThickness = new Thickness(2), BorderBrush = active ? (Brush)FindResource("Pink") : Brushes.Transparent,
+            Cursor = System.Windows.Input.Cursors.Hand, Child = body,
         };
+        card.MouseLeftButtonUp += (_, _) => { _tool = id; Refresh(); };
+        return card;
+    }
+
+    // ---------- recording mode ----------
+
+    private string _tool = "backup";
+
+    /// <summary>Opens the recording mode panel (e.g. from the start-up reminder).</summary>
+    public void ShowShoot() { _tool = "shoot"; Refresh(); }
+
+    private void RefreshShoot()
+    {
+        var state = RecordingMode.Load();
+        var on = state?.Active == true;
+        ShootTitle.Text = Loc.T("tools.shoot");
+        ShootStatus.Text = on ? Loc.F("shoot.status.on", When(state!.Started)) : Loc.T("shoot.status.off");
+        ShootStatus.Foreground = on ? (Brush)FindResource("Pink") : (Brush)FindResource("Muted");
+        ShootIntro.Text = Loc.T("shoot.intro");
+        ShootIcons.Content = Loc.T("shoot.icons"); ShootIcons.IsChecked = S.ShootIcons;
+        ShootWallpaper.Content = Loc.T("shoot.wallpaper"); ShootWallpaper.IsChecked = S.ShootWallpaper;
+        ShootWindows.Content = Loc.T("shoot.windows"); ShootWindows.IsChecked = S.ShootWindows;
+        ShootTaskbar.Content = Loc.T("shoot.taskbar"); ShootTaskbar.IsChecked = S.ShootTaskbar;
+        WallpaperText.Text = S.ShootWallpaperFile.Length > 0 ? Loc.F("shoot.wallpaper.own", Path.GetFileName(S.ShootWallpaperFile)) : Loc.T("shoot.wallpaper.brand");
+        WallpaperPick.Content = Loc.T("shoot.wallpaper.pick");
+        WallpaperBrand.Content = Loc.T("shoot.wallpaper.usebrand");
+        WallpaperBrand.Visibility = S.ShootWallpaperFile.Length > 0 ? Visibility.Visible : Visibility.Collapsed;
+        foreach (var c in new Control[] { ShootIcons, ShootWallpaper, ShootWindows, ShootTaskbar, WallpaperPick, WallpaperBrand }) c.IsEnabled = !on;
+        string warn = "";
+        try { warn = !on && S.ShootWallpaper && RecordingMode.SpotlightWallpaper ? Loc.T("shoot.warn.spotlight") : ""; } catch { }
+        ShootWarn.Text = warn;
+        ShootWarn.Visibility = warn.Length > 0 ? Visibility.Visible : Visibility.Collapsed;
+        ShootButton.Content = on ? Loc.T("shoot.off") : Loc.T("shoot.on");
+        DndButton.Content = Loc.T("shoot.dnd");
+        DndHint.Text = Loc.T("shoot.dnd.hint");
+    }
+
+    private void ShootOption_Click(object sender, RoutedEventArgs e)
+    {
+        S.ShootIcons = ShootIcons.IsChecked == true;
+        S.ShootWallpaper = ShootWallpaper.IsChecked == true;
+        S.ShootWindows = ShootWindows.IsChecked == true;
+        S.ShootTaskbar = ShootTaskbar.IsChecked == true;
+        S.Save();
+        RefreshShoot();
+    }
+
+    private void WallpaperPick_Click(object sender, RoutedEventArgs e)
+    {
+        var dlg = new OpenFileDialog { Filter = "Images|*.jpg;*.jpeg;*.png;*.bmp" };
+        if (dlg.ShowDialog(_main) != true) return;
+        S.ShootWallpaperFile = dlg.FileName;
+        S.Save();
+        RefreshShoot();
+    }
+
+    private void WallpaperBrand_Click(object sender, RoutedEventArgs e)
+    {
+        S.ShootWallpaperFile = "";
+        S.Save();
+        RefreshShoot();
+    }
+
+    private void Dnd_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl("ms-settings:notifications");
+
+    public void TurnOffShoot() { if (RecordingMode.IsActive) Shoot_Click(this, new RoutedEventArgs()); }
+
+    private async void Shoot_Click(object sender, RoutedEventArgs e)
+    {
+        ShootButton.IsEnabled = false;
+        var turnOn = !RecordingMode.IsActive;
+        List<string> errors;
+        try
+        {
+            if (turnOn)
+            {
+                var file = S.ShootWallpaperFile.Length > 0 && File.Exists(S.ShootWallpaperFile) ? S.ShootWallpaperFile : RecordingMode.BrandWallpaper();
+                var o = new RecordingMode.Options(S.ShootIcons, S.ShootWallpaper, file, S.ShootWindows, S.ShootTaskbar);
+                errors = await RunSta(() => RecordingMode.Enable(o));
+            }
+            else errors = await RunSta(RecordingMode.Disable);
+        }
+        catch (Exception ex) { errors = new() { ex.Message }; }
+        ShootButton.IsEnabled = true;
+        Refresh();
+        _main.RefreshToolsDot();
+        ShootMessage.Text = errors.Count > 0 ? Loc.F("shoot.error", string.Join("; ", errors))
+            : Loc.T(turnOn ? "shoot.done.on" : "shoot.done.off");
+    }
+
+    /// <summary>Shell COM objects want a single-threaded apartment; run off the UI thread so the window stays responsive.</summary>
+    private static Task<T> RunSta<T>(Func<T> f)
+    {
+        var tcs = new TaskCompletionSource<T>();
+        var t = new Thread(() => { try { tcs.SetResult(f()); } catch (Exception ex) { tcs.SetException(ex); } });
+        t.SetApartmentState(ApartmentState.STA);
+        t.IsBackground = true;
+        t.Start();
+        return tcs.Task;
     }
 
     private Border Row(Modlist m, BackupInfo b)
