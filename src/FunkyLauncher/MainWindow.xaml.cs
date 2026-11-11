@@ -42,11 +42,19 @@ public partial class MainWindow : Window
         _ = RefreshCatalogAsync();
         Activated += (_, _) => RefreshNexus(); // e.g. after logging in through Wabbajack
         RestoreWindow();
-        Closing += (_, _) => SaveWindow();
+        Closing += (_, e) =>
+        {
+            SaveWindow();
+            // Funky Desktops keeps working in the tray when the window is closed
+            if (Settings.DesktopsOn && !_exiting) { e.Cancel = true; Hide(); ShowTrayHintOnce(); }
+        };
         ContentRendered += (_, _) => { ShowPrivacyNoticeOnce(); RemindRecordingMode(); RemindGameMode(); };
 
         // developer test: FunkyLauncher.exe --test-manual N  → manual download of the N smallest Nexus files into %TEMP%
         var args = Environment.GetCommandLineArgs();
+        // Funky Desktops is a test only for Funky: turned on once with --enable-desktops
+        if (args.Contains("--enable-desktops") && !Settings.DesktopsBeta) { Settings.DesktopsBeta = true; Settings.Save(); }
+        StartDesktops();
         var i = Array.IndexOf(args, "--test-manual");
         // "--test-manual N big" → N-1 smallest files + one file of about 500 MB (slow download test)
         // developer test: FunkyLauncher.exe --test-problem → shows the "game crashed" window
@@ -58,6 +66,9 @@ public partial class MainWindow : Window
         var pi = Array.IndexOf(args, "--test-player");
         if (pi >= 0)
             ContentRendered += (_, _) => { NavTools.IsChecked = true; _tools.OpenPlayer(pi + 1 < args.Length ? args[pi + 1] : null); };
+        // developer test: FunkyLauncher.exe --test-desktops → opens Tools → Funky Desktops (changes nothing)
+        if (args.Contains("--test-desktops"))
+            ContentRendered += (_, _) => { NavTools.IsChecked = true; _tools.ShowDesktops(); };
         if (args.Contains("--test-pccheck"))
             ContentRendered += (_, _) => { NavTools.IsChecked = true; _tools.ShowPc(); _tools.RunPcCheck(); };
         if (args.Contains("--test-problem"))
@@ -201,9 +212,96 @@ public partial class MainWindow : Window
         else NavSoft.IsChecked = true;
     }
 
+    // ---------- Funky Desktops: per virtual desktop icons + tray ----------
+
+    private System.Windows.Forms.NotifyIcon? _tray;
+    private System.Windows.Threading.DispatcherTimer? _deskTimer;
+    private Guid? _lastDesk;
+    private bool _exiting;
+
+    /// <summary>Turns Funky Desktops on/off. Off always puts every icon back.</summary>
+    public void SetDesktops(bool on)
+    {
+        Settings.DesktopsOn = on;
+        Settings.Save();
+        if (on) StartDesktops();
+        else
+        {
+            _deskTimer?.Stop();
+            _lastDesk = null;
+            try { Services.Desktops.ShowAll(); } catch { }
+            _tray?.Dispose(); _tray = null;
+        }
+        RefreshToolsDot();
+    }
+
+    /// <summary>Applies the icon set of the current desktop right away (after the player changed a checkbox).</summary>
+    public void ApplyDesktopNow() { _lastDesk = null; DeskTick(); }
+
+    private void StartDesktops()
+    {
+        if (!Settings.DesktopsOn)
+        {
+            // icons left hidden after a crash: put them back silently
+            try { if (Services.Desktops.HasHidden) Services.Desktops.ShowAll(); } catch { }
+            return;
+        }
+        if (_tray == null)
+        {
+            System.Drawing.Icon? icon = null;
+            try { using var s = Application.GetResourceStream(new Uri("pack://application:,,,/Assets/launcher.ico"))!.Stream; icon = new System.Drawing.Icon(s); } catch { }
+            _tray = new System.Windows.Forms.NotifyIcon { Icon = icon ?? System.Drawing.SystemIcons.Application, Text = "Funky Launcher · Desktops", Visible = true };
+            var menu = new System.Windows.Forms.ContextMenuStrip();
+            menu.Items.Add(Loc.T("tray.open"), null, (_, _) => ShowFromTray());
+            menu.Items.Add(Loc.T("tray.showall"), null, (_, _) => Dispatcher.Invoke(() => { SetDesktops(false); _tools.Refresh(); }));
+            menu.Items.Add(Loc.T("tray.exit"), null, (_, _) => Dispatcher.Invoke(ExitApp));
+            _tray.ContextMenuStrip = menu;
+            _tray.DoubleClick += (_, _) => ShowFromTray();
+        }
+        _deskTimer ??= new System.Windows.Threading.DispatcherTimer { Interval = TimeSpan.FromMilliseconds(600) };
+        _deskTimer.Tick -= DeskTimer_Tick;
+        _deskTimer.Tick += DeskTimer_Tick;
+        _deskTimer.Start();
+        DeskTick();
+    }
+
+    private void DeskTimer_Tick(object? sender, EventArgs e) => DeskTick();
+
+    private void DeskTick()
+    {
+        try
+        {
+            var cur = Services.Desktops.Current();
+            if (cur == null || cur == _lastDesk) return;
+            _lastDesk = cur;
+            Settings.DesktopHide.TryGetValue(cur.Value.ToString(), out var hide);
+            Services.Desktops.Apply(hide ?? new List<string>());
+        }
+        catch { /* never break the launcher because of the desktop */ }
+    }
+
+    private void ShowFromTray() => Dispatcher.Invoke(() => { Show(); if (WindowState == WindowState.Minimized) WindowState = WindowState.Normal; Activate(); });
+
+    private bool _trayHintShown;
+    private void ShowTrayHintOnce()
+    {
+        if (_trayHintShown || _tray == null) return;
+        _trayHintShown = true;
+        _tray.ShowBalloonTip(4000, "Funky Desktops", Loc.T("tray.hint"), System.Windows.Forms.ToolTipIcon.Info);
+    }
+
+    /// <summary>Real exit (from the tray): icons back, tray gone.</summary>
+    private void ExitApp()
+    {
+        _exiting = true;
+        try { Services.Desktops.ShowAll(); } catch { }
+        _tray?.Dispose(); _tray = null;
+        Application.Current.Shutdown();
+    }
+
     /// <summary>"Tools ●" while recording mode is on — something on the PC is changed.</summary>
     public void RefreshToolsDot() =>
-        NavTools.Content = Loc.T("nav.tools") + (RecordingMode.IsActive || GameMode.IsActive ? "  ●" : "");
+        NavTools.Content = Loc.T("nav.tools") + (RecordingMode.IsActive || GameMode.IsActive || Settings.DesktopsOn ? "  ●" : "");
 
     /// <summary>Game mode was left on (launcher closed or crashed during the game): offer to start the programs again.</summary>
     private void RemindGameMode()

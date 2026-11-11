@@ -34,6 +34,11 @@ public sealed class Settings
     public bool GameRelaunch { get; set; } = true;
     public bool GameOnPlay { get; set; }
 
+    /// <summary>Funky Desktops (test, hidden unless enabled with --enable-desktops): on/off and, per virtual desktop id, the icons hidden there.</summary>
+    public bool DesktopsBeta { get; set; }
+    public bool DesktopsOn { get; set; }
+    public Dictionary<string, List<string>> DesktopHide { get; set; } = new();
+
     /// <summary>Privacy: load Telegram news on start / refresh the modlist catalog from GitHub on start.</summary>
     public bool LoadNews { get; set; } = true;
     public bool UpdateCatalog { get; set; } = true;

@@ -49,6 +49,11 @@ public partial class ToolsView : UserControl
             GameMode.IsActive ? Loc.T("tools.on") : null));
         ToolCards.Children.Add(ToolCard("✓", Loc.T("tools.pc"), Loc.T("tools.pc.text"), "#A07CFF", "pc", null));
         ToolCards.Children.Add(ToolCard("▷", Loc.T("tools.player"), Loc.T("tools.player.text"), "#FF8A3C", "player", null));
+        if (S.DesktopsBeta)
+            ToolCards.Children.Add(ToolCard("▦", Loc.T("tools.desktops"), Loc.T("tools.desktops.text"), "#3CA0FF", "desktops", S.DesktopsOn ? Loc.T("tools.on") : null));
+        ToolCards.Columns = ToolCards.Children.Count > 5 ? 3 : 5;
+        DeskPanel.Visibility = _tool == "desktops" ? Visibility.Visible : Visibility.Collapsed;
+        if (_tool == "desktops") RefreshDesk();
         GamePanel.Visibility = _tool == "game" ? Visibility.Visible : Visibility.Collapsed;
         RefreshGame();
         BackupPanel.Visibility = _tool == "backup" ? Visibility.Visible : Visibility.Collapsed;
@@ -134,6 +139,72 @@ public partial class ToolsView : UserControl
             _tool = id; Refresh();
         };
         return card;
+    }
+
+    // ---------- Funky Desktops (test) ----------
+
+    public void ShowDesktops() { _tool = "desktops"; Refresh(); }
+
+    private void RefreshDesk()
+    {
+        DeskTitle.Text = Loc.T("tools.desktops");
+        DeskStatus.Text = Loc.T(S.DesktopsOn ? "desk.status.on" : "desk.status.off");
+        DeskStatus.Foreground = S.DesktopsOn ? (Brush)FindResource("Pink") : (Brush)FindResource("Muted");
+        DeskIntro.Text = Loc.T("desk.intro");
+        DeskButton.Content = Loc.T(S.DesktopsOn ? "desk.off" : "desk.on");
+        DeskWallpaper.Text = Loc.T("desk.wallpaper");
+        var common = 0;
+        try { common = Directory.EnumerateFileSystemEntries(Environment.GetFolderPath(Environment.SpecialFolder.CommonDesktopDirectory)).Count(f => !f.EndsWith("desktop.ini", StringComparison.OrdinalIgnoreCase)); } catch { }
+        DeskPublic.Text = common > 0 ? Loc.F("desk.public", common) : "";
+
+        DeskGrid.Children.Clear(); DeskGrid.RowDefinitions.Clear(); DeskGrid.ColumnDefinitions.Clear();
+        List<VDesktop> desks; List<string> items; Guid? cur;
+        try { desks = Desktops.List(); items = Desktops.Items(); cur = Desktops.Current(); }
+        catch (Exception ex) { DeskGrid.Children.Add(new TextBlock { Text = ex.Message }); return; }
+        if (desks.Count < 2)
+        {
+            DeskGrid.Children.Add(new TextBlock { Text = Loc.T("desk.one"), FontSize = 13, Foreground = (Brush)FindResource("Cyan"), TextWrapping = TextWrapping.Wrap });
+            return;
+        }
+        DeskGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+        foreach (var _ in desks) DeskGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(130) });
+        void Cell(UIElement el, int row, int col) { Grid.SetRow(el, row); Grid.SetColumn(el, col); DeskGrid.Children.Add(el); }
+
+        DeskGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+        Cell(new TextBlock { Text = Loc.T("desk.item"), FontWeight = FontWeights.Bold, Foreground = (Brush)FindResource("Muted"), Margin = new Thickness(0, 0, 0, 6) }, 0, 0);
+        foreach (var d in desks)
+        {
+            var name = (d.Name.Length > 0 ? d.Name : Loc.F("desk.name", d.Index + 1)) + (d.Id == cur ? Loc.T("desk.current") : "");
+            Cell(new TextBlock { Text = name, FontWeight = FontWeights.Bold, Foreground = d.Id == cur ? (Brush)FindResource("Pink") : (Brush)FindResource("Muted"), HorizontalAlignment = HorizontalAlignment.Center }, 0, d.Index + 1);
+        }
+        var row = 1;
+        foreach (var item in items)
+        {
+            DeskGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+            Cell(new TextBlock { Text = item, FontSize = 13, TextTrimming = TextTrimming.CharacterEllipsis, VerticalAlignment = VerticalAlignment.Center, Margin = new Thickness(0, 3, 8, 3) }, row, 0);
+            foreach (var d in desks)
+            {
+                var key = d.Id.ToString();
+                var hidden = S.DesktopHide.TryGetValue(key, out var list) && list.Contains(item, StringComparer.OrdinalIgnoreCase);
+                var cb = new CheckBox { IsChecked = !hidden, HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center, ToolTip = item };
+                cb.Click += (_, _) =>
+                {
+                    if (!S.DesktopHide.TryGetValue(key, out var l)) S.DesktopHide[key] = l = new List<string>();
+                    l.RemoveAll(x => string.Equals(x, item, StringComparison.OrdinalIgnoreCase));
+                    if (cb.IsChecked != true) l.Add(item);
+                    S.Save();
+                    if (S.DesktopsOn) _main.ApplyDesktopNow();
+                };
+                Cell(cb, row, d.Index + 1);
+            }
+            row++;
+        }
+    }
+
+    private void Desk_Click(object sender, RoutedEventArgs e)
+    {
+        _main.SetDesktops(!S.DesktopsOn);
+        Refresh();
     }
 
     // ---------- player ----------

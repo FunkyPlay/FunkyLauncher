@@ -6,6 +6,8 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <!-- only for the tray icon (NotifyIcon) of Funky Desktops; its namespaces are not imported globally -->
+    <UseWindowsForms>true</UseWindowsForms>
     <AssemblyName>FunkyLauncher</AssemblyName>
     <RootNamespace>FunkyLauncher</RootNamespace>
     <Version>0.1.5</Version>
@@ -29,6 +31,11 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.4314.35" />
     <PackageReference Include="System.Management" Version="11.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Remove="System.Windows.Forms" />
+    <Using Remove="System.Drawing" />
   </ItemGroup>
 
 </Project>
