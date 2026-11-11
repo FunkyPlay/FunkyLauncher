@@ -48,6 +48,7 @@ public partial class ToolsView : UserControl
         ToolCards.Children.Add(ToolCard("▶", Loc.T("tools.game"), Loc.T("tools.game.text"), "#46D46E", "game",
             GameMode.IsActive ? Loc.T("tools.on") : null));
         ToolCards.Children.Add(ToolCard("✓", Loc.T("tools.pc"), Loc.T("tools.pc.text"), "#A07CFF", "pc", null));
+        ToolCards.Children.Add(ToolCard("▷", Loc.T("tools.player"), Loc.T("tools.player.text"), "#FF8A3C", "player", null));
         GamePanel.Visibility = _tool == "game" ? Visibility.Visible : Visibility.Collapsed;
         RefreshGame();
         BackupPanel.Visibility = _tool == "backup" ? Visibility.Visible : Visibility.Collapsed;
@@ -127,8 +128,23 @@ public partial class ToolsView : UserControl
             BorderThickness = new Thickness(2), BorderBrush = active ? (Brush)FindResource("Pink") : Brushes.Transparent,
             Cursor = System.Windows.Input.Cursors.Hand, Child = body,
         };
-        card.MouseLeftButtonUp += (_, _) => { _tool = id; Refresh(); };
+        card.MouseLeftButtonUp += (_, _) =>
+        {
+            if (id == "player") { OpenPlayer(); return; } // the player is its own window
+            _tool = id; Refresh();
+        };
         return card;
+    }
+
+    // ---------- player ----------
+
+    private PlayerWindow? _player;
+
+    public void OpenPlayer(string? file = null)
+    {
+        if (_player is { IsLoaded: true }) { _player.Activate(); return; }
+        _player = new PlayerWindow(file) { Owner = _main };
+        _player.Show();
     }
 
     // ---------- game mode ----------

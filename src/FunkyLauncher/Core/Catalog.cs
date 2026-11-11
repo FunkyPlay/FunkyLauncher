@@ -96,6 +96,25 @@ public sealed class CatalogFile
     [JsonPropertyName("version")] public int Version { get; set; } = 1;
     [JsonPropertyName("modlists")] public List<Modlist> Modlists { get; set; } = new();
     [JsonPropertyName("software")] public List<SoftwareItem> Software { get; set; } = new();
+    /// <summary>Where the player engine is downloaded from (can be updated on GitHub without a new launcher).</summary>
+    [JsonPropertyName("playerEngine")] public PlayerEngineSources? PlayerEngine { get; set; }
+}
+
+/// <summary>One downloadable part of the player engine: URL, SHA-256 and what to take out of the archive.</summary>
+public sealed class EngineFile
+{
+    [JsonPropertyName("url")] public string Url { get; set; } = "";
+    [JsonPropertyName("sha256")] public string Sha256 { get; set; } = "";
+    /// <summary>Path inside the .7z archive (wildcards allowed), extracted flat into the engine folder.</summary>
+    [JsonPropertyName("extract")] public string Extract { get; set; } = "";
+}
+
+public sealed class PlayerEngineSources
+{
+    [JsonPropertyName("version")] public string Version { get; set; } = "";
+    [JsonPropertyName("sevenZip")] public EngineFile SevenZip { get; set; } = new();
+    [JsonPropertyName("mpv")] public EngineFile Mpv { get; set; } = new();
+    [JsonPropertyName("ffmpeg")] public EngineFile Ffmpeg { get; set; } = new();
 }
 
 /// <summary>
@@ -106,6 +125,9 @@ public static class Catalog
 {
     public static List<Modlist> Items { get; private set; } = new();
     public static List<SoftwareItem> Software { get; private set; } = new();
+    /// <summary>Player engine sources: online/cached catalog first, else the ones built into this launcher.</summary>
+    public static PlayerEngineSources? PlayerEngine { get; private set; }
+    private static PlayerEngineSources? BuiltInPlayerEngine;
     public static string Source { get; private set; } = "";
 
     private static string CachePath => Path.Combine(AppConfig.DataDir, "catalog.json");
@@ -117,6 +139,7 @@ public static class Catalog
         var builtIn = Parse(s);
         BuiltInSaveFolders = builtIn.Modlists.Where(m => !string.IsNullOrWhiteSpace(m.SaveFolder)).ToDictionary(m => m.Id, m => m.SaveFolder!);
         BuiltInPcChecks = builtIn.Modlists.Where(m => m.PcCheck != null).ToDictionary(m => m.Id, m => m.PcCheck!);
+        BuiltInPlayerEngine = builtIn.PlayerEngine;
         Apply(builtIn);
         Source = "built-in";
         if (File.Exists(CachePath))
@@ -144,6 +167,7 @@ public static class Catalog
         }
         Items = c.Modlists;
         Software = c.Software.Where(x => x.Name.Length > 0 && x.Url.StartsWith("https://")).ToList();
+        PlayerEngine = c.PlayerEngine is { Mpv.Url.Length: > 0 } ? c.PlayerEngine : BuiltInPlayerEngine;
     }
 
     /// <summary>Tries to refresh from the internet. Returns true if the list changed source.</summary>

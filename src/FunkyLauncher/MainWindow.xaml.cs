@@ -54,6 +54,10 @@ public partial class MainWindow : Window
         // developer test: FunkyLauncher.exe --test-gamemode → opens Tools → Game mode (nothing is closed)
         if (args.Contains("--test-gamemode"))
             ContentRendered += (_, _) => { NavTools.IsChecked = true; _tools.ShowGame(); };
+        // developer test: FunkyLauncher.exe --test-player [file] → opens Funky Player (with the file)
+        var pi = Array.IndexOf(args, "--test-player");
+        if (pi >= 0)
+            ContentRendered += (_, _) => { NavTools.IsChecked = true; _tools.OpenPlayer(pi + 1 < args.Length ? args[pi + 1] : null); };
         if (args.Contains("--test-pccheck"))
             ContentRendered += (_, _) => { NavTools.IsChecked = true; _tools.ShowPc(); _tools.RunPcCheck(); };
         if (args.Contains("--test-problem"))

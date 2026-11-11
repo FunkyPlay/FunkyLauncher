@@ -6,7 +6,7 @@
             <TextBlock x:Name="PageTitle" FontFamily="{StaticResource TitleFont}" FontSize="28"/>
             <TextBlock x:Name="Subtitle" FontSize="14" Foreground="#C9C9D6" Margin="0,4,0,0"/>
         </StackPanel>
-        <UniformGrid x:Name="ToolCards" DockPanel.Dock="Top" Columns="4" Margin="0,0,0,8"/>
+        <UniformGrid x:Name="ToolCards" DockPanel.Dock="Top" Columns="5" Margin="0,0,0,8"/>
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <Border Style="{StaticResource CardBorder}" Padding="22,18" Margin="0,8,16,16">
                 <Grid>

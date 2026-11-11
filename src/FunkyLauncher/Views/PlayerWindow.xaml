@@ -1,0 +1,77 @@
+<Window x:Class="FunkyLauncher.Views.PlayerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Funky Player" Width="1360" Height="820" MinWidth="980" MinHeight="600" Icon="/Assets/launcher.ico"
+        WindowStartupLocation="CenterOwner" Background="{StaticResource Bg}" FontFamily="{StaticResource UiFont}"
+        AllowDrop="True" Drop="Window_Drop" PreviewKeyDown="Window_PreviewKeyDown" Closed="Window_Closed">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- recordings -->
+        <Border Grid.Column="0" Background="{StaticResource Panel}" Padding="16,18">
+            <DockPanel>
+                <TextBlock x:Name="ListTitle" DockPanel.Dock="Top" FontFamily="{StaticResource TitleFont}" FontSize="18"/>
+                <TextBlock x:Name="ListHint" DockPanel.Dock="Top" FontSize="12" Foreground="{StaticResource Muted}" TextWrapping="Wrap" Margin="0,4,0,10"/>
+                <Button x:Name="OpenButton" DockPanel.Dock="Top" Style="{StaticResource SecondaryButton}" Height="36" Margin="0,0,0,10" Click="Open_Click"/>
+                <ListBox x:Name="Files" Background="Transparent" BorderThickness="0" Foreground="{StaticResource Text}"
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="Files_SelectionChanged"/>
+            </DockPanel>
+        </Border>
+
+        <!-- player -->
+        <Grid Grid.Column="1" Margin="16">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Border x:Name="VideoBorder" Grid.Row="0" Background="Black" CornerRadius="10"/>
+
+            <!-- first start: engine download -->
+            <Border x:Name="SetupPanel" Grid.Row="0" Style="{StaticResource CardBorder}" Padding="28" VerticalAlignment="Center" HorizontalAlignment="Center" MaxWidth="560" Visibility="Collapsed">
+                <StackPanel>
+                    <TextBlock x:Name="SetupTitle" FontFamily="{StaticResource TitleFont}" FontSize="20"/>
+                    <TextBlock x:Name="SetupText" FontSize="13" Foreground="#C9C9D6" TextWrapping="Wrap" Margin="0,8,0,16"/>
+                    <Button x:Name="SetupButton" Style="{StaticResource PrimaryButton}" HorizontalAlignment="Left" Click="Setup_Click"/>
+                    <ProgressBar x:Name="SetupProgress" Height="8" Margin="0,16,0,0" Maximum="100" Visibility="Collapsed"/>
+                    <TextBlock x:Name="SetupStatus" FontSize="12.5" Foreground="{StaticResource Cyan}" TextWrapping="Wrap" Margin="0,8,0,0"/>
+                </StackPanel>
+            </Border>
+
+            <DockPanel Grid.Row="1" Margin="0,12,0,0">
+                <TextBlock x:Name="TimeText" DockPanel.Dock="Right" FontSize="13" Foreground="#C9C9D6" Margin="12,0,0,0" VerticalAlignment="Center" FontFamily="Consolas"/>
+                <Slider x:Name="Timeline" IsMoveToPointEnabled="True" VerticalAlignment="Center"
+                        PreviewMouseLeftButtonDown="Timeline_Down" PreviewMouseLeftButtonUp="Timeline_Up"/>
+            </DockPanel>
+
+            <WrapPanel Grid.Row="2" Margin="0,10,0,0">
+                <Button x:Name="BackButton" Style="{StaticResource SecondaryButton}" Height="38" Width="44" Padding="0" Content="◀|" Click="Back_Click" Margin="0,0,6,6"/>
+                <Button x:Name="PlayButton" Style="{StaticResource SecondaryButton}" Height="38" Width="56" Padding="0" Content="▶" Click="Play_Click" Margin="0,0,6,6"/>
+                <Button x:Name="NextButton" Style="{StaticResource SecondaryButton}" Height="38" Width="44" Padding="0" Content="|▶" Click="Next_Click" Margin="0,0,16,6"/>
+                <Button x:Name="InButton" Style="{StaticResource SecondaryButton}" Height="38" Padding="14,0" Click="In_Click" Margin="0,0,6,6"/>
+                <Button x:Name="OutButton" Style="{StaticResource SecondaryButton}" Height="38" Padding="14,0" Click="Out_Click" Margin="0,0,16,6"/>
+                <Button x:Name="FrameButton" Style="{StaticResource SecondaryButton}" Height="38" Padding="14,0" Click="Frame_Click" Margin="0,0,6,6"/>
+                <Button x:Name="CopyButton" Style="{StaticResource SecondaryButton}" Height="38" Padding="14,0" Click="Copy_Click" Margin="0,0,16,6"/>
+                <Button x:Name="AudioButton" Style="{StaticResource SecondaryButton}" Height="38" Padding="14,0" Click="Audio_Click" Margin="0,0,6,6"/>
+            </WrapPanel>
+
+            <StackPanel Grid.Row="3" Margin="0,6,0,0">
+                <WrapPanel>
+                    <TextBlock x:Name="MarksText" FontSize="13" Foreground="#C9C9D6" VerticalAlignment="Center" Margin="0,0,16,6"/>
+                    <Button x:Name="FastButton" Style="{StaticResource PrimaryButton}" Margin="0,0,10,6" Click="Fast_Click"/>
+                    <Button x:Name="ExactButton" Style="{StaticResource SecondaryButton}" Height="42" Padding="16,0" Margin="0,0,10,6" Click="Exact_Click"/>
+                    <CheckBox x:Name="MuteCheck" VerticalAlignment="Center" Margin="6,0,0,6"/>
+                </WrapPanel>
+                <DockPanel Margin="0,4,0,0">
+                    <Button x:Name="FolderButton" DockPanel.Dock="Right" Style="{StaticResource SecondaryButton}" Height="32" Padding="12,0" Click="Folder_Click" Visibility="Collapsed"/>
+                    <TextBlock x:Name="Message" FontSize="13" Foreground="{StaticResource Cyan}" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                </DockPanel>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

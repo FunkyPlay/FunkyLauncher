@@ -1,5 +1,23 @@
 {
   "version": 1,
+  "playerEngine": {
+    "version": "mpv-20261111+ffmpeg-9.0.2",
+    "sevenZip": {
+      "url": "https://www.7-zip.org/a/7zr.exe",
+      "sha256": "256feca8e274e5da655e2a284fabafd9f554365eb164862089dacd4e8276d282",
+      "extract": ""
+    },
+    "mpv": {
+      "url": "https://github.com/shinchiro/mpv-winbuild-cmake/releases/download/20261111/mpv-dev-x86_64-20261111-git-bcde6b93cc.7z",
+      "sha256": "273c079b11ea5575822f972756f4c9a71149a5c10130353abeb8586738938452",
+      "extract": "libmpv-2.dll"
+    },
+    "ffmpeg": {
+      "url": "https://github.com/GyanD/codexffmpeg/releases/download/9.0.2/ffmpeg-9.0.2-essentials_build.7z",
+      "sha256": "4705843ccaaf54257c16ad90f3e952ece33c17df964ecf7bfdbb0f49c7171077",
+      "extract": "*/bin/ffmpeg.exe"
+    }
+  },
   "modlists": [
     {
       "id": "neon-nights",
