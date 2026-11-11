@@ -6,7 +6,7 @@
             <TextBlock x:Name="PageTitle" FontFamily="{StaticResource TitleFont}" FontSize="28"/>
             <TextBlock x:Name="Subtitle" FontSize="14" Foreground="#C9C9D6" Margin="0,4,0,0"/>
         </StackPanel>
-        <UniformGrid x:Name="ToolCards" DockPanel.Dock="Top" Columns="3" Margin="0,0,0,8"/>
+        <UniformGrid x:Name="ToolCards" DockPanel.Dock="Top" Columns="4" Margin="0,0,0,8"/>
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <Border Style="{StaticResource CardBorder}" Padding="22,18" Margin="0,8,16,16">
                 <Grid>
@@ -30,6 +30,30 @@
                     </WrapPanel>
                     <TextBlock x:Name="DndHint" FontSize="12.5" Foreground="{StaticResource Muted}" TextWrapping="Wrap"/>
                     <TextBlock x:Name="ShootMessage" FontSize="13" Foreground="{StaticResource Cyan}" TextWrapping="Wrap" Margin="0,8,0,0"/>
+                </StackPanel>
+                <StackPanel x:Name="GamePanel" Visibility="Collapsed">
+                    <TextBlock x:Name="GameTitle" FontFamily="{StaticResource TitleFont}" FontSize="20"/>
+                    <TextBlock x:Name="GameStatus" FontSize="14" FontWeight="SemiBold" Margin="0,8,0,0"/>
+                    <TextBlock x:Name="GameIntro" FontSize="13" Foreground="#C9C9D6" TextWrapping="Wrap" Margin="0,6,0,0"/>
+                    <DockPanel Margin="0,14,0,6">
+                        <Button x:Name="GameRefresh" DockPanel.Dock="Right" Style="{StaticResource SecondaryButton}" Height="30" Padding="12,0" Click="GameRefresh_Click"/>
+                        <TextBlock x:Name="GameAppsTitle" FontSize="14" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                    </DockPanel>
+                    <WrapPanel x:Name="GameApps" Margin="0,0,0,4"/>
+                    <CheckBox x:Name="GameTorrents" Margin="0,10,0,0" Click="GameOption_Click"/>
+                    <CheckBox x:Name="GamePower" Margin="0,10,0,0" Click="GameOption_Click"/>
+                    <TextBlock x:Name="GamePowerNa" FontSize="12.5" Foreground="{StaticResource Muted}" TextWrapping="Wrap" Margin="0,10,0,0"/>
+                    <CheckBox x:Name="GameOneDrive" Margin="0,10,0,0" Click="GameOption_Click"/>
+                    <CheckBox x:Name="GameRelaunch" Margin="0,10,0,0" Click="GameOption_Click"/>
+                    <CheckBox x:Name="GameOnPlay" Margin="0,10,0,0" Click="GameOption_Click"/>
+                    <DockPanel x:Name="GameWinRow" Margin="0,12,0,0">
+                        <Button x:Name="GameWinButton" DockPanel.Dock="Right" Style="{StaticResource SecondaryButton}" Height="30" Padding="12,0" Click="GameWin_Click"/>
+                        <TextBlock x:Name="GameWinText" FontSize="12.5" Foreground="{StaticResource Pink}" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                    </DockPanel>
+                    <WrapPanel Margin="0,16,0,0">
+                        <Button x:Name="GameButton" Style="{StaticResource PrimaryButton}" Margin="0,0,12,8" Click="Game_Click"/>
+                    </WrapPanel>
+                    <TextBlock x:Name="GameMessage" FontSize="13" Foreground="{StaticResource Cyan}" TextWrapping="Wrap" Margin="0,4,0,0"/>
                 </StackPanel>
                 <StackPanel x:Name="PcPanel" Visibility="Collapsed">
                     <TextBlock x:Name="PcTitle" FontFamily="{StaticResource TitleFont}" FontSize="20"/>

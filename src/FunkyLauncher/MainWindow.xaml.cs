@@ -43,7 +43,7 @@ public partial class MainWindow : Window
         Activated += (_, _) => RefreshNexus(); // e.g. after logging in through Wabbajack
         RestoreWindow();
         Closing += (_, _) => SaveWindow();
-        ContentRendered += (_, _) => { ShowPrivacyNoticeOnce(); RemindRecordingMode(); };
+        ContentRendered += (_, _) => { ShowPrivacyNoticeOnce(); RemindRecordingMode(); RemindGameMode(); };
 
         // developer test: FunkyLauncher.exe --test-manual N  → manual download of the N smallest Nexus files into %TEMP%
         var args = Environment.GetCommandLineArgs();
@@ -51,6 +51,9 @@ public partial class MainWindow : Window
         // "--test-manual N big" → N-1 smallest files + one file of about 500 MB (slow download test)
         // developer test: FunkyLauncher.exe --test-problem → shows the "game crashed" window
         // developer test: FunkyLauncher.exe --test-pccheck → opens Tools → "Can my PC run it?" and runs the check
+        // developer test: FunkyLauncher.exe --test-gamemode → opens Tools → Game mode (nothing is closed)
+        if (args.Contains("--test-gamemode"))
+            ContentRendered += (_, _) => { NavTools.IsChecked = true; _tools.ShowGame(); };
         if (args.Contains("--test-pccheck"))
             ContentRendered += (_, _) => { NavTools.IsChecked = true; _tools.ShowPc(); _tools.RunPcCheck(); };
         if (args.Contains("--test-problem"))
@@ -196,7 +199,19 @@ public partial class MainWindow : Window
 
     /// <summary>"Tools ●" while recording mode is on — something on the PC is changed.</summary>
     public void RefreshToolsDot() =>
-        NavTools.Content = Loc.T("nav.tools") + (RecordingMode.IsActive ? "  ●" : "");
+        NavTools.Content = Loc.T("nav.tools") + (RecordingMode.IsActive || GameMode.IsActive ? "  ●" : "");
+
+    /// <summary>Game mode was left on (launcher closed or crashed during the game): offer to start the programs again.</summary>
+    private void RemindGameMode()
+    {
+        var st = GameMode.Load();
+        if (st?.Active != true) return;
+        if (MessageBox.Show(this, Loc.F("game.reminder", ToolsView.When(st.Started)), Loc.T("tools.game"),
+                MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes) return;
+        NavTools.IsChecked = true;
+        _tools.ShowGame();
+        _tools.TurnOffGame();
+    }
 
     /// <summary>Recording mode was left on (launcher closed, PC restarted): offer to put everything back.</summary>
     private void RemindRecordingMode()

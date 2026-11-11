@@ -192,11 +192,27 @@ public partial class LibraryView : UserControl
                 catch (Exception ex) { backupNote = Loc.F("backup.play.skip", ex.Message); }
             }
 
-            // 3) start and watch
+            // 3) game mode (if the player turned it on for PLAY): close the picked programs before the game
+            var gameModeByUs = false;
+            if (s.GameOnPlay && !GameMode.IsActive)
+            {
+                PlayMessage.Text = Loc.T("game.play.on");
+                try { await Task.Run(() => GameMode.Enable(ToolsView.GameOptions(s, byPlay: true))); gameModeByUs = true; }
+                catch { /* never blocks the game */ }
+                _main.RefreshToolsDot();
+            }
+
+            // 4) start and watch
             PlayService.Play(s, m);
             PlayMessage.Text = backupNote == null ? Loc.T("play.watch") : backupNote + "\n" + Loc.T("play.watch");
             _watching = true;
-            var report = await LaunchWatcher.WatchAsync(s, m, CancellationToken.None);
+            LaunchReport report;
+            try { report = await LaunchWatcher.WatchAsync(s, m, CancellationToken.None); }
+            finally
+            {
+                // the game has exited (or the watch failed): give the programs back
+                if (gameModeByUs) { try { await Task.Run(GameMode.Disable); } catch { } _main.RefreshToolsDot(); }
+            }
             _watching = false;
             PlayMessage.Text = "";
             if (report.Result != LaunchResult.Ok) await HandleProblemAsync(m, report);

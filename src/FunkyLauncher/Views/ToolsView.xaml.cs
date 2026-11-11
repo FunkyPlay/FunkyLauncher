@@ -45,7 +45,11 @@ public partial class ToolsView : UserControl
         ToolCards.Children.Add(ToolCard("⟲", Loc.T("tools.backup"), Loc.T("tools.backup.text"), "#FF3CC8", "backup", null));
         ToolCards.Children.Add(ToolCard("●", Loc.T("tools.shoot"), Loc.T("tools.shoot.text"), "#3CE6FF", "shoot",
             RecordingMode.IsActive ? Loc.T("tools.on") : null));
+        ToolCards.Children.Add(ToolCard("▶", Loc.T("tools.game"), Loc.T("tools.game.text"), "#46D46E", "game",
+            GameMode.IsActive ? Loc.T("tools.on") : null));
         ToolCards.Children.Add(ToolCard("✓", Loc.T("tools.pc"), Loc.T("tools.pc.text"), "#A07CFF", "pc", null));
+        GamePanel.Visibility = _tool == "game" ? Visibility.Visible : Visibility.Collapsed;
+        RefreshGame();
         BackupPanel.Visibility = _tool == "backup" ? Visibility.Visible : Visibility.Collapsed;
         ShootPanel.Visibility = _tool == "shoot" ? Visibility.Visible : Visibility.Collapsed;
         PcPanel.Visibility = _tool == "pc" ? Visibility.Visible : Visibility.Collapsed;
@@ -126,6 +130,122 @@ public partial class ToolsView : UserControl
         card.MouseLeftButtonUp += (_, _) => { _tool = id; Refresh(); };
         return card;
     }
+
+    // ---------- game mode ----------
+
+    private List<RunningApp>? _apps;
+
+    public void ShowGame() { _tool = "game"; Refresh(); }
+
+    private void RefreshGame()
+    {
+        var st = GameMode.Load();
+        var on = st?.Active == true;
+        GameTitle.Text = Loc.T("tools.game");
+        GameStatus.Text = on ? Loc.F("shoot.status.on", When(st!.Started)) : Loc.T("shoot.status.off");
+        GameStatus.Foreground = on ? (Brush)FindResource("Pink") : (Brush)FindResource("Muted");
+        GameIntro.Text = Loc.T("game.intro");
+        GameAppsTitle.Text = Loc.T("game.apps");
+        GameRefresh.Content = Loc.T("game.refresh");
+        GameTorrents.Content = Loc.T("game.torrents"); GameTorrents.IsChecked = S.GameTorrents;
+        var power = false;
+        try { power = GameMode.PowerModeAvailable(); } catch { }
+        GamePower.Content = Loc.T("game.power"); GamePower.IsChecked = S.GamePower;
+        GamePower.Visibility = power ? Visibility.Visible : Visibility.Collapsed;
+        GamePowerNa.Text = Loc.T("game.power.na");
+        GamePowerNa.Visibility = power ? Visibility.Collapsed : Visibility.Visible;
+        GameOneDrive.Content = Loc.T("game.onedrive"); GameOneDrive.IsChecked = S.GameOneDrive;
+        GameRelaunch.Content = Loc.T("game.relaunch"); GameRelaunch.IsChecked = S.GameRelaunch;
+        GameOnPlay.Content = Loc.T("game.onplay"); GameOnPlay.IsChecked = S.GameOnPlay;
+        var wgm = true;
+        try { wgm = GameMode.WindowsGameModeOn(); } catch { }
+        GameWinRow.Visibility = wgm ? Visibility.Collapsed : Visibility.Visible;
+        GameWinText.Text = Loc.T("game.wingm.off");
+        GameWinButton.Content = Loc.T("game.wingm.open");
+        GameButton.Content = on ? Loc.T("game.off") : Loc.T("game.on");
+        foreach (var c in new Control[] { GameTorrents, GamePower, GameOneDrive, GameRelaunch, GameRefresh }) c.IsEnabled = !on;
+        if (_tool == "game" && _apps == null && !on) LoadApps();
+        ShowApps(on);
+    }
+
+    private void LoadApps()
+    {
+        try { _apps = GameMode.RunningApps(); } catch { _apps = new(); }
+    }
+
+    private void ShowApps(bool on)
+    {
+        GameApps.Children.Clear();
+        if (on)
+        {
+            var closed = GameMode.Load()?.Closed ?? new();
+            foreach (var a in closed) GameApps.Children.Add(new TextBlock { Text = "✓ " + a.Name, FontSize = 13, Foreground = (Brush)FindResource("Muted"), Margin = new Thickness(0, 0, 18, 6) });
+            return;
+        }
+        var list = (_apps ?? new()).Where(a => !a.Torrent).ToList();
+        if (list.Count == 0) { GameApps.Children.Add(new TextBlock { Text = Loc.T("game.apps.empty"), FontSize = 13, Foreground = (Brush)FindResource("Muted") }); return; }
+        foreach (var a in list)
+        {
+            var cb = new CheckBox
+            {
+                Content = Loc.F("game.app", a.Title, Size(a.Bytes)), Margin = new Thickness(0, 0, 18, 8),
+                IsChecked = S.GameApps.Contains(a.Name, StringComparer.OrdinalIgnoreCase), Tag = a.Name,
+            };
+            cb.Click += (_, _) =>
+            {
+                S.GameApps.RemoveAll(x => string.Equals(x, a.Name, StringComparison.OrdinalIgnoreCase));
+                if (cb.IsChecked == true) S.GameApps.Add(a.Name);
+                S.Save();
+            };
+            GameApps.Children.Add(cb);
+        }
+    }
+
+    private void GameRefresh_Click(object sender, RoutedEventArgs e) { LoadApps(); RefreshGame(); }
+
+    private void GameOption_Click(object sender, RoutedEventArgs e)
+    {
+        S.GameTorrents = GameTorrents.IsChecked == true;
+        S.GamePower = GamePower.IsChecked == true;
+        S.GameOneDrive = GameOneDrive.IsChecked == true;
+        S.GameRelaunch = GameRelaunch.IsChecked == true;
+        S.GameOnPlay = GameOnPlay.IsChecked == true;
+        S.Save();
+    }
+
+    private void GameWin_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl("ms-settings:gaming-gamemode");
+
+    public void TurnOffGame() { if (GameMode.IsActive) Game_Click(this, new RoutedEventArgs()); }
+
+    private async void Game_Click(object sender, RoutedEventArgs e)
+    {
+        GameButton.IsEnabled = false;
+        var turnOn = !GameMode.IsActive;
+        string msg;
+        try
+        {
+            if (turnOn)
+            {
+                GameMessage.Text = Loc.T("game.working");
+                var (freed, errors) = await Task.Run(() => GameMode.Enable(GameOptions(S, byPlay: false)));
+                msg = Loc.F("game.done.on", Size(freed)) + (errors.Count > 0 ? "\n" + Loc.F("game.notclosed", string.Join(", ", errors)) : "");
+            }
+            else
+            {
+                var errors = await Task.Run(GameMode.Disable);
+                msg = errors.Count > 0 ? Loc.F("game.error", string.Join("; ", errors)) : Loc.T("game.done.off");
+                _apps = null;
+            }
+        }
+        catch (Exception ex) { msg = ex.Message; }
+        GameButton.IsEnabled = true;
+        Refresh();
+        _main.RefreshToolsDot();
+        GameMessage.Text = msg;
+    }
+
+    public static GameMode.Options GameOptions(Settings s, bool byPlay) =>
+        new(s.GameApps.ToList(), s.GameTorrents, s.GamePower, s.GameOneDrive, s.GameRelaunch, byPlay);
 
     // ---------- can my PC run it ----------
 

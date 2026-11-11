@@ -26,6 +26,14 @@ public sealed class Settings
     public bool ShootTaskbar { get; set; }
     public string ShootWallpaperFile { get; set; } = "";
 
+    /// <summary>Game mode: programs to close (process names), torrents, power mode, OneDrive, start them again, on PLAY.</summary>
+    public List<string> GameApps { get; set; } = new();
+    public bool GameTorrents { get; set; } = true;
+    public bool GamePower { get; set; } = true;
+    public bool GameOneDrive { get; set; }
+    public bool GameRelaunch { get; set; } = true;
+    public bool GameOnPlay { get; set; }
+
     /// <summary>Privacy: load Telegram news on start / refresh the modlist catalog from GitHub on start.</summary>
     public bool LoadNews { get; set; } = true;
     public bool UpdateCatalog { get; set; } = true;
