@@ -48,7 +48,7 @@ public partial class SoftView : UserControl
         names.Children.Add(new TextBlock { Text = s.Category.ToString(), FontSize = 12, Foreground = (Brush)FindResource("Muted") });
         head.Children.Add(names);
 
-        var button = new Button { Content = Loc.T("soft.open"), Style = (Style)FindResource("SecondaryButton"), Height = 38, Margin = new Thickness(0, 12, 0, 0) };
+        var button = new Button { Content = Loc.T(s.Url.StartsWith("https://t.me/") ? "soft.open.tg" : "soft.open"), Style = (Style)FindResource("SecondaryButton"), Height = 38, Margin = new Thickness(0, 12, 0, 0) };
         button.Click += (_, _) => PlayService.OpenUrl(s.Url);
 
         var body = new DockPanel();

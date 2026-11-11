@@ -120,7 +120,7 @@ public static class Loc
         ["start.free"] = ("🆓 Бесплатный аккаунт Nexus — тоже работает: у каждого мода нажать «Slow download», это дольше.", "🆓 Free Nexus account — works too: click “Slow download” for each mod, it takes longer."),
         ["start.library"] = ("ОТКРЫТЬ БИБЛИОТЕКУ", "OPEN LIBRARY"),
         ["start.whatsnew"] = ("Что нового · версия {0}", "What's new · version {0}"),
-        ["start.whatsnew.items"] = ("• После входа в Nexus кнопка УСТАНОВИТЬ включается сама — ничего не нужно перепроверять\n• ИГРАТЬ — только для сборки, которую поставил лаунчер. Найденную старую сборку можно проверить и использовать или установить заново\n• Настройки конфиденциальности: можно выключить новости и обновление списка сборок", "• After the Nexus login INSTALL turns on by itself — nothing to re-check\n• PLAY only for a modlist the launcher installed. An old modlist it finds can be checked and used, or installed again\n• Privacy settings: news and catalog updates can be turned off"),
+        ["start.whatsnew.items"] = ("• Новый раздел «Инструменты»\n• Бэкап сохранений: копия перед каждым запуском игры и возврат в один клик\n• Режим съёмки: чистый рабочий стол для записи и стримов одной кнопкой, второй — всё как было\n• Новый фирменный стиль: иконка и фоны", "• New Tools page\n• Save backup: a copy before every game launch, restored in one click\n• Recording mode: a clean desktop for recording and streaming in one click, press again — everything is back\n• New brand style: icon and backgrounds"),
         ["start.support"] = ("Поддержка", "Support"),
         ["start.support.text"] = ("Что-то не работает? Соберите отчёт и отправьте его нам в Telegram — разберёмся.", "Something not working? Make a report and send it to us on Telegram — we'll sort it out."),
         ["start.support.write"] = ("Написать в поддержку", "Contact support"),
@@ -140,6 +140,7 @@ public static class Loc
         ["soft.title"] = ("Полезный софт", "Useful software"),
         ["soft.subtitle"] = ("Проверенные программы для игр и модов. Кнопка открывает официальный сайт программы.", "Trusted programs for games and mods. The button opens the program's official website."),
         ["soft.open"] = ("Скачать с сайта", "Get from website"),
+        ["soft.open.tg"] = ("Открыть в Telegram", "Open in Telegram"),
 
         ["setup.back"] = ("← Библиотека", "← Library"),
         ["setup.update"] = ("ОБНОВИТЬ ДО {0}", "UPDATE TO {0}"),
