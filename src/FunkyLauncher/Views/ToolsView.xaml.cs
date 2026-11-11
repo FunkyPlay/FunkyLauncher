@@ -21,6 +21,7 @@ public partial class ToolsView : UserControl
         InitializeComponent();
         _main = main;
         Loc.Changed += Refresh;
+        ToolCards.SizeChanged += (_, e) => { if (e.WidthChanged) UpdateColumns(); };
         Refresh();
     }
 
@@ -53,7 +54,7 @@ public partial class ToolsView : UserControl
             ToolCards.Children.Add(ToolCard("▦", Loc.T("tools.desktops"), Loc.T("tools.desktops.text"), "#3CA0FF", "desktops", S.DesktopsOn ? Loc.T("tools.on") : null));
         if (ProModules.Active)
             ToolCards.Children.Add(ToolCard("★", "Funky Pro", Loc.T("tools.pro.text"), "#FF3FD2", "pro", Loc.T("tools.on")));
-        ToolCards.Columns = ToolCards.Children.Count > 5 ? 3 : 5;
+        UpdateColumns();
         ProPanel.Visibility = _tool == "pro" ? Visibility.Visible : Visibility.Collapsed;
         if (_tool == "pro") RefreshPro();
         DeskPanel.Visibility = _tool == "desktops" ? Visibility.Visible : Visibility.Collapsed;
@@ -143,6 +144,21 @@ public partial class ToolsView : UserControl
             _tool = id; Refresh();
         };
         return card;
+    }
+
+    /// <summary>Tool cards are at least ~250 px wide: a narrow window gets 3 per row (+ a second row), a wide one all in a row.</summary>
+    private const double MinCardWidth = 250;
+
+    private void UpdateColumns()
+    {
+        var count = Math.Max(1, ToolCards.Children.Count);
+        var width = ToolCards.ActualWidth > 0 ? ToolCards.ActualWidth : ActualWidth - 56;
+        var fit = width > 0 ? (int)(width / MinCardWidth) : 3;
+        var cols = Math.Clamp(fit, 1, count);
+        // balance the rows: 5 cards in a 4-wide window → 3 + 2 instead of 4 + 1
+        var rows = (int)Math.Ceiling(count / (double)cols);
+        cols = (int)Math.Ceiling(count / (double)rows);
+        if (ToolCards.Columns != cols) ToolCards.Columns = cols;
     }
 
     // ---------- Funky Pro ----------
