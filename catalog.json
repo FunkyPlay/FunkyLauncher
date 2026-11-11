@@ -76,6 +76,14 @@
   ],
   "software": [
     {
+      "id": "funkydiscount",
+      "name": "FunkyDiscount — бот скидок",
+      "category": { "ru": "Наше", "en": "Ours" },
+      "description": { "ru": "Цены на игру во всех магазинах и уведомление, когда она подешевеет. Бесплатно, в Telegram.", "en": "Game prices across stores and a ping when it goes on sale. Free, in Telegram." },
+      "url": "https://t.me/FunkyDiscountBot",
+      "color": "#FF3FD2"
+    },
+    {
       "id": "7zip",
       "name": "7-Zip",
       "category": { "ru": "Архиватор", "en": "Archiver" },
@@ -122,6 +130,62 @@
       "description": { "ru": "Меняет версию DLSS в играх на более новую — чётче картинка.", "en": "Swaps DLSS in your games for a newer version — sharper image." },
       "url": "https://github.com/beeradmoore/dlss-swapper",
       "color": "#FF3CC8"
+    },
+    {
+      "id": "amd-adrenalin",
+      "name": "AMD Software: Adrenalin",
+      "category": { "ru": "Драйверы и запись", "en": "Drivers and recording" },
+      "description": { "ru": "Драйверы и настройки для видеокарт AMD, запись игры.", "en": "Drivers and settings for AMD graphics cards, game recording." },
+      "url": "https://www.amd.com/en/products/software/adrenalin.html",
+      "color": "#ED1C24"
+    },
+    {
+      "id": "ddu",
+      "name": "Display Driver Uninstaller (DDU)",
+      "category": { "ru": "Драйверы", "en": "Drivers" },
+      "description": { "ru": "Начисто удаляет драйвер видеокарты. Помогает при вылетах и чёрном экране после обновления.", "en": "Fully removes the graphics driver. Helps with crashes and black screens after an update." },
+      "url": "https://www.wagnardsoft.com/display-driver-uninstaller-DDU-",
+      "color": "#FF8A3C"
+    },
+    {
+      "id": "obs",
+      "name": "OBS Studio",
+      "category": { "ru": "Запись и стримы", "en": "Recording and streaming" },
+      "description": { "ru": "Бесплатная запись игры и стримы на любой видеокарте.", "en": "Free game recording and streaming on any graphics card." },
+      "url": "https://obsproject.com/",
+      "color": "#9AA4B8"
+    },
+    {
+      "id": "hwinfo",
+      "name": "HWiNFO",
+      "category": { "ru": "Мониторинг", "en": "Monitoring" },
+      "description": { "ru": "Все датчики ПК: видно, что перегревается перед вылетом.", "en": "Every PC sensor: see what overheats before a crash." },
+      "url": "https://www.hwinfo.com/",
+      "color": "#3CA0FF"
+    },
+    {
+      "id": "tmog",
+      "name": "TMOG",
+      "category": { "ru": "Мониторинг", "en": "Monitoring" },
+      "description": { "ru": "Диспетчер задач от автора стандартного: показывает, что тормозит ПК.", "en": "Task manager from the author of the original one: shows what slows your PC down." },
+      "url": "https://tmog.org/",
+      "color": "#7AE8FF"
+    },
+    {
+      "id": "wiztree",
+      "name": "WizTree",
+      "category": { "ru": "Диск", "en": "Disk" },
+      "description": { "ru": "За секунды показывает, что занимает место. Сборкам нужно 40+ ГБ.", "en": "Shows in seconds what fills your disk. Modlists need 40+ GB." },
+      "url": "https://diskanalyzer.com/",
+      "color": "#46D46E"
+    },
+    {
+      "id": "soundlock",
+      "name": "Sound Lock",
+      "category": { "ru": "Звук", "en": "Sound" },
+      "description": { "ru": "Ограничивает громкость ПК: взрывы в игре ночью не разбудят соседей.", "en": "Caps your PC volume so loud scenes at night don't wake anyone." },
+      "url": "https://www.3appes.com/en/sound-lock",
+      "color": "#FFC83C"
     }
   ]
 }
