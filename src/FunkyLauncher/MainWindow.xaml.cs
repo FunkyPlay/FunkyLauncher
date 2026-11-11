@@ -18,6 +18,7 @@ public partial class MainWindow : Window
     private readonly LibraryView _library;
     private readonly SetupView _setup;
     private readonly SoftView _soft;
+    private readonly ToolsView _tools;
     private readonly SettingsView _settingsView;
 
     public MainWindow()
@@ -31,6 +32,7 @@ public partial class MainWindow : Window
         _library = new LibraryView(this);
         _setup = new SetupView(this);
         _soft = new SoftView();
+        _tools = new ToolsView(this);
         _settingsView = new SettingsView(this);
 
         (Loc.Lang == "en" ? LangEn : LangRu).IsChecked = true;
@@ -117,6 +119,7 @@ public partial class MainWindow : Window
             _home.Refresh();
             _library.Refresh();
             _soft.Refresh();
+            _tools.Refresh();
         }
     }
 
@@ -125,6 +128,7 @@ public partial class MainWindow : Window
         NavHome.Content = Loc.T("nav.home");
         NavLibrary.Content = Loc.T("nav.library");
         NavSoft.Content = Loc.T("nav.soft");
+        NavTools.Content = Loc.T("nav.tools");
         NavSettings.Content = Loc.T("nav.settings");
         RefreshNexus();
     }
@@ -187,6 +191,13 @@ public partial class MainWindow : Window
         else NavSoft.IsChecked = true;
     }
 
+    /// <summary>Tools page (save backup) — e.g. from the backup line in the library.</summary>
+    public void ShowTools()
+    {
+        if (NavTools.IsChecked == true) { _tools.Refresh(); Page.Content = _tools; }
+        else NavTools.IsChecked = true;
+    }
+
     public void ShowLibrary()
     {
         if (NavLibrary.IsChecked == true) { _library.Refresh(); Page.Content = _library; }
@@ -207,7 +218,7 @@ public partial class MainWindow : Window
     /// </summary>
     private void Nav_Click(object sender, RoutedEventArgs e)
     {
-        var target = sender == NavHome ? (object)_home : sender == NavLibrary ? _library : sender == NavSoft ? _soft : _settingsView;
+        var target = sender == NavHome ? (object)_home : sender == NavLibrary ? _library : sender == NavSoft ? _soft : sender == NavTools ? _tools : _settingsView;
         if (!ReferenceEquals(Page.Content, target)) Nav_Checked(sender, e);
     }
 
@@ -224,6 +235,7 @@ public partial class MainWindow : Window
         if (sender == NavHome) { _home.Refresh(); Page.Content = _home; }
         else if (sender == NavLibrary) { _library.Refresh(); Page.Content = _library; }
         else if (sender == NavSoft) { _soft.Refresh(); Page.Content = _soft; }
+        else if (sender == NavTools) { _tools.Refresh(); Page.Content = _tools; }
         else if (sender == NavSettings) { _settingsView.Refresh(); Page.Content = _settingsView; }
     }
 

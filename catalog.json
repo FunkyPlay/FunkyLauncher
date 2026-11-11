@@ -32,6 +32,7 @@
       "mo2Profile": "Wabbajack",
       "mo2Executable": "Cyberpunk 2077",
       "gameExe": "Cyberpunk2077.exe",
+      "saveFolder": "{SavedGames}\\CD Projekt Red\\Cyberpunk 2077",
       "defaultInstallDir": "C:\\Games\\NeonNights"
     },
     {

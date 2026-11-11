@@ -83,6 +83,7 @@ public partial class LibraryView : UserControl
             AddStatus(WabbajackService.IsNexusLoggedIn, WabbajackService.IsNexusLoggedIn ? Loc.T("check.nexus.ok") : Loc.T("check.nexus.no"));
             if (update) AddStatus(false, Loc.F("lib.update.available", m.Version));
             if (prev != null) AddStatus(true, Loc.F("lib.previous", prev.Version));
+            if (installed && BackupService.Supported(m)) AddBackupStatus(m);
         }
         if (!_watching) PlayMessage.Text = "";
     }
@@ -98,6 +99,24 @@ public partial class LibraryView : UserControl
             Margin = new Thickness(0, 0, 0, 6),
             Foreground = ok ? new SolidColorBrush(Color.FromRgb(0xC9, 0xC9, 0xD6)) : (Brush)FindResource("Pink"),
         });
+
+    /// <summary>"Save backup: today 21:40 · open" — a click opens Tools.</summary>
+    private void AddBackupStatus(Modlist m)
+    {
+        BackupInfo? last = null;
+        try { last = BackupService.Latest(_main.Settings, m); } catch { /* unreadable backup folder */ }
+        var line = new TextBlock
+        {
+            Text = (last != null ? "✓  " : "•  ") + (last != null ? Loc.F("lib.backup.last", ToolsView.When(last.Date)) : Loc.T("lib.backup.none")),
+            FontSize = 13,
+            TextWrapping = TextWrapping.Wrap,
+            Margin = new Thickness(0, 0, 0, 6),
+            Foreground = (Brush)FindResource("Cyan"),
+            Cursor = Cursors.Hand,
+        };
+        line.MouseLeftButtonUp += (_, _) => _main.ShowTools();
+        StatusList.Children.Add(line);
+    }
 
     private Border Card(Modlist m)
     {
@@ -164,9 +183,18 @@ public partial class LibraryView : UserControl
                 if (answer != MessageBoxResult.Yes) { PlayMessage.Text = ""; return; }
             }
 
-            // 2) start and watch
+            // 2) save backup (never blocks the game: a failed backup is only reported)
+            string? backupNote = null;
+            if (s.AutoBackup && BackupService.Supported(m) && !BackupService.GameRunning(m))
+            {
+                PlayMessage.Text = Loc.T("backup.working");
+                try { await BackupService.CreateAsync(s, m, BackupKind.Auto, CancellationToken.None); }
+                catch (Exception ex) { backupNote = Loc.F("backup.play.skip", ex.Message); }
+            }
+
+            // 3) start and watch
             PlayService.Play(s, m);
-            PlayMessage.Text = Loc.T("play.watch");
+            PlayMessage.Text = backupNote == null ? Loc.T("play.watch") : backupNote + "\n" + Loc.T("play.watch");
             _watching = true;
             var report = await LaunchWatcher.WatchAsync(s, m, CancellationToken.None);
             _watching = false;

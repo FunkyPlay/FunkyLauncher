@@ -15,6 +15,10 @@ public sealed class Settings
     public string Language { get; set; } = "";
     public string SelectedId { get; set; } = "neon-nights";
 
+    /// <summary>Save backups: one before every PLAY; where backups live ("" = %LOCALAPPDATA%\FunkyLauncher\Backups).</summary>
+    public bool AutoBackup { get; set; } = true;
+    public string BackupDir { get; set; } = "";
+
     /// <summary>Privacy: load Telegram news on start / refresh the modlist catalog from GitHub on start.</summary>
     public bool LoadNews { get; set; } = true;
     public bool UpdateCatalog { get; set; } = true;

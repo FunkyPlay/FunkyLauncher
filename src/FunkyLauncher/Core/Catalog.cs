@@ -50,6 +50,28 @@ public sealed class Modlist
     [JsonPropertyName("gameExe")] public string GameExe { get; set; } = "";
     [JsonPropertyName("defaultInstallDir")] public string DefaultInstallDir { get; set; } = "";
 
+    /// <summary>
+    /// Where the game keeps its saves, for save backups. Tokens: {SavedGames}, {Documents}, {LocalAppData}, {AppData}.
+    /// Example: "{SavedGames}\\CD Projekt Red\\Cyberpunk 2077".
+    /// </summary>
+    [JsonPropertyName("saveFolder")] public string? SaveFolder { get; set; }
+
+    /// <summary>The real save folder on this PC (Documents may live in OneDrive), or null if unknown.</summary>
+    public string? ResolveSaveFolder()
+    {
+        if (string.IsNullOrWhiteSpace(SaveFolder)) return null;
+        try
+        {
+            var p = SaveFolder
+                .Replace("{SavedGames}", KnownFolders.SavedGames, StringComparison.OrdinalIgnoreCase)
+                .Replace("{Documents}", Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), StringComparison.OrdinalIgnoreCase)
+                .Replace("{LocalAppData}", Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), StringComparison.OrdinalIgnoreCase)
+                .Replace("{AppData}", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), StringComparison.OrdinalIgnoreCase);
+            return p.Contains('{') || !Path.IsPathFullyQualified(p) ? null : Path.GetFullPath(p);
+        }
+        catch { return null; }
+    }
+
     public bool IsReleased => Status == "released";
     public long RequiredFreeBytes => (SizeGb + 5L) * 1024 * 1024 * 1024;
 }
@@ -89,7 +111,9 @@ public static class Catalog
     {
         var uri = new Uri("pack://application:,,,/catalog.json");
         using var s = System.Windows.Application.GetResourceStream(uri)!.Stream;
-        Apply(Parse(s));
+        var builtIn = Parse(s);
+        BuiltInSaveFolders = builtIn.Modlists.Where(m => !string.IsNullOrWhiteSpace(m.SaveFolder)).ToDictionary(m => m.Id, m => m.SaveFolder!);
+        Apply(builtIn);
         Source = "built-in";
         if (File.Exists(CachePath))
         {
@@ -103,8 +127,13 @@ public static class Catalog
         }
     }
 
+    /// <summary>Save folders known to this launcher version — used when an online/cached catalog has none.</summary>
+    private static Dictionary<string, string> BuiltInSaveFolders = new();
+
     private static void Apply(CatalogFile c)
     {
+        foreach (var m in c.Modlists)
+            if (string.IsNullOrWhiteSpace(m.SaveFolder) && BuiltInSaveFolders.TryGetValue(m.Id, out var f)) m.SaveFolder = f;
         Items = c.Modlists;
         Software = c.Software.Where(x => x.Name.Length > 0 && x.Url.StartsWith("https://")).ToList();
     }
@@ -141,4 +170,28 @@ public static class Catalog
         c.Modlists = c.Modlists.Where(m => m.Id.Length > 0).ToList();
         return c;
     }
+}
+
+/// <summary>Windows folders that have no Environment.SpecialFolder value.</summary>
+internal static class KnownFolders
+{
+    private static readonly Guid SavedGamesId = new("4C5C32FF-BB9D-43b0-B5B4-2D72E54EAAA4");
+
+    public static string SavedGames
+    {
+        get
+        {
+            if (SHGetKnownFolderPath(SavedGamesId, 0, IntPtr.Zero, out var ptr) == 0)
+            {
+                try { return System.Runtime.InteropServices.Marshal.PtrToStringUni(ptr) ?? Fallback; }
+                finally { System.Runtime.InteropServices.Marshal.FreeCoTaskMem(ptr); }
+            }
+            return Fallback;
+        }
+    }
+
+    private static string Fallback => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Saved Games");
+
+    [System.Runtime.InteropServices.DllImport("shell32.dll")]
+    private static extern int SHGetKnownFolderPath([System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.LPStruct)] Guid rfid, uint dwFlags, IntPtr hToken, out IntPtr ppszPath);
 }
