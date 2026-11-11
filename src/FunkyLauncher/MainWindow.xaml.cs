@@ -55,6 +55,7 @@ public partial class MainWindow : Window
         // Funky Desktops is a test only for Funky: turned on once with --enable-desktops
         if (args.Contains("--enable-desktops") && !Settings.DesktopsBeta) { Settings.DesktopsBeta = true; Settings.Save(); }
         StartDesktops();
+        ProModules.Refresh(Settings); // Funky Pro: loads the module only with a valid key
         var i = Array.IndexOf(args, "--test-manual");
         // "--test-manual N big" → N-1 smallest files + one file of about 500 MB (slow download test)
         // developer test: FunkyLauncher.exe --test-problem → shows the "game crashed" window
@@ -69,6 +70,9 @@ public partial class MainWindow : Window
         // developer test: FunkyLauncher.exe --test-desktops → opens Tools → Funky Desktops (changes nothing)
         if (args.Contains("--test-desktops"))
             ContentRendered += (_, _) => { NavTools.IsChecked = true; _tools.ShowDesktops(); };
+        // developer test: FunkyLauncher.exe --test-pro → opens Tools → Funky Pro
+        if (args.Contains("--test-pro"))
+            ContentRendered += (_, _) => { NavTools.IsChecked = true; _tools.ShowPro(); };
         if (args.Contains("--test-pccheck"))
             ContentRendered += (_, _) => { NavTools.IsChecked = true; _tools.ShowPc(); _tools.RunPcCheck(); };
         if (args.Contains("--test-problem"))
@@ -237,6 +241,9 @@ public partial class MainWindow : Window
 
     /// <summary>Applies the icon set of the current desktop right away (after the player changed a checkbox).</summary>
     public void ApplyDesktopNow() { _lastDesk = null; DeskTick(); }
+
+    /// <summary>The Pro key was added or removed.</summary>
+    public void OnProChanged() { ProModules.Refresh(Settings); _tools.Refresh(); }
 
     private void StartDesktops()
     {

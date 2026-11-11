@@ -35,6 +35,9 @@ public sealed class Settings
     public bool GameOnPlay { get; set; }
 
     /// <summary>Funky Desktops (test, hidden unless enabled with --enable-desktops): on/off and, per virtual desktop id, the icons hidden there.</summary>
+    /// <summary>Funky Pro key ("FPRO-…"), checked offline by ProLicense.</summary>
+    public string ProKey { get; set; } = "";
+
     public bool DesktopsBeta { get; set; }
     public bool DesktopsOn { get; set; }
     public Dictionary<string, List<string>> DesktopHide { get; set; } = new();

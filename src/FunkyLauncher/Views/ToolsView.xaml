@@ -31,6 +31,11 @@
                     <TextBlock x:Name="DndHint" FontSize="12.5" Foreground="{StaticResource Muted}" TextWrapping="Wrap"/>
                     <TextBlock x:Name="ShootMessage" FontSize="13" Foreground="{StaticResource Cyan}" TextWrapping="Wrap" Margin="0,8,0,0"/>
                 </StackPanel>
+                <StackPanel x:Name="ProPanel" Visibility="Collapsed">
+                    <TextBlock x:Name="ProTitle" FontFamily="{StaticResource TitleFont}" FontSize="20" Text="Funky Pro"/>
+                    <TextBlock x:Name="ProInfo" FontSize="13" Foreground="#C9C9D6" TextWrapping="Wrap" Margin="0,8,0,10"/>
+                    <ContentControl x:Name="ProHost"/>
+                </StackPanel>
                 <StackPanel x:Name="DeskPanel" Visibility="Collapsed">
                     <TextBlock x:Name="DeskTitle" FontFamily="{StaticResource TitleFont}" FontSize="20"/>
                     <TextBlock x:Name="DeskStatus" FontSize="14" FontWeight="SemiBold" Margin="0,8,0,0"/>

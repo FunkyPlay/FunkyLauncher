@@ -35,7 +35,13 @@ public sealed class BackupInfo
 /// </summary>
 public static class BackupService
 {
-    public const int KeepAuto = 10;
+    public const int FreeKeepAuto = 10;
+
+    /// <summary>Automatic backups kept (10; more with Funky Pro).</summary>
+    public static int KeepAuto => ProModules.Use?.AutoBackupsToKeep(FreeKeepAuto) ?? FreeKeepAuto;
+
+    /// <summary>A backup was made: (modlist id, modlist title, backup folder). Funky Pro copies it to the cloud.</summary>
+    public static event Action<string, string, string>? Created;
     private const string InfoName = "backup.json";
     private static readonly JsonSerializerOptions Json = new() { WriteIndented = true };
     private static readonly SemaphoreSlim Lock = new(1, 1);
@@ -143,6 +149,7 @@ public static class BackupService
         info.Dir = dir;
 
         if (kind == BackupKind.Auto) PruneAuto(s, m);
+        try { Created?.Invoke(m.Id, m.Title, dir); } catch { /* a Pro hook never breaks a backup */ }
         return info;
     }
 

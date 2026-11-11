@@ -20,6 +20,20 @@
             </StackPanel>
         </Border>
 
+        <TextBlock x:Name="ProLabel" FontSize="14" FontWeight="SemiBold" Foreground="{StaticResource Muted}" Margin="0,32,0,8"/>
+        <Border Style="{StaticResource CardBorder}">
+            <StackPanel>
+                <TextBlock x:Name="ProStatus" FontSize="15" FontWeight="SemiBold" TextWrapping="Wrap"/>
+                <TextBlock x:Name="ProText" FontSize="12.5" Foreground="{StaticResource Muted}" TextWrapping="Wrap" Margin="0,6,0,12"/>
+                <DockPanel>
+                    <Button x:Name="ProRemove" DockPanel.Dock="Right" Style="{StaticResource SecondaryButton}" Margin="10,0,0,0" Click="ProRemove_Click"/>
+                    <Button x:Name="ProActivate" DockPanel.Dock="Right" Style="{StaticResource SecondaryButton}" Margin="10,0,0,0" Click="ProActivate_Click"/>
+                    <TextBox x:Name="ProKeyBox" FontFamily="Consolas" FontSize="12"/>
+                </DockPanel>
+                <TextBlock x:Name="ProMessage" FontSize="12.5" Foreground="{StaticResource Cyan}" TextWrapping="Wrap" Margin="0,8,0,0"/>
+            </StackPanel>
+        </Border>
+
         <TextBlock x:Name="AboutLabel" FontSize="14" FontWeight="SemiBold" Foreground="{StaticResource Muted}" Margin="0,32,0,8"/>
         <Border Style="{StaticResource CardBorder}">
             <TextBlock x:Name="AboutText" FontSize="14" LineHeight="21"/>

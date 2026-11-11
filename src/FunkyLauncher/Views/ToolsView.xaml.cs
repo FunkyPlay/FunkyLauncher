@@ -51,7 +51,11 @@ public partial class ToolsView : UserControl
         ToolCards.Children.Add(ToolCard("▷", Loc.T("tools.player"), Loc.T("tools.player.text"), "#FF8A3C", "player", null));
         if (S.DesktopsBeta)
             ToolCards.Children.Add(ToolCard("▦", Loc.T("tools.desktops"), Loc.T("tools.desktops.text"), "#3CA0FF", "desktops", S.DesktopsOn ? Loc.T("tools.on") : null));
+        if (ProModules.Active)
+            ToolCards.Children.Add(ToolCard("★", "Funky Pro", Loc.T("tools.pro.text"), "#FF3FD2", "pro", Loc.T("tools.on")));
         ToolCards.Columns = ToolCards.Children.Count > 5 ? 3 : 5;
+        ProPanel.Visibility = _tool == "pro" ? Visibility.Visible : Visibility.Collapsed;
+        if (_tool == "pro") RefreshPro();
         DeskPanel.Visibility = _tool == "desktops" ? Visibility.Visible : Visibility.Collapsed;
         if (_tool == "desktops") RefreshDesk();
         GamePanel.Visibility = _tool == "game" ? Visibility.Visible : Visibility.Collapsed;
@@ -139,6 +143,29 @@ public partial class ToolsView : UserControl
             _tool = id; Refresh();
         };
         return card;
+    }
+
+    // ---------- Funky Pro ----------
+
+    private FrameworkElement? _proPanel;
+
+    public void ShowPro() { _tool = "pro"; Refresh(); }
+
+    private void RefreshPro()
+    {
+        var (_, info) = ProLicense.Check(S.ProKey, DateTime.UtcNow);
+        var until = info?.Until.ToString("dd.MM.yyyy") ?? "";
+        if (ProModules.Use is { } m)
+        {
+            ProInfo.Text = Loc.F("tools.pro.active", until, m.Version);
+            try { _proPanel ??= m.CreatePanel(); } catch (Exception ex) { ProInfo.Text += "\n" + ex.Message; }
+            ProHost.Content = _proPanel;
+        }
+        else
+        {
+            ProInfo.Text = Loc.F(ProModules.Installed ? "tools.pro.loaderror" : "tools.pro.nomodule", until, ProModules.LoadError ?? "");
+            ProHost.Content = null;
+        }
     }
 
     // ---------- Funky Desktops (test) ----------
