@@ -95,10 +95,10 @@ public static class RecordingMode
     public static string BrandWallpaper()
     {
         Directory.CreateDirectory(Dir);
-        var path = Path.Combine(Dir, "funkyplay-wallpaper.jpg");
+        var path = Path.Combine(Dir, "funkyplay-wallpaper-v4.jpg");
         if (!File.Exists(path))
         {
-            using var src = System.Windows.Application.GetResourceStream(new Uri("pack://application:,,,/Assets/home_bg.jpg"))!.Stream;
+            using var src = System.Windows.Application.GetResourceStream(new Uri("pack://application:,,,/Assets/wallpaper.jpg"))!.Stream;
             using var dst = File.Create(path);
             src.CopyTo(dst);
         }
