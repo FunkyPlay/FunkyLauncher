@@ -272,7 +272,7 @@ public partial class LibraryView : UserControl
                     var file = await ReportService.CreateAsync(_main.Settings, m, CancellationToken.None);
                     PlayMessage.Text = Loc.F("start.report.done", Path.GetFileName(file));
                     System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("explorer.exe", $"/select,\"{file}\"") { UseShellExecute = true });
-                    PlayService.OpenSupportChat(Loc.F("report.send.text", Path.GetFileName(file)));
+                    PlayService.OpenSupportChat(Loc.F("report.send.text", Path.GetFileName(file)), _main.Settings, m);
                 }
                 catch (Exception ex) { PlayMessage.Text = Loc.F("start.report.error", ex.Message); }
                 break;
