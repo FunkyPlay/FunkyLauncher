@@ -32,10 +32,10 @@
                             <ColumnDefinition Width="10"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Border CornerRadius="10" Background="#C02A1426" BorderBrush="#66FF3CC8" BorderThickness="1" Padding="12,7">
+                        <Border CornerRadius="10" Background="#C02A1426" BorderBrush="#66FF3FD2" BorderThickness="1" Padding="12,7">
                             <TextBlock x:Name="PremiumText" FontSize="12.5" Foreground="#FFC6EE" TextWrapping="Wrap"/>
                         </Border>
-                        <Border Grid.Column="2" CornerRadius="10" Background="#C00F2A33" BorderBrush="#663CE6FF" BorderThickness="1" Padding="12,7">
+                        <Border Grid.Column="2" CornerRadius="10" Background="#C00F2A33" BorderBrush="#667AE8FF" BorderThickness="1" Padding="12,7">
                             <TextBlock x:Name="FreeText" FontSize="12.5" Foreground="#C6F7FF" TextWrapping="Wrap"/>
                         </Border>
                     </Grid>

@@ -131,7 +131,7 @@ public partial class SetupView : UserControl
         var icon = new Border
         {
             Width = 28, Height = 28, CornerRadius = new CornerRadius(14), Margin = new Thickness(0, 0, 14, 0),
-            Background = error ? (Brush)FindResource("Pink") : new SolidColorBrush(Color.FromArgb(0x29, 0x3C, 0xE6, 0xFF)),
+            Background = error ? (Brush)FindResource("Pink") : new SolidColorBrush(Color.FromArgb(0x29, 0x7A, 0xE8, 0xFF)),
             Child = new TextBlock
             {
                 Text = c.State switch { CheckState.Ok => "✓", CheckState.Warning => "i", _ => "!" },

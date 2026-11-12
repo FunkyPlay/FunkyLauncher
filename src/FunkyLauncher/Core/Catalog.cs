@@ -87,8 +87,8 @@ public sealed class SoftwareItem
     [JsonPropertyName("category")] public LocText Category { get; set; } = new();
     [JsonPropertyName("description")] public LocText Description { get; set; } = new();
     [JsonPropertyName("url")] public string Url { get; set; } = "";
-    /// <summary>Tile color, e.g. "#FF3CC8".</summary>
-    [JsonPropertyName("color")] public string Color { get; set; } = "#3CE6FF";
+    /// <summary>Tile color, e.g. "#FF3FD2".</summary>
+    [JsonPropertyName("color")] public string Color { get; set; } = "#7AE8FF";
 }
 
 public sealed class CatalogFile

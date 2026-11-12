@@ -10,8 +10,8 @@
         <Color x:Key="CardActiveColor">#262632</Color>
         <Color x:Key="TextColor">#F2F2F7</Color>
         <Color x:Key="MutedColor">#A3A3B5</Color>
-        <Color x:Key="PinkColor">#FF3CC8</Color>
-        <Color x:Key="CyanColor">#3CE6FF</Color>
+        <Color x:Key="PinkColor">#FF3FD2</Color>
+        <Color x:Key="CyanColor">#7AE8FF</Color>
         <SolidColorBrush x:Key="Bg" Color="{StaticResource BgColor}"/>
         <SolidColorBrush x:Key="Panel" Color="{StaticResource PanelColor}"/>
         <SolidColorBrush x:Key="Card" Color="{StaticResource CardColor}"/>
@@ -47,7 +47,7 @@
                     <ControlTemplate TargetType="Button">
                         <Border x:Name="b" Background="{TemplateBinding Background}" CornerRadius="12" Padding="{TemplateBinding Padding}">
                             <Border.Effect>
-                                <DropShadowEffect Color="#FF3CC8" BlurRadius="26" ShadowDepth="0" Opacity="0.55"/>
+                                <DropShadowEffect Color="#FF3FD2" BlurRadius="26" ShadowDepth="0" Opacity="0.55"/>
                             </Border.Effect>
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>

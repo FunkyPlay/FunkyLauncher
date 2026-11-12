@@ -125,7 +125,7 @@
       "category": { "ru": "Архиватор", "en": "Archiver" },
       "description": { "ru": "Бесплатно открывает архивы модов .7z, .zip и .rar.", "en": "Free tool that opens mod archives: .7z, .zip and .rar." },
       "url": "https://www.7-zip.org/",
-      "color": "#3CE6FF"
+      "color": "#7AE8FF"
     },
     {
       "id": "nvidia-app",
@@ -165,7 +165,7 @@
       "category": { "ru": "Графика", "en": "Graphics" },
       "description": { "ru": "Меняет версию DLSS в играх на более новую — чётче картинка.", "en": "Swaps DLSS in your games for a newer version — sharper image." },
       "url": "https://github.com/beeradmoore/dlss-swapper",
-      "color": "#FF3CC8"
+      "color": "#FF3FD2"
     },
     {
       "id": "amd-adrenalin",

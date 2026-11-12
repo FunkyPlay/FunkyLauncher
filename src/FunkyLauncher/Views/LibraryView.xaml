@@ -50,7 +50,7 @@
                         </Border.Background>
                     </Border>
                     <StackPanel VerticalAlignment="Bottom" Margin="36,0,36,30">
-                        <Border HorizontalAlignment="Left" CornerRadius="12" Background="#243CE6FF" Padding="12,5">
+                        <Border HorizontalAlignment="Left" CornerRadius="12" Background="#247AE8FF" Padding="12,5">
                             <TextBlock x:Name="TagText" FontSize="13" FontWeight="SemiBold" Foreground="#9AF2FF"/>
                         </Border>
                         <!-- the title shrinks in a small window instead of wrapping -->
