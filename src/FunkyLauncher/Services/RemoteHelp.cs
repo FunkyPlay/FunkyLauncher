@@ -59,6 +59,30 @@ public static class RemoteHelp
         }
     }
 
+    /// <summary>This PC's RustDesk ID ("rustdesk --get-id" of the running portable copy), or null if it can't be read.</summary>
+    public static async Task<string?> GetIdAsync()
+    {
+        var exe = Path.Combine(PortableDir, "rustdesk.exe");
+        if (!File.Exists(exe)) return null;
+        try
+        {
+            using var p = Process.Start(new ProcessStartInfo(exe, "--get-id")
+            {
+                UseShellExecute = false, RedirectStandardOutput = true, CreateNoWindow = true, WorkingDirectory = PortableDir,
+            })!;
+            var read = p.StandardOutput.ReadToEndAsync();
+            var done = await Task.WhenAny(read, Task.Delay(15000));
+            if (done != read) { try { p.Kill(true); } catch { } return null; }
+            var id = (await read).Trim();
+            return System.Text.RegularExpressions.Regex.IsMatch(id, @"^\d{6,12}$") ? id : null;
+        }
+        catch { return null; }
+    }
+
+    /// <summary>"123456789" → "123 456 789" (as RustDesk shows it).</summary>
+    public static string FormatId(string id) =>
+        System.Text.RegularExpressions.Regex.Replace(id, @"(\d)(?=(\d{3})+$)", "$1 ");
+
     private static string Hash(string file)
     {
         using var f = File.OpenRead(file);

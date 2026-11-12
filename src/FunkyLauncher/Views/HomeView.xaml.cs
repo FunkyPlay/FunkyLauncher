@@ -43,10 +43,31 @@ public partial class HomeView : UserControl
         ReportButton.Content = Loc.T("start.support.report");
         HelpButton.Content = Loc.T(_helpOn ? "help.stop" : "help.button");
         HelpButton.Visibility = RemoteHelp.Available ? Visibility.Visible : Visibility.Collapsed;
+        HelpSendButton.Content = Loc.T("help.send");
+        HelpSendButton.Visibility = _helpOn ? Visibility.Visible : Visibility.Collapsed;
         RenderNews();
     }
 
     private bool _helpOn;
+
+    /// <summary>
+    /// "Send to support": copies "Funky Help — ID …" to the clipboard and opens @FunkyLauncherBot, so the player only
+    /// pastes it and adds the one-time password from the RustDesk window (RustDesk never gives that password out).
+    /// </summary>
+    private async void HelpSend_Click(object sender, RoutedEventArgs e)
+    {
+        HelpSendButton.IsEnabled = false;
+        try
+        {
+            var id = await RemoteHelp.GetIdAsync();
+            var text = id != null ? Loc.F("help.send.text", RemoteHelp.FormatId(id)) : Loc.T("help.send.noid");
+            Clipboard.SetText(text);
+            PlayService.OpenUrl(AppConfig.SupportBotUrl);
+            ReportText.Text = id != null ? Loc.T("help.send.done") : Loc.T("help.send.done.noid");
+        }
+        catch (Exception ex) { ReportText.Text = Loc.F("help.error", ex.Message); }
+        HelpSendButton.IsEnabled = true;
+    }
 
     /// <summary>Funky Help: lets support connect to this PC with RustDesk — only while its window is open.</summary>
     private async void Help_Click(object sender, RoutedEventArgs e)
@@ -56,6 +77,7 @@ public partial class HomeView : UserControl
             RemoteHelp.Stop();
             _helpOn = false;
             HelpButton.Content = Loc.T("help.button");
+            HelpSendButton.Visibility = Visibility.Collapsed;
             ReportText.Text = Loc.T("help.stopped");
             return;
         }
@@ -67,6 +89,7 @@ public partial class HomeView : UserControl
             await RemoteHelp.StartAsync(new Progress<int>(p => ReportText.Text = Loc.F("help.downloading", p)), CancellationToken.None);
             _helpOn = true;
             HelpButton.Content = Loc.T("help.stop");
+            HelpSendButton.Visibility = Visibility.Visible;
             ReportText.Text = Loc.T("help.started");
         }
         catch (Exception ex) { ReportText.Text = Loc.F("help.error", ex.Message); }
