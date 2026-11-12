@@ -1,6 +1,6 @@
 # Privacy policy — Funky Launcher
 
-*Last updated: 2026-11-10*
+*Last updated: 2026-11-12*
 
 Funky Launcher does **not** collect personal data, has **no telemetry** and sends **no usage statistics**.
 There are no accounts in the launcher itself.
@@ -13,6 +13,8 @@ There are no accounts in the launcher itself.
 | On start | `t.me` (Telegram, public channel @FunkyPlayTV) | Show news on the Home page | Yes — Settings → “Load news” |
 | When you install a modlist | `api.github.com`, `github.com` | Download the official Wabbajack and the modlist file | Only happens when you start an install |
 | When you install / log in | `nexusmods.com` (through Wabbajack and the built-in browser) | Log in to Nexus Mods and download mods | Only happens when you install or log in |
+| First time you open Funky Player | `github.com` (mpv and FFmpeg builds), `www.7-zip.org` (7zr unpacker) | Download the video engine once; files are checked by SHA-256 | Only happens when you open the player and agree to the download |
+| When you press “Funky Help” | `github.com` (official RustDesk release); then our support server `2.31.81.143` | Download RustDesk once; connect to Funky support. The supporter sees and controls your screen **only while the session you started is open** | Only on click; you close the session at any time |
 | When you click links | Websites of the programs on the Software page, YouTube, Telegram | Open them in your browser | Only on click |
 
 These requests are normal web requests: the services see your IP address, as with any website.
@@ -28,6 +30,10 @@ Their own privacy policies apply:
   for free downloads), the Wabbajack copy and downloaded modlist files.
 - The modlist folder you chose (for example `C:\Games\NeonNights`).
 - Wabbajack keeps its own Nexus login in `%LOCALAPPDATA%\Wabbajack`.
+- Save backups — `%LOCALAPPDATA%\FunkyLauncher\Backups` or the folder you chose.
+- Funky Pro (if you have it): the cloud backup only writes archives into the cloud folder already on your PC
+  (OneDrive, Yandex Disk, Dropbox or Google Drive, `FunkyLauncher Backups`). The launcher does not upload anything itself —
+  your cloud app syncs that folder under its own privacy policy. The Pro key is checked offline.
 
 Nothing of this is sent anywhere by the launcher.
 
