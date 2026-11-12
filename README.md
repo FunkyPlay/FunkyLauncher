@@ -65,6 +65,14 @@ dotnet build src/FunkyLauncher/FunkyLauncher.csproj -c Release
 
 Releases are built by [GitHub Actions](.github/workflows/release.yml) from a version tag.
 
+## Contributing / Участие
+
+Outside code contributions (pull requests) are not accepted for now. Found a bug or have an idea? Open an
+[issue](https://github.com/FunkyPlay/FunkyLauncher/issues) or write to [@FunkyLauncherBot](https://t.me/FunkyLauncherBot).
+
+Правки кода со стороны (pull requests) пока не принимаются. Нашли ошибку или есть идея — откройте
+[issue](https://github.com/FunkyPlay/FunkyLauncher/issues) или напишите в [@FunkyLauncherBot](https://t.me/FunkyLauncherBot).
+
 ## Disclaimer / Отказ от связи
 
 Funky Launcher is an independent, unofficial app. It is not affiliated with or endorsed by any game publisher or
