@@ -14,7 +14,7 @@ There are no accounts in the launcher itself.
 | When you install a modlist | `api.github.com`, `github.com` | Download the official Wabbajack and the modlist file | Only happens when you start an install |
 | When you install / log in | `nexusmods.com` (through Wabbajack and the built-in browser) | Log in to Nexus Mods and download mods | Only happens when you install or log in |
 | First time you open Funky Player | `github.com` (mpv and FFmpeg builds), `www.7-zip.org` (7zr unpacker) | Download the video engine once; files are checked by SHA-256 | Only happens when you open the player and agree to the download |
-| When you press “Funky Help” | `github.com` (official RustDesk release); then our support server `2.31.81.143` | Download RustDesk once; connect to Funky support. The supporter sees and controls your screen **only while the session you started is open**. The connection server sees your IP address and RustDesk ID | Only on click; you close the session at any time |
+| When you press “Funky Help” | `github.com` (official RustDesk release); then our support server `2.31.81.143` | Download RustDesk once; connect to Funky support. The supporter sees and controls your screen **only while the session you started is open**. Sessions are not recorded. The connection log (your PC's RustDesk ID and IP address) is kept no longer than 31 days; the server also remembers your RustDesk ID and last IP so the connection works — we delete that record on request (it appears again if you use Funky Help again) | Only on click; you close the session at any time |
 | When you click links | Websites of the programs on the Software page, YouTube, Telegram | Open them in your browser | Only on click |
 
 These requests are normal web requests: the services see your IP address, as with any website.
@@ -56,7 +56,10 @@ you decide whether to send it to support.
   скачивает видеодвижок, только после вашего согласия; файлы проверяются по SHA-256;
 - **по кнопке «Funky Помощь»** — к GitHub (официальный RustDesk, скачивается один раз) и к нашему серверу поддержки
   `2.31.81.143`. Поддержка видит ваш экран и может управлять компьютером **только пока открыт сеанс, который вы
-  сами начали**; закрыть его можно в любой момент. Сервер соединения видит ваш IP-адрес и номер (ID) RustDesk;
+  сами начали**; закрыть его можно в любой момент. Сеансы не записываются. Журнал подключений (ID RustDesk вашего
+  компьютера и IP-адрес) хранится не дольше 31 дня, затем удаляется. Кроме того, сервер помнит ID RustDesk и последний
+  IP-адрес, чтобы соединение работало; по вашей просьбе мы удалим эту запись (если снова воспользуетесь Помощью,
+  она появится снова);
 - **по клику** на ссылки — открывает сайты в вашем браузере.
 
 Сервисы видят ваш IP-адрес, как при открытии любого сайта; действуют их политики конфиденциальности (ссылки выше).
