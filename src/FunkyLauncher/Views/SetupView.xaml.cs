@@ -98,6 +98,8 @@ public partial class SetupView : UserControl
         var noErrors = _checks.Count > 0 && _checks.All(c => c.State != CheckState.Error);
         InstallButton.IsEnabled = !_busy && Ml.IsReleased && noErrors;
         ReinstallButton.IsEnabled = InstallButton.IsEnabled;
+        // already logged in to Nexus (the check list says so): no "Log in" button
+        NexusButton.Visibility = WabbajackService.IsNexusLoggedIn ? Visibility.Collapsed : Visibility.Visible;
         RenderComposition();
     }
 
