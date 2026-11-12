@@ -145,6 +145,7 @@ public static class RecordingMode
                     s.TaskbarOldState = old; s.TaskbarChanged = true; Save(s);
                     SetTaskbarState(old | 1);
                 }
+                ShowTaskbars(false);
             }
             catch (Exception ex) { errors.Add("taskbar: " + ex.Message); }
         }
@@ -186,6 +187,7 @@ public static class RecordingMode
             try { SetTaskbarState(s.TaskbarOldState); }
             catch (Exception ex) { errors.Add("taskbar: " + ex.Message); }
         }
+        try { ShowTaskbars(true); } catch { }
         foreach (var w in Enumerable.Reverse(s.Minimized))
         {
             try
@@ -338,6 +340,19 @@ public static class RecordingMode
     {
         var d = new APPBARDATA { cbSize = Marshal.SizeOf<APPBARDATA>(), hWnd = FindWindow("Shell_TrayWnd", null), lParam = (IntPtr)state };
         SHAppBarMessage(10, ref d); // ABM_SETSTATE
+    }
+
+    /// <summary>
+    /// Windows 11 sets "auto-hide" but often keeps the bar on screen until the mouse passes over it,
+    /// so the taskbars (main and on other monitors) are also hidden / shown directly.
+    /// </summary>
+    private static void ShowTaskbars(bool show)
+    {
+        var main = FindWindow("Shell_TrayWnd", null);
+        if (main != IntPtr.Zero) ShowWindowAsync(main, show ? 5 : 0); // SW_SHOW / SW_HIDE
+        var h = IntPtr.Zero;
+        while ((h = FindWindowEx(IntPtr.Zero, h, "Shell_SecondaryTrayWnd", null)) != IntPtr.Zero)
+            ShowWindowAsync(h, show ? 5 : 0);
     }
 
     // ---------- windows ----------
