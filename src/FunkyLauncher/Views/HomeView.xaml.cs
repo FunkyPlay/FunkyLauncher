@@ -77,9 +77,9 @@ public partial class HomeView : UserControl
     private void RenderTiles()
     {
         Tiles.Children.Clear();
-        Tiles.Children.Add(Tile("🎮", "tile.mods", "#FF3CC8", () => _main.ShowLibrary()));
-        Tiles.Children.Add(Tile("🧰", "tile.soft", "#3CE6FF", () => _main.ShowSoft()));
-        Tiles.Children.Add(Tile("▶", "tile.video", "#A07CFF", () => PlayService.OpenUrl(AppConfig.YouTubeUrl)));
+        Tiles.Children.Add(Tile("🎮", "tile.mods", "#FF3FD2", () => _main.ShowLibrary()));
+        Tiles.Children.Add(Tile("🧰", "tile.soft", "#7AE8FF", () => _main.ShowSoft()));
+        Tiles.Children.Add(Tile("▶", "tile.video", "#B9A2F2", () => PlayService.OpenUrl(AppConfig.YouTubeUrl)));
     }
 
     private Border Tile(string icon, string key, string color, Action open)

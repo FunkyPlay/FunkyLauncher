@@ -51,9 +51,9 @@ public partial class ToolsView : UserControl
         ToolCards.Children.Add(ToolCard("✓", Loc.T("tools.pc"), Loc.T("tools.pc.text"), "#9AC5F8", "pc", null));
         ToolCards.Children.Add(ToolCard("▷", Loc.T("tools.player"), Loc.T("tools.player.text"), "#7AE8FF", "player", null));
         if (S.DesktopsBeta)
-            ToolCards.Children.Add(ToolCard("▦", Loc.T("tools.desktops"), Loc.T("tools.desktops.text"), "#3CA0FF", "desktops", S.DesktopsOn ? Loc.T("tools.on") : null));
+            ToolCards.Children.Add(ToolCard("▦", Loc.T("tools.desktops"), Loc.T("tools.desktops.text"), "#FFFFFF", "desktops", S.DesktopsOn ? Loc.T("tools.on") : null));
         if (ProModules.Active)
-            ToolCards.Children.Add(ToolCard("★", "Funky Pro", Loc.T("tools.pro.text"), "#FF3FD2", "pro", Loc.T("tools.on")));
+            ToolCards.Children.Add(ToolCard("★", "Funky Pro", Loc.T("tools.pro.text"), "gradient", "pro", Loc.T("tools.on")));
         UpdateColumns();
         ProPanel.Visibility = _tool == "pro" ? Visibility.Visible : Visibility.Collapsed;
         if (_tool == "pro") RefreshPro();
@@ -120,7 +120,9 @@ public partial class ToolsView : UserControl
         var head = new DockPanel();
         var tile = new Border
         {
-            Width = 44, Height = 44, CornerRadius = new CornerRadius(12), Background = (Brush)bc.ConvertFrom(color)!,
+            Width = 44, Height = 44, CornerRadius = new CornerRadius(12), Background = color == "gradient"
+                ? new LinearGradientBrush((Color)ColorConverter.ConvertFromString("#FF3FD2"), (Color)ColorConverter.ConvertFromString("#7AE8FF"), new Point(0, 0), new Point(1, 1)) // brand gradient, 135°
+                : (Brush)bc.ConvertFrom(color)!,
             Child = new TextBlock { Text = icon, FontSize = 20, Foreground = (Brush)bc.ConvertFrom("#07070D")!, HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center },
         };
         DockPanel.SetDock(tile, Dock.Left);
