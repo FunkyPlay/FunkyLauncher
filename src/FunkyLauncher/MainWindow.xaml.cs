@@ -49,6 +49,7 @@ public partial class MainWindow : Window
             if (Settings.DesktopsOn && !_exiting) { e.Cancel = true; Hide(); ShowTrayHintOnce(); }
         };
         ContentRendered += (_, _) => { ShowPrivacyNoticeOnce(); RemindRecordingMode(); RemindGameMode(); };
+        SourceInitialized += (_, _) => RegisterShootHotkey();
 
         // developer test: FunkyLauncher.exe --test-manual N  → manual download of the N smallest Nexus files into %TEMP%
         var args = Environment.GetCommandLineArgs();
@@ -218,6 +219,34 @@ public partial class MainWindow : Window
     }
 
     // ---------- Funky Desktops: per virtual desktop icons + tray ----------
+
+    // Recording mode hotkey: Ctrl+Alt+F12 turns it on/off from anywhere (the launcher may be minimized or hidden).
+    private const int ShootHotkeyId = 0xF00D;
+    [System.Runtime.InteropServices.DllImport("user32.dll")] private static extern bool RegisterHotKey(IntPtr h, int id, uint mods, uint vk);
+
+    private void RegisterShootHotkey()
+    {
+        var src = System.Windows.Interop.HwndSource.FromHwnd(new System.Windows.Interop.WindowInteropHelper(this).Handle);
+        if (src == null) return;
+        // MOD_ALT | MOD_CONTROL | MOD_NOREPEAT, VK_F12. If another program owns it, the button still works.
+        RegisterHotKey(src.Handle, ShootHotkeyId, 0x1 | 0x2 | 0x4000, 0x7B);
+        src.AddHook((IntPtr hwnd, int msg, IntPtr wp, IntPtr lp, ref bool handled) =>
+        {
+            if (msg == 0x0312 && wp.ToInt32() == ShootHotkeyId) // WM_HOTKEY
+            {
+                var wasOn = RecordingMode.IsActive;
+                _tools.ToggleShoot();
+                if (wasOn)
+                {
+                    Show();
+                    if (WindowState == WindowState.Minimized) WindowState = WindowState.Normal;
+                    Activate();
+                }
+                handled = true;
+            }
+            return IntPtr.Zero;
+        });
+    }
 
     private System.Windows.Forms.NotifyIcon? _tray;
     private System.Windows.Threading.DispatcherTimer? _deskTimer;

@@ -547,6 +547,9 @@ public partial class ToolsView : UserControl
 
     public void TurnOffShoot() { if (RecordingMode.IsActive) Shoot_Click(this, new RoutedEventArgs()); }
 
+    /// <summary>Ctrl+Alt+F12 from anywhere.</summary>
+    public void ToggleShoot() { if (ShootButton.IsEnabled) Shoot_Click(this, new RoutedEventArgs()); }
+
     private async void Shoot_Click(object sender, RoutedEventArgs e)
     {
         ShootButton.IsEnabled = false;
