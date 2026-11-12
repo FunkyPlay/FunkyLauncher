@@ -19,99 +19,25 @@
   },
   "mods": [
     {
-      "id": "NakedNPCsHolograms.zip",
+      "id": "BV - Pressurelicious Pose Pack - 2.2",
       "level": 1,
       "displayName": {
-        "ru": "Модели персонажей: голограммы",
-        "en": "Character models: holograms"
+        "ru": "Позы для фоторежима, набор 2",
+        "en": "Photo mode poses, pack 2"
       },
       "nexus": {
         "game": "cyberpunk2077",
-        "modId": 9785,
-        "fileId": 62749,
-        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/9785?tab=files&file_id=62749"
+        "modId": 16078,
+        "fileId": 98906,
+        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/16078?tab=files&file_id=98906"
       },
       "archive": {
-        "localFileName": "NakedNPCsHolograms.zip-9785-2-1-0-2-4-1703897796.zip",
-        "size": 1119576,
-        "sha256": "2f87f2a5f7cf83dc3aaca043d78c29cd64f7c9e8bc844d6e909f27d083023377",
+        "localFileName": "BV - Pressurelicious Pose Pack - 2.2-16078-2-2-2-1737504498.zip",
+        "size": 97822,
+        "sha256": "19908d8cb9d311d872442c532dd73b1fb6c30a601fd2841006e51199c5ff5bda",
         "wabbajackXxHash64": null
       },
-      "modFolder": "NakedNPCsHolograms.zip",
-      "install": {
-        "type": "copyAll",
-        "from": "",
-        "to": "",
-        "fomod": false,
-        "expectedTopFolders": [
-          "archive"
-        ],
-        "fileCount": 1
-      },
-      "modlist": {
-        "insertAbove": "Misty's New Look No Lipstick",
-        "fallbackInsertBelow": "Missing Persons - Fixer's Hidden Gems"
-      },
-      "dependsOn": [],
-      "touchesOutsideModFolder": false
-    },
-    {
-      "id": "NakedNPCsTubeDancers.zip",
-      "level": 1,
-      "displayName": {
-        "ru": "Модели персонажей: танцовщицы клубов",
-        "en": "Character models: club dancers"
-      },
-      "nexus": {
-        "game": "cyberpunk2077",
-        "modId": 9689,
-        "fileId": 58951,
-        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/9689?tab=files&file_id=58951"
-      },
-      "archive": {
-        "localFileName": "NakedNPCsTubeDancers.zip-9689-2-0-2-2-2-1700977859.zip",
-        "size": 976815,
-        "sha256": "f9f3bf30d65938105a86465782827d700a5f0b3233e351b437a6e0ba659cfba4",
-        "wabbajackXxHash64": null
-      },
-      "modFolder": "NakedNPCsTubeDancers.zip",
-      "install": {
-        "type": "copyAll",
-        "from": "",
-        "to": "",
-        "fomod": false,
-        "expectedTopFolders": [
-          "archive"
-        ],
-        "fileCount": 1
-      },
-      "modlist": {
-        "insertAbove": "Misty's New Look No Lipstick",
-        "fallbackInsertBelow": "Missing Persons - Fixer's Hidden Gems"
-      },
-      "dependsOn": [],
-      "touchesOutsideModFolder": false
-    },
-    {
-      "id": "Judy Enhanced Body with 4K Texture",
-      "level": 1,
-      "displayName": {
-        "ru": "Модель персонажа: Джуди",
-        "en": "Character model: Judy"
-      },
-      "nexus": {
-        "game": "cyberpunk2077",
-        "modId": 10150,
-        "fileId": 175005,
-        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/10150?tab=files&file_id=175005"
-      },
-      "archive": {
-        "localFileName": "Judy Enhanced Body with 4K Texture 10150 1.0.5 2026-11-07T15-20Z tvQTvsRFf.zip",
-        "size": 17557406,
-        "sha256": "8d9e5fd312b20fb5ba7e4e6071e7706ea5502a1f438c02060f98608af6ea5e35",
-        "wabbajackXxHash64": "CwVZm8wV1AA="
-      },
-      "modFolder": "Judy Enhanced Body with 4K Texture",
+      "modFolder": "BV - Pressurelicious Pose Pack - 2.2",
       "install": {
         "type": "copyAll",
         "from": "",
@@ -119,89 +45,13 @@
         "fomod": false,
         "expectedTopFolders": [
           "archive",
-          "bin"
+          "r6"
         ],
         "fileCount": 3
       },
       "modlist": {
-        "insertAbove": "Named NPCs AIO 2K",
-        "fallbackInsertBelow": "Misty's New Look No Lipstick"
-      },
-      "dependsOn": [],
-      "touchesOutsideModFolder": false,
-      "notes": "Сейчас входит в основную сборку 0.1.0; при пересборке основной уберём оттуда."
-    },
-    {
-      "id": "Hyst_NPCs_Enhancement 9887 1.0.4 2026",
-      "level": 1,
-      "displayName": {
-        "ru": "Модели персонажей: горожане",
-        "en": "Character models: citizens"
-      },
-      "nexus": {
-        "game": "cyberpunk2077",
-        "modId": 9887,
-        "fileId": 170791,
-        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/9887?tab=files&file_id=170791"
-      },
-      "archive": {
-        "localFileName": "Hyst_NPCs_Enhancement 9887 1.0.4 2026-10-30T03-53Z X32s3EhrC.zip",
-        "size": 136218477,
-        "sha256": "07894d81e374b9b63649d35346b54d1bf29711cb7f6a99eddff430225c057a01",
-        "wabbajackXxHash64": "kAA3BA605tk="
-      },
-      "modFolder": "Hyst_NPCs_Enhancement 9887 1.0.4 2026",
-      "install": {
-        "type": "copyAll",
-        "from": "",
-        "to": "",
-        "fomod": false,
-        "expectedTopFolders": [
-          "archive"
-        ],
-        "fileCount": 1
-      },
-      "modlist": {
-        "insertAbove": "Named NPCs AIO 2K",
-        "fallbackInsertBelow": "Misty's New Look No Lipstick"
-      },
-      "dependsOn": [],
-      "touchesOutsideModFolder": false,
-      "notes": "Сейчас входит в основную сборку 0.1.0; при пересборке основной уберём оттуда."
-    },
-    {
-      "id": "Romanced Enhanced Showers Feature",
-      "level": 1,
-      "displayName": {
-        "ru": "Романтические сцены: душ",
-        "en": "Romance scenes: shower"
-      },
-      "nexus": {
-        "game": "cyberpunk2077",
-        "modId": 23074,
-        "fileId": 115704,
-        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/23074?tab=files&file_id=115704"
-      },
-      "archive": {
-        "localFileName": "Romanced Enhanced Showers Feature-23074-1-0-0-1753901950.zip",
-        "size": 2377,
-        "sha256": "888dfbdbd2567aaf9fa51a87aa9687e9db6d31be33a8bc9f70e94078b502ea0c",
-        "wabbajackXxHash64": null
-      },
-      "modFolder": "Romanced Enhanced Showers Feature",
-      "install": {
-        "type": "copyAll",
-        "from": "",
-        "to": "",
-        "fomod": false,
-        "expectedTopFolders": [
-          "archive"
-        ],
-        "fileCount": 2
-      },
-      "modlist": {
-        "insertAbove": "Kerry Romanced Enhanced",
-        "fallbackInsertBelow": "Really Want To Stay At Your House"
+        "insertAbove": "Angy Pose Packs - Cute and Sexy",
+        "fallbackInsertBelow": "Rev's Poses - Pictures of You"
       },
       "dependsOn": [],
       "touchesOutsideModFolder": false
@@ -245,44 +95,6 @@
       "touchesOutsideModFolder": false
     },
     {
-      "id": "BV - Pressurelicious Pose Pack - 2.2",
-      "level": 1,
-      "displayName": {
-        "ru": "Позы для фоторежима, набор 2",
-        "en": "Photo mode poses, pack 2"
-      },
-      "nexus": {
-        "game": "cyberpunk2077",
-        "modId": 16078,
-        "fileId": 98906,
-        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/16078?tab=files&file_id=98906"
-      },
-      "archive": {
-        "localFileName": "BV - Pressurelicious Pose Pack - 2.2-16078-2-2-2-1737504498.zip",
-        "size": 97822,
-        "sha256": "19908d8cb9d311d872442c532dd73b1fb6c30a601fd2841006e51199c5ff5bda",
-        "wabbajackXxHash64": null
-      },
-      "modFolder": "BV - Pressurelicious Pose Pack - 2.2",
-      "install": {
-        "type": "copyAll",
-        "from": "",
-        "to": "",
-        "fomod": false,
-        "expectedTopFolders": [
-          "archive",
-          "r6"
-        ],
-        "fileCount": 3
-      },
-      "modlist": {
-        "insertAbove": "Angy Pose Packs - Cute and Sexy",
-        "fallbackInsertBelow": "Rev's Poses - Pictures of You"
-      },
-      "dependsOn": [],
-      "touchesOutsideModFolder": false
-    },
-    {
       "id": "Sub Pose Pack (F)",
       "level": 1,
       "displayName": {
@@ -316,6 +128,194 @@
       "modlist": {
         "insertAbove": "Angy Pose Packs - Cute and Sexy",
         "fallbackInsertBelow": "Rev's Poses - Pictures of You"
+      },
+      "dependsOn": [],
+      "touchesOutsideModFolder": false
+    },
+    {
+      "id": "NakedNPCsTubeDancers.zip",
+      "level": 1,
+      "displayName": {
+        "ru": "Модели персонажей: танцовщицы клубов",
+        "en": "Character models: club dancers"
+      },
+      "nexus": {
+        "game": "cyberpunk2077",
+        "modId": 9689,
+        "fileId": 58951,
+        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/9689?tab=files&file_id=58951"
+      },
+      "archive": {
+        "localFileName": "NakedNPCsTubeDancers.zip-9689-2-0-2-2-2-1700977859.zip",
+        "size": 976815,
+        "sha256": "f9f3bf30d65938105a86465782827d700a5f0b3233e351b437a6e0ba659cfba4",
+        "wabbajackXxHash64": null
+      },
+      "modFolder": "NakedNPCsTubeDancers.zip",
+      "install": {
+        "type": "copyAll",
+        "from": "",
+        "to": "",
+        "fomod": false,
+        "expectedTopFolders": [
+          "archive"
+        ],
+        "fileCount": 1
+      },
+      "modlist": {
+        "insertAbove": "Misty's New Look No Lipstick",
+        "fallbackInsertBelow": "Missing Persons - Fixer's Hidden Gems"
+      },
+      "dependsOn": [],
+      "touchesOutsideModFolder": false
+    },
+    {
+      "id": "NakedNPCsHolograms.zip",
+      "level": 1,
+      "displayName": {
+        "ru": "Модели персонажей: голограммы",
+        "en": "Character models: holograms"
+      },
+      "nexus": {
+        "game": "cyberpunk2077",
+        "modId": 9785,
+        "fileId": 62749,
+        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/9785?tab=files&file_id=62749"
+      },
+      "archive": {
+        "localFileName": "NakedNPCsHolograms.zip-9785-2-1-0-2-4-1703897796.zip",
+        "size": 1119576,
+        "sha256": "2f87f2a5f7cf83dc3aaca043d78c29cd64f7c9e8bc844d6e909f27d083023377",
+        "wabbajackXxHash64": null
+      },
+      "modFolder": "NakedNPCsHolograms.zip",
+      "install": {
+        "type": "copyAll",
+        "from": "",
+        "to": "",
+        "fomod": false,
+        "expectedTopFolders": [
+          "archive"
+        ],
+        "fileCount": 1
+      },
+      "modlist": {
+        "insertAbove": "Misty's New Look No Lipstick",
+        "fallbackInsertBelow": "Missing Persons - Fixer's Hidden Gems"
+      },
+      "dependsOn": [],
+      "touchesOutsideModFolder": false
+    },
+    {
+      "id": "Hyst_NPCs_Enhancement 9887 1.0.4 2026",
+      "level": 1,
+      "displayName": {
+        "ru": "Модели персонажей: горожане",
+        "en": "Character models: citizens"
+      },
+      "nexus": {
+        "game": "cyberpunk2077",
+        "modId": 9887,
+        "fileId": 170791,
+        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/9887?tab=files&file_id=170791"
+      },
+      "archive": {
+        "localFileName": "Hyst_NPCs_Enhancement 9887 1.0.4 2026-10-30T03-53Z X32s3EhrC.zip",
+        "size": 136218477,
+        "sha256": "07894d81e374b9b63649d35346b54d1bf29711cb7f6a99eddff430225c057a01",
+        "wabbajackXxHash64": "kAA3BA605tk="
+      },
+      "modFolder": "Hyst_NPCs_Enhancement 9887 1.0.4 2026",
+      "install": {
+        "type": "copyAll",
+        "from": "",
+        "to": "",
+        "fomod": false,
+        "expectedTopFolders": [
+          "archive"
+        ],
+        "fileCount": 1
+      },
+      "modlist": {
+        "insertAbove": "Named NPCs AIO 2K",
+        "fallbackInsertBelow": "Misty's New Look No Lipstick"
+      },
+      "dependsOn": [],
+      "touchesOutsideModFolder": false,
+      "notes": "Сейчас входит в основную сборку 0.1.0; при пересборке основной уберём оттуда."
+    },
+    {
+      "id": "Judy Enhanced Body with 4K Texture",
+      "level": 1,
+      "displayName": {
+        "ru": "Модель персонажа: Джуди",
+        "en": "Character model: Judy"
+      },
+      "nexus": {
+        "game": "cyberpunk2077",
+        "modId": 10150,
+        "fileId": 175005,
+        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/10150?tab=files&file_id=175005"
+      },
+      "archive": {
+        "localFileName": "Judy Enhanced Body with 4K Texture 10150 1.0.5 2026-11-07T15-20Z tvQTvsRFf.zip",
+        "size": 17557406,
+        "sha256": "8d9e5fd312b20fb5ba7e4e6071e7706ea5502a1f438c02060f98608af6ea5e35",
+        "wabbajackXxHash64": "CwVZm8wV1AA="
+      },
+      "modFolder": "Judy Enhanced Body with 4K Texture",
+      "install": {
+        "type": "copyAll",
+        "from": "",
+        "to": "",
+        "fomod": false,
+        "expectedTopFolders": [
+          "archive",
+          "bin"
+        ],
+        "fileCount": 3
+      },
+      "modlist": {
+        "insertAbove": "Named NPCs AIO 2K",
+        "fallbackInsertBelow": "Misty's New Look No Lipstick"
+      },
+      "dependsOn": [],
+      "touchesOutsideModFolder": false,
+      "notes": "Сейчас входит в основную сборку 0.1.0; при пересборке основной уберём оттуда."
+    },
+    {
+      "id": "Romanced Enhanced Showers Feature",
+      "level": 1,
+      "displayName": {
+        "ru": "Романтические сцены: душ",
+        "en": "Romance scenes: shower"
+      },
+      "nexus": {
+        "game": "cyberpunk2077",
+        "modId": 23074,
+        "fileId": 115704,
+        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/23074?tab=files&file_id=115704"
+      },
+      "archive": {
+        "localFileName": "Romanced Enhanced Showers Feature-23074-1-0-0-1753901950.zip",
+        "size": 2377,
+        "sha256": "888dfbdbd2567aaf9fa51a87aa9687e9db6d31be33a8bc9f70e94078b502ea0c",
+        "wabbajackXxHash64": null
+      },
+      "modFolder": "Romanced Enhanced Showers Feature",
+      "install": {
+        "type": "copyAll",
+        "from": "",
+        "to": "",
+        "fomod": false,
+        "expectedTopFolders": [
+          "archive"
+        ],
+        "fileCount": 2
+      },
+      "modlist": {
+        "insertAbove": "Kerry Romanced Enhanced",
+        "fallbackInsertBelow": "Really Want To Stay At Your House"
       },
       "dependsOn": [],
       "touchesOutsideModFolder": false
@@ -399,6 +399,7 @@
   "changes": [
     "12.11: убраны магазины Tony 1 и 2 (решение Funky)",
     "12.11: Hotscenes — хэш и раскладка заполнены, оба Hotscenes помечены blocked",
-    "12.11: убраны Hotscenes и Hotscenes Add (решение Funky «не берём»)"
+    "12.11: убраны Hotscenes и Hotscenes Add (решение Funky «не берём»)",
+    "12.11: порядок модов в файле приведён к порядку личного профиля (Hyst_NPCs выше Judy, как в 0.1.0)"
   ]
 }
