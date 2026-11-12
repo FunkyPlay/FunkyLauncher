@@ -37,6 +37,7 @@ public partial class SettingsView : UserControl
         AboutLabel.Text = Loc.T("settings.about");
         var ver = Assembly.GetExecutingAssembly().GetName().Version?.ToString(3) ?? "0.1.0";
         AboutText.Text = Loc.F("settings.about.text", ver, Catalog.Source);
+        AboutNotice.Text = Loc.T("settings.about.notice");
     }
 
     // ---------- Funky Pro key ----------

@@ -65,6 +65,16 @@ dotnet build src/FunkyLauncher/FunkyLauncher.csproj -c Release
 
 Releases are built by [GitHub Actions](.github/workflows/release.yml) from a version tag.
 
+## Disclaimer / Отказ от связи
+
+Funky Launcher is an independent, unofficial app. It is not affiliated with or endorsed by any game publisher or
+developer, Nexus Mods or Wabbajack. All game names and trademarks belong to their respective owners. Mods belong to
+their authors and are downloaded from Nexus Mods.
+
+Funky Launcher — независимая неофициальная программа. Она не связана с издателями и разработчиками игр, с Nexus Mods
+и Wabbajack и не одобрена ими. Названия игр и товарные знаки принадлежат их владельцам. Моды принадлежат их авторам
+и скачиваются с Nexus Mods.
+
 ## License
 
 GPL-3.0-or-later — see [LICENSE](LICENSE). The names “Funky Launcher”, “FunkyPlay” and “Neon Nights” are not covered by the license.
