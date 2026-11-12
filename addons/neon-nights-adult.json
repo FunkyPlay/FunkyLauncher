@@ -2,9 +2,9 @@
   "schema": 1,
   "modlistId": "neon-nights",
   "addonId": "neon-nights-adult",
-  "listVersion": "0.1.0-draft",
-  "forMainVersion": "0.1.0",
-  "draft": true,
+  "listVersion": "0.1.1",
+  "forMainVersion": "0.1.1",
+  "draft": false,
   "generated": "2026-11-12",
   "rules": {
     "hash": "sha256 обязателен для проверки; wabbajackXxHash64 (base64, как в .wabbajack) — только где он был в 0.1.0",
@@ -15,7 +15,9 @@
     "install.copyAll": "Распаковать архив целиком в mods/<modFolder>/ (в архиве нет корневой папки-обёртки, FOMOD нет). expectedTopFolders — для проверки после распаковки.",
     "meta.ini": "Рекомендуется создать mods/<modFolder>/meta.ini с modid, version, installationFile, [installedFiles] 1\\modid, 1\\fileid — тогда MO2 покажет мод как с Nexus. Не обязательно для работы.",
     "afterMainReinstall": "Wabbajack при переустановке основной сборки удаляет эти папки и строки — применить дополнение заново.",
-    "level2": "Моды level 2 ставятся только если включены и уровень 1, и галочка уровня 2."
+    "level2": "Моды level 2 ставятся только если включены и уровень 1, и галочка уровня 2.",
+    "blocked": "Моды с blocked=true лаунчер не ставит и не показывает.",
+    "anchors": "Якоря посчитаны по профилю Wabbajack сборки 0.1.1 (английская основа): только моды, которые включены в основе и не входят в дополнение."
   },
   "mods": [
     {
@@ -393,13 +395,16 @@
         "fallbackInsertBelow": "Deceptious Quest Core 7831 3.3.3 2026"
       },
       "dependsOn": [],
-      "touchesOutsideModFolder": false
+      "touchesOutsideModFolder": false,
+      "blocked": true,
+      "notes": "Первый выпуск без сцен: не ставить (решение Funky/юриста)."
     }
   ],
   "changes": [
     "12.11: убраны магазины Tony 1 и 2 (решение Funky)",
     "12.11: Hotscenes — хэш и раскладка заполнены, оба Hotscenes помечены blocked",
     "12.11: убраны Hotscenes и Hotscenes Add (решение Funky «не берём»)",
-    "12.11: порядок модов в файле приведён к порядку личного профиля (Hyst_NPCs выше Judy, как в 0.1.0)"
+    "12.11: порядок модов в файле приведён к порядку личного профиля (Hyst_NPCs выше Judy, как в 0.1.0)",
+    "12.11: версия под 0.1.1 — якоря пересчитаны по английской основе 0.1.1; Naughty Animations blocked (первый выпуск без сцен); Hotscenes и Hotscenes Add в дополнение не входят совсем."
   ]
 }
