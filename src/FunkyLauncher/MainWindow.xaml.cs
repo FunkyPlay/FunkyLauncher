@@ -56,6 +56,7 @@ public partial class MainWindow : Window
         if (args.Contains("--enable-desktops") && !Settings.DesktopsBeta) { Settings.DesktopsBeta = true; Settings.Save(); }
         StartDesktops();
         ProModules.Refresh(Settings); // Funky Pro: loads the module only with a valid key
+        ProModules.ShowUi = ProModules.SalesOpen || args.Contains("--show-pro") || ProLicense.Active(Settings);
         var i = Array.IndexOf(args, "--test-manual");
         // "--test-manual N big" → N-1 smallest files + one file of about 500 MB (slow download test)
         // developer test: FunkyLauncher.exe --test-problem → shows the "game crashed" window

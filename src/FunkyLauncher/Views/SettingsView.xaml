@@ -21,7 +21,7 @@
         </Border>
 
         <TextBlock x:Name="ProLabel" FontSize="14" FontWeight="SemiBold" Foreground="{StaticResource Muted}" Margin="0,32,0,8"/>
-        <Border Style="{StaticResource CardBorder}">
+        <Border x:Name="ProCard" Style="{StaticResource CardBorder}">
             <StackPanel>
                 <TextBlock x:Name="ProStatus" FontSize="15" FontWeight="SemiBold" TextWrapping="Wrap"/>
                 <TextBlock x:Name="ProText" FontSize="12.5" Foreground="{StaticResource Muted}" TextWrapping="Wrap" Margin="0,6,0,12"/>

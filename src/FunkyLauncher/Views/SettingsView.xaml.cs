@@ -45,6 +45,7 @@ public partial class SettingsView : UserControl
     private void RefreshPro()
     {
         ProLabel.Text = "Funky Pro";
+        ProLabel.Visibility = ProCard.Visibility = Services.ProModules.ShowUi ? Visibility.Visible : Visibility.Collapsed;
         ProActivate.Content = Loc.T("pro.activate");
         ProRemove.Content = Loc.T("pro.remove");
         var (status, info) = ProLicense.Check(_main.Settings.ProKey, DateTime.UtcNow);

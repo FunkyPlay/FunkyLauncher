@@ -15,6 +15,13 @@ public static class ProModules
     public static string? LoadError { get; private set; }
     public static bool Installed => File.Exists(DllPath);
 
+    /// <summary>Funky Pro is not on sale yet (Funky, 2026-11-13): the Pro section stays hidden for players.
+    /// Turn to true when sales open.</summary>
+    public const bool SalesOpen = false;
+
+    /// <summary>Show Pro UI: when sales are open, for someone who already has a valid key, or with --show-pro (developer).</summary>
+    public static bool ShowUi { get; set; }
+
     private static bool _hooked;
 
     /// <summary>(Re)checks the key and loads the module once. A module can't be unloaded: removing the key just stops using it.</summary>
