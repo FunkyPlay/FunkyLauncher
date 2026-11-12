@@ -32,6 +32,18 @@ public static class PlayService
 
     public static void OpenUrl(string url) => Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
 
+    /// <summary>
+    /// Opens the support bot with <paramref name="text"/> already typed in the message box (Telegram app first,
+    /// the t.me page if the app is not installed). The text is also put on the clipboard as a fallback.
+    /// </summary>
+    public static void OpenSupportChat(string text)
+    {
+        try { System.Windows.Clipboard.SetText(text); } catch { }
+        var enc = Uri.EscapeDataString(text);
+        try { OpenUrl($"tg://resolve?domain={AppConfig.SupportBotName}&text={enc}"); }
+        catch { OpenUrl($"{AppConfig.SupportBotUrl}?text={enc}"); }
+    }
+
     public static void OpenWabbajackGui()
     {
         var gui = WabbajackService.FindGui();
