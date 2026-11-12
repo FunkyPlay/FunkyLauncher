@@ -83,15 +83,49 @@ public static class Addons
     /// <summary>The Russian pack (mod translations on top of the English base), or null if the modlist has none.</summary>
     public static AddonFile? Russian(string modlistId) => Load(modlistId, "ru");
 
+    private const string OnlineBase = "https://raw.githubusercontent.com/FunkyPlay/FunkyLauncher/main/addons/";
+    private static string CacheFile(string modlistId, string kind) =>
+        Path.Combine(AppConfig.DataDir, "addons", $"{modlistId}-{kind}.json");
+
+    /// <summary>
+    /// Downloads the current packs from GitHub (same files as built in) into the data folder, so a fixed list reaches
+    /// players without a new launcher. Only files that parse and belong to the modlist are kept. Off with UpdateCatalog.
+    /// </summary>
+    public static async Task RefreshOnlineAsync(IEnumerable<string> modlistIds, CancellationToken token)
+    {
+        using var http = new System.Net.Http.HttpClient { Timeout = TimeSpan.FromSeconds(15) };
+        foreach (var id in modlistIds)
+            foreach (var kind in new[] { "ru", "adult" })
+            {
+                try
+                {
+                    var json = await http.GetStringAsync(OnlineBase + Uri.EscapeDataString($"{id}-{kind}.json"), token);
+                    var a = JsonSerializer.Deserialize<AddonFile>(json);
+                    if (a == null || a.ModlistId != id || a.Mods.Count == 0) continue;
+                    var file = CacheFile(id, kind);
+                    Directory.CreateDirectory(Path.GetDirectoryName(file)!);
+                    await File.WriteAllTextAsync(file, json, token);
+                }
+                catch { /* offline, 404 (no such pack) — keep what we have */ }
+            }
+    }
+
     private static AddonFile? Load(string modlistId, string kind)
     {
         try
         {
-            var uri = new Uri($"pack://application:,,,/addons/{modlistId}-{kind}.json");
-            var res = System.Windows.Application.GetResourceStream(uri);
-            if (res == null) return null;
-            using var s = res.Stream;
-            var a = JsonSerializer.Deserialize<AddonFile>(s);
+            AddonFile? a = null;
+            var cached = CacheFile(modlistId, kind);
+            if (File.Exists(cached))
+                try { a = JsonSerializer.Deserialize<AddonFile>(File.ReadAllText(cached)); } catch { a = null; }
+            if (a == null || a.ModlistId != modlistId)
+            {
+                var uri = new Uri($"pack://application:,,,/addons/{modlistId}-{kind}.json");
+                var res = System.Windows.Application.GetResourceStream(uri);
+                if (res == null) return null;
+                using var s = res.Stream;
+                a = JsonSerializer.Deserialize<AddonFile>(s);
+            }
             if (a == null || a.ModlistId != modlistId) return null;
             a.Mods = a.Mods.Where(m => !m.Blocked && m.ModFolder.Length > 0 && m.Archive.LocalFileName.Length > 0).ToList();
             foreach (var m in a.Mods)

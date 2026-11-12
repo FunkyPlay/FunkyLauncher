@@ -83,6 +83,8 @@ public static class Loc
         ["help.send.done.noid"] = ("Открыл чат поддержки, сообщение уже вписано. Допиши, что случилось, ID и «Одноразовый пароль» из окна RustDesk — и отправь. (Если текста нет — Ctrl+V.)", "Opened the support chat with the message typed in. Add what happened, the ID and the \"One-time password\" from the RustDesk window, then send. (No text? Ctrl+V.)"),
         ["report.send.text"] = ("Здравствуйте! Отправляю отчёт об ошибке ({0}) — файл прикреплю.\nЧто случилось: ", "Hello! Sending an error report ({0}) — the file is attached.\nWhat happened: "),
         ["support.write.text"] = ("Здравствуйте! Вопрос по Funky Launcher.\nЧто случилось: ", "Hello! A question about Funky Launcher.\nWhat happened: "),
+        ["update.bar"] = ("Вышла новая версия Funky Launcher — {0} (у тебя {1}). Скачай и запусти её вместо этой — сборки и настройки останутся.", "A new Funky Launcher is out — {0} (you have {1}). Download it and run it instead of this one — your modlists and settings stay."),
+        ["update.button"] = ("Скачать", "Download"),
         ["help.error"] = ("Не получилось открыть помощь: {0}", "Couldn't start help: {0}"),
         ["help.err.nosource"] = ("в каталоге нет адреса сервера помощи", "the catalog has no help server"),
         ["help.err.hash"] = ("файл RustDesk не совпал с контрольной суммой — запуск отменён", "the RustDesk file failed the checksum — cancelled"),

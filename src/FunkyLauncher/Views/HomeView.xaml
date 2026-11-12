@@ -4,6 +4,14 @@
     <ScrollViewer VerticalScrollBarVisibility="Auto">
     <StackPanel Margin="28,24">
 
+        <!-- A newer launcher is out (GitHub latest release) -->
+        <Border x:Name="UpdateBar" CornerRadius="12" Background="#C02A1426" BorderBrush="#FF3FD2" BorderThickness="1" Padding="16,10" Margin="0,0,0,14" Visibility="Collapsed">
+            <DockPanel>
+                <Button x:Name="UpdateButton" DockPanel.Dock="Right" Style="{StaticResource PrimaryButton}" Height="36" Padding="16,0" Click="Update_Click"/>
+                <TextBlock x:Name="UpdateText" FontSize="14" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Margin="0,0,14,0"/>
+            </DockPanel>
+        </Border>
+
         <!-- Hero: FunkyPlay brand, not tied to one game -->
         <Border CornerRadius="18" ClipToBounds="True" Height="330">
             <Border.Background>
