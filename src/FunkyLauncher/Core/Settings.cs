@@ -61,6 +61,9 @@ public sealed class Settings
     /// <summary>A .wabbajack file the user picked by hand, per modlist id.</summary>
     public Dictionary<string, string> ModlistFiles { get; set; } = new();
 
+    /// <summary>Add-ons (e.g. the 18+ add-on) per add-on id: on/off, level 2, when the age was confirmed. Stays on this PC.</summary>
+    public Dictionary<string, AddonPrefs> Addons { get; set; } = new();
+
     private static string FilePath => Path.Combine(AppConfig.DataDir, "settings.json");
 
     public static Settings Load()

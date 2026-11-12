@@ -74,6 +74,13 @@ public partial class MainWindow : Window
         // developer test: FunkyLauncher.exe --test-pro → opens Tools → Funky Pro
         if (args.Contains("--test-pro"))
             ContentRendered += (_, _) => { NavTools.IsChecked = true; _tools.ShowPro(); };
+        // developer test: FunkyLauncher.exe --test-addon → opens the 18+ add-on window for the selected modlist (changes nothing by itself)
+        if (args.Contains("--test-addon"))
+            ContentRendered += (_, _) =>
+            {
+                NavLibrary.IsChecked = true;
+                if (Addons.Adult(Selected.Id) is { } a) new AddonWindow(Settings, Selected, a) { Owner = this }.Show();
+            };
         if (args.Contains("--test-pccheck"))
             ContentRendered += (_, _) => { NavTools.IsChecked = true; _tools.ShowPc(); _tools.RunPcCheck(); };
         if (args.Contains("--test-problem"))
