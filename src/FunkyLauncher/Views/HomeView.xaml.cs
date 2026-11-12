@@ -22,7 +22,26 @@ public partial class HomeView : UserControl
         Loc.Changed += Refresh;
         Refresh();
         _ = LoadNewsAsync();
+        _ = CheckUpdateAsync();
     }
+
+    private string? _newVersion;
+
+    private async Task CheckUpdateAsync()
+    {
+        _newVersion = await LauncherUpdate.NewerVersionAsync(CancellationToken.None);
+        RenderUpdate();
+    }
+
+    private void RenderUpdate()
+    {
+        UpdateBar.Visibility = _newVersion != null ? Visibility.Visible : Visibility.Collapsed;
+        if (_newVersion == null) return;
+        UpdateText.Text = Loc.F("update.bar", _newVersion, AppConfig.Version);
+        UpdateButton.Content = Loc.T("update.button");
+    }
+
+    private void Update_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(LauncherUpdate.DownloadUrl);
 
     public void Refresh()
     {
@@ -46,6 +65,7 @@ public partial class HomeView : UserControl
         HelpSendButton.Content = Loc.T("help.send");
         HelpSendButton.Visibility = _helpOn ? Visibility.Visible : Visibility.Collapsed;
         RenderNews();
+        RenderUpdate();
     }
 
     private bool _helpOn;

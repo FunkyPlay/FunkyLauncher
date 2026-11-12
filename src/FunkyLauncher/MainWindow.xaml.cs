@@ -155,6 +155,8 @@ public partial class MainWindow : Window
             _soft.Refresh();
             _tools.Refresh();
         }
+        // language packs and 18+ lists: fixes arrive without a new launcher
+        await Addons.RefreshOnlineAsync(Catalog.Items.Select(m => m.Id), CancellationToken.None);
     }
 
     public void ApplyTexts()
