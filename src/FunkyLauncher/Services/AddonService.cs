@@ -52,9 +52,16 @@ public static class AddonService
     {
         if (Mo2Running()) throw new InvalidOperationException(Loc.T("addon.err.mo2"));
         var mods = ModsDir(s, m);
+        var wanted = Wanted(a, level2);
+        // everything is already unpacked (e.g. switching Russian back on): only switch the mods on — seconds, not minutes
+        if (wanted.All(x => Directory.Exists(Path.Combine(mods, x.ModFolder))))
+        {
+            progress.Report(Loc.T("addon.enabling"));
+            await Task.Run(() => SetEnabled(s, m, a, level2, on: true), token);
+            return new AddonResult(wanted.Count, new List<ManualItem>(), new List<string>());
+        }
         var downloads = s.DownloadsDir(m);
         Directory.CreateDirectory(downloads);
-        var wanted = Wanted(a, level2);
         var manual = new List<ManualItem>();
         var errors = new List<string>();
         var done = 0;

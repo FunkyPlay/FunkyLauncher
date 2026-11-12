@@ -13,8 +13,34 @@ public partial class App : Application
     private const int DWMWA_USE_IMMERSIVE_DARK_MODE = 20;
     private const int DWMWA_CAPTION_COLOR = 35; // Windows 11
 
+    private static Mutex? _single;
+
     protected override void OnStartup(StartupEventArgs e)
     {
+        // one launcher per data folder: a second start only brings the running window to the front
+        // (two copies wrote the same settings and modlist.txt at once)
+        var key = "FunkyLauncher." + Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(
+            System.Text.Encoding.UTF8.GetBytes(Core.AppConfig.DataDir.ToLowerInvariant())))[..16];
+        _single = new Mutex(true, key + ".single", out var first);
+        var show = new EventWaitHandle(false, EventResetMode.AutoReset, key + ".show");
+        if (!first)
+        {
+            show.Set();
+            Environment.Exit(0);
+        }
+        new Thread(() =>
+        {
+            while (show.WaitOne())
+                Dispatcher.Invoke(() =>
+                {
+                    if (MainWindow is not { } w) return;
+                    w.Show();
+                    if (w.WindowState == WindowState.Minimized) w.WindowState = WindowState.Normal;
+                    w.Activate();
+                });
+        }) { IsBackground = true }.Start();
+
+
         // every launcher window gets a dark title bar, whatever the Windows theme is
         EventManager.RegisterClassHandler(typeof(Window), FrameworkElement.LoadedEvent, new RoutedEventHandler((s, _) => DarkTitleBar((Window)s)));
         base.OnStartup(e);
