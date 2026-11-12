@@ -61,7 +61,7 @@ public partial class HomeView : UserControl
         {
             var id = await RemoteHelp.GetIdAsync();
             var text = id != null ? Loc.F("help.send.text", RemoteHelp.FormatId(id)) : Loc.T("help.send.noid");
-            PlayService.OpenSupportChat(text);
+            PlayService.OpenSupportChat(text, _main.Settings, _main.Selected);
             ReportText.Text = id != null ? Loc.T("help.send.done") : Loc.T("help.send.done.noid");
         }
         catch (Exception ex) { ReportText.Text = Loc.F("help.error", ex.Message); }
@@ -182,7 +182,7 @@ public partial class HomeView : UserControl
             var file = await ReportService.CreateAsync(_main.Settings, _main.Selected, CancellationToken.None);
             ReportText.Text = Loc.F("start.report.done", Path.GetFileName(file));
             Process.Start(new ProcessStartInfo("explorer.exe", $"/select,\"{file}\"") { UseShellExecute = true });
-            PlayService.OpenSupportChat(Loc.F("report.send.text", Path.GetFileName(file)));
+            PlayService.OpenSupportChat(Loc.F("report.send.text", Path.GetFileName(file)), _main.Settings, _main.Selected);
         }
         catch (Exception ex)
         {
@@ -192,7 +192,9 @@ public partial class HomeView : UserControl
     }
 
     private void Library_Click(object sender, RoutedEventArgs e) => _main.ShowLibrary();
-    private void Support_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(AppConfig.SupportUrl);
+    // "Contact support": the support bot with a ready message (was the news channel)
+    private void Support_Click(object sender, RoutedEventArgs e) =>
+        PlayService.OpenSupportChat(Loc.T("support.write.text"), _main.Settings, _main.Selected);
     private void Telegram_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(AppConfig.TelegramUrl);
     private void YouTube_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(AppConfig.YouTubeUrl);
     private void GitHub_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(AppConfig.GitHubUrl);
