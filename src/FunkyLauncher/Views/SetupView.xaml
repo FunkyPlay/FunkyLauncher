@@ -48,6 +48,11 @@
                     <TextBlock x:Name="InstalledText" FontSize="13" Foreground="#9AF2FF"/>
                 </Border>
                 <Button x:Name="PlayButton" Style="{StaticResource PrimaryButton}" Margin="0,20,0,0" Visibility="Collapsed" Click="Play_Click"/>
+                <!-- Modlist composition: language (Russian pack) and the 18+ add-on — designer mock-up 12.11 -->
+                <Border x:Name="CompositionBox" Style="{StaticResource CardBorder}" Margin="0,16,0,0" BorderBrush="#5A2A55" BorderThickness="1" Visibility="Collapsed">
+                    <StackPanel x:Name="CompositionPanel"/>
+                </Border>
+                <Button x:Name="ApplyButton" Style="{StaticResource SecondaryButton}" Margin="0,10,0,0" Visibility="Collapsed" Click="Apply_Click"/>
                 <Button x:Name="NexusButton" Style="{StaticResource SecondaryButton}" Margin="0,14,0,0" Click="Nexus_Click"/>
                 <Button x:Name="InstallButton" Style="{StaticResource PrimaryButton}" Margin="0,14,0,0" Click="Install_Click"/>
                 <Button x:Name="ReinstallButton" Style="{StaticResource SecondaryButton}" Margin="0,10,0,0" Visibility="Collapsed" Click="Reinstall_Click"/>

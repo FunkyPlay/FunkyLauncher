@@ -1,0 +1,970 @@
+{
+  "schema": 1,
+  "modlistId": "neon-nights",
+  "packId": "neon-nights-ru",
+  "listVersion": "0.1.1-draft",
+  "forMainVersion": "0.1.1",
+  "draft": true,
+  "generated": "2026-11-12",
+  "rules": {
+    "what": "Русский пакет: переводы модов поверх английской основы Neon Nights. Язык самой игры игрок ставит в настройках игры.",
+    "hash": "sha256 обязателен; сверять скачанное по sha256, а не по имени файла",
+    "modlistFile": "profiles/Wabbajack/modlist.txt внутри папки установки Neon Nights",
+    "modlistOrder": "Верх modlist.txt = высший приоритет. Ставить '+<modFolder>' сразу НАД insertAbove (перевод должен быть выше оригинала). Нет — сразу ПОД fallbackInsertBelow. Нет обеих — в самый верх.",
+    "disable": "Переключение на English = заменить '+<modFolder>' на '-<modFolder>'.",
+    "install.copyAll": "Распаковать архив целиком в mods/<modFolder>/.",
+    "install.copyFrom": "Взять из архива папку 'from' и положить её содержимое в mods/<modFolder>/; если есть onlyFiles — только эти файлы.",
+    "install.TODO": "Раскладку надо уточнить вручную (FOMOD или несколько папок).",
+    "afterMainReinstall": "После переустановки основы применить пакет заново.",
+    "install.skip": "Пути из skip не распаковывать."
+  },
+  "mods": [
+    {
+      "id": "SpeedometerFixesRUS",
+      "modFolder": "SpeedometerFixesRUS",
+      "nexus": {
+        "game": "cyberpunk2077",
+        "modId": 18834,
+        "fileId": 96751,
+        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/18834?tab=files&file_id=96751"
+      },
+      "version": "d2026.11.8.0",
+      "translates": [
+        {
+          "modId": 9713,
+          "name": "Speedometer Fixes"
+        }
+      ],
+      "modlist": {
+        "insertAbove": "AVA_Output",
+        "fallbackInsertBelow": "Neon Nights - Defaults"
+      },
+      "archive": {
+        "localFileName": "SpeedometerFixesRUS-18834-1-0-1736019570.zip",
+        "size": 3602,
+        "sha256": "b168ed9d233d40bc6eb5142b3c98598c54f9568ed6f7f6c26d74eb699af197ec"
+      },
+      "install": {
+        "type": "copyAll",
+        "from": "",
+        "to": "",
+        "fomod": false,
+        "fileCount": 1
+      }
+    },
+    {
+      "id": "Conflict Begone_RU",
+      "modFolder": "Conflict Begone_RU",
+      "nexus": {
+        "game": "cyberpunk2077",
+        "modId": 22356,
+        "fileId": 145118,
+        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/22356?tab=files&file_id=145118"
+      },
+      "version": "d2026.11.8.0",
+      "translates": [
+        {
+          "modId": 21912,
+          "name": "Conflict Begone (Archive Conflict Checker - User Mod Support)"
+        }
+      ],
+      "modlist": {
+        "insertAbove": "AVA_Output",
+        "fallbackInsertBelow": "Neon Nights - Defaults"
+      },
+      "archive": {
+        "localFileName": "Conflict Begone_RU-22356-1-3-0-1778605320.zip",
+        "size": 9974,
+        "sha256": "ed5852036b8063642dbf27669063c99e58de69bd6d34b0bd1212c8981102184b"
+      },
+      "install": {
+        "type": "copyAll",
+        "from": "",
+        "to": "",
+        "fomod": false,
+        "fileCount": 2
+      }
+    },
+    {
+      "id": "RUSSION ONLINE RADIO 34678 3 2026",
+      "modFolder": "RUSSION ONLINE RADIO 34678 3 2026",
+      "nexus": {
+        "game": "cyberpunk2077",
+        "modId": 34678,
+        "fileId": 165970,
+        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/34678?tab=files&file_id=165970"
+      },
+      "version": "d2026.11.4.0",
+      "translates": [],
+      "modlist": {
+        "insertAbove": "RadioExt 2.92 4591 2.92 2026",
+        "fallbackInsertBelow": "105.1 SyberLilly FM"
+      },
+      "archive": {
+        "localFileName": "RUSSION ONLINE RADIO 34678 3 2026-10-14T10-00Z cB3xB0Wc5.zip",
+        "size": 2774,
+        "sha256": "a315772942c1b58e84c3726a2913e09300e9d0f761969ea49ab49a041d782902"
+      },
+      "install": {
+        "type": "copyAll",
+        "from": "",
+        "to": "",
+        "fomod": false,
+        "skip": [
+          "bin/x64/plugins/cyber_engine_tweaks/mods/radioExt/radios/RadioRecord/"
+        ]
+      },
+      "notes": "Русские радиостанции (музыка, не перевод) — только в русском пакете. Станция RadioRecord у нас отключена, не ставить."
+    },
+    {
+      "id": "BikesOTDF_ArchV4_RUS",
+      "modFolder": "BikesOTDF_ArchV4_RUS",
+      "nexus": {
+        "game": "cyberpunk2077",
+        "modId": 18784,
+        "fileId": 96553,
+        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/18784?tab=files&file_id=96553"
+      },
+      "version": "d2026.11.8.0",
+      "translates": [
+        {
+          "modId": 18736,
+          "name": "Bikes of the Dark Future --- Arch V4"
+        }
+      ],
+      "modlist": {
+        "insertAbove": "BDF_DRe_ArchV4_Mirrors",
+        "fallbackInsertBelow": "KRNLNIK Dodge Charger R T"
+      },
+      "archive": {
+        "localFileName": "BikesOTDF_ArchV4_RUS-18784-1-0-1735922793.zip",
+        "size": 5820,
+        "sha256": "c2cc7441c568ace3ca78a07491c072efa143902de54050de3b383a947136f161"
+      },
+      "install": {
+        "type": "copyAll",
+        "from": "",
+        "to": "",
+        "fomod": false,
+        "fileCount": 2
+      }
+    },
+    {
+      "id": "Zenitex Core Dependency_RU",
+      "modFolder": "Zenitex Core Dependency_RU",
+      "nexus": {
+        "game": "cyberpunk2077",
+        "modId": 23603,
+        "fileId": 157109,
+        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/23603?tab=files&file_id=157109"
+      },
+      "version": "d2026.11.8",
+      "translates": [
+        {
+          "modId": 16356,
+          "name": "Zenitex Core Dependency (5.0)"
+        }
+      ],
+      "modlist": {
+        "insertAbove": "Zenitex Core Dependency",
+        "fallbackInsertBelow": "Zenitex Core Dependency - Coyote Set"
+      },
+      "archive": {
+        "localFileName": "Zenitex Core Dependency_RU 23603 5.1.8 2026-08-21T16-00Z E91D9dTOB.zip",
+        "size": 5652,
+        "sha256": "d2bfd59ad7331506c8be00584a8039f5575cc294ca51052c9ff3bc95a3275a98"
+      },
+      "install": {
+        "type": "copyAll",
+        "from": "",
+        "to": "",
+        "fomod": false,
+        "fileCount": 2
+      }
+    },
+    {
+      "id": "Native Settings UI Side Menu RU",
+      "modFolder": "Native Settings UI Side Menu RU",
+      "nexus": {
+        "game": "cyberpunk2077",
+        "modId": 16455,
+        "fileId": 97391,
+        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/16455?tab=files&file_id=97391"
+      },
+      "version": "d2026.11.8.0",
+      "translates": [
+        {
+          "modId": 16218,
+          "name": "Native Settings UI Side Menu Add-on"
+        }
+      ],
+      "modlist": {
+        "insertAbove": "Teko Font and Menus Recolor",
+        "fallbackInsertBelow": "Apartments Enhanced CORE - Install first 19521 2.04 2026"
+      },
+      "archive": {
+        "localFileName": "Native Settings UI Side Menu RU-16455-1-3-4-1736492640.zip",
+        "size": 2693,
+        "sha256": "f17c4db0dec02c18c8dd36a1e152956a0c45f6607a071b32e817d2dc94b5810d"
+      },
+      "install": {
+        "type": "copyAll",
+        "from": "",
+        "to": "",
+        "fomod": false,
+        "fileCount": 1
+      }
+    },
+    {
+      "id": "Skill Trainers RU",
+      "modFolder": "Skill Trainers RU",
+      "nexus": {
+        "game": "cyberpunk2077",
+        "modId": 16361,
+        "fileId": 111444,
+        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/16361?tab=files&file_id=111444"
+      },
+      "version": "d2026.11.8.0",
+      "translates": [
+        {
+          "modId": 12689,
+          "name": "Skill Trainers"
+        }
+      ],
+      "modlist": {
+        "insertAbove": "Overclocked Lynx Paws",
+        "fallbackInsertBelow": "All Guns"
+      },
+      "archive": {
+        "localFileName": "Skill Trainers RU-16361-1-0-5-1749898980.zip",
+        "size": 2073,
+        "sha256": "087e4f3e33531ed25a9bd414bfcdb7816838d4bb933e40c33be223dcb5b30dd4"
+      },
+      "install": {
+        "type": "copyAll",
+        "from": "",
+        "to": "",
+        "fomod": false,
+        "fileCount": 1
+      }
+    },
+    {
+      "id": "SFXToggle_RU",
+      "modFolder": "SFXToggle_RU",
+      "nexus": {
+        "game": "cyberpunk2077",
+        "modId": 21392,
+        "fileId": 115214,
+        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/21392?tab=files&file_id=115214"
+      },
+      "version": "d2026.11.8.0",
+      "translates": [
+        {
+          "modId": 20421,
+          "name": "SFX Toggle (Mute Sounds and Combat Music)"
+        }
+      ],
+      "modlist": {
+        "insertAbove": "Overclocked Lynx Paws",
+        "fallbackInsertBelow": "All Guns"
+      },
+      "archive": {
+        "localFileName": "SFXToggle_RU-21392-1-3-1753566924.zip",
+        "size": 6113,
+        "sha256": "595e400eaf47161eb40921602d43d21bfae3910f0a0d329b876ab8250fe23f8c"
+      },
+      "install": {
+        "type": "copyAll",
+        "from": "",
+        "to": "",
+        "fomod": false,
+        "fileCount": 2
+      }
+    },
+    {
+      "id": "Fresh Start_A_RU",
+      "modFolder": "Fresh Start_A_RU",
+      "nexus": {
+        "game": "cyberpunk2077",
+        "modId": 28172,
+        "fileId": 139312,
+        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/28172?tab=files&file_id=139312"
+      },
+      "version": "d2026.11.8.0",
+      "translates": [
+        {
+          "modId": 18223,
+          "name": "New Lifepath Intro - Fresh Start"
+        },
+        {
+          "modId": 18464,
+          "name": "New Lifepath Intro - Fresh Start RU"
+        }
+      ],
+      "modlist": {
+        "insertAbove": "Overclocked Lynx Paws",
+        "fallbackInsertBelow": "All Guns"
+      },
+      "archive": {
+        "localFileName": "Fresh Start_A_RU-28172-1-5-0-1773304001.zip",
+        "size": 489602,
+        "sha256": "9ebe6861ca294f5ab298b1f1ce44ee1b3f11315e8908d03193b0d6d632d495f0"
+      },
+      "install": {
+        "type": "copyAll",
+        "from": "",
+        "to": "",
+        "fomod": false,
+        "fileCount": 1
+      }
+    },
+    {
+      "id": "Computer Anywhere_RU",
+      "modFolder": "Computer Anywhere_RU",
+      "nexus": {
+        "game": "cyberpunk2077",
+        "modId": 24309,
+        "fileId": 121608,
+        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/24309?tab=files&file_id=121608"
+      },
+      "version": "d2026.11.8.0",
+      "translates": [
+        {
+          "modId": 12520,
+          "name": "Computer Anywhere"
+        }
+      ],
+      "modlist": {
+        "insertAbove": "Overclocked Lynx Paws",
+        "fallbackInsertBelow": "All Guns"
+      },
+      "archive": {
+        "localFileName": "Computer Anywhere_RU-24309-1-1-3-1758052806.zip",
+        "size": 1263,
+        "sha256": "c3fc275df329cd3d789bb06b8f8ecd37927f200a3c28a33e74131fdaacdadf4e"
+      },
+      "install": {
+        "type": "copyAll",
+        "from": "",
+        "to": "",
+        "fomod": false,
+        "fileCount": 1
+      }
+    },
+    {
+      "id": "Overclocked Lynx Paws RU",
+      "modFolder": "Overclocked Lynx Paws RU",
+      "nexus": {
+        "game": "cyberpunk2077",
+        "modId": 32616,
+        "fileId": 157346,
+        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/32616?tab=files&file_id=157346"
+      },
+      "version": "d2026.11.7",
+      "translates": [],
+      "modlist": {
+        "insertAbove": "Overclocked Lynx Paws",
+        "fallbackInsertBelow": "All Guns"
+      },
+      "archive": {
+        "localFileName": "Overclocked Lynx Paws RU 32616 1.11.0 2026-08-23T08-52Z iubCuMX0I.zip",
+        "size": 12107,
+        "sha256": "5c2b8a88ff5f811f877074bc5a2b977e4ec7bb32755d90c7ae2472db7fce4dad"
+      },
+      "install": {
+        "type": "copyAll",
+        "from": "",
+        "to": "",
+        "fomod": false,
+        "fileCount": 4
+      }
+    },
+    {
+      "id": "Merc Protocol - Perk Gameplay Expansion_RU 27140 2.13 2026",
+      "modFolder": "Merc Protocol - Perk Gameplay Expansion_RU 27140 2.13 2026",
+      "nexus": {
+        "game": "cyberpunk2077",
+        "modId": 27140,
+        "fileId": 167251,
+        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/27140?tab=files&file_id=167251"
+      },
+      "version": "d2026.11.7.0",
+      "translates": [
+        {
+          "modId": 26751,
+          "name": "Merc Protocol - Perk Gameplay Expansion"
+        }
+      ],
+      "modlist": {
+        "insertAbove": "Merc Protocol - Perk Gameplay Expansion 26751 2.13 2026",
+        "fallbackInsertBelow": "Running Man 26611 1.2.2 2026"
+      },
+      "archive": {
+        "localFileName": "Merc Protocol - Perk Gameplay Expansion_RU 27140 2.13 2026-10-20T10-29Z ozVyzbbpF.zip",
+        "size": 29964,
+        "sha256": "c8fcb43504e05905a81295346f78dde0cfd17d1cfc24e353782cda0752869d2c"
+      },
+      "install": {
+        "type": "copyAll",
+        "from": "",
+        "to": "",
+        "fomod": false,
+        "fileCount": 9
+      }
+    },
+    {
+      "id": "Gambling System Blackjack RU",
+      "modFolder": "Gambling System Blackjack RU",
+      "nexus": {
+        "game": "cyberpunk2077",
+        "modId": 19631,
+        "fileId": 123120,
+        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/19631?tab=files&file_id=123120"
+      },
+      "version": "d2026.11.7.0",
+      "translates": [
+        {
+          "modId": 19575,
+          "name": "Playable Blackjack - Gambling System"
+        },
+        {
+          "modId": 15229,
+          "name": "Gambling Props - Poker Chips and Playing Cards"
+        }
+      ],
+      "modlist": {
+        "insertAbove": "gambling-system-blackjack 19575 1.1.5 2026",
+        "fallbackInsertBelow": "Merc Protocol - Perk Gameplay Expansion 26751 2.13 2026"
+      },
+      "archive": {
+        "localFileName": "Gambling System Blackjack RU-19631-1-1-0-1759148195.zip",
+        "size": 2447,
+        "sha256": "1ad502171b61e2ab12081088e5070fb0ad047290c1b289298b43f7a2a56dbcd4"
+      },
+      "install": {
+        "type": "copyAll",
+        "from": "",
+        "to": "",
+        "fomod": false,
+        "fileCount": 1
+      }
+    },
+    {
+      "id": "Gambling System - Roulette_RU",
+      "modFolder": "Gambling System - Roulette_RU",
+      "nexus": {
+        "game": "cyberpunk2077",
+        "modId": 22130,
+        "fileId": 129506,
+        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/22130?tab=files&file_id=129506"
+      },
+      "version": "d2026.11.8.0",
+      "translates": [
+        {
+          "modId": 15450,
+          "name": "Playable Roulette - Gambling System"
+        }
+      ],
+      "modlist": {
+        "insertAbove": "Gambling System - Roulette 15450 1.1.4 2026",
+        "fallbackInsertBelow": "gambling-system-blackjack 19575 1.1.5 2026"
+      },
+      "archive": {
+        "localFileName": "Gambling System - Roulette_RU-22130-1-1-0-1765343170.zip",
+        "size": 2458,
+        "sha256": "6d6dd2b59d8faaf0086dd3c98139551fa494161bdee3158694eb67357ba7da6f"
+      },
+      "install": {
+        "type": "copyAll",
+        "from": "",
+        "to": "",
+        "fomod": false,
+        "fileCount": 1
+      }
+    },
+    {
+      "id": "Night City Allies - AIO RU 28549 1.6.12 2026",
+      "modFolder": "Night City Allies - AIO RU 28549 1.6.12 2026",
+      "nexus": {
+        "game": "cyberpunk2077",
+        "modId": 28549,
+        "fileId": 167673,
+        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/28549?tab=files&file_id=167673"
+      },
+      "version": "1.6.12",
+      "translates": [],
+      "modlist": {
+        "insertAbove": "Night City Allies - AIO 27625 1.6.12 2026",
+        "fallbackInsertBelow": "SFXToggle-V1.4 20421 1.4 2026"
+      },
+      "archive": {
+        "localFileName": "Night City Allies - AIO RU 28549 1.6.12.zip",
+        "size": 32395,
+        "sha256": "fb1b3bbc1b641e0184e8663a5d700be8d55bf6bf79f89581ec9cf7db0be8c944"
+      },
+      "install": {
+        "type": "copyAll",
+        "from": "",
+        "to": "",
+        "fomod": false
+      },
+      "notes": "fileId взят с Nexus по версии 1.6.12 (в meta.ini его не было); раскладку проверить при первой установке."
+    },
+    {
+      "id": "Fresh Start RU",
+      "modFolder": "Fresh Start RU",
+      "nexus": {
+        "game": "cyberpunk2077",
+        "modId": 18464,
+        "fileId": 113961,
+        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/18464?tab=files&file_id=113961"
+      },
+      "version": "d2026.11.4.0",
+      "translates": [
+        {
+          "modId": 18223,
+          "name": "New Lifepath Intro - Fresh Start"
+        }
+      ],
+      "modlist": {
+        "insertAbove": "Fresh Start 18223 1.6.1 2026",
+        "fallbackInsertBelow": "Night City Allies - AIO 27625 1.6.12 2026"
+      },
+      "archive": {
+        "localFileName": "Fresh Start RU-18464-1-3-0-1752779078.zip",
+        "size": 3678,
+        "sha256": "c3236709cb1373b63cef79d5eaf682c5ccc60ba177d0bd28936a7cdd3ee51f23"
+      },
+      "install": {
+        "type": "copyAll",
+        "from": "",
+        "to": "",
+        "fomod": false,
+        "fileCount": 2
+      }
+    },
+    {
+      "id": "High Stakes Quest (RU)",
+      "modFolder": "High Stakes Quest (RU)",
+      "nexus": {
+        "game": "cyberpunk2077",
+        "modId": 19802,
+        "fileId": 101821,
+        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/19802?tab=files&file_id=101821"
+      },
+      "version": "d2026.11.4.0",
+      "translates": [
+        {
+          "modId": 18023,
+          "name": "High Stakes Quest"
+        }
+      ],
+      "modlist": {
+        "insertAbove": "AldecaldosHighStakes",
+        "fallbackInsertBelow": "Alex Romanced 30777 2.0.1 2026"
+      },
+      "archive": {
+        "localFileName": "High Stakes Quest (RU)-19802-1-1-1-1739807938.zip",
+        "size": 2666880,
+        "sha256": "588fbe90154586799f6a2c799ba04a4c2e2f658cdc84492b18d7c94542fbbdcc"
+      },
+      "install": {
+        "type": "copyAll",
+        "from": "",
+        "to": "",
+        "fomod": false,
+        "fileCount": 3
+      }
+    },
+    {
+      "id": "APEX - Sonora Canyon and Safehouse RU",
+      "modFolder": "APEX - Sonora Canyon and Safehouse RU",
+      "nexus": {
+        "game": "cyberpunk2077",
+        "modId": 27643,
+        "fileId": 136462,
+        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/27643?tab=files&file_id=136462"
+      },
+      "version": "d2026.11.4.0",
+      "translates": [
+        {
+          "modId": 25999,
+          "name": "APEX - Sonora Canyon and Safehouse"
+        }
+      ],
+      "modlist": {
+        "insertAbove": "Sonora Apex 25999 1.0.4 2026",
+        "fallbackInsertBelow": "The Gangs of Night City 7233 7.0.1 2026"
+      },
+      "archive": {
+        "localFileName": "APEX - Sonora Canyon and Safehouse RU-27643-1-0-0-1771367723.zip",
+        "size": 13481,
+        "sha256": "3a61be6b6e82f781956b4a7a233aab89be5840460ed0f046d2fe5fd8ae2e7a01"
+      },
+      "install": {
+        "type": "copyAll",
+        "from": "",
+        "to": "",
+        "fomod": false,
+        "fileCount": 1
+      }
+    },
+    {
+      "id": "Californication RU",
+      "modFolder": "Californication RU",
+      "nexus": {
+        "game": "cyberpunk2077",
+        "modId": 18456,
+        "fileId": 117190,
+        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/18456?tab=files&file_id=117190"
+      },
+      "version": "d2026.11.4.0",
+      "translates": [
+        {
+          "modId": 7833,
+          "name": "New Quest - Californication"
+        }
+      ],
+      "modlist": {
+        "insertAbove": "Californication",
+        "fallbackInsertBelow": "Sonora Apex 25999 1.0.4 2026"
+      },
+      "archive": {
+        "localFileName": "Californication RU-18456-3-0-0-1754899969.zip",
+        "size": 2849,
+        "sha256": "8a20a71525f091cf6cb1bdc9de4e77579090def7517c498c91d66fe3441dc761"
+      },
+      "install": {
+        "type": "copyAll",
+        "from": "",
+        "to": "",
+        "fomod": false,
+        "fileCount": 2
+      }
+    },
+    {
+      "id": "One More Light RU 2.2.1(2.5) 18460 1.6 2026",
+      "modFolder": "One More Light RU 2.2.1(2.5) 18460 1.6 2026",
+      "nexus": {
+        "game": "cyberpunk2077",
+        "modId": 18460,
+        "fileId": 171118,
+        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/18460?tab=files&file_id=171118"
+      },
+      "version": "d2026.11.4.0",
+      "translates": [
+        {
+          "modId": 18463,
+          "name": "Deceptious Quest Core - Russian Translation"
+        },
+        {
+          "modId": 7834,
+          "name": "New Quest - One More Light"
+        }
+      ],
+      "modlist": {
+        "insertAbove": "One More Light 7834 2.2.1 2026",
+        "fallbackInsertBelow": "Californication"
+      },
+      "archive": {
+        "localFileName": "One More Light RU 2.2.1(2.5) 18460 1.6 2026-10-30T17-56Z bWY8WhBx9.rar",
+        "size": 5388,
+        "sha256": "58bab229840f24fc13c16905cbb53d4d4e69e69a76a4d2e75d305052f1b0388c"
+      },
+      "install": {
+        "type": "copyAll",
+        "from": "",
+        "to": "",
+        "fomod": false,
+        "fileCount": 2
+      }
+    },
+    {
+      "id": "Buttslinger Quickmelee_2.0.0_RU",
+      "modFolder": "Buttslinger Quickmelee_2.0.0_RU",
+      "nexus": {
+        "game": "cyberpunk2077",
+        "modId": 22172,
+        "fileId": 111694,
+        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/22172?tab=files&file_id=111694"
+      },
+      "version": "d2026.11.4.0",
+      "translates": [
+        {
+          "modId": 10556,
+          "name": "Buttslinger Quickmelee"
+        }
+      ],
+      "modlist": {
+        "insertAbove": "Buttslinger Quickmelee",
+        "fallbackInsertBelow": "Melee Attacks Fixes And Enhancements"
+      },
+      "archive": {
+        "localFileName": "Buttslinger Quickmelee_2.0.0_RU-22172-2-0-0-1750208769.zip",
+        "size": 1484,
+        "sha256": "81fac636c9adcf8631e578e093bfa4cd95f67da6bcbb120bcff87ad4d187ffdb"
+      },
+      "install": {
+        "type": "copyAll",
+        "from": "",
+        "to": "",
+        "fomod": false,
+        "fileCount": 1
+      }
+    },
+    {
+      "id": "Silencers and Throwing Knives 1.6.2 RU",
+      "modFolder": "Silencers and Throwing Knives 1.6.2 RU",
+      "nexus": {
+        "game": "cyberpunk2077",
+        "modId": 9999,
+        "fileId": 65515,
+        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/9999?tab=files&file_id=65515"
+      },
+      "version": "d2026.11.8.0",
+      "translates": [
+        {
+          "modId": 4070,
+          "name": "Silent Silencers and Throwing Knives"
+        }
+      ],
+      "modlist": {
+        "insertAbove": "Silent Silencers and Throwing Knives 4070 1.6.3 2026",
+        "fallbackInsertBelow": "Enable Finisher Ragdolls v0.1"
+      },
+      "archive": {
+        "localFileName": "Silencers and Throwing Knives 1.6.2 RU-9999-1-6-2-1705784380.zip",
+        "size": 4599,
+        "sha256": "08e7457543a92bf921ae9963b8430fc36633497a261767666dca9f951c55fbc6"
+      },
+      "install": {
+        "type": "copyAll",
+        "from": "",
+        "to": "",
+        "fomod": false,
+        "fileCount": 1
+      }
+    },
+    {
+      "id": "Night City Interactions RU",
+      "modFolder": "Night City Interactions RU",
+      "nexus": {
+        "game": "cyberpunk2077",
+        "modId": 32503,
+        "fileId": 155706,
+        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/32503?tab=files&file_id=155706"
+      },
+      "version": "d2026.11.4",
+      "translates": [],
+      "modlist": {
+        "insertAbove": "Night City Interactions - Core 5519 4.1.1 2026",
+        "fallbackInsertBelow": "Law Enforcement Overhaul"
+      },
+      "archive": {
+        "localFileName": "Night City Interactions - Core - RU 32503 4.1.0 2026-08-10T14-51Z 3dwHd9jI0.zip",
+        "size": 2455,
+        "sha256": "26bc9f9eaf18c5dff48d425aac11767185dc4711ac1a92ab1f6df8718a8512d2"
+      },
+      "install": {
+        "type": "copyAll",
+        "from": "",
+        "to": "",
+        "fomod": false,
+        "fileCount": 3
+      }
+    },
+    {
+      "id": "Deceptious Quest Core ru",
+      "modFolder": "Deceptious Quest Core ru",
+      "nexus": {
+        "game": "cyberpunk2077",
+        "modId": 18463,
+        "fileId": 157566,
+        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/18463?tab=files&file_id=157566"
+      },
+      "version": "d2026.11.4",
+      "translates": [
+        {
+          "modId": 7831,
+          "name": "Deceptious Quest Core"
+        }
+      ],
+      "modlist": {
+        "insertAbove": "Deceptious Quest Core 7831 3.3.3 2026",
+        "fallbackInsertBelow": "Lizzie's Braindances 11077 3.22 2026"
+      },
+      "archive": {
+        "localFileName": "Deceptious Quest Core 3.3.3 RU 18463 1.8 2026-08-24T16-44Z 3dwHd9jQh.rar",
+        "size": 2342,
+        "sha256": "54d73321a9ccce2b71971ec2005fd2dad29041b7730fca2b34e584dfa0a1a0fa"
+      },
+      "install": {
+        "type": "copyAll",
+        "from": "",
+        "to": "",
+        "fomod": false,
+        "fileCount": 2
+      }
+    },
+    {
+      "id": "Russian translation for Immersive Fixers",
+      "modFolder": "Russian translation for Immersive Fixers",
+      "nexus": {
+        "game": "cyberpunk2077",
+        "modId": 15829,
+        "fileId": 82711,
+        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/15829?tab=files&file_id=82711"
+      },
+      "version": "d2026.11.6.0",
+      "translates": [
+        {
+          "modId": 15460,
+          "name": "Immersive Fixers"
+        }
+      ],
+      "modlist": {
+        "insertAbove": "Immersive Fixers",
+        "fallbackInsertBelow": "Immersive Bartenders"
+      },
+      "archive": {
+        "localFileName": "Russian translation for Immersive Fixers-15829-1-1-1721236057.zip",
+        "size": 2641,
+        "sha256": "baa253ddb9faa7918f3736539e9042767d8c42425c3a93265a80dd5ec5c8569a"
+      },
+      "install": {
+        "type": "copyAll",
+        "from": "",
+        "to": "",
+        "fomod": false,
+        "fileCount": 1
+      }
+    },
+    {
+      "id": "Russian translation for Missing Persons 5126 2.3 2026",
+      "modFolder": "Russian translation for Missing Persons 5126 2.3 2026",
+      "nexus": {
+        "game": "cyberpunk2077",
+        "modId": 5126,
+        "fileId": 171519,
+        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/5126?tab=files&file_id=171519"
+      },
+      "version": "d2026.11.4.0",
+      "translates": [
+        {
+          "modId": 5058,
+          "name": "Missing Persons - Fixer's Hidden Gems"
+        }
+      ],
+      "modlist": {
+        "insertAbove": "Missing Persons - Fixer's Hidden Gems",
+        "fallbackInsertBelow": "Immersive Fixers"
+      },
+      "archive": {
+        "localFileName": "Russian translation for Missing Persons 5126 2.3 2026-10-31T12-09Z 5em9eolCq.zip",
+        "size": 54969,
+        "sha256": "373863bcd6b396ffb427937fc54489a7615e761865cd3ea3f3aaa6f666e57676"
+      },
+      "install": {
+        "type": "copyAll",
+        "from": "",
+        "to": "",
+        "fomod": false,
+        "fileCount": 2
+      }
+    },
+    {
+      "id": "Romance Hangouts Enhanced_RU",
+      "modFolder": "Romance Hangouts Enhanced_RU",
+      "nexus": {
+        "game": "cyberpunk2077",
+        "modId": 21650,
+        "fileId": 133544,
+        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/21650?tab=files&file_id=133544"
+      },
+      "version": "d2026.11.4.0",
+      "translates": [
+        {
+          "modId": 11590,
+          "name": "Romance Hangouts Enhanced"
+        }
+      ],
+      "modlist": {
+        "insertAbove": "Romance Hangouts Enhanced",
+        "fallbackInsertBelow": "Judy Romanced Enhanced"
+      },
+      "archive": {
+        "localFileName": "Romance Hangouts Enhanced_RU-21650-2-3-2-1769058408.zip",
+        "size": 19504,
+        "sha256": "17aaea0596323b5c75b773fd33e3a5867641bba7ed4d20700a3dc6dd9e725309"
+      },
+      "install": {
+        "type": "copyAll",
+        "from": "",
+        "to": "",
+        "fomod": false,
+        "fileCount": 1
+      }
+    },
+    {
+      "id": "DigitalVixen Core RU",
+      "modFolder": "DigitalVixen Core RU",
+      "nexus": {
+        "game": "cyberpunk2077",
+        "modId": 33873,
+        "fileId": 160626,
+        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/33873?tab=files&file_id=160626"
+      },
+      "version": "d2026.11.7.0",
+      "translates": [],
+      "modlist": {
+        "insertAbove": "DigitalVixenCore 28390 4.9.12 2026",
+        "fallbackInsertBelow": "RedFunctions 32312 0.15.1 2026"
+      },
+      "archive": {
+        "localFileName": "DigitalVixen Core - RU 33873 4.8.16 2026-09-13T15-11Z SlR4l6RRb.zip",
+        "size": 10609,
+        "sha256": "94957a05b77a7d36789d92eb64747efd24ba31afb8af34d1b39a587f70677eb1"
+      },
+      "install": {
+        "type": "copyAll",
+        "from": "",
+        "to": "",
+        "fomod": false,
+        "fileCount": 1
+      }
+    },
+    {
+      "id": "BrowserExtensionFramework_RU",
+      "modFolder": "BrowserExtensionFramework_RU",
+      "nexus": {
+        "game": "cyberpunk2077",
+        "modId": 24031,
+        "fileId": 120331,
+        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/24031?tab=files&file_id=120331"
+      },
+      "version": "d2026.11.3.0",
+      "translates": [
+        {
+          "modId": 10038,
+          "name": "Browser Extension"
+        }
+      ],
+      "modlist": {
+        "insertAbove": "BrowserExtensionFramework",
+        "fallbackInsertBelow": "CET NPC Body Tweaks with Codeware Extensions 10458 2.2.6 2026"
+      },
+      "archive": {
+        "localFileName": "BrowserExtensionFramework_RU.-24031-0-9-6-1757068835.zip",
+        "size": 1076,
+        "sha256": "f25fa70d5304bc13ebffd55a92757037c1b8fe18705c214a05cec91f16392262"
+      },
+      "install": {
+        "type": "copyAll",
+        "from": "",
+        "to": "",
+        "fomod": false,
+        "fileCount": 1
+      }
+    }
+  ]
+}

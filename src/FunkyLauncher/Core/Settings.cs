@@ -64,6 +64,15 @@ public sealed class Settings
     /// <summary>Add-ons (e.g. the 18+ add-on) per add-on id: on/off, level 2, when the age was confirmed. Stays on this PC.</summary>
     public Dictionary<string, AddonPrefs> Addons { get; set; } = new();
 
+    /// <summary>Language of each modlist ("ru" / "en") the player chose on the install page. Default: the launcher language.</summary>
+    public Dictionary<string, string> ModlistLang { get; set; } = new();
+
+    public string LangOf(string modlistId) =>
+        ModlistLang.TryGetValue(modlistId, out var l) && l is "ru" or "en" ? l : (Loc.Lang == "en" ? "en" : "ru");
+
+    /// <summary>The player ticked "18+ add-on" before installing: offer it right after the install.</summary>
+    public HashSet<string> AdultWanted { get; set; } = new();
+
     private static string FilePath => Path.Combine(AppConfig.DataDir, "settings.json");
 
     public static Settings Load()

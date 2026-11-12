@@ -98,6 +98,187 @@ public partial class SetupView : UserControl
         var noErrors = _checks.Count > 0 && _checks.All(c => c.State != CheckState.Error);
         InstallButton.IsEnabled = !_busy && Ml.IsReleased && noErrors;
         ReinstallButton.IsEnabled = InstallButton.IsEnabled;
+        RenderComposition();
+    }
+
+    // ---------- Modlist composition: language and 18+ add-on ----------
+
+    /// <summary>Language picked on this page but not applied yet (installed modlist only).</summary>
+    private string? _pendingLang;
+
+    /// <summary>Language the installed modlist has right now: the Russian pack on = "ru".</summary>
+    private string AppliedLang(AddonFile ru) => AddonService.Prefs(_main.Settings, ru).On ? "ru" : "en";
+
+    private void RenderComposition()
+    {
+        var s = _main.Settings;
+        var ru = ForThisVersion(Addons.Russian(Ml.Id));
+        var adult = ForThisVersion(Addons.Adult(Ml.Id));
+        CompositionPanel.Children.Clear();
+        var installed = Installed && !Updating;
+        if (ru == null && adult == null) { CompositionBox.Visibility = ApplyButton.Visibility = Visibility.Collapsed; return; }
+        CompositionBox.Visibility = Visibility.Visible;
+
+        CompositionPanel.Children.Add(new TextBlock
+        {
+            Text = Loc.T("comp.title"), FontSize = 11, FontWeight = FontWeights.Bold, Foreground = (Brush)FindResource("Muted"),
+            Margin = new Thickness(0, 0, 0, 10),
+        });
+
+        if (ru != null)
+        {
+            var lang = _pendingLang ?? (installed ? AppliedLang(ru) : s.LangOf(Ml.Id));
+            var row = Row(Loc.T("comp.lang"), Loc.T(installed ? "comp.lang.hint.installed" : "comp.lang.hint"), out var right);
+            var seg = new StackPanel { Orientation = Orientation.Horizontal, VerticalAlignment = VerticalAlignment.Center };
+            seg.Children.Add(Segment("Русский", lang == "ru", () => PickLang("ru")));
+            seg.Children.Add(Segment("English", lang == "en", () => PickLang("en")));
+            right.Child = new Border { Background = (Brush)FindResource("CardActive"), CornerRadius = new CornerRadius(8), Padding = new Thickness(3), Child = seg };
+            CompositionPanel.Children.Add(row);
+        }
+
+        if (adult != null)
+        {
+            if (ru != null) CompositionPanel.Children.Add(Separator());
+            var on = AddonService.Prefs(s, adult).On;
+            var wanted = installed ? on : s.AdultWanted.Contains(Ml.Id);
+            var row = Row(Loc.T("comp.adult"), Loc.T(installed && on ? "comp.adult.hint.on" : "comp.adult.hint"), out var right);
+            var box = new CheckBox { IsChecked = wanted, VerticalAlignment = VerticalAlignment.Center, IsEnabled = !_busy };
+            box.Click += (_, _) => AdultClicked(adult, box.IsChecked == true);
+            right.Child = box;
+            CompositionPanel.Children.Add(row);
+        }
+
+        var pending = installed && ru != null && _pendingLang != null && _pendingLang != AppliedLang(ru);
+        ApplyButton.Content = Loc.T("comp.apply");
+        ApplyButton.Visibility = pending ? Visibility.Visible : Visibility.Collapsed;
+        ApplyButton.IsEnabled = !_busy;
+    }
+
+    /// <summary>
+    /// A pack is made for one modlist version (its mod order and anchors): it is offered only when the catalog's
+    /// version — the one installed or about to be installed — matches. Older installs keep what they had.
+    /// </summary>
+    private AddonFile? ForThisVersion(AddonFile? a)
+    {
+        if (a == null) return null;
+        var v = Installed ? _main.Settings.InstalledVersion(Ml) ?? Ml.Version : Ml.Version;
+        return a.ForMainVersion.Length == 0 || a.ForMainVersion == v ? a : null;
+    }
+
+    private Grid Row(string title, string hint, out Border right)
+    {
+        var g = new Grid { Margin = new Thickness(0, 4, 0, 4) };
+        g.ColumnDefinitions.Add(new ColumnDefinition());
+        g.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+        var left = new StackPanel { Margin = new Thickness(0, 0, 12, 0) };
+        left.Children.Add(new TextBlock { Text = title, FontSize = 14, FontWeight = FontWeights.Bold });
+        left.Children.Add(new TextBlock { Text = hint, FontSize = 12, Foreground = (Brush)FindResource("Muted"), TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 3, 0, 0) });
+        g.Children.Add(left);
+        right = new Border { VerticalAlignment = VerticalAlignment.Center };
+        Grid.SetColumn(right, 1);
+        g.Children.Add(right);
+        return g;
+    }
+
+    private Border Separator() => new() { Height = 1, Background = (Brush)FindResource("CardActive"), Margin = new Thickness(0, 10, 0, 10) };
+
+    private Border Segment(string text, bool selected, Action click)
+    {
+        var b = new Border
+        {
+            CornerRadius = new CornerRadius(6), Padding = new Thickness(12, 6, 12, 6), Cursor = _busy ? null : System.Windows.Input.Cursors.Hand,
+            Background = selected ? (Brush)FindResource("Pink") : Brushes.Transparent,
+            Child = new TextBlock { Text = text, FontSize = 13, FontWeight = FontWeights.SemiBold, Foreground = selected ? Brushes.Black : Brushes.White },
+        };
+        if (!_busy) b.MouseLeftButtonUp += (_, _) => click();
+        return b;
+    }
+
+    private void PickLang(string lang)
+    {
+        var ru = ForThisVersion(Addons.Russian(Ml.Id));
+        if (Installed && !Updating && ru != null) _pendingLang = lang == AppliedLang(ru) ? null : lang;
+        else { _main.Settings.ModlistLang[Ml.Id] = lang; _main.Settings.Save(); }
+        RenderComposition();
+    }
+
+    private void AdultClicked(AddonFile adult, bool want)
+    {
+        var s = _main.Settings;
+        if (!(Installed && !Updating))
+        {
+            // before the install: remember the wish; age confirmation and levels come right after the install
+            if (want) s.AdultWanted.Add(Ml.Id); else s.AdultWanted.Remove(Ml.Id);
+            s.Save();
+            RenderComposition();
+            return;
+        }
+        // installed: the add-on window asks for the age, levels and installs / switches it off
+        new AddonWindow(s, Ml, adult) { Owner = _main }.ShowDialog();
+        RenderComposition();
+    }
+
+    private async void Apply_Click(object sender, RoutedEventArgs e)
+    {
+        var ru = ForThisVersion(Addons.Russian(Ml.Id));
+        if (ru == null || _pendingLang == null) return;
+        var lang = _pendingLang;
+        BeginBusy();
+        try
+        {
+            ProgressText.Text = await ApplyLanguageAsync(ru, lang);
+            _main.Settings.ModlistLang[Ml.Id] = lang;
+            _main.Settings.Save();
+            _pendingLang = null;
+        }
+        catch (Exception ex) { ProgressText.Text = ex.Message; }
+        finally { await EndBusyAsync(); }
+    }
+
+    /// <summary>"ru": installs (or switches back on) the Russian pack; "en": switches it off. Returns the text to show.</summary>
+    private async Task<string> ApplyLanguageAsync(AddonFile ru, string lang)
+    {
+        var s = _main.Settings;
+        if (lang == "en")
+        {
+            AddonService.Disable(s, Ml, ru);
+            return Loc.T("comp.lang.done.en");
+        }
+        var progress = new Progress<string>(t => { ProgressText.Text = Loc.T("comp.lang.working"); LogLine.Text = t; });
+        var r = await AddonService.InstallAsync(s, Ml, ru, level2: false, progress, CancellationToken.None);
+        if (r.NeedManual.Count > 0)
+        {
+            var win = new ManualDownloadWindow(r.NeedManual, s.DownloadsDir(Ml)) { Owner = _main };
+            win.ShowDialog();
+            if (r.NeedManual.Any(i => i.Done)) r = await AddonService.InstallAsync(s, Ml, ru, level2: false, progress, CancellationToken.None);
+        }
+        var lines = new List<string> { Loc.F("comp.lang.done.ru", r.Installed) };
+        if (r.NeedManual.Count > 0) lines.Add(Loc.F("comp.lang.notdownloaded", r.NeedManual.Count));
+        if (r.Errors.Count > 0) lines.Add(Loc.F("addon.errors", string.Join("\n", r.Errors)));
+        return string.Join("\n", lines);
+    }
+
+    /// <summary>
+    /// Right after a successful install or update (Wabbajack removes everything that is not in the modlist):
+    /// puts the Russian pack on if Russian is chosen, and opens the 18+ window if the player asked for it.
+    /// </summary>
+    private async Task AfterInstallAsync()
+    {
+        var s = _main.Settings;
+        var ru = ForThisVersion(Addons.Russian(Ml.Id));
+        if (ru != null)
+        {
+            var lang = s.LangOf(Ml.Id);
+            AddonService.Prefs(s, ru).On = false; // the install just removed the pack's mods
+            if (lang == "ru") ProgressText.Text = await ApplyLanguageAsync(ru, "ru");
+        }
+        var adult = ForThisVersion(Addons.Adult(Ml.Id));
+        if (adult != null && (s.AdultWanted.Contains(Ml.Id) || AddonService.Prefs(s, adult).On))
+        {
+            s.AdultWanted.Remove(Ml.Id);
+            s.Save();
+            new AddonWindow(s, Ml, adult) { Owner = _main }.ShowDialog();
+        }
     }
 
     private async Task RunChecksAsync()
@@ -335,7 +516,12 @@ public partial class SetupView : UserControl
                     InstallOutcome.Cancelled => Loc.T("inst.stopped"),
                     _ => Loc.F("inst.failed", code),
                 };
-                if (outcome == InstallOutcome.Success) FillDone();
+                if (outcome == InstallOutcome.Success)
+                {
+                    FillDone();
+                    try { await AfterInstallAsync(); }
+                    catch (Exception ex) { ProgressText.Text += "\n" + ex.Message; }
+                }
                 break;
             }
         }

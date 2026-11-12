@@ -14,6 +14,8 @@ public sealed class AddonFile
     [JsonPropertyName("schema")] public int Schema { get; set; }
     [JsonPropertyName("modlistId")] public string ModlistId { get; set; } = "";
     [JsonPropertyName("addonId")] public string AddonId { get; set; } = "";
+    /// <summary>The Russian pack names its id "packId"; it is used as the add-on id.</summary>
+    [JsonPropertyName("packId")] public string PackId { set { if (AddonId.Length == 0) AddonId = value; } }
     [JsonPropertyName("listVersion")] public string ListVersion { get; set; } = "";
     [JsonPropertyName("forMainVersion")] public string ForMainVersion { get; set; } = "";
     [JsonPropertyName("mods")] public List<AddonMod> Mods { get; set; } = new();
@@ -76,17 +78,24 @@ public sealed class AddonPrefs
 public static class Addons
 {
     /// <summary>The 18+ add-on built into this launcher for a modlist, or null.</summary>
-    public static AddonFile? Adult(string modlistId)
+    public static AddonFile? Adult(string modlistId) => Load(modlistId, "adult");
+
+    /// <summary>The Russian pack (mod translations on top of the English base), or null if the modlist has none.</summary>
+    public static AddonFile? Russian(string modlistId) => Load(modlistId, "ru");
+
+    private static AddonFile? Load(string modlistId, string kind)
     {
         try
         {
-            var uri = new Uri($"pack://application:,,,/addons/{modlistId}-adult.json");
+            var uri = new Uri($"pack://application:,,,/addons/{modlistId}-{kind}.json");
             var res = System.Windows.Application.GetResourceStream(uri);
             if (res == null) return null;
             using var s = res.Stream;
             var a = JsonSerializer.Deserialize<AddonFile>(s);
             if (a == null || a.ModlistId != modlistId) return null;
             a.Mods = a.Mods.Where(m => !m.Blocked && m.ModFolder.Length > 0 && m.Archive.LocalFileName.Length > 0).ToList();
+            foreach (var m in a.Mods)
+                if (m.DisplayName.Ru.Length == 0) { m.DisplayName.Ru = m.Id; m.DisplayName.En = m.Id; }
             return a.Mods.Count > 0 ? a : null;
         }
         catch { return null; }
