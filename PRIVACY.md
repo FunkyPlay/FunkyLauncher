@@ -14,7 +14,7 @@ There are no accounts in the launcher itself.
 | When you install a modlist | `api.github.com`, `github.com` | Download the official Wabbajack and the modlist file | Only happens when you start an install |
 | When you install / log in | `nexusmods.com` (through Wabbajack and the built-in browser) | Log in to Nexus Mods and download mods | Only happens when you install or log in |
 | First time you open Funky Player | `github.com` (mpv and FFmpeg builds), `www.7-zip.org` (7zr unpacker) | Download the video engine once; files are checked by SHA-256 | Only happens when you open the player and agree to the download |
-| When you press “Funky Help” | `github.com` (official RustDesk release); then our support server `2.31.81.143` | Download RustDesk once; connect to Funky support. The supporter sees and controls your screen **only while the session you started is open** | Only on click; you close the session at any time |
+| When you press “Funky Help” | `github.com` (official RustDesk release); then our support server `2.31.81.143` | Download RustDesk once; connect to Funky support. The supporter sees and controls your screen **only while the session you started is open**. The connection server sees your IP address and RustDesk ID | Only on click; you close the session at any time |
 | When you click links | Websites of the programs on the Software page, YouTube, Telegram | Open them in your browser | Only on click |
 
 These requests are normal web requests: the services see your IP address, as with any website.
@@ -52,9 +52,16 @@ you decide whether to send it to support.
 - **при запуске** — к GitHub (список сборок) и к публичному Telegram-каналу @FunkyPlayTV (новости). Оба можно
   выключить в «Настройках»;
 - **при установке** — к GitHub (официальный Wabbajack и файл сборки) и к Nexus Mods (вход и скачивание модов);
+- **при первом открытии Funky Плеера** — к GitHub (сборки mpv и FFmpeg) и к 7-zip.org (распаковщик): один раз
+  скачивает видеодвижок, только после вашего согласия; файлы проверяются по SHA-256;
+- **по кнопке «Funky Помощь»** — к GitHub (официальный RustDesk, скачивается один раз) и к нашему серверу поддержки
+  `2.31.81.143`. Поддержка видит ваш экран и может управлять компьютером **только пока открыт сеанс, который вы
+  сами начали**; закрыть его можно в любой момент. Сервер соединения видит ваш IP-адрес и номер (ID) RustDesk;
 - **по клику** на ссылки — открывает сайты в вашем браузере.
 
 Сервисы видят ваш IP-адрес, как при открытии любого сайта; действуют их политики конфиденциальности (ссылки выше).
 
-Данные лаунчера лежат только у вас на ПК: `%LOCALAPPDATA%\FunkyLauncher` и папка сборки.
+Данные лаунчера лежат только у вас на ПК: `%LOCALAPPDATA%\FunkyLauncher` (настройки, бэкапы сохранений) и папка сборки.
+Funky Pro: облачный бэкап только кладёт архивы в папку облака, которая уже есть на вашем ПК (OneDrive, Яндекс Диск,
+Dropbox, Google Drive); сам лаунчер ничего не выгружает. Ключ Pro проверяется без интернета.
 Отчёт об ошибке сохраняется на рабочий стол и никуда сам не отправляется.
