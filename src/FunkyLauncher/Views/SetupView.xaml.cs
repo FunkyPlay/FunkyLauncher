@@ -182,15 +182,16 @@ public partial class SetupView : UserControl
 
     private Border Separator() => new() { Height = 1, Background = (Brush)FindResource("CardActive"), Margin = new Thickness(0, 10, 0, 10) };
 
-    private Border Segment(string text, bool selected, Action click)
+    /// <summary>One half of the Русский / English switch — a real button (mouse-up on a plain Border was lost after the install).</summary>
+    private Button Segment(string text, bool selected, Action click)
     {
-        var b = new Border
+        var b = new Button
         {
-            CornerRadius = new CornerRadius(6), Padding = new Thickness(12, 6, 12, 6), Cursor = _busy ? null : System.Windows.Input.Cursors.Hand,
-            Background = selected ? (Brush)FindResource("Pink") : Brushes.Transparent,
-            Child = new TextBlock { Text = text, FontSize = 13, FontWeight = FontWeights.SemiBold, Foreground = selected ? Brushes.Black : Brushes.White },
+            Content = text, Style = (Style)FindResource(selected ? "PrimaryButton" : "SecondaryButton"),
+            Height = 32, MinWidth = 86, Padding = new Thickness(12, 0, 12, 0), Margin = new Thickness(2, 0, 2, 0),
+            FontSize = 13, IsEnabled = !_busy,
         };
-        if (!_busy) b.MouseLeftButtonUp += (_, _) => click();
+        b.Click += (_, _) => click();
         return b;
     }
 
