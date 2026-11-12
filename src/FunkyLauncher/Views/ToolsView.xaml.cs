@@ -43,13 +43,13 @@ public partial class ToolsView : UserControl
         PageTitle.Text = Loc.T("tools.title");
         Subtitle.Text = Loc.T("tools.subtitle");
         ToolCards.Children.Clear();
-        ToolCards.Children.Add(ToolCard("⟲", Loc.T("tools.backup"), Loc.T("tools.backup.text"), "#FF3CC8", "backup", null));
-        ToolCards.Children.Add(ToolCard("●", Loc.T("tools.shoot"), Loc.T("tools.shoot.text"), "#3CE6FF", "shoot",
+        ToolCards.Children.Add(ToolCard("⟲", Loc.T("tools.backup"), Loc.T("tools.backup.text"), "#FF3FD2", "backup", null));
+        ToolCards.Children.Add(ToolCard("●", Loc.T("tools.shoot"), Loc.T("tools.shoot.text"), "#DC71E2", "shoot",
             RecordingMode.IsActive ? Loc.T("tools.on") : null));
-        ToolCards.Children.Add(ToolCard("▶", Loc.T("tools.game"), Loc.T("tools.game.text"), "#46D46E", "game",
+        ToolCards.Children.Add(ToolCard("▶", Loc.T("tools.game"), Loc.T("tools.game.text"), "#B9A2F2", "game",
             GameMode.IsActive ? Loc.T("tools.on") : null));
-        ToolCards.Children.Add(ToolCard("✓", Loc.T("tools.pc"), Loc.T("tools.pc.text"), "#A07CFF", "pc", null));
-        ToolCards.Children.Add(ToolCard("▷", Loc.T("tools.player"), Loc.T("tools.player.text"), "#FF8A3C", "player", null));
+        ToolCards.Children.Add(ToolCard("✓", Loc.T("tools.pc"), Loc.T("tools.pc.text"), "#9AC5F8", "pc", null));
+        ToolCards.Children.Add(ToolCard("▷", Loc.T("tools.player"), Loc.T("tools.player.text"), "#7AE8FF", "player", null));
         if (S.DesktopsBeta)
             ToolCards.Children.Add(ToolCard("▦", Loc.T("tools.desktops"), Loc.T("tools.desktops.text"), "#3CA0FF", "desktops", S.DesktopsOn ? Loc.T("tools.on") : null));
         if (ProModules.Active)
@@ -121,7 +121,7 @@ public partial class ToolsView : UserControl
         var tile = new Border
         {
             Width = 44, Height = 44, CornerRadius = new CornerRadius(12), Background = (Brush)bc.ConvertFrom(color)!,
-            Child = new TextBlock { Text = icon, FontSize = 20, Foreground = Brushes.White, HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center },
+            Child = new TextBlock { Text = icon, FontSize = 20, Foreground = (Brush)bc.ConvertFrom("#07070D")!, HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center },
         };
         DockPanel.SetDock(tile, Dock.Left);
         head.Children.Add(tile);
