@@ -25,7 +25,8 @@
     <Resource Include="Assets\welcome.jpg" />
     <Resource Include="Assets\home_bg.jpg" />
     <Resource Include="Assets\wallpaper.jpg" />
-    <Resource Include="..\..\catalog.json" Link="catalog.json" />
+    <!-- catalog2.json since 0.1.7 (Neon Nights 0.1.1 needs the language packs); catalog.json stays for older launchers -->
+    <Resource Include="..\..\catalog2.json" Link="catalog.json" />
     <Resource Include="..\..\addons\*.json" Link="addons\%(Filename)%(Extension)" />
   </ItemGroup>
 

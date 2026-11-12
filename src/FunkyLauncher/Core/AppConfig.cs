@@ -24,7 +24,7 @@ public static class AppConfig
     /// Online catalog of modlists (raw catalog.json on GitHub). If it can't be loaded,
     /// the cached or built-in copy is used.
     /// </summary>
-    public const string CatalogUrl = "https://raw.githubusercontent.com/FunkyPlay/FunkyLauncher/main/catalog.json";
+    public const string CatalogUrl = "https://raw.githubusercontent.com/FunkyPlay/FunkyLauncher/main/catalog2.json";
 
     /// <summary>Official Wabbajack releases (we download it, never repackage it).</summary>
     public const string WabbajackReleasesApi = "https://api.github.com/repos/wabbajack-tools/wabbajack/releases/latest";

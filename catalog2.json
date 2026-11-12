@@ -1,0 +1,407 @@
+{
+  "version": 1,
+  "remoteHelp": {
+    "url": "https://github.com/rustdesk/rustdesk/releases/download/1.5.3/rustdesk-1.5.3-x86_64.exe",
+    "sha256": "523ba0efbf62a21739961b62c7daaffb44d3da86139c546b364fd4e1333ed249",
+    "version": "1.5.3",
+    "host": "2.31.81.143",
+    "key": "agFbQRKKLcXZP3VoO6G5gr1NI+dwZ6k9QDxc6MewBfs="
+  },
+  "playerEngine": {
+    "version": "mpv-20261111+ffmpeg-9.0.2",
+    "sevenZip": {
+      "url": "https://www.7-zip.org/a/7zr.exe",
+      "sha256": "256feca8e274e5da655e2a284fabafd9f554365eb164862089dacd4e8276d282",
+      "extract": ""
+    },
+    "mpv": {
+      "url": "https://github.com/shinchiro/mpv-winbuild-cmake/releases/download/20261111/mpv-dev-x86_64-20261111-git-bcde6b93cc.7z",
+      "sha256": "273c079b11ea5575822f972756f4c9a71149a5c10130353abeb8586738938452",
+      "extract": "libmpv-2.dll"
+    },
+    "ffmpeg": {
+      "url": "https://github.com/GyanD/codexffmpeg/releases/download/9.0.2/ffmpeg-9.0.2-essentials_build.7z",
+      "sha256": "4705843ccaaf54257c16ad90f3e952ece33c17df964ecf7bfdbb0f49c7171077",
+      "extract": "*/bin/ffmpeg.exe"
+    }
+  },
+  "modlists": [
+    {
+      "id": "neon-nights",
+      "title": "NEON NIGHTS",
+      "author": "Funky",
+      "version": "0.1.1",
+      "status": "released",
+      "game": "Cyberpunk 2077",
+      "gameVersion": "2.5",
+      "dlcName": {
+        "ru": "Phantom Liberty",
+        "en": "Phantom Liberty"
+      },
+      "dlcCheckPath": "archive/pc/ep1",
+      "tag": {
+        "ru": "Cyberpunk 2077 · 2.5 + Phantom Liberty",
+        "en": "Cyberpunk 2077 · 2.5 + Phantom Liberty"
+      },
+      "description": {
+        "ru": "Большая сборка: новая графика и погода, живой город, квартиры, сотни вещей, романы, машины. На русском или английском — на выбор.",
+        "en": "A large modlist: reworked visuals and weather, a livelier city, apartments, hundreds of outfits, romances, cars. In English or Russian — your choice."
+      },
+      "details": {
+        "ru": "Сборку я собирал и тестировал сам. Цель — сделать Найт-Сити красивее, живее и интереснее, но без перекоса в «другую игру». Всё настроено, совместимо и проверено в игре.\n\n🌆 Графика, свет и погода — HD-текстуры, новое освещение Найт-Сити и Догтауна, погода, дождь и вода, LUT-фильтры, дальние тени.\n🏙 Живой город и геймплей — события на улицах, умнее банды и полиция, такси, рулетка и блэкджек, новые квесты и контракты, наёмники-союзники, тренеры навыков, рэгдолл-физика, ближний бой.\n👗 Магазины и одежда — виртуальные магазины в компьютере V: сотни вещей, обувь, аксессуары, украшения.\n💇 Причёски — больше 50 новых, многие с физикой волос.\n🧑 Тело и лицо — детальные лица и кожа, глаза, макияж, тату, тело от первого лица, Appearance Menu Mod.\n❤️ Романы и NPC — Джуди, Панам, Ривер и Керри: свидания, ночёвки, новые разговоры.\n🍸 Персонажи — с фиксерами, барменами, торговцами и риперами можно говорить.\n🏠 Квартиры — улучшенные стандартные и новые: вилла, особняк, пентхаус с гаражом.\n🚗 Машины — реальные суперкары и классика, автосалон, вид из кабины, вызов машины.\n📸 Фоторежим, 📻 радио на русском, 🖥 настраиваемый HUD и удобные меню.\n🔧 Все фреймворки (CET, RED4ext, ArchiveXL, TweakXL, Codeware), фиксы и защита от вылетов.\n\nЯзык: русский или английский — выбираешь на странице установки, сменить можно без переустановки.\n18+: отдельное дополнение, галочка на странице установки (выключено по умолчанию).\nНе входит: магазин Zenitex (не работает на 2.5, автор закрыл мод), русская озвучка DreamVoice (ставится отдельно со страницы авторов).\n\nВсе моды скачиваются со страниц авторов на Nexus Mods — поддержите их Endorse.",
+        "en": "I built and tested this modlist myself. The goal: a more beautiful, alive and interesting Night City without turning it into a different game. Everything is configured, compatible and tested in-game.\n\n🌆 Visuals, lighting & weather — HD textures, new lighting for Night City and Dogtown, weather, rain and water, LUTs, distant shadows.\n🏙 Living city & gameplay — street events, smarter gangs and police, taxi work, roulette and blackjack, new quests and contracts, merc allies, skill trainers, ragdoll physics, melee.\n👗 Shops & clothing — virtual shops on V's computer: hundreds of items, shoes, accessories, jewelry.\n💇 Hair — 50+ new hairstyles, many with physics.\n🧑 Body & face — detailed faces and skin, eyes, makeup, tattoos, first-person body, Appearance Menu Mod.\n❤️ Romance & NPCs — Judy, Panam, River and Kerry: dates, sleepovers, new conversations.\n🍸 Characters — talk to fixers, bartenders, vendors and ripperdocs.\n🏠 Apartments — upgraded vanilla ones and new homes: villa, mansion, penthouse with garage.\n🚗 Cars — real supercars and classics, car dealer, cockpit view, vehicle summoning.\n📸 Photo mode, 📻 radio, 🖥 customizable HUD and handy menus.\n🔧 All frameworks (CET, RED4ext, ArchiveXL, TweakXL, Codeware), fixes and crash protection.\n\nLanguage: English or Russian — pick it on the install page, switch any time without reinstalling.\n18+: a separate add-on, a checkbox on the install page (off by default).\nNot included: Zenitex store (broken on 2.5, discontinued by its author), DreamVoice Russian voice-over (install it from the authors' page).\n\nAll mods are downloaded from their authors' Nexus Mods pages — please endorse them."
+      },
+      "requirements": {
+        "ru": "Игра: Cyberpunk 2077 версии 2.5 + Phantom Liberty (Steam, GOG или Epic)\n\nПК — рекомендуемые CD Projekt RED (High, 1080p, 60 FPS):\n• Windows 10/11 64-bit\n• Core i7-12700 или Ryzen 7 7800X3D\n• RTX 2060 Super / RX 5700 XT / Arc A770, 8 ГБ видеопамяти\n• 16 ГБ ОЗУ\n• SSD: 70 ГБ игра + ~40 ГБ сборка и архивы модов\n\nДля 2K и 4K нужна видеокарта мощнее (сборка проверена на RTX 4080).",
+        "en": "Game: Cyberpunk 2077 version 2.5 + Phantom Liberty (Steam, GOG or Epic)\n\nPC — CD Projekt RED recommended (High, 1080p, 60 FPS):\n• Windows 10/11 64-bit\n• Core i7-12700 or Ryzen 7 7800X3D\n• RTX 2060 Super / RX 5700 XT / Arc A770, 8 GB VRAM\n• 16 GB RAM\n• SSD: 70 GB game + ~40 GB modlist and mod archives\n\nFor 1440p and 4K you need a stronger GPU (tested on an RTX 4080)."
+      },
+      "banner": "res:/Assets/banner.jpg",
+      "wabbajackFile": "Neon Nights.wabbajack",
+      "wabbajackUrl": "https://github.com/FunkyPlay/FunkyLauncher/releases/download/v0.1.7/NeonNights-0.1.1.wabbajack",
+      "sizeGb": 40,
+      "modCount": 405,
+      "mo2Profile": "Wabbajack",
+      "mo2Executable": "Cyberpunk 2077",
+      "gameExe": "Cyberpunk2077.exe",
+      "saveFolder": "{SavedGames}\\CD Projekt Red\\Cyberpunk 2077",
+      "pcCheck": {
+        "ramGb": [
+          12,
+          16
+        ],
+        "vramGb": [
+          6,
+          8
+        ],
+        "threads": [
+          6,
+          8
+        ],
+        "gpuText": "RTX 2060 Super / RX 5700 XT / Arc A770",
+        "gpuHigh": [
+          "RTX 2080 Ti",
+          "RTX 3060 Ti",
+          "RTX 3070",
+          "RTX 3080",
+          "RTX 3090",
+          "RTX 4060 Ti",
+          "RTX 4070",
+          "RTX 4080",
+          "RTX 4090",
+          "RTX 5060 Ti",
+          "RTX 5070",
+          "RTX 5080",
+          "RTX 5090",
+          "RX 6700",
+          "RX 6750",
+          "RX 6800",
+          "RX 6900",
+          "RX 6950",
+          "RX 7700",
+          "RX 7800",
+          "RX 7900",
+          "RX 9060 XT",
+          "RX 9070",
+          "Arc B580"
+        ],
+        "gpuMid": [
+          "RTX 2060 SUPER",
+          "RTX 2070",
+          "RTX 2080",
+          "RTX 3060",
+          "RTX 4060",
+          "RTX 5050",
+          "RTX 5060",
+          "RX 5700",
+          "RX 6600",
+          "RX 6650",
+          "RX 7600",
+          "RX 9060",
+          "Arc A750",
+          "Arc A770",
+          "Arc B570"
+        ],
+        "gpuLow": [
+          "GTX 9",
+          "GTX 10",
+          "GTX 16",
+          "RTX 2060",
+          "RTX 3050",
+          "RX 4",
+          "RX 5",
+          "RX 6400",
+          "RX 6500",
+          "Arc A3",
+          "Arc A5",
+          "Radeon Graphics",
+          "UHD Graphics",
+          "Iris"
+        ],
+        "laptopKeep": [
+          "RTX 3080",
+          "RTX 4080",
+          "RTX 4090",
+          "RTX 5070 Ti",
+          "RTX 5080",
+          "RTX 5090"
+        ]
+      },
+      "defaultInstallDir": "C:\\Games\\NeonNights"
+    },
+    {
+      "id": "starfield",
+      "title": "STARFIELD",
+      "author": "Funky",
+      "version": "",
+      "status": "soon",
+      "game": "Starfield",
+      "tag": {
+        "ru": "Starfield · в работе",
+        "en": "Starfield · in progress"
+      },
+      "description": {
+        "ru": "Следующая сборка FunkyPlay. Скоро.",
+        "en": "The next FunkyPlay modlist. Coming soon."
+      },
+      "banner": "",
+      "wabbajackFile": "",
+      "sizeGb": 0
+    },
+    {
+      "id": "witcher3",
+      "title": "THE WITCHER 3",
+      "author": "Funky",
+      "version": "",
+      "status": "soon",
+      "game": "The Witcher 3: Wild Hunt",
+      "tag": {
+        "ru": "The Witcher 3 · в планах",
+        "en": "The Witcher 3 · planned"
+      },
+      "description": {
+        "ru": "Сборка для The Witcher 3: Wild Hunt. Скоро.",
+        "en": "A modlist for The Witcher 3: Wild Hunt. Coming soon."
+      },
+      "banner": "",
+      "wabbajackFile": "",
+      "sizeGb": 0
+    },
+    {
+      "id": "rdr2",
+      "title": "RED DEAD REDEMPTION 2",
+      "author": "Funky",
+      "version": "",
+      "status": "soon",
+      "game": "Red Dead Redemption 2",
+      "tag": {
+        "ru": "Red Dead Redemption 2 · в планах",
+        "en": "Red Dead Redemption 2 · planned"
+      },
+      "description": {
+        "ru": "Сборка для Red Dead Redemption 2. Скоро.",
+        "en": "A modlist for Red Dead Redemption 2. Coming soon."
+      },
+      "banner": "",
+      "wabbajackFile": "",
+      "sizeGb": 0
+    }
+  ],
+  "software": [
+    {
+      "id": "funkydiscount",
+      "name": "FunkyDiscount — бот скидок",
+      "category": {
+        "ru": "Наше",
+        "en": "Ours"
+      },
+      "description": {
+        "ru": "Цены на игру во всех магазинах и уведомление, когда она подешевеет. Бесплатно, в Telegram.",
+        "en": "Game prices across stores and a ping when it goes on sale. Free, in Telegram."
+      },
+      "url": "https://t.me/FunkyDiscountBot",
+      "color": "#FF3FD2"
+    },
+    {
+      "id": "7zip",
+      "name": "7-Zip",
+      "category": {
+        "ru": "Архиватор",
+        "en": "Archiver"
+      },
+      "description": {
+        "ru": "Бесплатно открывает архивы модов .7z, .zip и .rar.",
+        "en": "Free tool that opens mod archives: .7z, .zip and .rar."
+      },
+      "url": "https://www.7-zip.org/",
+      "color": "#7AE8FF"
+    },
+    {
+      "id": "nvidia-app",
+      "name": "NVIDIA App",
+      "category": {
+        "ru": "Драйверы и запись",
+        "en": "Drivers and recording"
+      },
+      "description": {
+        "ru": "Свежие драйверы видеокарты, запись игры и мгновенный повтор.",
+        "en": "Latest GPU drivers, game recording and instant replay."
+      },
+      "url": "https://www.nvidia.com/en-us/software/nvidia-app/",
+      "color": "#76B900"
+    },
+    {
+      "id": "afterburner",
+      "name": "MSI Afterburner",
+      "category": {
+        "ru": "Мониторинг",
+        "en": "Monitoring"
+      },
+      "description": {
+        "ru": "FPS, загрузка и температура прямо в игре.",
+        "en": "FPS, load and temperatures right in the game."
+      },
+      "url": "https://www.msi.com/Landing/afterburner/graphics-cards",
+      "color": "#FF3C3C"
+    },
+    {
+      "id": "vcredist",
+      "name": "Visual C++ Redistributable",
+      "category": {
+        "ru": "Системное",
+        "en": "System"
+      },
+      "description": {
+        "ru": "Нужен многим модам (CET, RED4ext). Если игра с модами не стартует — поставьте x64.",
+        "en": "Required by many mods (CET, RED4ext). If the modded game won't start, install the x64 version."
+      },
+      "url": "https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist",
+      "color": "#A07CFF"
+    },
+    {
+      "id": "dotnet",
+      "name": ".NET Desktop Runtime",
+      "category": {
+        "ru": "Системное",
+        "en": "System"
+      },
+      "description": {
+        "ru": "Нужен Funky Launcher и некоторым программам для модов.",
+        "en": "Required by Funky Launcher and some modding tools."
+      },
+      "url": "https://dotnet.microsoft.com/en-us/download/dotnet",
+      "color": "#512BD4"
+    },
+    {
+      "id": "dlss-swapper",
+      "name": "DLSS Swapper",
+      "category": {
+        "ru": "Графика",
+        "en": "Graphics"
+      },
+      "description": {
+        "ru": "Меняет версию DLSS в играх на более новую — чётче картинка.",
+        "en": "Swaps DLSS in your games for a newer version — sharper image."
+      },
+      "url": "https://github.com/beeradmoore/dlss-swapper",
+      "color": "#FF3FD2"
+    },
+    {
+      "id": "amd-adrenalin",
+      "name": "AMD Software: Adrenalin",
+      "category": {
+        "ru": "Драйверы и запись",
+        "en": "Drivers and recording"
+      },
+      "description": {
+        "ru": "Драйверы и настройки для видеокарт AMD, запись игры.",
+        "en": "Drivers and settings for AMD graphics cards, game recording."
+      },
+      "url": "https://www.amd.com/en/products/software/adrenalin.html",
+      "color": "#ED1C24"
+    },
+    {
+      "id": "ddu",
+      "name": "Display Driver Uninstaller (DDU)",
+      "category": {
+        "ru": "Драйверы",
+        "en": "Drivers"
+      },
+      "description": {
+        "ru": "Начисто удаляет драйвер видеокарты. Помогает при вылетах и чёрном экране после обновления.",
+        "en": "Fully removes the graphics driver. Helps with crashes and black screens after an update."
+      },
+      "url": "https://www.wagnardsoft.com/display-driver-uninstaller-DDU-",
+      "color": "#FF8A3C"
+    },
+    {
+      "id": "obs",
+      "name": "OBS Studio",
+      "category": {
+        "ru": "Запись и стримы",
+        "en": "Recording and streaming"
+      },
+      "description": {
+        "ru": "Бесплатная запись игры и стримы на любой видеокарте.",
+        "en": "Free game recording and streaming on any graphics card."
+      },
+      "url": "https://obsproject.com/",
+      "color": "#9AA4B8"
+    },
+    {
+      "id": "hwinfo",
+      "name": "HWiNFO",
+      "category": {
+        "ru": "Мониторинг",
+        "en": "Monitoring"
+      },
+      "description": {
+        "ru": "Все датчики ПК: видно, что перегревается перед вылетом.",
+        "en": "Every PC sensor: see what overheats before a crash."
+      },
+      "url": "https://www.hwinfo.com/",
+      "color": "#3CA0FF"
+    },
+    {
+      "id": "tmog",
+      "name": "TMOG",
+      "category": {
+        "ru": "Мониторинг",
+        "en": "Monitoring"
+      },
+      "description": {
+        "ru": "Диспетчер задач от автора стандартного: показывает, что тормозит ПК.",
+        "en": "Task manager from the author of the original one: shows what slows your PC down."
+      },
+      "url": "https://tmog.org/",
+      "color": "#7AE8FF"
+    },
+    {
+      "id": "wiztree",
+      "name": "WizTree",
+      "category": {
+        "ru": "Диск",
+        "en": "Disk"
+      },
+      "description": {
+        "ru": "За секунды показывает, что занимает место. Сборкам нужно 40+ ГБ.",
+        "en": "Shows in seconds what fills your disk. Modlists need 40+ GB."
+      },
+      "url": "https://diskanalyzer.com/",
+      "color": "#46D46E"
+    },
+    {
+      "id": "soundlock",
+      "name": "Sound Lock",
+      "category": {
+        "ru": "Звук",
+        "en": "Sound"
+      },
+      "description": {
+        "ru": "Ограничивает громкость ПК: взрывы в игре ночью не разбудят соседей.",
+        "en": "Caps your PC volume so loud scenes at night don't wake anyone."
+      },
+      "url": "https://www.3appes.com/en/sound-lock",
+      "color": "#FFC83C"
+    }
+  ]
+}
