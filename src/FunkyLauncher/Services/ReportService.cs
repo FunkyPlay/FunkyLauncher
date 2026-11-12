@@ -35,7 +35,7 @@ public static class ReportService
             var e = zip.CreateEntry("info.txt");
             using (var w = new StreamWriter(e.Open())) w.Write(info.ToString());
 
-            Add(zip, "launcher", Path.Combine(AppConfig.DataDir, "settings.json"));
+            AddSettings(zip, Path.Combine(AppConfig.DataDir, "settings.json"));
             var cli = WabbajackService.FindCli();
             if (cli != null) AddNewest(zip, "wabbajack", Path.Combine(Path.GetDirectoryName(cli)!, "logs"), "*.log", 3, false);
 
@@ -51,6 +51,23 @@ public static class ReportService
             }
         }, token);
         return target;
+    }
+
+    /// <summary>settings.json without secrets: the Funky Pro key never goes into a report.</summary>
+    private static void AddSettings(ZipArchive zip, string file)
+    {
+        try
+        {
+            if (!File.Exists(file)) return;
+            var node = System.Text.Json.Nodes.JsonNode.Parse(File.ReadAllText(file)) as System.Text.Json.Nodes.JsonObject;
+            if (node == null) return; // unreadable settings are left out rather than copied raw
+            foreach (var key in node.Select(p => p.Key).Where(k => k.Contains("ProKey", StringComparison.OrdinalIgnoreCase)).ToList())
+                node[key] = string.IsNullOrEmpty(node[key]?.ToString()) ? "" : "(hidden)";
+            var entry = zip.CreateEntry("launcher/settings.json");
+            using var w = new StreamWriter(entry.Open());
+            w.Write(node.ToJsonString(new System.Text.Json.JsonSerializerOptions { WriteIndented = true }));
+        }
+        catch { /* settings are optional in a report */ }
     }
 
     private static void AddNewest(ZipArchive zip, string folder, string dir, string pattern, int count, bool recursive)
