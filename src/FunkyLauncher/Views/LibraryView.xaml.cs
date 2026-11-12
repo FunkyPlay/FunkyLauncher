@@ -84,6 +84,7 @@ public partial class LibraryView : UserControl
             if (update) AddStatus(false, Loc.F("lib.update.available", m.Version));
             if (prev != null) AddStatus(true, Loc.F("lib.previous", prev.Version));
             if (installed && BackupService.Supported(m)) AddBackupStatus(m);
+            if (installed) AddAddonStatus(m);
         }
         if (!_watching) PlayMessage.Text = "";
     }
@@ -116,6 +117,31 @@ public partial class LibraryView : UserControl
         };
         line.MouseLeftButtonUp += (_, _) => _main.ShowTools();
         StatusList.Children.Add(line);
+    }
+
+    /// <summary>"18+ add-on · off" — one neutral line; a click opens the add-on window (age confirmation first).</summary>
+    private void AddAddonStatus(Modlist m)
+    {
+        var a = Addons.Adult(m.Id);
+        if (a == null) return;
+        var s = _main.Settings;
+        var on = AddonService.Prefs(s, a).On;
+        var reapply = AddonService.NeedsReapply(s, m, a);
+        var box = new StackPanel { Margin = new Thickness(0, 6, 0, 6), Cursor = Cursors.Hand };
+        box.Children.Add(new TextBlock
+        {
+            Text = (on && !reapply ? "✓  " : "•  ") + Loc.T(reapply ? "addon.line.reapply" : on ? "addon.line.on" : "addon.line.off"),
+            FontSize = 13, FontWeight = FontWeights.SemiBold, TextWrapping = TextWrapping.Wrap,
+            Foreground = reapply ? (Brush)FindResource("Pink") : (Brush)FindResource("Cyan"),
+        });
+        if (!on)
+            box.Children.Add(new TextBlock { Text = Loc.F("addon.about", m.Title), FontSize = 12, Foreground = (Brush)FindResource("Muted"), TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 2, 0, 0) });
+        box.MouseLeftButtonUp += (_, _) =>
+        {
+            new AddonWindow(s, m, a) { Owner = _main }.ShowDialog();
+            RefreshSelected();
+        };
+        StatusList.Children.Add(box);
     }
 
     private Border Card(Modlist m)

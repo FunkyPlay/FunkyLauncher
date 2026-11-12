@@ -29,6 +29,9 @@ public static class AppConfig
     /// <summary>Official Wabbajack releases (we download it, never repackage it).</summary>
     public const string WabbajackReleasesApi = "https://api.github.com/repos/wabbajack-tools/wabbajack/releases/latest";
 
+    /// <summary>Settings and caches. FUNKYLAUNCHER_DATA (developer tests only) points it at a throwaway folder.</summary>
     public static string DataDir =>
-        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "FunkyLauncher");
+        Environment.GetEnvironmentVariable("FUNKYLAUNCHER_DATA") is { Length: > 0 } test
+            ? test
+            : Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "FunkyLauncher");
 }

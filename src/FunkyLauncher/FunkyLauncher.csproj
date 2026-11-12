@@ -26,6 +26,7 @@
     <Resource Include="Assets\home_bg.jpg" />
     <Resource Include="Assets\wallpaper.jpg" />
     <Resource Include="..\..\catalog.json" Link="catalog.json" />
+    <Resource Include="..\..\addons\*.json" Link="addons\%(Filename)%(Extension)" />
   </ItemGroup>
 
   <ItemGroup>
