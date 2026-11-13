@@ -419,7 +419,7 @@ public static class Loc
         ["inst.found.ok"] = ("Сборка проверена — всё совпадает с оригиналом. Можно играть!", "The modlist is checked — everything matches the original. You can play!"),
         ["inst.found.fail"] = ("В найденной сборке есть проблемы ({0}). Лучше нажать «Установить заново».", "The found modlist has problems ({0}). Better press “Install again”."),
         ["lib.found"] = ("Найдена сборка в {0} — откройте «Установка и проверка»", "A modlist was found in {0} — open “Install & check”"),
-        ["setup.subtitle"] = ("Сборка ставится в отдельную папку. Игра в Steam / GOG / Epic не меняется.", "The modlist goes into its own folder. Your Steam / GOG / Epic game is not changed."),
+        ["setup.subtitle"] = ("Сборка ставится в отдельную папку. Сама игра не меняется.", "The modlist goes into its own folder. The game itself is not changed."),
         ["setup.check"] = ("Проверка компьютера", "Computer check"),
         ["setup.recheck"] = ("Проверить ещё раз", "Check again"),
         ["setup.folder"] = ("Папка сборки", "Modlist folder"),
