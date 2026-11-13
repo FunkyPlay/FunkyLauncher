@@ -54,8 +54,11 @@
                 <Button Content="GitHub" Style="{StaticResource SecondaryButton}" Height="40" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,18,18,0" Click="GitHub_Click"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,18,18">
                     <Button x:Name="LauncherNewsButton" Style="{StaticResource SecondaryButton}" Height="44" Margin="0,0,10,0" Click="LauncherNews_Click"/>
-                    <Button Content="Telegram" Style="{StaticResource SecondaryButton}" Height="44" Click="Telegram_Click"/>
-                    <Button Content="YouTube" Style="{StaticResource SecondaryButton}" Height="44" Margin="10,0,0,0" Click="YouTube_Click"/>
+                    <Button x:Name="TelegramButton" Content="Telegram" Style="{StaticResource SecondaryButton}" Height="44" Margin="0,0,10,0" Click="Telegram_Click"/>
+                    <Button Content="YouTube" Style="{StaticResource SecondaryButton}" Height="44" Click="YouTube_Click"/>
+                    <!-- English only: Instagram and TikTok are for the English-speaking audience (links come from the catalog) -->
+                    <Button x:Name="InstagramButton" Content="Instagram" Style="{StaticResource SecondaryButton}" Height="44" Margin="10,0,0,0" Click="Instagram_Click"/>
+                    <Button x:Name="TikTokButton" Content="TikTok" Style="{StaticResource SecondaryButton}" Height="44" Margin="10,0,0,0" Click="TikTok_Click"/>
                 </StackPanel>
             </Grid>
         </Border>
@@ -70,7 +73,7 @@
                 <ColumnDefinition Width="22"/>
                 <ColumnDefinition Width="320"/>
             </Grid.ColumnDefinitions>
-            <DockPanel Grid.Column="0" VerticalAlignment="Top">
+            <DockPanel x:Name="NewsPanel" Grid.Column="0" VerticalAlignment="Top">
                 <DockPanel DockPanel.Dock="Top" Margin="0,0,0,12">
                     <TextBlock x:Name="AllNews" DockPanel.Dock="Right" FontSize="13" Foreground="{StaticResource Cyan}" Cursor="Hand" MouseLeftButtonUp="AllNews_Click"/>
                     <TextBlock x:Name="NewsTitle" FontSize="18" FontWeight="Bold"/>
@@ -78,14 +81,17 @@
                 <UniformGrid x:Name="NewsGrid" Columns="3" VerticalAlignment="Top"/>
             </DockPanel>
 
-            <StackPanel Grid.Column="2">
+            <!-- RU: two cards one under the other on the right; EN (no Russian news feed): side by side across the page -->
+            <Grid x:Name="SidePanel" Grid.Column="2" VerticalAlignment="Top">
+                <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+                <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition x:Name="SideCol2" Width="0"/></Grid.ColumnDefinitions>
                 <Border Style="{StaticResource CardBorder}" Padding="18,12">
                     <StackPanel>
                         <TextBlock x:Name="WhatsNewTitle" FontSize="15" FontWeight="Bold" Margin="0,0,0,8"/>
                         <TextBlock x:Name="WhatsNewText" FontSize="12.5" LineHeight="19" Foreground="#C9C9D6" TextWrapping="Wrap"/>
                     </StackPanel>
                 </Border>
-                <Border Style="{StaticResource CardBorder}" Padding="18,12" Margin="0,12,0,0">
+                <Border x:Name="SupportCard" Grid.Row="1" Style="{StaticResource CardBorder}" Padding="18,12" Margin="0,12,0,0">
                     <StackPanel>
                         <TextBlock x:Name="SupportTitle" FontSize="15" FontWeight="Bold" Margin="0,0,0,6"/>
                         <TextBlock x:Name="SupportText" FontSize="12.5" Foreground="#C9C9D6" TextWrapping="Wrap" Margin="0,0,0,10"/>
@@ -96,7 +102,7 @@
                         <TextBlock x:Name="ReportText" FontSize="12" Foreground="{StaticResource Cyan}" TextWrapping="Wrap" Margin="0,6,0,0"/>
                     </StackPanel>
                 </Border>
-            </StackPanel>
+            </Grid>
         </Grid>
     </StackPanel>
     </ScrollViewer>

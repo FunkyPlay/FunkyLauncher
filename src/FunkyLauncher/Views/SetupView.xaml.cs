@@ -525,7 +525,7 @@ public partial class SetupView : UserControl
                 {
                     FillDone();
                     DoneTelegramText.Text = Loc.T("inst.done.telegram");
-                    DoneTelegram.Visibility = Visibility.Visible;
+                    DoneTelegram.Visibility = Loc.Lang == "en" ? Visibility.Collapsed : Visibility.Visible; // Russian channel: RU only
                     try { await AfterInstallAsync(); }
                     catch (Exception ex) { ProgressText.Text += "\n" + ex.Message; }
                 }

@@ -67,6 +67,26 @@ public partial class HomeView : UserControl
         HelpSendButton.Visibility = _helpOn ? Visibility.Visible : Visibility.Collapsed;
         RenderNews();
         RenderUpdate();
+        ApplyAudience();
+    }
+
+    /// <summary>
+    /// EN: Instagram/TikTok instead of the Russian Telegram channels, no Russian news feed (decision of Funky and the design team, 13.11).
+    /// RU: as before. The support bot stays in both.
+    /// </summary>
+    private void ApplyAudience()
+    {
+        var en = Loc.Lang == "en";
+        TelegramButton.Visibility = LauncherNewsButton.Visibility = en ? Visibility.Collapsed : Visibility.Visible;
+        InstagramButton.Visibility = en && Catalog.Social.Instagram.Length > 0 ? Visibility.Visible : Visibility.Collapsed;
+        TikTokButton.Visibility = en && Catalog.Social.TikTok.Length > 0 ? Visibility.Visible : Visibility.Collapsed;
+        NewsPanel.Visibility = en ? Visibility.Collapsed : Visibility.Visible;
+        Grid.SetColumn(SidePanel, en ? 0 : 2);
+        Grid.SetColumnSpan(SidePanel, en ? 3 : 1);
+        SideCol2.Width = en ? new GridLength(1, GridUnitType.Star) : new GridLength(0);
+        Grid.SetRow(SupportCard, en ? 0 : 1);
+        Grid.SetColumn(SupportCard, en ? 1 : 0);
+        SupportCard.Margin = en ? new Thickness(12, 0, 0, 0) : new Thickness(0, 12, 0, 0);
     }
 
     private bool _helpOn;
@@ -219,6 +239,8 @@ public partial class HomeView : UserControl
     private void Telegram_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(AppConfig.TelegramUrl);
     private void LauncherNews_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(AppConfig.LauncherNewsUrl);
     private void YouTube_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(AppConfig.YouTubeUrl);
+    private void Instagram_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(Catalog.Social.Instagram);
+    private void TikTok_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(Catalog.Social.TikTok);
     private void GitHub_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(AppConfig.GitHubUrl);
     private void AllNews_Click(object sender, System.Windows.Input.MouseButtonEventArgs e) => PlayService.OpenUrl(AppConfig.TelegramUrl);
 }

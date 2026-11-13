@@ -106,6 +106,14 @@ public sealed class CatalogFile
     [JsonPropertyName("playerEngine")] public PlayerEngineSources? PlayerEngine { get; set; }
     /// <summary>"Funky Help": the official RustDesk client and our own RustDesk server (address + public key).</summary>
     [JsonPropertyName("remoteHelp")] public RemoteHelpSource? RemoteHelp { get; set; }
+    /// <summary>Social links for the English audience (Instagram, TikTok) — can change without a new launcher (e.g. a new nickname).</summary>
+    [JsonPropertyName("social")] public SocialLinks? Social { get; set; }
+}
+
+public sealed class SocialLinks
+{
+    [JsonPropertyName("instagram")] public string Instagram { get; set; } = "";
+    [JsonPropertyName("tiktok")] public string TikTok { get; set; } = "";
 }
 
 public sealed class RemoteHelpSource
@@ -148,6 +156,9 @@ public static class Catalog
     private static PlayerEngineSources? BuiltInPlayerEngine;
     public static RemoteHelpSource? RemoteHelp { get; private set; }
     private static RemoteHelpSource? BuiltInRemoteHelp;
+    /// <summary>Instagram / TikTok: online/cached catalog first, each link falls back to the built-in one.</summary>
+    public static SocialLinks Social { get; private set; } = new();
+    private static SocialLinks BuiltInSocial = new();
     public static string Source { get; private set; } = "";
 
     private static string CachePath => Path.Combine(AppConfig.DataDir, "catalog.json");
@@ -161,6 +172,7 @@ public static class Catalog
         BuiltInPcChecks = builtIn.Modlists.Where(m => m.PcCheck != null).ToDictionary(m => m.Id, m => m.PcCheck!);
         BuiltInPlayerEngine = builtIn.PlayerEngine;
         BuiltInRemoteHelp = builtIn.RemoteHelp;
+        BuiltInSocial = builtIn.Social ?? new();
         BuiltInSoftware = builtIn.Software.Where(x => x.Winget.Length > 0).GroupBy(SoftKey).ToDictionary(g => g.Key, g => g.First());
         Apply(builtIn);
         Source = "built-in";
@@ -200,6 +212,11 @@ public static class Catalog
             if (s.Warning.ToString().Length == 0) s.Warning = b.Warning;
         }
         PlayerEngine = c.PlayerEngine is { Mpv.Url.Length: > 0 } ? c.PlayerEngine : BuiltInPlayerEngine;
+        Social = new SocialLinks
+        {
+            Instagram = c.Social?.Instagram is { } ig && ig.StartsWith("https://") ? ig : BuiltInSocial.Instagram,
+            TikTok = c.Social?.TikTok is { } tt && tt.StartsWith("https://") ? tt : BuiltInSocial.TikTok,
+        };
         RemoteHelp = c.RemoteHelp is { Url.Length: > 0, Host.Length: > 0 } ? c.RemoteHelp : BuiltInRemoteHelp;
     }
 

@@ -22,6 +22,7 @@ public partial class SoftView : UserControl
         PageTitle.Text = Loc.T("soft.title");
         Subtitle.Text = Loc.T("soft.subtitle");
         WeeklyText.Text = Loc.T("soft.weekly");
+        WeeklyLine.Visibility = Loc.Lang == "en" ? Visibility.Collapsed : Visibility.Visible; // Russian channel: RU only
         Items.Children.Clear();
         foreach (var s in Catalog.Software) Items.Children.Add(Card(s));
     }
