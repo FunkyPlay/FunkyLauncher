@@ -103,11 +103,13 @@ public partial class SoftView : UserControl
         if (!await WingetService.AvailableAsync()) { PlayService.OpenUrl(s.Url); return; }
         var owner = Window.GetWindow(this);
         var settings = ((MainWindow)Application.Current.MainWindow).Settings;
-        if (!settings.WingetConsent)
+        var offered = Catalog.Software.Where(x => x.Winget.Length > 0).ToList();
+        if (!settings.WingetConsent || offered.Any(x => !settings.WingetConsented.Contains(x.Winget)))
         {
-            var names = string.Join(", ", Catalog.Software.Where(x => x.Winget.Length > 0).Select(x => x.Name));
+            var names = string.Join(", ", offered.Select(x => x.Name));
             if (MessageBox.Show(owner, Loc.F("soft.consent", names), Loc.T("soft.title"), MessageBoxButton.YesNo, MessageBoxImage.Information, MessageBoxResult.No) != MessageBoxResult.Yes) return;
             settings.WingetConsent = true;
+            settings.WingetConsented = offered.Select(x => x.Winget).ToList();
             settings.Save();
         }
         var warning = s.Warning.ToString();

@@ -31,6 +31,8 @@ public sealed class Settings
 
     /// <summary>Software: the player accepted the licenses of programs installed via winget (asked once, before the first install).</summary>
     public bool WingetConsent { get; set; }
+    /// <summary>winget ids the consent covered; a program added to the catalog later asks again.</summary>
+    public List<string> WingetConsented { get; set; } = new();
 
     /// <summary>Game mode: programs to close (process names), torrents, power mode, OneDrive, start them again, on PLAY.</summary>
     public List<string> GameApps { get; set; } = new();
