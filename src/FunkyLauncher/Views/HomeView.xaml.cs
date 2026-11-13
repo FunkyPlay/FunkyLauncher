@@ -52,6 +52,7 @@ public partial class HomeView : UserControl
         PremiumText.Text = Loc.T("start.premium");
         FreeText.Text = Loc.T("start.free");
         LibraryButton.Content = Loc.T("start.library");
+        LauncherNewsButton.Content = Loc.T("home.launchernews");
         NewsTitle.Text = Loc.T("home.news");
         AllNews.Text = Loc.T("home.news.all");
         WhatsNewTitle.Text = Loc.F("start.whatsnew", AppConfig.Version);
@@ -216,6 +217,7 @@ public partial class HomeView : UserControl
     private void Support_Click(object sender, RoutedEventArgs e) =>
         PlayService.OpenSupportChat(Loc.T("support.write.text"), _main.Settings, _main.Selected);
     private void Telegram_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(AppConfig.TelegramUrl);
+    private void LauncherNews_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(AppConfig.LauncherNewsUrl);
     private void YouTube_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(AppConfig.YouTubeUrl);
     private void GitHub_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(AppConfig.GitHubUrl);
     private void AllNews_Click(object sender, System.Windows.Input.MouseButtonEventArgs e) => PlayService.OpenUrl(AppConfig.TelegramUrl);

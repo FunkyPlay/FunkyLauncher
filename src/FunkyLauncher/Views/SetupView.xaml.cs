@@ -482,6 +482,8 @@ public partial class SetupView : UserControl
         if (!string.IsNullOrWhiteSpace(p.LogLine)) LogLine.Text = p.LogLine;
     });
 
+    private void DoneTelegram_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(AppConfig.LauncherNewsUrl);
+
     private void FillDone()
     {
         ProgressPercent.Text = "100%";
@@ -522,6 +524,8 @@ public partial class SetupView : UserControl
                 if (outcome == InstallOutcome.Success)
                 {
                     FillDone();
+                    DoneTelegramText.Text = Loc.T("inst.done.telegram");
+                    DoneTelegram.Visibility = Visibility.Visible;
                     try { await AfterInstallAsync(); }
                     catch (Exception ex) { ProgressText.Text += "\n" + ex.Message; }
                 }

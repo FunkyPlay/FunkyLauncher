@@ -21,6 +21,7 @@ public partial class SoftView : UserControl
     {
         PageTitle.Text = Loc.T("soft.title");
         Subtitle.Text = Loc.T("soft.subtitle");
+        WeeklyText.Text = Loc.T("soft.weekly");
         Items.Children.Clear();
         foreach (var s in Catalog.Software) Items.Children.Add(Card(s));
     }
@@ -60,4 +61,6 @@ public partial class SoftView : UserControl
 
         return new Border { Style = (Style)FindResource("CardBorder"), Padding = new Thickness(18, 16, 18, 16), Margin = new Thickness(0, 0, 16, 16), Height = 210, Child = body };
     }
+
+    private void Weekly_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(AppConfig.TelegramUrl);
 }

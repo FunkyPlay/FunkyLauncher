@@ -67,6 +67,7 @@
             <DockPanel>
                 <TextBlock x:Name="ProgressPercent" DockPanel.Dock="Right" FontFamily="{StaticResource TitleFont}" FontSize="18" Foreground="#FF7AD9"/>
                 <TextBlock x:Name="ProgressText" FontSize="16" FontWeight="Bold"/>
+                <TextBlock x:Name="DoneTelegram" Visibility="Collapsed" FontSize="13.5" Margin="0,8,0,0" TextWrapping="Wrap"><Run x:Name="DoneTelegramText"/> <Hyperlink Click="DoneTelegram_Click" Foreground="{StaticResource Cyan}"><Run Text="@FunkyLauncher"/></Hyperlink></TextBlock>
             </DockPanel>
             <Border Height="12" CornerRadius="6" Background="{StaticResource CardActive}" Margin="0,10,0,6" ClipToBounds="True">
                 <Grid>

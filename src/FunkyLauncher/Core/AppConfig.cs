@@ -9,6 +9,8 @@ public static class AppConfig
     public const string YouTubeUrl = "https://www.youtube.com/@" + TelegramChannel;
     /// <summary>Launcher community in Telegram: download + support.</summary>
     public const string SupportUrl = "https://t.me/FunkyLauncher";
+    /// <summary>Launcher news channel (updates, what to do when something breaks).</summary>
+    public const string LauncherNewsUrl = "https://t.me/FunkyLauncher";
     /// <summary>The support bot (Funky Help sends the RustDesk ID here).</summary>
     public const string SupportBotName = "FunkyLauncherBot";
     public const string SupportBotUrl = "https://t.me/" + SupportBotName;
