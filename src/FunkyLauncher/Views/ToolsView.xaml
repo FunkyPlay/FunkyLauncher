@@ -31,6 +31,23 @@
                     <TextBlock x:Name="DndHint" FontSize="12.5" Foreground="{StaticResource Muted}" TextWrapping="Wrap"/>
                     <TextBlock x:Name="ShootMessage" FontSize="13" Foreground="{StaticResource Cyan}" TextWrapping="Wrap" Margin="0,8,0,0"/>
                 </StackPanel>
+                <StackPanel x:Name="ScreenPanel" Visibility="Collapsed">
+                    <TextBlock x:Name="ScreenTitle" FontFamily="{StaticResource TitleFont}" FontSize="20"/>
+                    <TextBlock x:Name="ScreenIntro" FontSize="13" Foreground="#C9C9D6" TextWrapping="Wrap" Margin="0,6,0,0"/>
+                    <WrapPanel Margin="0,16,0,0">
+                        <Button x:Name="ScreenAreaButton" Style="{StaticResource PrimaryButton}" Margin="0,0,12,8" Click="ScreenArea_Click"/>
+                        <Button x:Name="ScreenFullButton" Style="{StaticResource SecondaryButton}" Height="42" Padding="18,0" Margin="0,0,12,8" Click="ScreenFull_Click"/>
+                        <Button x:Name="ScreenRecButton" Style="{StaticResource SecondaryButton}" Height="42" Padding="18,0" Margin="0,0,12,8" Click="ScreenRec_Click"/>
+                    </WrapPanel>
+                    <CheckBox x:Name="ScreenHotkeys" Margin="0,8,0,0" Click="ScreenHotkeys_Click"/>
+                    <TextBlock x:Name="ScreenKeys" FontSize="12.5" Foreground="{StaticResource Muted}" TextWrapping="Wrap" Margin="28,4,0,0"/>
+                    <WrapPanel Margin="0,14,0,0">
+                        <Button x:Name="ScreenShotsDir" Style="{StaticResource SecondaryButton}" Height="30" Padding="12,0" Margin="0,0,8,8" Click="ScreenShotsDir_Click"/>
+                        <Button x:Name="ScreenVideosDir" Style="{StaticResource SecondaryButton}" Height="30" Padding="12,0" Margin="0,0,8,8" Click="ScreenVideosDir_Click"/>
+                    </WrapPanel>
+                    <TextBlock x:Name="ScreenTip" FontSize="12.5" Foreground="{StaticResource Muted}" TextWrapping="Wrap" Margin="0,6,0,0"/>
+                    <TextBlock x:Name="ScreenMessage" FontSize="13" Foreground="{StaticResource Cyan}" TextWrapping="Wrap" Margin="0,8,0,0"/>
+                </StackPanel>
                 <StackPanel x:Name="ProPanel" Visibility="Collapsed">
                     <TextBlock x:Name="ProTitle" FontFamily="{StaticResource TitleFont}" FontSize="20" Text="Funky Pro"/>
                     <TextBlock x:Name="ProInfo" FontSize="13" Foreground="#C9C9D6" TextWrapping="Wrap" Margin="0,8,0,10"/>

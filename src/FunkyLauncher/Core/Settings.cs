@@ -26,6 +26,9 @@ public sealed class Settings
     public bool ShootTaskbar { get; set; }
     public string ShootWallpaperFile { get; set; } = "";
 
+    /// <summary>Funky Screen: the Ctrl+Shift+S / F / R keys work from anywhere.</summary>
+    public bool ScreenHotkeys { get; set; } = true;
+
     /// <summary>Game mode: programs to close (process names), torrents, power mode, OneDrive, start them again, on PLAY.</summary>
     public List<string> GameApps { get; set; } = new();
     public bool GameTorrents { get; set; } = true;

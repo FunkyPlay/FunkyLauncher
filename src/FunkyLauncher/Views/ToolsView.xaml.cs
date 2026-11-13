@@ -50,6 +50,8 @@ public partial class ToolsView : UserControl
             GameMode.IsActive ? Loc.T("tools.on") : null));
         ToolCards.Children.Add(ToolCard("✓", Loc.T("tools.pc"), Loc.T("tools.pc.text"), "#9AC5F8", "pc", null));
         ToolCards.Children.Add(ToolCard("▷", Loc.T("tools.player"), Loc.T("tools.player.text"), "#7AE8FF", "player", null));
+        ToolCards.Children.Add(ToolCard("◳", Loc.T("tools.screen"), Loc.T("tools.screen.text"), "#FF8FE3", "screen",
+            FunkyScreen.Recording ? Loc.T("screen.rec.badge") : null));
         if (S.DesktopsBeta)
             ToolCards.Children.Add(ToolCard("▦", Loc.T("tools.desktops"), Loc.T("tools.desktops.text"), "#FFFFFF", "desktops", S.DesktopsOn ? Loc.T("tools.on") : null));
         if (ProModules.Active)
@@ -64,6 +66,8 @@ public partial class ToolsView : UserControl
         BackupPanel.Visibility = _tool == "backup" ? Visibility.Visible : Visibility.Collapsed;
         ShootPanel.Visibility = _tool == "shoot" ? Visibility.Visible : Visibility.Collapsed;
         PcPanel.Visibility = _tool == "pc" ? Visibility.Visible : Visibility.Collapsed;
+        ScreenPanel.Visibility = _tool == "screen" ? Visibility.Visible : Visibility.Collapsed;
+        RefreshScreen();
         RefreshShoot();
         RefreshPc();
 
@@ -489,6 +493,116 @@ public partial class ToolsView : UserControl
     private string _tool = "backup";
 
     /// <summary>Opens the recording mode panel (e.g. from the start-up reminder).</summary>
+    // ---------- Funky Screen ----------
+
+    public void ShowScreen() { _tool = "screen"; Refresh(); }
+
+    private void RefreshScreen()
+    {
+        ScreenTitle.Text = Loc.T("tools.screen");
+        ScreenIntro.Text = Loc.T("screen.intro");
+        ScreenAreaButton.Content = Loc.T("screen.area");
+        ScreenFullButton.Content = Loc.T("screen.full");
+        ScreenRecButton.Content = Loc.T(FunkyScreen.Recording ? "screen.rec.stop" : "screen.rec");
+        ScreenHotkeys.Content = Loc.T("screen.hotkeys");
+        ScreenHotkeys.IsChecked = S.ScreenHotkeys;
+        ScreenKeys.Text = Loc.T("screen.keys");
+        ScreenShotsDir.Content = Loc.T("screen.dir.shots");
+        ScreenVideosDir.Content = Loc.T("screen.dir.videos");
+        ScreenTip.Text = Loc.T("screen.tip");
+    }
+
+    private bool _screenBusy;
+
+    /// <summary>Picture of the whole screen under the mouse (Ctrl+Shift+F).</summary>
+    public void ScreenFull()
+    {
+        if (_screenBusy) return;
+        try
+        {
+            using var bmp = FunkyScreen.InRealPixels(() => FunkyScreen.Grab(FunkyScreen.MonitorUnderMouse()));
+            ScreenSaved(FunkyScreen.SavePng(bmp));
+        }
+        catch (Exception e) { ScreenError(e); }
+    }
+
+    /// <summary>Picture of a picked area (Ctrl+Shift+S).</summary>
+    public async void ScreenArea()
+    {
+        if (_screenBusy) return;
+        _screenBusy = true;
+        try
+        {
+            using var bmp = await ScreenAreaPicker.PickAsync();
+            if (bmp != null) ScreenSaved(FunkyScreen.SavePng(bmp));
+        }
+        catch (Exception e) { ScreenError(e); }
+        finally { _screenBusy = false; }
+    }
+
+    /// <summary>Starts / stops the video of the screen under the mouse (Ctrl+Shift+R). FFmpeg comes with the player engine.</summary>
+    public async void ScreenRecord()
+    {
+        if (_screenBusy) return;
+        _screenBusy = true;
+        try
+        {
+            if (FunkyScreen.Recording)
+            {
+                ScreenToast.RecordingBadge(null);
+                var file = await FunkyScreen.StopRecordingAsync();
+                if (file != null)
+                {
+                    try { Clipboard.SetFileDropList(new System.Collections.Specialized.StringCollection { file }); } catch { }
+                    ScreenToast.Saved(file, true, f => OpenPlayer(f));
+                    ScreenMessage.Text = Loc.F("screen.saved.where", file);
+                }
+            }
+            else
+            {
+                if (!PlayerEngine.Ready)
+                {
+                    ScreenMessage.Text = Loc.T("screen.engine");
+                    await PlayerEngine.EnsureAsync(new Progress<(string Step, int Percent)>(p => ScreenMessage.Text = $"{p.Step} {p.Percent}%"), CancellationToken.None);
+                    ScreenMessage.Text = "";
+                }
+                FunkyScreen.InRealPixels(() => { FunkyScreen.StartRecording(FunkyScreen.MonitorUnderMouse()); return 0; });
+                ScreenToast.RecordingBadge(() => ScreenRecord());
+            }
+        }
+        catch (Exception e) { ScreenToast.RecordingBadge(null); ScreenError(e); }
+        finally { _screenBusy = false; Refresh(); }
+    }
+
+    private void ScreenSaved(string file)
+    {
+        try
+        {
+            var bi = new System.Windows.Media.Imaging.BitmapImage();
+            bi.BeginInit(); bi.CacheOption = System.Windows.Media.Imaging.BitmapCacheOption.OnLoad; bi.UriSource = new Uri(file); bi.EndInit();
+            Clipboard.SetImage(bi);
+        }
+        catch { /* the clipboard may be busy, the file is saved anyway */ }
+        ScreenToast.Saved(file, false, null);
+        ScreenMessage.Text = Loc.F("screen.saved.where", file);
+    }
+
+    private void ScreenError(Exception e) => ScreenMessage.Text = Loc.F("screen.err", e.Message);
+
+    private void ScreenArea_Click(object sender, RoutedEventArgs e) => ScreenArea();
+    private void ScreenFull_Click(object sender, RoutedEventArgs e) => ScreenFull();
+    private void ScreenRec_Click(object sender, RoutedEventArgs e) => ScreenRecord();
+    private void ScreenShotsDir_Click(object sender, RoutedEventArgs e) => FunkyScreen.OpenFolder(FunkyScreen.ShotsDir);
+    private void ScreenVideosDir_Click(object sender, RoutedEventArgs e) => FunkyScreen.OpenFolder(FunkyScreen.VideosDir);
+
+    private void ScreenHotkeys_Click(object sender, RoutedEventArgs e)
+    {
+        S.ScreenHotkeys = ScreenHotkeys.IsChecked == true;
+        S.Save();
+        var ok = _main.ApplyScreenHotkeys();
+        ScreenMessage.Text = ok ? "" : Loc.T("screen.keys.busy");
+    }
+
     public void ShowShoot() { _tool = "shoot"; Refresh(); }
 
     private void RefreshShoot()

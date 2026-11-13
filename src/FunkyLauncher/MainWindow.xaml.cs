@@ -232,6 +232,24 @@ public partial class MainWindow : Window
     // Recording mode hotkey: Ctrl+Alt+F12 turns it on/off from anywhere (the launcher may be minimized or hidden).
     private const int ShootHotkeyId = 0xF00D;
     [System.Runtime.InteropServices.DllImport("user32.dll")] private static extern bool RegisterHotKey(IntPtr h, int id, uint mods, uint vk);
+    [System.Runtime.InteropServices.DllImport("user32.dll")] private static extern bool UnregisterHotKey(IntPtr h, int id);
+
+    // Funky Screen: Ctrl+Shift+S area, Ctrl+Shift+F screen, Ctrl+Shift+R record (on/off in Tools → Funky Screen).
+    private const int ScreenAreaId = 0xF00E, ScreenFullId = 0xF00F, ScreenRecId = 0xF010;
+    private IntPtr _hwnd;
+
+    /// <summary>Registers or removes the Funky Screen keys by the setting; returns false if another program already owns one.</summary>
+    public bool ApplyScreenHotkeys()
+    {
+        if (_hwnd == IntPtr.Zero) return true;
+        foreach (var id in new[] { ScreenAreaId, ScreenFullId, ScreenRecId }) UnregisterHotKey(_hwnd, id);
+        if (!Settings.ScreenHotkeys) return true;
+        const uint mods = 0x2 | 0x4 | 0x4000; // CONTROL | SHIFT | NOREPEAT
+        var ok = RegisterHotKey(_hwnd, ScreenAreaId, mods, 0x53);
+        ok &= RegisterHotKey(_hwnd, ScreenFullId, mods, 0x46);
+        ok &= RegisterHotKey(_hwnd, ScreenRecId, mods, 0x52);
+        return ok;
+    }
 
     private void RegisterShootHotkey()
     {
@@ -239,9 +257,21 @@ public partial class MainWindow : Window
         if (src == null) return;
         // MOD_ALT | MOD_CONTROL | MOD_NOREPEAT, VK_F12. If another program owns it, the button still works.
         RegisterHotKey(src.Handle, ShootHotkeyId, 0x1 | 0x2 | 0x4000, 0x7B);
+        _hwnd = src.Handle;
+        ApplyScreenHotkeys();
         src.AddHook((IntPtr hwnd, int msg, IntPtr wp, IntPtr lp, ref bool handled) =>
         {
-            if (msg == 0x0312 && wp.ToInt32() == ShootHotkeyId) // WM_HOTKEY
+            if (msg == 0x0312 && wp.ToInt32() is >= ScreenAreaId and <= ScreenRecId) // Funky Screen
+            {
+                switch (wp.ToInt32())
+                {
+                    case ScreenAreaId: _tools.ScreenArea(); break;
+                    case ScreenFullId: _tools.ScreenFull(); break;
+                    default: _tools.ScreenRecord(); break;
+                }
+                handled = true;
+            }
+            else if (msg == 0x0312 && wp.ToInt32() == ShootHotkeyId) // WM_HOTKEY
             {
                 var wasOn = RecordingMode.IsActive;
                 _tools.ToggleShoot();
