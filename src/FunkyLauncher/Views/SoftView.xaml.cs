@@ -24,7 +24,7 @@ public partial class SoftView : UserControl
         WeeklyText.Text = Loc.T("soft.weekly");
         WeeklyLine.Visibility = Loc.Lang == "en" ? Visibility.Collapsed : Visibility.Visible; // Russian channel: RU only
         Items.Children.Clear();
-        foreach (var s in Catalog.Software) Items.Children.Add(Card(s));
+        foreach (var s in Catalog.Software.Where(x => x.Langs.Count == 0 || x.Langs.Contains(Loc.Lang))) Items.Children.Add(Card(s));
     }
 
     private Border Card(SoftwareItem s)

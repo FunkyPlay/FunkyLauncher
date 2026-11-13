@@ -95,6 +95,8 @@ public sealed class SoftwareItem
     [JsonPropertyName("wingetSource")] public string WingetSource { get; set; } = "winget";
     /// <summary>Shown in the install confirmation (risks, personal-use-only license).</summary>
     [JsonPropertyName("warning")] public LocText Warning { get; set; } = new();
+    /// <summary>Launcher languages the card is shown in, e.g. ["ru"] (empty = all).</summary>
+    [JsonPropertyName("langs")] public List<string> Langs { get; set; } = new();
 }
 
 public sealed class CatalogFile
@@ -173,7 +175,7 @@ public static class Catalog
         BuiltInPlayerEngine = builtIn.PlayerEngine;
         BuiltInRemoteHelp = builtIn.RemoteHelp;
         BuiltInSocial = builtIn.Social ?? new();
-        BuiltInSoftware = builtIn.Software.Where(x => x.Winget.Length > 0).GroupBy(SoftKey).ToDictionary(g => g.Key, g => g.First());
+        BuiltInSoftware = builtIn.Software.Where(x => x.Winget.Length > 0 || x.Langs.Count > 0).GroupBy(SoftKey).ToDictionary(g => g.Key, g => g.First());
         Apply(builtIn);
         Source = "built-in";
         if (File.Exists(CachePath))
@@ -206,7 +208,9 @@ public static class Catalog
         Software = c.Software.Where(x => x.Name.Length > 0 && x.Url.StartsWith("https://")).ToList();
         foreach (var s in Software)
         {
-            if (s.Winget.Length > 0 || !BuiltInSoftware.TryGetValue(SoftKey(s), out var b)) continue;
+            if (!BuiltInSoftware.TryGetValue(SoftKey(s), out var b)) continue;
+            if (s.Langs.Count == 0) s.Langs = b.Langs;
+            if (s.Winget.Length > 0) continue;
             s.Winget = b.Winget;
             s.WingetSource = b.WingetSource;
             if (s.Warning.ToString().Length == 0) s.Warning = b.Warning;

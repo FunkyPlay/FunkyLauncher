@@ -213,6 +213,7 @@
   "software": [
     {
       "id": "funkydiscount",
+      "langs": ["ru"],
       "name": "FunkyDiscount — бот скидок",
       "category": {
         "ru": "Наше",
