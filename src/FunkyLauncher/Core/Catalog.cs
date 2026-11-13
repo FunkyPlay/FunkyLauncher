@@ -161,6 +161,7 @@ public static class Catalog
         BuiltInPcChecks = builtIn.Modlists.Where(m => m.PcCheck != null).ToDictionary(m => m.Id, m => m.PcCheck!);
         BuiltInPlayerEngine = builtIn.PlayerEngine;
         BuiltInRemoteHelp = builtIn.RemoteHelp;
+        BuiltInSoftware = builtIn.Software.Where(x => x.Winget.Length > 0).GroupBy(SoftKey).ToDictionary(g => g.Key, g => g.First());
         Apply(builtIn);
         Source = "built-in";
         if (File.Exists(CachePath))
@@ -178,6 +179,9 @@ public static class Catalog
     /// <summary>Save folders known to this launcher version — used when an online/cached catalog has none.</summary>
     private static Dictionary<string, string> BuiltInSaveFolders = new();
     private static Dictionary<string, PcRequirements> BuiltInPcChecks = new();
+    /// <summary>One-click install data known to this launcher — used when an online/cached catalog (older) has none.</summary>
+    private static Dictionary<string, SoftwareItem> BuiltInSoftware = new();
+    private static string SoftKey(SoftwareItem x) => x.Id.Length > 0 ? x.Id : x.Name;
 
     private static void Apply(CatalogFile c)
     {
@@ -188,6 +192,13 @@ public static class Catalog
         }
         Items = c.Modlists;
         Software = c.Software.Where(x => x.Name.Length > 0 && x.Url.StartsWith("https://")).ToList();
+        foreach (var s in Software)
+        {
+            if (s.Winget.Length > 0 || !BuiltInSoftware.TryGetValue(SoftKey(s), out var b)) continue;
+            s.Winget = b.Winget;
+            s.WingetSource = b.WingetSource;
+            if (s.Warning.ToString().Length == 0) s.Warning = b.Warning;
+        }
         PlayerEngine = c.PlayerEngine is { Mpv.Url.Length: > 0 } ? c.PlayerEngine : BuiltInPlayerEngine;
         RemoteHelp = c.RemoteHelp is { Url.Length: > 0, Host.Length: > 0 } ? c.RemoteHelp : BuiltInRemoteHelp;
     }
