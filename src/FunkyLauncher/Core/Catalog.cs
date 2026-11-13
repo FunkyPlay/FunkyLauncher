@@ -89,6 +89,10 @@ public sealed class SoftwareItem
     [JsonPropertyName("url")] public string Url { get; set; } = "";
     /// <summary>Tile color, e.g. "#FF3FD2".</summary>
     [JsonPropertyName("color")] public string Color { get; set; } = "#7AE8FF";
+    /// <summary>winget package id for a one-click install (empty = only the website button).</summary>
+    [JsonPropertyName("winget")] public string Winget { get; set; } = "";
+    /// <summary>winget source: "winget" (community repo) or "msstore" (Microsoft Store).</summary>
+    [JsonPropertyName("wingetSource")] public string WingetSource { get; set; } = "winget";
 }
 
 public sealed class CatalogFile

@@ -49,17 +49,70 @@ public partial class SoftView : UserControl
         names.Children.Add(new TextBlock { Text = s.Category.ToString(), FontSize = 12, Foreground = (Brush)FindResource("Muted") });
         head.Children.Add(names);
 
-        var button = new Button { Content = Loc.T(s.Url.StartsWith("https://t.me/") ? "soft.open.tg" : "soft.open"), Style = (Style)FindResource("SecondaryButton"), Height = 38, Margin = new Thickness(0, 12, 0, 0) };
-        button.Click += (_, _) => PlayService.OpenUrl(s.Url);
+        FrameworkElement buttons;
+        if (s.Winget.Length > 0)
+        {
+            // One-click install via winget + a small Website button; falls back to the website if winget is missing.
+            var install = new Button { Content = Loc.T("soft.install"), Style = (Style)FindResource("SecondaryButton"), Height = 38 };
+            var site = new Button { Content = Loc.T("soft.site"), Style = (Style)FindResource("SecondaryButton"), Height = 38, Margin = new Thickness(8, 0, 0, 0), Padding = new Thickness(14, 0, 14, 0) };
+            site.Click += (_, _) => PlayService.OpenUrl(s.Url);
+            install.Click += async (_, _) => await InstallAsync(s, install);
+            var row = new DockPanel { Margin = new Thickness(0, 12, 0, 0) };
+            DockPanel.SetDock(site, Dock.Right);
+            row.Children.Add(site);
+            row.Children.Add(install);
+            buttons = row;
+            _ = CheckInstalledAsync(s, install);
+        }
+        else
+        {
+            var button = new Button { Content = Loc.T(s.Url.StartsWith("https://t.me/") ? "soft.open.tg" : "soft.open"), Style = (Style)FindResource("SecondaryButton"), Height = 38, Margin = new Thickness(0, 12, 0, 0) };
+            button.Click += (_, _) => PlayService.OpenUrl(s.Url);
+            buttons = button;
+        }
 
         var body = new DockPanel();
         DockPanel.SetDock(head, Dock.Top);
-        DockPanel.SetDock(button, Dock.Bottom);
+        DockPanel.SetDock(buttons, Dock.Bottom);
         body.Children.Add(head);
-        body.Children.Add(button);
+        body.Children.Add(buttons);
         body.Children.Add(new TextBlock { Text = s.Description.ToString(), FontSize = 13, LineHeight = 19, Foreground = new SolidColorBrush(Color.FromRgb(0xC9, 0xC9, 0xD6)), TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 12, 0, 0) });
 
         return new Border { Style = (Style)FindResource("CardBorder"), Padding = new Thickness(18, 16, 18, 16), Margin = new Thickness(0, 0, 16, 16), Height = 210, Child = body };
+    }
+
+    private static readonly SemaphoreSlim WingetLock = new(1, 1); // one winget at a time
+
+    private static async Task CheckInstalledAsync(SoftwareItem s, Button install)
+    {
+        if (!await WingetService.AvailableAsync()) { install.Content = Loc.T("soft.open"); return; }
+        await WingetLock.WaitAsync();
+        try
+        {
+            if (await WingetService.IsInstalledAsync(s.Winget, s.WingetSource))
+            {
+                install.Content = Loc.T("soft.installed");
+                install.IsEnabled = false;
+            }
+        }
+        finally { WingetLock.Release(); }
+    }
+
+    private async Task InstallAsync(SoftwareItem s, Button install)
+    {
+        if (!await WingetService.AvailableAsync()) { PlayService.OpenUrl(s.Url); return; }
+        if (MessageBox.Show(Window.GetWindow(this), Loc.F("soft.install.confirm", s.Name), s.Name, MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes) return;
+        install.IsEnabled = false;
+        install.Content = Loc.T("soft.installing");
+        await WingetLock.WaitAsync();
+        string? error;
+        try { error = await WingetService.InstallAsync(s.Winget, s.WingetSource); }
+        catch (Exception e) { error = e.Message; }
+        finally { WingetLock.Release(); }
+        if (error == null) { install.Content = Loc.T("soft.installed"); return; }
+        install.Content = Loc.T("soft.install");
+        install.IsEnabled = true;
+        MessageBox.Show(Window.GetWindow(this), Loc.F("soft.install.fail", s.Name, error), s.Name, MessageBoxButton.OK, MessageBoxImage.Warning);
     }
 
     private void Weekly_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(AppConfig.TelegramUrl);

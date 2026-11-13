@@ -319,7 +319,13 @@ public static class Loc
         ["browser.title"] = ("Браузер", "Browser"),
 
         ["soft.title"] = ("Полезный софт", "Useful software"),
-        ["soft.subtitle"] = ("Проверенные программы для игр и модов. Кнопка открывает официальный сайт программы.", "Trusted programs for games and mods. The button opens the program's official website."),
+        ["soft.subtitle"] = ("Проверенные программы для игр и модов. «Установить» ставит программу с официального источника через Windows, «Сайт» открывает её страницу.", "Trusted programs for games and mods. Install sets it up from the official source via Windows; Website opens its page."),
+        ["soft.install"] = ("Установить", "Install"),
+        ["soft.installing"] = ("Устанавливаю…", "Installing…"),
+        ["soft.installed"] = ("Установлено ✓", "Installed ✓"),
+        ["soft.site"] = ("Сайт", "Website"),
+        ["soft.install.confirm"] = ("Установить {0}?\n\nПрограмма скачается с официального источника через winget — менеджер программ, встроенный в Windows. Лаунчер установщики не хранит. Windows может спросить разрешение администратора.", "Install {0}?\n\nThe program is downloaded from its official source via winget, the package manager built into Windows. The launcher does not store installers. Windows may ask for admin rights."),
+        ["soft.install.fail"] = ("Не получилось установить {0}: {1}\n\nМожно скачать с сайта программы — кнопка «Сайт».", "Could not install {0}: {1}\n\nYou can get it from the website — the Website button."),
         ["soft.open"] = ("Скачать с сайта", "Get from website"),
         ["soft.open.tg"] = ("Открыть в Telegram", "Open in Telegram"),
 

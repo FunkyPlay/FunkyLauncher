@@ -223,6 +223,8 @@
     },
     {
       "id": "7zip",
+      "winget": "7zip.7zip",
+      "wingetSource": "winget",
       "name": "7-Zip",
       "category": {
         "ru": "Архиватор",
@@ -237,6 +239,8 @@
     },
     {
       "id": "nvidia-app",
+      "winget": "XP8CLZL93F5Z4P",
+      "wingetSource": "msstore",
       "name": "NVIDIA App",
       "category": {
         "ru": "Драйверы и запись",
@@ -251,6 +255,8 @@
     },
     {
       "id": "afterburner",
+      "winget": "Guru3D.Afterburner",
+      "wingetSource": "winget",
       "name": "MSI Afterburner",
       "category": {
         "ru": "Мониторинг",
@@ -265,6 +271,8 @@
     },
     {
       "id": "vcredist",
+      "winget": "Microsoft.VCRedist.2015+.x64",
+      "wingetSource": "winget",
       "name": "Visual C++ Redistributable",
       "category": {
         "ru": "Системное",
@@ -279,6 +287,8 @@
     },
     {
       "id": "dotnet",
+      "winget": "Microsoft.DotNet.DesktopRuntime.10",
+      "wingetSource": "winget",
       "name": ".NET Desktop Runtime",
       "category": {
         "ru": "Системное",
@@ -293,6 +303,8 @@
     },
     {
       "id": "dlss-swapper",
+      "winget": "beeradmoore.dlss-swapper",
+      "wingetSource": "winget",
       "name": "DLSS Swapper",
       "category": {
         "ru": "Графика",
@@ -321,6 +333,8 @@
     },
     {
       "id": "ddu",
+      "winget": "Wagnardsoft.DisplayDriverUninstaller",
+      "wingetSource": "winget",
       "name": "Display Driver Uninstaller (DDU)",
       "category": {
         "ru": "Драйверы",
@@ -335,6 +349,8 @@
     },
     {
       "id": "obs",
+      "winget": "OBSProject.OBSStudio",
+      "wingetSource": "winget",
       "name": "OBS Studio",
       "category": {
         "ru": "Запись и стримы",
@@ -349,6 +365,8 @@
     },
     {
       "id": "hwinfo",
+      "winget": "REALiX.HWiNFO",
+      "wingetSource": "winget",
       "name": "HWiNFO",
       "category": {
         "ru": "Мониторинг",
@@ -377,6 +395,8 @@
     },
     {
       "id": "wiztree",
+      "winget": "AntibodySoftware.WizTree",
+      "wingetSource": "winget",
       "name": "WizTree",
       "category": {
         "ru": "Диск",
