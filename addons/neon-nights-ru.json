@@ -2,8 +2,8 @@
   "schema": 1,
   "modlistId": "neon-nights",
   "packId": "neon-nights-ru",
-  "listVersion": "0.1.1-draft",
-  "forMainVersion": "0.1.1",
+  "listVersion": "0.1.2",
+  "forMainVersion": "0.1.2",
   "draft": true,
   "generated": "2026-11-12",
   "rules": {
@@ -791,7 +791,7 @@
       ],
       "modlist": {
         "insertAbove": "Deceptious Quest Core 7831 3.3.3 2026",
-        "fallbackInsertBelow": "Lizzie's Braindances 11077 3.22 2026"
+        "fallbackInsertBelow": "Lizzie's Braindances 11077 3.22.1 2026"
       },
       "archive": {
         "localFileName": "Deceptious Quest Core 3.3.3 RU 18463 1.8 2026-08-24T16-44Z 3dwHd9jQh.rar",
@@ -917,8 +917,8 @@
       "version": "d2026.11.7.0",
       "translates": [],
       "modlist": {
-        "insertAbove": "DigitalVixenCore 28390 4.9.12 2026",
-        "fallbackInsertBelow": "RedFunctions 32312 0.15.1 2026"
+        "insertAbove": "DigitalVixenCore 28390 4.9.13 2026",
+        "fallbackInsertBelow": "RedFunctions 32312 0.16.0 2026"
       },
       "archive": {
         "localFileName": "DigitalVixen Core - RU 33873 4.8.16 2026-09-13T15-11Z SlR4l6RRb.zip",
@@ -966,5 +966,8 @@
         "fileCount": 1
       }
     }
+  ],
+  "changes": [
+    "14.11: под 0.1.2 — якоря DigitalVixenCore, RedFunctions, Lizzie's Braindances переименованы на новые версии."
   ]
 }

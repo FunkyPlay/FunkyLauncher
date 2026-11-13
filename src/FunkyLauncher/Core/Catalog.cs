@@ -59,6 +59,11 @@ public sealed class Modlist
     /// <summary>"Can my PC run it?" requirements for this modlist (null = no check).</summary>
     [JsonPropertyName("pcCheck")] public PcRequirements? PcCheck { get; set; }
 
+    /// <summary>Loader files the launcher copies from the modlist into the game folder before PLAY (MO2 can't provide them).</summary>
+    [JsonPropertyName("gameLoaders")] public List<GameLoader> GameLoaders { get; set; } = new();
+    /// <summary>What those mods create in the game folder by themselves — removed by "Restore clean game".</summary>
+    [JsonPropertyName("gameCleanup")] public List<GameLoader> GameCleanup { get; set; } = new();
+
     /// <summary>The real save folder on this PC (Documents may live in OneDrive), or null if unknown.</summary>
     public string? ResolveSaveFolder()
     {
@@ -77,6 +82,13 @@ public sealed class Modlist
 
     public bool IsReleased => Status == "released";
     public long RequiredFreeBytes => (SizeGb + 5L) * 1024 * 1024 * 1024;
+}
+
+/// <summary>A file in the game folder: path relative to the game folder (and to the mod folder), and the mod folder name prefix.</summary>
+public sealed class GameLoader
+{
+    [JsonPropertyName("path")] public string Path { get; set; } = "";
+    [JsonPropertyName("mod")] public string Mod { get; set; } = "";
 }
 
 /// <summary>A useful program on the Software page. The button opens the official site — we never rehost installers.</summary>
@@ -153,6 +165,7 @@ public static class Catalog
         var builtIn = Parse(s);
         BuiltInSaveFolders = builtIn.Modlists.Where(m => !string.IsNullOrWhiteSpace(m.SaveFolder)).ToDictionary(m => m.Id, m => m.SaveFolder!);
         BuiltInPcChecks = builtIn.Modlists.Where(m => m.PcCheck != null).ToDictionary(m => m.Id, m => m.PcCheck!);
+        BuiltInLoaders = builtIn.Modlists.Where(m => m.GameLoaders.Count > 0).ToDictionary(m => m.Id, m => (m.GameLoaders, m.GameCleanup));
         BuiltInPlayerEngine = builtIn.PlayerEngine;
         BuiltInRemoteHelp = builtIn.RemoteHelp;
         Apply(builtIn);
@@ -172,6 +185,7 @@ public static class Catalog
     /// <summary>Save folders known to this launcher version — used when an online/cached catalog has none.</summary>
     private static Dictionary<string, string> BuiltInSaveFolders = new();
     private static Dictionary<string, PcRequirements> BuiltInPcChecks = new();
+    private static Dictionary<string, (List<GameLoader> Loaders, List<GameLoader> Cleanup)> BuiltInLoaders = new();
 
     private static void Apply(CatalogFile c)
     {
@@ -179,6 +193,7 @@ public static class Catalog
         {
             if (string.IsNullOrWhiteSpace(m.SaveFolder) && BuiltInSaveFolders.TryGetValue(m.Id, out var f)) m.SaveFolder = f;
             if (m.PcCheck == null && BuiltInPcChecks.TryGetValue(m.Id, out var pc)) m.PcCheck = pc;
+            if (m.GameLoaders.Count == 0 && BuiltInLoaders.TryGetValue(m.Id, out var gl)) { m.GameLoaders = gl.Loaders; m.GameCleanup = gl.Cleanup; }
         }
         Items = c.Modlists;
         Software = c.Software.Where(x => x.Name.Length > 0 && x.Url.StartsWith("https://")).ToList();

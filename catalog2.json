@@ -30,7 +30,7 @@
       "id": "neon-nights",
       "title": "NEON NIGHTS",
       "author": "Funky",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "status": "released",
       "game": "Cyberpunk 2077",
       "gameVersion": "2.5",
@@ -52,18 +52,32 @@
         "en": "I built and tested this modlist myself. The goal: a more beautiful, alive and interesting Night City without turning it into a different game. Everything is configured, compatible and tested in-game.\n\n🌆 Visuals, lighting & weather — HD textures, new lighting for Night City and Dogtown, weather, rain and water, LUTs, distant shadows.\n🏙 Living city & gameplay — street events, smarter gangs and police, taxi work, roulette and blackjack, new quests and contracts, merc allies, skill trainers, ragdoll physics, melee.\n👗 Shops & clothing — virtual shops on V's computer: hundreds of items, shoes, accessories, jewelry.\n💇 Hair — 50+ new hairstyles, many with physics.\n🧑 Body & face — detailed faces and skin, eyes, makeup, tattoos, first-person body, Appearance Menu Mod.\n❤️ Romance & NPCs — Judy, Panam, River and Kerry: dates, sleepovers, new conversations.\n🍸 Characters — talk to fixers, bartenders, vendors and ripperdocs.\n🏠 Apartments — upgraded vanilla ones and new homes: villa, mansion, penthouse with garage.\n🚗 Cars — real supercars and classics, car dealer, cockpit view, vehicle summoning.\n📸 Photo mode, 📻 radio, 🖥 customizable HUD and handy menus.\n🔧 All frameworks (CET, RED4ext, ArchiveXL, TweakXL, Codeware), fixes and crash protection.\n\nLanguage: English or Russian — pick it on the install page, switch any time without reinstalling.\n18+: a separate add-on, a checkbox on the install page (off by default).\nNot included: Zenitex store (broken on 2.5, discontinued by its author), DreamVoice Russian voice-over (install it from the authors' page).\n\nAll mods are downloaded from their authors' Nexus Mods pages — please endorse them."
       },
       "requirements": {
-        "ru": "Игра: Cyberpunk 2077 версии 2.5 + Phantom Liberty (Steam, GOG или Epic)\n\nПК — рекомендуемые CD Projekt RED (High, 1080p, 60 FPS):\n• Windows 10/11 64-bit\n• Core i7-12700 или Ryzen 7 7800X3D\n• RTX 2060 Super / RX 5700 XT / Arc A770, 8 ГБ видеопамяти\n• 16 ГБ ОЗУ\n• SSD: 70 ГБ игра + ~40 ГБ сборка и архивы модов\n\nДля 2K и 4K нужна видеокарта мощнее (сборка проверена на RTX 4080).",
-        "en": "Game: Cyberpunk 2077 version 2.5 + Phantom Liberty (Steam, GOG or Epic)\n\nPC — CD Projekt RED recommended (High, 1080p, 60 FPS):\n• Windows 10/11 64-bit\n• Core i7-12700 or Ryzen 7 7800X3D\n• RTX 2060 Super / RX 5700 XT / Arc A770, 8 GB VRAM\n• 16 GB RAM\n• SSD: 70 GB game + ~40 GB modlist and mod archives\n\nFor 1440p and 4K you need a stronger GPU (tested on an RTX 4080)."
+        "ru": "Игра: Cyberpunk 2077 версии 2.5 + Phantom Liberty\n\nПК — рекомендуемые CD Projekt RED (High, 1080p, 60 FPS):\n• Windows 10/11 64-bit (проверено на Windows 11)\n• Core i7-12700 или Ryzen 7 7800X3D\n• RTX 2060 Super / RX 5700 XT / Arc A770, 8 ГБ видеопамяти\n• 16 ГБ ОЗУ\n• SSD: 70 ГБ игра + ~40 ГБ сборка и архивы модов\n\nДля 2K и 4K нужна видеокарта мощнее (сборка проверена на RTX 4080).",
+        "en": "Game: Cyberpunk 2077 version 2.5 + Phantom Liberty\n\nPC — CD Projekt RED recommended (High, 1080p, 60 FPS):\n• Windows 10/11 64-bit (tested on Windows 11)\n• Core i7-12700 or Ryzen 7 7800X3D\n• RTX 2060 Super / RX 5700 XT / Arc A770, 8 GB VRAM\n• 16 GB RAM\n• SSD: 70 GB game + ~40 GB modlist and mod archives\n\nFor 1440p and 4K you need a stronger GPU (tested on an RTX 4080)."
       },
       "banner": "res:/Assets/banner.jpg",
       "wabbajackFile": "Neon Nights.wabbajack",
-      "wabbajackUrl": "https://github.com/FunkyPlay/FunkyLauncher/releases/download/v0.1.7/NeonNights-0.1.1.wabbajack",
+      "wabbajackUrl": "https://github.com/FunkyPlay/FunkyLauncher/releases/download/v0.1.8/NeonNights-0.1.2.wabbajack",
       "sizeGb": 40,
-      "modCount": 405,
+      "modCount": 403,
       "mo2Profile": "Wabbajack",
       "mo2Executable": "Cyberpunk 2077",
       "gameExe": "Cyberpunk2077.exe",
       "saveFolder": "{SavedGames}\\CD Projekt Red\\Cyberpunk 2077",
+      "gameLoaders": [
+        { "path": "bin/x64/version.dll", "mod": "Cyber Engine Tweaks 107" },
+        { "path": "bin/x64/global.ini", "mod": "Cyber Engine Tweaks 107" },
+        { "path": "bin/x64/plugins/cyber_engine_tweaks.asi", "mod": "Cyber Engine Tweaks 107" },
+        { "path": "bin/x64/winmm.dll", "mod": "RED4ext 2380" },
+        { "path": "red4ext/RED4ext.dll", "mod": "RED4ext 2380" },
+        { "path": "engine/config/base/scripts.ini", "mod": "redscript 1511" }
+      ],
+      "gameCleanup": [
+        { "path": "red4ext/config.ini", "mod": "RED4ext 2380" },
+        { "path": "red4ext/logs", "mod": "RED4ext 2380" },
+        { "path": "bin/x64/plugins/address_library", "mod": "Cyber Engine Tweaks 107" },
+        { "path": "bin/x64/plugins/cyber_engine_tweaks", "mod": "Cyber Engine Tweaks 107" }
+      ],
       "pcCheck": {
         "ramGb": [
           12,
