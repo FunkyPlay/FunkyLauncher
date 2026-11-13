@@ -93,6 +93,8 @@ public sealed class SoftwareItem
     [JsonPropertyName("winget")] public string Winget { get; set; } = "";
     /// <summary>winget source: "winget" (community repo) or "msstore" (Microsoft Store).</summary>
     [JsonPropertyName("wingetSource")] public string WingetSource { get; set; } = "winget";
+    /// <summary>Shown in the install confirmation (risks, personal-use-only license).</summary>
+    [JsonPropertyName("warning")] public LocText Warning { get; set; } = new();
 }
 
 public sealed class CatalogFile

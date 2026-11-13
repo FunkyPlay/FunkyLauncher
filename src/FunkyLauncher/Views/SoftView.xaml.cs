@@ -101,7 +101,18 @@ public partial class SoftView : UserControl
     private async Task InstallAsync(SoftwareItem s, Button install)
     {
         if (!await WingetService.AvailableAsync()) { PlayService.OpenUrl(s.Url); return; }
-        if (MessageBox.Show(Window.GetWindow(this), Loc.F("soft.install.confirm", s.Name), s.Name, MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes) return;
+        var owner = Window.GetWindow(this);
+        var settings = ((MainWindow)Application.Current.MainWindow).Settings;
+        if (!settings.WingetConsent)
+        {
+            var names = string.Join(", ", Catalog.Software.Where(x => x.Winget.Length > 0).Select(x => x.Name));
+            if (MessageBox.Show(owner, Loc.F("soft.consent", names), Loc.T("soft.title"), MessageBoxButton.YesNo, MessageBoxImage.Information, MessageBoxResult.No) != MessageBoxResult.Yes) return;
+            settings.WingetConsent = true;
+            settings.Save();
+        }
+        var warning = s.Warning.ToString();
+        if (warning.Length > 0) warning = "\n\n⚠ " + warning;
+        if (MessageBox.Show(owner, Loc.F("soft.install.confirm", s.Name, warning), s.Name, MessageBoxButton.YesNo, warning.Length > 0 ? MessageBoxImage.Warning : MessageBoxImage.Question, MessageBoxResult.No) != MessageBoxResult.Yes) return;
         install.IsEnabled = false;
         install.Content = Loc.T("soft.installing");
         await WingetLock.WaitAsync();

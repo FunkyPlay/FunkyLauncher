@@ -15,6 +15,7 @@ There are no accounts in the launcher itself.
 | When you install / log in | `nexusmods.com` (through Wabbajack and the built-in browser) | Log in to Nexus Mods and download mods | Only happens when you install or log in |
 | First time you open Funky Player | `github.com` (mpv and FFmpeg builds), `www.7-zip.org` (7zr unpacker) | Download the video engine once; files are checked by SHA-256 | Only happens when you open the player and agree to the download |
 | When you press “Funky Help” | `github.com` (official RustDesk release); then our support server `2.31.81.143` | Download RustDesk once; connect to Funky support. The supporter sees and controls your screen **only while the session you started is open**. Sessions are not recorded. The connection log (your PC's RustDesk ID and IP address) is kept no longer than 31 days; the server also remembers your RustDesk ID and last IP so the connection works — we delete that record on request (it appears again if you use Funky Help again) | Only on click; you close the session at any time |
+| When you press “Install” on the Software page | Microsoft winget (Windows) → the program author’s download server | Download and install that program; you accept its license once in the launcher | Only on click, after your consent |
 | When you click links | Websites of the programs on the Software page, YouTube, Telegram | Open them in your browser | Only on click |
 
 These requests are normal web requests: the services see your IP address, as with any website.
@@ -60,6 +61,7 @@ you decide whether to send it to support.
   компьютера и IP-адрес) хранится не дольше 31 дня, затем удаляется. Кроме того, сервер помнит ID RustDesk и последний
   IP-адрес, чтобы соединение работало; по вашей просьбе мы удалим эту запись (если снова воспользуетесь Помощью,
   она появится снова);
+- **по кнопке «Установить» в разделе «Софт»** — Windows (winget, менеджер программ Microsoft) скачивает программу с сервера её автора; только после вашего согласия с лицензиями;
 - **по клику** на ссылки — открывает сайты в вашем браузере.
 
 Сервисы видят ваш IP-адрес, как при открытии любого сайта; действуют их политики конфиденциальности (ссылки выше).

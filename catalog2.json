@@ -239,9 +239,7 @@
     },
     {
       "id": "nvidia-app",
-      "winget": "XP8CLZL93F5Z4P",
-      "wingetSource": "msstore",
-      "name": "NVIDIA App",
+                  "name": "NVIDIA App",
       "category": {
         "ru": "Драйверы и запись",
         "en": "Drivers and recording"
@@ -303,6 +301,7 @@
     },
     {
       "id": "dlss-swapper",
+      "warning": { "ru": "Меняет файлы DLSS в играх. В онлайн-играх с античитом не используйте — можно получить бан.", "en": "Replaces DLSS files in games. Do not use it in online games with anti-cheat: you may get banned." },
       "winget": "beeradmoore.dlss-swapper",
       "wingetSource": "winget",
       "name": "DLSS Swapper",
@@ -333,6 +332,7 @@
     },
     {
       "id": "ddu",
+      "warning": { "ru": "Удаляет драйвер видеокарты: после запуска вы останетесь без драйвера, пока не поставите новый. Сначала сделайте точку восстановления Windows.", "en": "Removes the graphics driver: you stay without a driver until you install a new one. Create a Windows restore point first." },
       "winget": "Wagnardsoft.DisplayDriverUninstaller",
       "wingetSource": "winget",
       "name": "Display Driver Uninstaller (DDU)",
@@ -365,6 +365,7 @@
     },
     {
       "id": "hwinfo",
+      "warning": { "ru": "Бесплатна для личного использования; для работы в компании нужна платная лицензия.", "en": "Free for personal use; business use needs a paid license." },
       "winget": "REALiX.HWiNFO",
       "wingetSource": "winget",
       "name": "HWiNFO",
@@ -395,6 +396,7 @@
     },
     {
       "id": "wiztree",
+      "warning": { "ru": "Бесплатна для личного использования; для работы в компании нужна платная лицензия.", "en": "Free for personal use; business use needs a paid license." },
       "winget": "AntibodySoftware.WizTree",
       "wingetSource": "winget",
       "name": "WizTree",

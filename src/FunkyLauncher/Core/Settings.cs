@@ -29,6 +29,9 @@ public sealed class Settings
     /// <summary>Funky Screen: the Ctrl+Shift+S / F / R keys work from anywhere.</summary>
     public bool ScreenHotkeys { get; set; } = true;
 
+    /// <summary>Software: the player accepted the licenses of programs installed via winget (asked once, before the first install).</summary>
+    public bool WingetConsent { get; set; }
+
     /// <summary>Game mode: programs to close (process names), torrents, power mode, OneDrive, start them again, on PLAY.</summary>
     public List<string> GameApps { get; set; } = new();
     public bool GameTorrents { get; set; } = true;
