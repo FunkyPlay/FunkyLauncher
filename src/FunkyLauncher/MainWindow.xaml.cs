@@ -53,7 +53,7 @@ public partial class MainWindow : Window
 
         // developer test: FunkyLauncher.exe --test-manual N  → manual download of the N smallest Nexus files into %TEMP%
         var args = Environment.GetCommandLineArgs();
-        // developer tool: FunkyLauncher.exe --shots [folder] → PNG of every page (RU + EN) for the design team, then closes
+        // developer tool: FunkyLauncher.exe --shots [folder] → PNG of the main pages (RU + EN) for the design team, then closes
         SetupShots(args);
         // Funky Desktops is a test only for Funky: turned on once with --enable-desktops
         if (args.Contains("--enable-desktops") && !Settings.DesktopsBeta) { Settings.DesktopsBeta = true; Settings.Save(); }

@@ -1,10 +1,12 @@
 # Funky Launcher
 
 **Funky Launcher** installs and runs FunkyPlay mod packs (modlists) for PC games in one click:
-compatibility check, install, launch and repair. Your game is never changed — mods live in their own folder.
+compatibility check, install, launch and repair. Mods live in their own folder; only 6 small loader files
+go into the game folder, and "Restore clean game" removes them.
 
 **Funky Launcher** ставит и запускает сборки модов FunkyPlay в один клик: проверка совместимости,
-установка, запуск и починка. Сама игра не меняется — моды живут в отдельной папке.
+установка, запуск и починка. Моды живут в отдельной папке, в папку игры ставятся только 6 служебных
+файлов-загрузчиков — кнопка «Вернуть чистую игру» их убирает.
 
 Available now / сейчас доступна: **Neon Nights** for Cyberpunk 2077 2.5 + Phantom Liberty.
 
@@ -36,13 +38,14 @@ News and catalog updates can be turned off in **Settings**. Details: **[PRIVACY.
 
 The launcher has no installer and does not change Windows settings.
 
-1. Delete `FunkyLauncher.exe`.
-2. Delete the modlist folder (by default `C:\Games\NeonNights`). Your game stays untouched.
-3. Delete the launcher data: `%LOCALAPPDATA%\FunkyLauncher` (settings, built-in browser profile, Wabbajack copy).
-4. Optional: Wabbajack's own data `%LOCALAPPDATA%\Wabbajack` (Nexus login).
+1. In the launcher: Library → **Restore clean game** (takes the mod loaders out of the game folder).
+2. Delete `FunkyLauncher.exe`.
+3. Delete the modlist folder (by default `C:\Games\NeonNights`).
+4. Delete the launcher data: `%LOCALAPPDATA%\FunkyLauncher` (settings, built-in browser profile, Wabbajack copy).
+5. Optional: Wabbajack's own data `%LOCALAPPDATA%\Wabbajack` (Nexus login).
 
-Удаление: удалите `FunkyLauncher.exe`, папку сборки (по умолчанию `C:\Games\NeonNights`) и папку
-`%LOCALAPPDATA%\FunkyLauncher`. Игра при этом не меняется.
+Удаление: в лаунчере «Библиотека» → «Вернуть чистую игру» (убирает загрузчики из папки игры), затем удалите
+`FunkyLauncher.exe`, папку сборки (по умолчанию `C:\Games\NeonNights`) и папку `%LOCALAPPDATA%\FunkyLauncher`.
 
 ## Code signing policy
 

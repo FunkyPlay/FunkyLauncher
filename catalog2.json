@@ -34,7 +34,7 @@
       "id": "neon-nights",
       "title": "NEON NIGHTS",
       "author": "Funky",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "status": "released",
       "game": "Cyberpunk 2077",
       "gameVersion": "2.5",
@@ -61,13 +61,27 @@
       },
       "banner": "res:/Assets/banner.jpg",
       "wabbajackFile": "Neon Nights.wabbajack",
-      "wabbajackUrl": "https://github.com/FunkyPlay/FunkyLauncher/releases/download/v0.1.7/NeonNights-0.1.1.wabbajack",
+      "wabbajackUrl": "https://github.com/FunkyPlay/FunkyLauncher/releases/download/v0.1.8/NeonNights-0.1.2.wabbajack",
       "sizeGb": 40,
-      "modCount": 405,
+      "modCount": 403,
       "mo2Profile": "Wabbajack",
       "mo2Executable": "Cyberpunk 2077",
       "gameExe": "Cyberpunk2077.exe",
       "saveFolder": "{SavedGames}\\CD Projekt Red\\Cyberpunk 2077",
+      "gameLoaders": [
+        { "path": "bin/x64/version.dll", "mod": "Cyber Engine Tweaks 107" },
+        { "path": "bin/x64/global.ini", "mod": "Cyber Engine Tweaks 107" },
+        { "path": "bin/x64/plugins/cyber_engine_tweaks.asi", "mod": "Cyber Engine Tweaks 107" },
+        { "path": "bin/x64/winmm.dll", "mod": "RED4ext 2380" },
+        { "path": "red4ext/RED4ext.dll", "mod": "RED4ext 2380" },
+        { "path": "engine/config/base/scripts.ini", "mod": "redscript 1511" }
+      ],
+      "gameCleanup": [
+        { "path": "red4ext/config.ini", "mod": "RED4ext 2380" },
+        { "path": "red4ext/logs", "mod": "RED4ext 2380" },
+        { "path": "bin/x64/plugins/address_library", "mod": "Cyber Engine Tweaks 107" },
+        { "path": "bin/x64/plugins/cyber_engine_tweaks", "mod": "Cyber Engine Tweaks 107" }
+      ],
       "pcCheck": {
         "ramGb": [
           12,

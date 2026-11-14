@@ -68,6 +68,9 @@ public partial class LibraryView : UserControl
         SetupButton.IsEnabled = m.IsReleased;
         if (installed) Sub.Text = Loc.F("home.sub.installed", m.Author, s.InstalledVersion(m) ?? m.Version, s.InstallDir(m));
 
+        CleanGameButton.Content = Loc.T("loaders.clean");
+        CleanGameButton.Visibility = GameLoaders.Placed(m) ? Visibility.Visible : Visibility.Collapsed;
+
         var prev = s.PreviousOf(m);
         RollbackButton.Visibility = DeleteOldButton.Visibility = prev != null ? Visibility.Visible : Visibility.Collapsed;
         if (prev != null)
@@ -209,6 +212,27 @@ public partial class LibraryView : UserControl
                 if (answer != MessageBoxResult.Yes) { PlayMessage.Text = ""; return; }
             }
 
+            // 1b) loaders (CET, RED4ext, redscript…) must be in the game folder itself: MO2 can't provide them
+            if (GameLoaders.Has(m))
+            {
+                if (game == null) { PlayMessage.Text = Loc.T("loaders.nogame"); return; }
+                PlayMessage.Text = Loc.T("loaders.working");
+                var conflicts = await Task.Run(() => GameLoaders.Conflicts(s, m, game.Path));
+                var replace = conflicts.Count > 0 && MessageBox.Show(_main,
+                    Loc.F("loaders.conflict", game.Path, string.Join("\n", conflicts.Select(c => "• " + c.Path))),
+                    m.Title, MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes) == MessageBoxResult.Yes;
+                try
+                {
+                    var missing = await Task.Run(() => GameLoaders.Ensure(s, m, game.Path, replace));
+                    if (missing.Count > 0)
+                        MessageBox.Show(_main, Loc.F("loaders.missing", string.Join("\n", missing.Select(x => "• " + x))),
+                            m.Title, MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+                catch (UnauthorizedAccessException) { PlayMessage.Text = Loc.F("loaders.denied", game.Path); return; }
+                catch (IOException ex) { PlayMessage.Text = Loc.F("loaders.error", ex.Message); return; }
+                CleanGameButton.Visibility = GameLoaders.Placed(m) ? Visibility.Visible : Visibility.Collapsed;
+            }
+
             // 2) save backup (never blocks the game: a failed backup is only reported)
             string? backupNote = null;
             if (s.AutoBackup && BackupService.Supported(m) && !BackupService.GameRunning(m))
@@ -292,6 +316,23 @@ public partial class LibraryView : UserControl
     }
 
     private void Rollback_Click(object sender, RoutedEventArgs e) => Rollback(_main.Selected, ask: true);
+
+    /// <summary>Takes the loaders the launcher put into the game folder back out.</summary>
+    private void CleanGame_Click(object sender, RoutedEventArgs e)
+    {
+        var m = _main.Selected;
+        if (_watching) { PlayMessage.Text = Loc.T("loaders.clean.running"); return; }
+        if (MessageBox.Show(_main, Loc.T("loaders.clean.confirm"), Loc.T("loaders.clean"),
+                MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No) != MessageBoxResult.Yes) return;
+        try
+        {
+            var kept = GameLoaders.Clean(m);
+            RefreshSelected();
+            PlayMessage.Text = kept.Count == 0 ? Loc.T("loaders.clean.done")
+                : Loc.F("loaders.clean.kept", string.Join(", ", kept));
+        }
+        catch (Exception ex) { RefreshSelected(); PlayMessage.Text = Loc.F("loaders.error", ex.Message); }
+    }
 
     private async void DeleteOld_Click(object sender, RoutedEventArgs e)
     {

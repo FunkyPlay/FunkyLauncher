@@ -132,8 +132,8 @@ public partial class SetupView : UserControl
             var lang = _pendingLang ?? (installed ? AppliedLang(ru) : s.LangOf(Ml.Id));
             var row = Row(Loc.T("comp.lang"), Loc.T(installed ? "comp.lang.hint.installed" : "comp.lang.hint"), out var right);
             var seg = new StackPanel { Orientation = Orientation.Horizontal, VerticalAlignment = VerticalAlignment.Center };
-            seg.Children.Add(Segment("Русский", lang == "ru", () => PickLang("ru")));
-            seg.Children.Add(Segment("English", lang == "en", () => PickLang("en")));
+            seg.Children.Add(Segment(Loc.T("comp.lang.ru"), lang == "ru", () => PickLang("ru")));
+            seg.Children.Add(Segment(Loc.T("comp.lang.en"), lang == "en", () => PickLang("en")));
             right.Child = new Border { Background = (Brush)FindResource("CardActive"), CornerRadius = new CornerRadius(8), Padding = new Thickness(3), Child = seg };
             CompositionPanel.Children.Add(row);
         }

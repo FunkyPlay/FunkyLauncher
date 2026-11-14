@@ -1,21 +1,27 @@
 // Funky Launcher — Copyright (C) 2026 Funky. Licensed under GPL-3.0-or-later.
 using System.IO;
-using System.Text;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using FunkyLauncher.Core;
 
 namespace FunkyLauncher;
 
 /// <summary>
 /// Developer tool for the design team: FunkyLauncher.exe --shots [folder]
-/// Saves a PNG of every page (RU and EN) plus the texts of the install dialogs, then closes.
-/// The window is drawn off-screen, nothing is clicked, settings and window position are not saved.
+/// Saves a PNG of the main pages (RU and EN), then closes. The window is drawn off-screen, nothing is clicked,
+/// window position is not saved. Use a separate data folder (FUNKYLAUNCHER_DATA) to show a prepared state.
 /// </summary>
 public partial class MainWindow
 {
     private bool _shotsMode;
+    public bool ShotsMode => _shotsMode;
+
+    /// <summary>The new version is in place and started: close this one for good (not to the tray).</summary>
+    public void ExitForUpdate()
+    {
+        _exiting = true;
+        Application.Current.Shutdown();
+    }
 
     private void SetupShots(string[] args)
     {
@@ -26,8 +32,6 @@ public partial class MainWindow
             ? args[k + 1]
             : Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), "Funky Launcher shots", DateTime.Now.ToString("yyyy-MM-dd_HH-mm"));
         Directory.CreateDirectory(dir);
-
-        // fixed size, off every screen (works the same on any monitor, nothing pops up on Funky's 4K screen)
         WindowState = WindowState.Normal;
         WindowStartupLocation = WindowStartupLocation.Manual;
         Width = 1280; Height = 800;
@@ -39,63 +43,43 @@ public partial class MainWindow
 
     private async Task TakeShotsAsync(string dir)
     {
-        var startLang = Loc.Lang;
+        var startLang = Core.Loc.Lang;
         try
         {
             foreach (var lang in new[] { "ru", "en" })
             {
-                Loc.Set(lang);
-                var pages = new (string Name, Action Show)[]
+                Core.Loc.Set(lang);
+                var pages = new (string Name, Action Show, double Height)[]
                 {
-                    ("01-home", () => NavHome.IsChecked = true),
-                    ("02-library", () => { NavHome.IsChecked = true; NavLibrary.IsChecked = true; }),
-                    ("03-soft", () => NavSoft.IsChecked = true),
-                    ("04-tools", () => { NavTools.IsChecked = true; _tools.Refresh(); }),
-                    ("05-tools-pc", () => { NavTools.IsChecked = true; _tools.ShowPc(); }),
-                    ("06-tools-game", () => { NavTools.IsChecked = true; _tools.ShowGame(); }),
-                    ("07-tools-screen", () => { NavTools.IsChecked = true; _tools.ShowScreen(); }),
-                    ("08-tools-shoot", () => { NavTools.IsChecked = true; _tools.ShowShoot(); }),
-                    ("09-settings", () => NavSettings.IsChecked = true),
+                    ("01-home", () => NavHome.IsChecked = true, 800),
+                    ("02-home-full", () => NavHome.IsChecked = true, 1240),
+                    ("03-library", () => { NavHome.IsChecked = true; NavLibrary.IsChecked = true; }, 800),
+                    ("04-setup", () => ShowSetup(), 800),
+                    ("05-setup-full", () => ShowSetup(), 1240),
+                    ("06-soft", () => NavSoft.IsChecked = true, 800),
+                    ("07-tools", () => { NavTools.IsChecked = true; _tools.Refresh(); }, 800),
+                    ("08-settings", () => NavSettings.IsChecked = true, 800),
                 };
-                foreach (var (name, show) in pages)
+                foreach (var (name, show, height) in pages)
                 {
                     try
                     {
+                        Height = height;
                         show();
-                        await Task.Delay(2500); // news, winget checks and images load asynchronously
+                        await Task.Delay(3000); // news, checks and images load asynchronously
                         Save(Path.Combine(dir, $"{lang}-{name}.png"));
                     }
                     catch (Exception e) { File.AppendAllText(Path.Combine(dir, "errors.txt"), $"{lang}-{name}: {e}\n"); }
                 }
-                File.WriteAllText(Path.Combine(dir, $"{lang}-dialogs.txt"), DialogTexts(), Encoding.UTF8);
+                Height = 800;
             }
         }
         finally
         {
-            Loc.Set(startLang);
+            Core.Loc.Set(startLang);
             _exiting = true;
             Application.Current.Shutdown();
         }
-    }
-
-    /// <summary>Texts of the message boxes on the Software page (they can't be drawn into a picture).</summary>
-    private static string DialogTexts()
-    {
-        var sb = new StringBuilder();
-        var offered = Catalog.Software.Where(x => x.Winget.Length > 0).ToList();
-        sb.AppendLine("=== " + Loc.T("soft.title") + " — consent ===");
-        sb.AppendLine(Loc.F("soft.consent", string.Join(", ", offered.Select(x => x.Name))));
-        foreach (var s in offered)
-        {
-            var warning = s.Warning.ToString();
-            if (warning.Length > 0) warning = "\n\n⚠ " + warning;
-            sb.AppendLine();
-            sb.AppendLine("=== " + s.Name + " ===");
-            sb.AppendLine(Loc.F("soft.install.confirm", s.Name, warning));
-        }
-        foreach (var s in Catalog.Software.Where(x => x.Winget.Length == 0))
-            sb.AppendLine().AppendLine("=== " + s.Name + " — website only: " + s.Url);
-        return sb.ToString();
     }
 
     private void Save(string file)

@@ -2,8 +2,8 @@
   "schema": 1,
   "modlistId": "neon-nights",
   "addonId": "neon-nights-adult",
-  "listVersion": "0.1.1",
-  "forMainVersion": "0.1.1",
+  "listVersion": "0.1.2",
+  "forMainVersion": "0.1.2",
   "draft": false,
   "generated": "2026-11-12",
   "rules": {
@@ -405,6 +405,7 @@
     "12.11: Hotscenes — хэш и раскладка заполнены, оба Hotscenes помечены blocked",
     "12.11: убраны Hotscenes и Hotscenes Add (решение Funky «не берём»)",
     "12.11: порядок модов в файле приведён к порядку личного профиля (Hyst_NPCs выше Judy, как в 0.1.0)",
-    "12.11: версия под 0.1.1 — якоря пересчитаны по английской основе 0.1.1; Naughty Animations blocked (первый выпуск без сцен); Hotscenes и Hotscenes Add в дополнение не входят совсем."
+    "12.11: версия под 0.1.1 — якоря пересчитаны по английской основе 0.1.1; Naughty Animations blocked (первый выпуск без сцен); Hotscenes и Hotscenes Add в дополнение не входят совсем.",
+    "14.11: под 0.1.2 — якоря без изменений (проверено по профилю Wabbajack 0.1.2)."
   ]
 }
