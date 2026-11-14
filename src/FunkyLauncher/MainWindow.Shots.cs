@@ -59,6 +59,10 @@ public partial class MainWindow
                     ("06-soft", () => NavSoft.IsChecked = true, 800),
                     ("07-tools", () => { NavTools.IsChecked = true; _tools.Refresh(); }, 800),
                     ("08-settings", () => NavSettings.IsChecked = true, 800),
+                    ("09-tools-backup", () => { NavTools.IsChecked = true; _tools.ShowBackup(); }, 1000),
+                    ("10-tools-shoot", () => { NavTools.IsChecked = true; _tools.ShowShoot(); }, 1000),
+                    ("11-tools-game", () => { NavTools.IsChecked = true; _tools.ShowGame(); }, 1000),
+                    ("12-tools-pc", () => { NavTools.IsChecked = true; _tools.ShowPc(); _tools.RunPcCheck(); }, 1100),
                 };
                 foreach (var (name, show, height) in pages)
                 {
@@ -66,12 +70,31 @@ public partial class MainWindow
                     {
                         Height = height;
                         show();
-                        await Task.Delay(3000); // news, checks and images load asynchronously
+                        await Task.Delay(name.EndsWith("-pc") ? 15000 : 3000); // news, checks and images load asynchronously
                         Save(Path.Combine(dir, $"{lang}-{name}.png"));
                     }
                     catch (Exception e) { File.AppendAllText(Path.Combine(dir, "errors.txt"), $"{lang}-{name}: {e}\n"); }
                 }
                 Height = 800;
+                // the "new version" window, with a sample release (what players will see at the next update)
+                try
+                {
+                    var sample = new Services.LauncherUpdate.Release("0.1.9",
+                        lang == "ru" ? "Что нового\n• Starfield: сборка в один клик\n• Funky Скрин: снимки и видео экрана\n• Установка программ в один клик"
+                                     : "What's new\n• Starfield: one-click modlist\n• Funky Screen: screenshots and screen video\n• One-click program installs",
+                        null, null);
+                    // drawn without showing the window: its content is laid out at the window's width and saved
+                    var uw = new Views.UpdateWindow(this, sample);
+                    var body = (FrameworkElement)uw.Content;
+                    uw.Content = null;
+                    var holder = new System.Windows.Controls.Border { Background = uw.Background, Child = body, Width = uw.Width - 16 };
+                    holder.Measure(new Size(holder.Width, double.PositiveInfinity));
+                    holder.Arrange(new Rect(holder.DesiredSize));
+                    holder.UpdateLayout();
+                    await Task.Delay(300);
+                    SaveElement(holder, Path.Combine(dir, $"{lang}-13-update-window.png"));
+                }
+                catch (Exception e) { File.AppendAllText(Path.Combine(dir, "errors.txt"), $"{lang}-update: {e}\n"); }
             }
         }
         finally
@@ -82,17 +105,31 @@ public partial class MainWindow
         }
     }
 
-    private void Save(string file)
+    private void Save(string file) => SaveVisual(this, file);
+
+    private void SaveElement(FrameworkElement el, string file)
     {
-        if (Content is not FrameworkElement root) return;
-        root.UpdateLayout();
         var dpi = VisualTreeHelper.GetDpi(this);
+        var bmp = new RenderTargetBitmap((int)Math.Ceiling(el.ActualWidth * dpi.DpiScaleX), (int)Math.Ceiling(el.ActualHeight * dpi.DpiScaleY),
+            dpi.PixelsPerInchX, dpi.PixelsPerInchY, PixelFormats.Pbgra32);
+        bmp.Render(el);
+        var enc = new PngBitmapEncoder();
+        enc.Frames.Add(BitmapFrame.Create(bmp));
+        using var fs = File.Create(file);
+        enc.Save(fs);
+    }
+
+    private static void SaveVisual(Window win, string file)
+    {
+        if (win.Content is not FrameworkElement root) return;
+        root.UpdateLayout();
+        var dpi = VisualTreeHelper.GetDpi(win);
         var w = (int)Math.Ceiling(root.ActualWidth * dpi.DpiScaleX);
         var h = (int)Math.Ceiling(root.ActualHeight * dpi.DpiScaleY);
         var bmp = new RenderTargetBitmap(w, h, dpi.PixelsPerInchX, dpi.PixelsPerInchY, PixelFormats.Pbgra32);
         var bg = new DrawingVisual();
         using (var dc = bg.RenderOpen())
-            dc.DrawRectangle(Background ?? Brushes.Black, null, new Rect(0, 0, root.ActualWidth, root.ActualHeight));
+            dc.DrawRectangle(win.Background ?? Brushes.Black, null, new Rect(0, 0, root.ActualWidth, root.ActualHeight));
         bmp.Render(bg);
         bmp.Render(root);
         var enc = new PngBitmapEncoder();

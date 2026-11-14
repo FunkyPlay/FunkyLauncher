@@ -604,6 +604,7 @@ public partial class ToolsView : UserControl
     }
 
     public void ShowShoot() { _tool = "shoot"; Refresh(); }
+    public void ShowBackup() { _tool = "backup"; Refresh(); }
 
     private void RefreshShoot()
     {
