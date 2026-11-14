@@ -14,6 +14,14 @@ namespace FunkyLauncher;
 public partial class MainWindow
 {
     private bool _shotsMode;
+    public bool ShotsMode => _shotsMode;
+
+    /// <summary>The new version is in place and started: close this one for good (not to the tray).</summary>
+    public void ExitForUpdate()
+    {
+        _exiting = true;
+        Application.Current.Shutdown();
+    }
 
     private void SetupShots(string[] args)
     {

@@ -17,6 +17,9 @@ public partial class App : Application
 
     protected override void OnStartup(StartupEventArgs e)
     {
+        // started by the previous version after an update: let it close first (it holds the lock below)
+        Services.LauncherUpdate.WaitForPrevious(e.Args);
+        Services.LauncherUpdate.CleanupOld();
         // one launcher per data folder: a second start only brings the running window to the front
         // (two copies wrote the same settings and modlist.txt at once)
         var key = "FunkyLauncher." + Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(

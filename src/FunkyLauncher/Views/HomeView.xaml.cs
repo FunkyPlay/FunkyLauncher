@@ -26,11 +26,26 @@ public partial class HomeView : UserControl
     }
 
     private string? _newVersion;
+    private LauncherUpdate.Release? _release;
+    private bool _offered;
 
     private async Task CheckUpdateAsync()
     {
-        _newVersion = await LauncherUpdate.NewerVersionAsync(CancellationToken.None);
+        _release = await LauncherUpdate.NewerAsync(CancellationToken.None);
+        _newVersion = _release?.Version;
         RenderUpdate();
+        // once per start: the window with what changed and Update / Later
+        if (_release != null && !_offered && !_main.ShotsMode)
+        {
+            _offered = true;
+            await Dispatcher.InvokeAsync(ShowUpdateWindow, System.Windows.Threading.DispatcherPriority.ApplicationIdle);
+        }
+    }
+
+    private void ShowUpdateWindow()
+    {
+        if (_release == null || !_main.IsLoaded || !_main.IsVisible) return;
+        new UpdateWindow(_main, _release).ShowDialog();
     }
 
     private void RenderUpdate()
@@ -41,7 +56,11 @@ public partial class HomeView : UserControl
         UpdateButton.Content = Loc.T("update.button");
     }
 
-    private void Update_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(LauncherUpdate.DownloadUrl);
+    private void Update_Click(object sender, RoutedEventArgs e)
+    {
+        if (_release != null) ShowUpdateWindow();
+        else PlayService.OpenUrl(LauncherUpdate.DownloadUrl);
+    }
 
     public void Refresh()
     {
