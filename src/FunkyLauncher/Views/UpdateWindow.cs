@@ -36,7 +36,8 @@ public sealed class UpdateWindow : Window
         var root = new StackPanel { Margin = new Thickness(26, 22, 26, 22) };
         root.Children.Add(new TextBlock { Text = Loc.F("update.title", r.Version), FontSize = 20, FontWeight = FontWeights.Bold, TextWrapping = TextWrapping.Wrap });
         root.Children.Add(new TextBlock { Text = Loc.F("update.current", AppConfig.Version), FontSize = 13, Foreground = (Brush)Application.Current.FindResource("Muted"), Margin = new Thickness(0, 6, 0, 14), TextWrapping = TextWrapping.Wrap });
-        if (r.Notes.Length > 0)
+        var notes = NotesFor(r.Notes, Loc.Lang);
+        if (notes.Length > 0)
         {
             root.Children.Add(new TextBlock { Text = Loc.T("update.notes"), FontSize = 14, FontWeight = FontWeights.SemiBold, Margin = new Thickness(0, 0, 0, 6) });
             root.Children.Add(new Border
@@ -47,7 +48,7 @@ public sealed class UpdateWindow : Window
                 {
                     MaxHeight = 260,
                     VerticalScrollBarVisibility = ScrollBarVisibility.Auto,
-                    Content = new TextBlock { Text = r.Notes, FontSize = 13, LineHeight = 19, Foreground = new SolidColorBrush(Color.FromRgb(0xC9, 0xC9, 0xD6)), TextWrapping = TextWrapping.Wrap },
+                    Content = new TextBlock { Text = notes, FontSize = 13, LineHeight = 19, Foreground = new SolidColorBrush(Color.FromRgb(0xC9, 0xC9, 0xD6)), TextWrapping = TextWrapping.Wrap },
                 },
             });
         }
@@ -71,6 +72,21 @@ public sealed class UpdateWindow : Window
 
         if (Environment.GetEnvironmentVariable("FUNKYLAUNCHER_UPDATE_AUTO") == "1") // test hook: press "Update" by itself
             ContentRendered += async (_, _) => await UpdateAsync();
+    }
+
+    /// <summary>
+    /// Release notes are written in both languages ("Что нового …" then "What's new …"): show the player's part,
+    /// without its own heading (the window already says "What's new:").
+    /// </summary>
+    public static string NotesFor(string notes, string lang)
+    {
+        var lines = notes.Split('\n').ToList();
+        var en = lines.FindIndex(l => l.Trim().StartsWith("What's new", StringComparison.OrdinalIgnoreCase));
+        if (en > 0) lines = lang == "en" ? lines.Skip(en).ToList() : lines.Take(en).ToList();
+        if (lines.Count > 0 && (lines[0].Trim().StartsWith("Что нового", StringComparison.OrdinalIgnoreCase)
+                                || lines[0].Trim().StartsWith("What's new", StringComparison.OrdinalIgnoreCase)))
+            lines.RemoveAt(0);
+        return string.Join("\n", lines).Trim();
     }
 
     private void Say(string text)

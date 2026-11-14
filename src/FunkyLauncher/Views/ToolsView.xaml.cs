@@ -490,6 +490,7 @@ public partial class ToolsView : UserControl
 
     /// <summary>Opens the recording mode panel (e.g. from the start-up reminder).</summary>
     public void ShowShoot() { _tool = "shoot"; Refresh(); }
+    public void ShowBackup() { _tool = "backup"; Refresh(); }
 
     private void RefreshShoot()
     {
