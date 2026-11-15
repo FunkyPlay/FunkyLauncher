@@ -45,6 +45,18 @@ public partial class MainWindow : Window
         Closing += (_, e) =>
         {
             if (!_shotsMode) SaveWindow();
+            // the launcher closes for good (not to the tray): recording mode must not outlive it
+            if ((!Settings.DesktopsOn || _exiting) && RecordingMode.IsActive)
+            {
+                try
+                {
+                    var t = new Thread(() => RecordingMode.Disable());
+                    t.SetApartmentState(ApartmentState.STA);
+                    t.Start();
+                    t.Join(5000);
+                }
+                catch { }
+            }
             // Funky Desktops keeps working in the tray when the window is closed
             if (Settings.DesktopsOn && !_exiting) { e.Cancel = true; Hide(); ShowTrayHintOnce(); }
         };
@@ -399,7 +411,7 @@ public partial class MainWindow : Window
         var st = RecordingMode.Load();
         if (st?.Active != true) return;
         if (MessageBox.Show(this, Loc.F("shoot.reminder", ToolsView.When(st.Started)), Loc.T("tools.shoot"),
-                MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes) return;
+                MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes) { ModeGuard.Start(); return; } // kept on: still put back if the launcher closes
         NavTools.IsChecked = true;
         _tools.ShowShoot();
         _tools.TurnOffShoot();

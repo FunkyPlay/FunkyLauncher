@@ -677,6 +677,7 @@ public partial class ToolsView : UserControl
                 var file = S.ShootWallpaperFile.Length > 0 && File.Exists(S.ShootWallpaperFile) ? S.ShootWallpaperFile : RecordingMode.BrandWallpaper();
                 var o = new RecordingMode.Options(S.ShootIcons, S.ShootWallpaper, file, S.ShootWindows, S.ShootTaskbar);
                 errors = await RunSta(() => RecordingMode.Enable(o));
+                if (RecordingMode.IsActive) ModeGuard.Start(); // a crash or close of the launcher puts the desktop back
             }
             else errors = await RunSta(RecordingMode.Disable);
         }
