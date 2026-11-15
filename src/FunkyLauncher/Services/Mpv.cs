@@ -97,6 +97,8 @@ public sealed class Mpv : IDisposable
             var h = _h;
             if (h == IntPtr.Zero) return;
             var ev = mpv_wait_event(h, 1.0);
+            // closing: Dispose woke us up and waits for this thread before destroying mpv — never read a freed event
+            if (_h == IntPtr.Zero) return;
             if (ev == IntPtr.Zero) continue;
             if (Marshal.ReadInt32(ev) == 1) return; // MPV_EVENT_SHUTDOWN
         }
@@ -109,12 +111,17 @@ public sealed class Mpv : IDisposable
         var h = _h;
         if (h == IntPtr.Zero) return;
         _h = IntPtr.Zero;
+        // the event thread may be inside mpv_wait_event: wake it and let it leave before mpv is destroyed
+        // (destroying first freed the event under it — AccessViolation in EventLoop, launcher crash on closing the player)
+        try { mpv_wakeup(h); } catch { }
+        if (_events != null && _events != Thread.CurrentThread) _events.Join(3000);
         mpv_terminate_destroy(h);
     }
 
     [DllImport("libmpv-2.dll")] private static extern IntPtr mpv_create();
     [DllImport("libmpv-2.dll")] private static extern int mpv_initialize(IntPtr ctx);
     [DllImport("libmpv-2.dll")] private static extern void mpv_terminate_destroy(IntPtr ctx);
+    [DllImport("libmpv-2.dll")] private static extern void mpv_wakeup(IntPtr ctx);
     [DllImport("libmpv-2.dll")] private static extern int mpv_command(IntPtr ctx, IntPtr[] args);
     [DllImport("libmpv-2.dll")] private static extern int mpv_set_option_string(IntPtr ctx, [MarshalAs(UnmanagedType.LPUTF8Str)] string name, [MarshalAs(UnmanagedType.LPUTF8Str)] string data);
     [DllImport("libmpv-2.dll")] private static extern int mpv_set_property_string(IntPtr ctx, [MarshalAs(UnmanagedType.LPUTF8Str)] string name, [MarshalAs(UnmanagedType.LPUTF8Str)] string data);
