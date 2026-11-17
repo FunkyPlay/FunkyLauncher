@@ -16,6 +16,7 @@ There are no accounts in the launcher itself.
 | First time you open Funky Player | `github.com` (mpv and FFmpeg builds), `www.7-zip.org` (7zr unpacker) | Download the video engine once; files are checked by SHA-256 | Only happens when you open the player and agree to the download |
 | When you press “Funky Help” | `github.com` (official RustDesk release); then our support server `2.31.81.143` | Download RustDesk once; connect to Funky support. The supporter sees and controls your screen **only while the session you started is open**. Sessions are not recorded. The connection log (your PC's RustDesk ID and IP address) is kept no longer than 31 days; the server also remembers your RustDesk ID and last IP so the connection works — we delete that record on request (it appears again if you use Funky Help again) | Only on click; you close the session at any time |
 | When you press “Install” on the Software page | Microsoft winget (Windows) → the program author’s download server | Download and install that program; you accept its license once in the launcher | Only on click, after your consent |
+| When you write in “Contact support” and press Send | our support server `api.funkylauncher.com` (Germany) | Deliver your message and get our reply | Yes — don't use the chat; Telegram works too |
 | When you click links | Websites of the programs on the Software page, YouTube, Telegram | Open them in your browser | Only on click |
 
 These requests are normal web requests: the services see your IP address, as with any website.
@@ -24,6 +25,8 @@ Their own privacy policies apply:
 [Telegram](https://telegram.org/privacy),
 [Nexus Mods](https://help.nexusmods.com/article/20-privacy-policy),
 [Wabbajack](https://github.com/wabbajack-tools/wabbajack).
+
+**Support chat.** When you write to support in the launcher, we receive your message text, an attached screenshot or report (if you choose to send one), a random installation ID, the modlist name and the launcher version. We use them only to answer you. They are stored on our server in Germany (Hetzner): screenshots for 90 days, everything else for 12 months after your last contact. We do not share them with third parties. You can delete your data with the “Delete my data” button in the chat or by email privacy@funkylauncher.com; we will respond within 10 working days. The data controller is the individual entrepreneur Funky (Georgia).
 
 ## Data stored on your PC
 
@@ -70,3 +73,5 @@ you decide whether to send it to support.
 Funky Pro: облачный бэкап только кладёт архивы в папку облака, которая уже есть на вашем ПК (OneDrive, Яндекс Диск,
 Dropbox, Google Drive); сам лаунчер ничего не выгружает. Ключ Pro проверяется без интернета.
 Отчёт об ошибке сохраняется на рабочий стол и никуда сам не отправляется.
+
+**Чат поддержки.** Когда вы пишете в поддержку из лаунчера, мы получаем текст сообщения, скриншот или отчёт (если вы сами его приложите), случайный номер установки, название сборки и версию лаунчера. Мы используем их только чтобы ответить вам. Данные хранятся на нашем сервере в Германии (Hetzner): скриншоты — 90 дней, остальное — 12 месяцев после последнего обращения. Третьим лицам мы их не передаём. Удалить данные можно кнопкой «Удалить мои данные» в чате или письмом на privacy@funkylauncher.com: ответим не позднее чем через 10 рабочих дней. Контролёр данных — индивидуальный предприниматель Funky (Грузия).
