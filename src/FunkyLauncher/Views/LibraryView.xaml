@@ -77,8 +77,16 @@
                     <Button x:Name="ShaderCacheButton" DockPanel.Dock="Bottom" Style="{StaticResource SecondaryButton}" Height="38" Margin="0,0,0,8" Visibility="Collapsed" Click="ShaderCache_Click"/>
                     <Button x:Name="CleanGameButton" DockPanel.Dock="Bottom" Style="{StaticResource SecondaryButton}" Height="38" Margin="0,0,0,8" Click="CleanGame_Click"/>
                     <Button x:Name="RollbackButton" DockPanel.Dock="Bottom" Style="{StaticResource SecondaryButton}" Height="38" Margin="0,0,0,8" Click="Rollback_Click"/>
-                    <ScrollViewer VerticalScrollBarVisibility="Auto">
-                        <StackPanel>
+                    <!-- a gap and a soft fade above the buttons, so a long list never ends in a half-cut line -->
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,0,0,12">
+                        <ScrollViewer.OpacityMask>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                <GradientStop Color="Black" Offset="0"/>
+                                <GradientStop Color="Black" Offset="0.93"/>
+                                <GradientStop Color="Transparent" Offset="1"/>
+                            </LinearGradientBrush>
+                        </ScrollViewer.OpacityMask>
+                        <StackPanel Margin="0,0,0,18">
                             <StackPanel x:Name="ReqPanel">
                                 <TextBlock x:Name="ReqTitle" FontSize="16" FontWeight="Bold" Margin="0,0,0,8"/>
                                 <TextBlock x:Name="ReqText" FontSize="12.5" LineHeight="18" Foreground="#C9C9D6" TextWrapping="Wrap"/>

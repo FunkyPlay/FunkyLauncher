@@ -158,7 +158,8 @@ public partial class SetupView : UserControl
         {
             CompositionPanel.Children.Add(Separator());
             var on = AddonService.Prefs(s, pack!).On;
-            var gb = Math.Max(1, (int)Math.Round(pack!.Mods.Sum(x => x.Archive.Size) / 1073741824.0));
+            // space on disk: the archive plus what it unpacks to (about the same again), in GB as the cards write it
+            var gb = Math.Max(1, (int)Math.Round(pack!.Mods.Sum(x => x.Archive.Size + x.Archives.Sum(p => p.Size)) * 2 / 1e9));
             var row = Row(Loc.T("comp." + kind), Loc.F("comp." + kind + ".hint", gb), out var right);
             var box = new CheckBox { IsChecked = on, VerticalAlignment = VerticalAlignment.Center, IsEnabled = !_busy };
             var p = pack;
