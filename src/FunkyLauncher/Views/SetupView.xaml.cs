@@ -545,6 +545,8 @@ public partial class SetupView : UserControl
     {
         _busyMl = _main.Selected;
         _busy = true;
+        ContinueHint.Text = Loc.T("inst.continue");
+        DoneTelegram.Visibility = Visibility.Collapsed;
         _cts = new CancellationTokenSource();
         RecheckButton.IsEnabled = BrowseButton.IsEnabled = FolderBox.IsEnabled = false;
         CancelButton.Visibility = Visibility.Visible;
@@ -582,6 +584,9 @@ public partial class SetupView : UserControl
     {
         ProgressPercent.Text = "100%";
         ProgressFill.Width = ((FrameworkElement)ProgressFill.Parent).ActualWidth;
+        // done: no stale "unpacking…" line and no "you can close, it continues later" under a finished install
+        LogLine.Text = "";
+        ContinueHint.Text = "";
     }
 
     /// <param name="updateDir">Update: install the new version into this new folder and keep the current one for rollback.</param>
