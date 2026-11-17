@@ -2,8 +2,8 @@
   "schema": 1,
   "modlistId": "neon-nights",
   "packId": "neon-nights-voice",
-  "listVersion": "0.1.2",
-  "forMainVersion": "0.1.2",
+  "listVersion": "0.1.3",
+  "forMainVersion": "0.1.3",
   "draft": true,
   "generated": "2026-11-17",
   "rules": {
@@ -37,8 +37,14 @@
       "install": {
         "type": "files",
         "map": [
-          ["Rus_Dub_by_DreamVoice_v5.3.1/Rus_Dub_by_DreamVoice_v5.3.1.archive", "archive/pc/mod/Rus_Dub_by_DreamVoice_v5.3.1.archive"],
-          ["Rus_Dub_by_DreamVoice_v5.3.1/README.html", "README.html"]
+          [
+            "Rus_Dub_by_DreamVoice_v5.3.1/Rus_Dub_by_DreamVoice_v5.3.1.archive",
+            "archive/pc/mod/Rus_Dub_by_DreamVoice_v5.3.1.archive"
+          ],
+          [
+            "Rus_Dub_by_DreamVoice_v5.3.1/README.html",
+            "README.html"
+          ]
         ],
         "fomod": false,
         "fileCount": 2
@@ -47,6 +53,7 @@
     }
   ],
   "changes": [
-    "2026-11-17: черновик (чат Cyberpunk). Других переводов не с Nexus в Neon Nights нет; Zenitex Military Store_RU — с Nexus (23595), но сам магазин выключен до ответа ScorpionTank."
+    "2026-11-17: черновик (чат Cyberpunk). Других переводов не с Nexus в Neon Nights нет; Zenitex Military Store_RU — с Nexus (23595), но сам магазин выключен до ответа ScorpionTank.",
+    "0.1.3 (2026-11-17): версия под 0.1.3, всё ещё ждём авторов."
   ]
 }

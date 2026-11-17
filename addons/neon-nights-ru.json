@@ -2,10 +2,10 @@
   "schema": 1,
   "modlistId": "neon-nights",
   "packId": "neon-nights-ru",
-  "listVersion": "0.1.2",
-  "forMainVersion": "0.1.2",
+  "listVersion": "0.1.3",
+  "forMainVersion": "0.1.3",
   "draft": true,
-  "generated": "2026-11-12",
+  "generated": "2026-11-17",
   "rules": {
     "what": "Русский пакет: переводы модов поверх английской основы Neon Nights. Язык самой игры игрок ставит в настройках игры.",
     "hash": "sha256 обязателен; сверять скачанное по sha256, а не по имени файла",
@@ -965,9 +965,175 @@
         "fomod": false,
         "fileCount": 1
       }
+    },
+    {
+      "id": "Better Loot Markers RU 28173 1.4.0 2026",
+      "modFolder": "Better Loot Markers RU 28173 1.4.0 2026",
+      "nexus": {
+        "game": "cyberpunk2077",
+        "modId": 28173,
+        "fileId": 165932,
+        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/28173?tab=files&file_id=165932"
+      },
+      "version": "1.4.0",
+      "translates": [
+        {
+          "modId": 3486,
+          "name": "Better Loot Markers"
+        }
+      ],
+      "modlist": {
+        "insertAbove": "Better Loot Markers 3486 1.4.1 2026",
+        "fallbackInsertBelow": "Neon Nights - Defaults"
+      },
+      "archive": {
+        "localFileName": "BetterLootMarkersRU-28173-165932.zip",
+        "size": 5532,
+        "sha256": "1ca97294846ca6583af181e3aed374065b4db613716cb21054284cb1ff2a775e"
+      },
+      "install": {
+        "type": "copyAll",
+        "from": "",
+        "to": "",
+        "fomod": false,
+        "fileCount": 1
+      }
+    },
+    {
+      "id": "Autoloot RU 14522 3.14.0 2026",
+      "modFolder": "Autoloot RU 14522 3.14.0 2026",
+      "nexus": {
+        "game": "cyberpunk2077",
+        "modId": 14522,
+        "fileId": 175391,
+        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/14522?tab=files&file_id=175391"
+      },
+      "version": "3.14.0",
+      "translates": [
+        {
+          "modId": 5202,
+          "name": "Autoloot"
+        }
+      ],
+      "modlist": {
+        "insertAbove": "Autoloot 5202 3.14.0 2026",
+        "fallbackInsertBelow": "Neon Nights - Defaults"
+      },
+      "archive": {
+        "localFileName": "AutoLootRU-14522-175391.zip",
+        "size": 4693,
+        "sha256": "8f8f44f4d99cf66e6679951e7572215de34afec63a50da76db01b3b763c14300"
+      },
+      "install": {
+        "type": "copyAll",
+        "from": "",
+        "to": "",
+        "fomod": false,
+        "fileCount": 1
+      }
+    },
+    {
+      "id": "Load Begone RU 37043 3.4.0 2026",
+      "modFolder": "Load Begone RU 37043 3.4.0 2026",
+      "nexus": {
+        "game": "cyberpunk2077",
+        "modId": 37043,
+        "fileId": 172717,
+        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/37043?tab=files&file_id=172717"
+      },
+      "version": "3.4.0",
+      "translates": [
+        {
+          "modId": 8144,
+          "name": "Load Begone"
+        }
+      ],
+      "modlist": {
+        "insertAbove": "Load Begone 8144 3.4.0 2026",
+        "fallbackInsertBelow": "Neon Nights - Defaults"
+      },
+      "archive": {
+        "localFileName": "LoadBegoneRU-37043-172717.zip",
+        "size": 2698,
+        "sha256": "ed22fa6d9da3e09b780973e45b60b62d9b0d36a19b5a285bcbf0255450b2f926"
+      },
+      "install": {
+        "type": "copyAll",
+        "from": "",
+        "to": "",
+        "fomod": false,
+        "fileCount": 1
+      }
+    },
+    {
+      "id": "Say Something Damn It RU 22270 1.18.1 2026",
+      "modFolder": "Say Something Damn It RU 22270 1.18.1 2026",
+      "nexus": {
+        "game": "cyberpunk2077",
+        "modId": 22270,
+        "fileId": 175064,
+        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/22270?tab=files&file_id=175064"
+      },
+      "version": "1.18.1",
+      "translates": [
+        {
+          "modId": 22228,
+          "name": "Say Something Damn It"
+        }
+      ],
+      "modlist": {
+        "insertAbove": "Say Something Damn It 22228 1.18.1 2026",
+        "fallbackInsertBelow": "Neon Nights - Defaults"
+      },
+      "archive": {
+        "localFileName": "SaySomethingDamnItRU-22270-175064.zip",
+        "size": 4757,
+        "sha256": "e15e053297344df4069ed34abd51467137a660bae5bdc7b9cdc8b1f17533dba1"
+      },
+      "install": {
+        "type": "copyAll",
+        "from": "",
+        "to": "",
+        "fomod": false,
+        "fileCount": 1
+      }
+    },
+    {
+      "id": "Immersive V Dialogue Expanded RU 24467 1.2.2 2026",
+      "modFolder": "Immersive V Dialogue Expanded RU 24467 1.2.2 2026",
+      "nexus": {
+        "game": "cyberpunk2077",
+        "modId": 24467,
+        "fileId": 123067,
+        "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/24467?tab=files&file_id=123067"
+      },
+      "version": "1.2.2",
+      "translates": [
+        {
+          "modId": 24377,
+          "name": "Immersive V Dialogue Expanded"
+        }
+      ],
+      "modlist": {
+        "insertAbove": "Immersive V Dialogue Expanded 24377 1.1.0 2026",
+        "fallbackInsertBelow": "Neon Nights - Defaults"
+      },
+      "archive": {
+        "localFileName": "ImmersiveVDialogueExpandedRU-24467-123067.zip",
+        "size": 15108650,
+        "sha256": "5c10668a585483a67b28f213e964a14e6c3699d4f0a061ce0f6c479e8ba5e3d7"
+      },
+      "install": {
+        "type": "copyAll",
+        "from": "",
+        "to": "",
+        "fomod": false,
+        "fileCount": 429
+      }
     }
   ],
   "changes": [
-    "14.11: под 0.1.2 — якоря DigitalVixenCore, RedFunctions, Lizzie's Braindances переименованы на новые версии."
+    "14.11: под 0.1.2 — якоря DigitalVixenCore, RedFunctions, Lizzie's Braindances переименованы на новые версии.",
+    "0.1.3 (2026-11-17): +5 переводов к новым модам — Better Loot Markers RU, Autoloot RU, Load Begone RU, Say Something Damn It RU, Immersive V Dialogue Expanded RU (русская озвучка)."
   ]
 }
