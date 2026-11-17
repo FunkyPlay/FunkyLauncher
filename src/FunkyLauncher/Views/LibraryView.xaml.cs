@@ -38,7 +38,7 @@ public partial class LibraryView : UserControl
         var img = Images.Load(m.Banner);
         Banner.Background = img != null
             ? new ImageBrush(img) { Stretch = Stretch.UniformToFill, AlignmentY = AlignmentY.Center }
-            : new LinearGradientBrush(Color.FromRgb(0x2A, 0x14, 0x26), Color.FromRgb(0x0F, 0x2A, 0x33), 45);
+            : new LinearGradientBrush(Color.FromRgb(0x24, 0x18, 0x2C), Color.FromRgb(0x12, 0x12, 0x1A), 60);
         TitleText.Text = m.Title;
         TagText.Text = m.Tag.ToString();
         Description.Text = m.Description.ToString();
@@ -182,7 +182,7 @@ public partial class LibraryView : UserControl
             Width = 226, Height = 124, Margin = new Thickness(0, 0, 16, 0), CornerRadius = new CornerRadius(14),
             Background = img != null
                 ? new ImageBrush(img) { Stretch = Stretch.UniformToFill }
-                : new LinearGradientBrush(Color.FromRgb(0x2A, 0x14, 0x26), Color.FromRgb(0x0F, 0x2A, 0x33), 45),
+                : new LinearGradientBrush(Color.FromRgb(0x24, 0x18, 0x2C), Color.FromRgb(0x12, 0x12, 0x1A), 60),
             BorderThickness = new Thickness(2),
             BorderBrush = selected ? (Brush)FindResource("Pink") : (Brush)bc.ConvertFrom("#2A2A36")!,
             Opacity = m.IsReleased ? 1 : 0.75,
@@ -209,7 +209,7 @@ public partial class LibraryView : UserControl
             var game = await SystemCheck.FindGameAsync(m, CancellationToken.None);
             if (game != null && !LaunchWatcher.SameGameVersion(game.Version, m.GameVersion))
             {
-                var answer = MessageBox.Show(_main, Loc.F("play.version.text", m.Game, game.Version, m.Title, m.GameVersion),
+                var answer = Views.Dialog.Show(_main, Loc.F("play.version.text", m.Game, game.Version, m.Title, m.GameVersion),
                     Loc.T("play.version.title"), MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No);
                 if (answer != MessageBoxResult.Yes) { PlayMessage.Text = ""; return; }
             }
@@ -220,14 +220,14 @@ public partial class LibraryView : UserControl
                 if (game == null) { PlayMessage.Text = Loc.T("loaders.nogame"); return; }
                 PlayMessage.Text = Loc.T("loaders.working");
                 var conflicts = await Task.Run(() => GameLoaders.Conflicts(s, m, game.Path));
-                var replace = conflicts.Count > 0 && MessageBox.Show(_main,
+                var replace = conflicts.Count > 0 && Views.Dialog.Show(_main,
                     Loc.F("loaders.conflict", game.Path, string.Join("\n", conflicts.Select(c => "• " + c.Path))),
                     m.Title, MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes) == MessageBoxResult.Yes;
                 try
                 {
                     var missing = await Task.Run(() => GameLoaders.Ensure(s, m, game.Path, replace));
                     if (missing.Count > 0)
-                        MessageBox.Show(_main, Loc.F("loaders.missing", string.Join("\n", missing.Select(x => "• " + x))),
+                        Views.Dialog.Show(_main, Loc.F("loaders.missing", string.Join("\n", missing.Select(x => "• " + x))),
                             m.Title, MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
                 catch (UnauthorizedAccessException) { PlayMessage.Text = Loc.F("loaders.denied", game.Path); return; }
@@ -310,7 +310,7 @@ public partial class LibraryView : UserControl
         var s = _main.Settings;
         var prev = s.PreviousOf(m);
         if (prev == null) return;
-        if (ask && MessageBox.Show(_main, Loc.F("lib.rollback.confirm", prev.Version, prev.Dir, s.InstalledVersion(m) ?? ""),
+        if (ask && Views.Dialog.Show(_main, Loc.F("lib.rollback.confirm", prev.Version, prev.Dir, s.InstalledVersion(m) ?? ""),
                 Loc.T("lib.rollback.title"), MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes) return;
         s.SwapWithPrevious(m);
         Refresh();
@@ -324,7 +324,7 @@ public partial class LibraryView : UserControl
     {
         var m = _main.Selected;
         if (_watching) { PlayMessage.Text = Loc.T("loaders.clean.running"); return; }
-        if (MessageBox.Show(_main, Loc.T("loaders.clean.confirm"), Loc.T("loaders.clean"),
+        if (Views.Dialog.Show(_main, Loc.T("loaders.clean.confirm"), Loc.T("loaders.clean"),
                 MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No) != MessageBoxResult.Yes) return;
         try
         {
@@ -340,7 +340,7 @@ public partial class LibraryView : UserControl
     {
         var m = _main.Selected;
         if (_watching || ShaderCache.GameRunning(m)) { PlayMessage.Text = Loc.T("shader.running"); return; }
-        if (MessageBox.Show(_main, Loc.T("shader.confirm"), Loc.T("shader.reset"),
+        if (Views.Dialog.Show(_main, Loc.T("shader.confirm"), Loc.T("shader.reset"),
                 MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No) != MessageBoxResult.Yes) return;
         ShaderCacheButton.IsEnabled = false;
         try
@@ -364,7 +364,7 @@ public partial class LibraryView : UserControl
         var target = Path.GetFullPath(prev.Dir).TrimEnd('\\');
         if (string.Equals(target, Path.GetFullPath(s.InstallDir(m)).TrimEnd('\\'), StringComparison.OrdinalIgnoreCase)
             || Path.GetPathRoot(target)?.TrimEnd('\\') == target) return;
-        if (MessageBox.Show(_main, Loc.F("lib.deleteold.confirm", prev.Version, prev.Dir), Loc.T("lib.deleteold"),
+        if (Views.Dialog.Show(_main, Loc.F("lib.deleteold.confirm", prev.Version, prev.Dir), Loc.T("lib.deleteold"),
                 MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No) != MessageBoxResult.Yes) return;
         DeleteOldButton.IsEnabled = RollbackButton.IsEnabled = false;
         PlayMessage.Text = Loc.T("lib.deleting");

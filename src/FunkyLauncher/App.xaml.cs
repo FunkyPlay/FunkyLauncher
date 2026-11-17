@@ -68,6 +68,9 @@ public partial class App : Application
             DwmSetWindowAttribute(hwnd, DWMWA_USE_IMMERSIVE_DARK_MODE, ref on, sizeof(int));
             var color = 0x00140F0F; // COLORREF 0x00BBGGRR → #0F0F14, the launcher background
             DwmSetWindowAttribute(hwnd, DWMWA_CAPTION_COLOR, ref color, sizeof(int));
+            // the first frame of a window (before WPF draws its content) is the launcher background, not white
+            if (HwndSource.FromHwnd(hwnd)?.CompositionTarget is { } ct)
+                ct.BackgroundColor = System.Windows.Media.Color.FromRgb(0x0F, 0x0F, 0x14);
         }
         catch { /* older Windows: keep the default title bar */ }
     }

@@ -789,7 +789,7 @@ public partial class ToolsView : UserControl
     {
         if (_busy) return;
         if (BackupService.GameRunning(m)) { Message.Text = Loc.T("backup.running"); return; }
-        if (MessageBox.Show(_main, Loc.F("backup.restore.confirm", When(b.Date)), Loc.T("backup.restore"),
+        if (Views.Dialog.Show(_main, Loc.F("backup.restore.confirm", When(b.Date)), Loc.T("backup.restore"),
                 MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No) != MessageBoxResult.Yes) return;
         SetBusy(true, Loc.T("backup.restoring"));
         string msg;
@@ -805,7 +805,7 @@ public partial class ToolsView : UserControl
     private void Delete(Modlist m, BackupInfo b)
     {
         if (_busy) return;
-        if (MessageBox.Show(_main, Loc.F("backup.delete.confirm", When(b.Date)), Loc.T("backup.delete"),
+        if (Views.Dialog.Show(_main, Loc.F("backup.delete.confirm", When(b.Date)), Loc.T("backup.delete"),
                 MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No) != MessageBoxResult.Yes) return;
         try { BackupService.Delete(S, m, b); Message.Text = ""; }
         catch (Exception ex) { Message.Text = ex.Message; }

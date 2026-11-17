@@ -108,14 +108,14 @@ public partial class SoftView : UserControl
         if (!settings.WingetConsent || offered.Any(x => !settings.WingetConsented.Contains(x.Winget)))
         {
             var names = string.Join(", ", offered.Select(x => x.Name));
-            if (MessageBox.Show(owner, Loc.F("soft.consent", names), Loc.T("soft.title"), MessageBoxButton.YesNo, MessageBoxImage.Information, MessageBoxResult.No) != MessageBoxResult.Yes) return;
+            if (Views.Dialog.Show(owner, Loc.F("soft.consent", names), Loc.T("soft.title"), MessageBoxButton.YesNo, MessageBoxImage.Information, MessageBoxResult.No) != MessageBoxResult.Yes) return;
             settings.WingetConsent = true;
             settings.WingetConsented = offered.Select(x => x.Winget).ToList();
             settings.Save();
         }
         var warning = s.Warning.ToString();
         if (warning.Length > 0) warning = "\n\n⚠ " + warning;
-        if (MessageBox.Show(owner, Loc.F("soft.install.confirm", s.Name, warning), s.Name, MessageBoxButton.YesNo, warning.Length > 0 ? MessageBoxImage.Warning : MessageBoxImage.Question, MessageBoxResult.No) != MessageBoxResult.Yes) return;
+        if (Views.Dialog.Show(owner, Loc.F("soft.install.confirm", s.Name, warning), s.Name, MessageBoxButton.YesNo, warning.Length > 0 ? MessageBoxImage.Warning : MessageBoxImage.Question, MessageBoxResult.No) != MessageBoxResult.Yes) return;
         install.IsEnabled = false;
         install.Content = Loc.T("soft.installing");
         await WingetLock.WaitAsync();
@@ -126,7 +126,7 @@ public partial class SoftView : UserControl
         if (error == null) { install.Content = Loc.T("soft.installed"); return; }
         install.Content = Loc.T("soft.install");
         install.IsEnabled = true;
-        MessageBox.Show(Window.GetWindow(this), Loc.F("soft.install.fail", s.Name, error), s.Name, MessageBoxButton.OK, MessageBoxImage.Warning);
+        Views.Dialog.Show(Window.GetWindow(this), Loc.F("soft.install.fail", s.Name, error), s.Name, MessageBoxButton.OK, MessageBoxImage.Warning);
     }
 
     private void Weekly_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(AppConfig.TelegramUrl);

@@ -155,7 +155,7 @@ public partial class MainWindow : Window
     private void ShowPrivacyNoticeOnce()
     {
         if (Settings.PrivacyNoticeShown) return;
-        MessageBox.Show(this, Loc.T("privacy.notice"), Loc.T("settings.privacy"), MessageBoxButton.OK, MessageBoxImage.Information);
+        Views.Dialog.Show(this, Loc.T("privacy.notice"), Loc.T("settings.privacy"), MessageBoxButton.OK, MessageBoxImage.Information);
         Settings.PrivacyNoticeShown = true;
         Settings.Save();
     }
@@ -205,14 +205,14 @@ public partial class MainWindow : Window
     {
         if (WabbajackService.IsNexusLoggedIn)
         {
-            if (MessageBox.Show(this, Loc.T("nexus.logout.confirm"), Loc.T("nexus.logout.title"),
+            if (Views.Dialog.Show(this, Loc.T("nexus.logout.confirm"), Loc.T("nexus.logout.title"),
                     MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No) != MessageBoxResult.Yes) return;
             try { WebProfile.LogOutNexus(); }
-            catch (Exception ex) { MessageBox.Show(this, Loc.F("nexus.logout.error", ex.Message), "Funky Launcher"); }
+            catch (Exception ex) { Views.Dialog.Show(this, Loc.F("nexus.logout.error", ex.Message), "Funky Launcher"); }
         }
         else
         {
-            if (MessageBox.Show(this, Loc.T("nexus.login.info"), Loc.T("nexus.login"),
+            if (Views.Dialog.Show(this, Loc.T("nexus.login.info"), Loc.T("nexus.login"),
                     MessageBoxButton.OKCancel, MessageBoxImage.Information) != MessageBoxResult.OK) return;
             if (WabbajackService.FindGui() == null)
             {
@@ -399,7 +399,7 @@ public partial class MainWindow : Window
     {
         var st = GameMode.Load();
         if (st?.Active != true) return;
-        if (MessageBox.Show(this, Loc.F("game.reminder", ToolsView.When(st.Started)), Loc.T("tools.game"),
+        if (Views.Dialog.Show(this, Loc.F("game.reminder", ToolsView.When(st.Started)), Loc.T("tools.game"),
                 MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes) return;
         NavTools.IsChecked = true;
         _tools.ShowGame();
@@ -411,7 +411,7 @@ public partial class MainWindow : Window
     {
         var st = RecordingMode.Load();
         if (st?.Active != true) return;
-        if (MessageBox.Show(this, Loc.F("shoot.reminder", ToolsView.When(st.Started)), Loc.T("tools.shoot"),
+        if (Views.Dialog.Show(this, Loc.F("shoot.reminder", ToolsView.When(st.Started)), Loc.T("tools.shoot"),
                 MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes) { ModeGuard.Start(); return; } // kept on: still put back if the launcher closes
         NavTools.IsChecked = true;
         _tools.ShowShoot();

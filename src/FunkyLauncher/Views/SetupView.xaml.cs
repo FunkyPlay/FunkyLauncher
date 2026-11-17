@@ -418,7 +418,7 @@ public partial class SetupView : UserControl
         var dlg = new OpenFolderDialog { Title = Loc.F("setup.gamefolder.title", Ml.Game, Ml.GameExe) };
         if (dlg.ShowDialog() != true) return;
         if (!GameFolders.Pick(Ml, dlg.FolderName))
-            MessageBox.Show(_main, Loc.F("setup.gamefolder.bad", Ml.GameExe), "Funky Launcher", MessageBoxButton.OK, MessageBoxImage.Warning);
+            Views.Dialog.Show(_main, Loc.F("setup.gamefolder.bad", Ml.GameExe), "Funky Launcher", MessageBoxButton.OK, MessageBoxImage.Warning);
         _ = RunChecksAsync();
     }
 

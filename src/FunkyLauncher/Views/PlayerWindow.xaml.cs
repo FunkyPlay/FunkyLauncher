@@ -301,7 +301,8 @@ public sealed class VideoHost : HwndHost
     protected override HandleRef BuildWindowCore(HandleRef parent)
     {
         const int WS_CHILD = 0x40000000, WS_VISIBLE = 0x10000000, WS_DISABLED = 0x08000000, WS_CLIPSIBLINGS = 0x04000000;
-        var h = CreateWindowEx(0, "static", "", WS_CHILD | WS_VISIBLE | WS_DISABLED | WS_CLIPSIBLINGS, 0, 0, 100, 100, parent.Handle, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero);
+        const int SS_BLACKRECT = 0x04; // the video area is black until mpv draws, never a white flash
+        var h = CreateWindowEx(0, "static", "", WS_CHILD | WS_VISIBLE | WS_DISABLED | WS_CLIPSIBLINGS | SS_BLACKRECT, 0, 0, 100, 100, parent.Handle, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero);
         Dispatcher.BeginInvoke(() => Ready?.Invoke(), DispatcherPriority.Loaded);
         return new HandleRef(this, h);
     }

@@ -141,7 +141,7 @@ public partial class HomeView : UserControl
             ReportText.Text = Loc.T("help.stopped");
             return;
         }
-        if (MessageBox.Show(Window.GetWindow(this), Loc.T("help.confirm"), Loc.T("help.title"),
+        if (Views.Dialog.Show(Window.GetWindow(this), Loc.T("help.confirm"), Loc.T("help.title"),
                 MessageBoxButton.YesNo, MessageBoxImage.Information, MessageBoxResult.No) != MessageBoxResult.Yes) return;
         HelpButton.IsEnabled = false;
         try
