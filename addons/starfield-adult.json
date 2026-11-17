@@ -139,6 +139,39 @@
    }
   },
   {
+   "id": "ZBB - Yoga swimsuit (optional)",
+   "modFolder": "ZBB - Yoga swimsuit (optional)",
+   "nexus": {
+    "game": "starfield",
+    "modId": 11832,
+    "fileId": 45287,
+    "filePage": "https://www.nexusmods.com/starfield/mods/11832?tab=files&file_id=45287"
+   },
+   "version": "1.0",
+   "adultOnNexus": true,
+   "archive": {
+    "nexusFileName": "ZBB (Yoga swimsuit)-11832-1-0-1728284498.zip",
+    "size": 682163,
+    "sha256": "7ad6f0967b462c2d0867802199cd16f87c99b43bae8ce9fd0c96699e493b8a8c",
+    "localFileName": "ZBB (Yoga swimsuit)-11832-1-0-1728284498.zip"
+   },
+   "plugins": [],
+   "ru": "noText",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 8,
+    "note": "проверить подпапку архива при тестовой установке (в MO2 файлы лежат в корне: Materials/Textures/geometries/meshes)"
+   },
+   "rules": "выше по приоритету (раньше в modlist), чем ZBB и STARQUEEN 5",
+   "order": 111,
+   "displayName": {
+    "ru": "ZBB - Yoga swimsuit (optional)",
+    "en": "ZBB - Yoga swimsuit (optional)"
+   }
+  },
+  {
    "id": "STARQUEEN 5 (NSFW)",
    "modFolder": "STARQUEEN 5 - Starfield Female Skin Textures (SFST) - FA - STARQUEEN 5 - Starfield Female Skin Textures",
    "order": 291,
