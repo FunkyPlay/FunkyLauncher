@@ -314,38 +314,19 @@
       }
     },
     {
-      "id": "witcher3",
-      "title": "THE WITCHER 3",
+      "id": "gta5",
+      "title": "GRAND THEFT AUTO V",
       "author": "Funky",
       "version": "",
       "status": "soon",
-      "game": "The Witcher 3: Wild Hunt",
+      "game": "Grand Theft Auto V Enhanced",
       "tag": {
-        "ru": "The Witcher 3 · в планах",
-        "en": "The Witcher 3 · planned"
+        "ru": "Grand Theft Auto V Enhanced · в работе",
+        "en": "Grand Theft Auto V Enhanced · in progress"
       },
       "description": {
-        "ru": "Сборка для The Witcher 3: Wild Hunt. Скоро.",
-        "en": "A modlist for The Witcher 3: Wild Hunt. Coming soon."
-      },
-      "banner": "",
-      "wabbajackFile": "",
-      "sizeGb": 0
-    },
-    {
-      "id": "rdr2",
-      "title": "RED DEAD REDEMPTION 2",
-      "author": "Funky",
-      "version": "",
-      "status": "soon",
-      "game": "Red Dead Redemption 2",
-      "tag": {
-        "ru": "Red Dead Redemption 2 · в планах",
-        "en": "Red Dead Redemption 2 · planned"
-      },
-      "description": {
-        "ru": "Сборка для Red Dead Redemption 2. Скоро.",
-        "en": "A modlist for Red Dead Redemption 2. Coming soon."
+        "ru": "Следующая сборка FunkyPlay — в работе.",
+        "en": "The next FunkyPlay modlist — in progress."
       },
       "banner": "",
       "wabbajackFile": "",
