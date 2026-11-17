@@ -170,6 +170,7 @@ public sealed class CatalogFile
     /// <summary>Social links for the English audience (Instagram, TikTok) — can change without a new launcher (e.g. a new nickname).</summary>
     [JsonPropertyName("social")] public SocialLinks? Social { get; set; }
     [JsonPropertyName("mo2")] public Mo2Source? Mo2 { get; set; }
+    [JsonPropertyName("supportApi")] public string? SupportApi { get; set; }
 }
 
 public sealed class SocialLinks
@@ -287,7 +288,10 @@ public static class Catalog
         };
         RemoteHelp = c.RemoteHelp is { Url.Length: > 0, Host.Length: > 0 } ? c.RemoteHelp : BuiltInRemoteHelp;
         Mo2 = c.Mo2 is { Url.Length: > 0, Sha256.Length: > 0 } ? c.Mo2 : BuiltInMo2;
+        SupportApi = c.SupportApi is { } api && api.StartsWith("https://") ? api : null;
     }
+
+    public static string? SupportApi { get; private set; }
 
     public static Mo2Source? Mo2 { get; private set; }
     private static Mo2Source? BuiltInMo2;

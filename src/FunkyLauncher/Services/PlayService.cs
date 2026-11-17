@@ -36,14 +36,11 @@ public static class PlayService
     /// Opens the support bot with <paramref name="text"/> already typed in the message box (Telegram app first,
     /// the t.me page if the app is not installed). The text is also put on the clipboard as a fallback.
     /// </summary>
-    public static void OpenSupportChat(string text, Settings s, Modlist m)
+    public static void OpenSupportChat(string text, Settings s, Modlist m, string? attach = null)
     {
-        // a fixed last line so support (and the bot) sees the game, modlist, its version and language at once
-        var game = m.Game.Split(' ', StringSplitOptions.RemoveEmptyEntries).FirstOrDefault()?.ToLowerInvariant() ?? "game";
-        var installed = s.IsInstalled(m) ? s.InstalledVersion(m) ?? m.Version : "—";
-        var lang = Addons.Russian(m.Id) != null ? (AddonService.Prefs(s, Addons.Russian(m.Id)!).On ? " RU" : " EN") : "";
-        text += $"\n\n#{game} · {m.Title} {installed}{lang} · Funky Launcher {AppConfig.Version}";
-        OpenSupportChat(text);
+        // 0.1.9: support chat inside the launcher (same queue as the bot; the game / modlist / version label goes
+        // with every message). Telegram stays one click away inside the chat window.
+        Views.SupportChatWindow.Open(System.Windows.Application.Current?.MainWindow, s, m, text, attach);
     }
 
     public static void OpenSupportChat(string text)

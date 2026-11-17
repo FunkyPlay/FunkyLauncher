@@ -13,6 +13,8 @@ public static class AppConfig
     public const string LauncherNewsUrl = "https://t.me/FunkyLauncher";
     /// <summary>The support bot (Funky Help sends the RustDesk ID here).</summary>
     public const string SupportBotName = "FunkyLauncherBot";
+    /// <summary>Support chat inside the launcher (same queue as the bot). The catalog's "supportApi" overrides it.</summary>
+    public const string SupportApi = "https://funkylauncher.com/support/api";
     public const string SupportBotUrl = "https://t.me/" + SupportBotName;
     public const string GitHubUrl = "https://github.com/FunkyPlay/FunkyLauncher";
     public const string PrivacyUrl = GitHubUrl + "/blob/main/PRIVACY.md";

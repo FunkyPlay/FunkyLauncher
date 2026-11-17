@@ -243,7 +243,7 @@ public partial class HomeView : UserControl
             var file = await ReportService.CreateAsync(_main.Settings, _main.Selected, CancellationToken.None);
             ReportText.Text = Loc.F("start.report.done", Path.GetFileName(file));
             Process.Start(new ProcessStartInfo("explorer.exe", $"/select,\"{file}\"") { UseShellExecute = true });
-            PlayService.OpenSupportChat(Loc.F("report.send.text", Path.GetFileName(file)), _main.Settings, _main.Selected);
+            PlayService.OpenSupportChat(Loc.F("report.send.text", Path.GetFileName(file)), _main.Settings, _main.Selected, file);
         }
         catch (Exception ex)
         {
