@@ -184,8 +184,12 @@ public partial class MainWindow : Window
         RefreshNexus();
     }
 
+    private void SupportSide_Click(object sender, RoutedEventArgs e) =>
+        PlayService.OpenSupportChat("", Settings, Selected);
+
     public void RefreshNexus()
     {
+        SupportSideButton.Content = "💬 " + Loc.T("start.support.write");
         var ok = WabbajackService.IsNexusLoggedIn;
         NexusStatus.Text = "● " + Loc.T(ok ? "check.nexus.ok" : "check.nexus.no");
         NexusStatus.Foreground = (Brush)FindResource(ok ? "Cyan" : "Pink");
