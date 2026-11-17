@@ -28,6 +28,7 @@
             <DockPanel Grid.Column="0">
                 <DockPanel DockPanel.Dock="Top" Margin="0,0,0,10">
                     <Button x:Name="RecheckButton" DockPanel.Dock="Right" Style="{StaticResource SecondaryButton}" Height="36" Click="Recheck_Click"/>
+                    <Button x:Name="GameFolderButton" DockPanel.Dock="Right" Style="{StaticResource SecondaryButton}" Height="36" Margin="0,0,10,0" Visibility="Collapsed" Click="GameFolder_Click"/>
                     <TextBlock x:Name="CheckTitle" FontSize="17" FontWeight="Bold" VerticalAlignment="Center"/>
                 </DockPanel>
                 <ScrollViewer VerticalScrollBarVisibility="Auto">

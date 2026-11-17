@@ -46,6 +46,31 @@ public sealed class Modlist
 
     [JsonPropertyName("mo2Profile")] public string Mo2Profile { get; set; } = "Wabbajack";
     [JsonPropertyName("mo2Executable")] public string Mo2Executable { get; set; } = "";
+
+    /// <summary>
+    /// "wabbajack" (default): installed from a .wabbajack file. "nexus": installed by the launcher itself from the Nexus
+    /// lists in addons/ (&lt;id&gt;-main.json + packs + &lt;id&gt;-order.json) into a fresh portable MO2 — for games whose
+    /// files Wabbajack would reject (a game version it does not know).
+    /// </summary>
+    [JsonPropertyName("installer")] public string Installer { get; set; } = "wabbajack";
+    /// <summary>MO2's game name for ModOrganizer.ini (e.g. "Starfield").</summary>
+    [JsonPropertyName("mo2GameName")] public string Mo2GameName { get; set; } = "";
+    /// <summary>The profile's game INI the launcher writes (e.g. "StarfieldCustom.ini").</summary>
+    [JsonPropertyName("mo2IniName")] public string Mo2IniName { get; set; } = "";
+    /// <summary>
+    /// Every game INI MO2 keeps per profile (e.g. "StarfieldPrefs.ini"). Missing ones are copied from
+    /// Documents\My Games\&lt;myGamesFolder&gt; (or created empty) so MO2 shows no "missing INI files" warning.
+    /// </summary>
+    [JsonPropertyName("mo2ProfileInis")] public List<string> Mo2ProfileInis { get; set; } = new();
+    [JsonPropertyName("myGamesFolder")] public string MyGamesFolder { get; set; } = "";
+    /// <summary>MO2 executables for a fresh instance; binary is relative to the game folder. The first one is PLAY.</summary>
+    [JsonPropertyName("mo2Executables")] public List<Mo2Exe> Mo2Executables { get; set; } = new();
+    /// <summary>Folders the game may be in when no store reports it (relative to drive roots, e.g. "Games\\Starfield").</summary>
+    [JsonPropertyName("gameFolderHints")] public List<string> GameFolderHints { get; set; } = new();
+    /// <summary>Steam app id — finds the game in any Steam library.</summary>
+    [JsonPropertyName("steamAppId")] public string SteamAppId { get; set; } = "";
+    /// <summary>The game's shader cache files/folders for "Reset shader cache" ({LocalAppData}, {Documents}, {Game} tokens).</summary>
+    [JsonPropertyName("shaderCache")] public List<string> ShaderCache { get; set; } = new();
     /// <summary>Game process file name, e.g. "Cyberpunk2077.exe" — the launcher watches it after PLAY.</summary>
     [JsonPropertyName("gameExe")] public string GameExe { get; set; } = "";
     [JsonPropertyName("defaultInstallDir")] public string DefaultInstallDir { get; set; } = "";
@@ -75,13 +100,33 @@ public sealed class Modlist
                 .Replace("{Documents}", Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), StringComparison.OrdinalIgnoreCase)
                 .Replace("{LocalAppData}", Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), StringComparison.OrdinalIgnoreCase)
                 .Replace("{AppData}", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), StringComparison.OrdinalIgnoreCase);
+            // MO2 with profile-local saves (Starfield): the saves live inside the modlist folder
+            if (p.Contains("{InstallDir}", StringComparison.OrdinalIgnoreCase) && InstallDirOf?.Invoke(this) is { Length: > 0 } dir)
+                p = p.Replace("{InstallDir}", dir, StringComparison.OrdinalIgnoreCase);
             return p.Contains('{') || !Path.IsPathFullyQualified(p) ? null : Path.GetFullPath(p);
         }
         catch { return null; }
     }
 
+    /// <summary>The install folder of a modlist on this PC (set once by the main window from the settings).</summary>
+    public static Func<Modlist, string?>? InstallDirOf { get; set; }
+
     public bool IsReleased => Status == "released";
     public long RequiredFreeBytes => (SizeGb + 5L) * 1024 * 1024 * 1024;
+}
+
+public sealed class Mo2Exe
+{
+    [JsonPropertyName("title")] public string Title { get; set; } = "";
+    [JsonPropertyName("binary")] public string Binary { get; set; } = "";
+}
+
+/// <summary>Official Mod Organizer 2 release for modlists the launcher installs itself (never rehosted).</summary>
+public sealed class Mo2Source
+{
+    [JsonPropertyName("version")] public string Version { get; set; } = "";
+    [JsonPropertyName("url")] public string Url { get; set; } = "";
+    [JsonPropertyName("sha256")] public string Sha256 { get; set; } = "";
 }
 
 /// <summary>A file in the game folder: path relative to the game folder (and to the mod folder), and the mod folder name prefix.</summary>
@@ -122,6 +167,7 @@ public sealed class CatalogFile
     [JsonPropertyName("remoteHelp")] public RemoteHelpSource? RemoteHelp { get; set; }
     /// <summary>Social links for the English audience (Instagram, TikTok) — can change without a new launcher (e.g. a new nickname).</summary>
     [JsonPropertyName("social")] public SocialLinks? Social { get; set; }
+    [JsonPropertyName("mo2")] public Mo2Source? Mo2 { get; set; }
 }
 
 public sealed class SocialLinks
@@ -187,6 +233,7 @@ public static class Catalog
         BuiltInLoaders = builtIn.Modlists.Where(m => m.GameLoaders.Count > 0).ToDictionary(m => m.Id, m => (m.GameLoaders, m.GameCleanup));
         BuiltInPlayerEngine = builtIn.PlayerEngine;
         BuiltInRemoteHelp = builtIn.RemoteHelp;
+        BuiltInMo2 = builtIn.Mo2;
         BuiltInSocial = builtIn.Social ?? new();
         BuiltInSoftware = builtIn.Software.Where(x => x.Winget.Length > 0 || x.Langs.Count > 0).GroupBy(SoftKey).ToDictionary(g => g.Key, g => g.First());
         Apply(builtIn);
@@ -237,7 +284,11 @@ public static class Catalog
             TikTok = c.Social?.TikTok is { } tt && tt.StartsWith("https://") ? tt : BuiltInSocial.TikTok,
         };
         RemoteHelp = c.RemoteHelp is { Url.Length: > 0, Host.Length: > 0 } ? c.RemoteHelp : BuiltInRemoteHelp;
+        Mo2 = c.Mo2 is { Url.Length: > 0, Sha256.Length: > 0 } ? c.Mo2 : BuiltInMo2;
     }
+
+    public static Mo2Source? Mo2 { get; private set; }
+    private static Mo2Source? BuiltInMo2;
 
     /// <summary>Tries to refresh from the internet. Returns true if the list changed source.</summary>
     public static async Task<bool> RefreshAsync(CancellationToken token)

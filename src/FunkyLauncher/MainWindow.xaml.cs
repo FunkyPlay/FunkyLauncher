@@ -27,6 +27,7 @@ public partial class MainWindow : Window
         if (string.IsNullOrEmpty(Settings.Language)) Settings.Language = Loc.DefaultLang();
         Loc.Set(Settings.Language);
         Catalog.LoadBuiltIn();
+        Modlist.InstallDirOf = m => Settings.InstallDir(m);
 
         _home = new HomeView(this);
         _library = new LibraryView(this);

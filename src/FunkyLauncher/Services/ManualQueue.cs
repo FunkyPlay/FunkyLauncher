@@ -5,9 +5,39 @@ using System.Text.Json;
 namespace FunkyLauncher.Services;
 
 /// <summary>One Nexus file the player has to download by hand (free Nexus account).</summary>
+/// <summary>
+/// Names of site files the list could not know in advance (the player's browser decides them): remembered per
+/// mod folder and part in &lt;downloads&gt;\_funky-names.json, so the next install finds the file again.
+/// </summary>
+public static class NameMap
+{
+    private static string File(string downloads) => Path.Combine(downloads, "_funky-names.json");
+    public static string Key(string modFolder, int part) => modFolder + "|" + part;
+
+    private static Dictionary<string, string> Load(string downloads)
+    {
+        try { if (System.IO.File.Exists(File(downloads))) return JsonSerializer.Deserialize<Dictionary<string, string>>(System.IO.File.ReadAllText(File(downloads))) ?? new(); }
+        catch { }
+        return new();
+    }
+
+    public static string? Get(string downloads, string modFolder, int part) => Load(downloads).TryGetValue(Key(modFolder, part), out var n) ? n : null;
+
+    public static void Set(string downloads, string key, string name)
+    {
+        var all = Load(downloads);
+        all[key] = name;
+        Directory.CreateDirectory(downloads);
+        System.IO.File.WriteAllText(File(downloads), JsonSerializer.Serialize(all));
+    }
+}
+
 public sealed class ManualItem
 {
-    public string ArchiveName { get; init; } = "";
+    /// <summary>"" = not known yet (a site file): the name the browser gives it is taken and remembered.</summary>
+    public string ArchiveName { get; set; } = "";
+    /// <summary>For a part of a multi-file mod: where its real name is remembered (<see cref="NameMap"/>).</summary>
+    public string? Key { get; init; }
     public long Size { get; init; }
     public string ModName { get; init; } = "";
     public string GameDomain { get; init; } = "";
@@ -15,7 +45,10 @@ public sealed class ManualItem
     public long FileId { get; init; }
     public bool Done { get; set; }
 
-    public string PageUrl => $"https://www.nexusmods.com/{GameDomain}/mods/{ModId}?tab=files&file_id={FileId}";
+    /// <summary>A page outside Nexus to download the file from (its author's site); null = the Nexus file page.</summary>
+    public string? Url { get; init; }
+
+    public string PageUrl => !string.IsNullOrEmpty(Url) ? Url : $"https://www.nexusmods.com/{GameDomain}/mods/{ModId}?tab=files&file_id={FileId}";
 }
 
 /// <summary>Builds the list of Nexus archives that are not yet in the downloads folder.</summary>
@@ -64,6 +97,7 @@ public static class ManualQueue
     public static bool IsPresent(string downloadsDir, string name, long size)
     {
         var path = Path.Combine(downloadsDir, name);
-        return File.Exists(path) && new FileInfo(path).Length == size;
+        // size 0 = not known yet (a list still being prepared): the file being there is enough, its hash is checked later
+        return File.Exists(path) && (size <= 0 || new FileInfo(path).Length == size);
     }
 }

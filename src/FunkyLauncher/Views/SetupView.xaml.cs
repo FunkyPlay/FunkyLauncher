@@ -60,9 +60,10 @@ public partial class SetupView : UserControl
     {
         BackLink.Text = Loc.T("setup.back");
         PageTitle.Text = Loc.F("setup.title", Ml.Title);
-        Subtitle.Text = Loc.T("setup.subtitle");
+        Subtitle.Text = Loc.T(Ml.GameLoaders.Count == 2 ? "setup.subtitle.2" : "setup.subtitle");
         CheckTitle.Text = Loc.T("setup.check");
         RecheckButton.Content = Loc.T("setup.recheck");
+        GameFolderButton.Content = Loc.T("setup.gamefolder");
         FolderLabel.Text = Loc.T("setup.folder");
         BrowseButton.Content = Loc.T("setup.browse");
         DownloadsText.Text = Loc.F("setup.downloads", _main.Settings.DownloadsDir(Ml));
@@ -100,6 +101,8 @@ public partial class SetupView : UserControl
         ReinstallButton.IsEnabled = InstallButton.IsEnabled;
         // already logged in to Nexus (the check list says so): no "Log in" button
         NexusButton.Visibility = WabbajackService.IsNexusLoggedIn ? Visibility.Collapsed : Visibility.Visible;
+        // games the launcher finds itself (Starfield outside Steam): the player can show the game folder
+        GameFolderButton.Visibility = Mo2Profile.IsNexusList(Ml) && !_busy ? Visibility.Visible : Visibility.Collapsed;
         RenderComposition();
     }
 
@@ -116,9 +119,10 @@ public partial class SetupView : UserControl
         var s = _main.Settings;
         var ru = ForThisVersion(Addons.Russian(Ml.Id));
         var adult = ForThisVersion(Addons.Adult(Ml.Id));
+        var extras = Addons.Extras(Ml.Id).Select(x => (x.Kind, Pack: ForThisVersion(x.Pack))).Where(x => x.Pack != null).ToList();
         CompositionPanel.Children.Clear();
         var installed = Installed && !Updating;
-        if (ru == null && adult == null) { CompositionBox.Visibility = ApplyButton.Visibility = Visibility.Collapsed; return; }
+        if (ru == null && adult == null && extras.Count == 0) { CompositionBox.Visibility = ApplyButton.Visibility = Visibility.Collapsed; return; }
         CompositionBox.Visibility = Visibility.Visible;
 
         CompositionPanel.Children.Add(new TextBlock
@@ -146,6 +150,19 @@ public partial class SetupView : UserControl
             var row = Row(Loc.T("comp.adult"), Loc.T(installed && on ? "comp.adult.hint.on" : "comp.adult.hint"), out var right);
             var box = new CheckBox { IsChecked = wanted, VerticalAlignment = VerticalAlignment.Center, IsEnabled = !_busy };
             box.Click += (_, _) => AdultClicked(adult, box.IsChecked == true);
+            right.Child = box;
+            CompositionPanel.Children.Add(row);
+        }
+
+        foreach (var (kind, pack) in extras)
+        {
+            CompositionPanel.Children.Add(Separator());
+            var on = AddonService.Prefs(s, pack!).On;
+            var gb = Math.Max(1, (int)Math.Round(pack!.Mods.Sum(x => x.Archive.Size) / 1073741824.0));
+            var row = Row(Loc.T("comp." + kind), Loc.F("comp." + kind + ".hint", gb), out var right);
+            var box = new CheckBox { IsChecked = on, VerticalAlignment = VerticalAlignment.Center, IsEnabled = !_busy };
+            var p = pack;
+            box.Click += (_, _) => _ = ExtraClickedAsync(p, box.IsChecked == true);
             right.Child = box;
             CompositionPanel.Children.Add(row);
         }
@@ -221,6 +238,40 @@ public partial class SetupView : UserControl
         RenderComposition();
     }
 
+    /// <summary>HD planets: before the install only the wish is kept; installed — download / switch on, or switch off.</summary>
+    private async Task ExtraClickedAsync(AddonFile hd, bool want)
+    {
+        var s = _main.Settings;
+        if (!(Installed && !Updating))
+        {
+            AddonService.Prefs(s, hd).On = want;
+            s.Save();
+            RenderComposition();
+            return;
+        }
+        BeginBusy();
+        try
+        {
+            if (!want) { AddonService.Disable(s, Ml, hd); ProgressText.Text = Loc.T("comp.extra.off"); }
+            else
+            {
+                var progress = new Progress<string>(t => { ProgressText.Text = Loc.T("comp.extra.working"); LogLine.Text = t; });
+                var r = await AddonService.InstallAsync(s, Ml, hd, level2: false, progress, _cts!.Token);
+                if (r.NeedManual.Count > 0)
+                {
+                    new ManualDownloadWindow(r.NeedManual, s.DownloadsDir(Ml)) { Owner = _main }.ShowDialog();
+                    if (r.NeedManual.Any(i => i.Done)) r = await AddonService.InstallAsync(s, Ml, hd, level2: false, progress, _cts!.Token);
+                }
+                ProgressText.Text = r.Errors.Count > 0 ? Loc.F("addon.errors", string.Join(Environment.NewLine, r.Errors))
+                    : r.NeedManual.Any(i => !i.Done) ? Loc.F("comp.lang.notdownloaded", r.NeedManual.Count(i => !i.Done))
+                    : Loc.T("comp.extra.on");
+            }
+        }
+        catch (OperationCanceledException) { ProgressText.Text = Loc.T("inst.stopped"); }
+        catch (Exception ex) { ProgressText.Text = ex.Message; }
+        finally { await EndBusyAsync(); }
+    }
+
     private async void Apply_Click(object sender, RoutedEventArgs e)
     {
         var ru = ForThisVersion(Addons.Russian(Ml.Id));
@@ -272,9 +323,29 @@ public partial class SetupView : UserControl
         if (ru != null)
         {
             var lang = s.LangOf(Ml.Id);
-            AddonService.Prefs(s, ru).On = false; // the install just removed the pack's mods
-            if (lang == "ru") ProgressText.Text = await ApplyLanguageAsync(ru, "ru");
+            if (Mo2Profile.IsNexusList(Ml))
+                ProgressText.Text = await ApplyLanguageAsync(ru, lang); // mods of the other language stay on disk, switched off
+            else
+            {
+                AddonService.Prefs(s, ru).On = false; // the install just removed the pack's mods
+                if (lang == "ru") ProgressText.Text = await ApplyLanguageAsync(ru, "ru");
+            }
         }
+        // Neon Nights (Wabbajack install wipes extra mods): ticked optional packs go on top again — the Russian
+        // voice-over only with the Russian version. Nexus-list modlists got theirs during the install itself.
+        if (!Mo2Profile.IsNexusList(Ml))
+            foreach (var (kind, pack) in Addons.Extras(Ml.Id))
+            {
+                var p = ForThisVersion(pack);
+                if (p == null || !AddonService.Prefs(s, p).On || (kind == "voice" && s.LangOf(Ml.Id) != "ru")) continue;
+                var progress = new Progress<string>(t => { ProgressText.Text = Loc.T("comp.extra.working"); LogLine.Text = t; });
+                var r = await AddonService.InstallAsync(s, Ml, p, level2: false, progress, CancellationToken.None);
+                if (r.NeedManual.Count > 0)
+                {
+                    new ManualDownloadWindow(r.NeedManual, s.DownloadsDir(Ml)) { Owner = _main }.ShowDialog();
+                    if (r.NeedManual.Any(i => i.Done)) await AddonService.InstallAsync(s, Ml, p, level2: false, progress, CancellationToken.None);
+                }
+            }
         var adult = ForThisVersion(Addons.Adult(Ml.Id));
         if (adult != null && (s.AdultWanted.Contains(Ml.Id) || AddonService.Prefs(s, adult).On))
         {
@@ -340,6 +411,15 @@ public partial class SetupView : UserControl
     }
 
     private void Recheck_Click(object sender, RoutedEventArgs e) => _ = RunChecksAsync();
+
+    private void GameFolder_Click(object sender, RoutedEventArgs e)
+    {
+        var dlg = new OpenFolderDialog { Title = Loc.F("setup.gamefolder.title", Ml.Game, Ml.GameExe) };
+        if (dlg.ShowDialog() != true) return;
+        if (!GameFolders.Pick(Ml, dlg.FolderName))
+            MessageBox.Show(_main, Loc.F("setup.gamefolder.bad", Ml.GameExe), "Funky Launcher", MessageBoxButton.OK, MessageBoxImage.Warning);
+        _ = RunChecksAsync();
+    }
 
     private void ApplyFolder(string dir)
     {
@@ -475,6 +555,7 @@ public partial class SetupView : UserControl
 
     private Progress<InstallProgress> MakeProgress() => new(p =>
     {
+        if (p.Downloaded < 0) { if (!string.IsNullOrWhiteSpace(p.LogLine)) LogLine.Text = p.LogLine; return; } // text only, keep the bar
         ProgressText.Text = p.Total > 0 ? $"{p.Status} · {Loc.F("inst.downloaded", p.Downloaded, p.Total)}" : p.Status;
         var pct = p.Total > 0 ? Math.Min(100, p.Downloaded * 100 / p.Total) : 0;
         ProgressPercent.Text = p.Total > 0 ? pct + "%" : "";
@@ -498,7 +579,11 @@ public partial class SetupView : UserControl
         {
             while (true)
             {
-                var (outcome, code, manual) = await InstallService.RunAsync(_main.Settings, Ml, MakeProgress(), _cts!.Token, updateDir);
+                var nexus = Mo2Profile.IsNexusList(Ml);
+                if (nexus) updateDir = null; // a Nexus-list modlist updates in place: only changed mods are downloaded again
+                var (outcome, code, manual) = nexus
+                    ? await NexusInstallService.RunAsync(_main.Settings, Ml, MakeProgress(), _cts!.Token)
+                    : await InstallService.RunAsync(_main.Settings, Ml, MakeProgress(), _cts!.Token, updateDir);
                 if (outcome == InstallOutcome.NeedsManualDownloads && OpenManualDownloads())
                     continue; // everything was downloaded by hand — run the install again
                 var s = _main.Settings;
@@ -519,6 +604,8 @@ public partial class SetupView : UserControl
                     InstallOutcome.Success => Loc.T("inst.done"),
                     InstallOutcome.NeedsManualDownloads => Loc.F("inst.manual", manual),
                     InstallOutcome.Cancelled => Loc.T("inst.stopped"),
+                    _ when nexus && NexusInstallService.LastErrors.Count > 0 =>
+                        Loc.F("addon.errors", string.Join(Environment.NewLine, NexusInstallService.LastErrors.Take(8))),
                     _ => Loc.F("inst.failed", code),
                 };
                 if (outcome == InstallOutcome.Success)
@@ -549,6 +636,14 @@ public partial class SetupView : UserControl
     /// <summary>Shows the manual download window. True = every missing file is now downloaded.</summary>
     private bool OpenManualDownloads()
     {
+        if (Mo2Profile.IsNexusList(Ml))
+        {
+            var list = NexusInstallService.LastManual;
+            if (list.Count == 0) return false;
+            var w = new ManualDownloadWindow(list, _main.Settings.DownloadsDir(Ml)) { Owner = _main };
+            w.ShowDialog();
+            return w.AllDone;
+        }
         var file = _main.Settings.ResolveWabbajack(Ml);
         if (file == null) return false;
         var items = ManualQueue.Build(file, _main.Settings.DownloadsDir(Ml));
@@ -564,7 +659,14 @@ public partial class SetupView : UserControl
         BeginBusy();
         try
         {
-            var (ok, problems, ignored) = await InstallService.VerifyAsync(_main.Settings, Ml, MakeProgress(), _cts!.Token);
+            bool ok; int problems, ignored = 0;
+            if (Mo2Profile.IsNexusList(Ml))
+            {
+                var (good, missing) = await Task.Run(() => NexusInstallService.Verify(_main.Settings, Ml));
+                ok = good; problems = missing.Count;
+                if (!good) LogLine.Text = string.Join(", ", missing.Take(10));
+            }
+            else (ok, problems, ignored) = await InstallService.VerifyAsync(_main.Settings, Ml, MakeProgress(), _cts!.Token);
             if (ok && adopting) _main.Settings.MarkInstalled(Ml, _main.Settings.InstallDir(Ml), Ml.Version);
             ProgressText.Text = !ok ? Loc.F(adopting ? "inst.found.fail" : "inst.verify.fail", problems)
                 : adopting ? Loc.T("inst.found.ok")

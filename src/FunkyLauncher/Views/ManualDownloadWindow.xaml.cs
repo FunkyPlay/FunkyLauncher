@@ -73,6 +73,8 @@ public partial class ManualDownloadWindow : Window
         }
         _skipped.Remove(_current);
         StatusText.Text = "";
+        // a file on its author's site (not Nexus): a different hint — "press the download button on the page"
+        HintText.Text = Loc.T(string.IsNullOrEmpty(_current.Url) ? "manual.hint" : "manual.hint.site");
         Web.CoreWebView2.Navigate(_current.PageUrl);
         UpdateProgress();
         RenderQueue();
@@ -82,6 +84,20 @@ public partial class ManualDownloadWindow : Window
     {
         var item = _current;
         if (item == null) return;
+        // a site with several files for one mod (parts of a RAR, a DLC archive): the file the player clicked decides
+        // which item it is — by its name, else the first part whose name is not known yet
+        var suggested = Path.GetFileName(e.ResultFilePath);
+        if (!string.IsNullOrEmpty(item.Url))
+        {
+            var pending = _items.Where(i => !i.Done && i.Url == item.Url).ToList();
+            item = pending.FirstOrDefault(i => i.ArchiveName.Equals(suggested, StringComparison.OrdinalIgnoreCase))
+                   ?? pending.FirstOrDefault(i => i.ArchiveName.Length == 0) ?? item;
+            if (item.ArchiveName.Length == 0)
+            {
+                item.ArchiveName = suggested;
+                if (item.Key != null) NameMap.Set(_downloadsDir, item.Key, suggested);
+            }
+        }
         var target = Path.Combine(_downloadsDir, item.ArchiveName);
         Directory.CreateDirectory(_downloadsDir);
         e.ResultFilePath = target;

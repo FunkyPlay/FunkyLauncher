@@ -19,6 +19,13 @@ public partial class App : Application
     {
         // hidden guard of recording mode: waits for the launcher to exit and puts the desktop back
         if (Services.ModeGuard.RunIfGuard(e.Args)) { Environment.Exit(0); return; }
+        // developer test: install a Nexus-list modlist without the window, then exit
+        if (Services.TestInstall.Is(e.Args))
+        {
+            var code = Task.Run(() => Services.TestInstall.RunAsync(e.Args)).GetAwaiter().GetResult();
+            Environment.Exit(code);
+            return;
+        }
         // started by the previous version after an update: let it close first (it holds the lock below)
         Services.LauncherUpdate.WaitForPrevious(e.Args);
         Services.LauncherUpdate.CleanupOld();

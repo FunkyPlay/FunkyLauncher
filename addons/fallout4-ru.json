@@ -1,0 +1,2190 @@
+{
+ "schema": 1,
+ "modlistId": "fallout4",
+ "addonId": "fallout4-ru",
+ "listVersion": "0.1.0",
+ "forMainVersion": "0.1.0",
+ "forGameVersion": "1.11.240",
+ "draft": true,
+ "generated": "2026-11-17",
+ "mods": [
+  {
+   "id": "RU - Unofficial Fallout 4 Patch - RUS (2.2.2a)",
+   "modFolder": "RU - Unofficial Fallout 4 Patch - RUS (2.2.2a)",
+   "displayName": {
+    "ru": "Unofficial Fallout 4 Patch - RUS (2.2.2a)",
+    "en": "Unofficial Fallout 4 Patch - RUS (2.2.2a)"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 38540,
+    "fileId": 408610,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/38540?tab=files&file_id=408610"
+   },
+   "version": "2.2.2a",
+   "archive": {
+    "nexusFileName": "eb/21/75/eb217596-6755-4397-947c-77ca4112a1bf",
+    "localFileName": "eb/21/75/eb217596-6755-4397-947c-77ca4112a1bf",
+    "size": 7597626,
+    "sha256": "cf9442463e281bfb236becbf17899e0eabe0d43d80fcde7a2777b4a795da41ac"
+   },
+   "plugins": [
+    "unofficial fallout 4 patch.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Community Fixes Merged - 4.7.5 RU",
+   "modFolder": "RU - Community Fixes Merged - 4.7.5 RU",
+   "displayName": {
+    "ru": "Community Fixes Merged - 4.7.5 RU",
+    "en": "Community Fixes Merged - 4.7.5 RU"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 95205,
+    "fileId": 419823,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/95205?tab=files&file_id=419823"
+   },
+   "version": "4.7.5",
+   "archive": {
+    "nexusFileName": "fb/1d/28/fb1d283b-63cc-4d7a-91c2-a94ed81b207f",
+    "localFileName": "fb/1d/28/fb1d283b-63cc-4d7a-91c2-a94ed81b207f",
+    "size": 281886,
+    "sha256": "f4d6e28ca4d17e83c1b4bd09780fcccc5029fa756da00c50fd70ed511ab19218"
+   },
+   "plugins": [
+    "community fixes merged.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Mod Configuration Menu RU - All Versions",
+   "modFolder": "RU - Mod Configuration Menu RU - All Versions",
+   "displayName": {
+    "ru": "Mod Configuration Menu RU - All Versions",
+    "en": "Mod Configuration Menu RU - All Versions"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 108652,
+    "fileId": 409718,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/108652?tab=files&file_id=409718"
+   },
+   "version": "1.11.240",
+   "archive": {
+    "nexusFileName": "85/44/d0/8544d019-519b-434b-98fc-aabbef20010e",
+    "localFileName": "85/44/d0/8544d019-519b-434b-98fc-aabbef20010e",
+    "size": 1299,
+    "sha256": "4648a3f42aa65e64a24eeb5e77e4c7a3a40d0f5d0b71286b75b3328c64233ee7"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Extended Dialogue Interface - RU",
+   "modFolder": "RU - Extended Dialogue Interface - RU",
+   "displayName": {
+    "ru": "Extended Dialogue Interface - RU",
+    "en": "Extended Dialogue Interface - RU"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 68442,
+    "fileId": 382117,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/68442?tab=files&file_id=382117"
+   },
+   "version": "1.4.3",
+   "archive": {
+    "nexusFileName": "Extended Dialogue Interface - RU-68442-1-4-3-1768940191.7z",
+    "localFileName": "Extended Dialogue Interface - RU-68442-1-4-3-1768940191.7z",
+    "size": 228159,
+    "sha256": "a96f5e60d8124534fccdb233793674fe0a8a003a2f337ac4289c1e0eb3284093"
+   },
+   "plugins": [
+    "XDI.esm"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "Data/MCM/Config/XDI/config.json",
+      "MCM/Config/XDI/config.json"
+     ],
+     [
+      "Data/MCM/Config/XDI/settings.ini",
+      "MCM/Config/XDI/settings.ini"
+     ],
+     [
+      "Data/XDI - Main.ba2",
+      "XDI - Main.ba2"
+     ],
+     [
+      "Data/XDI.esm",
+      "XDI.esm"
+     ]
+    ],
+    "fomod": false,
+    "notFromArchive": [
+     "F4SE/Plugins/XDI.dll.old"
+    ]
+   }
+  },
+  {
+   "id": "RU - LooksMenu - RU",
+   "modFolder": "RU - LooksMenu - RU",
+   "displayName": {
+    "ru": "LooksMenu - RU",
+    "en": "LooksMenu - RU"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 64621,
+    "fileId": 251643,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/64621?tab=files&file_id=251643"
+   },
+   "version": "1.7.0.4",
+   "archive": {
+    "nexusFileName": "LooksMenu v1-6-20 - Rus-64621-1-6-20-1664072093.rar",
+    "localFileName": "LooksMenu v1-6-20 - Rus-64621-1-6-20-1664072093.rar",
+    "size": 863,
+    "sha256": "14e6fb478379776fa40255ca66d05c1e253d72476a1546545ca33f2b0e2fc525"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Place Everywhere - RU",
+   "modFolder": "RU - Place Everywhere - RU",
+   "displayName": {
+    "ru": "Place Everywhere - RU",
+    "en": "Place Everywhere - RU"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 68422,
+    "fileId": 375612,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/68422?tab=files&file_id=375612"
+   },
+   "version": "1.19.1159",
+   "archive": {
+    "nexusFileName": "Place Everywhere - RU-68422-1-19-1159-1764264631.7z",
+    "localFileName": "Place Everywhere - RU-68422-1-19-1159-1764264631.7z",
+    "size": 566912,
+    "sha256": "12bb20a8422dbf69f5497d605368efab268f6a60cb6c3a1ffd71d2471e569dd3"
+   },
+   "plugins": [],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "Data/F4SE/Plugins/place.ini",
+      "F4SE/Plugins/place.ini"
+     ],
+     [
+      "Data/F4SE/Plugins/place_ini_help.txt",
+      "F4SE/Plugins/place_ini_help.txt"
+     ],
+     [
+      "Data/Images/keymap.png",
+      "Images/keymap.png"
+     ]
+    ],
+    "fomod": false,
+    "notFromArchive": [
+     "F4SE/Plugins/place.dll.old"
+    ]
+   }
+  },
+  {
+   "id": "RU - FallUI Inventory - RU MCM",
+   "modFolder": "RU - FallUI Inventory - RU MCM",
+   "displayName": {
+    "ru": "FallUI Inventory - RU MCM",
+    "en": "FallUI Inventory - RU MCM"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 48769,
+    "fileId": 255574,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/48769?tab=files&file_id=255574"
+   },
+   "version": "2.2.1",
+   "archive": {
+    "nexusFileName": "FallUI  Inventory - RU-48769-2-2-1-1667456751.zip",
+    "localFileName": "FallUI  Inventory - RU-48769-2-2-1-1667456751.zip",
+    "size": 8060,
+    "sha256": "f70f1eadb9ecccef239cc09e28f25f686c8a1344ae61622c9ba05b765b49ab79"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - FallUI HUD - RU MCM",
+   "modFolder": "RU - FallUI HUD - RU MCM",
+   "displayName": {
+    "ru": "FallUI HUD - RU MCM",
+    "en": "FallUI HUD - RU MCM"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 51827,
+    "fileId": 255572,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/51827?tab=files&file_id=255572"
+   },
+   "version": "1.7.1",
+   "archive": {
+    "nexusFileName": "FallUI HUD - RU-51827-1-7-1667455114.zip",
+    "localFileName": "FallUI HUD - RU-51827-1-7-1667455114.zip",
+    "size": 7646,
+    "sha256": "a62c1c1b143a6960ac08edfe511990fd1d5cd1badf191644f945da4587fc1ce9"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - FallUI Sleep and Wait - RU MCM",
+   "modFolder": "RU - FallUI Sleep and Wait - RU MCM",
+   "displayName": {
+    "ru": "FallUI Sleep and Wait - RU MCM",
+    "en": "FallUI Sleep and Wait - RU MCM"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 49083,
+    "fileId": 256808,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/49083?tab=files&file_id=256808"
+   },
+   "version": "1.4",
+   "archive": {
+    "nexusFileName": "FallUI Sleep And Wait - RU-49083-1-4-1668339551.zip",
+    "localFileName": "FallUI Sleep And Wait - RU-49083-1-4-1668339551.zip",
+    "size": 1968,
+    "sha256": "e75d98b23cdd5d90b8e6be8e0c9f3d03b1fa58a3f6dba07e0d447a415e3b0aad"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - True Storms - Wasteland Edition (Russian translation)",
+   "modFolder": "RU - True Storms - Wasteland Edition (Russian translation)",
+   "displayName": {
+    "ru": "True Storms - Wasteland Edition (Russian translation)",
+    "en": "True Storms - Wasteland Edition (Russian translation)"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 69526,
+    "fileId": 420493,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/69526?tab=files&file_id=420493"
+   },
+   "version": "2.0.4",
+   "archive": {
+    "nexusFileName": "6e/96/a3/6e96a3bb-4218-4969-97ab-1e54d731006a",
+    "localFileName": "6e/96/a3/6e96a3bb-4218-4969-97ab-1e54d731006a",
+    "size": 43096135,
+    "sha256": "5aa4b402f449ac93af76c91a5eaae468124a5e400df7dbf7f9dd1adf84b7c761"
+   },
+   "plugins": [
+    "TrueStormsFO4-EarlierSunsets.esp",
+    "TrueStormsFO4-EarlierSunsetsFH.esp",
+    "TrueStormsFO4-EarlierSunsetsNW.esp",
+    "TrueStormsFO4-FarHarbor-NukaWorld-Patch.esp",
+    "TrueStormsFO4-FarHarbor.esp",
+    "TrueStormsFO4-NukaWorld.esp",
+    "TrueStormsFO4.esm"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "00 - Core Files",
+      ""
+     ],
+     [
+      "01 - DLC",
+      ""
+     ],
+     [
+      "04 - Earlier Sunsets/TrueStormsFO4-EarlierSunsets.esp",
+      "TrueStormsFO4-EarlierSunsets.esp"
+     ],
+     [
+      "04 - Earlier Sunsets/TrueStormsFO4-EarlierSunsetsFH.esp",
+      "TrueStormsFO4-EarlierSunsetsFH.esp"
+     ],
+     [
+      "04 - Earlier Sunsets/TrueStormsFO4-EarlierSunsetsNW.esp",
+      "TrueStormsFO4-EarlierSunsetsNW.esp"
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "Main Files: True Storms (required), Far Harbor DLC (optional), Nuka-World DLC (optional)",
+     "Weather Chances: True Storms Chances (recommended)",
+     "Dangerous Glowing Sea: No change (default)",
+     "Dangerous Far Harbor: No change (default)",
+     "Sunset Time: Earlier Sunset (default)",
+     "Heavy Fogs: New Heavy Fogs (default)"
+    ]
+   }
+  },
+  {
+   "id": "RU - Darker Nights RU - 1.12p1",
+   "modFolder": "RU - Darker Nights RU - 1.12p1",
+   "displayName": {
+    "ru": "Darker Nights RU - 1.12p1",
+    "en": "Darker Nights RU - 1.12p1"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 99708,
+    "fileId": 379641,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/99708?tab=files&file_id=379641"
+   },
+   "version": "1.12p1",
+   "archive": {
+    "nexusFileName": "Darker Nights RU-99708-1-12p1-1767429877.zip",
+    "localFileName": "Darker Nights RU-99708-1-12p1-1767429877.zip",
+    "size": 3731721,
+    "sha256": "c8143f8fec0b0dc42fa3e41b152e9e9430640c7aca31c7f19cb01e574bb022af"
+   },
+   "plugins": [
+    "DarkerNights-TrueStorms.esp",
+    "DarkerNights.esp",
+    "DarkerNightsDetection.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "0000-0003-FarHarbor-NukaWorld/Level0-DarkSky",
+      ""
+     ],
+     [
+      "0001-0003-FarHarbor-NukaWorld-TrueStorms201/Level0-DarkSky",
+      ""
+     ],
+     [
+      "ZZZZ-0001-Detection/Level0",
+      ""
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "Уровень темноты: Средняя (уровень 3)",
+     "Разное: -",
+     "Объединённые патчи DLC: DLC Far Harbor, DLC Nuka World",
+     "Отдельные патчи: Патч для True Storms 2.01",
+     "Обнаружение: Автоматически (рекомендуется)",
+     "Night Vision: Оригинал"
+    ]
+   }
+  },
+  {
+   "id": "RU - Interiors Enhanced - Darker Ambient Light and Fog -RU- 2.0",
+   "modFolder": "RU - Interiors Enhanced - Darker Ambient Light and Fog -RU- 2.0",
+   "displayName": {
+    "ru": "Interiors Enhanced - Darker Ambient Light and Fog -RU- 2.0",
+    "en": "Interiors Enhanced - Darker Ambient Light and Fog -RU- 2.0"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 92224,
+    "fileId": 350757,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/92224?tab=files&file_id=350757"
+   },
+   "version": "2.0",
+   "archive": {
+    "nexusFileName": "Interiors Enhanced 2.0 - ALL IN ONE -RU--92224-2-0-1742004720.7z",
+    "localFileName": "Interiors Enhanced 2.0 - ALL IN ONE -RU--92224-2-0-1742004720.7z",
+    "size": 1806502,
+    "sha256": "8f95f710c6848ba26f82ee93e76e49b12c54be13930be74f5c5cf8bbc0ba680f"
+   },
+   "plugins": [
+    "InteriorsEnhanced-All-In-One.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Everyone's Best Friend - Russian Translation",
+   "modFolder": "RU - Everyone's Best Friend - Russian Translation",
+   "displayName": {
+    "ru": "Everyone's Best Friend - Russian Translation",
+    "en": "Everyone's Best Friend - Russian Translation"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 39721,
+    "fileId": 160752,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/39721?tab=files&file_id=160752"
+   },
+   "version": "3.0.0",
+   "archive": {
+    "nexusFileName": "Everyone's Best Friend - Russian Translation-39721-3-0-0-1561719247.7z",
+    "localFileName": "Everyone's Best Friend - Russian Translation-39721-3-0-0-1561719247.7z",
+    "size": 67787,
+    "sha256": "62a074087e196fe6779fdf97a0f24ea979cfd10c2a967bdd39ec12af097b47f7"
+   },
+   "plugins": [
+    "EveryonesBestFriend.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "Everyone's Best Friend - Russian Translation",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Workshop Plus - Russian",
+   "modFolder": "RU - Workshop Plus - Russian",
+   "displayName": {
+    "ru": "Workshop Plus - Russian",
+    "en": "Workshop Plus - Russian"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 67614,
+    "fileId": 356522,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/67614?tab=files&file_id=356522"
+   },
+   "version": "1.0.15a",
+   "archive": {
+    "nexusFileName": "Workshop Plus - Russian-67614-1-0-15a-1747483078.7z",
+    "localFileName": "Workshop Plus - Russian-67614-1-0-15a-1747483078.7z",
+    "size": 495187,
+    "sha256": "64a11adb597c4b0afca215a767680ac2705e5c9328639e3a80d151ccc7ec221b"
+   },
+   "plugins": [
+    "WorkshopPlus.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Settlement Menu Manager - RU",
+   "modFolder": "RU - Settlement Menu Manager - RU",
+   "displayName": {
+    "ru": "Settlement Menu Manager - RU",
+    "en": "Settlement Menu Manager - RU"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 64988,
+    "fileId": 252965,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/64988?tab=files&file_id=252965"
+   },
+   "version": "0.1.7",
+   "archive": {
+    "nexusFileName": "SettlementMenuManagerMainFile - Rus-64988-0-1-7-1665394633.rar",
+    "localFileName": "SettlementMenuManagerMainFile - Rus-64988-0-1-7-1665394633.rar",
+    "size": 5907,
+    "sha256": "2afe7a8d1d2bb0fe7887b346489cd4aa292baac679e434ffc02f225ecb636c07"
+   },
+   "plugins": [
+    "SettlementMenuManager.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Better Settlers (RU)",
+   "modFolder": "RU - Better Settlers (RU)",
+   "displayName": {
+    "ru": "Better Settlers (RU)",
+    "en": "Better Settlers (RU)"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 62550,
+    "fileId": 244348,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/62550?tab=files&file_id=244348"
+   },
+   "version": "2.0",
+   "archive": {
+    "nexusFileName": "Better Settlers Master FOMOD (RU)-62550-2-0-1658679947.7z",
+    "localFileName": "Better Settlers Master FOMOD (RU)-62550-2-0-1658679947.7z",
+    "size": 28647407,
+    "sha256": "5f23c17450bc6805457dc584314462e48fb11dbb74e434338e9d0198b7a04006"
+   },
+   "plugins": [
+    "BetterSettlers.esp",
+    "BetterSettlersNoLollygagging.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "BetterSettlers.esp",
+      "BetterSettlers.esp"
+     ],
+     [
+      "BetterSettlersNoLollygagging.esp",
+      "BetterSettlersNoLollygagging.esp"
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "Лучшие поселенцы: BetterSettlers.esp",
+     "Безделье: Никакого безделья!",
+     "Чистые или грязные лица?: Грязные лица",
+     "Выбор снаряжения: Лучшие поселенцы по умолчанию",
+     "Соотношение полов: Ванильное",
+     "Модифицированные активы сообщества: -",
+     "Варианты смертности: -",
+     "ФИНИШ: -"
+    ]
+   }
+  },
+  {
+   "id": "RU - Salvage Beacons Russian Translation",
+   "modFolder": "RU - Salvage Beacons Russian Translation",
+   "displayName": {
+    "ru": "Salvage Beacons Russian Translation",
+    "en": "Salvage Beacons Russian Translation"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 23456,
+    "fileId": 253793,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/23456?tab=files&file_id=253793"
+   },
+   "version": "1.0.4",
+   "archive": {
+    "nexusFileName": "Salvage Beacons-23456-1-0-4-1666106992.7z",
+    "localFileName": "Salvage Beacons-23456-1-0-4-1666106992.7z",
+    "size": 100124,
+    "sha256": "3f2614d9a038e1849e4ee687210234cbd09bb94954643c18a1e770164a07dfe7"
+   },
+   "plugins": [
+    "SalvageBeacons.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "SalvageBeacons - Main.BA2",
+      "SalvageBeacons - Main.BA2"
+     ],
+     [
+      "SalvageBeacons.esp",
+      "SalvageBeacons.esp"
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "all"
+    ]
+   }
+  },
+  {
+   "id": "RU - Player Comments and Head Tracking - RU",
+   "modFolder": "RU - Player Comments and Head Tracking - RU",
+   "displayName": {
+    "ru": "Player Comments and Head Tracking - RU",
+    "en": "Player Comments and Head Tracking - RU"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 63875,
+    "fileId": 287493,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/63875?tab=files&file_id=287493"
+   },
+   "version": "2.65",
+   "archive": {
+    "nexusFileName": "Player Comments and Head Tracking - RUs-63875-2-65-1692598003.rar",
+    "localFileName": "Player Comments and Head Tracking - RUs-63875-2-65-1692598003.rar",
+    "size": 2574258,
+    "sha256": "0e23236ec6f829fcc00401d6ba6653318553d11c302c30fde830717dcd9322ec"
+   },
+   "plugins": [
+    "PlayerComments.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Backpacks of the Commonwealth - 2.1.3 RU",
+   "modFolder": "RU - Backpacks of the Commonwealth - 2.1.3 RU",
+   "displayName": {
+    "ru": "Backpacks of the Commonwealth - 2.1.3 RU",
+    "en": "Backpacks of the Commonwealth - 2.1.3 RU"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 82878,
+    "fileId": 415780,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/82878?tab=files&file_id=415780"
+   },
+   "version": "2.1.3",
+   "archive": {
+    "nexusFileName": "e0/5f/d0/e05fd0cd-c102-435c-b74a-ff9ae8f5b6b1",
+    "localFileName": "e0/5f/d0/e05fd0cd-c102-435c-b74a-ff9ae8f5b6b1",
+    "size": 427413,
+    "sha256": "d40560abfcebb01b7e3d0209e44f542c177cde1768f993163041a8961cae86cc"
+   },
+   "plugins": [
+    "Backpacks of the Commonwealth.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Service Rifle - Russian",
+   "modFolder": "RU - Service Rifle - Russian",
+   "displayName": {
+    "ru": "Service Rifle - Russian",
+    "en": "Service Rifle - Russian"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 54416,
+    "fileId": 216699,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/54416?tab=files&file_id=216699"
+   },
+   "version": "0.96",
+   "archive": {
+    "nexusFileName": "1.0-54416-1-0-1631389456.zip",
+    "localFileName": "1.0-54416-1-0-1631389456.zip",
+    "size": 76392,
+    "sha256": "c4d6f941e112eb20d058243560de3fbbc17c90411206180eec37b21637f036ef"
+   },
+   "plugins": [
+    "F4NVServiceRifleRedux.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Wattz 3000 mkII Laser gun - RU",
+   "modFolder": "RU - Wattz 3000 mkII Laser gun - RU",
+   "displayName": {
+    "ru": "Wattz 3000 mkII Laser gun - RU",
+    "en": "Wattz 3000 mkII Laser gun - RU"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 88191,
+    "fileId": 337328,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/88191?tab=files&file_id=337328"
+   },
+   "version": "1.1.4",
+   "archive": {
+    "nexusFileName": "Wattz 3000 mkII - RU-88191-1-1-4-1729390012.rar",
+    "localFileName": "Wattz 3000 mkII - RU-88191-1-1-4-1729390012.rar",
+    "size": 114853,
+    "sha256": "1a7583708739f062307a55cfebcfa3eac5df26b47e13c682ab87f4546eb4a271"
+   },
+   "plugins": [
+    "Wattz3000mkII.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Hunting Shotgun - A New Vegas Classic - Remington 870 - RU",
+   "modFolder": "RU - Hunting Shotgun - A New Vegas Classic - Remington 870 - RU",
+   "displayName": {
+    "ru": "Hunting Shotgun - A New Vegas Classic - Remington 870 - RU",
+    "en": "Hunting Shotgun - A New Vegas Classic - Remington 870 - RU"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 92418,
+    "fileId": 386637,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/92418?tab=files&file_id=386637"
+   },
+   "version": "1.0.7",
+   "archive": {
+    "nexusFileName": "CW Hunting Shotgun - RU-92418-1-0-7-1771644956.rar",
+    "localFileName": "CW Hunting Shotgun - RU-92418-1-0-7-1771644956.rar",
+    "size": 22885,
+    "sha256": "724104df680168219e6c9370f484c9c740f5fe56a6943c511de65f0d3f860d09"
+   },
+   "plugins": [
+    "CWHuntingShotgun.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - The Attachment Pack - RU",
+   "modFolder": "RU - The Attachment Pack - RU",
+   "displayName": {
+    "ru": "The Attachment Pack - RU",
+    "en": "The Attachment Pack - RU"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 77408,
+    "fileId": 392288,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/77408?tab=files&file_id=392288"
+   },
+   "version": "1.0.8",
+   "archive": {
+    "nexusFileName": "Attachment Pack - RU-77408-1-0-8-1775396473.rar",
+    "localFileName": "Attachment Pack - RU-77408-1-0-8-1775396473.rar",
+    "size": 53133,
+    "sha256": "df4cc8cf866226696458433e79f6860dd069f9f2407d2a88d12b6920971105d0"
+   },
+   "plugins": [
+    "AttachPack.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Reverb and Ambiance Overhaul RUS",
+   "modFolder": "RU - Reverb and Ambiance Overhaul RUS",
+   "displayName": {
+    "ru": "Reverb and Ambiance Overhaul RUS",
+    "en": "Reverb and Ambiance Overhaul RUS"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 84765,
+    "fileId": 323280,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/84765?tab=files&file_id=323280"
+   },
+   "version": "1.6e",
+   "archive": {
+    "nexusFileName": "Reverb and Ambiance Overhaul RUS-84765-1-0-1718665949.7z",
+    "localFileName": "Reverb and Ambiance Overhaul RUS-84765-1-0-1718665949.7z",
+    "size": 43937,
+    "sha256": "282856a31779ed82116e0e64dd6174e008ffed5d931d6f79dca35f6290ffe09e"
+   },
+   "plugins": [
+    "Reverb and Ambiance Overhaul.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Immersive Animation Framework - RU",
+   "modFolder": "RU - Immersive Animation Framework - RU",
+   "displayName": {
+    "ru": "Immersive Animation Framework - RU",
+    "en": "Immersive Animation Framework - RU"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 83470,
+    "fileId": 318848,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/83470?tab=files&file_id=318848"
+   },
+   "version": "1.3.2",
+   "archive": {
+    "nexusFileName": "Immersive Animation Framework - RUs-83470-1-3-2-1716631241.rar",
+    "localFileName": "Immersive Animation Framework - RUs-83470-1-3-2-1716631241.rar",
+    "size": 11407,
+    "sha256": "6cae29a98fc6f56d54eb86e27891da61e970b3f0645f603cf9c480aa87b85e82"
+   },
+   "plugins": [
+    "ImmersiveAnimationFramework.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Visible Companion Affinity RUS",
+   "modFolder": "RU - Visible Companion Affinity RUS",
+   "displayName": {
+    "ru": "Visible Companion Affinity RUS",
+    "en": "Visible Companion Affinity RUS"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 89500,
+    "fileId": 345579,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/89500?tab=files&file_id=345579"
+   },
+   "version": "4.15",
+   "archive": {
+    "nexusFileName": "Visible Companion Affinity 4.15 - RUS-89500-4-15-1737214454.zip",
+    "localFileName": "Visible Companion Affinity 4.15 - RUS-89500-4-15-1737214454.zip",
+    "size": 1786912,
+    "sha256": "5da4d26778ea5240335488a118a67b10591af943ae4d7217c6f7761a4876c376"
+   },
+   "plugins": [
+    "VisibleCompanionAffinity.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "main/AllDLCs",
+    "fomod": true,
+    "choices": [
+     "DLC Support: Все дополнения"
+    ]
+   }
+  },
+  {
+   "id": "RU - The Riot Shotgun - Fallout New Vegas - RU",
+   "modFolder": "RU - The Riot Shotgun - Fallout New Vegas - RU",
+   "displayName": {
+    "ru": "The Riot Shotgun - Fallout New Vegas - RU",
+    "en": "The Riot Shotgun - Fallout New Vegas - RU"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 85611,
+    "fileId": 326381,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/85611?tab=files&file_id=326381"
+   },
+   "version": "1.0.2",
+   "archive": {
+    "nexusFileName": "Riot Shotgun Vanilla - RUs-85611-1-0-2-1720666787.rar",
+    "localFileName": "Riot Shotgun Vanilla - RUs-85611-1-0-2-1720666787.rar",
+    "size": 20219,
+    "sha256": "fa36e58cee90eaf65a5a6292cd103a7355fcecb5367efc410fd436142f94c0dd"
+   },
+   "plugins": [
+    "DakRiotShotgunVanilla.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - The Plasma Defender - Fallout New Vegas Classic - RU",
+   "modFolder": "RU - The Plasma Defender - Fallout New Vegas Classic - RU",
+   "displayName": {
+    "ru": "The Plasma Defender - Fallout New Vegas Classic - RU",
+    "en": "The Plasma Defender - Fallout New Vegas Classic - RU"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 94184,
+    "fileId": 361272,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/94184?tab=files&file_id=361272"
+   },
+   "version": "1.0.4.2",
+   "archive": {
+    "nexusFileName": "CW Plasma Defender Vanilla - RU-94184-1-0-4-2-1752399994.rar",
+    "localFileName": "CW Plasma Defender Vanilla - RU-94184-1-0-4-2-1752399994.rar",
+    "size": 59394,
+    "sha256": "f6cb7703824591c187e91056e1c6cf81414ff075e8491236c1d5ceb53c22dbf7"
+   },
+   "plugins": [
+    "CWPlasmaDefender.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - The 9mm Pistol (Browning HiPower) Fallout New Vegas - RU",
+   "modFolder": "RU - The 9mm Pistol (Browning HiPower) Fallout New Vegas - RU",
+   "displayName": {
+    "ru": "The 9mm Pistol (Browning HiPower) Fallout New Vegas - RU",
+    "en": "The 9mm Pistol (Browning HiPower) Fallout New Vegas - RU"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 93500,
+    "fileId": 355588,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/93500?tab=files&file_id=355588"
+   },
+   "version": "1.0.1",
+   "archive": {
+    "nexusFileName": "CW 9mm Pistol - Vanilla Version - RU-93500-1-0-1-1746610657.rar",
+    "localFileName": "CW 9mm Pistol - Vanilla Version - RU-93500-1-0-1-1746610657.rar",
+    "size": 25349,
+    "sha256": "8ae974194c9b440da84dbf6449f323086003354d008d518f751daf9eb9f0d015"
+   },
+   "plugins": [
+    "CW9mmPistol.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Simple FOV Slider - RU MCM",
+   "modFolder": "RU - Simple FOV Slider - RU MCM",
+   "displayName": {
+    "ru": "Simple FOV Slider - RU MCM",
+    "en": "Simple FOV Slider - RU MCM"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 95253,
+    "fileId": 362046,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/95253?tab=files&file_id=362046"
+   },
+   "version": "1.1.1",
+   "archive": {
+    "nexusFileName": "Simple FOV Slider - RU MCM-95253-1-1-1-1753192714.rar",
+    "localFileName": "Simple FOV Slider - RU MCM-95253-1-1-1-1753192714.rar",
+    "size": 951,
+    "sha256": "0eea00b461758da793f6fefadd9434e874a5027e6c0d6ab943dd88facd11370a"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Crafting Highlight Fix - RU",
+   "modFolder": "RU - Crafting Highlight Fix - RU",
+   "displayName": {
+    "ru": "Crafting Highlight Fix - RU",
+    "en": "Crafting Highlight Fix - RU"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 64709,
+    "fileId": 361924,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/64709?tab=files&file_id=361924"
+   },
+   "version": "1.11.240",
+   "archive": {
+    "nexusFileName": "Crafting Highlight Fix 1.9 - RU-64709-1-9-1753062545.rar",
+    "localFileName": "Crafting Highlight Fix 1.9 - RU-64709-1-9-1753062545.rar",
+    "size": 1020,
+    "sha256": "5c3471c68a867843df468fc51ec1a450d8e6273f2685ef3b630c3ba5d581468a"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Sim Settlements 2 - ALL Chapters  - RU - Sim Settlements 2 Chapter 1 RU",
+   "modFolder": "RU - Sim Settlements 2 - ALL Chapters  - RU - Sim Settlements 2 Chapter 1 RU",
+   "displayName": {
+    "ru": "Sim Settlements 2 - ALL Chapters  - RU",
+    "en": "Sim Settlements 2 - ALL Chapters  - RU"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 66097,
+    "fileId": 421240,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/66097?tab=files&file_id=421240"
+   },
+   "version": "3.8.1a",
+   "archive": {
+    "nexusFileName": "88/67/dd/8867ddaf-0429-4ed4-a921-d995eebc39c0",
+    "localFileName": "88/67/dd/8867ddaf-0429-4ed4-a921-d995eebc39c0",
+    "size": 9257617,
+    "sha256": "eca376e69c6d832b68df5ba0c5705e89f97a4613a9d0b9cd1d5feb72320e8081"
+   },
+   "plugins": [
+    "SS2.esm"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Sim Settlements 2 - ALL Chapters  - RU - Sim Settlements 2 Chapter 2 RU",
+   "modFolder": "RU - Sim Settlements 2 - ALL Chapters  - RU - Sim Settlements 2 Chapter 2 RU",
+   "displayName": {
+    "ru": "Sim Settlements 2 - ALL Chapters  - RU",
+    "en": "Sim Settlements 2 - ALL Chapters  - RU"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 66097,
+    "fileId": 421241,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/66097?tab=files&file_id=421241"
+   },
+   "version": "3.8.1a",
+   "archive": {
+    "nexusFileName": "1e/8a/87/1e8a8765-94ab-419b-8327-d5cf3385b90a",
+    "localFileName": "1e/8a/87/1e8a8765-94ab-419b-8327-d5cf3385b90a",
+    "size": 6401394,
+    "sha256": "7948b77e5483e798fbda305ada92893742bbc9768fa09977438e1ad9b6cf8b98"
+   },
+   "plugins": [
+    "SS2_XPAC_Chapter2.esm"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - America Rising 2 - Legacy of the Enclave - Russian Translation",
+   "modFolder": "RU - America Rising 2 - Legacy of the Enclave - Russian Translation",
+   "displayName": {
+    "ru": "America Rising 2 - Legacy of the Enclave - Russian Translation",
+    "en": "America Rising 2 - Legacy of the Enclave - Russian Translation"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 83848,
+    "fileId": 420690,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/83848?tab=files&file_id=420690"
+   },
+   "version": "1.1.7",
+   "archive": {
+    "nexusFileName": "72/18/a8/7218a8bc-1d0c-4188-b868-aa1fbae412ae",
+    "localFileName": "72/18/a8/7218a8bc-1d0c-4188-b868-aa1fbae412ae",
+    "size": 8627598,
+    "sha256": "cb171865388b6877aac845764c451d8ec90b1ae1ada0449f5fbb1ca8c4b0c5d0"
+   },
+   "plugins": [
+    "AmericaRising2.esm"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Outcasts and Remnants - Quest Mod Plus RUS",
+   "modFolder": "RU - Outcasts and Remnants - Quest Mod Plus RUS",
+   "displayName": {
+    "ru": "Outcasts and Remnants - Quest Mod Plus RUS",
+    "en": "Outcasts and Remnants - Quest Mod Plus RUS"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 45832,
+    "fileId": 185007,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/45832?tab=files&file_id=185007"
+   },
+   "version": "1.51",
+   "archive": {
+    "nexusFileName": "Outcasts and Remnants - Quest Mod Plus (RUS)-45832-1-51-1592834729.zip",
+    "localFileName": "Outcasts and Remnants - Quest Mod Plus (RUS)-45832-1-51-1592834729.zip",
+    "size": 6911004,
+    "sha256": "4c7152b17492e703a77c8d759c455f402bc18a943bce5888cca31736d3063705"
+   },
+   "plugins": [
+    "OutcastsAndRemnants.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "Outcasts and Remnants (RUS) 1.51",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - You And What Army 2 - 1.08 RU",
+   "modFolder": "RU - You And What Army 2 - 1.08 RU",
+   "displayName": {
+    "ru": "You And What Army 2 - 1.08 RU",
+    "en": "You And What Army 2 - 1.08 RU"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 85762,
+    "fileId": 366663,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/85762?tab=files&file_id=366663"
+   },
+   "version": "1.08",
+   "archive": {
+    "nexusFileName": "You And What Army 2 - RU-85762-1-08-1757036312.rar",
+    "localFileName": "You And What Army 2 - RU-85762-1-08-1757036312.rar",
+    "size": 498337,
+    "sha256": "89cc9e357627a1bf5c30de3e30653e878d6f525082a74b691744faa00464c408"
+   },
+   "plugins": [
+    "YouAndWhatArmy2.esm"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Heather Casdin - A Unique Companion by llamaRCA - RU",
+   "modFolder": "RU - Heather Casdin - A Unique Companion by llamaRCA - RU",
+   "displayName": {
+    "ru": "Heather Casdin - A Unique Companion by llamaRCA - RU",
+    "en": "Heather Casdin - A Unique Companion by llamaRCA - RU"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 61110,
+    "fileId": 303848,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/61110?tab=files&file_id=303848"
+   },
+   "version": "2.7",
+   "archive": {
+    "nexusFileName": "Heather Casdin - A Unique Companion - RU-61110-2-7-1708168901.zip",
+    "localFileName": "Heather Casdin - A Unique Companion - RU-61110-2-7-1708168901.zip",
+    "size": 477869,
+    "sha256": "68d03451c0e9863f1c366c5746c2201d580e3eea033ca79dd09d28f1acaacc47"
+   },
+   "plugins": [
+    "llamaCompanionHeatherv2.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Better Locational Damage- Russian translate",
+   "modFolder": "RU - Better Locational Damage- Russian translate",
+   "displayName": {
+    "ru": "Better Locational Damage- Russian translate",
+    "en": "Better Locational Damage- Russian translate"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 89523,
+    "fileId": 393643,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/89523?tab=files&file_id=393643"
+   },
+   "version": "7.8.1",
+   "archive": {
+    "nexusFileName": "Better Locational Damage (RU)-89523-7-8-1-1776421783.rar",
+    "localFileName": "Better Locational Damage (RU)-89523-7-8-1-1776421783.rar",
+    "size": 8076745,
+    "sha256": "db07933555348d2499f89060728461f4598b3c711bdcb1d32244d5cb4703b62e"
+   },
+   "plugins": [
+    "BLD - Leveled Lists - DLC.esp",
+    "Better Locational Damage - DLC_Automatron.esp",
+    "Better Locational Damage - DLC_Far_Harbor.esp",
+    "Better Locational Damage - DLC_Nuka_World.esp",
+    "Better Locational Damage - DLC_WWorkshop.esp",
+    "Better Locational Damage.esp",
+    "Better Perks.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "Better Locational Damage/00 MainPlugin/Better Locational Damage - Main.BA2",
+      "Better Locational Damage - Main.BA2"
+     ],
+     [
+      "Better Locational Damage/00 MainPlugin/Better Locational Damage - Textures.BA2",
+      "Better Locational Damage - Textures.BA2"
+     ],
+     [
+      "Better Locational Damage/00 MainPlugin/Better Locational Damage.esp",
+      "Better Locational Damage.esp"
+     ],
+     [
+      "Better Locational Damage/00 MainPlugin/F4SE/Plugins/RobCo_Patcher/race/Better Locational Damage/BLD_Spell.ini",
+      "F4SE/Plugins/RobCo_Patcher/race/Better Locational Damage/BLD_Spell.ini"
+     ],
+     [
+      "Better Locational Damage/00 MainPlugin/Interface/bld_move.swf",
+      "Interface/bld_move.swf"
+     ],
+     [
+      "Better Locational Damage/00 MainPlugin/Interface/bld_scale.swf",
+      "Interface/bld_scale.swf"
+     ],
+     [
+      "Better Locational Damage/00 MainPlugin/Interface/bleeding.swf",
+      "Interface/bleeding.swf"
+     ],
+     [
+      "Better Locational Damage/00 MainPlugin/MCM/Config/Better Locational Damage/config.json",
+      "MCM/Config/Better Locational Damage/config.json"
+     ],
+     [
+      "Better Locational Damage/00 MainPlugin/MCM/Config/Better Locational Damage/keybinds.json",
+      "MCM/Config/Better Locational Damage/keybinds.json"
+     ],
+     [
+      "Better Locational Damage/00 MainPlugin/MCM/Config/Better Locational Damage/lib.swf",
+      "MCM/Config/Better Locational Damage/lib.swf"
+     ],
+     [
+      "Better Locational Damage/00 MainPlugin/MCM/Config/Better Locational Damage/settings.ini",
+      "MCM/Config/Better Locational Damage/settings.ini"
+     ],
+     [
+      "Better Locational Damage/01 MainDLC",
+      ""
+     ],
+     [
+      "Better Locational Damage/01 OptionalLeveledList",
+      ""
+     ],
+     [
+      "Better Locational Damage/01 OptionalPerks1/Better Perks.esp",
+      "Better Perks.esp"
+     ],
+     [
+      "Better Locational Damage/02 MainDLC",
+      ""
+     ],
+     [
+      "Better Locational Damage/03 MainDLC",
+      ""
+     ],
+     [
+      "Better Locational Damage/04 MainDLC",
+      ""
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "Main Options: Normal Version",
+     "Leveled Lists: BLD - Leveled Lists - All DLCs",
+     "DLCs: DLC Automatron, DLC Wasteland Workshop, Far Harbor, Nuka-World",
+     "Better Perks: Better Perks",
+     "Valdacil's Sorting Patches: -",
+     "Raider Overhaul: -",
+     "Super Mutant Redux: -",
+     "Agony: -",
+     "Weapons of Fate: -",
+     "Nightstriker: -",
+     "Church of Atom Overhaul: -",
+     "Ghoul Edition: -",
+     "Other Modules: -",
+     "Better VATS: -",
+     "Better Chems: -",
+     "Main Options: Done!"
+    ],
+    "notFromArchive": [
+     "F4SE/Plugins/BLD_Helper.dll.old"
+    ]
+   }
+  },
+  {
+   "id": "RU - Bastion - A Power Armor Overhaul - Russian Translation",
+   "modFolder": "RU - Bastion - A Power Armor Overhaul - Russian Translation",
+   "displayName": {
+    "ru": "Bastion - A Power Armor Overhaul - Russian Translation",
+    "en": "Bastion - A Power Armor Overhaul - Russian Translation"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 77069,
+    "fileId": 404025,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/77069?tab=files&file_id=404025"
+   },
+   "version": "2.1.0",
+   "archive": {
+    "nexusFileName": "2e/d1/c7/2ed1c72b-3fae-48be-8bc2-baa58d54b734",
+    "localFileName": "2e/d1/c7/2ed1c72b-3fae-48be-8bc2-baa58d54b734",
+    "size": 2801,
+    "sha256": "55cff3164af00efdefba05b9584e2a7398e1218c7c71fabeca70fff580da64b2"
+   },
+   "plugins": [
+    "Bastion.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Campsite - RUS",
+   "modFolder": "RU - Campsite - RUS",
+   "displayName": {
+    "ru": "Campsite - RUS",
+    "en": "Campsite - RUS"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 85871,
+    "fileId": 327220,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/85871?tab=files&file_id=327220"
+   },
+   "version": "1.0",
+   "archive": {
+    "nexusFileName": "Campsite_RUS-85871-1-0-1721382453.rar",
+    "localFileName": "Campsite_RUS-85871-1-0-1721382453.rar",
+    "size": 11729,
+    "sha256": "5f69e916f9c8824875e6d9fdc3c54f326e2abe8e9bc702570b3b613f2ba1c94c"
+   },
+   "plugins": [
+    "Campsite.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "Campsite RUS",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Survival Options - Russian Translation",
+   "modFolder": "RU - Survival Options - Russian Translation",
+   "displayName": {
+    "ru": "Survival Options - Russian Translation",
+    "en": "Survival Options - Russian Translation"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 34389,
+    "fileId": 139932,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/34389?tab=files&file_id=139932"
+   },
+   "version": "1.7.1",
+   "archive": {
+    "nexusFileName": "Survival Options - Russian Translation-34389-1-7-1.zip",
+    "localFileName": "Survival Options - Russian Translation-34389-1-7-1.zip",
+    "size": 144884,
+    "sha256": "354a12176634b66d7d96d4124372e52b39de419521c4a8ab48358f1259e6b43c"
+   },
+   "plugins": [
+    "SurvivalOptions.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "Survival Options v1.7.1-14650-1-7-1/MCM/Config/SurvivalOptions/config.json",
+      "MCM/Config/SurvivalOptions/config.json"
+     ],
+     [
+      "Survival Options v1.7.1-14650-1-7-1/MCM/Config/SurvivalOptions/keybinds.json",
+      "MCM/Config/SurvivalOptions/keybinds.json"
+     ],
+     [
+      "Survival Options v1.7.1-14650-1-7-1/SurvivalOptions - Main.ba2",
+      "SurvivalOptions - Main.ba2"
+     ],
+     [
+      "Survival Options v1.7.1-14650-1-7-1/SurvivalOptions_Everything",
+      ""
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "Main: Все"
+    ]
+   }
+  },
+  {
+   "id": "RU - Cheat Terminal RU - 1.79",
+   "modFolder": "RU - Cheat Terminal RU - 1.79",
+   "displayName": {
+    "ru": "Cheat Terminal RU - 1.79",
+    "en": "Cheat Terminal RU - 1.79"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 109601,
+    "fileId": 418949,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/109601?tab=files&file_id=418949"
+   },
+   "version": "1.79",
+   "archive": {
+    "nexusFileName": "c8/27/ce/c827ce24-438d-484f-aa5d-c2063a5a00b4",
+    "localFileName": "c8/27/ce/c827ce24-438d-484f-aa5d-c2063a5a00b4",
+    "size": 633087,
+    "sha256": "4ca6bfd0c939947c59e0754afc89005cd222e237e7e899d1a003bf0c3290a592"
+   },
+   "plugins": [
+    "CheatTerminal.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Combined Arms - Modern Weapon Pack (Russian Translate) - Translate",
+   "modFolder": "RU - Combined Arms - Modern Weapon Pack (Russian Translate) - Translate",
+   "displayName": {
+    "ru": "Combined Arms - Modern Weapon Pack (Russian Translate)",
+    "en": "Combined Arms - Modern Weapon Pack (Russian Translate)"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 74519,
+    "fileId": 289005,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/74519?tab=files&file_id=289005"
+   },
+   "version": "1.0",
+   "archive": {
+    "nexusFileName": "Translate-74519-1-0-1694010201.rar",
+    "localFileName": "Translate-74519-1-0-1694010201.rar",
+    "size": 221463,
+    "sha256": "f4d01a3d7f5f9349c11bc4d4f126555af8a8a1130f8a47346d0366c76f985ffb"
+   },
+   "plugins": [
+    "CombinedArmsNV.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - RU556 - Assault Rifle - Russian Localization",
+   "modFolder": "RU - RU556 - Assault Rifle - Russian Localization",
+   "displayName": {
+    "ru": "RU556 - Assault Rifle - Russian Localization",
+    "en": "RU556 - Assault Rifle - Russian Localization"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 42407,
+    "fileId": 172037,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/42407?tab=files&file_id=172037"
+   },
+   "version": "3.0",
+   "archive": {
+    "nexusFileName": "RU556 - Assault Rifle - Russian Localization-42407-3-0-1575514865.rar",
+    "localFileName": "RU556 - Assault Rifle - Russian Localization-42407-3-0-1575514865.rar",
+    "size": 181921996,
+    "sha256": "88ce98655b4fc7d4a15e84c21f827b278cf1df7a522bf235459863ddb39a41f7"
+   },
+   "plugins": [
+    "RU556.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - MK18 CQBR - Russian Localization",
+   "modFolder": "RU - MK18 CQBR - Russian Localization",
+   "displayName": {
+    "ru": "MK18 CQBR - Russian Localization",
+    "en": "MK18 CQBR - Russian Localization"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 48511,
+    "fileId": 195264,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/48511?tab=files&file_id=195264"
+   },
+   "version": "1.0",
+   "archive": {
+    "nexusFileName": "MK18 CQBR - Russian Localization-48511-1-0-1605767730.rar",
+    "localFileName": "MK18 CQBR - Russian Localization-48511-1-0-1605767730.rar",
+    "size": 146869,
+    "sha256": "882bf58ec50df0733633eddefe49a9a6a1f43515aebfd1698e9729dbc6935b6a"
+   },
+   "plugins": [
+    "MK18 - Russian Localization.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - AK74M - Assault Rifle -RUS- 3.5",
+   "modFolder": "RU - AK74M - Assault Rifle -RUS- 3.5",
+   "displayName": {
+    "ru": "AK74M - Assault Rifle -RUS- 3.5",
+    "en": "AK74M - Assault Rifle -RUS- 3.5"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 92573,
+    "fileId": 352179,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/92573?tab=files&file_id=352179"
+   },
+   "version": "3.5",
+   "archive": {
+    "nexusFileName": "AK74M - Assault Rifle -RU- 3.5-92573-3-5-1743202594.7z",
+    "localFileName": "AK74M - Assault Rifle -RU- 3.5-92573-3-5-1743202594.7z",
+    "size": 42227,
+    "sha256": "89a079760eb2e5f9d4330eccf664d627d49df26baeb6e3847389ad423142811b"
+   },
+   "plugins": [
+    "AK74M.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - NCR Ranger Veteran Armor - Russian Translation",
+   "modFolder": "RU - NCR Ranger Veteran Armor - Russian Translation",
+   "displayName": {
+    "ru": "NCR Ranger Veteran Armor - Russian Translation",
+    "en": "NCR Ranger Veteran Armor - Russian Translation"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 38874,
+    "fileId": 157768,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/38874?tab=files&file_id=157768"
+   },
+   "version": "0.41",
+   "archive": {
+    "nexusFileName": "NCR Veteran Ranger Armor - Russian Translation-38874-0-41-1557678331.7z",
+    "localFileName": "NCR Veteran Ranger Armor - Russian Translation-38874-0-41-1557678331.7z",
+    "size": 237626195,
+    "sha256": "2aab36189c3cd679883544a7cafea5f88200fcccf90a173aedb0bc1d998dc25e"
+   },
+   "plugins": [
+    "Rangergearnew.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "NCR Veteran Ranger Armor - Russian Translation",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Tumbajamba's Gunner Armor Collection - RU",
+   "modFolder": "RU - Tumbajamba's Gunner Armor Collection - RU",
+   "displayName": {
+    "ru": "Tumbajamba's Gunner Armor Collection - RU",
+    "en": "Tumbajamba's Gunner Armor Collection - RU"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 87748,
+    "fileId": 359730,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/87748?tab=files&file_id=359730"
+   },
+   "version": "1.01.2",
+   "archive": {
+    "nexusFileName": "Tumbajamba's Gunner Armor Colleciton - RU-87748-1-01-2-1750646298.rar",
+    "localFileName": "Tumbajamba's Gunner Armor Colleciton - RU-87748-1-01-2-1750646298.rar",
+    "size": 73742,
+    "sha256": "abd80d167c71f60faa9f36e67ea21d7d1a0f129bbb795c888f137738710f9973"
+   },
+   "plugins": [
+    "Tumba_Gunner_Collection.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Militarized Minutemen (Rus)",
+   "modFolder": "RU - Militarized Minutemen (Rus)",
+   "displayName": {
+    "ru": "Militarized Minutemen (Rus)",
+    "en": "Militarized Minutemen (Rus)"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 38913,
+    "fileId": 157849,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/38913?tab=files&file_id=157849"
+   },
+   "version": "1.1.2",
+   "archive": {
+    "nexusFileName": "Militarized Minutemen (Rus)-38913-1-1-2-1557791153.rar",
+    "localFileName": "Militarized Minutemen (Rus)-38913-1-1-2-1557791153.rar",
+    "size": 434038,
+    "sha256": "083c97549bf6922bfc3f7cb0b31563a53707ce07f890283cc12523e392fd30b1"
+   },
+   "plugins": [
+    "MilitarizedMinutemen.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "MilitarizedMinutemen_1.1.2_RUS_cat-boy/PickVersion/GreenUniforms/data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Legendary Modification RUS",
+   "modFolder": "RU - Legendary Modification RUS",
+   "displayName": {
+    "ru": "Legendary Modification RUS",
+    "en": "Legendary Modification RUS"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 40034,
+    "fileId": 162012,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/40034?tab=files&file_id=162012"
+   },
+   "version": "1.75",
+   "archive": {
+    "nexusFileName": "Legendary Modification 1.75 RUS-40034-1-75-1563116934.7z",
+    "localFileName": "Legendary Modification 1.75 RUS-40034-1-75-1563116934.7z",
+    "size": 1776575,
+    "sha256": "56219620a3d1f0a514c12b66f1f48563ed64418b3b0f3b549454326cc1eeb52b"
+   },
+   "plugins": [
+    "LegendaryModification.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "English/LegendaryModification Normal/LegendaryModification.esp",
+      "LegendaryModification.esp"
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "Select Difficulty: LegendaryModification - Normal",
+     "Optional: -"
+    ]
+   }
+  },
+  {
+   "id": "RU - Diamond City Expansion (RU)",
+   "modFolder": "RU - Diamond City Expansion (RU)",
+   "displayName": {
+    "ru": "Diamond City Expansion (RU)",
+    "en": "Diamond City Expansion (RU)"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 62449,
+    "fileId": 244056,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/62449?tab=files&file_id=244056"
+   },
+   "version": "1.6.2",
+   "archive": {
+    "nexusFileName": "Diamond City Expansion RU-62449-1-6-2-1658482679.7z",
+    "localFileName": "Diamond City Expansion RU-62449-1-6-2-1658482679.7z",
+    "size": 923105,
+    "sha256": "5a1b46aaa3661cbe53256095739fc9836fbd652298736bb7ca7ed84fd950a00c"
+   },
+   "plugins": [
+    "Stm_DiamondCityExpansion.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Better Goodneighbor - Russian (Full and ESP)",
+   "modFolder": "RU - Better Goodneighbor - Russian (Full and ESP)",
+   "displayName": {
+    "ru": "Better Goodneighbor - Russian (Full and ESP)",
+    "en": "Better Goodneighbor - Russian (Full and ESP)"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 54181,
+    "fileId": 215944,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/54181?tab=files&file_id=215944"
+   },
+   "version": "1.0",
+   "archive": {
+    "nexusFileName": "1.0-54181-1-0-1630515613.rar",
+    "localFileName": "1.0-54181-1-0-1630515613.rar",
+    "size": 29661298,
+    "sha256": "262f07cb9c2519bd70d76539de2b4c9e42c71d6466899b55ca47c17c7a380e3f"
+   },
+   "plugins": [
+    "CrimeTown.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "fomod/CrimeTown.esp",
+      "CrimeTown.esp"
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "Приветствие: Продолжить",
+     "Опции: Перевод",
+     "Дополнительный патч: -"
+    ]
+   }
+  },
+  {
+   "id": "RU - Fusion City Rising (RUS) cat-boy",
+   "modFolder": "RU - Fusion City Rising (RUS) cat-boy",
+   "displayName": {
+    "ru": "Fusion City Rising (RUS) cat-boy",
+    "en": "Fusion City Rising (RUS) cat-boy"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 41821,
+    "fileId": 169839,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/41821?tab=files&file_id=169839"
+   },
+   "version": "1.0",
+   "archive": {
+    "nexusFileName": "Fusion City Rising (RUS) cat-boy-41821-1-0-1572372451.rar",
+    "localFileName": "Fusion City Rising (RUS) cat-boy-41821-1-0-1572372451.rar",
+    "size": 4167694,
+    "sha256": "5ba67cf4b144c0390920d2406d77d3ab752f0e160961bd73a5cc6c103ac9ac26"
+   },
+   "plugins": [
+    "AA FusionCityRising.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "Fusion City Rising v.1.0_Rus_cat-boy/Data",
+    "fomod": false
+   },
+   "onlyWith": "adult"
+  },
+  {
+   "id": "RU - HiPoly Faces REDUX (Seamless Kit - CBBE - TWB - FG - AB) RUS",
+   "modFolder": "RU - HiPoly Faces REDUX (Seamless Kit - CBBE - TWB - FG - AB) RUS",
+   "displayName": {
+    "ru": "HiPoly Faces REDUX (Seamless Kit - CBBE - TWB - FG - AB) RUS",
+    "en": "HiPoly Faces REDUX (Seamless Kit - CBBE - TWB - FG - AB) RUS"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 83687,
+    "fileId": 333814,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/83687?tab=files&file_id=333814"
+   },
+   "version": "1.6",
+   "archive": {
+    "nexusFileName": "HiPoly Faces REDUX - Seamless Kit (CBBE-TWB) 1.6RU-83687-1-6-1726226473.7z",
+    "localFileName": "HiPoly Faces REDUX - Seamless Kit (CBBE-TWB) 1.6RU-83687-1-6-1726226473.7z",
+    "size": 2939,
+    "sha256": "c1ba16d4eb5e9483bd115ae086989f075f908b8c1812f8d86cb190943816a33c"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   },
+   "onlyWith": "adult"
+  },
+  {
+   "id": "RU - Snap'n Build 2.0 -RUS-",
+   "modFolder": "RU - Snap'n Build 2.0 -RUS-",
+   "displayName": {
+    "ru": "Snap'n Build 2.0 -RUS-",
+    "en": "Snap'n Build 2.0 -RUS-"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 92279,
+    "fileId": 350993,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/92279?tab=files&file_id=350993"
+   },
+   "version": "2.0",
+   "archive": {
+    "nexusFileName": "Snap'n Build v2.0 -RU--92279-2-0-1742140105.7z",
+    "localFileName": "Snap'n Build v2.0 -RU--92279-2-0-1742140105.7z",
+    "size": 64995,
+    "sha256": "f2feb2d960ed81500bb50ffbad4a67e82f2092bdc67686cebd13471f942c7f65"
+   },
+   "plugins": [
+    "Snap'n Build.esm"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Workshop Rearranged Russian with SMM Patch (Rus)",
+   "modFolder": "RU - Workshop Rearranged Russian with SMM Patch (Rus)",
+   "displayName": {
+    "ru": "Workshop Rearranged Russian with SMM Patch (Rus)",
+    "en": "Workshop Rearranged Russian with SMM Patch (Rus)"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 97314,
+    "fileId": 370160,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/97314?tab=files&file_id=370160"
+   },
+   "version": "0.6.13",
+   "archive": {
+    "nexusFileName": "Workshop Rearranged Russian-97314-0-6-13-1760551354.rar",
+    "localFileName": "Workshop Rearranged Russian-97314-0-6-13-1760551354.rar",
+    "size": 897290,
+    "sha256": "985d5db9992fdd34dbbf2f54bd91ea0ac30178df64e98a2871c903252d83f014"
+   },
+   "plugins": [
+    "WorkshopRearranged.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Commonwealth Encounter Pack - 1.02 - RU",
+   "modFolder": "RU - Commonwealth Encounter Pack - 1.02 - RU",
+   "displayName": {
+    "ru": "Commonwealth Encounter Pack - 1.02 - RU",
+    "en": "Commonwealth Encounter Pack - 1.02 - RU"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 104032,
+    "fileId": 405665,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/104032?tab=files&file_id=405665"
+   },
+   "version": "1.03",
+   "archive": {
+    "nexusFileName": "fc/3c/71/fc3c71d3-4875-419a-b024-c81d3c50620e",
+    "localFileName": "fc/3c/71/fc3c71d3-4875-419a-b024-c81d3c50620e",
+    "size": 187032,
+    "sha256": "43cf73d807928ead4f1da1b00bed79e1ddd15e092c23c46394ce66e5ed0837b6"
+   },
+   "plugins": [
+    "CommonwealthEncounterPack.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "Commonwealth Encounter Pack - RU",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Subway Runner - Revival - RU",
+   "modFolder": "RU - Subway Runner - Revival - RU",
+   "displayName": {
+    "ru": "Subway Runner - Revival - RU",
+    "en": "Subway Runner - Revival - RU"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 84585,
+    "fileId": 323658,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/84585?tab=files&file_id=323658"
+   },
+   "version": "2.02.2",
+   "archive": {
+    "nexusFileName": "Subway Runner Revival - Optimized Expanded - RUs-84585-2-02-1718872026.rar",
+    "localFileName": "Subway Runner Revival - Optimized Expanded - RUs-84585-2-02-1718872026.rar",
+    "size": 2355108,
+    "sha256": "2aec5c17d4ccb1f5cf99688cff3337434d0dc0ef697184b0cf5e8d209ef11f37"
+   },
+   "plugins": [
+    "SubwayRunnerCRPCompat.esp",
+    "SubwayRunnerDarkerTunnels.esp",
+    "SubwayRunnerGNOverhaulCompat.esp",
+    "SubwayRunnerLechmereCompat.esp",
+    "SubwayRunnnerDynamicLighting.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - In The Flesh - Russian translation",
+   "modFolder": "RU - In The Flesh - Russian translation",
+   "displayName": {
+    "ru": "In The Flesh - Russian translation",
+    "en": "In The Flesh - Russian translation"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 78774,
+    "fileId": 304300,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/78774?tab=files&file_id=304300"
+   },
+   "version": "1.4",
+   "archive": {
+    "nexusFileName": "In The Flesh RUS-78774-1-4-1708492810.zip",
+    "localFileName": "In The Flesh RUS-78774-1-4-1708492810.zip",
+    "size": 290536,
+    "sha256": "4fda41d9fdffcdf9c5c314801322374a051f598569e990dd124eb4e15d15c93a"
+   },
+   "plugins": [
+    "In The Flesh.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Mutant Menagerie - Life Finds A Way (RUS)",
+   "modFolder": "RU - Mutant Menagerie - Life Finds A Way (RUS)",
+   "displayName": {
+    "ru": "Mutant Menagerie - Life Finds A Way (RUS)",
+    "en": "Mutant Menagerie - Life Finds A Way (RUS)"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 78968,
+    "fileId": 320969,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/78968?tab=files&file_id=320969"
+   },
+   "version": "1.42",
+   "archive": {
+    "nexusFileName": "Mutant Menagerie - Main Files (RUS)-78968-1-42-1717493246.zip",
+    "localFileName": "Mutant Menagerie - Main Files (RUS)-78968-1-42-1717493246.zip",
+    "size": 182322889,
+    "sha256": "ae5cd30598414a9f49b7c21b91ce813095cc27f5343acbcdfe72d4d588bf7a07"
+   },
+   "plugins": [
+    "MutantMenagerie.esm"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "Mutant Menagerie Files/MutantMenagerie - Main.ba2",
+      "MutantMenagerie - Main.ba2"
+     ],
+     [
+      "Mutant Menagerie Files/ESM Deep",
+      ""
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "Main File Options: Mutant Menagerie - Full",
+     "Add-On Options: -"
+    ]
+   }
+  },
+  {
+   "id": "RU - Basement Living - Bunker and Basement Player Homes (RU)",
+   "modFolder": "RU - Basement Living - Bunker and Basement Player Homes (RU)",
+   "displayName": {
+    "ru": "Basement Living - Bunker and Basement Player Homes (RU)",
+    "en": "Basement Living - Bunker and Basement Player Homes (RU)"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 63886,
+    "fileId": 249176,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/63886?tab=files&file_id=249176"
+   },
+   "version": "1.3",
+   "archive": {
+    "nexusFileName": "Basement Living (RU)-63886-1-3-1662131367.7z",
+    "localFileName": "Basement Living (RU)-63886-1-3-1662131367.7z",
+    "size": 109117,
+    "sha256": "ae371b6c7d2bd54f9780a154f759bea1e5fa1a636e09fffd8f0a286d1e637c7c"
+   },
+   "plugins": [
+    "BasementLiving.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Locksmith - Russian Translate",
+   "modFolder": "RU - Locksmith - Russian Translate",
+   "displayName": {
+    "ru": "Locksmith - Russian Translate",
+    "en": "Locksmith - Russian Translate"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 76232,
+    "fileId": 294821,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/76232?tab=files&file_id=294821"
+   },
+   "version": "1.02",
+   "archive": {
+    "nexusFileName": "Locksmith v1.02  - RU Translate-76232-1-02-1700671890.zip",
+    "localFileName": "Locksmith v1.02  - RU Translate-76232-1-02-1700671890.zip",
+    "size": 2653,
+    "sha256": "706b4ea1c86625a14ab86fac81c0ca5f585be43b9c4e3e747aa585f3bbfee09e"
+   },
+   "plugins": [
+    "Locksmith.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Shaikujin's Better warning for settlements being attacked - RU",
+   "modFolder": "RU - Shaikujin's Better warning for settlements being attacked - RU",
+   "displayName": {
+    "ru": "Shaikujin's Better warning for settlements being attacked - RU",
+    "en": "Shaikujin's Better warning for settlements being attacked - RU"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 71271,
+    "fileId": 277045,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/71271?tab=files&file_id=277045"
+   },
+   "version": "5.1",
+   "archive": {
+    "nexusFileName": "Shaikujin's Better warning for settlements being a-71271-5-1-1683914228.zip",
+    "localFileName": "Shaikujin's Better warning for settlements being a-71271-5-1-1683914228.zip",
+    "size": 1236,
+    "sha256": "ff636a04bf82ea99dda571e0395d3bf32cf7ebc5fb81ac983e29586e89dc0c3f"
+   },
+   "plugins": [
+    "SkjAlert_All_DLC.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Munitions - Ammo Expansion Project - 1.3.4 RU",
+   "modFolder": "RU - Munitions - Ammo Expansion Project - 1.3.4 RU",
+   "displayName": {
+    "ru": "Munitions - Ammo Expansion Project - 1.3.4 RU",
+    "en": "Munitions - Ammo Expansion Project - 1.3.4 RU"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 72057,
+    "fileId": 392400,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/72057?tab=files&file_id=392400"
+   },
+   "version": "1.3.4",
+   "archive": {
+    "nexusFileName": "Munitions - An Ammo Expansion - RU-72057-1-3-4-1775459932.rar",
+    "localFileName": "Munitions - An Ammo Expansion - RU-72057-1-3-4-1775459932.rar",
+    "size": 25284,
+    "sha256": "70319b623d5d596aad0e35b5527be243cbf77596b3d54ab2beaac190a0399eb0"
+   },
+   "plugins": [
+    "Munitions - An Ammo Expansion.esl"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Laser RCW - Fallout New Vegas - RU",
+   "modFolder": "RU - Laser RCW - Fallout New Vegas - RU",
+   "displayName": {
+    "ru": "Laser RCW - Fallout New Vegas - RU",
+    "en": "Laser RCW - Fallout New Vegas - RU"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 92248,
+    "fileId": 352447,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/92248?tab=files&file_id=352447"
+   },
+   "version": "1.0.4.1",
+   "archive": {
+    "nexusFileName": "Laser RCW - RU-92248-1-0-4-1-1743405058.rar",
+    "localFileName": "Laser RCW - RU-92248-1-0-4-1-1743405058.rar",
+    "size": 57351,
+    "sha256": "c6d6b54a125c9a10733e7c929ace9668a5e6f4bf389d6fb73f72fdb54307c55c"
+   },
+   "plugins": [
+    "CWRCW.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Full Body First Person - F4SE RU - 1.2.3",
+   "modFolder": "RU - Full Body First Person - F4SE RU - 1.2.3",
+   "displayName": {
+    "ru": "Full Body First Person - F4SE RU - 1.2.3",
+    "en": "Full Body First Person - F4SE RU - 1.2.3"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 109660,
+    "fileId": 414359,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/109660?tab=files&file_id=414359"
+   },
+   "version": "1.2.3",
+   "archive": {
+    "nexusFileName": "94/ea/9c/94ea9cec-5b29-4e08-8df9-b94bf1728d0e",
+    "localFileName": "94/ea/9c/94ea9cec-5b29-4e08-8df9-b94bf1728d0e",
+    "size": 4745,
+    "sha256": "0ea72dd6cf6ce19d9fc3c64537eeaccb034ff3148742a1cd0b3c626f4874ec21"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  }
+ ],
+ "note": "Переводы модов. Каждый проверен: число записей и мастера плагина совпадают с оригиналом. Моды с onlyWith=adult ставить только вместе с пакетом adult."
+}

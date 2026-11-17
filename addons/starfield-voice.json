@@ -1,0 +1,104 @@
+{
+ "schema": 1,
+ "modlistId": "starfield",
+ "addonId": "starfield-voice",
+ "listVersion": "0.1.0",
+ "forMainVersion": "0.1.0",
+ "generated": "2026-11-17",
+ "mods": [
+  {
+   "id": "RU Voice NGC404 v6.0",
+   "modFolder": "RU озвучка - NGC404",
+   "onlyWith": "ru",
+   "url": "https://www.playground.ru/starfield/file/starfield_russkaya_ozvuchka_v6_0_ngc404_dlc-1670529",
+   "version": "6.0 + DLC",
+   "archives": [
+    {
+     "localFileName": "Starfield.part1.rar",
+     "size": 2147483648,
+     "sha256": null
+    },
+    {
+     "localFileName": "Starfield.part2.rar",
+     "size": 2147483648,
+     "sha256": null
+    },
+    {
+     "localFileName": "Starfield.part3.rar",
+     "size": 2016704904,
+     "sha256": null
+    },
+    {
+     "localFileName": "",
+     "size": 0,
+     "sha256": null
+    }
+   ],
+   "install": {
+    "type": "files",
+    "note": "Многотомный RAR: распаковывать с part1. Из основного архива взять Starfield/Data/NGC404 - Voices01.ba2; из архива DLC — 5 ba2 ниже (путь внутри архива не записан, искать по имени). Всё в корень папки мода.",
+    "map": [
+     [
+      "Starfield/Data/NGC404 - Voices01.ba2",
+      "NGC404 - Voices01.ba2"
+     ],
+     [
+      "*/ShatteredSpace - Voices_en.ba2",
+      "ShatteredSpace - Voices_en.ba2"
+     ],
+     [
+      "*/SFBGS003 - Voices_en.ba2",
+      "SFBGS003 - Voices_en.ba2"
+     ],
+     [
+      "*/SFBGS004 - Voices_en.ba2",
+      "SFBGS004 - Voices_en.ba2"
+     ],
+     [
+      "*/SFBGS00D - Voices_en.ba2",
+      "SFBGS00D - Voices_en.ba2"
+     ],
+     [
+      "*/SFBGS050 - Voices_en.ba2",
+      "SFBGS050 - Voices_en.ba2"
+     ]
+    ],
+    "expectFiles": {
+     "NGC404 - Voices01.ba2": 6418289915,
+     "ShatteredSpace - Voices_en.ba2": 2213633778,
+     "SFBGS003 - Voices_en.ba2": 286676929,
+     "SFBGS004 - Voices_en.ba2": 22213218,
+     "SFBGS00D - Voices_en.ba2": 335607031,
+     "SFBGS050 - Voices_en.ba2": 530531273
+    }
+   },
+   "plugins": [],
+   "nexus": {
+    "game": "starfield",
+    "modId": 0,
+    "fileId": 0
+   },
+   "archive": {
+    "localFileName": "",
+    "size": 0,
+    "sha256": null
+   },
+   "displayName": {
+    "ru": "Русская озвучка NGC404",
+    "en": "Russian voice-over NGC404"
+   },
+   "status": "waitingAuthorPermission"
+  }
+ ],
+ "default": true,
+ "filePatches": [
+  {
+   "modFolder": "@profile",
+   "file": "StarfieldCustom.ini",
+   "section": "Archive",
+   "key": "sResourceEnglishVoiceList",
+   "value": "Starfield - Voices01.ba2, Starfield - Voices02.ba2, Starfield - VoicesPatch.ba2, NGC404 - Voices01.ba2",
+   "onlyWith": "ru"
+  }
+ ]
+}

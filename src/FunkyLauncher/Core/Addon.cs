@@ -18,6 +18,10 @@ public sealed class AddonFile
     [JsonPropertyName("packId")] public string PackId { set { if (AddonId.Length == 0) AddonId = value; } }
     [JsonPropertyName("listVersion")] public string ListVersion { get; set; } = "";
     [JsonPropertyName("forMainVersion")] public string ForMainVersion { get; set; } = "";
+    /// <summary>Optional packs (HD, upscaling): ticked by default for a new install. Never used for 18+.</summary>
+    [JsonPropertyName("default")] public bool? Default { get; set; }
+    /// <summary>INI values set in this pack's mod files while the pack is on (e.g. frame generation off by default).</summary>
+    [JsonPropertyName("filePatches")] public List<FilePatch> FilePatches { get; set; } = new();
     [JsonPropertyName("mods")] public List<AddonMod> Mods { get; set; } = new();
 }
 
@@ -35,6 +39,32 @@ public sealed class AddonMod
     [JsonPropertyName("install")] public AddonInstall Install { get; set; } = new();
     [JsonPropertyName("modlist")] public AddonAnchor Modlist { get; set; } = new();
     [JsonPropertyName("dependsOn")] public List<string> DependsOn { get; set; } = new();
+    /// <summary>Plugins (.esm/.esp) of the mod — Bethesda games; their order comes from the modlist's order file.</summary>
+    [JsonPropertyName("plugins")] public List<string> Plugins { get; set; } = new();
+    /// <summary>Mod folders this mod stands in for: switched off while it is on (e.g. the 18+ variant of an outfit mod).</summary>
+    [JsonPropertyName("replaces")] public List<string> Replaces { get; set; } = new();
+    /// <summary>Only together with that pack (e.g. "adult": a translation of an 18+ mod); installed with its own pack, switched on only then.</summary>
+    [JsonPropertyName("onlyWith")] public string? OnlyWith { get; set; }
+    /// <summary>A file not on Nexus: the page where the player presses the site's download button (the launcher installs the file).</summary>
+    [JsonPropertyName("url")] public string? Url { get; set; }
+    /// <summary>Our own small file (a FunkyPlay compatibility patch) built into the launcher: "files/starfield/X.esm".</summary>
+    [JsonPropertyName("embedded")] public string? Embedded { get; set; }
+    /// <summary>Several files make one mod (e.g. a multi-part RAR + a DLC archive); empty = the single <see cref="Archive"/>.</summary>
+    [JsonPropertyName("archives")] public List<AddonArchive> Archives { get; set; } = new();
+    /// <summary>"" / "ready" = offered; anything else (e.g. "waitingAuthorPermission") keeps the mod out of the launcher.</summary>
+    [JsonPropertyName("status")] public string? Status { get; set; }
+}
+
+/// <summary>One INI value the launcher sets in a mod's file after installing it (e.g. a setting that breaks another mod).</summary>
+public sealed class FilePatch
+{
+    [JsonPropertyName("modFolder")] public string ModFolder { get; set; } = "";
+    [JsonPropertyName("file")] public string File { get; set; } = "";
+    [JsonPropertyName("section")] public string Section { get; set; } = "";
+    [JsonPropertyName("key")] public string Key { get; set; } = "";
+    [JsonPropertyName("value")] public string Value { get; set; } = "";
+    /// <summary>Only while that pack is on (e.g. "ru": the Russian voice-over's archive list).</summary>
+    [JsonPropertyName("onlyWith")] public string? OnlyWith { get; set; }
 }
 
 public sealed class AddonNexus
@@ -49,14 +79,40 @@ public sealed class AddonArchive
 {
     [JsonPropertyName("localFileName")] public string LocalFileName { get; set; } = "";
     [JsonPropertyName("size")] public long Size { get; set; }
-    [JsonPropertyName("sha256")] public string Sha256 { get; set; } = "";
+    [JsonPropertyName("sha256")] public string? Sha256 { get; set; } = "";
 }
 
 public sealed class AddonInstall
 {
-    /// <summary>"copyAll": the whole archive goes into mods/&lt;modFolder&gt;.</summary>
+    /// <summary>
+    /// "copyAll": the whole archive (or its folder <see cref="From"/>) goes into mods/&lt;modFolder&gt;;
+    /// "fomod" / "files": exactly the files in <see cref="Files"/>; "gameRoot": like "files" (the launcher copies them
+    /// into the game folder before PLAY, see gameLoaders); "skip": not installed.
+    /// </summary>
     [JsonPropertyName("type")] public string Type { get; set; } = "copyAll";
     [JsonPropertyName("expectedTopFolders")] public List<string> ExpectedTopFolders { get; set; } = new();
+    /// <summary>Folder inside the archive whose content becomes the mod ("" = the archive root).</summary>
+    [JsonPropertyName("from")] public string? From { get; set; }
+    /// <summary>Explicit layout: [path in archive, path in the mod folder] — a folder is copied with everything in it.</summary>
+    [JsonPropertyName("map")] public List<List<string>> Map { get; set; } = new();
+}
+
+/// <summary>
+/// Load order of a Bethesda modlist (Starfield): every mod folder of the base and all its packs, top = highest
+/// priority (MO2 modlist.txt), and every plugin in load order. The launcher writes the profile from it, keeping only
+/// what is installed and switched on — so language, 18+ and HD planets need no separate order files.
+/// </summary>
+public sealed class ModOrder
+{
+    [JsonPropertyName("modlistId")] public string ModlistId { get; set; } = "";
+    [JsonPropertyName("modlist")] public List<string> Modlist { get; set; } = new();
+    [JsonPropertyName("plugins")] public List<string> Plugins { get; set; } = new();
+    /// <summary>Plugins that stay listed but switched off (e.g. a duplicate .esp that breaks NPC outfits).</summary>
+    [JsonPropertyName("pluginsOff")] public List<string> PluginsOff { get; set; } = new();
+    /// <summary>Lines of the profile's game INI (StarfieldCustom.ini); "{lang}" becomes ru / en.</summary>
+    [JsonPropertyName("ini")] public List<string> Ini { get; set; } = new();
+    /// <summary>INI values set in mod files after the install (applied every time the profile is written).</summary>
+    [JsonPropertyName("filePatches")] public List<FilePatch> FilePatches { get; set; } = new();
 }
 
 /// <summary>Where the mod goes in modlist.txt: right above <see cref="InsertAbove"/>, else right below the fallback.</summary>
@@ -83,6 +139,46 @@ public static class Addons
     /// <summary>The Russian pack (mod translations on top of the English base), or null if the modlist has none.</summary>
     public static AddonFile? Russian(string modlistId) => Load(modlistId, "ru");
 
+    /// <summary>The base of a modlist installed from a plain Nexus list (Starfield) instead of a .wabbajack file.</summary>
+    public static AddonFile? Base(string modlistId) => Load(modlistId, "main");
+
+    /// <summary>"HD planets": big optional textures, off by default.</summary>
+    public static AddonFile? Hd(string modlistId) => Load(modlistId, "hd");
+
+    /// <summary>Optional packs shown as a checkbox each (off by default): Starfield "hd" planets, Fallout 4 "upscaling" (DLSS / FSR).</summary>
+    public static readonly string[] ExtraKinds = { "hd", "upscaling", "voice" };
+
+    public static IEnumerable<(string Kind, AddonFile Pack)> Extras(string modlistId) =>
+        ExtraKinds.Select(k => (k, Load(modlistId, k))).Where(x => x.Item2 != null).Select(x => (x.k, x.Item2!));
+
+    /// <summary>The pack of a kind ("ru", "adult", "hd", …) — for mods that come "onlyWith" another pack.</summary>
+    public static AddonFile? OfKind(string modlistId, string kind) => Load(modlistId, kind);
+
+    /// <summary>The load order of a Nexus-list modlist (mods and plugins of the base and all packs), or null.</summary>
+    public static ModOrder? Order(string modlistId)
+    {
+        try
+        {
+            ModOrder? o = null;
+            var cached = CacheFile(modlistId, "order");
+            if (File.Exists(cached))
+                try { o = JsonSerializer.Deserialize<ModOrder>(File.ReadAllText(cached)); } catch { o = null; }
+            if (o == null || o.ModlistId != modlistId || o.Modlist.Count == 0)
+            {
+                var res = System.Windows.Application.GetResourceStream(new Uri($"pack://application:,,,/addons/{modlistId}-order.json"));
+                if (res == null) return null;
+                using var s = res.Stream;
+                o = JsonSerializer.Deserialize<ModOrder>(s);
+            }
+            return o != null && o.ModlistId == modlistId && o.Modlist.Count > 0 ? o : null;
+        }
+        catch { return null; }
+    }
+
+    /// <summary>All packs of a modlist that the launcher installs from Nexus: base, HD, Russian, 18+.</summary>
+    public static IEnumerable<AddonFile> All(string modlistId) =>
+        new[] { Base(modlistId) }.Concat(Extras(modlistId).Select(x => x.Pack)).Concat(new[] { Russian(modlistId), Adult(modlistId) }).Where(a => a != null)!;
+
     private const string OnlineBase = "https://raw.githubusercontent.com/FunkyPlay/FunkyLauncher/main/addons/";
     private static string CacheFile(string modlistId, string kind) =>
         Path.Combine(AppConfig.DataDir, "addons", $"{modlistId}-{kind}.json");
@@ -95,13 +191,21 @@ public static class Addons
     {
         using var http = new System.Net.Http.HttpClient { Timeout = TimeSpan.FromSeconds(15) };
         foreach (var id in modlistIds)
-            foreach (var kind in new[] { "ru", "adult" })
+            foreach (var kind in new[] { "ru", "adult", "main", "order" }.Concat(ExtraKinds))
             {
                 try
                 {
                     var json = await http.GetStringAsync(OnlineBase + Uri.EscapeDataString($"{id}-{kind}.json"), token);
-                    var a = JsonSerializer.Deserialize<AddonFile>(json);
-                    if (a == null || a.ModlistId != id || a.Mods.Count == 0) continue;
+                    if (kind == "order")
+                    {
+                        var o = JsonSerializer.Deserialize<ModOrder>(json);
+                        if (o == null || o.ModlistId != id || o.Modlist.Count == 0) continue;
+                    }
+                    else
+                    {
+                        var a = JsonSerializer.Deserialize<AddonFile>(json);
+                        if (a == null || a.ModlistId != id || a.Mods.Count == 0) continue;
+                    }
                     var file = CacheFile(id, kind);
                     Directory.CreateDirectory(Path.GetDirectoryName(file)!);
                     await File.WriteAllTextAsync(file, json, token);
@@ -127,7 +231,9 @@ public static class Addons
                 a = JsonSerializer.Deserialize<AddonFile>(s);
             }
             if (a == null || a.ModlistId != modlistId) return null;
-            a.Mods = a.Mods.Where(m => !m.Blocked && m.ModFolder.Length > 0 && m.Archive.LocalFileName.Length > 0).ToList();
+            a.Mods = a.Mods.Where(m => !m.Blocked && m.Install.Type != "skip" && m.ModFolder.Length > 0
+                && (string.IsNullOrEmpty(m.Status) || m.Status == "ready")
+                && (!string.IsNullOrEmpty(m.Archive.LocalFileName) || m.Archives.Count > 0)).ToList();
             foreach (var m in a.Mods)
                 if (m.DisplayName.Ru.Length == 0) { m.DisplayName.Ru = m.Id; m.DisplayName.En = m.Id; }
             return a.Mods.Count > 0 ? a : null;

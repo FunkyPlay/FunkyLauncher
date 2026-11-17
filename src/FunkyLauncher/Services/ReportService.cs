@@ -17,7 +17,7 @@ public static class ReportService
     {
         var name = $"FunkyLauncher-report-{DateTime.Now:yyyyMMdd-HHmm}.zip";
         var target = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), name);
-        var game = await SystemCheck.FindGameAsync(ml.Game, token);
+        var game = await SystemCheck.FindGameAsync(ml, token);
 
         var info = new StringBuilder()
             .AppendLine($"Funky Launcher {AppConfig.Version}")

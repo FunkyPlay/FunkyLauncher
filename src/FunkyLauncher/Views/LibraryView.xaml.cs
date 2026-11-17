@@ -70,6 +70,8 @@ public partial class LibraryView : UserControl
 
         CleanGameButton.Content = Loc.T("loaders.clean");
         CleanGameButton.Visibility = GameLoaders.Placed(m) ? Visibility.Visible : Visibility.Collapsed;
+        ShaderCacheButton.Content = Loc.T("shader.reset");
+        ShaderCacheButton.Visibility = installed && ShaderCache.Has(m) ? Visibility.Visible : Visibility.Collapsed;
 
         var prev = s.PreviousOf(m);
         RollbackButton.Visibility = DeleteOldButton.Visibility = prev != null ? Visibility.Visible : Visibility.Collapsed;
@@ -204,7 +206,7 @@ public partial class LibraryView : UserControl
         {
             // 1) the game was updated by Steam / Epic / GOG → mods may break
             PlayMessage.Text = Loc.T("play.checking");
-            var game = await SystemCheck.FindGameAsync(m.Game, CancellationToken.None);
+            var game = await SystemCheck.FindGameAsync(m, CancellationToken.None);
             if (game != null && !LaunchWatcher.SameGameVersion(game.Version, m.GameVersion))
             {
                 var answer = MessageBox.Show(_main, Loc.F("play.version.text", m.Game, game.Version, m.Title, m.GameVersion),
@@ -332,6 +334,24 @@ public partial class LibraryView : UserControl
                 : Loc.F("loaders.clean.kept", string.Join(", ", kept));
         }
         catch (Exception ex) { RefreshSelected(); PlayMessage.Text = Loc.F("loaders.error", ex.Message); }
+    }
+
+    private async void ShaderCache_Click(object sender, RoutedEventArgs e)
+    {
+        var m = _main.Selected;
+        if (_watching || ShaderCache.GameRunning(m)) { PlayMessage.Text = Loc.T("shader.running"); return; }
+        if (MessageBox.Show(_main, Loc.T("shader.confirm"), Loc.T("shader.reset"),
+                MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No) != MessageBoxResult.Yes) return;
+        ShaderCacheButton.IsEnabled = false;
+        try
+        {
+            var game = await SystemCheck.FindGameAsync(m, CancellationToken.None);
+            var (files, bytes, skipped) = await Task.Run(() => ShaderCache.Reset(m, game?.Path));
+            PlayMessage.Text = files == 0 && skipped == 0 ? Loc.T("shader.empty")
+                : Loc.F("shader.done", files, Math.Round(bytes / 1048576.0)) + (skipped > 0 ? " " + Loc.F("shader.skipped", skipped) : "");
+        }
+        catch (Exception ex) { PlayMessage.Text = ex.Message; }
+        finally { ShaderCacheButton.IsEnabled = true; }
     }
 
     private async void DeleteOld_Click(object sender, RoutedEventArgs e)

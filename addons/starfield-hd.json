@@ -1,0 +1,57 @@
+{
+ "schema": 1,
+ "modlistId": "starfield",
+ "addonId": "starfield-hd",
+ "listVersion": "0.1.0",
+ "forMainVersion": "0.1.0",
+ "generated": "2026-11-17",
+ "mods": [
+  {
+   "id": "High-Resolution Planet Textures",
+   "modFolder": "High-Resolution Planet Textures",
+   "nexus": {
+    "game": "starfield",
+    "modId": 14207,
+    "fileId": 63217,
+    "filePage": "https://www.nexusmods.com/starfield/mods/14207?tab=files&file_id=63217"
+   },
+   "version": "1.1.2",
+   "archive": {
+    "nexusFileName": "High-Res Planets Textures-14207-1-1-2-1776411116.zip",
+    "size": 10589987929,
+    "sha256": "f04a0d58c6614adee61506a84a3700c4f7b329ffcffd86bb8f09967a96109be1",
+    "localFileName": "High-Res Planets Textures-14207-1-1-2-1776411116.zip"
+   },
+   "plugins": [
+    "Checker_HD_Planets.esm"
+   ],
+   "ru": "noText",
+   "install": {
+    "type": "files",
+    "fomod": null,
+    "map": [
+     [
+      "Checker_HD_Planets - Textures01.ba2",
+      "Checker_HD_Planets - Textures01.ba2"
+     ],
+     [
+      "Checker_HD_Planets - Textures02.ba2",
+      "Checker_HD_Planets - Textures02.ba2"
+     ],
+     [
+      "Checker_HD_Planets - Textures03.ba2",
+      "Checker_HD_Planets - Textures03.ba2"
+     ],
+     [
+      "Checker_HD_Planets.esm",
+      "Checker_HD_Planets.esm"
+     ]
+    ]
+   },
+   "displayName": {
+    "ru": "High-Resolution Planet Textures",
+    "en": "High-Resolution Planet Textures"
+   }
+  }
+ ]
+}

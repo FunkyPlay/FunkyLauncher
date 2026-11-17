@@ -33,6 +33,27 @@ public static class SystemCheck
         return found;
     }
 
+    /// <summary>
+    /// The game of a modlist: Wabbajack's store detection first; then (games Wabbajack does not see, e.g. a
+    /// Starfield copy outside Steam) the folder the player picked, the Steam libraries and the catalog's folder hints.
+    /// The version is the game exe's file version.
+    /// </summary>
+    public static async Task<GameInfo?> FindGameAsync(Modlist ml, CancellationToken token)
+    {
+        GameInfo? found = null;
+        try { found = await FindGameAsync(ml.Game, token); } catch (OperationCanceledException) { throw; } catch { }
+        if (found != null || string.IsNullOrEmpty(ml.GameExe)) return found;
+        foreach (var dir in GameFolders.Candidates(ml))
+        {
+            var exe = System.IO.Path.Combine(dir, ml.GameExe);
+            if (!File.Exists(exe)) continue;
+            var v = System.Diagnostics.FileVersionInfo.GetVersionInfo(exe);
+            var ver = $"{v.FileMajorPart}.{v.FileMinorPart}.{v.FileBuildPart}";
+            return new GameInfo { Version = ver, Path = System.IO.Path.GetFullPath(dir).TrimEnd('\\') };
+        }
+        return null;
+    }
+
     /// <summary>Folders where installs often break.</summary>
     public static bool IsBadFolder(string dir, string? gamePath)
     {
@@ -54,6 +75,17 @@ public static class SystemCheck
         return full.Length > 80; // long paths break some mods
     }
 
+    /// <summary>
+    /// The DLC proof is a folder (Cyberpunk: archive/pc/ep1) or a file (Starfield: Data/ShatteredSpace.esm);
+    /// several separated by ";" must all be there (Fallout 4: all six DLC).
+    /// </summary>
+    private static bool DlcPresent(string gamePath, string rel) =>
+        rel.Split(';', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries).All(r =>
+        {
+            var p = System.IO.Path.Combine(gamePath, r);
+            return Directory.Exists(p) || File.Exists(p);
+        });
+
     public static (long FreeBytes, string Drive) FreeSpace(string dir)
     {
         try
@@ -74,10 +106,21 @@ public static class SystemCheck
         var installDir = settings.InstallDir(ml);
         var installed = settings.IsInstalled(ml);
 
-        var file = settings.ResolveWabbajack(ml);
-        if (file != null) items.Add(new CheckItem(CheckState.Ok, Loc.T("check.modlist.ok"), file));
-        else if (!string.IsNullOrEmpty(ml.WabbajackUrl)) items.Add(new CheckItem(CheckState.Warning, Loc.T("check.modlist.download")));
-        else items.Add(new CheckItem(CheckState.Error, Loc.T("check.modlist.no"), Loc.T("check.modlist.hint")));
+        var nexusList = Mo2Profile.IsNexusList(ml);
+        if (nexusList)
+        {
+            var main = Addons.Base(ml.Id);
+            items.Add(main != null
+                ? new CheckItem(CheckState.Ok, Loc.F("check.list.ok", main.Mods.Count))
+                : new CheckItem(CheckState.Error, Loc.T("check.list.no"), Loc.T("check.modlist.hint")));
+        }
+        else
+        {
+            var file = settings.ResolveWabbajack(ml);
+            if (file != null) items.Add(new CheckItem(CheckState.Ok, Loc.T("check.modlist.ok"), file));
+            else if (!string.IsNullOrEmpty(ml.WabbajackUrl)) items.Add(new CheckItem(CheckState.Warning, Loc.T("check.modlist.download")));
+            else items.Add(new CheckItem(CheckState.Error, Loc.T("check.modlist.no"), Loc.T("check.modlist.hint")));
+        }
 
         var wjVer = WabbajackService.CliVersion();
         items.Add(wjVer != null
@@ -85,12 +128,17 @@ public static class SystemCheck
             : new CheckItem(CheckState.Warning, Loc.T("check.wj.no")));
 
         GameInfo? game = null;
-        if (wjVer != null)
+        if (wjVer != null || nexusList)
         {
-            try { game = await FindGameAsync(ml.Game, token); } catch (OperationCanceledException) { throw; } catch { }
+            try { game = await FindGameAsync(ml, token); } catch (OperationCanceledException) { throw; } catch { }
         }
 
-        if (game == null && wjVer == null)
+        if (game == null && nexusList)
+        {
+            // the launcher looks for the game itself; if it can't, the player shows the folder ("Game folder…")
+            items.Add(new CheckItem(CheckState.Error, Loc.F("check.game.no", ml.Game), Loc.T("check.game.pick")));
+        }
+        else if (game == null && wjVer == null)
         {
             // the game is found through wabbajack-cli; a new player gets it with the first step of INSTALL
             items.Add(new CheckItem(CheckState.Warning, Loc.F("check.game.later", ml.Game), Loc.T("check.game.later.hint")));
@@ -109,7 +157,7 @@ public static class SystemCheck
             if (!string.IsNullOrEmpty(ml.DlcCheckPath))
             {
                 var dlc = ml.DlcName?.ToString() ?? "DLC";
-                items.Add(Directory.Exists(System.IO.Path.Combine(game.Path, ml.DlcCheckPath))
+                items.Add(DlcPresent(game.Path, ml.DlcCheckPath)
                     ? new CheckItem(CheckState.Ok, Loc.F("check.dlc.ok", dlc))
                     : new CheckItem(CheckState.Error, Loc.F("check.dlc.no", dlc), Loc.T("check.dlc.hint")));
             }
@@ -129,6 +177,13 @@ public static class SystemCheck
             ? new CheckItem(CheckState.Ok, Loc.T("check.nexus.ok"))
             : new CheckItem(CheckState.Error, Loc.T("check.nexus.no"), Loc.T("check.nexus.hint")));
 
+        // honest note on how downloading works (wording checked by the legal chat): both ways, same weight, no sales pitch
+        if (!installed)
+        {
+            var files = nexusList ? Addons.Base(ml.Id)?.Mods.Count ?? ml.ModCount : ml.ModCount;
+            items.Add(new CheckItem(CheckState.Warning, Loc.T("check.download.how"), Loc.F("check.download.hint", files)));
+        }
+
         return items;
     }
 
@@ -138,16 +193,23 @@ public static class SystemCheck
     /// </summary>
     public static async Task EnsureGameReadyAsync(Modlist ml, CancellationToken token)
     {
-        var game = await FindGameAsync(ml.Game, token);
+        await EnsureGameReadyAndGetAsync(ml, token);
+    }
+
+    /// <summary>Same as <see cref="EnsureGameReadyAsync"/>, returns the game found.</summary>
+    public static async Task<GameInfo> EnsureGameReadyAndGetAsync(Modlist ml, CancellationToken token)
+    {
+        var game = await FindGameAsync(ml, token);
         if (game == null)
             throw new GameCheckException(Loc.F("check.game.no", ml.Game) + ". " + Loc.T("check.game.hint"));
         if (!string.IsNullOrEmpty(ml.GameVersion) && !LaunchWatcher.SameGameVersion(game.Version, ml.GameVersion))
             throw new GameCheckException(Loc.F("check.version.no", game.Version, ml.GameVersion) + ". " + Loc.T("check.version.hint"));
-        if (!string.IsNullOrEmpty(ml.DlcCheckPath) && !Directory.Exists(System.IO.Path.Combine(game.Path, ml.DlcCheckPath)))
+        if (!string.IsNullOrEmpty(ml.DlcCheckPath) && !DlcPresent(game.Path, ml.DlcCheckPath))
         {
             var dlc = ml.DlcName?.ToString() ?? "DLC";
             throw new GameCheckException(Loc.F("check.dlc.no", dlc) + ". " + Loc.T("check.dlc.hint"));
         }
+        return game;
     }
 }
 

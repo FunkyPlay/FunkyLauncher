@@ -1,0 +1,6763 @@
+{
+ "schema": 1,
+ "modlistId": "fallout4",
+ "addonId": "fallout4-main",
+ "listVersion": "0.1.0",
+ "forMainVersion": "0.1.0",
+ "forGameVersion": "1.11.240",
+ "draft": true,
+ "generated": "2026-11-17",
+ "mods": [
+  {
+   "id": "F4SE (loader)",
+   "modFolder": "F4SE Scripts",
+   "displayName": {
+    "ru": "Fallout 4 Script Extender (F4SE)",
+    "en": "Fallout 4 Script Extender (F4SE)"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 42147,
+    "fileId": 407709,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/42147?tab=files&file_id=407709"
+   },
+   "version": "0.7.9",
+   "archive": {
+    "nexusFileName": "f4se_0_07_09.7z",
+    "localFileName": "f4se_0_07_09.7z",
+    "size": 921767,
+    "sha256": "48677acc460d8dca0f2f6303b0ef7fe16bdb8a97bdc37c6ffb96ec604fec1a48"
+   },
+   "plugins": [],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "f4se_0_07_09/Data",
+      ""
+     ],
+     [
+      "f4se_0_07_09/f4se_loader.exe",
+      "f4se_loader.exe"
+     ],
+     [
+      "f4se_0_07_09/f4se_1_11_240.dll",
+      "f4se_1_11_240.dll"
+     ]
+    ],
+    "fomod": false,
+    "gameRoot": [
+     [
+      "f4se_0_07_09/f4se_loader.exe",
+      "f4se_loader.exe"
+     ],
+     [
+      "f4se_0_07_09/f4se_1_11_240.dll",
+      "f4se_1_11_240.dll"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "Address Library for F4SE Plugins",
+   "modFolder": "Address Library for F4SE Plugins",
+   "displayName": {
+    "ru": "Address Library for F4SE Plugins",
+    "en": "Address Library for F4SE Plugins"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 47327,
+    "fileId": 408268,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/47327?tab=files&file_id=408268"
+   },
+   "version": "1.11.240",
+   "archive": {
+    "nexusFileName": "06/67/0a/06670a9a-61e5-433d-985f-3fa5267a4d66",
+    "localFileName": "06/67/0a/06670a9a-61e5-433d-985f-3fa5267a4d66",
+    "size": 57691964,
+    "sha256": "385ceddcf7c44d6c50cbf67eea82387f1e036447e1aabc7832ad690ce5c8bb56"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Runtime Database",
+   "modFolder": "Runtime Database",
+   "displayName": {
+    "ru": "Runtime Database",
+    "en": "Runtime Database"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 108394,
+    "fileId": 408886,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/108394?tab=files&file_id=408886"
+   },
+   "version": "1.0.0",
+   "archive": {
+    "nexusFileName": "b5/43/fd/b543fd9a-d451-4d3b-acec-b8a5ec17e1c5",
+    "localFileName": "b5/43/fd/b543fd9a-d451-4d3b-acec-b8a5ec17e1c5",
+    "size": 46364783,
+    "sha256": "4bb9f10c6070739de33992ff4a1c83796f37036fcacf5256fc735aa95e170900"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Unofficial Fallout 4 Patch - UFO4P",
+   "modFolder": "Unofficial Fallout 4 Patch - UFO4P",
+   "displayName": {
+    "ru": "Unofficial Fallout 4 Patch - UFO4P",
+    "en": "Unofficial Fallout 4 Patch - UFO4P"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 4598,
+    "fileId": 407774,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/4598?tab=files&file_id=407774"
+   },
+   "version": "2.2.2a",
+   "archive": {
+    "nexusFileName": "f9/07/3e/f9073e8f-d7ff-4b4a-b10d-7d8d40813813",
+    "localFileName": "f9/07/3e/f9073e8f-d7ff-4b4a-b10d-7d8d40813813",
+    "size": 41770758,
+    "sha256": "a5f20932d46f9273b9321fc7088f9d9387f65b073d151093f901ea49721b2087"
+   },
+   "plugins": [
+    "unofficial fallout 4 patch.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Community Fixes Merged",
+   "modFolder": "Community Fixes Merged",
+   "displayName": {
+    "ru": "Community Fixes Merged",
+    "en": "Community Fixes Merged"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 74945,
+    "fileId": 419822,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/74945?tab=files&file_id=419822"
+   },
+   "version": "4.7.5",
+   "archive": {
+    "nexusFileName": "2b/13/13/2b131342-56be-4103-b939-263fa6f6e488",
+    "localFileName": "2b/13/13/2b131342-56be-4103-b939-263fa6f6e488",
+    "size": 28606076,
+    "sha256": "32663dc25af0a56210c3fade7a19554ea37ab29b690b2d0055fbf27772e584e0"
+   },
+   "plugins": [
+    "community fixes merged.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Addictol - Addictol 1.8.0",
+   "modFolder": "Addictol - Addictol 1.8.0",
+   "displayName": {
+    "ru": "Addictol",
+    "en": "Addictol"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 84214,
+    "fileId": 418867,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/84214?tab=files&file_id=418867"
+   },
+   "version": "1.8.0",
+   "archive": {
+    "nexusFileName": "3a/a9/e3/3aa9e304-ecab-4da2-9959-cbdf9737a707",
+    "localFileName": "3a/a9/e3/3aa9e304-ecab-4da2-9959-cbdf9737a707",
+    "size": 14255213,
+    "sha256": "01aae31d3583419b7381a3513e91e485c1d040f46af676e3ced7444d079726fb"
+   },
+   "plugins": [],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "build-info.txt",
+      "build-info.txt"
+     ],
+     [
+      "f4se/plugins/Addictol.dll",
+      "f4se/plugins/Addictol.dll"
+     ],
+     [
+      "f4se/plugins/Addictol.pdb",
+      "f4se/plugins/Addictol.pdb"
+     ],
+     [
+      "f4se/plugins/Addictol.toml",
+      "f4se/plugins/Addictol.toml"
+     ],
+     [
+      "f4se/plugins/Addictol_FacegenExceptions.ini",
+      "f4se/plugins/Addictol_FacegenExceptions.ini"
+     ],
+     [
+      "scripts/Addictol.pex",
+      "scripts/Addictol.pex"
+     ],
+     [
+      "scripts/Source/User/Addictol.psc",
+      "scripts/Source/User/Addictol.psc"
+     ],
+     [
+      "scripts/Source/User/XCELL.psc",
+      "scripts/Source/User/XCELL.psc"
+     ],
+     [
+      "scripts/XCELL.pex",
+      "scripts/XCELL.pex"
+     ]
+    ],
+    "fomod": false,
+    "notFromArchive": [
+     "f4se/plugins/Addictol_SNCT.ini"
+    ]
+   }
+  },
+  {
+   "id": "Addictol - Addictol Crash Logger",
+   "modFolder": "Addictol - Addictol Crash Logger",
+   "displayName": {
+    "ru": "Addictol",
+    "en": "Addictol"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 84214,
+    "fileId": 418866,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/84214?tab=files&file_id=418866"
+   },
+   "version": "1.8.0",
+   "archive": {
+    "nexusFileName": "3c/53/98/3c53981b-0cf2-4530-9606-5fad5e43c846",
+    "localFileName": "3c/53/98/3c53981b-0cf2-4530-9606-5fad5e43c846",
+    "size": 24337696,
+    "sha256": "d7306a413a30e86abcb9facbc9424d4fb51182cfba602e9c2e7024b3f12d1ae2"
+   },
+   "plugins": [],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "F4SE/Plugins/AddictolCrashLogger.dll",
+      "F4SE/Plugins/AddictolCrashLogger.dll"
+     ],
+     [
+      "F4SE/Plugins/AddictolCrashLogger.toml",
+      "F4SE/Plugins/AddictolCrashLogger.toml"
+     ],
+     [
+      "F4SE/Plugins/msdia140.dll",
+      "F4SE/Plugins/msdia140.dll"
+     ],
+     [
+      "PDBs/1.11.240.0",
+      "F4SE/Plugins"
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "Fallout4.pdb: AE (1.11.240.0)"
+    ]
+   }
+  },
+  {
+   "id": "High FPS Physics Fix",
+   "modFolder": "High FPS Physics Fix",
+   "displayName": {
+    "ru": "High FPS Physics Fix",
+    "en": "High FPS Physics Fix"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 44798,
+    "fileId": 410628,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/44798?tab=files&file_id=410628"
+   },
+   "version": "0.8.23",
+   "archive": {
+    "nexusFileName": "b1/cc/f0/b1ccf061-753d-49f2-876d-d0df464f3350",
+    "localFileName": "b1/cc/f0/b1ccf061-753d-49f2-876d-d0df464f3350",
+    "size": 675449,
+    "sha256": "f58dc5b3658b1a4d254f9c1bd9a5f7ec31e36fa12b83d4d49eaa4be2b3897b45"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Weapon Debris Crash Fix",
+   "modFolder": "Weapon Debris Crash Fix",
+   "displayName": {
+    "ru": "Weapon Debris Crash Fix",
+    "en": "Weapon Debris Crash Fix"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 48078,
+    "fileId": 412151,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/48078?tab=files&file_id=412151"
+   },
+   "version": "2.0.6",
+   "archive": {
+    "nexusFileName": "1b/67/b5/1b67b59d-50d7-44b8-84e6-994ba567dd50",
+    "localFileName": "1b/67/b5/1b67b59d-50d7-44b8-84e6-994ba567dd50",
+    "size": 1974428,
+    "sha256": "391ecc769a33a0854aa41bc9a9f28c916820781e802b8a95b170f87ef91d42f7"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Sprint Stuttering Fix",
+   "modFolder": "Sprint Stuttering Fix",
+   "displayName": {
+    "ru": "Sprint Stuttering Fix",
+    "en": "Sprint Stuttering Fix"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 47760,
+    "fileId": 408433,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/47760?tab=files&file_id=408433"
+   },
+   "version": "1.6",
+   "archive": {
+    "nexusFileName": "41/17/35/411735ca-27b0-4538-a047-6cc11ccd607d",
+    "localFileName": "41/17/35/411735ca-27b0-4538-a047-6cc11ccd607d",
+    "size": 390417,
+    "sha256": "3d55cea137664ec152cbf51286b607eb24a064aede5d15b55439df0f48fc50ca"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Long Loading Times Fix",
+   "modFolder": "Long Loading Times Fix",
+   "displayName": {
+    "ru": "Long Loading Times Fix",
+    "en": "Long Loading Times Fix"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 73469,
+    "fileId": 408780,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/73469?tab=files&file_id=408780"
+   },
+   "version": "1.2.0",
+   "archive": {
+    "nexusFileName": "04/de/76/04de7657-85b3-464f-bb65-821dcb6d3295",
+    "localFileName": "04/de/76/04de7657-85b3-464f-bb65-821dcb6d3295",
+    "size": 446732,
+    "sha256": "0b328148487871dd616b05010e0e66cf9917ec20892a9755e301d79772ab94fa"
+   },
+   "plugins": [],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "F4SE/Plugins/LongLoadingTimesFix.dll",
+      "F4SE/Plugins/LongLoadingTimesFix.dll"
+     ]
+    ],
+    "fomod": false,
+    "notFromArchive": [
+     "F4SE/Plugins/LongLoadingTimesFix.ini"
+    ]
+   }
+  },
+  {
+   "id": "Armor Penetration Bug Fix - F4SE",
+   "modFolder": "Armor Penetration Bug Fix - F4SE",
+   "displayName": {
+    "ru": "Armor Penetration Bug Fix - F4SE",
+    "en": "Armor Penetration Bug Fix - F4SE"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 73849,
+    "fileId": 410864,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/73849?tab=files&file_id=410864"
+   },
+   "version": "1.0.4",
+   "archive": {
+    "nexusFileName": "39/bb/ce/39bbce8e-2c19-42b0-a469-9f498c8e6901",
+    "localFileName": "39/bb/ce/39bbce8e-2c19-42b0-a469-9f498c8e6901",
+    "size": 345179,
+    "sha256": "fafb4adbe3dce5bfdb1b2e4da560eee8d6a48b55d7c9855826de0a3d523492b4"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Magic Effect and Spell Engine Fixes - F4SE",
+   "modFolder": "Magic Effect and Spell Engine Fixes - F4SE",
+   "displayName": {
+    "ru": "Magic Effect and Spell Engine Fixes - F4SE",
+    "en": "Magic Effect and Spell Engine Fixes - F4SE"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 83433,
+    "fileId": 407997,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/83433?tab=files&file_id=407997"
+   },
+   "version": "3.2",
+   "archive": {
+    "nexusFileName": "96/10/10/961010db-d672-4105-ba9b-7dc3f24c0528",
+    "localFileName": "96/10/10/961010db-d672-4105-ba9b-7dc3f24c0528",
+    "size": 204836,
+    "sha256": "88049416bf9b8157c60bf0c3ad800b43f1da23071ece0f9c8c8e3b845a05da29"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Empty Vendor List Bug Fix - F4SE",
+   "modFolder": "Empty Vendor List Bug Fix - F4SE",
+   "displayName": {
+    "ru": "Empty Vendor List Bug Fix - F4SE",
+    "en": "Empty Vendor List Bug Fix - F4SE"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 83252,
+    "fileId": 408012,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/83252?tab=files&file_id=408012"
+   },
+   "version": "3.1",
+   "archive": {
+    "nexusFileName": "cb/ef/ae/cbefae77-1946-49a2-9e38-b83a0da30f10",
+    "localFileName": "cb/ef/ae/cbefae77-1946-49a2-9e38-b83a0da30f10",
+    "size": 188587,
+    "sha256": "a581d65a005eec8a51441bdd202ecdddeade8ba6fd2473ab3bcb74247524c932"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Follower AI Approach Reaction Fix - F4SE",
+   "modFolder": "Follower AI Approach Reaction Fix - F4SE",
+   "displayName": {
+    "ru": "Follower AI Approach Reaction Fix - F4SE",
+    "en": "Follower AI Approach Reaction Fix - F4SE"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 92024,
+    "fileId": 408009,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/92024?tab=files&file_id=408009"
+   },
+   "version": "3.1",
+   "archive": {
+    "nexusFileName": "62/0e/dc/620edc3d-71bd-47b1-a10c-f5fd864f82e7",
+    "localFileName": "62/0e/dc/620edc3d-71bd-47b1-a10c-f5fd864f82e7",
+    "size": 74253,
+    "sha256": "22e8dc6bd76dc25adcb299d72fac7a64075f44c1d22987f0d6a3995a1c12358f"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Companion Shoots At Player Fix - F4SE",
+   "modFolder": "Companion Shoots At Player Fix - F4SE",
+   "displayName": {
+    "ru": "Companion Shoots At Player Fix - F4SE",
+    "en": "Companion Shoots At Player Fix - F4SE"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 81758,
+    "fileId": 408013,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/81758?tab=files&file_id=408013"
+   },
+   "version": "3.3",
+   "archive": {
+    "nexusFileName": "9a/84/fa/9a84fa17-848f-4b63-acbf-673449969d69",
+    "localFileName": "9a/84/fa/9a84fa17-848f-4b63-acbf-673449969d69",
+    "size": 203569,
+    "sha256": "4bdb4af6952e0b93f883e16c7ae80cebdb2e99439dec0a34a3a023c726e4d59c"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Energy Weapon Calculation Fix",
+   "modFolder": "Energy Weapon Calculation Fix",
+   "displayName": {
+    "ru": "Energy Weapon Calculation Fix",
+    "en": "Energy Weapon Calculation Fix"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 75565,
+    "fileId": 413051,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/75565?tab=files&file_id=413051"
+   },
+   "version": "1.5.1",
+   "archive": {
+    "nexusFileName": "8e/fc/af/8efcaf83-3248-49af-b5ec-770350ab76db",
+    "localFileName": "8e/fc/af/8efcaf83-3248-49af-b5ec-770350ab76db",
+    "size": 352548,
+    "sha256": "5912b850e25c484be25a1058c18440fd2d1d8d4a53684db6bd0292d7e6f0a54d"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Garden of Eden Papyrus Script Extender",
+   "modFolder": "Garden of Eden Papyrus Script Extender",
+   "displayName": {
+    "ru": "Garden of Eden Papyrus Script Extender",
+    "en": "Garden of Eden Papyrus Script Extender"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 74160,
+    "fileId": 416926,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/74160?tab=files&file_id=416926"
+   },
+   "version": "23.8",
+   "archive": {
+    "nexusFileName": "f2/5e/53/f25e5308-7d64-4a4f-9d95-5709af0588b0",
+    "localFileName": "f2/5e/53/f25e5308-7d64-4a4f-9d95-5709af0588b0",
+    "size": 1105291,
+    "sha256": "534e4ad394c04a2f942794b1bc525d6d20e678da87377edb17d0259ecb29a91d"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Crafting Highlight Fix",
+   "modFolder": "Crafting Highlight Fix",
+   "displayName": {
+    "ru": "Crafting Highlight Fix",
+    "en": "Crafting Highlight Fix"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 27479,
+    "fileId": 410279,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/27479?tab=files&file_id=410279"
+   },
+   "version": "1.11.240",
+   "archive": {
+    "nexusFileName": "da/e5/b8/dae5b8e2-09aa-4a91-8f2c-d835d19f44d7",
+    "localFileName": "da/e5/b8/dae5b8e2-09aa-4a91-8f2c-d835d19f44d7",
+    "size": 139810,
+    "sha256": "56d6fa082d3403e8393b9dd481446a05b7fae87900e14becb810e88c075afff1"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Smooth Cell Loading - F4SE",
+   "modFolder": "Smooth Cell Loading - F4SE",
+   "displayName": {
+    "ru": "Smooth Cell Loading - F4SE",
+    "en": "Smooth Cell Loading - F4SE"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 107810,
+    "fileId": 408995,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/107810?tab=files&file_id=408995"
+   },
+   "version": "1.3.5",
+   "archive": {
+    "nexusFileName": "cc/7f/70/cc7f7085-7628-4367-be6f-c1eecc30af88",
+    "localFileName": "cc/7f/70/cc7f7085-7628-4367-be6f-c1eecc30af88",
+    "size": 360668,
+    "sha256": "0a5f42802b6c166caba442b18594afcfb6b11a790bf8f1c9341ec69fe4358de2"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Light Gobo Fix - F4SE",
+   "modFolder": "Light Gobo Fix - F4SE",
+   "displayName": {
+    "ru": "Light Gobo Fix - F4SE",
+    "en": "Light Gobo Fix - F4SE"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 107256,
+    "fileId": 408939,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/107256?tab=files&file_id=408939"
+   },
+   "version": "1.1.2",
+   "archive": {
+    "nexusFileName": "5f/05/24/5f0524ae-3f04-4ae1-89ac-5aab1ae73977",
+    "localFileName": "5f/05/24/5f0524ae-3f04-4ae1-89ac-5aab1ae73977",
+    "size": 336181,
+    "sha256": "fc9cbe3a3f1ac8136a83cb64ebd25157db4799ca2a9d3e48b857beaddfae9aab"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Godrays Performance Fix Redux",
+   "modFolder": "Godrays Performance Fix Redux",
+   "displayName": {
+    "ru": "Godrays Performance Fix Redux",
+    "en": "Godrays Performance Fix Redux"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 80942,
+    "fileId": 398072,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/80942?tab=files&file_id=398072"
+   },
+   "version": "2.3.1",
+   "archive": {
+    "nexusFileName": "Godrays Performance Fix Redux-80942-2-3-1-1779674423.7z",
+    "localFileName": "Godrays Performance Fix Redux-80942-2-3-1-1779674423.7z",
+    "size": 1962,
+    "sha256": "81d857a97422fc75d1783ab0f2cb0c8e4b48ab2b1653bb8270561b920005472d"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Wetness Shader Fix",
+   "modFolder": "Wetness Shader Fix",
+   "displayName": {
+    "ru": "Wetness Shader Fix",
+    "en": "Wetness Shader Fix"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 23389,
+    "fileId": 317812,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/23389?tab=files&file_id=317812"
+   },
+   "version": "3.6.3",
+   "archive": {
+    "nexusFileName": "Wetness Shader Fix-23389-3-6-3-1716206524.7z",
+    "localFileName": "Wetness Shader Fix-23389-3-6-3-1716206524.7z",
+    "size": 148763492,
+    "sha256": "cba7a6f380aea6de94f56402bf59d4c12071cb178769e8aa1b2b299c117f73df"
+   },
+   "plugins": [
+    "Wetness Shader Fix.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Fallout 4 Particle Patch - No More Glowing Objects",
+   "modFolder": "Fallout 4 Particle Patch - No More Glowing Objects",
+   "displayName": {
+    "ru": "Fallout 4 Particle Patch - No More Glowing Objects",
+    "en": "Fallout 4 Particle Patch - No More Glowing Objects"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 68599,
+    "fileId": 324194,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/68599?tab=files&file_id=324194"
+   },
+   "version": "1.3.2",
+   "archive": {
+    "nexusFileName": "FO4 Particle Patch v1-3-2-68599-1-3-2-1719216836.rar",
+    "localFileName": "FO4 Particle Patch v1-3-2-68599-1-3-2-1719216836.rar",
+    "size": 12791199,
+    "sha256": "7558769443bee0021602a51c5241a12e084d1cf99c3a93284e00b2dda6e15755"
+   },
+   "plugins": [
+    "FO4ParticlePatch.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Flutter Flicker Fixer For Foliage",
+   "modFolder": "Flutter Flicker Fixer For Foliage",
+   "displayName": {
+    "ru": "Flutter Flicker Fixer For Foliage",
+    "en": "Flutter Flicker Fixer For Foliage"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 79853,
+    "fileId": 393206,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/79853?tab=files&file_id=393206"
+   },
+   "version": "2.0",
+   "archive": {
+    "nexusFileName": "Flutter Flicker Fixer For Foliage - PRP-79853-2-0-1776050830.7z",
+    "localFileName": "Flutter Flicker Fixer For Foliage - PRP-79853-2-0-1776050830.7z",
+    "size": 21195075,
+    "sha256": "9eb4af3ef8fea9d7e582f82c14ade399b8e10a2b21f965e9648f0c799d767d4b"
+   },
+   "plugins": [
+    "Flutter Flicker Fixer For Foliage.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Blood Fixes",
+   "modFolder": "Blood Fixes",
+   "displayName": {
+    "ru": "Blood Fixes",
+    "en": "Blood Fixes"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 97089,
+    "fileId": 410190,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/97089?tab=files&file_id=410190"
+   },
+   "version": "1.02",
+   "archive": {
+    "nexusFileName": "a2/39/9c/a2399c12-4c4d-4c46-8ab0-da22bcbb58b6",
+    "localFileName": "a2/39/9c/a2399c12-4c4d-4c46-8ab0-da22bcbb58b6",
+    "size": 1338705,
+    "sha256": "b1f7443d45b92c68d23fd0ccb4101e48203c872823f97b363d8b3ec957764d77"
+   },
+   "plugins": [
+    "BloodFixes.esm"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "3rd Person Behavior Fixes",
+   "modFolder": "3rd Person Behavior Fixes",
+   "displayName": {
+    "ru": "3rd Person Behavior Fixes",
+    "en": "3rd Person Behavior Fixes"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 69243,
+    "fileId": 393477,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/69243?tab=files&file_id=393477"
+   },
+   "version": "1.4",
+   "archive": {
+    "nexusFileName": "3rd Person Behavior Fixes AE-69243-1-4-1776259996.zip",
+    "localFileName": "3rd Person Behavior Fixes AE-69243-1-4-1776259996.zip",
+    "size": 1107521,
+    "sha256": "96724b1b9c06fba0bdbe27f2c916959048533e199274eb119978a448eba61d7a"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Mod Configuration Menu",
+   "modFolder": "Mod Configuration Menu",
+   "displayName": {
+    "ru": "Mod Configuration Menu",
+    "en": "Mod Configuration Menu"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 21497,
+    "fileId": 409624,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/21497?tab=files&file_id=409624"
+   },
+   "version": "1.11.240",
+   "archive": {
+    "nexusFileName": "fe/39/52/fe395271-9443-4d09-9c86-8b8c5859ba9a",
+    "localFileName": "fe/39/52/fe395271-9443-4d09-9c86-8b8c5859ba9a",
+    "size": 361589,
+    "sha256": "8089524f07ae4d470c6ffe01168fab1f72b3cfeea44bf749421fefd02ed9717a"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "FallUI - Inventory",
+   "modFolder": "FallUI - Inventory",
+   "displayName": {
+    "ru": "FallUI - Inventory",
+    "en": "FallUI - Inventory"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 48758,
+    "fileId": 254844,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/48758?tab=files&file_id=254844"
+   },
+   "version": "2.2.1",
+   "archive": {
+    "nexusFileName": "FallUI - Inventory-48758-2-2-1-1666954336.rar",
+    "localFileName": "FallUI - Inventory-48758-2-2-1-1666954336.rar",
+    "size": 2818705,
+    "sha256": "14c46dfb353023253cefd1889ffc9d687e57024d8a38ce23ee4d982811a72e4f"
+   },
+   "plugins": [
+    "M8rDisablePipboyEffects.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "Settings/FallUI.ini",
+      "MCM/Settings/FallUI.ini"
+     ],
+     [
+      "FallUI - Inventory",
+      ""
+     ],
+     [
+      "Optional",
+      ""
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "FallUI - Inventory: FallUI - Inventory, Default settings",
+     "Optional: Mod: Disable PipboyFX",
+     "Please read the following notes: -"
+    ]
+   }
+  },
+  {
+   "id": "FallUI - HUD",
+   "modFolder": "FallUI - HUD",
+   "displayName": {
+    "ru": "FallUI - HUD",
+    "en": "FallUI - HUD"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 51813,
+    "fileId": 257220,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/51813?tab=files&file_id=257220"
+   },
+   "version": "1.7.1",
+   "archive": {
+    "nexusFileName": "FallUI - HUD-51813-1-7-1-1668637124.rar",
+    "localFileName": "FallUI - HUD-51813-1-7-1-1668637124.rar",
+    "size": 2375261,
+    "sha256": "dd2deeac3d759e7c97458da80b3a5d9b41635a3c705297d5674e27d3687a7fb0"
+   },
+   "plugins": [],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "Settings/FallUIHUD-Layout-Export.ini",
+      "MCM/Settings/FallUIHUD-Layout-Export.ini"
+     ],
+     [
+      "Settings/FallUIHUD.ini",
+      "MCM/Settings/FallUIHUD.ini"
+     ],
+     [
+      "FallUI - HUD",
+      ""
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "Main files: FallUI - HUD, Addon: Workshop, Addon: PromptMenu",
+     "Settings: Default settings"
+    ]
+   }
+  },
+  {
+   "id": "FallUI - Workbench",
+   "modFolder": "FallUI - Workbench",
+   "displayName": {
+    "ru": "FallUI - Workbench",
+    "en": "FallUI - Workbench"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 49300,
+    "fileId": 255499,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/49300?tab=files&file_id=255499"
+   },
+   "version": "1.4.1-r2",
+   "archive": {
+    "nexusFileName": "FallUI - Workbench-49300-1-4-1-r2-1667395902.rar",
+    "localFileName": "FallUI - Workbench-49300-1-4-1-r2-1667395902.rar",
+    "size": 962776,
+    "sha256": "8d85729b54123c68dbceb8b45a145e8ec469a7ba8c3207d6798388ab80f5765b"
+   },
+   "plugins": [],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "Settings/FallUIWorkbench.ini",
+      "MCM/Settings/FallUIWorkbench.ini"
+     ],
+     [
+      "FallUI - Workbench",
+      ""
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "Main files: FallUI - Workbench, Default settings"
+    ]
+   }
+  },
+  {
+   "id": "FallUI - Map",
+   "modFolder": "FallUI - Map",
+   "displayName": {
+    "ru": "FallUI - Map",
+    "en": "FallUI - Map"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 49920,
+    "fileId": 238011,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/49920?tab=files&file_id=238011"
+   },
+   "version": "2.1",
+   "archive": {
+    "nexusFileName": "FallUI - Map-49920-2-1-1652891829.rar",
+    "localFileName": "FallUI - Map-49920-2-1-1652891829.rar",
+    "size": 995847,
+    "sha256": "01b423070053ff92a52cf79f31b6d3a5e5115fd13579af6b8fe0b5ec97099f92"
+   },
+   "plugins": [],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "Settings/FallUIMap.ini",
+      "MCM/Settings/FallUIMap.ini"
+     ],
+     [
+      "FallUI - Map",
+      ""
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "Main files: FallUI - Map, Default settings",
+     "Choose your preferred design type: Uncolored (Default)",
+     "Configuration done: Install"
+    ]
+   }
+  },
+  {
+   "id": "FallUI - Confirm Boxes (incl. Yes Im Sure)",
+   "modFolder": "FallUI - Confirm Boxes (incl. Yes Im Sure)",
+   "displayName": {
+    "ru": "FallUI - Confirm Boxes (incl. Yes Im Sure)",
+    "en": "FallUI - Confirm Boxes (incl. Yes Im Sure)"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 48958,
+    "fileId": 255391,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/48958?tab=files&file_id=255391"
+   },
+   "version": "2.2.3",
+   "archive": {
+    "nexusFileName": "FallUI - Confirm Boxes-48958-2-2-3-1667318727.rar",
+    "localFileName": "FallUI - Confirm Boxes-48958-2-2-3-1667318727.rar",
+    "size": 1470559,
+    "sha256": "60310fae82012b49b37973dbbdb397cb43b6fc5c6d8620921869c5f21d0df157"
+   },
+   "plugins": [],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "FallUI - Confirm Boxes/Interface/ExamineConfirmMenu.swf",
+      "Interface/ExamineConfirmMenu.swf"
+     ],
+     [
+      "FallUI - Confirm Boxes/Interface/MessageBoxMenu.swf",
+      "Interface/MessageBoxMenu.swf"
+     ],
+     [
+      "FallUI - Confirm Boxes/MCM/Config/FallUIConfirmBoxes/Translation/MCM_FallUIConfirm_en.txt",
+      "MCM/Config/FallUIConfirmBoxes/Translation/MCM_FallUIConfirm_en.txt"
+     ],
+     [
+      "FallUI - Confirm Boxes/MCM/Config/FallUIConfirmBoxes/config.json",
+      "MCM/Config/FallUIConfirmBoxes/config.json"
+     ],
+     [
+      "FallUI - Confirm Boxes/MCM/Config/FallUIConfirmBoxes/lib.swf",
+      "MCM/Config/FallUIConfirmBoxes/lib.swf"
+     ],
+     [
+      "FallUI - Confirm Boxes/MCM/Config/FallUIConfirmBoxes/settings.ini",
+      "MCM/Config/FallUIConfirmBoxes/settings.ini"
+     ],
+     [
+      "FallUI - Confirm Boxes/Interface.compatibility",
+      "Interface"
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "Main files: FallUI - Confirm Boxes, Default settings",
+     "Compatibility: DavesMods - ESP Explorer",
+     "Choose your preferred design type: Modern (Default)",
+     "Configuration done: Install"
+    ],
+    "notFromArchive": [
+     "MCM/Settings/FallUIConfirmBoxes.ini"
+    ]
+   }
+  },
+  {
+   "id": "FallUI - Icon Library",
+   "modFolder": "FallUI - Icon Library",
+   "displayName": {
+    "ru": "FallUI - Icon Library",
+    "en": "FallUI - Icon Library"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 60579,
+    "fileId": 238079,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/60579?tab=files&file_id=238079"
+   },
+   "version": "1.0",
+   "archive": {
+    "nexusFileName": "FallUI - Icon Library-60579-1-0-1652975967.rar",
+    "localFileName": "FallUI - Icon Library-60579-1-0-1652975967.rar",
+    "size": 437318,
+    "sha256": "ded07ecc2c0f1d70ae3676ac27707f1f8e322465eaf3d7dad5af8ee68712f96d"
+   },
+   "plugins": [],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "Settings/FallUIIconLibrary.ini",
+      "MCM/Settings/FallUIIconLibrary.ini"
+     ],
+     [
+      "FallUI - Icon Library",
+      ""
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "Main files: FallUI - Icon Library, Default settings"
+    ]
+   }
+  },
+  {
+   "id": "FallUI - Sleep and Wait",
+   "modFolder": "FallUI - Sleep and Wait",
+   "displayName": {
+    "ru": "FallUI - Sleep and Wait",
+    "en": "FallUI - Sleep and Wait"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 49070,
+    "fileId": 256778,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/49070?tab=files&file_id=256778"
+   },
+   "version": "1.4",
+   "archive": {
+    "nexusFileName": "FallUI - Sleep And Wait-49070-1-4-1668288607.rar",
+    "localFileName": "FallUI - Sleep And Wait-49070-1-4-1668288607.rar",
+    "size": 798024,
+    "sha256": "0d5b964c82ba6d96d9f9dccbbc7b410ceb75b16dbfec0e044a5b627592fe314f"
+   },
+   "plugins": [],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "Settings/FallUISleepAndWait.ini",
+      "MCM/Settings/FallUISleepAndWait.ini"
+     ],
+     [
+      "FallUI - Sleep And Wait",
+      ""
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "Main files: FallUI - Sleep and Wait, Default settings"
+    ]
+   }
+  },
+  {
+   "id": "Extended Dialogue Interface",
+   "modFolder": "Extended Dialogue Interface",
+   "displayName": {
+    "ru": "Extended Dialogue Interface",
+    "en": "Extended Dialogue Interface"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 27216,
+    "fileId": 409623,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/27216?tab=files&file_id=409623"
+   },
+   "version": "1.11.240",
+   "archive": {
+    "nexusFileName": "86/72/fe/8672fea9-42bc-4f96-b695-d449f5d5c48f",
+    "localFileName": "86/72/fe/8672fea9-42bc-4f96-b695-d449f5d5c48f",
+    "size": 265125,
+    "sha256": "dec2e01b54951fb46c168f5c2c8b23fa424a1c807e34eb66d7196b08c20d1552"
+   },
+   "plugins": [
+    "XDI.esm"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "HUDFramework",
+   "modFolder": "HUDFramework",
+   "displayName": {
+    "ru": "HUDFramework",
+    "en": "HUDFramework"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 20309,
+    "fileId": 93183,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/20309?tab=files&file_id=93183"
+   },
+   "version": "1.0f",
+   "archive": {
+    "nexusFileName": "HUDFramework 1.0f-20309-1-0f.zip",
+    "localFileName": "HUDFramework 1.0f-20309-1-0f.zip",
+    "size": 287655,
+    "sha256": "82f8d7e3ce21de434dc892898c77ced9911213288156f91b336bf44f8edbd627"
+   },
+   "plugins": [
+    "HUDFramework.esm"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "LooksMenu",
+   "modFolder": "LooksMenu",
+   "displayName": {
+    "ru": "LooksMenu",
+    "en": "LooksMenu"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 12631,
+    "fileId": 409523,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/12631?tab=files&file_id=409523"
+   },
+   "version": "1.7.0.4",
+   "archive": {
+    "nexusFileName": "50/3d/7d/503d7d2c-78c1-43b3-a923-3ec7c79a4ccf",
+    "localFileName": "50/3d/7d/503d7d2c-78c1-43b3-a923-3ec7c79a4ccf",
+    "size": 478618,
+    "sha256": "9c55bd433fd02c899086bb75932ec191c2d4ac85af80db6c874a1ae5a96e7ede"
+   },
+   "plugins": [
+    "LooksMenu.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Place Everywhere",
+   "modFolder": "Place Everywhere",
+   "displayName": {
+    "ru": "Place Everywhere",
+    "en": "Place Everywhere"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 9424,
+    "fileId": 408363,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/9424?tab=files&file_id=408363"
+   },
+   "version": "1.22.1.1240",
+   "archive": {
+    "nexusFileName": "7d/5d/16/7d5d16d0-d7c3-4f92-9d59-cd76bac5b74e",
+    "localFileName": "7d/5d/16/7d5d16d0-d7c3-4f92-9d59-cd76bac5b74e",
+    "size": 594287,
+    "sha256": "6c7a72699217af37642ea95c63be49623669932aa318d1bb0198583f61cf1812"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Simple FOV Slider",
+   "modFolder": "Simple FOV Slider",
+   "displayName": {
+    "ru": "Simple FOV Slider",
+    "en": "Simple FOV Slider"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 90072,
+    "fileId": 344312,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/90072?tab=files&file_id=344312"
+   },
+   "version": "1.1.1",
+   "archive": {
+    "nexusFileName": "Simple FOV Slider-90072-1-1-1-1736024816.7z",
+    "localFileName": "Simple FOV Slider-90072-1-1-1-1736024816.7z",
+    "size": 6849,
+    "sha256": "e6730aad86ea02e172a24deaf59a4b8d8b514ec30c34e736949ada4e0e00c5f3"
+   },
+   "plugins": [
+    "Simple FOV Slider.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "Simple FOV Slider",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Faster Terminal Displays",
+   "modFolder": "Faster Terminal Displays",
+   "displayName": {
+    "ru": "Faster Terminal Displays",
+    "en": "Faster Terminal Displays"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 937,
+    "fileId": 49501,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/937?tab=files&file_id=49501"
+   },
+   "version": "3.0",
+   "archive": {
+    "nexusFileName": "Faster Terminal Displays (20x) Creation Kit Version-937-3-0.zip",
+    "localFileName": "Faster Terminal Displays (20x) Creation Kit Version-937-3-0.zip",
+    "size": 605,
+    "sha256": "aa1c07b86ce8edecf01f12701dd1df425ad227d3080349aa29e6e341a8f50ebb"
+   },
+   "plugins": [
+    "Faster Terminal Displays (20x).esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Visible Companion Affinity",
+   "modFolder": "Visible Companion Affinity",
+   "displayName": {
+    "ru": "Visible Companion Affinity",
+    "en": "Visible Companion Affinity"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 10660,
+    "fileId": 303552,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/10660?tab=files&file_id=303552"
+   },
+   "version": "4.15",
+   "archive": {
+    "nexusFileName": "Visible Companion Affinity v4.15 EN-10660-4-15-1707914809.rar",
+    "localFileName": "Visible Companion Affinity v4.15 EN-10660-4-15-1707914809.rar",
+    "size": 10222394,
+    "sha256": "86b0d622358bf6acd6e1454663ac60dee990d650fc847b970da9a6d33b3dcca6"
+   },
+   "plugins": [
+    "VisibleCompanionAffinity.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "main/AllDLCs",
+      ""
+     ],
+     [
+      "main/data",
+      ""
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "DLC Support: Support for all DLCs"
+    ]
+   }
+  },
+  {
+   "id": "Faster Workbench Exit",
+   "modFolder": "Faster Workbench Exit",
+   "displayName": {
+    "ru": "Faster Workbench Exit",
+    "en": "Faster Workbench Exit"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 70013,
+    "fileId": 272346,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/70013?tab=files&file_id=272346"
+   },
+   "version": ".1.3",
+   "archive": {
+    "nexusFileName": "Faster Workbench Exit-70013--1-3-1680141051.zip",
+    "localFileName": "Faster Workbench Exit-70013--1-3-1680141051.zip",
+    "size": 320549,
+    "sha256": "66cdb865edf228825ff4c30551bb5239e8b7eafdc6e6fd8374026af37cf6928d"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Vivid Fallout - All in One - Textures in HD - ORIGINAL SIZE - LOWER RESOLUTION",
+   "modFolder": "Vivid Fallout - All in One - Textures in HD - ORIGINAL SIZE - LOWER RESOLUTION",
+   "displayName": {
+    "ru": "Vivid Fallout - All in One - Textures in HD - ORIGINAL SIZE - LOWER RESOLUTION",
+    "en": "Vivid Fallout - All in One - Textures in HD - ORIGINAL SIZE - LOWER RESOLUTION"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 25714,
+    "fileId": 392175,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/25714?tab=files&file_id=392175"
+   },
+   "version": "2.2.3",
+   "archive": {
+    "nexusFileName": "xVivid Fallout - All in One - 2k-25714-2-2-3-1775343350.7z",
+    "localFileName": "xVivid Fallout - All in One - 2k-25714-2-2-3-1775343350.7z",
+    "size": 1457334156,
+    "sha256": "84ab57ca89ebdd0f903dad0d52001318cd12e28c7d1ef6912b6c24bbad230c68"
+   },
+   "plugins": [
+    "VividFallout - AiO - 2k.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Vivid Fallout - LOD and Far Distant Detail - Commonwealth LOD",
+   "modFolder": "Vivid Fallout - LOD and Far Distant Detail - Commonwealth LOD",
+   "displayName": {
+    "ru": "Vivid Fallout - LOD and Far Distant Detail - Commonwealth LOD",
+    "en": "Vivid Fallout - LOD and Far Distant Detail - Commonwealth LOD"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 71745,
+    "fileId": 280889,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/71745?tab=files&file_id=280889"
+   },
+   "version": "1.3",
+   "archive": {
+    "nexusFileName": "Commonwealth LOD - for 2k-71745-1-3-1687115308.7z",
+    "localFileName": "Commonwealth LOD - for 2k-71745-1-3-1687115308.7z",
+    "size": 444517196,
+    "sha256": "f0daead5ad11de6edfab5f45b3a81b20e79799bf207c5209fef26d7aa3d35857"
+   },
+   "plugins": [
+    "Vivid Fallout - LOD.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Vivid Fallout - LOD and Distant Detail - Far Harbor",
+   "modFolder": "Vivid Fallout - LOD and Distant Detail - Far Harbor",
+   "displayName": {
+    "ru": "Vivid Fallout - LOD and Distant Detail - Far Harbor",
+    "en": "Vivid Fallout - LOD and Distant Detail - Far Harbor"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 71976,
+    "fileId": 279709,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/71976?tab=files&file_id=279709"
+   },
+   "version": "1.0",
+   "archive": {
+    "nexusFileName": "Far Harbor LOD - for 2k-71976-1-0-1686182681.7z",
+    "localFileName": "Far Harbor LOD - for 2k-71976-1-0-1686182681.7z",
+    "size": 223902828,
+    "sha256": "4d09a96e179441289f61a723f80467e625d08644f3a3127c094a46eddced8952"
+   },
+   "plugins": [
+    "Vivid Fallout - Far Harbor LOD.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Vivid Fallout - LOD and Far Distant Detail - Nuka World",
+   "modFolder": "Vivid Fallout - LOD and Far Distant Detail - Nuka World",
+   "displayName": {
+    "ru": "Vivid Fallout - LOD and Far Distant Detail - Nuka World",
+    "en": "Vivid Fallout - LOD and Far Distant Detail - Nuka World"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 72024,
+    "fileId": 280904,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/72024?tab=files&file_id=280904"
+   },
+   "version": "1.2",
+   "archive": {
+    "nexusFileName": "Nuka World LOD - for 2k-72024-1-2-1687123683.7z",
+    "localFileName": "Nuka World LOD - for 2k-72024-1-2-1687123683.7z",
+    "size": 99841022,
+    "sha256": "5b78c8117acbb4a9784aa0f44a26a7b2d09f7efbf101d1b84d105935ec7c846c"
+   },
+   "plugins": [
+    "Vivid Fallout - Nuka World LOD.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "True Storms - Wasteland Edition (Thunder-Rain-Weather Redone)",
+   "modFolder": "True Storms - Wasteland Edition (Thunder-Rain-Weather Redone)",
+   "displayName": {
+    "ru": "True Storms - Wasteland Edition (Thunder-Rain-Weather Redone)",
+    "en": "True Storms - Wasteland Edition (Thunder-Rain-Weather Redone)"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 4472,
+    "fileId": 413119,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/4472?tab=files&file_id=413119"
+   },
+   "version": "2.0.4",
+   "archive": {
+    "nexusFileName": "5c/80/ba/5c80bab3-6642-4c5b-967e-ffb4bfc5eae4",
+    "localFileName": "5c/80/ba/5c80bab3-6642-4c5b-967e-ffb4bfc5eae4",
+    "size": 43093016,
+    "sha256": "32df4033ebe705a17b360dd1ad889a1e2fc34c363400f947e1b9fbaf3768ecbc"
+   },
+   "plugins": [
+    "TrueStormsFO4-EarlierSunsets.esp",
+    "TrueStormsFO4-EarlierSunsetsFH.esp",
+    "TrueStormsFO4-EarlierSunsetsNW.esp",
+    "TrueStormsFO4-FarHarbor-NukaWorld-Patch.esp",
+    "TrueStormsFO4-FarHarbor.esp",
+    "TrueStormsFO4-NukaWorld.esp",
+    "TrueStormsFO4.esm"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "00 - Core Files",
+      ""
+     ],
+     [
+      "01 - DLC",
+      ""
+     ],
+     [
+      "04 - Earlier Sunsets/TrueStormsFO4-EarlierSunsets.esp",
+      "TrueStormsFO4-EarlierSunsets.esp"
+     ],
+     [
+      "04 - Earlier Sunsets/TrueStormsFO4-EarlierSunsetsFH.esp",
+      "TrueStormsFO4-EarlierSunsetsFH.esp"
+     ],
+     [
+      "04 - Earlier Sunsets/TrueStormsFO4-EarlierSunsetsNW.esp",
+      "TrueStormsFO4-EarlierSunsetsNW.esp"
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "Main Files: True Storms (required), Far Harbor DLC (optional), Nuka-World DLC (optional)",
+     "Weather Chances: True Storms Chances (recommended)",
+     "Dangerous Glowing Sea: No change (default)",
+     "Dangerous Far Harbor: No change (default)",
+     "Sunset Time: Earlier Sunset (default)",
+     "Heavy Fogs: New Heavy Fogs (default)"
+    ]
+   }
+  },
+  {
+   "id": "Darker Nights",
+   "modFolder": "Darker Nights",
+   "displayName": {
+    "ru": "Darker Nights",
+    "en": "Darker Nights"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 191,
+    "fileId": 373121,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/191?tab=files&file_id=373121"
+   },
+   "version": "1.12p1",
+   "archive": {
+    "nexusFileName": "Darker Nights-191-1-12p1-1762793393.7z",
+    "localFileName": "Darker Nights-191-1-12p1-1762793393.7z",
+    "size": 1204268,
+    "sha256": "c02bceab6cb32348eb8f62dba08ae35e97d5e51cbf97bd473b7dd1d9395e4691"
+   },
+   "plugins": [
+    "DarkerNights-TrueStorms.esp",
+    "DarkerNights.esp",
+    "DarkerNightsDetection.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "0000-0003-FarHarbor-NukaWorld/Level0-DarkSky",
+      ""
+     ],
+     [
+      "0001-0003-FarHarbor-NukaWorld-TrueStorms201/Level0-DarkSky",
+      ""
+     ],
+     [
+      "ZZZZ-0001-Detection/Level0",
+      ""
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "Darkness Level: Medium (level 3)",
+     "Misc: -",
+     "Merged DLC Patches: Far Harbor DLC, Nuka World DLC",
+     "Standalone Patches: True Storms 2.01",
+     "Detection: Automatic (Recommended)",
+     "Night Vision: Vanilla"
+    ]
+   }
+  },
+  {
+   "id": "Interiors Enhanced - Darker Ambient Light and Fog",
+   "modFolder": "Interiors Enhanced - Darker Ambient Light and Fog",
+   "displayName": {
+    "ru": "Interiors Enhanced - Darker Ambient Light and Fog",
+    "en": "Interiors Enhanced - Darker Ambient Light and Fog"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 8768,
+    "fileId": 78703,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/8768?tab=files&file_id=78703"
+   },
+   "version": "2.0",
+   "archive": {
+    "nexusFileName": "Interiors Enhanced 2.0 - ALL IN ONE-8768-2-0.rar",
+    "localFileName": "Interiors Enhanced 2.0 - ALL IN ONE-8768-2-0.rar",
+    "size": 1801955,
+    "sha256": "fb739d443eeebe672a989d0a136fb2b2629b8b71c4d88b16b62178d2bca79a3a"
+   },
+   "plugins": [
+    "InteriorsEnhanced-All-In-One.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Enhanced Blood Textures",
+   "modFolder": "Enhanced Blood Textures",
+   "displayName": {
+    "ru": "Enhanced Blood Textures",
+    "en": "Enhanced Blood Textures"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 212,
+    "fileId": 54175,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/212?tab=files&file_id=54175"
+   },
+   "version": "1.01",
+   "archive": {
+    "nexusFileName": "EBT_Basic v101-212-1-01.7z",
+    "localFileName": "EBT_Basic v101-212-1-01.7z",
+    "size": 143296254,
+    "sha256": "148613d3a1482822b888559104f1f51cbeff8004b059b7d1ccd1c4e09b08c902"
+   },
+   "plugins": [
+    "dD-Enhanced Blood Basic.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "1 core/Meshes/Effects/GoreExplosionLimbRed01.nif",
+      "Meshes/Effects/GoreExplosionLimbRed01.nif"
+     ],
+     [
+      "1 core/Meshes/Effects/MPSBloodImpact02.nif",
+      "Meshes/Effects/MPSBloodImpact02.nif"
+     ],
+     [
+      "1 core/Textures/blood/BloodSplatterSynthOil_d.DDS",
+      "Textures/blood/BloodSplatterSynthOil_d.DDS"
+     ],
+     [
+      "1 core/Textures/blood/DecalsBloodSplatter01.DDS",
+      "Textures/blood/DecalsBloodSplatter01.DDS"
+     ],
+     [
+      "1 core/Textures/blood/DecalsBloodSplatter01_n.DDS",
+      "Textures/blood/DecalsBloodSplatter01_n.DDS"
+     ],
+     [
+      "1 core/Textures/blood/DecalsBloodSplatterClear_d.DDS",
+      "Textures/blood/DecalsBloodSplatterClear_d.DDS"
+     ],
+     [
+      "1 core/Textures/blood/DecalsBloodSplatterGreen_d.DDS",
+      "Textures/blood/DecalsBloodSplatterGreen_d.DDS"
+     ],
+     [
+      "1 core/Textures/blood/screenbloodalpha01opt.dds",
+      "Textures/blood/screenbloodalpha01opt.dds"
+     ],
+     [
+      "1 core/Textures/blood/screenbloodcolor01opt.dds",
+      "Textures/blood/screenbloodcolor01opt.dds"
+     ],
+     [
+      "1 core/Textures/decals/BloodDecalHitBlade01_d.DDS",
+      "Textures/decals/BloodDecalHitBlade01_d.DDS"
+     ],
+     [
+      "1 core/Textures/decals/BloodDecalHitBlade01_dGREEN.DDS",
+      "Textures/decals/BloodDecalHitBlade01_dGREEN.DDS"
+     ],
+     [
+      "1 core/Textures/decals/BloodDecalHitBullet.DDS",
+      "Textures/decals/BloodDecalHitBullet.DDS"
+     ],
+     [
+      "1 core/Textures/decals/BloodDecalHitBulletGREEN.DDS",
+      "Textures/decals/BloodDecalHitBulletGREEN.DDS"
+     ],
+     [
+      "1 core/Textures/decals/BloodLasers.DDS",
+      "Textures/decals/BloodLasers.DDS"
+     ],
+     [
+      "1 core/Textures/decals/BloodPlasma.dds",
+      "Textures/decals/BloodPlasma.dds"
+     ],
+     [
+      "1 core/Textures/decals/BloodSmear01_n.DDS",
+      "Textures/decals/BloodSmear01_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/BloodSmear02_n.DDS",
+      "Textures/decals/BloodSmear02_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/BloodSmear03_n.DDS",
+      "Textures/decals/BloodSmear03_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/BloodSmear04_n.DDS",
+      "Textures/decals/BloodSmear04_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/BloodSplatterAlien_atlas_d.DDS",
+      "Textures/decals/BloodSplatterAlien_atlas_d.DDS"
+     ],
+     [
+      "1 core/Textures/decals/BloodSplatterBlend01_d.DDS",
+      "Textures/decals/BloodSplatterBlend01_d.DDS"
+     ],
+     [
+      "1 core/Textures/decals/BloodSplatterGlowing_d.DDS",
+      "Textures/decals/BloodSplatterGlowing_d.DDS"
+     ],
+     [
+      "1 core/Textures/decals/BloodSplatterGrey_d.DDS",
+      "Textures/decals/BloodSplatterGrey_d.DDS"
+     ],
+     [
+      "1 core/Textures/decals/BloodSplatterGrey_s.DDS",
+      "Textures/decals/BloodSplatterGrey_s.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Blood_Smear_DRY_QUAD_n.DDS",
+      "Textures/decals/Blood_Smear_DRY_QUAD_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Blood_Smear_QUAD_n.DDS",
+      "Textures/decals/Blood_Smear_QUAD_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Blood_Splatter_Drip01_n.DDS",
+      "Textures/decals/Blood_Splatter_Drip01_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Blood_Splatter_Drip02_n.DDS",
+      "Textures/decals/Blood_Splatter_Drip02_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Blood_Splatter_Drip03_n.DDS",
+      "Textures/decals/Blood_Splatter_Drip03_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Blood_Splatter_Drip04_n.DDS",
+      "Textures/decals/Blood_Splatter_Drip04_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Blood_Splatter_Drip05_n.DDS",
+      "Textures/decals/Blood_Splatter_Drip05_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Blood_Splatter_Drip06_d.dds",
+      "Textures/decals/Blood_Splatter_Drip06_d.dds"
+     ],
+     [
+      "1 core/Textures/decals/Blood_Splatter_Drip06_n.dds",
+      "Textures/decals/Blood_Splatter_Drip06_n.dds"
+     ],
+     [
+      "1 core/Textures/decals/Blood_Splatter_Drip06_s.dds",
+      "Textures/decals/Blood_Splatter_Drip06_s.dds"
+     ],
+     [
+      "1 core/Textures/decals/Blood_Splatter_Drip07_n.DDS",
+      "Textures/decals/Blood_Splatter_Drip07_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Blood_Splatter_Drip08_n.DDS",
+      "Textures/decals/Blood_Splatter_Drip08_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Blood_Splatter_Drip_DRY_QUAD_n.DDS",
+      "Textures/decals/Blood_Splatter_Drip_DRY_QUAD_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Blood_Splatter_Drip_QUAD_n.DDS",
+      "Textures/decals/Blood_Splatter_Drip_QUAD_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Blood_Splatter_QUAD_n.DDS",
+      "Textures/decals/Blood_Splatter_QUAD_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Blood_Splatter_SUBTEXTURES.dds",
+      "Textures/decals/Blood_Splatter_SUBTEXTURES.dds"
+     ],
+     [
+      "1 core/Textures/decals/Blood_Splatter_SUBTEXTURES_n.dds",
+      "Textures/decals/Blood_Splatter_SUBTEXTURES_n.dds"
+     ],
+     [
+      "1 core/Textures/decals/Blood_Splatter_SUBTEXTURES_s.dds",
+      "Textures/decals/Blood_Splatter_SUBTEXTURES_s.dds"
+     ],
+     [
+      "1 core/Textures/decals/Blood_Splatter_Spray01_n.DDS",
+      "Textures/decals/Blood_Splatter_Spray01_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Blood_Splatter__DRY_QUAD_n.DDS",
+      "Textures/decals/Blood_Splatter__DRY_QUAD_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/DecalBloodBite.dds",
+      "Textures/decals/DecalBloodBite.dds"
+     ],
+     [
+      "1 core/Textures/decals/DecalBloodBiteGREEN.dds",
+      "Textures/decals/DecalBloodBiteGREEN.dds"
+     ],
+     [
+      "1 core/Textures/decals/DecalBloodBlunt.dds",
+      "Textures/decals/DecalBloodBlunt.dds"
+     ],
+     [
+      "1 core/Textures/decals/DecalBloodBluntGREEN.dds",
+      "Textures/decals/DecalBloodBluntGREEN.dds"
+     ],
+     [
+      "1 core/Textures/decals/DecalBloodClaw.dds",
+      "Textures/decals/DecalBloodClaw.dds"
+     ],
+     [
+      "1 core/Textures/decals/DecalBloodClawGREEN.dds",
+      "Textures/decals/DecalBloodClawGREEN.dds"
+     ],
+     [
+      "1 core/Textures/decals/DecalBloodunarmed.dds",
+      "Textures/decals/DecalBloodunarmed.dds"
+     ],
+     [
+      "1 core/Textures/decals/DecalBloodunarmedGREEN.dds",
+      "Textures/decals/DecalBloodunarmedGREEN.dds"
+     ],
+     [
+      "1 core/Textures/decals/Dry_BloodSmear01_n.DDS",
+      "Textures/decals/Dry_BloodSmear01_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Dry_BloodSmear02_n.DDS",
+      "Textures/decals/Dry_BloodSmear02_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Dry_BloodSmear03_n.DDS",
+      "Textures/decals/Dry_BloodSmear03_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Dry_BloodSmear04_n.DDS",
+      "Textures/decals/Dry_BloodSmear04_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Dry_Blood_Splatter_Drip01_n.DDS",
+      "Textures/decals/Dry_Blood_Splatter_Drip01_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Dry_Blood_Splatter_Drip02_n.DDS",
+      "Textures/decals/Dry_Blood_Splatter_Drip02_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Dry_Blood_Splatter_Drip03_n.DDS",
+      "Textures/decals/Dry_Blood_Splatter_Drip03_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Dry_Blood_Splatter_Drip04_n.DDS",
+      "Textures/decals/Dry_Blood_Splatter_Drip04_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Dry_Blood_Splatter_Drip05_n.DDS",
+      "Textures/decals/Dry_Blood_Splatter_Drip05_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Dry_Blood_Splatter_Drip06_n.DDS",
+      "Textures/decals/Dry_Blood_Splatter_Drip06_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Dry_Blood_Splatter_Drip07_n.DDS",
+      "Textures/decals/Dry_Blood_Splatter_Drip07_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Dry_Blood_Splatter_Drip08_n.DDS",
+      "Textures/decals/Dry_Blood_Splatter_Drip08_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Dry_Blood_Splatter_Spray01_n.DDS",
+      "Textures/decals/Dry_Blood_Splatter_Spray01_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/bloodlasersGREEN.dds",
+      "Textures/decals/bloodlasersGREEN.dds"
+     ],
+     [
+      "1 core/Textures/effects/BloodMist.DDS",
+      "Textures/effects/BloodMist.DDS"
+     ],
+     [
+      "1 core/Textures/effects/BloodMist02.DDS",
+      "Textures/effects/BloodMist02.DDS"
+     ],
+     [
+      "1 core/Textures/effects/BloodMist03.DDS",
+      "Textures/effects/BloodMist03.DDS"
+     ],
+     [
+      "1 core/Textures/effects/BloodMist04.DDS",
+      "Textures/effects/BloodMist04.DDS"
+     ],
+     [
+      "1 core/Textures/effects/BloodSplatter_atlas_d.DDS",
+      "Textures/effects/BloodSplatter_atlas_d.DDS"
+     ],
+     [
+      "1 core/Textures/effects/FluidSplat02_d.dds",
+      "Textures/effects/FluidSplat02_d.dds"
+     ],
+     [
+      "1 core/Textures/effects/FluidSplat02_n.DDS",
+      "Textures/effects/FluidSplat02_n.DDS"
+     ],
+     [
+      "1 core/Textures/effects/FluidSplatsSmallAtlas_d.DDS",
+      "Textures/effects/FluidSplatsSmallAtlas_d.DDS"
+     ],
+     [
+      "1 core/dD-Enhanced Blood Basic.esp",
+      "dD-Enhanced Blood Basic.esp"
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "Main: Enhanced Blood Textures Main",
+     "Screen Blood: EBT - Default",
+     "Blood Mist -Optional-: -",
+     "Eye Cubemap -Optional-: -",
+     "Dark Outdoor Cubemap -Optional-: -",
+     "Screen Duration -Optional-: -",
+     "Blood Amount and Size -Optional-: -",
+     "Resolution and Color: High, Default Color"
+    ]
+   }
+  },
+  {
+   "id": "Water Enhanced",
+   "modFolder": "Water Enhanced",
+   "displayName": {
+    "ru": "Water Enhanced",
+    "en": "Water Enhanced"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 3281,
+    "fileId": 122661,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/3281?tab=files&file_id=122661"
+   },
+   "version": "1",
+   "archive": {
+    "nexusFileName": "2K Water-3281-1.7z",
+    "localFileName": "2K Water-3281-1.7z",
+    "size": 17248183,
+    "sha256": "b119918f11bf064634fa1a5b3a03a81895ce4901067921165fca61674102131e"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Valentine REBORN - Nick Face Retexture - HD Synth Eyes and Teeth - Gen1 Metal Skeleton",
+   "modFolder": "Valentine REBORN - Nick Face Retexture - HD Synth Eyes and Teeth - Gen1 Metal Skeleton",
+   "displayName": {
+    "ru": "Valentine REBORN - Nick Face Retexture - HD Synth Eyes and Teeth - Gen1 Metal Skeleton",
+    "en": "Valentine REBORN - Nick Face Retexture - HD Synth Eyes and Teeth - Gen1 Metal Skeleton"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 9568,
+    "fileId": 90549,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/9568?tab=files&file_id=90549"
+   },
+   "version": "2.0",
+   "archive": {
+    "nexusFileName": "Valentine REBORN - HD Retexture - V2 - Yellow Eyes-9568-2-0.7z",
+    "localFileName": "Valentine REBORN - HD Retexture - V2 - Yellow Eyes-9568-2-0.7z",
+    "size": 71696389,
+    "sha256": "85dd3214c199d1d866f7510d37acd816233d13c9f2beed8a28722672a3c58e66"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Savrenx Dogmeat HD V2",
+   "modFolder": "Savrenx Dogmeat HD V2",
+   "displayName": {
+    "ru": "Savrenx Dogmeat HD V2",
+    "en": "Savrenx Dogmeat HD V2"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 68460,
+    "fileId": 266060,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/68460?tab=files&file_id=266060"
+   },
+   "version": "1.00",
+   "archive": {
+    "nexusFileName": "Dogmeat HD V2-68460-1-00-1675382669.7z",
+    "localFileName": "Dogmeat HD V2-68460-1-00-1675382669.7z",
+    "size": 207981543,
+    "sha256": "19c9d4aeb88cd45c6e3ae62097a0f855227a7414b7fce913bc3bd2f1ba2b63d6"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Wasteland Creatures Redone - Retexture Compilation",
+   "modFolder": "Wasteland Creatures Redone - Retexture Compilation",
+   "displayName": {
+    "ru": "Wasteland Creatures Redone - Retexture Compilation",
+    "en": "Wasteland Creatures Redone - Retexture Compilation"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 7951,
+    "fileId": 56974,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/7951?tab=files&file_id=56974"
+   },
+   "version": "1.1",
+   "archive": {
+    "nexusFileName": "Wasteland Creature Redone-7951-1-1.7z",
+    "localFileName": "Wasteland Creature Redone-7951-1-1.7z",
+    "size": 348389547,
+    "sha256": "a4e8b94fe0f2383a426b5eb9d124343edbfe19b3f9fb1ca93cc8c0f3db1d29ec"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "Wasteland Creatures Redone/Data",
+    "fomod": true,
+    "choices": [
+     "Wasteland Creatures: Bloatflies, Brahmin, Deathclaws, Feral Ghouls, Mirelurks, Mirelurk Hunter, Mirelurk King, Mirelurk Queen, Molerats, Mongrels, Mosquitos, Mutant Hounds, Radroaches, Radscorpions, Radstags, Stingwings, Yao Guai"
+    ]
+   }
+  },
+  {
+   "id": "Delightful Ivy - HD Vine Retexture - a natural and realistic green and brown plant overhaul",
+   "modFolder": "Delightful Ivy - HD Vine Retexture - a natural and realistic green and brown plant overhaul",
+   "displayName": {
+    "ru": "Delightful Ivy - HD Vine Retexture - a natural and realistic green and brown plant overhaul",
+    "en": "Delightful Ivy - HD Vine Retexture - a natural and realistic green and brown plant overhaul"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 10436,
+    "fileId": 40952,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/10436?tab=files&file_id=40952"
+   },
+   "version": "1.1",
+   "archive": {
+    "nexusFileName": "Delightful Ivy - HD Vines Retexture - VANILLA GREY-10436-1-1.7z",
+    "localFileName": "Delightful Ivy - HD Vines Retexture - VANILLA GREY-10436-1-1.7z",
+    "size": 4439089,
+    "sha256": "f93594a9b230fe97427bf0e191b3276e75def91c5d2291bbe5c36e8da4ee78d5"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Fallout Texture Overhaul PipBoy (Pip-Boy) UHD 4K",
+   "modFolder": "Fallout Texture Overhaul PipBoy (Pip-Boy) UHD 4K",
+   "displayName": {
+    "ru": "Fallout Texture Overhaul PipBoy (Pip-Boy) UHD 4K",
+    "en": "Fallout Texture Overhaul PipBoy (Pip-Boy) UHD 4K"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 449,
+    "fileId": 8972,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/449?tab=files&file_id=8972"
+   },
+   "version": "2.3",
+   "archive": {
+    "nexusFileName": "FTO Pip-Boy All in one-449-2-3.rar",
+    "localFileName": "FTO Pip-Boy All in one-449-2-3.rar",
+    "size": 246976746,
+    "sha256": "3a9ae52b88163ca17cdef2442ec3c90b54c99b1389df7c430e1f03a136fbdb27"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "optionalsmain/D2K/Data",
+    "fomod": true,
+    "choices": [
+     "Pip-Boy Color: Vanilla",
+     "4K or 2K: 2K Pip-Boy",
+     "HoloTape: -",
+     "ScreenBlack: -",
+     "Optionals: -"
+    ]
+   }
+  },
+  {
+   "id": "Fallout Texture Overhaul Stars",
+   "modFolder": "Fallout Texture Overhaul Stars",
+   "displayName": {
+    "ru": "Fallout Texture Overhaul Stars",
+    "en": "Fallout Texture Overhaul Stars"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 145,
+    "fileId": 238,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/145?tab=files&file_id=238"
+   },
+   "version": "1.0",
+   "archive": {
+    "nexusFileName": "FTO Stars 2K-145-1-0.rar",
+    "localFileName": "FTO Stars 2K-145-1-0.rar",
+    "size": 1678918,
+    "sha256": "12dbbee8eb5ccb0635245b0b738744aa076233dffd7c612a51603134b144ceaa"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Real HD Face Textures 2k - Real HD Main File",
+   "modFolder": "Real HD Face Textures 2k - Real HD Main File",
+   "displayName": {
+    "ru": "Real HD Face Textures 2k",
+    "en": "Real HD Face Textures 2k"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 20445,
+    "fileId": 83689,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/20445?tab=files&file_id=83689"
+   },
+   "version": "1.0",
+   "archive": {
+    "nexusFileName": "Real HD Main File-20445-1-0.7z",
+    "localFileName": "Real HD Main File-20445-1-0.7z",
+    "size": 135624642,
+    "sha256": "11232126d1c77c7d2b6006f54f4cd4e692a0df24dce21a3c77a7de91969a35f9"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Real HD Face Textures 2k - Real HD Faces Textures",
+   "modFolder": "Real HD Face Textures 2k - Real HD Faces Textures",
+   "displayName": {
+    "ru": "Real HD Face Textures 2k",
+    "en": "Real HD Face Textures 2k"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 20445,
+    "fileId": 83688,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/20445?tab=files&file_id=83688"
+   },
+   "version": "1.0",
+   "archive": {
+    "nexusFileName": "Real HD Faces Textures-20445-1-0.7z",
+    "localFileName": "Real HD Faces Textures-20445-1-0.7z",
+    "size": 45643951,
+    "sha256": "7328c81f4b1b7e04b4bffbe4de5e56715398aa505849bc7460432fb5133ee06b"
+   },
+   "plugins": [],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "Data/Textures/Actors/character/OldHumanFemale/oldhumanfemalehead_d.dds",
+      "Textures/Actors/character/OldHumanFemale/oldhumanfemalehead_d.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/OldHumanFemale/oldhumanfemalehead_n.dds",
+      "Textures/Actors/character/OldHumanFemale/oldhumanfemalehead_n.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/OldHumanFemale/oldhumanfemalehead_s.dds",
+      "Textures/Actors/character/OldHumanFemale/oldhumanfemalehead_s.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/basehumanfemale/BaseFemaleHead_d.dds",
+      "Textures/Actors/character/basehumanfemale/BaseFemaleHead_d.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/basehumanfemale/BaseFemaleHead_n.dds",
+      "Textures/Actors/character/basehumanfemale/BaseFemaleHead_n.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/basehumanfemale/BaseFemaleHead_s.dds",
+      "Textures/Actors/character/basehumanfemale/BaseFemaleHead_s.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/basehumanfemale/BaseFemaleHead_sk.dds",
+      "Textures/Actors/character/basehumanfemale/BaseFemaleHead_sk.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/basehumanfemale/basefemalehands_sk.dds",
+      "Textures/Actors/character/basehumanfemale/basefemalehands_sk.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/basehumanfemale/femalebody_1_sk.dds",
+      "Textures/Actors/character/basehumanfemale/femalebody_1_sk.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/basehumanfemale/femaleheadweathered1_d.dds",
+      "Textures/Actors/character/basehumanfemale/femaleheadweathered1_d.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/basehumanfemale/femaleheadweathered1_n.dds",
+      "Textures/Actors/character/basehumanfemale/femaleheadweathered1_n.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/basehumanfemale/femaleheadweathered1_s.dds",
+      "Textures/Actors/character/basehumanfemale/femaleheadweathered1_s.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/basehumanmale/basemalehead_d.dds",
+      "Textures/Actors/character/basehumanmale/basemalehead_d.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/basehumanmale/basemalehead_n.dds",
+      "Textures/Actors/character/basehumanmale/basemalehead_n.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/basehumanmale/basemalehead_s.dds",
+      "Textures/Actors/character/basehumanmale/basemalehead_s.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/basehumanmale/youngmalehead_d.dds",
+      "Textures/Actors/character/basehumanmale/youngmalehead_d.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/basehumanmale/youngmalehead_n.dds",
+      "Textures/Actors/character/basehumanmale/youngmalehead_n.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/basehumanmale/youngmalehead_s.dds",
+      "Textures/Actors/character/basehumanmale/youngmalehead_s.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/mayor/mayor_d.dds",
+      "Textures/Actors/character/mayor/mayor_d.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/mayor/mayor_n.dds",
+      "Textures/Actors/character/mayor/mayor_n.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/mayor/mayor_s.dds",
+      "Textures/Actors/character/mayor/mayor_s.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/midagedfemale/midagefemalehead_N.dds",
+      "Textures/Actors/character/midagedfemale/midagefemalehead_N.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/midagedfemale/midagefemalehead_S.dds",
+      "Textures/Actors/character/midagedfemale/midagefemalehead_S.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/midagedfemale/midagefemalehead_d.dds",
+      "Textures/Actors/character/midagedfemale/midagefemalehead_d.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/oldhumanmale/oldhumanmalehead_d.dds",
+      "Textures/Actors/character/oldhumanmale/oldhumanmalehead_d.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/oldhumanmale/oldhumanmalehead_n.dds",
+      "Textures/Actors/character/oldhumanmale/oldhumanmalehead_n.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/oldhumanmale/oldhumanmalehead_s.dds",
+      "Textures/Actors/character/oldhumanmale/oldhumanmalehead_s.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/piper/piperhead_S.dds",
+      "Textures/Actors/character/piper/piperhead_S.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/piper/piperhead_d.dds",
+      "Textures/Actors/character/piper/piperhead_d.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/piper/piperhead_n.dds",
+      "Textures/Actors/character/piper/piperhead_n.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/preston/preston_d.dds",
+      "Textures/Actors/character/preston/preston_d.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/preston/preston_n.dds",
+      "Textures/Actors/character/preston/preston_n.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/preston/preston_s.dds",
+      "Textures/Actors/character/preston/preston_s.dds"
+     ],
+     [
+      "Data/materials/actors/character/basehumanfemale/basehumanfemalehands.bgsm",
+      "materials/actors/character/basehumanfemale/basehumanfemalehands.bgsm"
+     ],
+     [
+      "Data/materials/actors/character/basehumanfemale/basehumanfemalerear.bgsm",
+      "materials/actors/character/basehumanfemale/basehumanfemalerear.bgsm"
+     ],
+     [
+      "Data/materials/actors/character/basehumanfemale/basehumanfemaleskinhead.bgsm",
+      "materials/actors/character/basehumanfemale/basehumanfemaleskinhead.bgsm"
+     ],
+     [
+      "Data/materials/actors/character/basehumanmale/basehumanmaleskinhands.bgsm",
+      "materials/actors/character/basehumanmale/basehumanmaleskinhands.bgsm"
+     ],
+     [
+      "Data/materials/actors/character/basehumanmale/basehumanmaleskinhandsdirty.bgsm",
+      "materials/actors/character/basehumanmale/basehumanmaleskinhandsdirty.bgsm"
+     ],
+     [
+      "Data/materials/actors/character/basehumanmale/basehumanskin.bgsm",
+      "materials/actors/character/basehumanmale/basehumanskin.bgsm"
+     ],
+     [
+      "Data/materials/actors/character/basehumanmale/basehumanskindirty.bgsm",
+      "materials/actors/character/basehumanmale/basehumanskindirty.bgsm"
+     ],
+     [
+      "Data/materials/actors/character/basehumanmale/basehumanskinhead.bgsm",
+      "materials/actors/character/basehumanmale/basehumanskinhead.bgsm"
+     ]
+    ],
+    "fomod": false,
+    "notFromArchive": [
+     "materials/actors/character/basehumanfemale/basehumanfemaleskin.bgsm.mohidden"
+    ]
+   }
+  },
+  {
+   "id": "Immersive Mouth and Teeth",
+   "modFolder": "Immersive Mouth and Teeth",
+   "displayName": {
+    "ru": "Immersive Mouth and Teeth",
+    "en": "Immersive Mouth and Teeth"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 903,
+    "fileId": 150119,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/903?tab=files&file_id=150119"
+   },
+   "version": "6.0",
+   "archive": {
+    "nexusFileName": "Immersive Mouth and Teeth - 6.0-903-6-0-1547555098.7z",
+    "localFileName": "Immersive Mouth and Teeth - 6.0-903-6-0-1547555098.7z",
+    "size": 75287512,
+    "sha256": "b577022947c3ebcefcb88062bdce99acd9b1b83b7e71b7d651ff0d1516dcec0b"
+   },
+   "plugins": [],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "payload/2048/base",
+      "textures/Actors/Character/HumanCommon"
+     ],
+     [
+      "payload/2048/mouthhuman1/mouthhumanfile1",
+      "textures/Actors/Character/HumanCommon"
+     ],
+     [
+      "payload/2048/mouthhuman2/mouthhumanfile1",
+      "textures/Actors/Character/HumanCommon"
+     ],
+     [
+      "payload/2048/mouthhuman3/mouthhumanfile1",
+      "textures/Actors/Character/HumanCommon"
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "Texture Size: 2K",
+     "Mouthhuman_d.dds: Type 1",
+     "Mouthhuman2_d.dds: Type 1",
+     "Mouthhuman3_d.dds: Type 1",
+     "Patches: -"
+    ]
+   }
+  },
+  {
+   "id": "Eye Normal Map Fix Fallout 4 Edition",
+   "modFolder": "Eye Normal Map Fix Fallout 4 Edition",
+   "displayName": {
+    "ru": "Eye Normal Map Fix Fallout 4 Edition",
+    "en": "Eye Normal Map Fix Fallout 4 Edition"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 819,
+    "fileId": 3599,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/819?tab=files&file_id=3599"
+   },
+   "version": "1b",
+   "archive": {
+    "nexusFileName": "Eye Normal Map Fix 1b Final-819-1b.zip",
+    "localFileName": "Eye Normal Map Fix 1b Final-819-1b.zip",
+    "size": 41180,
+    "sha256": "e43eee1127a8297c6f74d35217c9ce0f8af0a1fe34ef0fba2c5a28022ffb2d73"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "The Eyes of Beauty Fallout Edition - Remastered",
+   "modFolder": "The Eyes of Beauty Fallout Edition - Remastered",
+   "displayName": {
+    "ru": "The Eyes of Beauty Fallout Edition - Remastered",
+    "en": "The Eyes of Beauty Fallout Edition - Remastered"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 73874,
+    "fileId": 286972,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/73874?tab=files&file_id=286972"
+   },
+   "version": "1.0",
+   "archive": {
+    "nexusFileName": "TeoB Fallout Remastered - Vanilla eyes replacer 2k-73874-1-0-1692253283.7z",
+    "localFileName": "TeoB Fallout Remastered - Vanilla eyes replacer 2k-73874-1-0-1692253283.7z",
+    "size": 44902254,
+    "sha256": "23347ab24cb743979984a397ee4a184fbeeb4a928136cf46e65c1faa95cc39a6"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "The Eyes of Beauty Fallout Remastered - Vanilla Eyes - 2k",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Ponytail Hairstyles by Azar v3.0",
+   "modFolder": "Ponytail Hairstyles by Azar v3.0",
+   "displayName": {
+    "ru": "Ponytail Hairstyles by Azar v3.0",
+    "en": "Ponytail Hairstyles by Azar v3.0"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 8126,
+    "fileId": 310001,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/8126?tab=files&file_id=310001"
+   },
+   "version": "v3.0",
+   "archive": {
+    "nexusFileName": "Ponytail Hairstyles by Azar - BA2-8126-v3-0-1713010119.zip",
+    "localFileName": "Ponytail Hairstyles by Azar - BA2-8126-v3-0-1713010119.zip",
+    "size": 46219565,
+    "sha256": "955417bd14c60011e8102ae5f841714c4b61221fb7e3a4ada94d0a88999286f1"
+   },
+   "plugins": [
+    "AzarPonytailHairstyles.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Commonwealth Cuts - KS Hairdos - ApachiiSkyHair",
+   "modFolder": "Commonwealth Cuts - KS Hairdos - ApachiiSkyHair",
+   "displayName": {
+    "ru": "Commonwealth Cuts - KS Hairdos - ApachiiSkyHair",
+    "en": "Commonwealth Cuts - KS Hairdos - ApachiiSkyHair"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 11402,
+    "fileId": 149695,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/11402?tab=files&file_id=149695"
+   },
+   "version": "2.5.1",
+   "archive": {
+    "nexusFileName": "Commonwealth Cuts 2.5.1-11402-2-5-1-1547056792.rar",
+    "localFileName": "Commonwealth Cuts 2.5.1-11402-2-5-1-1547056792.rar",
+    "size": 391385842,
+    "sha256": "2652f761de89f86f54d57dc23bd90821779848757d1dd1b884f2e371b7814e5e"
+   },
+   "plugins": [
+    "KSHairdos.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Lots More Male Hairstyles",
+   "modFolder": "Lots More Male Hairstyles",
+   "displayName": {
+    "ru": "Lots More Male Hairstyles",
+    "en": "Lots More Male Hairstyles"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 10695,
+    "fileId": 43293,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/10695?tab=files&file_id=43293"
+   },
+   "version": "1.21",
+   "archive": {
+    "nexusFileName": "Lots More Male Hairstyles v. 1.21 - Fix-10695-1-21Fix.rar",
+    "localFileName": "Lots More Male Hairstyles v. 1.21 - Fix-10695-1-21Fix.rar",
+    "size": 3911,
+    "sha256": "b01dc6dd6bf369925256e6468151e05db84c915d1075f302647f4233ea6e757e"
+   },
+   "plugins": [
+    "Lots More Male Hairstyles.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Lots More Female Hairstyles",
+   "modFolder": "Lots More Female Hairstyles",
+   "displayName": {
+    "ru": "Lots More Female Hairstyles",
+    "en": "Lots More Female Hairstyles"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 10543,
+    "fileId": 43598,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/10543?tab=files&file_id=43598"
+   },
+   "version": "1.33",
+   "archive": {
+    "nexusFileName": "Lots More Female Hairstyles v. 1.33-10543-1-33.rar",
+    "localFileName": "Lots More Female Hairstyles v. 1.33-10543-1-33.rar",
+    "size": 3782,
+    "sha256": "354e8b2aca2b9b8e662c8c8ff6cc8664cb592ad7afbe3a3cdf96741bba81ea04"
+   },
+   "plugins": [
+    "Lots More Female Hairstyles.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Beards N' Staches - A Facial Hair Expansion",
+   "modFolder": "Beards N' Staches - A Facial Hair Expansion",
+   "displayName": {
+    "ru": "Beards N' Staches - A Facial Hair Expansion",
+    "en": "Beards N' Staches - A Facial Hair Expansion"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 72573,
+    "fileId": 379957,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/72573?tab=files&file_id=379957"
+   },
+   "version": "1.2",
+   "archive": {
+    "nexusFileName": "Beards N' Staches-72573-1-2-1767622583.7z",
+    "localFileName": "Beards N' Staches-72573-1-2-1767622583.7z",
+    "size": 7540,
+    "sha256": "499e7f8c6f21e33e2915353c23de566a6d9618d5dca2f5ffdb9cdf5d6a0fd3bd"
+   },
+   "plugins": [
+    "SF Beards N Staches.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Rusty Face Fix",
+   "modFolder": "Rusty Face Fix",
+   "displayName": {
+    "ru": "Rusty Face Fix",
+    "en": "Rusty Face Fix"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 31028,
+    "fileId": 307994,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/31028?tab=files&file_id=307994"
+   },
+   "version": "2.0.2",
+   "archive": {
+    "nexusFileName": "Rusty Face Fix - Latest Version-31028-2-0-2-1711416032.zip",
+    "localFileName": "Rusty Face Fix - Latest Version-31028-2-0-2-1711416032.zip",
+    "size": 150965,
+    "sha256": "efbab0b42a3b7cd78849e76d183f1c7249da39b3c0f3c30d21a7069fa6ab9799"
+   },
+   "plugins": [
+    "Rusty Face Fix.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "High Res DLC Black Face Fix",
+   "modFolder": "High Res DLC Black Face Fix",
+   "displayName": {
+    "ru": "High Res DLC Black Face Fix",
+    "en": "High Res DLC Black Face Fix"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 21907,
+    "fileId": 89606,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/21907?tab=files&file_id=89606"
+   },
+   "version": "1.4",
+   "archive": {
+    "nexusFileName": "High Res DLC Black Face Fix-21907-1-4.7z",
+    "localFileName": "High Res DLC Black Face Fix-21907-1-4.7z",
+    "size": 14061041,
+    "sha256": "61cc9f63b05423241fbe5a79706d63112a70981d1a0371d29364f792919a303b"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Everyone's Best Friend (Dogmeat and Companion At Same Time - No Console - No Hack)",
+   "modFolder": "Everyone's Best Friend (Dogmeat and Companion At Same Time - No Console - No Hack)",
+   "displayName": {
+    "ru": "Everyone's Best Friend (Dogmeat and Companion At Same Time - No Console - No Hack)",
+    "en": "Everyone's Best Friend (Dogmeat and Companion At Same Time - No Console - No Hack)"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 13459,
+    "fileId": 88106,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/13459?tab=files&file_id=88106"
+   },
+   "version": "3.0.0",
+   "archive": {
+    "nexusFileName": "Everyone's Best Friend v3.0.0-13459-3-0-0.rar",
+    "localFileName": "Everyone's Best Friend v3.0.0-13459-3-0-0.rar",
+    "size": 81039,
+    "sha256": "9c2c58fa079f4b7ece6125757dc4b777ea46cc4a83e47fa23baea8087084bf3b"
+   },
+   "plugins": [
+    "EveryonesBestFriend.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Lowered Weapons",
+   "modFolder": "Lowered Weapons",
+   "displayName": {
+    "ru": "Lowered Weapons",
+    "en": "Lowered Weapons"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 522,
+    "fileId": 1197,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/522?tab=files&file_id=1197"
+   },
+   "version": "1.1",
+   "archive": {
+    "nexusFileName": "Lowered Weapons 1.1-522-1-0.rar",
+    "localFileName": "Lowered Weapons 1.1-522-1-0.rar",
+    "size": 783996,
+    "sha256": "f88b0448cb0d42f2bcf3f1d23c3f489725880d59770beb8133c9fe9665075c2a"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "See Through Scopes",
+   "modFolder": "See Through Scopes",
+   "displayName": {
+    "ru": "See Through Scopes",
+    "en": "See Through Scopes"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 9476,
+    "fileId": 415667,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/9476?tab=files&file_id=415667"
+   },
+   "version": "2.7.1",
+   "archive": {
+    "nexusFileName": "ea/3a/b3/ea3ab37d-ebda-4071-94c5-34e9e2822f4e",
+    "localFileName": "ea/3a/b3/ea3ab37d-ebda-4071-94c5-34e9e2822f4e",
+    "size": 59041604,
+    "sha256": "efab4eb54a257990df8a270f4b21c01ed3314cfeb5bfad96081f119ed675b3a2"
+   },
+   "plugins": [
+    "3dscopes-servicerifle.esp",
+    "3dscopes.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "02 - GOTY ESP/3dscopes.esp",
+      "3dscopes.esp"
+     ],
+     [
+      "04 - Addons/3dscopes-servicerifle.esp",
+      "3dscopes-servicerifle.esp"
+     ],
+     [
+      "05 - Prepacked",
+      ""
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "ADD or REPLACE: ADD",
+     "DLC: Install and Merge both DLC's",
+     "Add-ons: Install addon patches for other weapon mods",
+     "Tweaks: -",
+     "Patches (Optional): -",
+     "Animation patches: -",
+     "Available add-ons - Group 1: -",
+     "Available add-ons - Group 2: -",
+     "Available add-ons - Group 3: -",
+     "Available add-ons - Group 4: Service Rifle by DeadPool2099",
+     "Available add-ons - Patch Group: -",
+     "Available add-ons - Creation Club: -",
+     "Available add-ons - Group 5: -",
+     "Available add-ons - Group 6: -",
+     "Available add-ons - Group 7: -"
+    ]
+   }
+  },
+  {
+   "id": "Bullet Counted Reload System (BCR)",
+   "modFolder": "Bullet Counted Reload System (BCR)",
+   "displayName": {
+    "ru": "Bullet Counted Reload System (BCR)",
+    "en": "Bullet Counted Reload System (BCR)"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 41178,
+    "fileId": 409237,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/41178?tab=files&file_id=409237"
+   },
+   "version": "2.05",
+   "archive": {
+    "nexusFileName": "1e/af/53/1eaf5346-a006-4a9f-8989-36f67a6b078a",
+    "localFileName": "1e/af/53/1eaf5346-a006-4a9f-8989-36f67a6b078a",
+    "size": 159701,
+    "sha256": "34778b29a503cc2f1873fe02167033e43b8967cf2c4cef86e9e085afcf961024"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Classic Holstered Weapons System (CHW)",
+   "modFolder": "Classic Holstered Weapons System (CHW)",
+   "displayName": {
+    "ru": "Classic Holstered Weapons System (CHW)",
+    "en": "Classic Holstered Weapons System (CHW)"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 46101,
+    "fileId": 409241,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/46101?tab=files&file_id=409241"
+   },
+   "version": "1.10",
+   "archive": {
+    "nexusFileName": "8c/1a/13/8c1a1337-f5f1-4ec8-940a-902f78156b80",
+    "localFileName": "8c/1a/13/8c1a1337-f5f1-4ec8-940a-902f78156b80",
+    "size": 236870,
+    "sha256": "9d3bd2dd11721130866bd1377bc0153537cf54c7e9d85b6b339488a959fefca1"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Tactical Reload",
+   "modFolder": "Tactical Reload",
+   "displayName": {
+    "ru": "Tactical Reload",
+    "en": "Tactical Reload"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 49444,
+    "fileId": 210052,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/49444?tab=files&file_id=210052"
+   },
+   "version": "1.1",
+   "archive": {
+    "nexusFileName": "Tactical Reload Framework-49444-1-1-1623428864.zip",
+    "localFileName": "Tactical Reload Framework-49444-1-1-1623428864.zip",
+    "size": 57536,
+    "sha256": "550fdf4c1f9c1eddf87567f114e0bf9fcd9a2838925007ee457c721db38ee794"
+   },
+   "plugins": [
+    "TacticalReload.esm"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Immersive Animation Framework",
+   "modFolder": "Immersive Animation Framework",
+   "displayName": {
+    "ru": "Immersive Animation Framework",
+    "en": "Immersive Animation Framework"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 50555,
+    "fileId": 261342,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/50555?tab=files&file_id=261342"
+   },
+   "version": "1.3.2",
+   "archive": {
+    "nexusFileName": "Immersive Animation Framework-50555-1-3-2-1671826855.rar",
+    "localFileName": "Immersive Animation Framework-50555-1-3-2-1671826855.rar",
+    "size": 50487472,
+    "sha256": "b012e0830412779a030b577fc002c195e3cffbaccdc74c41f453ddb019300b16"
+   },
+   "plugins": [
+    "IAF - Far Harbor & Nuka World.esp",
+    "ImmersiveAnimationFramework.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Pip-Boy Flashlight (Pipboy - Power Armor - Lamp Overhaul)",
+   "modFolder": "Pip-Boy Flashlight (Pipboy - Power Armor - Lamp Overhaul)",
+   "displayName": {
+    "ru": "Pip-Boy Flashlight (Pipboy - Power Armor - Lamp Overhaul)",
+    "en": "Pip-Boy Flashlight (Pipboy - Power Armor - Lamp Overhaul)"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 10840,
+    "fileId": 137624,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/10840?tab=files&file_id=137624"
+   },
+   "version": "v6b3.02",
+   "archive": {
+    "nexusFileName": "Pip-Boy Flashlight v6 BETA 3.02-10840-v6b3-02.rar",
+    "localFileName": "Pip-Boy Flashlight v6 BETA 3.02-10840-v6b3-02.rar",
+    "size": 1382563,
+    "sha256": "fb8855a617a9ef7e43bb75166e40d1785593df8b83087ce7a4fc4f64cb397942"
+   },
+   "plugins": [
+    "Pip-Boy Flashlight.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "NPCs Travel",
+   "modFolder": "NPCs Travel",
+   "displayName": {
+    "ru": "NPCs Travel",
+    "en": "NPCs Travel"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 16987,
+    "fileId": 405964,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/16987?tab=files&file_id=405964"
+   },
+   "version": "3.0.1",
+   "archive": {
+    "nexusFileName": "a5/f6/ea/a5f6eafc-e5d4-48ce-8d24-2513ebc68828",
+    "localFileName": "a5/f6/ea/a5f6eafc-e5d4-48ce-8d24-2513ebc68828",
+    "size": 1154603,
+    "sha256": "b6447f581b7d7416f2de064d1d11cdc838e1900ce8c443f24daad411189d1f62"
+   },
+   "plugins": [
+    "FO4 NPCs Travel.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Player Comments and Head Tracking",
+   "modFolder": "Player Comments and Head Tracking",
+   "displayName": {
+    "ru": "Player Comments and Head Tracking",
+    "en": "Player Comments and Head Tracking"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 22166,
+    "fileId": 287454,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/22166?tab=files&file_id=287454"
+   },
+   "version": "2.65",
+   "archive": {
+    "nexusFileName": "Player Comments and Head Tracking-22166-2-65-1692573004.rar",
+    "localFileName": "Player Comments and Head Tracking-22166-2-65-1692573004.rar",
+    "size": 3954083,
+    "sha256": "18b5fa8dcc502694940dbb329033d77aece3e85f1361dbb2c37db5dffe36522c"
+   },
+   "plugins": [
+    "PlayerComments.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Durable Vertibirds",
+   "modFolder": "Durable Vertibirds",
+   "displayName": {
+    "ru": "Durable Vertibirds",
+    "en": "Durable Vertibirds"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 2857,
+    "fileId": 399489,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/2857?tab=files&file_id=399489"
+   },
+   "version": "2.2",
+   "archive": {
+    "nexusFileName": "Durable Vertibirds-2857-2-2-1780702879.zip",
+    "localFileName": "Durable Vertibirds-2857-2-2-1780702879.zip",
+    "size": 568484,
+    "sha256": "ca1daede4ef75accc77029f119d298121b3a04f3dbe1cfc020410322ac8121e8"
+   },
+   "plugins": [
+    "DV-Durable Vertibirds.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "Durable Vertibirds v2.2/Durable Vertibirds",
+    "fomod": true,
+    "choices": [
+     "Durable Vertibirds: Durable Vertibirds",
+     "Optional Files: -"
+    ]
+   }
+  },
+  {
+   "id": "Nuka World - Skip raiding your own settlements",
+   "modFolder": "Nuka World - Skip raiding your own settlements",
+   "displayName": {
+    "ru": "Nuka World - Skip raiding your own settlements",
+    "en": "Nuka World - Skip raiding your own settlements"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 18121,
+    "fileId": 370082,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/18121?tab=files&file_id=370082"
+   },
+   "version": "2.0.3",
+   "archive": {
+    "nexusFileName": "Skip HSH-18121-2-0-3-1760469110.rar",
+    "localFileName": "Skip HSH-18121-2-0-3-1760469110.rar",
+    "size": 12619,
+    "sha256": "1f22677de6d906a32b17631cfa53728de60ddc312bda21cb84b4ed0537aa27f2"
+   },
+   "plugins": [
+    "SkipHSH.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Realistic Ragdoll Force",
+   "modFolder": "Realistic Ragdoll Force",
+   "displayName": {
+    "ru": "Realistic Ragdoll Force",
+    "en": "Realistic Ragdoll Force"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 5149,
+    "fileId": 16801,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/5149?tab=files&file_id=16801"
+   },
+   "version": "1.1",
+   "archive": {
+    "nexusFileName": "Realistic-5149-1-0.zip",
+    "localFileName": "Realistic-5149-1-0.zip",
+    "size": 1130,
+    "sha256": "bbf24bf72728d4b005c58be99baf17a5201f05c2cd66f98e042e00788569ac97"
+   },
+   "plugins": [
+    "dD-Realistic Ragdoll Force.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "real",
+    "fomod": false
+   }
+  },
+  {
+   "id": "To Your Face FO4",
+   "modFolder": "To Your Face FO4",
+   "displayName": {
+    "ru": "To Your Face FO4",
+    "en": "To Your Face FO4"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 73259,
+    "fileId": 376283,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/73259?tab=files&file_id=376283"
+   },
+   "version": "1.2",
+   "archive": {
+    "nexusFileName": "ToYourFaceFO4 AE-73259-1-2-1764704147.zip",
+    "localFileName": "ToYourFaceFO4 AE-73259-1-2-1764704147.zip",
+    "size": 282569,
+    "sha256": "0d4df39c8bcaccfec87a9ebdb958be289bd2bc40a0c17dae8873e2c93a2e0dc5"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Eli's Armour Compendium - EAC - EAC - 2.1.1 VANILLA BODY",
+   "modFolder": "Eli's Armour Compendium - EAC - EAC - 2.1.1 VANILLA BODY",
+   "displayName": {
+    "ru": "Eli's Armour Compendium - EAC",
+    "en": "Eli's Armour Compendium - EAC"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 22431,
+    "fileId": 409040,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/22431?tab=files&file_id=409040"
+   },
+   "version": "2.1.1",
+   "archive": {
+    "nexusFileName": "06/49/e6/0649e6b7-cbb4-44e0-a728-b871b0c10318",
+    "localFileName": "06/49/e6/0649e6b7-cbb4-44e0-a728-b871b0c10318",
+    "size": 3668439900,
+    "sha256": "2f1eb9b9c046ddc05af807318ed0e284d4dd1a7d5d0c87f2af27603dd0e1d004"
+   },
+   "plugins": [
+    "Eli_Armour_Compendium.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Eli's Armour Compendium - EAC - Eli Armour Compendium HOTFIX 2.1.1",
+   "modFolder": "Eli's Armour Compendium - EAC - Eli Armour Compendium HOTFIX 2.1.1",
+   "displayName": {
+    "ru": "Eli's Armour Compendium - EAC",
+    "en": "Eli's Armour Compendium - EAC"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 22431,
+    "fileId": 409041,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/22431?tab=files&file_id=409041"
+   },
+   "version": "2.1.1",
+   "archive": {
+    "nexusFileName": "bb/20/0d/bb200d35-7503-4e6e-8093-08fdd9a3a0ca",
+    "localFileName": "bb/20/0d/bb200d35-7503-4e6e-8093-08fdd9a3a0ca",
+    "size": 122308,
+    "sha256": "be3bade977bd7227224f1814a45fc3e928ef283df9809991a10d6471fc891287"
+   },
+   "plugins": [
+    "Eli_Armour_Compendium.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Backpacks of the Commonwealth",
+   "modFolder": "Backpacks of the Commonwealth",
+   "displayName": {
+    "ru": "Backpacks of the Commonwealth",
+    "en": "Backpacks of the Commonwealth"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 29447,
+    "fileId": 415750,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/29447?tab=files&file_id=415750"
+   },
+   "version": "2.1.3",
+   "archive": {
+    "nexusFileName": "cd/b4/06/cdb406d5-47e6-4952-97e9-ac908dc84cb4",
+    "localFileName": "cd/b4/06/cdb406d5-47e6-4952-97e9-ac908dc84cb4",
+    "size": 122056539,
+    "sha256": "de54fc77a9ea0d282a005a6b0a260bdb62722de81f6f1b6e1f57122649656076"
+   },
+   "plugins": [
+    "Backpacks of the Commonwealth.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "Backpacks of the Commonwealth - Main.ba2",
+      "Backpacks of the Commonwealth - Main.ba2"
+     ],
+     [
+      "Backpacks of the Commonwealth - Textures.ba2",
+      "Backpacks of the Commonwealth - Textures.ba2"
+     ],
+     [
+      "Backpacks of the Commonwealth.esp",
+      "Backpacks of the Commonwealth.esp"
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "Required: Required Core Files",
+     "Select One: Scripted Leveled List Inject (Recommended)"
+    ]
+   }
+  },
+  {
+   "id": "Enhanced Vanilla Armor and Clothing - EVAC",
+   "modFolder": "Enhanced Vanilla Armor and Clothing - EVAC",
+   "displayName": {
+    "ru": "Enhanced Vanilla Armor and Clothing - EVAC",
+    "en": "Enhanced Vanilla Armor and Clothing - EVAC"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 72546,
+    "fileId": 285666,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/72546?tab=files&file_id=285666"
+   },
+   "version": "1.2",
+   "archive": {
+    "nexusFileName": "Enhanced Vanilla Armor and Clothing 2k-72546-1-2-1691287529.zip",
+    "localFileName": "Enhanced Vanilla Armor and Clothing 2k-72546-1-2-1691287529.zip",
+    "size": 2145361244,
+    "sha256": "fda87db7f64fc9ae33dbabe6dce1ebbe4baa42eb46b32fbc952b36627b94b051"
+   },
+   "plugins": [
+    "Enhanced Vanilla Armor and Clothing.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "K-9 Harness -- Tactical Body Armor and Backpack for Dogmeat",
+   "modFolder": "K-9 Harness -- Tactical Body Armor and Backpack for Dogmeat",
+   "displayName": {
+    "ru": "K-9 Harness -- Tactical Body Armor and Backpack for Dogmeat",
+    "en": "K-9 Harness -- Tactical Body Armor and Backpack for Dogmeat"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 17686,
+    "fileId": 322763,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/17686?tab=files&file_id=322763"
+   },
+   "version": "1.1",
+   "archive": {
+    "nexusFileName": "K-9 Harness - Tactical Body Armor for Dogmeat ESL-17686-1-1-1718415821.rar",
+    "localFileName": "K-9 Harness - Tactical Body Armor for Dogmeat ESL-17686-1-1-1718415821.rar",
+    "size": 28997587,
+    "sha256": "dc7678e06eeb8e7bb2b8e65a220d6a100064dfeca175cb4fd65816db6a191c42"
+   },
+   "plugins": [
+    "K9TacticalHarness.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Service Rifle",
+   "modFolder": "Service Rifle",
+   "displayName": {
+    "ru": "Service Rifle",
+    "en": "Service Rifle"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 32361,
+    "fileId": 134052,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/32361?tab=files&file_id=134052"
+   },
+   "version": "0.96",
+   "archive": {
+    "nexusFileName": "Service Rifle-32361-0-96.zip",
+    "localFileName": "Service Rifle-32361-0-96.zip",
+    "size": 260609606,
+    "sha256": "be5a2942be0e4370c8fd37f62226952f11b844e62c2a92382296713b861ba107"
+   },
+   "plugins": [
+    "F4NVServiceRifleRedux.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Wattz 3000 mkII Laser gun",
+   "modFolder": "Wattz 3000 mkII Laser gun",
+   "displayName": {
+    "ru": "Wattz 3000 mkII Laser gun",
+    "en": "Wattz 3000 mkII Laser gun"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 87734,
+    "fileId": 337290,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/87734?tab=files&file_id=337290"
+   },
+   "version": "1.1.4",
+   "archive": {
+    "nexusFileName": "Wattz 3000 mkII 2k Textures-87734-1-1-4-1729365976.zip",
+    "localFileName": "Wattz 3000 mkII 2k Textures-87734-1-1-4-1729365976.zip",
+    "size": 150676524,
+    "sha256": "b3b198253ee413db7fce5061444f7fa3b1bd496094d1c6f610c26f97c5a6f34f"
+   },
+   "plugins": [
+    "Wattz3000mkII.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Hunting Shotgun - A New Vegas Classic - Remington 870",
+   "modFolder": "Hunting Shotgun - A New Vegas Classic - Remington 870",
+   "displayName": {
+    "ru": "Hunting Shotgun - A New Vegas Classic - Remington 870",
+    "en": "Hunting Shotgun - A New Vegas Classic - Remington 870"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 92334,
+    "fileId": 386576,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/92334?tab=files&file_id=386576"
+   },
+   "version": "1.0.7",
+   "archive": {
+    "nexusFileName": "CW Hunting Shotgun-92334-1-0-7-1771605247.zip",
+    "localFileName": "CW Hunting Shotgun-92334-1-0-7-1771605247.zip",
+    "size": 164748576,
+    "sha256": "131e7bbb90202ba2b51ba141446a5d7f9c9e231f6b0f787ad3911e49937dbc65"
+   },
+   "plugins": [
+    "CWHuntingShotgun.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "plugins/BCR/CWHuntingShotgun.esp.ini",
+      "BCR/CWHuntingShotgun.esp.ini"
+     ],
+     [
+      "plugins/CWHuntingShotgun - Main.ba2",
+      "CWHuntingShotgun - Main.BA2"
+     ],
+     [
+      "plugins/CWHuntingShotgun - Textures.ba2",
+      "CWHuntingShotgun - Textures.BA2"
+     ],
+     [
+      "plugins/CWHuntingShotgun.esp",
+      "CWHuntingShotgun.esp"
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "Base Mod: CWHuntingShotgun.esp",
+     "Merchant Patch: -"
+    ]
+   }
+  },
+  {
+   "id": "The 9mm Pistol (Browning Hi-Power) Fallout New Vegas",
+   "modFolder": "The 9mm Pistol (Browning Hi-Power) Fallout New Vegas",
+   "displayName": {
+    "ru": "The 9mm Pistol (Browning Hi-Power) Fallout New Vegas",
+    "en": "The 9mm Pistol (Browning Hi-Power) Fallout New Vegas"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 93471,
+    "fileId": 355574,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/93471?tab=files&file_id=355574"
+   },
+   "version": "1.0.1",
+   "archive": {
+    "nexusFileName": "CW 9mm Pistol - Vanilla Version-93471-1-0-1-1746571519.zip",
+    "localFileName": "CW 9mm Pistol - Vanilla Version-93471-1-0-1-1746571519.zip",
+    "size": 98043800,
+    "sha256": "df6f5009bac9b09b3264b5b71545142b7e8a88ce5f594e8fc4ed8bcd68159979"
+   },
+   "plugins": [
+    "CW9mmPistol.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "The Riot Shotgun - Fallout New Vegas",
+   "modFolder": "The Riot Shotgun - Fallout New Vegas",
+   "displayName": {
+    "ru": "The Riot Shotgun - Fallout New Vegas",
+    "en": "The Riot Shotgun - Fallout New Vegas"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 85606,
+    "fileId": 326374,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/85606?tab=files&file_id=326374"
+   },
+   "version": "1.0.2",
+   "archive": {
+    "nexusFileName": "Riot Shotgun Vanilla-85606-1-0-2-1720663984.zip",
+    "localFileName": "Riot Shotgun Vanilla-85606-1-0-2-1720663984.zip",
+    "size": 170183339,
+    "sha256": "b200731ef783ffc03c29636f50e87ba869facac29f5f5694d0029b45a1c716b7"
+   },
+   "plugins": [
+    "DakRiotShotgunVanilla.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Laser RCW - Fallout New Vegas",
+   "modFolder": "Laser RCW - Fallout New Vegas",
+   "displayName": {
+    "ru": "Laser RCW - Fallout New Vegas",
+    "en": "Laser RCW - Fallout New Vegas"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 92194,
+    "fileId": 352439,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/92194?tab=files&file_id=352439"
+   },
+   "version": "1.0.4.1",
+   "archive": {
+    "nexusFileName": "Laser RCW-92194-1-0-4-1-1743397588.zip",
+    "localFileName": "Laser RCW-92194-1-0-4-1-1743397588.zip",
+    "size": 176221463,
+    "sha256": "771e4edc2b810c179a68e4c187933efec894bda254a3f1b3a501335e2610a79b"
+   },
+   "plugins": [
+    "CWRCW.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "The Plasma Defender - Fallout New Vegas Classic",
+   "modFolder": "The Plasma Defender - Fallout New Vegas Classic",
+   "displayName": {
+    "ru": "The Plasma Defender - Fallout New Vegas Classic",
+    "en": "The Plasma Defender - Fallout New Vegas Classic"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 94091,
+    "fileId": 361262,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/94091?tab=files&file_id=361262"
+   },
+   "version": "1.0.4.2",
+   "archive": {
+    "nexusFileName": "CW Plasma Defender Vanilla-94091-1-0-4-2-1752379182.zip",
+    "localFileName": "CW Plasma Defender Vanilla-94091-1-0-4-2-1752379182.zip",
+    "size": 171600694,
+    "sha256": "fc7a3727f0dfca7155584021a4de414794ea2a36e4bc7606d3ce4a0515a6aa4c"
+   },
+   "plugins": [
+    "CWPlasmaDefender.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "The Light Machine Gun - Fallout New Vegas LMG",
+   "modFolder": "The Light Machine Gun - Fallout New Vegas LMG",
+   "displayName": {
+    "ru": "The Light Machine Gun - Fallout New Vegas LMG",
+    "en": "The Light Machine Gun - Fallout New Vegas LMG"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 95163,
+    "fileId": 362480,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/95163?tab=files&file_id=362480"
+   },
+   "version": "1.0.4",
+   "archive": {
+    "nexusFileName": "CW Light Machine Gun-95163-1-0-4-1753637697.zip",
+    "localFileName": "CW Light Machine Gun-95163-1-0-4-1753637697.zip",
+    "size": 221017341,
+    "sha256": "192b7ed9bb4f5b4d3521bf93be94f78b32db746bf33eda5117e5edb2dcfbec36"
+   },
+   "plugins": [
+    "CW-NVLMG.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Sidearms of the Wasteland (Classic 10mm - Wattz 1000 - Glock 86 - 45 pistol (1911) - 9mm pistol (Hi Power) - Beretta 92)",
+   "modFolder": "Sidearms of the Wasteland (Classic 10mm - Wattz 1000 - Glock 86 - 45 pistol (1911) - 9mm pistol (Hi Power) - Beretta 92)",
+   "displayName": {
+    "ru": "Sidearms of the Wasteland (Classic 10mm - Wattz 1000 - Glock 86 - 45 pistol (1911) - 9mm pistol (Hi Power) - Beretta 92)",
+    "en": "Sidearms of the Wasteland (Classic 10mm - Wattz 1000 - Glock 86 - 45 pistol (1911) - 9mm pistol (Hi Power) - Beretta 92)"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 96613,
+    "fileId": 372825,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/96613?tab=files&file_id=372825"
+   },
+   "version": "V1.4",
+   "archive": {
+    "nexusFileName": "Sidearms of the Wasteland - Esl version-96613-V1-4-1762601512.7z",
+    "localFileName": "Sidearms of the Wasteland - Esl version-96613-V1-4-1762601512.7z",
+    "size": 321077699,
+    "sha256": "644365b80710b944d9f5eb67695e34c7ece5c01a1eebd97d658711b18baeba42"
+   },
+   "plugins": [
+    "Sidearms of the Wasteland.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "The Attachment Pack",
+   "modFolder": "The Attachment Pack",
+   "displayName": {
+    "ru": "The Attachment Pack",
+    "en": "The Attachment Pack"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 76924,
+    "fileId": 348065,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/76924?tab=files&file_id=348065"
+   },
+   "version": "1.0.8",
+   "archive": {
+    "nexusFileName": "Attachment Pack-76924-1-0-8-1739594201.zip",
+    "localFileName": "Attachment Pack-76924-1-0-8-1739594201.zip",
+    "size": 240433186,
+    "sha256": "c2bb1099d6265fcb5a84ede359d86427f81968349b34035f55b91c0ca180c8d3"
+   },
+   "plugins": [
+    "AttachPack.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Dak's Combat Rifle remesh REDUX",
+   "modFolder": "Dak's Combat Rifle remesh REDUX",
+   "displayName": {
+    "ru": "Dak's Combat Rifle remesh REDUX",
+    "en": "Dak's Combat Rifle remesh REDUX"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 77363,
+    "fileId": 299156,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/77363?tab=files&file_id=299156"
+   },
+   "version": "1.0.0",
+   "archive": {
+    "nexusFileName": "Dak's Combat Rifle Remesh Redux Vanilla-77363-1-0-0-1704864450.zip",
+    "localFileName": "Dak's Combat Rifle Remesh Redux Vanilla-77363-1-0-0-1704864450.zip",
+    "size": 17054727,
+    "sha256": "8d050e724e656d19652abc5553598edd78438dd89cd9db70f29e72e4228f942a"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Unique Uniques - Unique Weapons Redone",
+   "modFolder": "Unique Uniques - Unique Weapons Redone",
+   "displayName": {
+    "ru": "Unique Uniques - Unique Weapons Redone",
+    "en": "Unique Uniques - Unique Weapons Redone"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 15139,
+    "fileId": 60718,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/15139?tab=files&file_id=60718"
+   },
+   "version": "1.01",
+   "archive": {
+    "nexusFileName": "Version 1.01-15139-1-01.rar",
+    "localFileName": "Version 1.01-15139-1-01.rar",
+    "size": 40237912,
+    "sha256": "e95bacb3cb9971fc97f5b2cfed268654d2aec7abe925d4cd5dfb667b722fae90"
+   },
+   "plugins": [
+    "UniqueUniques.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "UniqueUniques",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Workshop Framework",
+   "modFolder": "Workshop Framework",
+   "displayName": {
+    "ru": "Workshop Framework",
+    "en": "Workshop Framework"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 35004,
+    "fileId": 413986,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/35004?tab=files&file_id=413986"
+   },
+   "version": "2.6.1",
+   "archive": {
+    "nexusFileName": "ab/4b/1f/ab4b1f6d-00ca-4918-afad-a32b002067ff",
+    "localFileName": "ab/4b/1f/ab4b1f6d-00ca-4918-afad-a32b002067ff",
+    "size": 1052070,
+    "sha256": "b29bcf43535d769b8997c379f07a64976889c3ec918191c9f3261737d6822b3c"
+   },
+   "plugins": [
+    "WorkshopFramework.esm"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "F4SE/Plugins/wsfw_identifier.dll",
+      "F4SE/Plugins/wsfw_identifier.dll"
+     ],
+     [
+      "MCM/Config/WorkshopFramework/config.json",
+      "MCM/Config/WorkshopFramework/config.json"
+     ],
+     [
+      "MCM/Config/WorkshopFramework/keybinds.json",
+      "MCM/Config/WorkshopFramework/keybinds.json"
+     ],
+     [
+      "WorkshopFramework - Main.ba2",
+      "WorkshopFramework - Main.ba2"
+     ],
+     [
+      "WorkshopFramework.esm",
+      "WorkshopFramework.esm"
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "all"
+    ]
+   }
+  },
+  {
+   "id": "Workshop Plus",
+   "modFolder": "Workshop Plus",
+   "displayName": {
+    "ru": "Workshop Plus",
+    "en": "Workshop Plus"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 35005,
+    "fileId": 309160,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/35005?tab=files&file_id=309160"
+   },
+   "version": "1.0.15a",
+   "archive": {
+    "nexusFileName": "Workshop Plus-35005-1-0-15a-1712338821.zip",
+    "localFileName": "Workshop Plus-35005-1-0-15a-1712338821.zip",
+    "size": 330992,
+    "sha256": "6fdc82915218887ae4262d0c7655d714f1e7c84c873e4f7bbfa0ecb3b1f39613"
+   },
+   "plugins": [
+    "WorkshopPlus.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "MCM/Config/WorkshopPlus/config.json",
+      "MCM/Config/WorkshopPlus/config.json"
+     ],
+     [
+      "MCM/Config/WorkshopPlus/keybinds.json",
+      "MCM/Config/WorkshopPlus/keybinds.json"
+     ],
+     [
+      "WorkshopPlus - Main.ba2",
+      "WorkshopPlus - Main.ba2"
+     ],
+     [
+      "WorkshopPlus - Textures.ba2",
+      "WorkshopPlus - Textures.ba2"
+     ],
+     [
+      "WorkshopPlus.esp",
+      "WorkshopPlus.esp"
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "all"
+    ]
+   }
+  },
+  {
+   "id": "Homemaker - Expanded Settlements",
+   "modFolder": "Homemaker - Expanded Settlements",
+   "displayName": {
+    "ru": "Homemaker - Expanded Settlements",
+    "en": "Homemaker - Expanded Settlements"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 1478,
+    "fileId": 359715,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/1478?tab=files&file_id=359715"
+   },
+   "version": "1.79.6",
+   "archive": {
+    "nexusFileName": "Homemaker 1.79.6 - 2K - NG Hotfix 6-1478-1-79-6-1750633830.7z",
+    "localFileName": "Homemaker 1.79.6 - 2K - NG Hotfix 6-1478-1-79-6-1750633830.7z",
+    "size": 622159845,
+    "sha256": "bbd7cf11efc26d8cea7a7ae2cb8a3174d3c70a2680a9a82076dce362525e4e95"
+   },
+   "plugins": [
+    "Homemaker.esm"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Settlement Menu Manager",
+   "modFolder": "Settlement Menu Manager",
+   "displayName": {
+    "ru": "Settlement Menu Manager",
+    "en": "Settlement Menu Manager"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 24204,
+    "fileId": 185417,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/24204?tab=files&file_id=185417"
+   },
+   "version": "0.1.7",
+   "archive": {
+    "nexusFileName": "SettlementMenuManagerMainFile-24204-0-1-7-1593282850.7z",
+    "localFileName": "SettlementMenuManagerMainFile-24204-0-1-7-1593282850.7z",
+    "size": 8288,
+    "sha256": "39f25323c1011db46189258cf518ccb4a7c0ed0e4bd3222aa4f19463796dacd5"
+   },
+   "plugins": [
+    "SettlementMenuManager.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Longer Power Lines",
+   "modFolder": "Longer Power Lines",
+   "displayName": {
+    "ru": "Longer Power Lines",
+    "en": "Longer Power Lines"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 2241,
+    "fileId": 6956,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/2241?tab=files&file_id=6956"
+   },
+   "version": "1.1",
+   "archive": {
+    "nexusFileName": "Longer Power Lines 3x-2241-1-1.7z",
+    "localFileName": "Longer Power Lines 3x-2241-1-1.7z",
+    "size": 672,
+    "sha256": "dfdd637b9d0d95b0f8eb8b9075cbde166039f5be4c35eec3fe09b02f4a4788b8"
+   },
+   "plugins": [
+    "LongerPowerLines3x.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Better Settlers",
+   "modFolder": "Better Settlers",
+   "displayName": {
+    "ru": "Better Settlers",
+    "en": "Better Settlers"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 4772,
+    "fileId": 96347,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/4772?tab=files&file_id=96347"
+   },
+   "version": "2.0",
+   "archive": {
+    "nexusFileName": "Better Settlers v2.0 Master FOMOD-4772-2-0.7z",
+    "localFileName": "Better Settlers v2.0 Master FOMOD-4772-2-0.7z",
+    "size": 37909242,
+    "sha256": "a59c06e1bf28e1bcdb8b89b2d6e62f8a8abe804372c58f2e5abd84a1a1b77167"
+   },
+   "plugins": [
+    "BetterSettlers.esp",
+    "BetterSettlersNoLollygagging.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "BetterSettlers2.0/BetterSettlers.esp",
+      "BetterSettlers.esp"
+     ],
+     [
+      "BetterSettlers2.0/BetterSettlersNoLollygagging.esp",
+      "BetterSettlersNoLollygagging.esp"
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "Better Settlers: BetterSettlers.esp",
+     "Lollygaggers: No Lollygagging! ",
+     "Clean or Dirty Faces?: Dirty Faces",
+     "Gear Choices: Better Settlers Default",
+     "Gender Ratio: Vanilla",
+     "Modded Community Assets: -",
+     "Mortal Option: -",
+     "FINISH: -"
+    ]
+   }
+  },
+  {
+   "id": "Quieter Settlements",
+   "modFolder": "Quieter Settlements",
+   "displayName": {
+    "ru": "Quieter Settlements",
+    "en": "Quieter Settlements"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 2819,
+    "fileId": 62241,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/2819?tab=files&file_id=62241"
+   },
+   "version": "",
+   "archive": {
+    "nexusFileName": "Quieter Settlements v0.31-2819-.7z",
+    "localFileName": "Quieter Settlements v0.31-2819-.7z",
+    "size": 964486,
+    "sha256": "eab3d93f9c82b186fb1a7d5cad7e7073440de4a7cd5b3f057e3c288fbbe60ab0"
+   },
+   "plugins": [
+    "Quieter Settlements - Contraptions.esp",
+    "Quieter Settlements - Vanilla.esp",
+    "Quieter Settlements - Wasteland Workshop.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "1 Vanilla/10",
+      ""
+     ],
+     [
+      "2 Wasteland Workshop DLC/10",
+      ""
+     ],
+     [
+      "3 Contraptions DLC/10",
+      ""
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "Vanilla Game: 10% Vanilla Volume(Recommended)",
+     "Wasteland Workshop: 25% Wasteland Workshop Volume (Recommended)",
+     "Contraptions: 25% Contraptions Volume (Reccomended)",
+     "Please Endorse: -",
+     "Credit: -"
+    ]
+   }
+  },
+  {
+   "id": "Salvage Beacons",
+   "modFolder": "Salvage Beacons",
+   "displayName": {
+    "ru": "Salvage Beacons",
+    "en": "Salvage Beacons"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 18757,
+    "fileId": 181386,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/18757?tab=files&file_id=181386"
+   },
+   "version": "1.0.4",
+   "archive": {
+    "nexusFileName": "Salvage Beacons 1.0.4-18757-1-0-4-1588958551.7z",
+    "localFileName": "Salvage Beacons 1.0.4-18757-1-0-4-1588958551.7z",
+    "size": 99979,
+    "sha256": "79e0631446c74d51e43c9f34c57f00435551566c391c228e7cd07c1ec9aa0504"
+   },
+   "plugins": [
+    "SalvageBeacons.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "SalvageBeacons - Main.BA2",
+      "SalvageBeacons - Main.BA2"
+     ],
+     [
+      "SalvageBeacons.esp",
+      "SalvageBeacons.esp"
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "all"
+    ]
+   }
+  },
+  {
+   "id": "Wall Pass-Through Power Conduits",
+   "modFolder": "Wall Pass-Through Power Conduits",
+   "displayName": {
+    "ru": "Wall Pass-Through Power Conduits",
+    "en": "Wall Pass-Through Power Conduits"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 20262,
+    "fileId": 115234,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/20262?tab=files&file_id=115234"
+   },
+   "version": "1.3",
+   "archive": {
+    "nexusFileName": "Wall Pass-Through Power Conduits-20262-1-3.zip",
+    "localFileName": "Wall Pass-Through Power Conduits-20262-1-3.zip",
+    "size": 69688,
+    "sha256": "9950af91e797a26ee534689c76d8131ab0217c9d8e719ea1ca9c013ef3d79b45"
+   },
+   "plugins": [
+    "Passthrough.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Workshop Highlight Fix",
+   "modFolder": "Workshop Highlight Fix",
+   "displayName": {
+    "ru": "Workshop Highlight Fix",
+    "en": "Workshop Highlight Fix"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 83706,
+    "fileId": 329718,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/83706?tab=files&file_id=329718"
+   },
+   "version": "1.1.0",
+   "archive": {
+    "nexusFileName": "Workshop Highlight Fix-83706-1-1-0-1723319992.7z",
+    "localFileName": "Workshop Highlight Fix-83706-1-1-0-1723319992.7z",
+    "size": 421,
+    "sha256": "2acce60c0c7b50cfbcd657518ff9c851043ed71a73ce2ada8cfebcdde985e14b"
+   },
+   "plugins": [
+    "Workshop Highlight Fix.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "Workshop Highlight Fix",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Reverb and Ambiance Overhaul",
+   "modFolder": "Reverb and Ambiance Overhaul",
+   "displayName": {
+    "ru": "Reverb and Ambiance Overhaul",
+    "en": "Reverb and Ambiance Overhaul"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 10189,
+    "fileId": 73150,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/10189?tab=files&file_id=73150"
+   },
+   "version": "1.6e",
+   "archive": {
+    "nexusFileName": "Reverb and Ambiance Overhaul - ALL DLC-10189-1-6e.zip",
+    "localFileName": "Reverb and Ambiance Overhaul - ALL DLC-10189-1-6e.zip",
+    "size": 59692,
+    "sha256": "7376fcd742f6f0baed96fcedc014e123fe05be749418e42aa0f394444211f01a"
+   },
+   "plugins": [
+    "Reverb and Ambiance Overhaul.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Project Reality Footsteps FO4",
+   "modFolder": "Project Reality Footsteps FO4",
+   "displayName": {
+    "ru": "Project Reality Footsteps FO4",
+    "en": "Project Reality Footsteps FO4"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 35904,
+    "fileId": 156466,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/35904?tab=files&file_id=156466"
+   },
+   "version": "1.7",
+   "archive": {
+    "nexusFileName": "Project Reality Footsteps FO4 1.7 BA2-35904-1-7-1555770045.zip",
+    "localFileName": "Project Reality Footsteps FO4 1.7 BA2-35904-1-7-1555770045.zip",
+    "size": 3829420,
+    "sha256": "8a71c289600a0cc2eb83e9e6841cdab3f9efdb2e2e429b339f0f91a182acb07c"
+   },
+   "plugins": [
+    "Project Reality Footsteps FO4.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "P.A.M.S - Power Armor Movement Sounds",
+   "modFolder": "P.A.M.S - Power Armor Movement Sounds",
+   "displayName": {
+    "ru": "P.A.M.S - Power Armor Movement Sounds",
+    "en": "P.A.M.S - Power Armor Movement Sounds"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 1544,
+    "fileId": 48846,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/1544?tab=files&file_id=48846"
+   },
+   "version": "1.1",
+   "archive": {
+    "nexusFileName": "PAMS Hydraulic-1544-1-1.rar",
+    "localFileName": "PAMS Hydraulic-1544-1-1.rar",
+    "size": 10811199,
+    "sha256": "9d5385e38fc8742197fb805d08d1a1b2a478e7baf63d4f2fcd16d15014792713"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "PAMS/00 Sounds",
+    "fomod": true,
+    "choices": [
+     "Main Options: Hydraulic Version",
+     "Options: -"
+    ]
+   }
+  },
+  {
+   "id": "Fallout 4 Resound Project - Guns",
+   "modFolder": "Fallout 4 Resound Project - Guns",
+   "displayName": {
+    "ru": "Fallout 4 Resound Project - Guns",
+    "en": "Fallout 4 Resound Project - Guns"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 83453,
+    "fileId": 326535,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/83453?tab=files&file_id=326535"
+   },
+   "version": "1.0.4",
+   "archive": {
+    "nexusFileName": "FO4RP-Guns Main RAO 1.0.4-83453-1-0-4-1720824869.7z",
+    "localFileName": "FO4RP-Guns Main RAO 1.0.4-83453-1-0-4-1720824869.7z",
+    "size": 281381850,
+    "sha256": "73c96ff25e3fd824b005c4e44bc6951a54fc0a3cb1819bf9e1a8b8de7c5738ba"
+   },
+   "plugins": [
+    "FO4RP-GunsRAO.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Hydra",
+   "modFolder": "Hydra",
+   "displayName": {
+    "ru": "Hydra",
+    "en": "Hydra"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 104159,
+    "fileId": 395669,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/104159?tab=files&file_id=395669"
+   },
+   "version": "1.0.2",
+   "archive": {
+    "nexusFileName": "Hydra-104159-1-0-2-1777836694.7z",
+    "localFileName": "Hydra-104159-1-0-2-1777836694.7z",
+    "size": 22418666,
+    "sha256": "4f67fa8146474dd4bdd071a6b613eb4344bda6473c09401c3781ba0e24bab1ab"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "Hydra",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Interiors Enhanced  - PRP 81.x Patch (Previsibines Repair Pack)",
+   "modFolder": "Interiors Enhanced  - PRP 81.x Patch (Previsibines Repair Pack)",
+   "displayName": {
+    "ru": "Interiors Enhanced  - PRP 81.x Patch (Previsibines Repair Pack)",
+    "en": "Interiors Enhanced  - PRP 81.x Patch (Previsibines Repair Pack)"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 105502,
+    "fileId": 413016,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/105502?tab=files&file_id=413016"
+   },
+   "version": "1.1",
+   "archive": {
+    "nexusFileName": "6b/d8/aa/6bd8aa04-305b-4dc5-a521-a1a6ba291f15",
+    "localFileName": "6b/d8/aa/6bd8aa04-305b-4dc5-a521-a1a6ba291f15",
+    "size": 1425993,
+    "sha256": "f3621256d9163181191a1481b76adb455e02b5a2f6453028b4880e8c728b4ddb"
+   },
+   "plugins": [
+    "InteriorsEnhanced_AIO_PRP_Patch.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Previsibines Repair Pack Stable Branch - PRP",
+   "modFolder": "Previsibines Repair Pack Stable Branch - PRP",
+   "displayName": {
+    "ru": "Previsibines Repair Pack Stable Branch - PRP",
+    "en": "Previsibines Repair Pack Stable Branch - PRP"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 46403,
+    "fileId": 421455,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/46403?tab=files&file_id=421455"
+   },
+   "version": "81.10",
+   "archive": {
+    "nexusFileName": "03/99/8c/03998ccb-1e78-4859-a4b4-69f9f9f324c8",
+    "localFileName": "03/99/8c/03998ccb-1e78-4859-a4b4-69f9f9f324c8",
+    "size": 2258556586,
+    "sha256": "fe0180861118e9dbc0d58aa0a83a4364efd0a242fec5bf2b9e77c8567ce62a7d"
+   },
+   "plugins": [
+    "ppf.esm",
+    "prp.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RobCo Patcher",
+   "modFolder": "RobCo Patcher",
+   "displayName": {
+    "ru": "RobCo Patcher",
+    "en": "RobCo Patcher"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 69798,
+    "fileId": 417511,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/69798?tab=files&file_id=417511"
+   },
+   "version": "6.0.6",
+   "archive": {
+    "nexusFileName": "0c/63/68/0c63681a-396e-4bc0-aaf1-fd7a3c2ce59f",
+    "localFileName": "0c/63/68/0c63681a-396e-4bc0-aaf1-fd7a3c2ce59f",
+    "size": 687905,
+    "sha256": "7eca6e0a6a378725ba86fc832e153aaa227cf59a7642df133d54e29f2916f62d"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Scopes Framework",
+   "modFolder": "Scopes Framework",
+   "displayName": {
+    "ru": "Scopes Framework",
+    "en": "Scopes Framework"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 30644,
+    "fileId": 134584,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/30644?tab=files&file_id=134584"
+   },
+   "version": "v1.4.1",
+   "archive": {
+    "nexusFileName": "Fallout 4 Scopes Framework-30644-v1-4-1.7z",
+    "localFileName": "Fallout 4 Scopes Framework-30644-v1-4-1.7z",
+    "size": 52099,
+    "sha256": "a94471809e6ecf371e17427bb75eee3c5cebc894e44979c2cce25489ef4af751"
+   },
+   "plugins": [
+    "Scopes.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Sim Settlements 2",
+   "modFolder": "Sim Settlements 2",
+   "displayName": {
+    "ru": "Sim Settlements 2",
+    "en": "Sim Settlements 2"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 47976,
+    "fileId": 418019,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/47976?tab=files&file_id=418019"
+   },
+   "version": "3.8.1a",
+   "archive": {
+    "nexusFileName": "0b/7f/90/0b7f9021-d2d8-439c-9136-fcf5cc3faa80",
+    "localFileName": "0b/7f/90/0b7f9021-d2d8-439c-9136-fcf5cc3faa80",
+    "size": 1552374206,
+    "sha256": "1979337fa3ec77001e63cd63ec85e3753e73b606df95c6ca869b7af3e7964c82"
+   },
+   "plugins": [
+    "SS2.esm"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "MCM/Config/SS2/config.json",
+      "MCM/Config/SS2/config.json"
+     ],
+     [
+      "MCM/Config/SS2/keybinds.json",
+      "MCM/Config/SS2/keybinds.json"
+     ],
+     [
+      "MCM/Config/SS2/lib.swf",
+      "MCM/Config/SS2/lib.swf"
+     ],
+     [
+      "MCM/Config/SS2/settings.ini",
+      "MCM/Config/SS2/settings.ini"
+     ],
+     [
+      "SS2 - Main.ba2",
+      "SS2 - Main.ba2"
+     ],
+     [
+      "SS2 - Textures.ba2",
+      "SS2 - Textures.ba2"
+     ],
+     [
+      "SS2.esm",
+      "SS2.esm"
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "all"
+    ]
+   }
+  },
+  {
+   "id": "Sim Settlements 2 - Chapter 2",
+   "modFolder": "Sim Settlements 2 - Chapter 2",
+   "displayName": {
+    "ru": "Sim Settlements 2 - Chapter 2",
+    "en": "Sim Settlements 2 - Chapter 2"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 55817,
+    "fileId": 418016,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/55817?tab=files&file_id=418016"
+   },
+   "version": "3.8.1a",
+   "archive": {
+    "nexusFileName": "83/4d/83/834d8359-2007-4d78-8fbd-2028a9585d07",
+    "localFileName": "83/4d/83/834d8359-2007-4d78-8fbd-2028a9585d07",
+    "size": 1022375879,
+    "sha256": "12d00bcd42285b8e1c652425562dc42e0ca36b30c36c1de64209e7e62b64d31c"
+   },
+   "plugins": [
+    "SS2_XPAC_Chapter2.esm"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "SS2_XPAC_Chapter2 - Geometry.csg",
+      "SS2_XPAC_Chapter2 - Geometry.csg"
+     ],
+     [
+      "SS2_XPAC_Chapter2 - Main.ba2",
+      "SS2_XPAC_Chapter2 - Main.ba2"
+     ],
+     [
+      "SS2_XPAC_Chapter2 - Textures.ba2",
+      "SS2_XPAC_Chapter2 - Textures.ba2"
+     ],
+     [
+      "SS2_XPAC_Chapter2.cdx",
+      "SS2_XPAC_Chapter2.cdx"
+     ],
+     [
+      "SS2_XPAC_Chapter2.esm",
+      "SS2_XPAC_Chapter2.esm"
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "all"
+    ]
+   }
+  },
+  {
+   "id": "Sim Settlements 2 - Chapter 3",
+   "modFolder": "Sim Settlements 2 - Chapter 3",
+   "displayName": {
+    "ru": "Sim Settlements 2 - Chapter 3",
+    "en": "Sim Settlements 2 - Chapter 3"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 73394,
+    "fileId": 418015,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/73394?tab=files&file_id=418015"
+   },
+   "version": "3.8.1a",
+   "archive": {
+    "nexusFileName": "50/4b/a2/504ba2a8-0114-423c-899d-78e16ccf463c",
+    "localFileName": "50/4b/a2/504ba2a8-0114-423c-899d-78e16ccf463c",
+    "size": 1096166911,
+    "sha256": "6b4d212bdb0106f7783a921758aa480fe3dad872e0e8be6b98a4132883afcc1b"
+   },
+   "plugins": [
+    "SS2_XPAC_Chapter3.esm"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "SS2_XPAC_Chapter3 - Main.ba2",
+      "SS2_XPAC_Chapter3 - Main.ba2"
+     ],
+     [
+      "SS2_XPAC_Chapter3 - Textures.ba2",
+      "SS2_XPAC_Chapter3 - Textures.ba2"
+     ],
+     [
+      "SS2_XPAC_Chapter3.esm",
+      "SS2_XPAC_Chapter3.esm"
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "all"
+    ]
+   }
+  },
+  {
+   "id": "America Rising 2 - Legacy of the Enclave",
+   "modFolder": "America Rising 2 - Legacy of the Enclave",
+   "displayName": {
+    "ru": "America Rising 2 - Legacy of the Enclave",
+    "en": "America Rising 2 - Legacy of the Enclave"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 75767,
+    "fileId": 409642,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/75767?tab=files&file_id=409642"
+   },
+   "version": "1.1.7",
+   "archive": {
+    "nexusFileName": "3f/ca/6f/3fca6f40-dc5d-4ce7-a696-a112c81a6559",
+    "localFileName": "3f/ca/6f/3fca6f40-dc5d-4ce7-a696-a112c81a6559",
+    "size": 991070152,
+    "sha256": "06609574ced1b404c67f5da52349eed867efccb00b5c98e2ceeb333a4a95fb42"
+   },
+   "plugins": [
+    "AmericaRising2.esm"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "America Rising 2 - Patches and Resources - America Rising 2 - DLC PreVis Patch",
+   "modFolder": "America Rising 2 - Patches and Resources - America Rising 2 - DLC PreVis Patch",
+   "displayName": {
+    "ru": "America Rising 2 - Patches and Resources",
+    "en": "America Rising 2 - Patches and Resources"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 75795,
+    "fileId": 400788,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/75795?tab=files&file_id=400788"
+   },
+   "version": "1.0.0",
+   "archive": {
+    "nexusFileName": "eb/44/d3/eb44d3d8-6706-4a02-aa7e-71b0bbd96abe",
+    "localFileName": "eb/44/d3/eb44d3d8-6706-4a02-aa7e-71b0bbd96abe",
+    "size": 36756,
+    "sha256": "98e3f20b09a4642cce94f432e59794508f35bccf11ef3313beff6ba0d4b2d24f"
+   },
+   "plugins": [
+    "AmericaRising2-DLC.esl"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "America Rising 2 - Patches and Resources - America Rising 2 - The Remnants Patch",
+   "modFolder": "America Rising 2 - Patches and Resources - America Rising 2 - The Remnants Patch",
+   "displayName": {
+    "ru": "America Rising 2 - Patches and Resources",
+    "en": "America Rising 2 - Patches and Resources"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 75795,
+    "fileId": 402115,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/75795?tab=files&file_id=402115"
+   },
+   "version": "1.1.3",
+   "archive": {
+    "nexusFileName": "f3/91/fe/f391fe9c-2abd-4a34-84f5-589b09b29be3",
+    "localFileName": "f3/91/fe/f391fe9c-2abd-4a34-84f5-589b09b29be3",
+    "size": 4867905,
+    "sha256": "7424e0d19718ba8db774ed37af93d500b74a59260519aa32e31dbf18c7ab4cd8"
+   },
+   "plugins": [
+    "AmericaRising2-Remnants.esl"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Outcasts and Remnants - Quest Mod Plus",
+   "modFolder": "Outcasts and Remnants - Quest Mod Plus",
+   "displayName": {
+    "ru": "Outcasts and Remnants - Quest Mod Plus",
+    "en": "Outcasts and Remnants - Quest Mod Plus"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 21469,
+    "fileId": 183254,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/21469?tab=files&file_id=183254"
+   },
+   "version": "1.51",
+   "archive": {
+    "nexusFileName": "Outcasts and Remnants-21469-1-51-1590968168.zip",
+    "localFileName": "Outcasts and Remnants-21469-1-51-1590968168.zip",
+    "size": 888913279,
+    "sha256": "6ebe0284a420113e89f24860db9270da56ca2c37561a26fff9ef3544d216f4aa"
+   },
+   "plugins": [
+    "OutcastsAndRemnants.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Atomic Radio and Tales from the Commonwealth - Tales from the Commonwealth",
+   "modFolder": "Atomic Radio and Tales from the Commonwealth - Tales from the Commonwealth",
+   "displayName": {
+    "ru": "Atomic Radio and Tales from the Commonwealth",
+    "en": "Atomic Radio and Tales from the Commonwealth"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 8704,
+    "fileId": 200023,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/8704?tab=files&file_id=200023"
+   },
+   "version": "3.02",
+   "archive": {
+    "nexusFileName": "Tales from the Commonwealth-8704-3-02-1611704519.7z",
+    "localFileName": "Tales from the Commonwealth-8704-3-02-1611704519.7z",
+    "size": 501085551,
+    "sha256": "db80f1a5e4d00ca58d8a9798947749d7700e135ecf82e92659a5d2978f28c625"
+   },
+   "plugins": [
+    "3DNPC_FO4.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Atomic Radio and Tales from the Commonwealth - Atomic Radio v2.6",
+   "modFolder": "Atomic Radio and Tales from the Commonwealth - Atomic Radio v2.6",
+   "displayName": {
+    "ru": "Atomic Radio and Tales from the Commonwealth",
+    "en": "Atomic Radio and Tales from the Commonwealth"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 8704,
+    "fileId": 83216,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/8704?tab=files&file_id=83216"
+   },
+   "version": "2.6",
+   "archive": {
+    "nexusFileName": "Atomic Radio v2.6-8704-2-6.zip",
+    "localFileName": "Atomic Radio v2.6-8704-2-6.zip",
+    "size": 119038892,
+    "sha256": "633b610b640e63e345b88067943d44e799d2793b93d332ac8d5c68ff4fb6c866"
+   },
+   "plugins": [
+    "AtomicRadio.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "You And What Army 2",
+   "modFolder": "You And What Army 2",
+   "displayName": {
+    "ru": "You And What Army 2",
+    "en": "You And What Army 2"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 78925,
+    "fileId": 366655,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/78925?tab=files&file_id=366655"
+   },
+   "version": "1.08",
+   "archive": {
+    "nexusFileName": "You And What Army 2-78925-1-08-1757025667.zip",
+    "localFileName": "You And What Army 2-78925-1-08-1757025667.zip",
+    "size": 2026219,
+    "sha256": "a872908858abd24db24c64c3c22497525ba48c315ee990789d2dcd42f680c7f5"
+   },
+   "plugins": [
+    "YouAndWhatArmy2.esm"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Heather Casdin - A Unique Companion Experience by llamaRCA",
+   "modFolder": "Heather Casdin - A Unique Companion Experience by llamaRCA",
+   "displayName": {
+    "ru": "Heather Casdin - A Unique Companion Experience by llamaRCA",
+    "en": "Heather Casdin - A Unique Companion Experience by llamaRCA"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 23273,
+    "fileId": 303800,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/23273?tab=files&file_id=303800"
+   },
+   "version": "2.7",
+   "archive": {
+    "nexusFileName": "llamaCompanionHeather v2.7-23273-2-7-1708129443.zip",
+    "localFileName": "llamaCompanionHeather v2.7-23273-2-7-1708129443.zip",
+    "size": 193938472,
+    "sha256": "3741d2530a1c1d2591ebf22813bf9ca2ada34a2520ef52273bd9be32ae4e195b"
+   },
+   "plugins": [
+    "llamaCompanionHeatherv2.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "llamaCompanionHeather v2.7",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Amazing FollowerTweaks",
+   "modFolder": "Amazing FollowerTweaks",
+   "displayName": {
+    "ru": "Amazing FollowerTweaks",
+    "en": "Amazing FollowerTweaks"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 26976,
+    "fileId": 149417,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/26976?tab=files&file_id=149417"
+   },
+   "version": "1.23",
+   "archive": {
+    "nexusFileName": "AmazingFollowerTweaks-26976-1-23-1546711775.7z",
+    "localFileName": "AmazingFollowerTweaks-26976-1-23-1546711775.7z",
+    "size": 1048416,
+    "sha256": "0003bf5203d338127f06b0e9669f3647ebff12862d8203eeead1acfd61dfda25"
+   },
+   "plugins": [
+    "AmazingFollowerTweaks.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Equipment and Crafting Overhaul (ECO) - Redux",
+   "modFolder": "Equipment and Crafting Overhaul (ECO) - Redux",
+   "displayName": {
+    "ru": "Equipment and Crafting Overhaul (ECO) - Redux",
+    "en": "Equipment and Crafting Overhaul (ECO) - Redux"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 67679,
+    "fileId": 414103,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/67679?tab=files&file_id=414103"
+   },
+   "version": "5.0.8",
+   "archive": {
+    "nexusFileName": "9f/51/0c/9f510c98-1c19-48a3-9d78-7f352e04f2e5",
+    "localFileName": "9f/51/0c/9f510c98-1c19-48a3-9d78-7f352e04f2e5",
+    "size": 19636555,
+    "sha256": "907ffa70a58e368be674084e5ab6c81ecdfbcfa9812435bf38c02ea49226ebb0"
+   },
+   "plugins": [
+    "Dank_ECO.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "main",
+    "fomod": true,
+    "choices": [
+     "Primary Files: ECO",
+     "Texture Size: 2048p",
+     "Optional: -"
+    ]
+   }
+  },
+  {
+   "id": "Better Locational Damage and Optional Gameplay Overhauls",
+   "modFolder": "Better Locational Damage and Optional Gameplay Overhauls",
+   "displayName": {
+    "ru": "Better Locational Damage and Optional Gameplay Overhauls",
+    "en": "Better Locational Damage and Optional Gameplay Overhauls"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 3815,
+    "fileId": 385502,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/3815?tab=files&file_id=385502"
+   },
+   "version": "7.8.1",
+   "archive": {
+    "nexusFileName": "Better Locational Damage-3815-7-8-1-1770970024.zip",
+    "localFileName": "Better Locational Damage-3815-7-8-1-1770970024.zip",
+    "size": 11874945,
+    "sha256": "db982c21880e676c27102f39ce7c53b9dfdc207064ab068f1bf88bd14765e41a"
+   },
+   "plugins": [
+    "BLD - Leveled Lists - DLC.esp",
+    "Better Locational Damage - DLC_Automatron.esp",
+    "Better Locational Damage - DLC_Far_Harbor.esp",
+    "Better Locational Damage - DLC_Nuka_World.esp",
+    "Better Locational Damage - DLC_WWorkshop.esp",
+    "Better Locational Damage.esp",
+    "Better Perks.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "Better Locational Damage/00 MainPlugin",
+      ""
+     ],
+     [
+      "Better Locational Damage/01 MainDLC",
+      ""
+     ],
+     [
+      "Better Locational Damage/01 OptionalLeveledList",
+      ""
+     ],
+     [
+      "Better Locational Damage/01 OptionalPerks1/Better Perks.esp",
+      "Better Perks.esp"
+     ],
+     [
+      "Better Locational Damage/02 MainDLC",
+      ""
+     ],
+     [
+      "Better Locational Damage/03 MainDLC",
+      ""
+     ],
+     [
+      "Better Locational Damage/04 MainDLC",
+      ""
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "Main Options: Normal Version",
+     "Leveled Lists: BLD - Leveled Lists - All DLCs",
+     "DLCs: DLC Automatron, DLC Wasteland Workshop, Far Harbor, Nuka-World",
+     "Better Perks: Better Perks",
+     "Valdacil's Sorting Patches: -",
+     "Raider Overhaul: -",
+     "Super Mutant Redux: -",
+     "Agony: -",
+     "Weapons of Fate: -",
+     "Nightstriker: -",
+     "Church of Atom Overhaul: -",
+     "Ghoul Edition: -",
+     "Other Modules: -",
+     "Better VATS: -",
+     "Better Chems: -",
+     "Main Options: Done!"
+    ]
+   }
+  },
+  {
+   "id": "Bastion - A Power Armor Overhaul",
+   "modFolder": "Bastion - A Power Armor Overhaul",
+   "displayName": {
+    "ru": "Bastion - A Power Armor Overhaul",
+    "en": "Bastion - A Power Armor Overhaul"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 75184,
+    "fileId": 409915,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/75184?tab=files&file_id=409915"
+   },
+   "version": "2.1.0",
+   "archive": {
+    "nexusFileName": "35/40/0e/35400eee-042e-4bae-80e9-8489e316bd3f",
+    "localFileName": "35/40/0e/35400eee-042e-4bae-80e9-8489e316bd3f",
+    "size": 361410,
+    "sha256": "d457ff13c00dba24d8c8578951758411f2708dc35dc8f3bf93c9a8f7baee6482"
+   },
+   "plugins": [
+    "Bastion.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Campsite - Simple Wasteland Camping (and HD Sleeping Bags)",
+   "modFolder": "Campsite - Simple Wasteland Camping (and HD Sleeping Bags)",
+   "displayName": {
+    "ru": "Campsite - Simple Wasteland Camping (and HD Sleeping Bags)",
+    "en": "Campsite - Simple Wasteland Camping (and HD Sleeping Bags)"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 11734,
+    "fileId": 238612,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/11734?tab=files&file_id=238612"
+   },
+   "version": "1.0.4",
+   "archive": {
+    "nexusFileName": "Campsite - Simple-11734-1-0-4-1653544913.rar",
+    "localFileName": "Campsite - Simple-11734-1-0-4-1653544913.rar",
+    "size": 82300428,
+    "sha256": "2068f6a690b09b3a45ad0e433190749151eeeba55ba1520e7db7be4f6ff7a83e"
+   },
+   "plugins": [
+    "Campsite.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Survival Options",
+   "modFolder": "Survival Options",
+   "displayName": {
+    "ru": "Survival Options",
+    "en": "Survival Options"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 14650,
+    "fileId": 109868,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/14650?tab=files&file_id=109868"
+   },
+   "version": "1.7.1",
+   "archive": {
+    "nexusFileName": "Survival Options v1.7.1-14650-1-7-1.rar",
+    "localFileName": "Survival Options v1.7.1-14650-1-7-1.rar",
+    "size": 119304,
+    "sha256": "ecb052d6d7e65e41a3460eeac7644a0a618fc4dafb934cd0cc489d19ae515061"
+   },
+   "plugins": [
+    "SurvivalOptions.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "MCM/Config/SurvivalOptions/config.json",
+      "MCM/Config/SurvivalOptions/config.json"
+     ],
+     [
+      "MCM/Config/SurvivalOptions/keybinds.json",
+      "MCM/Config/SurvivalOptions/keybinds.json"
+     ],
+     [
+      "SurvivalOptions - Main.ba2",
+      "SurvivalOptions - Main.ba2"
+     ],
+     [
+      "SurvivalOptions_Everything",
+      ""
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "Main: Everything"
+    ]
+   }
+  },
+  {
+   "id": "NPCs Use Items",
+   "modFolder": "NPCs Use Items",
+   "displayName": {
+    "ru": "NPCs Use Items",
+    "en": "NPCs Use Items"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 73717,
+    "fileId": 288795,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/73717?tab=files&file_id=288795"
+   },
+   "version": "1.2.1",
+   "archive": {
+    "nexusFileName": "NPCs Use Items-73717-1-2-1-1693743625.zip",
+    "localFileName": "NPCs Use Items-73717-1-2-1-1693743625.zip",
+    "size": 9167,
+    "sha256": "9eaecba5f1eb6adccad39c1177d955731b3ec2c5757e08230f784294f92f209f"
+   },
+   "plugins": [
+    "NPCs Use Items.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Cheat Terminal",
+   "modFolder": "Cheat Terminal",
+   "displayName": {
+    "ru": "Cheat Terminal",
+    "en": "Cheat Terminal"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 13285,
+    "fileId": 418829,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/13285?tab=files&file_id=418829"
+   },
+   "version": "1.79",
+   "archive": {
+    "nexusFileName": "82/58/d3/8258d3a8-4866-4961-8829-119a4a3ed8f0",
+    "localFileName": "82/58/d3/8258d3a8-4866-4961-8829-119a4a3ed8f0",
+    "size": 1541329,
+    "sha256": "0cf151e12d3ea13c7552d4f62379b6063ec11f41d08addecfea79443dad87f26"
+   },
+   "plugins": [
+    "CheatTerminal.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Combined Arms - Modern Weapon Pack",
+   "modFolder": "Combined Arms - Modern Weapon Pack",
+   "displayName": {
+    "ru": "Combined Arms - Modern Weapon Pack",
+    "en": "Combined Arms - Modern Weapon Pack"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 50505,
+    "fileId": 209270,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/50505?tab=files&file_id=209270"
+   },
+   "version": "1.0",
+   "archive": {
+    "nexusFileName": "Combined Arms - 1.0-50505-1-0-1622547579.7z",
+    "localFileName": "Combined Arms - 1.0-50505-1-0-1622547579.7z",
+    "size": 4014542260,
+    "sha256": "8f22e1a4f5f4a118853f22493049b05ba71ddf86c76478203c56d43376ca7b0f"
+   },
+   "plugins": [
+    "CombinedArmsNV.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU556 - Assault rifle",
+   "modFolder": "RU556 - Assault rifle",
+   "displayName": {
+    "ru": "RU556 - Assault rifle",
+    "en": "RU556 - Assault rifle"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 22536,
+    "fileId": 148860,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/22536?tab=files&file_id=148860"
+   },
+   "version": "3.0",
+   "archive": {
+    "nexusFileName": "RU556 - Assault Rifle v3.0 - 2K-22536-3-0-1546033486.rar",
+    "localFileName": "RU556 - Assault Rifle v3.0 - 2K-22536-3-0-1546033486.rar",
+    "size": 181915633,
+    "sha256": "6c0817f66eecc12e1ca4f9b6857c331c86dd4366e6fe066dca22dc508546b14f"
+   },
+   "plugins": [
+    "RU556.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "MK18 CQBR",
+   "modFolder": "MK18 CQBR",
+   "displayName": {
+    "ru": "MK18 CQBR",
+    "en": "MK18 CQBR"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 42000,
+    "fileId": 296786,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/42000?tab=files&file_id=296786"
+   },
+   "version": "1.0.5",
+   "archive": {
+    "nexusFileName": "MK18 CQBR - 2K-42000-1-0-5-1702644981.7z",
+    "localFileName": "MK18 CQBR - 2K-42000-1-0-5-1702644981.7z",
+    "size": 251207351,
+    "sha256": "3398a8c4e42ef249ebb515d33844dc2dcab423d64b5be7d007e0b441b53371ab"
+   },
+   "plugins": [
+    "MK18.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "AK74M - Assault Rifle",
+   "modFolder": "AK74M - Assault Rifle",
+   "displayName": {
+    "ru": "AK74M - Assault Rifle",
+    "en": "AK74M - Assault Rifle"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 21466,
+    "fileId": 130671,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/21466?tab=files&file_id=130671"
+   },
+   "version": "3.5",
+   "archive": {
+    "nexusFileName": "AK74M - Assault Rifle v3.5-21466-3-5.rar",
+    "localFileName": "AK74M - Assault Rifle v3.5-21466-3-5.rar",
+    "size": 339453784,
+    "sha256": "7fc52c68f2144c6f4625b3d43371b5586af22b6c6aadb9072f6ee304269dd40f"
+   },
+   "plugins": [
+    "AK74M.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Russian Assault Pack - SVD Dragunov - Saiga 12 - PP-19 Bizon - Stechkin APS - MP412 REX",
+   "modFolder": "Russian Assault Pack - SVD Dragunov - Saiga 12 - PP-19 Bizon - Stechkin APS - MP412 REX",
+   "displayName": {
+    "ru": "Russian Assault Pack - SVD Dragunov - Saiga 12 - PP-19 Bizon - Stechkin APS - MP412 REX",
+    "en": "Russian Assault Pack - SVD Dragunov - Saiga 12 - PP-19 Bizon - Stechkin APS - MP412 REX"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 42283,
+    "fileId": 171750,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/42283?tab=files&file_id=171750"
+   },
+   "version": "1.0",
+   "archive": {
+    "nexusFileName": "Russian Assault Pack - 1.0-42283-1-0-1575075214.7z",
+    "localFileName": "Russian Assault Pack - 1.0-42283-1-0-1575075214.7z",
+    "size": 804029660,
+    "sha256": "4719964ad6013e3072ab3448d20e0be4a1ad02bdfda1f3dbc88118a6032d58d0"
+   },
+   "plugins": [
+    "RussianAssaultPack.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "West Tek Tactical Optics - Night Vision Thermal Vision Goggles and More",
+   "modFolder": "West Tek Tactical Optics - Night Vision Thermal Vision Goggles and More",
+   "displayName": {
+    "ru": "West Tek Tactical Optics - Night Vision Thermal Vision Goggles and More",
+    "en": "West Tek Tactical Optics - Night Vision Thermal Vision Goggles and More"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 12220,
+    "fileId": 90810,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/12220?tab=files&file_id=90810"
+   },
+   "version": "2.0.1",
+   "archive": {
+    "nexusFileName": "West Tek Tactical Optics v2.0.1 (minor update)-12220-2-0-1.rar",
+    "localFileName": "West Tek Tactical Optics v2.0.1 (minor update)-12220-2-0-1.rar",
+    "size": 94334674,
+    "sha256": "c24a750f0a772d697e9e7f8302a63eada2d6657381760c254423e3a602398ab1"
+   },
+   "plugins": [
+    "WestTekTacticalOptics.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "NCR Ranger Veteran Armor",
+   "modFolder": "NCR Ranger Veteran Armor",
+   "displayName": {
+    "ru": "NCR Ranger Veteran Armor",
+    "en": "NCR Ranger Veteran Armor"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 9034,
+    "fileId": 130231,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/9034?tab=files&file_id=130231"
+   },
+   "version": "0.41",
+   "archive": {
+    "nexusFileName": "NCR Veteran Ranger Armor 0.41-9034-0-41.rar",
+    "localFileName": "NCR Veteran Ranger Armor 0.41-9034-0-41.rar",
+    "size": 239854826,
+    "sha256": "20d118e00a131dce8bf426e501b16aaeb757db7474fa03d189d8b7059a17d9c2"
+   },
+   "plugins": [
+    "Rangergearnew.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Tumbajamba's Gunner Armor Collection",
+   "modFolder": "Tumbajamba's Gunner Armor Collection",
+   "displayName": {
+    "ru": "Tumbajamba's Gunner Armor Collection",
+    "en": "Tumbajamba's Gunner Armor Collection"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 87501,
+    "fileId": 359725,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/87501?tab=files&file_id=359725"
+   },
+   "version": "1.01.2",
+   "archive": {
+    "nexusFileName": "Tumnajamba's Gunner Armor Collection-87501-1-01-2-1750639819.7z",
+    "localFileName": "Tumnajamba's Gunner Armor Collection-87501-1-01-2-1750639819.7z",
+    "size": 143490875,
+    "sha256": "8989b67a95cd612b9cc188d9e79164ede2470e6f88a501fcded4c18cab8b5702"
+   },
+   "plugins": [
+    "Tumba_Gunner_Collection.esp",
+    "Tumba_Gunner_Collection_Injection.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "Tumba_Gunner_Collection - Main.ba2",
+      "Tumba_Gunner_Collection - Main.ba2"
+     ],
+     [
+      "Tumba_Gunner_Collection - Textures.ba2",
+      "Tumba_Gunner_Collection - Textures.ba2"
+     ],
+     [
+      "Tumba_Gunner_Collection.esp",
+      "Tumba_Gunner_Collection.esp"
+     ],
+     [
+      "Tumba_Gunner_Collection_Injection.esp",
+      "Tumba_Gunner_Collection_Injection.esp"
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "Integration Methods: Leveled List Injection",
+     "Extras: -"
+    ]
+   }
+  },
+  {
+   "id": "Militarized Minutemen",
+   "modFolder": "Militarized Minutemen",
+   "displayName": {
+    "ru": "Militarized Minutemen",
+    "en": "Militarized Minutemen"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 29853,
+    "fileId": 122372,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/29853?tab=files&file_id=122372"
+   },
+   "version": "1.1.2",
+   "archive": {
+    "nexusFileName": "Militarized Minutemen - FOMOD Installation v1.1.2 - Bug Fixes-29853-1-1-2.zip",
+    "localFileName": "Militarized Minutemen - FOMOD Installation v1.1.2 - Bug Fixes-29853-1-1-2.zip",
+    "size": 119437323,
+    "sha256": "153eb2af640a03f0acaf44cbdb5bd9f759f098f2a6eaa82234fa62cd6c73c85b"
+   },
+   "plugins": [
+    "MilitarizedMinutemen.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "MilitarizedMinutemen/PickVersion/GreenUniforms/data",
+      ""
+     ],
+     [
+      "MilitarizedMinutemen/Required/data",
+      ""
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "Versions: Green Version (Leveled Lists)",
+     "Required Files: Militarized Minutemen"
+    ]
+   }
+  },
+  {
+   "id": "Legendary Modification",
+   "modFolder": "Legendary Modification",
+   "displayName": {
+    "ru": "Legendary Modification",
+    "en": "Legendary Modification"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 4042,
+    "fileId": 26290,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/4042?tab=files&file_id=26290"
+   },
+   "version": "1.75",
+   "archive": {
+    "nexusFileName": "Legendary Modification-4042-1-75.rar",
+    "localFileName": "Legendary Modification-4042-1-75.rar",
+    "size": 1924296,
+    "sha256": "d096f3b2df1fde970ce6271251304ac366a480f7f204ae0599cfe1c8d1aed9d5"
+   },
+   "plugins": [
+    "LegendaryModification.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "English/LegendaryModification Normal/LegendaryModification.esp",
+      "LegendaryModification.esp"
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "Select Difficulty: LegendaryModification - Normal",
+     "Optional: -"
+    ]
+   }
+  },
+  {
+   "id": "A Little Bit of Green (Realistic Touch of Green Edit)",
+   "modFolder": "A Little Bit of Green (Realistic Touch of Green Edit)",
+   "displayName": {
+    "ru": "A Little Bit of Green (Realistic Touch of Green Edit)",
+    "en": "A Little Bit of Green (Realistic Touch of Green Edit)"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 1564,
+    "fileId": 6041,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/1564?tab=files&file_id=6041"
+   },
+   "version": "v2.5",
+   "archive": {
+    "nexusFileName": "A Little Bit of Green Version 2.5-1564-v2-5.rar",
+    "localFileName": "A Little Bit of Green Version 2.5-1564-v2-5.rar",
+    "size": 124787109,
+    "sha256": "70702a31d3d27e1ca1cdcc917332f8f5a362036a0eb86db6060b84ecba81f12e"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Diamond City Expansion",
+   "modFolder": "Diamond City Expansion",
+   "displayName": {
+    "ru": "Diamond City Expansion",
+    "en": "Diamond City Expansion"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 21853,
+    "fileId": 187477,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/21853?tab=files&file_id=187477"
+   },
+   "version": "1.6.2",
+   "archive": {
+    "nexusFileName": "Diamond City Expansion 1.6.2-21853-1-6-2-1595516625.7z",
+    "localFileName": "Diamond City Expansion 1.6.2-21853-1-6-2-1595516625.7z",
+    "size": 375564325,
+    "sha256": "25444ad91e725fc1876652120edca6411149fe76ead0a2649d9fcf385888be13"
+   },
+   "plugins": [
+    "Stm_DiamondCityExpansion.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Better Goodneighbor",
+   "modFolder": "Better Goodneighbor",
+   "displayName": {
+    "ru": "Better Goodneighbor",
+    "en": "Better Goodneighbor"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 16594,
+    "fileId": 66325,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/16594?tab=files&file_id=66325"
+   },
+   "version": "1.00",
+   "archive": {
+    "nexusFileName": "Better Goodneighbor-16594-1-00.rar",
+    "localFileName": "Better Goodneighbor-16594-1-00.rar",
+    "size": 17233816,
+    "sha256": "ee1b36607716cc2215bba4f2bb22d509f705e6654705dcf798c91d11ce1a1497"
+   },
+   "plugins": [
+    "CrimeTown.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Companion Status HUD",
+   "modFolder": "Companion Status HUD",
+   "displayName": {
+    "ru": "Companion Status HUD",
+    "en": "Companion Status HUD"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 20310,
+    "fileId": 84387,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/20310?tab=files&file_id=84387"
+   },
+   "version": "1.0",
+   "archive": {
+    "nexusFileName": "Companion Status 1.0b-20310-1-0.zip",
+    "localFileName": "Companion Status 1.0b-20310-1-0.zip",
+    "size": 17590,
+    "sha256": "0acd44a1188631a9bc1c17b628f3d8ed1e7d51563f845d7ab7de7847feccd6cd"
+   },
+   "plugins": [
+    "CompanionStatus.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "HoloTime - HUD Clock Widget",
+   "modFolder": "HoloTime - HUD Clock Widget",
+   "displayName": {
+    "ru": "HoloTime - HUD Clock Widget",
+    "en": "HoloTime - HUD Clock Widget"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 20300,
+    "fileId": 109788,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/20300?tab=files&file_id=109788"
+   },
+   "version": "1.1b",
+   "archive": {
+    "nexusFileName": "HoloTime 1.1b-20300-1-1b.zip",
+    "localFileName": "HoloTime 1.1b-20300-1-1b.zip",
+    "size": 66596,
+    "sha256": "cd27fdabb77c4558aafc404182033f435122e4c54062ea1f8c3b703851c287ca"
+   },
+   "plugins": [
+    "HoloTime.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "powerofthree's Photo Mode",
+   "modFolder": "powerofthree's Photo Mode",
+   "displayName": {
+    "ru": "powerofthree's Photo Mode",
+    "en": "powerofthree's Photo Mode"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 88106,
+    "fileId": 379689,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/88106?tab=files&file_id=379689"
+   },
+   "version": "2.1.4",
+   "archive": {
+    "nexusFileName": "powerofthree's Photo Mode AE-88106-2-1-4-1767461731.7z",
+    "localFileName": "powerofthree's Photo Mode AE-88106-2-1-4-1767461731.7z",
+    "size": 7324270,
+    "sha256": "c40d342e2dcb8ce67c9b982a5014519e8c323cde61dbd66188cd398815519ef1"
+   },
+   "plugins": [
+    "PhotoMode.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "powerofthree's Photo Mode",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Settlement Objects Expansion Pack",
+   "modFolder": "Settlement Objects Expansion Pack",
+   "displayName": {
+    "ru": "Settlement Objects Expansion Pack",
+    "en": "Settlement Objects Expansion Pack"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 10075,
+    "fileId": 143200,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/10075?tab=files&file_id=143200"
+   },
+   "version": "v1.6.8",
+   "archive": {
+    "nexusFileName": "Settlement Objects Expansion Pack - All DLC-10075-v1-6-8.rar",
+    "localFileName": "Settlement Objects Expansion Pack - All DLC-10075-v1-6-8.rar",
+    "size": 28459831,
+    "sha256": "3e2d1d0cf231958be159999d56084f6dbef1648afc0af9b9ca125c8f833f7fa4"
+   },
+   "plugins": [
+    "SettleObjExpandPack.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "SOEPack-DLCAll/SOE/SettleObjExpandPack - Main.ba2",
+      "SettleObjExpandPack - Main.ba2"
+     ],
+     [
+      "SOEPack-DLCAll/SOE/SettleObjExpandPack - Textures.ba2",
+      "SettleObjExpandPack - Textures.ba2"
+     ],
+     [
+      "SOEPack-DLCAll/SOE/SettleObjExpandPack.esp",
+      "SettleObjExpandPack.esp"
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "Main Files: Install Main Files",
+     "Patches: -"
+    ]
+   }
+  },
+  {
+   "id": "Snap'n Build 2.0",
+   "modFolder": "Snap'n Build 2.0",
+   "displayName": {
+    "ru": "Snap'n Build 2.0",
+    "en": "Snap'n Build 2.0"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 28834,
+    "fileId": 118501,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/28834?tab=files&file_id=118501"
+   },
+   "version": "2.0",
+   "archive": {
+    "nexusFileName": "Snap'n Build 2.0-28834-2-0.7z",
+    "localFileName": "Snap'n Build 2.0-28834-2-0.7z",
+    "size": 282596742,
+    "sha256": "e41088368a1e9af01638e3dcce293707e7d6671e40ddc4ba0bf6d0cf2b775028"
+   },
+   "plugins": [
+    "Snap'n Build.esm"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Workshop Rearranged",
+   "modFolder": "Workshop Rearranged",
+   "displayName": {
+    "ru": "Workshop Rearranged",
+    "en": "Workshop Rearranged"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 16181,
+    "fileId": 130690,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/16181?tab=files&file_id=130690"
+   },
+   "version": "0.6.13",
+   "archive": {
+    "nexusFileName": "Workshop Rearranged-16181-0-6-13.zip",
+    "localFileName": "Workshop Rearranged-16181-0-6-13.zip",
+    "size": 152622364,
+    "sha256": "4029e2be9da576b35e6552ee58da3582d04a06b077ca67fbad036098d9af5415"
+   },
+   "plugins": [
+    "WorkshopRearranged.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Transfer Settlements - Shareable Settlement Blueprints",
+   "modFolder": "Transfer Settlements - Shareable Settlement Blueprints",
+   "displayName": {
+    "ru": "Transfer Settlements - Shareable Settlement Blueprints",
+    "en": "Transfer Settlements - Shareable Settlement Blueprints"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 22442,
+    "fileId": 410610,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/22442?tab=files&file_id=410610"
+   },
+   "version": "2.22.2",
+   "archive": {
+    "nexusFileName": "77/8b/3a/778b3a2d-fd8d-4cec-8b9e-dc79f0c06e47",
+    "localFileName": "77/8b/3a/778b3a2d-fd8d-4cec-8b9e-dc79f0c06e47",
+    "size": 127949243,
+    "sha256": "10185b5252f7849088ed3bfac2a81f86f44a56efe6d55abf0d763eb4bbe8c9c3"
+   },
+   "plugins": [
+    "TransferSettlements.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "AE",
+      ""
+     ],
+     [
+      "Common",
+      ""
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "Before you install - please read: Got it - I have the requirements",
+     "Which version of Fallout 4 are you running?: Anniversary Edition - Fallout 4 1.11.240 (latest), F4SE 0.7.9"
+    ]
+   }
+  },
+  {
+   "id": "OLD WORLD RADIO - BOSTON",
+   "modFolder": "OLD WORLD RADIO - BOSTON",
+   "displayName": {
+    "ru": "OLD WORLD RADIO - BOSTON",
+    "en": "OLD WORLD RADIO - BOSTON"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 9048,
+    "fileId": 209138,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/9048?tab=files&file_id=209138"
+   },
+   "version": "6.02",
+   "archive": {
+    "nexusFileName": "Old World Radio - Boston v6.02-9048-6-02-1622419664.rar",
+    "localFileName": "Old World Radio - Boston v6.02-9048-6-02-1622419664.rar",
+    "size": 6404763900,
+    "sha256": "61c7fbfbd9ee03e3620572ad6fb676d8526731a94f60c319b5e828226a4c09f8"
+   },
+   "plugins": [
+    "OWR.esp",
+    "OWR_CraftableDecor.esp",
+    "OWR_CraftableDecor_CW.esp",
+    "RAO - OWR patch.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "craftable_decor",
+      ""
+     ],
+     [
+      "craftable_decor_CW_DLC_addon",
+      ""
+     ],
+     [
+      "main",
+      ""
+     ],
+     [
+      "reverb_and_ambiance_patch",
+      ""
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "Important Notice: I understood!",
+     "Settlement Decorations: install with DLC",
+     "Settlement Keywords Expanded : don't install (default)",
+     "No Clutter Patch: don't install (default)",
+     "Reverb and Ambiance Patch: install"
+    ]
+   }
+  },
+  {
+   "id": "Baka Framework",
+   "modFolder": "Baka Framework",
+   "displayName": {
+    "ru": "Baka Framework",
+    "en": "Baka Framework"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 43627,
+    "fileId": 412567,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/43627?tab=files&file_id=412567"
+   },
+   "version": "5.0.0",
+   "archive": {
+    "nexusFileName": "e1/01/c8/e101c876-4666-4978-b43d-c36720c8305b",
+    "localFileName": "e1/01/c8/e101c876-4666-4978-b43d-c36720c8305b",
+    "size": 5060738,
+    "sha256": "42636541fd01c3bb07231ccf035ad8574cac44c856e3389c7913e168d70e2d06"
+   },
+   "plugins": [
+    "BakaFramework.esm"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "Data/BakaFramework.esm",
+      "BakaFramework.esm"
+     ],
+     [
+      "Data/F4SE/Plugins/BakaFramework.dll",
+      "F4SE/Plugins/BakaFramework.dll"
+     ],
+     [
+      "Data/F4SE/Plugins/BakaFramework.pdb",
+      "F4SE/Plugins/BakaFramework.pdb"
+     ],
+     [
+      "Data/Scripts/BakaEvents_ActiveMagicEffect.pex",
+      "Scripts/BakaEvents_ActiveMagicEffect.pex"
+     ],
+     [
+      "Data/Scripts/BakaEvents_Alias.pex",
+      "Scripts/BakaEvents_Alias.pex"
+     ],
+     [
+      "Data/Scripts/BakaEvents_Form.pex",
+      "Scripts/BakaEvents_Form.pex"
+     ],
+     [
+      "Data/Scripts/BakaUtil.pex",
+      "Scripts/BakaUtil.pex"
+     ],
+     [
+      "Data/Scripts/Source/Baka/BakaEvents_ActiveMagicEffect.psc",
+      "Scripts/Source/Baka/BakaEvents_ActiveMagicEffect.psc"
+     ],
+     [
+      "Data/Scripts/Source/Baka/BakaEvents_Alias.psc",
+      "Scripts/Source/Baka/BakaEvents_Alias.psc"
+     ],
+     [
+      "Data/Scripts/Source/Baka/BakaEvents_Form.psc",
+      "Scripts/Source/Baka/BakaEvents_Form.psc"
+     ],
+     [
+      "Data/Scripts/Source/Baka/BakaUtil.psc",
+      "Scripts/Source/Baka/BakaUtil.psc"
+     ],
+     [
+      "Data/Scripts/Source/Baka/StringUtil.psc",
+      "Scripts/Source/Baka/StringUtil.psc"
+     ],
+     [
+      "Data/Scripts/StringUtil.pex",
+      "Scripts/StringUtil.pex"
+     ]
+    ],
+    "fomod": false,
+    "notFromArchive": [
+     "F4SE/Plugins/BakaFramework.ini",
+     "F4SE/Plugins/BakaFramework.ini.orig"
+    ]
+   }
+  },
+  {
+   "id": "ImGui Fonts",
+   "modFolder": "ImGui Fonts",
+   "displayName": {
+    "ru": "ImGui Fonts",
+    "en": "ImGui Fonts"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 88107,
+    "fileId": 372390,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/88107?tab=files&file_id=372390"
+   },
+   "version": "2.0",
+   "archive": {
+    "nexusFileName": "ImGui Fonts-88107-2-0-1762301250.7z",
+    "localFileName": "ImGui Fonts-88107-2-0-1762301250.7z",
+    "size": 2804714,
+    "sha256": "3444d6cf0e4aabedd51fc94bc4604398167feb7263dfa9aae74c89a8976008bb"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "ImGui Fonts",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Boon Island - Isles Of New England",
+   "modFolder": "Boon Island - Isles Of New England",
+   "displayName": {
+    "ru": "Boon Island - Isles Of New England",
+    "en": "Boon Island - Isles Of New England"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 84449,
+    "fileId": 416454,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/84449?tab=files&file_id=416454"
+   },
+   "version": "1.1.2",
+   "archive": {
+    "nexusFileName": "51/49/35/51493535-9f83-46ed-b469-79ba51e2724c",
+    "localFileName": "51/49/35/51493535-9f83-46ed-b469-79ba51e2724c",
+    "size": 89961902,
+    "sha256": "750753b62b829f98cec845623f33faf4d36be204e3002300c43c17e32cb3035f"
+   },
+   "plugins": [
+    "INE_BoonIsland.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Misery Island - Isles Of New England",
+   "modFolder": "Misery Island - Isles Of New England",
+   "displayName": {
+    "ru": "Misery Island - Isles Of New England",
+    "en": "Misery Island - Isles Of New England"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 87983,
+    "fileId": 377488,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/87983?tab=files&file_id=377488"
+   },
+   "version": "1.0.8",
+   "archive": {
+    "nexusFileName": "Misery Island 1.0.8-87983-1-0-8-1765808558.rar",
+    "localFileName": "Misery Island 1.0.8-87983-1-0-8-1765808558.rar",
+    "size": 946961880,
+    "sha256": "3e32d286444465fcb7fb7e2899eafaf589ce24e96149cd9b2bc49603c093409b"
+   },
+   "plugins": [
+    "INE_MiseryIsland.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "INE_MiseryIsland - Main.BA2",
+      "INE_MiseryIsland - Main.BA2"
+     ],
+     [
+      "INE_MiseryIsland - Textures.BA2",
+      "INE_MiseryIsland - Textures.BA2"
+     ],
+     [
+      "INE_MiseryIsland.esp",
+      "INE_MiseryIsland.esp"
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "Pre Quest Radiant: Enable Pre Quest Radiant",
+     "Far Harbor Transport: Enable Far Harbor Transport",
+     "Legendary Armor Drops: Enable Legendary Armor Drops",
+     "Random Encounter Chance: Default Random Encounter Chance (100%)",
+     "Longer Grass: Default Grass",
+     "Road Sign Axe Swap: Use Isles Of New England Version",
+     "Industrial Gauntlet Swap: Use Isles Of New England Version",
+     "Pig's Hawaiian Shirts: Do not add to Misery Island Level Lists"
+    ]
+   }
+  },
+  {
+   "id": "Random Encounter Framework",
+   "modFolder": "Random Encounter Framework",
+   "displayName": {
+    "ru": "Random Encounter Framework",
+    "en": "Random Encounter Framework"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 60074,
+    "fileId": 377734,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/60074?tab=files&file_id=377734"
+   },
+   "version": "1.02",
+   "archive": {
+    "nexusFileName": "Random Encounter Framework-60074-1-02-1766005303.zip",
+    "localFileName": "Random Encounter Framework-60074-1-02-1766005303.zip",
+    "size": 4608,
+    "sha256": "1fafaf14dcadf769ab152a3c7a9961f7e201c57ff78db5175cfcb7422df96ff8"
+   },
+   "plugins": [
+    "REFramework.esm"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Commonwealth Encounter Pack",
+   "modFolder": "Commonwealth Encounter Pack",
+   "displayName": {
+    "ru": "Commonwealth Encounter Pack",
+    "en": "Commonwealth Encounter Pack"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 77948,
+    "fileId": 405588,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/77948?tab=files&file_id=405588"
+   },
+   "version": "1.03",
+   "archive": {
+    "nexusFileName": "8b/b2/06/8bb2065e-fe98-4fdf-b872-1e9ed371f187",
+    "localFileName": "8b/b2/06/8bb2065e-fe98-4fdf-b872-1e9ed371f187",
+    "size": 9662939,
+    "sha256": "00efeef6b49501643fffe2959c8d023b740ade35998feb2cd7b4836d0834c28e"
+   },
+   "plugins": [
+    "CommonwealthEncounterPack.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Random Encounter Framework Patch Hub",
+   "modFolder": "Random Encounter Framework Patch Hub",
+   "displayName": {
+    "ru": "Random Encounter Framework Patch Hub",
+    "en": "Random Encounter Framework Patch Hub"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 67757,
+    "fileId": 407478,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/67757?tab=files&file_id=407478"
+   },
+   "version": "1.06",
+   "archive": {
+    "nexusFileName": "89/c9/c2/89c9c290-0c43-4182-a6a8-c2ffcc9c8f8e",
+    "localFileName": "89/c9/c2/89c9c290-0c43-4182-a6a8-c2ffcc9c8f8e",
+    "size": 33932,
+    "sha256": "3892b048e95fa086df2839b030632ff8971432c94df6552165eefbec0a5f3009"
+   },
+   "plugins": [
+    "REPatch_AmericaRising2LegacyOfTheEnclave.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "00 - Automated Patches/REPatch_AmericaRising2LegacyOfTheEnclave.esp",
+      "REPatch_AmericaRising2LegacyOfTheEnclave.esp"
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "Select Your Patches: America Rising 2 - Legacy of the Enclave",
+     "Commonwealth Hit Squads and Gunner Hit Squads: No Patch",
+     "Less Vertibird Encounters: No Patch",
+     "March of The Enclave - Enclave Remnants: No Patch"
+    ]
+   }
+  },
+  {
+   "id": "Caves Of The Commonwealth",
+   "modFolder": "Caves Of The Commonwealth",
+   "displayName": {
+    "ru": "Caves Of The Commonwealth",
+    "en": "Caves Of The Commonwealth"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 75647,
+    "fileId": 350098,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/75647?tab=files&file_id=350098"
+   },
+   "version": "1.3",
+   "archive": {
+    "nexusFileName": "Caves Of The Commonwealth 1.3-75647-1-3-1741511749.rar",
+    "localFileName": "Caves Of The Commonwealth 1.3-75647-1-3-1741511749.rar",
+    "size": 63643762,
+    "sha256": "3f90879c0c337d4b02533594c5c701a4b02bd009a37b55ef2a4f278266819071"
+   },
+   "plugins": [
+    "CavesOfTheCommonwealth.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "CavesOfTheCommonwealth - Main.BA2",
+      "CavesOfTheCommonwealth - Main.BA2"
+     ],
+     [
+      "CavesOfTheCommonwealth - Textures.BA2",
+      "CavesOfTheCommonwealth - Textures.BA2"
+     ],
+     [
+      "CavesOfTheCommonwealth.esp",
+      "CavesOfTheCommonwealth.esp"
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "Select Lighting Type: Default Lighting"
+    ]
+   }
+  },
+  {
+   "id": "Subway Runner - Revival",
+   "modFolder": "Subway Runner - Revival",
+   "displayName": {
+    "ru": "Subway Runner - Revival",
+    "en": "Subway Runner - Revival"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 83405,
+    "fileId": 323644,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/83405?tab=files&file_id=323644"
+   },
+   "version": "2.02",
+   "archive": {
+    "nexusFileName": "Subway Runner Revival - Optimized Expanded-83405-2-02-1718865200.rar",
+    "localFileName": "Subway Runner Revival - Optimized Expanded-83405-2-02-1718865200.rar",
+    "size": 182641050,
+    "sha256": "e068bcc97332ac70efc962c3c94fac562bb5128c2aeb63919d94f6b7fc50bb0f"
+   },
+   "plugins": [
+    "SubwayRunnnerDynamicLighting.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "SubwayRunnnerDynamicLighting - Geometry.csg",
+      "SubwayRunnnerDynamicLighting - Geometry.csg"
+     ],
+     [
+      "SubwayRunnnerDynamicLighting - Main.ba2",
+      "SubwayRunnnerDynamicLighting - Main.ba2"
+     ],
+     [
+      "SubwayRunnnerDynamicLighting.cdx",
+      "SubwayRunnnerDynamicLighting.cdx"
+     ],
+     [
+      "SubwayRunnnerDynamicLighting.esp",
+      "SubwayRunnnerDynamicLighting.esp"
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "Tunnel Lighting: Vanilla Tunnel Lighting",
+     "Patches: -"
+    ]
+   }
+  },
+  {
+   "id": "In The Flesh - A Horror Quest Mod",
+   "modFolder": "In The Flesh - A Horror Quest Mod",
+   "displayName": {
+    "ru": "In The Flesh - A Horror Quest Mod",
+    "en": "In The Flesh - A Horror Quest Mod"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 78628,
+    "fileId": 304226,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/78628?tab=files&file_id=304226"
+   },
+   "version": "1.4",
+   "archive": {
+    "nexusFileName": "In The Flesh-78628-1-4-1708425298.rar",
+    "localFileName": "In The Flesh-78628-1-4-1708425298.rar",
+    "size": 99973422,
+    "sha256": "f70f0ccaa8a67cd70ecb8bd65f91d3bd98d7a6f06ec77c4bdd93156dfef3a6c9"
+   },
+   "plugins": [
+    "In The Flesh.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Mutant Menagerie - Life Finds A Way - Mutant Menagerie Main Files (No Textures)",
+   "modFolder": "Mutant Menagerie - Life Finds A Way - Mutant Menagerie Main Files (No Textures)",
+   "displayName": {
+    "ru": "Mutant Menagerie - Life Finds A Way",
+    "en": "Mutant Menagerie - Life Finds A Way"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 68187,
+    "fileId": 317695,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/68187?tab=files&file_id=317695"
+   },
+   "version": "1.42",
+   "archive": {
+    "nexusFileName": "Mutant Menagerie - Main Files-68187-1-42-1716152072.zip",
+    "localFileName": "Mutant Menagerie - Main Files-68187-1-42-1716152072.zip",
+    "size": 161074939,
+    "sha256": "1ad35d242383c4bb6451377fcccf9f32e40e5922d0627b7a6cfe2b0b1a204567"
+   },
+   "plugins": [
+    "MutantMenagerie.esm"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "Mutant Menagerie Files/MutantMenagerie - Main.ba2",
+      "MutantMenagerie - Main.ba2"
+     ],
+     [
+      "Mutant Menagerie Files/ESM Deep",
+      ""
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "Main File Options: Mutant Menagerie - Full",
+     "Add-On Options: -"
+    ]
+   }
+  },
+  {
+   "id": "Mutant Menagerie - Life Finds A Way - Mutant Menagerie Textures - Performance",
+   "modFolder": "Mutant Menagerie - Life Finds A Way - Mutant Menagerie Textures - Performance",
+   "displayName": {
+    "ru": "Mutant Menagerie - Life Finds A Way",
+    "en": "Mutant Menagerie - Life Finds A Way"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 68187,
+    "fileId": 313094,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/68187?tab=files&file_id=313094"
+   },
+   "version": "1.4",
+   "archive": {
+    "nexusFileName": "Performance Textures-68187-1-4-1714417430.zip",
+    "localFileName": "Performance Textures-68187-1-4-1714417430.zip",
+    "size": 350213682,
+    "sha256": "22d5d3ba05205a26edbc0ce45ba6e7b78819119a12a240d52f9cf4c30c4c4ec7"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Basement Living - Bunker and Basement Player Homes (with standalone Workshops)",
+   "modFolder": "Basement Living - Bunker and Basement Player Homes (with standalone Workshops)",
+   "displayName": {
+    "ru": "Basement Living - Bunker and Basement Player Homes (with standalone Workshops)",
+    "en": "Basement Living - Bunker and Basement Player Homes (with standalone Workshops)"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 10967,
+    "fileId": 90466,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/10967?tab=files&file_id=90466"
+   },
+   "version": "1.3",
+   "archive": {
+    "nexusFileName": "Basement Living v1.3-10967-1-3.rar",
+    "localFileName": "Basement Living v1.3-10967-1-3.rar",
+    "size": 412670,
+    "sha256": "96afc00cf372f5228a6f6e09a33ad31267fe280942a2cd28f90d26eee1b55668"
+   },
+   "plugins": [
+    "BasementLiving.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Rockin' Red Rocket",
+   "modFolder": "Rockin' Red Rocket",
+   "displayName": {
+    "ru": "Rockin' Red Rocket",
+    "en": "Rockin' Red Rocket"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 12373,
+    "fileId": 387661,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/12373?tab=files&file_id=387661"
+   },
+   "version": "3.1.2",
+   "archive": {
+    "nexusFileName": "Rockin' Red Rocket 3.1.2-12373-3-1-2-1772247993.7z",
+    "localFileName": "Rockin' Red Rocket 3.1.2-12373-3-1-2-1772247993.7z",
+    "size": 112469094,
+    "sha256": "71ec2229ca88448a099c75c7062fa83f2bd91076abbd78a7ce9163b43ee610e6"
+   },
+   "plugins": [
+    "Eli_Rockin Red Rocket.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Take Cover",
+   "modFolder": "Take Cover",
+   "displayName": {
+    "ru": "Take Cover",
+    "en": "Take Cover"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 10875,
+    "fileId": 62501,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/10875?tab=files&file_id=62501"
+   },
+   "version": "1.3.beta",
+   "archive": {
+    "nexusFileName": "Take Cover 1.3 BETA-10875-1-3-beta.zip",
+    "localFileName": "Take Cover 1.3 BETA-10875-1-3-beta.zip",
+    "size": 17720,
+    "sha256": "85b7ea202ed21b9ef4f3460c7f21a62bfc56b55cd881ca203a8f1688a1347625"
+   },
+   "plugins": [
+    "TakeCover.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Loot Detector",
+   "modFolder": "Loot Detector",
+   "displayName": {
+    "ru": "Loot Detector",
+    "en": "Loot Detector"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 4380,
+    "fileId": 131403,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/4380?tab=files&file_id=131403"
+   },
+   "version": "3800",
+   "archive": {
+    "nexusFileName": "Loot Detector (ESL)-4380-3800.7z",
+    "localFileName": "Loot Detector (ESL)-4380-3800.7z",
+    "size": 89074,
+    "sha256": "3407cdb91c3c24d5306d47ddf00011e44b7e8e82b60ca1d2e67810931927605f"
+   },
+   "plugins": [
+    "Loot Detector.esl"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Locksmith - Lock Your Doors 'n' Containers",
+   "modFolder": "Locksmith - Lock Your Doors 'n' Containers",
+   "displayName": {
+    "ru": "Locksmith - Lock Your Doors 'n' Containers",
+    "en": "Locksmith - Lock Your Doors 'n' Containers"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 12454,
+    "fileId": 52615,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/12454?tab=files&file_id=52615"
+   },
+   "version": "1.02",
+   "archive": {
+    "nexusFileName": "Locksmith v1.02-12454-1-02.zip",
+    "localFileName": "Locksmith v1.02-12454-1-02.zip",
+    "size": 3464,
+    "sha256": "9fbacb93ee26b5b7e65fea93328a253a17295a694b61a95f16e09ec49ad7bf4d"
+   },
+   "plugins": [
+    "Locksmith.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Shaikujin's Better warning for settlements being attacked",
+   "modFolder": "Shaikujin's Better warning for settlements being attacked",
+   "displayName": {
+    "ru": "Shaikujin's Better warning for settlements being attacked",
+    "en": "Shaikujin's Better warning for settlements being attacked"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 4106,
+    "fileId": 54946,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/4106?tab=files&file_id=54946"
+   },
+   "version": "5.1",
+   "archive": {
+    "nexusFileName": "SkjAlert V5.1-4106-5-1.7z",
+    "localFileName": "SkjAlert V5.1-4106-5-1.7z",
+    "size": 953,
+    "sha256": "a6bbf3c2cb208e7fdc4569ebb53efd3f6819c19e7a5d3fc83b328c18b54ed2ea"
+   },
+   "plugins": [
+    "SkjAlert_All_DLC.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Munitions - Ammo Expansion Project",
+   "modFolder": "Munitions - Ammo Expansion Project",
+   "displayName": {
+    "ru": "Munitions - Ammo Expansion Project",
+    "en": "Munitions - Ammo Expansion Project"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 66051,
+    "fileId": 392381,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/66051?tab=files&file_id=392381"
+   },
+   "version": "1.3.4",
+   "archive": {
+    "nexusFileName": "Munitions - An Ammo Expansion-66051-1-3-4-1775454096.7z",
+    "localFileName": "Munitions - An Ammo Expansion-66051-1-3-4-1775454096.7z",
+    "size": 92365533,
+    "sha256": "3390f56c71f2ba71a356c523f5725b9e7bf80ad968548bc4d3e4b823e3897c2d"
+   },
+   "plugins": [
+    "Munitions - An Ammo Expansion.esl"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Brawl Bug Fix",
+   "modFolder": "Brawl Bug Fix",
+   "displayName": {
+    "ru": "Brawl Bug Fix",
+    "en": "Brawl Bug Fix"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 16899,
+    "fileId": 67622,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/16899?tab=files&file_id=67622"
+   },
+   "version": "1",
+   "archive": {
+    "nexusFileName": "Brawl Bug Fix-16899-1.zip",
+    "localFileName": "Brawl Bug Fix-16899-1.zip",
+    "size": 4270,
+    "sha256": "beebb6b2bf40617a4a8e349204258784092b52bcfd65e5a78e2610a62cada047"
+   },
+   "plugins": [
+    "Brawl Bug Fix.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Rain Bug Fix - F4SE",
+   "modFolder": "Rain Bug Fix - F4SE",
+   "displayName": {
+    "ru": "Rain Bug Fix - F4SE",
+    "en": "Rain Bug Fix - F4SE"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 106989,
+    "fileId": 409032,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/106989?tab=files&file_id=409032"
+   },
+   "version": "1.2.0",
+   "archive": {
+    "nexusFileName": "c1/f0/a8/c1f0a8a2-4090-4805-b830-d9538de52adc",
+    "localFileName": "c1/f0/a8/c1f0a8a2-4090-4805-b830-d9538de52adc",
+    "size": 338159,
+    "sha256": "ce68928bcce1addf602d880d597b53032e8294189f844c70017622b273be0291"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Stuck LOD Fix - F4SE",
+   "modFolder": "Stuck LOD Fix - F4SE",
+   "displayName": {
+    "ru": "Stuck LOD Fix - F4SE",
+    "en": "Stuck LOD Fix - F4SE"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 107858,
+    "fileId": 408991,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/107858?tab=files&file_id=408991"
+   },
+   "version": "1.3.3",
+   "archive": {
+    "nexusFileName": "a5/0f/41/a50f41e7-6fb4-4983-9896-00352175187b",
+    "localFileName": "a5/0f/41/a50f41e7-6fb4-4983-9896-00352175187b",
+    "size": 350042,
+    "sha256": "ef89fe98df5930a0ace0acc1ab2bb96c03224d47614b8086ffa5d234a7a06dee"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Faster Cell Lookup",
+   "modFolder": "Faster Cell Lookup",
+   "displayName": {
+    "ru": "Faster Cell Lookup",
+    "en": "Faster Cell Lookup"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 104401,
+    "fileId": 420504,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/104401?tab=files&file_id=420504"
+   },
+   "version": "1.4.3",
+   "archive": {
+    "nexusFileName": "ad/a7/d8/ada7d8ed-41a2-408e-839b-f8c89b87d33a",
+    "localFileName": "ad/a7/d8/ada7d8ed-41a2-408e-839b-f8c89b87d33a",
+    "size": 369172,
+    "sha256": "d9f9cf327d0d0681de72e6748d626d9376032022a7b7a11482f0850c5d722578"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Terrain Freckles Be Gone",
+   "modFolder": "Terrain Freckles Be Gone",
+   "displayName": {
+    "ru": "Terrain Freckles Be Gone",
+    "en": "Terrain Freckles Be Gone"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 99314,
+    "fileId": 378260,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/99314?tab=files&file_id=378260"
+   },
+   "version": "1.0",
+   "archive": {
+    "nexusFileName": "Terrain Freckles Be Gone (archived)-99314-1-0-1766371029.zip",
+    "localFileName": "Terrain Freckles Be Gone (archived)-99314-1-0-1766371029.zip",
+    "size": 3427161,
+    "sha256": "000abd4baf0353b6e8d9970020c4678482c1560d6bee03a6953cb8e04aabc445"
+   },
+   "plugins": [
+    "TerrainFrecklesBeGone.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Visible Favorites - F4SE",
+   "modFolder": "Visible Favorites - F4SE",
+   "displayName": {
+    "ru": "Visible Favorites - F4SE",
+    "en": "Visible Favorites - F4SE"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 108583,
+    "fileId": 413612,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/108583?tab=files&file_id=413612"
+   },
+   "version": "1.2.4",
+   "archive": {
+    "nexusFileName": "35/13/f2/3513f225-100b-482f-91fc-5484d05bb592",
+    "localFileName": "35/13/f2/3513f225-100b-482f-91fc-5484d05bb592",
+    "size": 10083631,
+    "sha256": "69474cf2c2ade28ce5ff6f7542d86ccb8d34d642c1d53dda95f8df7e89c1af51"
+   },
+   "plugins": [],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "F4SE/Plugins/VisibleFavorites.dll",
+      "F4SE/Plugins/VisibleFavorites.dll"
+     ],
+     [
+      "F4SE/Plugins/VisibleFavorites.pdb",
+      "F4SE/Plugins/VisibleFavorites.pdb"
+     ],
+     [
+      "F4SE/Plugins/VisibleFavorites/body.png",
+      "F4SE/Plugins/VisibleFavorites/body.png"
+     ],
+     [
+      "F4SE/Plugins/VisibleFavorites/body_pa.png",
+      "F4SE/Plugins/VisibleFavorites/body_pa.png"
+     ]
+    ],
+    "fomod": false,
+    "notFromArchive": [
+     "F4SE/Plugins/VisibleFavorites/VisibleFavorites.ini"
+    ]
+   }
+  },
+  {
+   "id": "Mod Configuration Menu - RD",
+   "modFolder": "Mod Configuration Menu - RD",
+   "displayName": {
+    "ru": "Mod Configuration Menu - RD",
+    "en": "Mod Configuration Menu - RD"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 108530,
+    "fileId": 413064,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/108530?tab=files&file_id=413064"
+   },
+   "version": "1.3.0",
+   "archive": {
+    "nexusFileName": "00/4f/15/004f150c-842e-483c-93fd-b9e46099eb97",
+    "localFileName": "00/4f/15/004f150c-842e-483c-93fd-b9e46099eb97",
+    "size": 558385,
+    "sha256": "f3269535ec0e8b28923a24679231a7beeac67744d1b628964fa7bbf425f26646"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Reinforcements and Retribution",
+   "modFolder": "Reinforcements and Retribution",
+   "displayName": {
+    "ru": "Reinforcements and Retribution",
+    "en": "Reinforcements and Retribution"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 98034,
+    "fileId": 412560,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/98034?tab=files&file_id=412560"
+   },
+   "version": "1.01",
+   "archive": {
+    "nexusFileName": "89/2b/68/892b6884-9a18-4b35-bcd8-e84230fe192e",
+    "localFileName": "89/2b/68/892b6884-9a18-4b35-bcd8-e84230fe192e",
+    "size": 85672,
+    "sha256": "d237495ac191afdc09f124baef147a20b90a24ffce9ff29b2554489ef586344f"
+   },
+   "plugins": [
+    "ReinforcementsAndRetribution.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Ranger Power Armor",
+   "modFolder": "Ranger Power Armor",
+   "displayName": {
+    "ru": "Ranger Power Armor",
+    "en": "Ranger Power Armor"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 98482,
+    "fileId": 378722,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/98482?tab=files&file_id=378722"
+   },
+   "version": "1.2",
+   "archive": {
+    "nexusFileName": "Ranger Power Armor-98482-1-2-1766770482.rar",
+    "localFileName": "Ranger Power Armor-98482-1-2-1766770482.rar",
+    "size": 375899786,
+    "sha256": "bb86a98e3b8a9657c9990c3476061db32decb22f5738976eb6b2d4f943652f81"
+   },
+   "plugins": [
+    "NCRPowerArmor.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Full Body First Person - F4SE",
+   "modFolder": "Full Body First Person - F4SE",
+   "displayName": {
+    "ru": "Full Body First Person - F4SE",
+    "en": "Full Body First Person - F4SE"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 109356,
+    "fileId": 413647,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/109356?tab=files&file_id=413647"
+   },
+   "version": "1.2.3",
+   "archive": {
+    "nexusFileName": "46/5f/74/465f74a3-9d63-406f-bf97-e9e405d2daca",
+    "localFileName": "46/5f/74/465f74a3-9d63-406f-bf97-e9e405d2daca",
+    "size": 537634,
+    "sha256": "c1891f2e93c90bb6e27914ea1d21957258363049c2f39883be4deb6beec2b4ea"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  }
+ ]
+}
