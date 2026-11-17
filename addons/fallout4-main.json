@@ -4924,9 +4924,29 @@
     "Bastion.esp"
    ],
    "install": {
-    "type": "copyAll",
-    "from": "",
-    "fomod": false
+    "type": "files",
+    "map": [
+     [
+      "Bastion.esp",
+      "Bastion.esp"
+     ],
+     [
+      "F4SE/Plugins/Bastion.ini",
+      "F4SE/Plugins/Bastion.ini"
+     ],
+     [
+      "F4SE/Plugins/BastionRD.dll",
+      "F4SE/Plugins/BastionRD.dll"
+     ],
+     [
+      "MCM/Config/Bastion/config.json",
+      "MCM/Config/Bastion/config.json"
+     ]
+    ],
+    "fomod": false,
+    "notFromArchive": [
+     "F4SE/Plugins/BastionRD.trace"
+    ]
    }
   },
   {

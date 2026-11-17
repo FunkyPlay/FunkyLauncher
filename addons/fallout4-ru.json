@@ -1930,10 +1930,6 @@
     "sha256": "2aec5c17d4ccb1f5cf99688cff3337434d0dc0ef697184b0cf5e8d209ef11f37"
    },
    "plugins": [
-    "SubwayRunnerCRPCompat.esp",
-    "SubwayRunnerDarkerTunnels.esp",
-    "SubwayRunnerGNOverhaulCompat.esp",
-    "SubwayRunnerLechmereCompat.esp",
     "SubwayRunnnerDynamicLighting.esp"
    ],
    "install": {
