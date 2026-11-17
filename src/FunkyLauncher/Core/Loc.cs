@@ -502,6 +502,8 @@ public static class Loc
         ["comp.upscaling.hint"] = ("DLSS на картах RTX, на остальных FSR (~{0} ГБ). Генерацию кадров можно включить в меню модов MCM.", "DLSS on RTX cards, FSR on others (~{0} GB). Frame generation can be turned on in the MCM mod menu."),
         ["check.download.how"] = ("Как скачиваются файлы", "How the files are downloaded"),
         ["check.download.hint"] = ("С Nexus Premium файлы качаются сами. Без Premium — бесплатно: файлы (~{0}) ты подтверждаешь сам кнопкой «Slow download», лаунчер ведёт по шагам (около 1–2 часов), можно прерваться и продолжить.", "With Nexus Premium, files download automatically. Without it, it's free: you confirm each file (~{0}) yourself with \"Slow download\", the launcher guides you step by step (about 1–2 hours), you can stop and continue later."),
+        ["comp.voice.link"] = ("Страница авторов", "Authors' page"),
+        ["comp.voice.link.hint"] = ("Ставится отдельно со страницы авторов, по их инструкции: включить её в сборку без их разрешения мы не можем.", "Installed separately from the authors' page, following their instructions: we can't include it in the modlist without their permission."),
         ["comp.voice"] = ("Русская озвучка", "Russian voice-over"),
         ["comp.voice.hint"] = ("Для русской версии: ~{0} ГБ, лаунчер скачает и поставит её сам.", "For the Russian version: ~{0} GB, the launcher downloads and installs it."),
         ["manual.hint.site"] = ("Нажми на странице кнопку «Скачать». Лаунчер сам поймает файл и поставит его в сборку.", "Press the Download button on the page. The launcher catches the file and installs it into the modlist."),

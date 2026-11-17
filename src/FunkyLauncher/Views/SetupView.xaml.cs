@@ -161,6 +161,23 @@ public partial class SetupView : UserControl
             CompositionPanel.Children.Add(row);
         }
 
+        // a Russian voice-over we may only link to: a visible button for the Russian version (not hidden in the description)
+        var showLang = ru == null ? "" : (_pendingLang ?? (installed ? AppliedLang(ru) : s.LangOf(Ml.Id)));
+        if (Ml.VoiceLink.StartsWith("https://") && showLang == "ru")
+        {
+            CompositionPanel.Children.Add(Separator());
+            var row = Row(Loc.T("comp.voice"), Loc.T("comp.voice.link.hint"), out var right);
+            var b = new Button
+            {
+                Content = Loc.T("comp.voice.link"), Style = (Style)FindResource("SecondaryButton"),
+                Height = 32, Padding = new Thickness(12, 0, 12, 0), FontSize = 13,
+            };
+            var url = Ml.VoiceLink;
+            b.Click += (_, _) => PlayService.OpenUrl(url);
+            right.Child = b;
+            CompositionPanel.Children.Add(row);
+        }
+
         foreach (var (kind, pack) in extras)
         {
             CompositionPanel.Children.Add(Separator());

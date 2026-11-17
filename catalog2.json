@@ -59,6 +59,7 @@
         "ru": "Игра: Cyberpunk 2077 версии 2.5 + Phantom Liberty\n\nПК — рекомендуемые CD Projekt RED (High, 1080p, 60 FPS):\n• Windows 10/11 64-bit (проверено на Windows 11)\n• Core i7-12700 или Ryzen 7 7800X3D\n• RTX 2060 Super / RX 5700 XT / Arc A770, 8 ГБ видеопамяти\n• 16 ГБ ОЗУ\n• SSD: 70 ГБ игра + ~40 ГБ сборка и архивы модов\n\nДля 2K и 4K нужна видеокарта мощнее (сборка проверена на RTX 4080).",
         "en": "Game: Cyberpunk 2077 version 2.5 + Phantom Liberty\n\nPC — CD Projekt RED recommended (High, 1080p, 60 FPS):\n• Windows 10/11 64-bit (tested on Windows 11)\n• Core i7-12700 or Ryzen 7 7800X3D\n• RTX 2060 Super / RX 5700 XT / Arc A770, 8 GB VRAM\n• 16 GB RAM\n• SSD: 70 GB game + ~40 GB modlist and mod archives\n\nFor 1440p and 4K you need a stronger GPU (tested on an RTX 4080)."
       },
+      "voiceLink": "https://www.playground.ru/cyberpunk_2077/file/cyberpunk_2077_gibridnyj_dublyazh_dlya_dlc_phantom_liberty_v1_0_5_3_dreamvoice-1691775",
       "banner": "res:/Assets/banner.jpg",
       "wabbajackFile": "Neon Nights.wabbajack",
       "wabbajackUrl": "https://github.com/FunkyPlay/FunkyLauncher/releases/download/v0.1.9/NeonNights-0.1.3.wabbajack",
@@ -263,6 +264,7 @@
         "ru": "Игра: Starfield версии 1.16.244 + Shattered Space\n\nПК — рекомендуемые Bethesda:\n• Windows 10/11 64-bit\n• Ryzen 5 3600X или Core i5-10600K\n• RX 6800 XT или RTX 2080\n• 16 ГБ ОЗУ\n• SSD: игра + ~50 ГБ сборка и архивы модов (HD-планеты — ещё ~21 ГБ)\n\nЗагрузчик модов SFSE лаунчер кладёт в папку игры сам (2 файла). Вернуть чистую игру можно одной кнопкой.",
         "en": "Game: Starfield version 1.16.244 + Shattered Space\n\nPC — Bethesda recommended:\n• Windows 10/11 64-bit\n• Ryzen 5 3600X or Core i5-10600K\n• RX 6800 XT or RTX 2080\n• 16 GB RAM\n• SSD: the game + ~50 GB modlist and mod archives (HD planets: ~21 GB more)\n\nThe launcher puts the SFSE mod loader into the game folder itself (2 files). \"Restore clean game\" brings the clean game back in one click."
       },
+      "voiceLink": "https://www.playground.ru/starfield/file/starfield_russkaya_ozvuchka_v6_0_ngc404_dlc-1670529",
       "banner": "res:/Assets/banner-starfield.jpg",
       "installer": "nexus",
       "wabbajackFile": "",

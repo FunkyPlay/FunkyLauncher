@@ -63,6 +63,8 @@ public sealed class Modlist
     /// </summary>
     [JsonPropertyName("mo2ProfileInis")] public List<string> Mo2ProfileInis { get; set; } = new();
     [JsonPropertyName("myGamesFolder")] public string MyGamesFolder { get; set; } = "";
+    /// <summary>A Russian voice-over we may only link to (its authors did not allow installing it): shown as a button for the Russian version.</summary>
+    [JsonPropertyName("voiceLink")] public string VoiceLink { get; set; } = "";
     /// <summary>MO2 executables for a fresh instance; binary is relative to the game folder. The first one is PLAY.</summary>
     [JsonPropertyName("mo2Executables")] public List<Mo2Exe> Mo2Executables { get; set; } = new();
     /// <summary>Folders the game may be in when no store reports it (relative to drive roots, e.g. "Games\\Starfield").</summary>
