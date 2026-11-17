@@ -15,8 +15,13 @@ public partial class SetupView : UserControl
     private CancellationTokenSource? _cts;
     private bool _checking;
     private bool _busy;
+    /// <summary>The modlist being installed / checked right now: the page stays on it until the work ends.</summary>
+    private Modlist? _busyMl;
 
-    private Modlist Ml => _main.Selected;
+    private Modlist Ml => _busy && _busyMl != null ? _busyMl : _main.Selected;
+
+    /// <summary>Something runs on this page (install, update, verify) — for the library to bring the player back here.</summary>
+    public bool IsBusy => _busy;
     private bool Installed => _main.Settings.IsInstalled(Ml);
     /// <summary>A modlist folder the launcher did not install — offer "check and use" or "install again", never PLAY.</summary>
     private bool Found => _main.Settings.FoundUnknown(Ml);
@@ -33,6 +38,8 @@ public partial class SetupView : UserControl
     /// <summary>Called when another modlist is selected in the library.</summary>
     public void ResetForModlist()
     {
+        // an install is running: keep its page, its progress bar and its log — the player only looked elsewhere
+        if (_busy) { ApplyTexts(); return; }
         FolderBox.Text = _main.Settings.InstallDir(Ml);
         ProgressPanel.Visibility = Visibility.Collapsed;
         _checks.Clear();
@@ -536,6 +543,7 @@ public partial class SetupView : UserControl
 
     private void BeginBusy()
     {
+        _busyMl = _main.Selected;
         _busy = true;
         _cts = new CancellationTokenSource();
         RecheckButton.IsEnabled = BrowseButton.IsEnabled = FolderBox.IsEnabled = false;
@@ -549,8 +557,12 @@ public partial class SetupView : UserControl
     private async Task EndBusyAsync()
     {
         _busy = false;
+        var finished = _busyMl;
+        _busyMl = null;
+        // the player chose another modlist meanwhile: the page now follows it (the finished one keeps its result)
         CancelButton.Visibility = Visibility.Collapsed;
         RecheckButton.IsEnabled = BrowseButton.IsEnabled = FolderBox.IsEnabled = true;
+        if (finished != null && finished.Id != _main.Selected.Id) ResetForModlist();
         await RunChecksAsync();
     }
 
