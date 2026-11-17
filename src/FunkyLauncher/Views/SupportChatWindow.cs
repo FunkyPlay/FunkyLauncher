@@ -50,6 +50,18 @@ public sealed class SupportChatWindow : Window
         var head = new StackPanel { Margin = new Thickness(0, 0, 0, 10) };
         head.Children.Add(new TextBlock { Text = Loc.T("chat.title"), FontSize = 18, FontWeight = FontWeights.Bold });
         head.Children.Add(new TextBlock { Text = Loc.T("chat.notice"), FontSize = 12, Foreground = R("Muted"), TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 4, 0, 0) });
+        var idRow = new DockPanel { Margin = new Thickness(0, 6, 0, 0) };
+        var del = new Button { Content = Loc.T("chat.delete"), Height = 28, Padding = new Thickness(10, 0, 10, 0), FontSize = 12, Style = (Style)Application.Current.FindResource("SecondaryButton") };
+        del.Click += async (_, _) =>
+        {
+            if (Dialog.Show(this, Loc.T("chat.delete.confirm"), Loc.T("chat.delete"), MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No) != MessageBoxResult.Yes) return;
+            try { await SupportChat.DeleteAsync(CancellationToken.None); _list.Children.Clear(); _status.Text = Loc.T("chat.delete.done"); }
+            catch (Exception ex) { _status.Text = ex.Message; }
+        };
+        DockPanel.SetDock(del, Dock.Right);
+        idRow.Children.Add(del);
+        idRow.Children.Add(new TextBlock { Text = Loc.F("chat.id", SupportChat.InstallId), FontSize = 12, Foreground = R("Muted"), VerticalAlignment = VerticalAlignment.Center });
+        head.Children.Add(idRow);
         DockPanel.SetDock(head, Dock.Top);
         root.Children.Add(head);
 

@@ -116,6 +116,20 @@ public static class SupportChat
         return new();
     }
 
+    /// <summary>This PC's anonymous id, shown in the chat window (random, not taken from hardware or the Windows name).</summary>
+    public static string InstallId => Me().Install;
+
+    /// <summary>"Delete my data": asks the server to erase this PC's conversation and files, then erases the local copy.</summary>
+    public static async Task DeleteAsync(CancellationToken token)
+    {
+        var me = Me();
+        using var http = Http();
+        var resp = await http.PostAsJsonAsync(Api + "/delete", new { install = me.Install, key = me.Key }, token);
+        if (!resp.IsSuccessStatusCode) throw new InvalidOperationException(Loc.F("chat.err.send", (int)resp.StatusCode));
+        try { File.Delete(HistoryPath); } catch { }
+        try { File.Delete(FilePath); } catch { } // a new random id next time
+    }
+
     /// <summary>An answer from support the player has not seen yet (for the dot on the button).</summary>
     public static async Task<bool> HasUnreadAsync(CancellationToken token)
     {
