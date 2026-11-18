@@ -136,6 +136,23 @@ public static class AddonService
                 var parts = x.Archives;
                 var names = parts.Select((p, k) => string.IsNullOrEmpty(p.LocalFileName) ? NameMap.Get(downloads, x.ModFolder, k) : p.LocalFileName).ToList();
                 var absent = Enumerable.Range(0, parts.Count).Where(k => names[k] == null || !ManualQueue.IsPresent(downloads, names[k]!, parts[k].Size)).ToList();
+                // parts that are Nexus files of their own (Neon Nights: one mod folder made from two Nexus files): try them
+                // through the player's login first, like single-archive mods
+                if (absent.Count > 0 && string.IsNullOrEmpty(x.Url))
+                {
+                    progress.Report(Loc.F("addon.downloading", i + 1, wanted.Count, name));
+                    foreach (var k in absent.ToList())
+                    {
+                        var part = parts[k];
+                        if (names[k] == null || part.Nexus is not { ModId: > 0, FileId: > 0 } pn) continue;
+                        var one = new AddonMod
+                        {
+                            Nexus = new AddonNexus { Game = x.Nexus.Game, ModId = pn.ModId, FileId = pn.FileId },
+                            Archive = new AddonArchive { LocalFileName = names[k]!, Size = part.Size },
+                        };
+                        if (await DownloadAsync(one, Path.Combine(downloads, names[k]!), token)) absent.Remove(k);
+                    }
+                }
                 if (absent.Count > 0)
                 {
                     foreach (var k in absent)
@@ -143,7 +160,9 @@ public static class AddonService
                         {
                             ArchiveName = names[k] ?? "", Size = parts[k].Size, Url = x.Url, Key = NameMap.Key(x.ModFolder, k),
                             ModName = $"{name} ({k + 1}/{parts.Count})",
-                            GameDomain = x.Nexus.Game, ModId = x.Nexus.ModId, FileId = x.Nexus.FileId,
+                            GameDomain = x.Nexus.Game,
+                            ModId = parts[k].Nexus?.ModId > 0 ? parts[k].Nexus!.ModId : x.Nexus.ModId,
+                            FileId = parts[k].Nexus?.FileId > 0 ? parts[k].Nexus!.FileId : x.Nexus.FileId,
                         });
                     continue;
                 }
@@ -357,6 +376,9 @@ public static class AddonService
                 return;
             }
             if (archives.Count == 1) await Archives.ExtractAsync(archives[0], tmp, token);
+            else if (x.Install.PerArchiveFolders)
+                for (var k = 0; k < archives.Count; k++)
+                    await Archives.ExtractAsync(archives[k], Path.Combine(tmp, k.ToString()), token);
             else
                 foreach (var a in archives)
                 {

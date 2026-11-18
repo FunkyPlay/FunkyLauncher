@@ -80,6 +80,8 @@ public sealed class AddonArchive
     [JsonPropertyName("localFileName")] public string LocalFileName { get; set; } = "";
     [JsonPropertyName("size")] public long Size { get; set; }
     [JsonPropertyName("sha256")] public string? Sha256 { get; set; } = "";
+    /// <summary>A part of a several-archive mod that is a Nexus file of its own (another mod or file id).</summary>
+    [JsonPropertyName("nexus")] public AddonNexus? Nexus { get; set; }
 }
 
 public sealed class AddonInstall
@@ -95,6 +97,11 @@ public sealed class AddonInstall
     [JsonPropertyName("from")] public string? From { get; set; }
     /// <summary>Explicit layout: [path in archive, path in the mod folder] — a folder is copied with everything in it.</summary>
     [JsonPropertyName("map")] public List<List<string>> Map { get; set; } = new();
+    /// <summary>
+    /// Several archives: each one is unpacked into its own folder "0", "1", … and the map's paths start with that number
+    /// (two archives may hold the same path in different versions — the map says which one).
+    /// </summary>
+    [JsonPropertyName("perArchiveFolders")] public bool PerArchiveFolders { get; set; }
 }
 
 /// <summary>
@@ -135,6 +142,9 @@ public sealed class FilePatchDelta
     [JsonPropertyName("delta")] public string Delta { get; set; } = "";
     /// <summary>Size of the patched file.</summary>
     [JsonPropertyName("size")] public long Size { get; set; }
+    /// <summary>SHA-256 of the file the delta is for (as unpacked from the mod's archive) and of the result.</summary>
+    [JsonPropertyName("sourceSha256")] public string SourceSha256 { get; set; } = "";
+    [JsonPropertyName("resultSha256")] public string ResultSha256 { get; set; } = "";
 }
 
 /// <summary>A mesh taken out of a mod's BA2, fixed and saved into our own mod folder <see cref="Into"/>.</summary>

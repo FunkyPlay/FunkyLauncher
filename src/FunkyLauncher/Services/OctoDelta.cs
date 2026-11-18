@@ -12,21 +12,23 @@ namespace FunkyLauncher.Services;
 /// </summary>
 public static class OctoDelta
 {
-    /// <summary>True if the file was patched now; false if it is not the expected original (e.g. patched before).</summary>
-    public static bool Apply(string file, Stream delta, long expectedSize)
+    /// <summary>
+    /// True if the file was patched now; false if it is not the expected original (e.g. patched before, or another
+    /// version of the mod). The original and the result are checked by SHA-256 (the hash in Wabbajack's delta header
+    /// is not the plain hash of the file, so it is not used).
+    /// </summary>
+    public static bool Apply(string file, Stream delta, long expectedSize, string sourceSha256, string resultSha256)
     {
+        var have = Sha256(file);
+        if (resultSha256.Length > 0 && have.Equals(resultSha256, StringComparison.OrdinalIgnoreCase)) return false; // already done
+        if (sourceSha256.Length > 0 && !have.Equals(sourceSha256, StringComparison.OrdinalIgnoreCase)) return false;
+
         using var r = new BinaryReader(delta, Encoding.UTF8, leaveOpen: true);
         if (Encoding.ASCII.GetString(r.ReadBytes(9)) != "OCTODELTA") throw new InvalidDataException("not an Octodiff delta");
         r.ReadByte(); // version
-        var algo = r.ReadString();
-        var hashLen = r.ReadInt32();
-        var wantHash = r.ReadBytes(hashLen);
+        r.ReadString(); // hash algorithm name
+        r.ReadBytes(r.ReadInt32()); // hash of the basis
         if (Encoding.ASCII.GetString(r.ReadBytes(3)) != ">>>") throw new InvalidDataException("bad delta header");
-        if (!algo.Equals("SHA1", StringComparison.OrdinalIgnoreCase)) throw new InvalidDataException("unknown hash " + algo);
-
-        byte[] haveHash;
-        using (var f = File.OpenRead(file)) haveHash = SHA1.HashData(f);
-        if (!haveHash.AsSpan().SequenceEqual(wantHash)) return false;
 
         var tmp = file + ".funkypatch";
         using (var src = File.OpenRead(file))
@@ -63,12 +65,19 @@ public static class OctoDelta
                 else throw new InvalidDataException($"unknown delta command 0x{cmd:x2}");
             }
         }
-        if (expectedSize > 0 && new FileInfo(tmp).Length != expectedSize)
+        if ((expectedSize > 0 && new FileInfo(tmp).Length != expectedSize)
+            || (resultSha256.Length > 0 && !Sha256(tmp).Equals(resultSha256, StringComparison.OrdinalIgnoreCase)))
         {
             File.Delete(tmp);
-            throw new InvalidDataException("patched file has the wrong size");
+            throw new InvalidDataException("patched file is not the expected result");
         }
         File.Move(tmp, file, overwrite: true);
         return true;
+    }
+
+    private static string Sha256(string file)
+    {
+        using var f = File.OpenRead(file);
+        return Convert.ToHexString(SHA256.HashData(f));
     }
 }

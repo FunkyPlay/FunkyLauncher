@@ -57,7 +57,7 @@ public sealed class Modlist
     /// The installer for launchers from 0.1.12 on (older ones keep using "installer"): lets a modlist move from
     /// Wabbajack to the launcher's own installer without breaking older launchers that read the same online catalog.
     /// </summary>
-    [JsonPropertyName("installerNext")] public string InstallerNext { get; set; } = "";
+    [JsonPropertyName("ownInstaller")] public string InstallerNext { get; set; } = "";
     /// <summary>Folder of the game exe inside the game folder (Cyberpunk: "bin\\x64"); empty = the game folder itself.</summary>
     [JsonPropertyName("gameExeDir")] public string GameExeDir { get; set; } = "";
     /// <summary>MO2 profile-local saves / INIs for a fresh instance (Starfield: yes; Cyberpunk keeps saves in Saved Games).</summary>

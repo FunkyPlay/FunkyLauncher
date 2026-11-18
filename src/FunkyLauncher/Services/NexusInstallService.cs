@@ -58,7 +58,7 @@ public static class NexusInstallService
                 using var ms = new MemoryStream();
                 using (var s = res.Stream) s.CopyTo(ms);
                 ms.Position = 0;
-                OctoDelta.Apply(file, ms, p.Size);
+                OctoDelta.Apply(file, ms, p.Size, p.SourceSha256, p.ResultSha256);
             }
             catch (Exception ex) { errors.Add($"patch {p.ModFolder}/{p.File}: {ex.Message}"); }
         }
