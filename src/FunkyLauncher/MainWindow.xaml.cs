@@ -473,6 +473,7 @@ public partial class MainWindow : Window
     private void Lang_Checked(object sender, RoutedEventArgs e)
     {
         var lang = sender == LangEn ? "en" : "ru";
+        if (_shotsMode) return; // pictures for the design team: the language is switched by the shots code, nothing is saved
         if (Loc.Lang == lang && Settings.Language == lang) return;
         Settings.Language = lang;
         Settings.Save();

@@ -14,6 +14,9 @@ namespace FunkyLauncher;
 public partial class MainWindow
 {
     private bool _shotsMode;
+    // FUNKYLAUNCHER_SHOTS_PX=2560x1440: exact picture size for video. The layout stays 1280 wide (as on a usual screen),
+    // the picture is drawn larger; the base pages get the given height, the "full" pages stay taller.
+    private double _shotScale, _shotBaseHeight = 800;
     public bool ShotsMode => _shotsMode;
 
     /// <summary>The new version is in place and started: close this one for good (not to the tray).</summary>
@@ -38,22 +41,38 @@ public partial class MainWindow
         Left = -30000; Top = -30000;
         ShowInTaskbar = false;
         ShowActivated = false;
+        var px = (Environment.GetEnvironmentVariable("FUNKYLAUNCHER_SHOTS_PX") ?? "").Split('x');
+        if (px.Length == 2 && int.TryParse(px[0], out var pw) && int.TryParse(px[1], out var ph) && pw >= 1280 && ph >= 700)
+        {
+            _shotScale = pw / 1280.0;
+            _shotBaseHeight = Math.Max(700, ph / _shotScale);
+        }
         ContentRendered += async (_, _) => await TakeShotsAsync(dir);
     }
 
     private async Task TakeShotsAsync(string dir)
     {
         var startLang = Core.Loc.Lang;
+        // the window frame takes a few pixels: with an exact picture size the content itself must be 1280 wide
+        double dw = 0, dh = 0;
+        if (_shotScale > 0 && Content is FrameworkElement root0)
+        {
+            root0.UpdateLayout();
+            dw = Width - root0.ActualWidth; dh = Height - root0.ActualHeight;
+            Width = 1280 + dw;
+        }
         try
         {
             foreach (var lang in new[] { "ru", "en" })
             {
                 Core.Loc.Set(lang);
+                (lang == "en" ? LangEn : LangRu).IsChecked = true; // the RU/EN switch in the side column
                 var pages = new (string Name, Action Show, double Height)[]
                 {
                     ("01-home", () => NavHome.IsChecked = true, 800),
                     ("02-home-full", () => NavHome.IsChecked = true, 1240),
                     ("03-library", () => { NavHome.IsChecked = true; NavLibrary.IsChecked = true; }, 800),
+                    ("03b-library-more", () => { NavHome.IsChecked = true; NavLibrary.IsChecked = true; _library.ShowDetails(); }, 800),
                     ("04-setup", () => ShowSetup(), 800),
                     ("05-setup-full", () => ShowSetup(), 1240),
                     ("06-soft", () => NavSoft.IsChecked = true, 800),
@@ -68,14 +87,14 @@ public partial class MainWindow
                 {
                     try
                     {
-                        Height = height;
+                        Height = (height == 800 ? _shotBaseHeight : height) + dh;
                         show();
                         await Task.Delay(name.EndsWith("-pc") ? 15000 : 3000); // news, checks and images load asynchronously
                         Save(Path.Combine(dir, $"{lang}-{name}.png"));
                     }
                     catch (Exception e) { File.AppendAllText(Path.Combine(dir, "errors.txt"), $"{lang}-{name}: {e}\n"); }
                 }
-                Height = 800;
+                Height = _shotBaseHeight + dh;
                 // the "new version" window, with a sample release (what players will see at the next update)
                 try
                 {
@@ -100,12 +119,13 @@ public partial class MainWindow
         finally
         {
             Core.Loc.Set(startLang);
+            (startLang == "en" ? LangEn : LangRu).IsChecked = true;
             _exiting = true;
             Application.Current.Shutdown();
         }
     }
 
-    private void Save(string file) => SaveVisual(this, file);
+    private void Save(string file) => SaveVisual(this, file, _shotScale);
 
     private void SaveElement(FrameworkElement el, string file)
     {
@@ -119,14 +139,16 @@ public partial class MainWindow
         enc.Save(fs);
     }
 
-    private static void SaveVisual(Window win, string file)
+    private static void SaveVisual(Window win, string file, double scale = 0)
     {
         if (win.Content is not FrameworkElement root) return;
         root.UpdateLayout();
         var dpi = VisualTreeHelper.GetDpi(win);
-        var w = (int)Math.Ceiling(root.ActualWidth * dpi.DpiScaleX);
-        var h = (int)Math.Ceiling(root.ActualHeight * dpi.DpiScaleY);
-        var bmp = new RenderTargetBitmap(w, h, dpi.PixelsPerInchX, dpi.PixelsPerInchY, PixelFormats.Pbgra32);
+        var sx = scale > 0 ? scale : dpi.DpiScaleX;
+        var sy = scale > 0 ? scale : dpi.DpiScaleY;
+        var w = (int)Math.Round(root.ActualWidth * sx);
+        var h = (int)Math.Round(root.ActualHeight * sy);
+        var bmp = new RenderTargetBitmap(w, h, 96 * sx, 96 * sy, PixelFormats.Pbgra32);
         var bg = new DrawingVisual();
         using (var dc = bg.RenderOpen())
             dc.DrawRectangle(win.Background ?? Brushes.Black, null, new Rect(0, 0, root.ActualWidth, root.ActualHeight));

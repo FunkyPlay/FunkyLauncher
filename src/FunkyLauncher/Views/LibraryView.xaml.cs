@@ -401,6 +401,9 @@ public partial class LibraryView : UserControl
         if (!Directory.EnumerateFileSystemEntries(dir).Any()) Directory.Delete(dir);
     }
 
+    /// <summary>Opens the "More" panel (used by --shots).</summary>
+    public void ShowDetails() { if (MoreLink.Visibility == Visibility.Visible) DetailsPanel.Visibility = Visibility.Visible; }
+
     private void Details_Toggle(object sender, MouseButtonEventArgs e) =>
         DetailsPanel.Visibility = DetailsPanel.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
 
