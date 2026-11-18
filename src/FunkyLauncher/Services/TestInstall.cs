@@ -22,6 +22,21 @@ public static class TestInstall
             catch (Exception ex) { File.WriteAllText(args[3].TrimEnd('\\') + ".error.txt", ex.ToString()); return 1; }
         }
         // "--test-install --profile <modlistId> <install folder>": write the MO2 profile (and our fixes) like after an install
+        // "--test-install --ensure <modlistId> <install folder>": what PLAY does for a modlist installed by an older launcher
+        if (args.Length >= 4 && args[1] == "--ensure")
+        {
+            try
+            {
+                Catalog.LoadBuiltIn();
+                var es = Settings.Load();
+                Modlist.InstallDirOf = m => es.InstallDir(m);
+                var eml = Catalog.Find(args[2]) ?? throw new InvalidOperationException("no modlist " + args[2]);
+                es.SetInstallDir(eml, Path.GetFullPath(args[3]));
+                Mo2Profile.EnsureFixes(es, eml);
+                return 0;
+            }
+            catch (Exception ex) { File.WriteAllText(Path.GetFullPath(args[3]).TrimEnd('\\') + ".ensure.error.txt", ex.ToString()); return 1; }
+        }
         if (args.Length >= 4 && args[1] == "--profile")
         {
             var plog = Path.GetFullPath(args[3]).TrimEnd('\\') + ".profile.log";

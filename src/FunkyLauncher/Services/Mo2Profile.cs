@@ -61,6 +61,33 @@ public static partial class Mo2Profile
         try { if (!Ours(s, m).Contains(folder)) File.AppendAllText(OursFile(s, m), folder + "\r\n"); } catch { }
     }
 
+    /// <summary>
+    /// Before PLAY: makes our on-PC fixes (broken meshes) if the modlist has any — also for a modlist installed by an older
+    /// launcher. Only the fix folder's own line is added to modlist.txt (switched on, above the MO2 mods so it wins);
+    /// nothing else in the profile is touched, so the player's own changes stay as they are.
+    /// </summary>
+    public static void EnsureFixes(Settings s, Modlist m)
+    {
+        if (Addons.Order(m.Id) is not { NifFixes.Count: > 0 } order) return;
+        var made = NifFixer.Apply(Path.Combine(s.InstallDir(m), "mods"), order.NifFixes);
+        if (made.Count == 0) return;
+        var listPath = Path.Combine(ProfileDir(s, m), "modlist.txt");
+        if (!File.Exists(listPath)) return;
+        var lines = File.ReadAllLines(listPath).ToList();
+        var changed = false;
+        foreach (var f in made)
+        {
+            if (lines.Any(l => l.Equals("+" + f, StringComparison.OrdinalIgnoreCase))) continue;
+            lines.RemoveAll(l => l.Length > 1 && l[1..].Equals(f, StringComparison.OrdinalIgnoreCase));
+            // after the header, the player's own mods and MO2's "*DLC / *Creation Club" lines: on top of our mods
+            var at = lines.FindLastIndex(l => l.StartsWith('#') || l.StartsWith('*')) + 1;
+            lines.Insert(at, "+" + f);
+            RememberOurs(s, m, f);
+            changed = true;
+        }
+        if (changed) File.WriteAllLines(listPath, lines);
+    }
+
     public static void Write(Settings s, Modlist m, ModOrder order)
     {
         var profile = ProfileDir(s, m);

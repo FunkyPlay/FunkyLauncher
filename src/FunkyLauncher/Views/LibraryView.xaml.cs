@@ -214,6 +214,9 @@ public partial class LibraryView : UserControl
                 if (answer != MessageBoxResult.Yes) { PlayMessage.Text = ""; return; }
             }
 
+            // 1a) our fixes made on this PC (broken meshes): also for modlists installed by an older launcher
+            await Task.Run(() => { try { Mo2Profile.EnsureFixes(s, m); } catch { } });
+
             // 1b) loaders (CET, RED4ext, redscript…) must be in the game folder itself: MO2 can't provide them
             if (GameLoaders.Has(m))
             {
