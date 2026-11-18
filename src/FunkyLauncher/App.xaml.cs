@@ -37,6 +37,8 @@ public partial class App : Application
         var show = new EventWaitHandle(false, EventResetMode.AutoReset, key + ".show");
         if (!first)
         {
+            // "--open <modlistId>" (a modlist's small installer): the running launcher opens that modlist
+            FunkyLauncher.MainWindow.WriteOpenRequest(e.Args);
             show.Set();
             Environment.Exit(0);
         }
@@ -45,10 +47,11 @@ public partial class App : Application
             while (show.WaitOne())
                 Dispatcher.Invoke(() =>
                 {
-                    if (MainWindow is not { } w) return;
+                    if (MainWindow is not FunkyLauncher.MainWindow w) return;
                     w.Show();
                     if (w.WindowState == WindowState.Minimized) w.WindowState = WindowState.Normal;
                     w.Activate();
+                    w.TakeOpenRequest();
                 });
         }) { IsBackground = true }.Start();
 

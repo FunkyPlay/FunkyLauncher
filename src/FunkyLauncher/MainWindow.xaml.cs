@@ -61,7 +61,15 @@ public partial class MainWindow : Window
             // Funky Desktops keeps working in the tray when the window is closed
             if (Settings.DesktopsOn && !_exiting) { e.Cancel = true; Hide(); ShowTrayHintOnce(); }
         };
-        ContentRendered += (_, _) => { if (_shotsMode) return; ShowPrivacyNoticeOnce(); RemindRecordingMode(); RemindGameMode(); };
+        ContentRendered += (_, _) =>
+        {
+            if (_shotsMode) return;
+            // started by a modlist's small installer: open that modlist's install page right away
+            var startArgs = Environment.GetCommandLineArgs();
+            if (startArgs.Contains("--from-setup")) EnsureDesktopShortcut();
+            if (OpenId(startArgs) is { } open) OpenModlist(open);
+            ShowPrivacyNoticeOnce(); RemindRecordingMode(); RemindGameMode();
+        };
         SourceInitialized += (_, _) => RegisterShootHotkey();
 
         // developer test: FunkyLauncher.exe --test-manual N  → manual download of the N smallest Nexus files into %TEMP%
@@ -229,6 +237,65 @@ public partial class MainWindow : Window
         }
         RefreshNexus();
         _library.Refresh();
+    }
+
+    // ---- "--open <modlistId>": a modlist's small installer (PlayGround file) starts the launcher on that modlist
+    private static string OpenRequestFile => Path.Combine(AppConfig.DataDir, "open-request.txt");
+
+    private static string? OpenId(string[] args)
+    {
+        var i = Array.IndexOf(args, "--open");
+        return i >= 0 && i + 1 < args.Length ? args[i + 1].Trim() : null;
+    }
+
+    /// <summary>A second start while the launcher runs: leave the modlist id for the running window.</summary>
+    public static void WriteOpenRequest(string[] args)
+    {
+        try { if (OpenId(args) is { Length: > 0 } id) { Directory.CreateDirectory(AppConfig.DataDir); File.WriteAllText(OpenRequestFile, id); } }
+        catch { }
+    }
+
+    /// <summary>The running window was brought to the front: open the modlist a second start asked for.</summary>
+    public void TakeOpenRequest()
+    {
+        try
+        {
+            if (!File.Exists(OpenRequestFile)) return;
+            var id = File.ReadAllText(OpenRequestFile).Trim();
+            File.Delete(OpenRequestFile);
+            OpenModlist(id);
+        }
+        catch { }
+    }
+
+    /// <summary>Started by a modlist's small installer: the launcher lives in a data folder, so the player gets a desktop shortcut once.</summary>
+    private static void EnsureDesktopShortcut()
+    {
+        try
+        {
+            var lnk = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), "Funky Launcher.lnk");
+            if (File.Exists(lnk)) return;
+            var exe = Environment.ProcessPath;
+            if (string.IsNullOrEmpty(exe)) return;
+            var shellType = Type.GetTypeFromProgID("WScript.Shell");
+            if (shellType == null) return;
+            dynamic shell = Activator.CreateInstance(shellType)!;
+            dynamic sc = shell.CreateShortcut(lnk);
+            sc.TargetPath = exe;
+            sc.WorkingDirectory = Path.GetDirectoryName(exe);
+            sc.IconLocation = exe + ",0";
+            sc.Description = "Funky Launcher";
+            sc.Save();
+        }
+        catch { }
+    }
+
+    private void OpenModlist(string id)
+    {
+        if (Catalog.Find(id) is not { } m) return;
+        Select(m);
+        if (Settings.IsInstalled(m)) return; // installed: the library with PLAY is the right page
+        ShowSetup();
     }
 
     /// <summary>Selects a modlist in the library.</summary>

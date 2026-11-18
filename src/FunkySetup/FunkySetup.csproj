@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    A modlist's small installer (one file per modlist, e.g. for PlayGround "Files"):
+    downloads the official Funky Launcher from GitHub releases, checks its SHA-256 and opens the install page of
+    that modlist. Build:  dotnet publish src/FunkySetup -c Release -r win-x64 -p:ModlistId=starfield -p:ModlistTitle="Nova Nights" -p:SetupName=NovaNights-Setup
+  -->
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <PublishAot>true</PublishAot>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <OptimizationPreference>Size</OptimizationPreference>
+    <StackTraceSupport>false</StackTraceSupport>
+    <UseSystemResourceKeys>true</UseSystemResourceKeys>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon Condition="'$(SetupIcon)' != ''">$(SetupIcon)</ApplicationIcon>
+    <ApplicationIcon Condition="'$(SetupIcon)' == ''">..\FunkyLauncher\Assets\launcher.ico</ApplicationIcon>
+    <ModlistId Condition="'$(ModlistId)' == ''">starfield</ModlistId>
+    <ModlistTitle Condition="'$(ModlistTitle)' == ''">Nova Nights</ModlistTitle>
+    <AssemblyName Condition="'$(SetupName)' != ''">$(SetupName)</AssemblyName>
+    <Product>Funky Launcher — $(ModlistTitle)</Product>
+    <AssemblyTitle>$(ModlistTitle) — установщик (Funky Launcher)</AssemblyTitle>
+    <Company>FunkyPlay</Company>
+    <Copyright>Copyright (C) 2026 Funky. GPL-3.0-or-later</Copyright>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+  <ItemGroup>
+    <AssemblyMetadata Include="ModlistId" Value="$(ModlistId)" />
+    <AssemblyMetadata Include="ModlistTitle" Value="$(ModlistTitle)" />
+  </ItemGroup>
+</Project>
