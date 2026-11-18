@@ -54,6 +54,23 @@ public static class PlayService
     public static void OpenWabbajackGui()
     {
         var gui = WabbajackService.FindGui();
-        if (gui != null) Process.Start(new ProcessStartInfo(gui) { WorkingDirectory = Path.GetDirectoryName(gui)!, UseShellExecute = true });
+        if (gui == null) return;
+        // Wabbajack refuses to run as administrator ("Don't run Wabbajack as Admin!"). If the launcher itself was started
+        // elevated, Explorer starts Wabbajack for us — with the player's normal rights.
+        if (IsElevated())
+            Process.Start(new ProcessStartInfo("explorer.exe", $"\"{gui}\"") { UseShellExecute = true });
+        else
+            Process.Start(new ProcessStartInfo(gui) { WorkingDirectory = Path.GetDirectoryName(gui)!, UseShellExecute = true });
+    }
+
+    /// <summary>The launcher runs with administrator rights ("Run as administrator").</summary>
+    public static bool IsElevated()
+    {
+        try
+        {
+            using var id = System.Security.Principal.WindowsIdentity.GetCurrent();
+            return new System.Security.Principal.WindowsPrincipal(id).IsInRole(System.Security.Principal.WindowsBuiltInRole.Administrator);
+        }
+        catch { return false; }
     }
 }

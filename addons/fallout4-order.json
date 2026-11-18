@@ -5,6 +5,7 @@
  "source": "MO2 профили Public RU + 18 / Public RU / Public EN (C:\\Games\\Fallout 4 MO2)",
  "note": "modlist — сверху вниз = от высшего приоритета к низшему, как modlist.txt MO2. Имена = modFolder из JSON. Моды пакета ru ставятся выше своих оригиналов (в modlist они уже на месте).",
  "modlist": [
+  "FunkyPlay - Fallout 4 Fixes",
   "RU Voice - Russian voice for Fallout 4 - RusVoiceDLC",
   "RU Voice - Russian voice for Fallout 4 - RusVoiceVanilla",
   "RU - Full Body First Person - F4SE RU - 1.2.3",
@@ -478,5 +479,25 @@
   "file": "Fallout4.exe",
   "version": "1.11.240.0",
   "message": "Нужна версия игры 1.11.240"
- }
+ },
+ "nifFixes": [
+  {
+   "into": "FunkyPlay - Fallout 4 Fixes",
+   "modFolder": "Militarized Minutemen",
+   "archive": "MilitarizedMinutemen - Main.ba2",
+   "file": "meshes/Clothes/MilitaryMinutemen/Male/Uniform/MaleMilitaryMinutemenUniformRolledSleeves_1stperson.nif"
+  },
+  {
+   "into": "FunkyPlay - Fallout 4 Fixes",
+   "modFolder": "Campsite - Simple Wasteland Camping (and HD Sleeping Bags)",
+   "archive": "Campsite - Main.ba2",
+   "file": "Meshes/fadingsignal/CampingGear/CookingPot.nif"
+  },
+  {
+   "into": "FunkyPlay - Fallout 4 Fixes",
+   "modFolder": "Sim Settlements 2",
+   "archive": "SS2 - Main.ba2",
+   "file": "Meshes/SS2/PCOnlyModels/CreativeClutter/SS2_PBP2_CREA_MsRae_CutHanger_PCONLY.nif"
+  }
+ ]
 }

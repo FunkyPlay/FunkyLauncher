@@ -21,6 +21,27 @@ public static class TestInstall
             try { await Archives.ExtractAsync(args[2], args[3], CancellationToken.None); return 0; }
             catch (Exception ex) { File.WriteAllText(args[3].TrimEnd('\\') + ".error.txt", ex.ToString()); return 1; }
         }
+        // "--test-install --profile <modlistId> <install folder>": write the MO2 profile (and our fixes) like after an install
+        if (args.Length >= 4 && args[1] == "--profile")
+        {
+            var plog = Path.GetFullPath(args[3]).TrimEnd('\\') + ".profile.log";
+            void PLog(string t) => File.AppendAllText(plog, t + Environment.NewLine);
+            try
+            {
+                Catalog.LoadBuiltIn();
+                var ps = Settings.Load();
+                Modlist.InstallDirOf = m => ps.InstallDir(m);
+                var pml = Catalog.Find(args[2]) ?? throw new InvalidOperationException("no modlist " + args[2]);
+                ps.SetInstallDir(pml, Path.GetFullPath(args[3]));
+                var order = Addons.Order(pml.Id) ?? throw new InvalidOperationException("no order file");
+                foreach (var f in NifFixer.Apply(Path.Combine(ps.InstallDir(pml), "mods"), order.NifFixes, PLog))
+                    PLog("fixed folder: " + f);
+                Mo2Profile.Write(ps, pml, order);
+                PLog("profile written");
+                return 0;
+            }
+            catch (Exception ex) { PLog(ex.ToString()); return 1; }
+        }
         var i = Array.IndexOf(args, "--test-install");
         if (args.Length < i + 3) return 2;
         var id = args[i + 1];

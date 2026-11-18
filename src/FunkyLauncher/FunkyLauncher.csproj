@@ -10,7 +10,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <AssemblyName>FunkyLauncher</AssemblyName>
     <RootNamespace>FunkyLauncher</RootNamespace>
-    <Version>0.1.9</Version>
+    <Version>0.1.10</Version>
     <ApplicationIcon>Assets\launcher.ico</ApplicationIcon>
     <Product>Funky Launcher</Product>
     <Company>FunkyPlay</Company>

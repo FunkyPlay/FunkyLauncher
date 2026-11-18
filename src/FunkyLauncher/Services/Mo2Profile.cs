@@ -70,6 +70,13 @@ public static partial class Mo2Profile
         var inOrder = new HashSet<string>(order.Modlist, StringComparer.OrdinalIgnoreCase);
         bool OnDisk(string folder) => Directory.Exists(Path.Combine(modsDir, folder));
 
+        // ---- our fixes made on this PC from the authors' own files (broken meshes): an extra mod folder, switched on
+        foreach (var folder in NifFixer.Apply(modsDir, order.NifFixes))
+        {
+            wanted[folder] = true;
+            RememberOurs(s, m, folder);
+        }
+
         // ---- modlist.txt (top = highest priority)
         var listPath = Path.Combine(profile, "modlist.txt");
         var old = File.Exists(listPath) ? File.ReadAllLines(listPath) : Array.Empty<string>();

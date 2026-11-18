@@ -113,6 +113,17 @@ public sealed class ModOrder
     [JsonPropertyName("ini")] public List<string> Ini { get; set; } = new();
     /// <summary>INI values set in mod files after the install (applied every time the profile is written).</summary>
     [JsonPropertyName("filePatches")] public List<FilePatch> FilePatches { get; set; } = new();
+    /// <summary>Broken meshes fixed on the player's PC (Fallout 4): see Services/NifFixer.</summary>
+    [JsonPropertyName("nifFixes")] public List<NifFix> NifFixes { get; set; } = new();
+}
+
+/// <summary>A mesh taken out of a mod's BA2, fixed and saved into our own mod folder <see cref="Into"/>.</summary>
+public sealed class NifFix
+{
+    [JsonPropertyName("into")] public string Into { get; set; } = "";
+    [JsonPropertyName("modFolder")] public string ModFolder { get; set; } = "";
+    [JsonPropertyName("archive")] public string Archive { get; set; } = "";
+    [JsonPropertyName("file")] public string File { get; set; } = "";
 }
 
 /// <summary>Where the mod goes in modlist.txt: right above <see cref="InsertAbove"/>, else right below the fallback.</summary>
