@@ -115,6 +115,26 @@ public sealed class ModOrder
     [JsonPropertyName("filePatches")] public List<FilePatch> FilePatches { get; set; } = new();
     /// <summary>Broken meshes fixed on the player's PC (Fallout 4): see Services/NifFixer.</summary>
     [JsonPropertyName("nifFixes")] public List<NifFix> NifFixes { get; set; } = new();
+    /// <summary>Mod folders that stay switched off in the profile (as in the modlist author's profile).</summary>
+    [JsonPropertyName("modlistOff")] public List<string> ModlistOff { get; set; } = new();
+    /// <summary>Our own files (a zip built into the launcher, paths relative to the install folder): profile files, own mods.</summary>
+    [JsonPropertyName("ownFiles")] public string OwnFiles { get; set; } = "";
+    /// <summary>Mod folders made only of our own files (switched on like the base mods).</summary>
+    [JsonPropertyName("ownFolders")] public List<string> OwnFolders { get; set; } = new();
+    /// <summary>MO2 separators: empty folders "…_separator" the launcher creates.</summary>
+    [JsonPropertyName("separators")] public List<string> Separators { get; set; } = new();
+    /// <summary>Binary deltas applied to a mod's file on the player's PC (Wabbajack's OCTODELTA), only to the expected original.</summary>
+    [JsonPropertyName("patches")] public List<FilePatchDelta> Patches { get; set; } = new();
+}
+
+public sealed class FilePatchDelta
+{
+    [JsonPropertyName("modFolder")] public string ModFolder { get; set; } = "";
+    [JsonPropertyName("file")] public string File { get; set; } = "";
+    /// <summary>The delta built into the launcher: "files/neon-nights/patches/&lt;id&gt;".</summary>
+    [JsonPropertyName("delta")] public string Delta { get; set; } = "";
+    /// <summary>Size of the patched file.</summary>
+    [JsonPropertyName("size")] public long Size { get; set; }
 }
 
 /// <summary>A mesh taken out of a mod's BA2, fixed and saved into our own mod folder <see cref="Into"/>.</summary>

@@ -26,7 +26,7 @@ public static partial class GameFolders
     /// <summary>Remembers the game folder the player picked. False if the game exe is not in it.</summary>
     public static bool Pick(Modlist ml, string dir)
     {
-        if (string.IsNullOrEmpty(ml.GameExe) || !File.Exists(Path.Combine(dir, ml.GameExe))) return false;
+        if (string.IsNullOrEmpty(ml.GameExe) || !File.Exists(Path.Combine(dir, ml.GameExePath))) return false;
         var all = Load();
         all[ml.Id] = Path.GetFullPath(dir).TrimEnd('\\');
         Directory.CreateDirectory(AppConfig.DataDir);

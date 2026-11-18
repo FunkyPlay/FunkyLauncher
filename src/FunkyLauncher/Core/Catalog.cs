@@ -53,6 +53,18 @@ public sealed class Modlist
     /// files Wabbajack would reject (a game version it does not know).
     /// </summary>
     [JsonPropertyName("installer")] public string Installer { get; set; } = "wabbajack";
+    /// <summary>
+    /// The installer for launchers from 0.1.12 on (older ones keep using "installer"): lets a modlist move from
+    /// Wabbajack to the launcher's own installer without breaking older launchers that read the same online catalog.
+    /// </summary>
+    [JsonPropertyName("installerNext")] public string InstallerNext { get; set; } = "";
+    /// <summary>Folder of the game exe inside the game folder (Cyberpunk: "bin\\x64"); empty = the game folder itself.</summary>
+    [JsonPropertyName("gameExeDir")] public string GameExeDir { get; set; } = "";
+    /// <summary>MO2 profile-local saves / INIs for a fresh instance (Starfield: yes; Cyberpunk keeps saves in Saved Games).</summary>
+    [JsonPropertyName("mo2LocalSaves")] public bool Mo2LocalSaves { get; set; } = true;
+    [JsonPropertyName("mo2LocalInis")] public bool Mo2LocalInis { get; set; } = true;
+    /// <summary>The game exe relative to the game folder (with <see cref="GameExeDir"/>).</summary>
+    public string GameExePath => GameExeDir.Length > 0 ? Path.Combine(GameExeDir, GameExe) : GameExe;
     /// <summary>MO2's game name for ModOrganizer.ini (e.g. "Starfield").</summary>
     [JsonPropertyName("mo2GameName")] public string Mo2GameName { get; set; } = "";
     /// <summary>The profile's game INI the launcher writes (e.g. "StarfieldCustom.ini").</summary>
@@ -121,6 +133,9 @@ public sealed class Mo2Exe
 {
     [JsonPropertyName("title")] public string Title { get; set; } = "";
     [JsonPropertyName("binary")] public string Binary { get; set; } = "";
+    [JsonPropertyName("arguments")] public string Arguments { get; set; } = "";
+    /// <summary>Working folder relative to the game folder ("" = the game folder).</summary>
+    [JsonPropertyName("workingDirectory")] public string WorkingDirectory { get; set; } = "";
 }
 
 /// <summary>Official Mod Organizer 2 release for modlists the launcher installs itself (never rehosted).</summary>

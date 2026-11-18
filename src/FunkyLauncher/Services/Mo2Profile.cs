@@ -18,7 +18,7 @@ public static partial class Mo2Profile
     public static string ProfileDir(Settings s, Modlist m) => Path.Combine(s.InstallDir(m), "profiles", m.Mo2Profile);
 
     /// <summary>Is this modlist installed from Nexus lists (no .wabbajack file)?</summary>
-    public static bool IsNexusList(Modlist m) => m.Installer == "nexus";
+    public static bool IsNexusList(Modlist m) => m.Installer == "nexus" || m.InstallerNext == "nexus";
 
     /// <summary>Folder → wanted (true) / known but not wanted (false), for every mod of every pack.</summary>
     private static Dictionary<string, bool> Wanted(Settings s, Modlist m)
@@ -103,6 +103,10 @@ public static partial class Mo2Profile
             wanted[folder] = true;
             RememberOurs(s, m, folder);
         }
+        // our own mod folders and the separators are on like the base; a few mods stay off as in the author's profile
+        foreach (var folder in order.OwnFolders.Concat(order.Separators))
+            if (OnDisk(folder)) { wanted[folder] = true; RememberOurs(s, m, folder); }
+        foreach (var folder in order.ModlistOff) wanted[folder] = false;
 
         // ---- modlist.txt (top = highest priority)
         var listPath = Path.Combine(profile, "modlist.txt");
@@ -274,17 +278,18 @@ public static partial class Mo2Profile
         sb.Append($"gamePath=@ByteArray({Esc(g)})\r\n");
         sb.Append($"selected_profile=@ByteArray({m.Mo2Profile})\r\n");
         sb.Append("first_start=false\r\n\r\n");
-        sb.Append("[Settings]\r\nprofile_local_inis=true\r\nprofile_local_saves=true\r\nprofile_archive_invalidation=true\r\ncheck_for_updates=false\r\n\r\n");
+        sb.Append($"[Settings]\r\nprofile_local_inis={(m.Mo2LocalInis ? "true" : "false")}\r\nprofile_local_saves={(m.Mo2LocalSaves ? "true" : "false")}\r\nprofile_archive_invalidation=true\r\ncheck_for_updates=false\r\n\r\n");
         // "This program requires Steam" — answered once as "Continue without starting Steam" (65536 = No):
         // a Steam copy starts Steam by itself, other copies don't need it
         sb.Append("[DialogChoices]\r\nsteamQuery=65536\r\n\r\n");
-        var exes = m.Mo2Executables.Count > 0 ? m.Mo2Executables : new List<Mo2Exe> { new() { Title = m.Mo2Executable, Binary = m.GameExe } };
+        var exes = m.Mo2Executables.Count > 0 ? m.Mo2Executables : new List<Mo2Exe> { new() { Title = m.Mo2Executable, Binary = m.GameExePath } };
         sb.Append($"[customExecutables]\r\nsize={exes.Count}\r\n");
         for (var i = 0; i < exes.Count; i++)
         {
             var n = i + 1;
-            sb.Append($"{n}\\title={exes[i].Title}\r\n{n}\\binary={Fwd(Path.Combine(g, exes[i].Binary))}\r\n{n}\\arguments=\r\n");
-            sb.Append($"{n}\\workingDirectory={Fwd(g)}\r\n{n}\\ownicon=true\r\n{n}\\hide=false\r\n{n}\\toolbar=true\r\n");
+            var wd = exes[i].WorkingDirectory.Length > 0 ? Path.Combine(g, exes[i].WorkingDirectory) : g;
+            sb.Append($"{n}\\title={exes[i].Title}\r\n{n}\\binary={Fwd(Path.Combine(g, exes[i].Binary))}\r\n{n}\\arguments={exes[i].Arguments}\r\n");
+            sb.Append($"{n}\\workingDirectory={Fwd(wd)}\r\n{n}\\ownicon=true\r\n{n}\\hide=false\r\n{n}\\toolbar=true\r\n");
         }
         File.WriteAllText(Path.Combine(installDir, "ModOrganizer.ini"), sb.ToString(), new UTF8Encoding(false));
         File.WriteAllText(Path.Combine(installDir, "portable.txt"), "");

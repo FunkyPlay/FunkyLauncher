@@ -45,10 +45,14 @@ public static class SystemCheck
         if (found != null || string.IsNullOrEmpty(ml.GameExe)) return found;
         foreach (var dir in GameFolders.Candidates(ml))
         {
-            var exe = System.IO.Path.Combine(dir, ml.GameExe);
+            var exe = System.IO.Path.Combine(dir, ml.GameExePath);
             if (!File.Exists(exe)) continue;
             var v = System.Diagnostics.FileVersionInfo.GetVersionInfo(exe);
             var ver = $"{v.FileMajorPart}.{v.FileMinorPart}.{v.FileBuildPart}";
+            // Cyberpunk: the file version is 3.0.x, the game version ("2.5") is the product version
+            if (!LaunchWatcher.SameGameVersion(ver, ml.GameVersion) && v.ProductVersion is { Length: > 0 } pv
+                && LaunchWatcher.SameGameVersion(pv.Trim(), ml.GameVersion))
+                ver = pv.Trim();
             return new GameInfo { Version = ver, Path = System.IO.Path.GetFullPath(dir).TrimEnd('\\') };
         }
         return null;

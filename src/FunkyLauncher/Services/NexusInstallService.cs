@@ -19,6 +19,51 @@ public static class NexusInstallService
     /// <summary>Problems of the last run (hash mismatches, unpack errors) for the screen and a report.</summary>
     public static List<string> LastErrors { get; private set; } = new();
 
+    /// <summary>
+    /// Our own files (profile files, own mod folders), the MO2 separators and the deltas a modlist applies to a few mod
+    /// files (Neon Nights: what Wabbajack used to do). Safe to repeat: a delta changes only the exact original it was made for.
+    /// </summary>
+    public static void ApplyOwnFiles(string installDir, ModOrder order, List<string> errors)
+    {
+        var root = Path.GetFullPath(installDir).TrimEnd('\\') + "\\";
+        if (order.OwnFiles.Length > 0)
+            try
+            {
+                var res = System.Windows.Application.GetResourceStream(new Uri("pack://application:,,,/addons/" + order.OwnFiles.Replace('\\', '/')))
+                    ?? throw new FileNotFoundException(order.OwnFiles);
+                using var zip = new System.IO.Compression.ZipArchive(res.Stream);
+                foreach (var e in zip.Entries)
+                {
+                    if (e.FullName.EndsWith('/')) continue;
+                    var dst = Path.GetFullPath(Path.Combine(installDir, e.FullName));
+                    if (!dst.StartsWith(root, StringComparison.OrdinalIgnoreCase)) continue;
+                    Directory.CreateDirectory(Path.GetDirectoryName(dst)!);
+                    using (var es = e.Open())
+                    using (var fs = File.Create(dst)) es.CopyTo(fs);
+                }
+            }
+            catch (Exception ex) { errors.Add("own files: " + ex.Message); }
+
+        foreach (var sep in order.Separators)
+            try { Directory.CreateDirectory(Path.Combine(installDir, "mods", sep)); } catch { }
+
+        foreach (var p in order.Patches)
+        {
+            var file = Path.Combine(installDir, "mods", p.ModFolder, p.File.Replace('/', '\\'));
+            if (!File.Exists(file)) continue; // the mod is not installed yet (e.g. waits for a manual download)
+            try
+            {
+                var res = System.Windows.Application.GetResourceStream(new Uri("pack://application:,,,/addons/" + p.Delta.Replace('\\', '/')))
+                    ?? throw new FileNotFoundException(p.Delta);
+                using var ms = new MemoryStream();
+                using (var s = res.Stream) s.CopyTo(ms);
+                ms.Position = 0;
+                OctoDelta.Apply(file, ms, p.Size);
+            }
+            catch (Exception ex) { errors.Add($"patch {p.ModFolder}/{p.File}: {ex.Message}"); }
+        }
+    }
+
     public static async Task<(InstallOutcome Outcome, int ExitCode, int Manual)> RunAsync(
         Settings s, Modlist ml, IProgress<InstallProgress> progress, CancellationToken token)
     {
@@ -68,6 +113,7 @@ public static class NexusInstallService
                 LastErrors.AddRange(r.Errors);
                 before += pack.Mods.Count;
             }
+            ApplyOwnFiles(installDir, order, LastErrors);
             Mo2Profile.Write(s, ml, order);
 
             if (LastManual.Count > 0) return (InstallOutcome.NeedsManualDownloads, 3, LastManual.Count);
