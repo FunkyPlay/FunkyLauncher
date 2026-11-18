@@ -76,6 +76,30 @@ public static class SystemCheck
     }
 
     /// <summary>
+    /// The folder is the game itself, or the game sits inside it (e.g. "F:\Games" with the game in "F:\Games\Cyberpunk 2077").
+    /// Installing there can overwrite or delete the game's files — the launcher never allows it, even if the game was not found.
+    /// </summary>
+    public static bool IsGameFolder(string dir, Modlist ml, string? gamePath)
+    {
+        try
+        {
+            if (string.IsNullOrWhiteSpace(dir) || !System.IO.Path.IsPathRooted(dir)) return false;
+            var full = System.IO.Path.GetFullPath(dir).TrimEnd('\\');
+            if (!string.IsNullOrEmpty(gamePath))
+            {
+                var game = System.IO.Path.GetFullPath(gamePath).TrimEnd('\\');
+                if ((game + "\\").StartsWith(full + "\\", StringComparison.OrdinalIgnoreCase)) return true;
+            }
+            if (!Directory.Exists(full) || string.IsNullOrEmpty(ml.GameExe)) return false;
+            // the game's own files: the exe in the root or in bin\x64 (Cyberpunk), Cyberpunk's archives
+            return File.Exists(System.IO.Path.Combine(full, ml.GameExe))
+                || File.Exists(System.IO.Path.Combine(full, "bin", "x64", ml.GameExe))
+                || Directory.Exists(System.IO.Path.Combine(full, "archive", "pc", "content"));
+        }
+        catch { return false; }
+    }
+
+    /// <summary>
     /// The DLC proof is a folder (Cyberpunk: archive/pc/ep1) or a file (Starfield: Data/ShatteredSpace.esm);
     /// several separated by ";" must all be there (Fallout 4: all six DLC).
     /// </summary>
@@ -145,7 +169,7 @@ public static class SystemCheck
         }
         else if (game == null)
         {
-            items.Add(new CheckItem(CheckState.Error, Loc.F("check.game.no", ml.Game), Loc.T("check.game.hint")));
+            items.Add(new CheckItem(CheckState.Error, Loc.F("check.game.no", ml.Game), Loc.T("check.game.hint.wj")));
         }
         else
         {
@@ -163,7 +187,9 @@ public static class SystemCheck
             }
         }
 
-        items.Add(IsBadFolder(installDir, game?.Path)
+        items.Add(IsGameFolder(installDir, ml, game?.Path)
+            ? new CheckItem(CheckState.Error, Loc.T("check.folder.game"), Loc.F("check.folder.game.hint", ml.Game, ml.DefaultInstallDir))
+            : IsBadFolder(installDir, game?.Path)
             ? new CheckItem(CheckState.Error, Loc.T("check.folder.bad"), Loc.T("check.folder.hint"))
             : new CheckItem(CheckState.Ok, Loc.T("check.folder.ok"), installDir));
 
@@ -200,6 +226,9 @@ public static class SystemCheck
     public static async Task<GameInfo> EnsureGameReadyAndGetAsync(Modlist ml, CancellationToken token)
     {
         var game = await FindGameAsync(ml, token);
+        // never install into the game itself (or a folder that holds it): it can overwrite or delete the game's files
+        if (Modlist.InstallDirOf?.Invoke(ml) is { Length: > 0 } dir && IsGameFolder(dir, ml, game?.Path))
+            throw new GameCheckException(Loc.T("check.folder.game") + ". " + Loc.F("check.folder.game.hint", ml.Game, ml.DefaultInstallDir));
         if (game == null)
             throw new GameCheckException(Loc.F("check.game.no", ml.Game) + ". " + Loc.T("check.game.hint"));
         if (!string.IsNullOrEmpty(ml.GameVersion) && !LaunchWatcher.SameGameVersion(game.Version, ml.GameVersion))
