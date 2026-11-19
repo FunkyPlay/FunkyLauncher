@@ -154,9 +154,9 @@ public sealed class RawPlugin
             if (t == "FULL" || x.AsSpan().SequenceEqual(y)) continue;
             if (x.Length != y.Length)
             {
-                // a text the author saved in an old Windows encoding, written back as UTF-8 (what the game reads)
-                if (Encoding.Latin1.GetString(x).All(c => c < 0x100) && Cp1252(x) == Encoding.UTF8.GetString(y))
-                { notes["text re-encoded to UTF-8"] = notes.GetValueOrDefault("text re-encoded to UTF-8") + 1; continue; }
+                // No re-encoded text is accepted: a text that already was UTF-8 (Russian translations of mods), read by the
+                // library as an old Windows encoding and written again, looks "converted" but is ruined. Other fields must
+                // stay exactly as the author's bytes — otherwise the record is left out of the patch.
                 return $"{t} size {x.Length} -> {y.Length}";
             }
             for (var k = 0; k < x.Length; k++)

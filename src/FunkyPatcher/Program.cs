@@ -177,6 +177,7 @@ public static class Program
             using var env = GameEnvironment.Typical.Builder<TMod, TModGetter>(info.Release)
                 .WithTargetDataFolder(flat)
                 .WithLoadOrder(listings.ToArray())
+                .WithUtf8Encoding() // texts inside plugins: both games read them as UTF-8 with Russian; read them the same way so they are written back unchanged
                 .Build();
             // Not the library's link cache: it reads every record of every mod and one record it cannot read stops everything.
             // We look only at the record lists (FormID -> place in file) and read just the records we translate.
