@@ -78,7 +78,7 @@ public partial class ManualDownloadWindow : Window
         {
             found = await Web.CoreWebView2.ExecuteScriptAsync(
                 "(function(){var t=((document.body&&document.body.innerText)||'').toLowerCase();" +
-                "return /something went wrong[\s\S]{0,200}download link/.test(t);})()"); // the two phrases together: a mod description alone must not trigger it
+                "return /something went wrong[\\s\\S]{0,200}download link/.test(t);})()"); // the two phrases together: a mod description alone must not trigger it
         }
         catch { return; }
         if (found != "true") return;
