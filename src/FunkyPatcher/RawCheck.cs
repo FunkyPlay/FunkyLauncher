@@ -131,7 +131,8 @@ public sealed class RawPlugin
             return i < _medium.Count ? (_medium[i].ToLowerInvariant(), raw & 0xFFFF) : i == _medium.Count ? (_name.ToLowerInvariant(), raw & 0xFFFF) : null;
         }
         if (top < _full.Count) return (_full[(int)top].ToLowerInvariant(), raw & 0xFFFFFF);
-        return top == _full.Count ? (_name.ToLowerInvariant(), raw & 0xFFFFFF) : null;
+        // the engine reads every index at or above the number of full masters as the plugin itself (some mods write 02xxxxxx with one master)
+        return top >= _full.Count ? (_name.ToLowerInvariant(), raw & 0xFFFFFF) : null;
     }
 
     public Rec? Read(string ownerPlugin, uint id)
