@@ -61,8 +61,12 @@ public static class FunkyScreen
         Directory.CreateDirectory(ShotsDir);
         var file = Unique(Path.Combine(ShotsDir, $"Funky {DateTime.Now:yyyy-MM-dd HH-mm-ss}.png"));
         bmp.Save(file, ImageFormat.Png);
+        try { Saved?.Invoke(file, false); } catch { /* a Pro hook never breaks a screenshot */ }
         return file;
     }
+
+    /// <summary>A screenshot (video=false, raised before it goes to the clipboard) or a recording was saved. Funky Pro listens.</summary>
+    public static event Action<string, bool>? Saved;
 
     private static string Unique(string file)
     {
@@ -111,7 +115,9 @@ public static class FunkyScreen
             try { await p.WaitForExitAsync(cts.Token); } catch (OperationCanceledException) { try { p.Kill(); } catch { } }
         }
         finally { p.Dispose(); }
-        return file != null && File.Exists(file) && new FileInfo(file).Length > 0 ? file : null;
+        var ok = file != null && File.Exists(file) && new FileInfo(file).Length > 0;
+        if (ok) try { Saved?.Invoke(file!, true); } catch { }
+        return ok ? file : null;
     }
 
     /// <summary>Makes a GIF next to the video (15 fps, 640 px wide, own palette); returns its path.</summary>

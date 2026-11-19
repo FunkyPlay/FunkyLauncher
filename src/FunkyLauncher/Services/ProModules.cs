@@ -22,7 +22,7 @@ public sealed record ProPanelInfo(ProPlace Place, string Id, string Icon, string
 /// <summary>Loads the Funky Pro module (%LOCALAPPDATA%\FunkyLauncher\pro\FunkyLauncher.Pro.dll) when a valid key is saved.</summary>
 public static class ProModules
 {
-    public const int ApiVersion = 3;
+    public const int ApiVersion = 4;
 
     public static string Dir => Path.Combine(AppConfig.DataDir, "pro");
     public static string DllPath => Path.Combine(Dir, "FunkyLauncher.Pro.dll");
@@ -125,6 +125,7 @@ public static class ProModules
             if (!Active) return;
             try { Current?.OnBackupCreated(id, title, dir); } catch (Exception ex) { Log("backup hook: " + ex.Message); }
         };
+        FunkyScreen.Saved += (file, video) => Live?.Fire(h => h.Capture?.Invoke(file, video));
         Settings.Installed += (s, m, old, now) => Live?.Fire(h => h.InstalledEv?.Invoke(ToPro(s, m), old, now));
         if (Application.Current != null) Application.Current.Exit += (_, _) => Live?.Fire(h => h.ClosingEv?.Invoke());
     }
@@ -181,6 +182,8 @@ public static class ProModules
         internal Action<ProModlist, string?, string>? InstalledEv;
         internal Action<ProModlist?>? Selection;
         internal Action? ClosingEv;
+        internal Action<string, bool>? Capture;
+        public event Action<string, bool>? CaptureSaved { add => Capture += value; remove => Capture -= value; }
 
         public event Action<ProModlist>? GameStarting { add => Starting += value; remove => Starting -= value; }
         public event Action<ProModlist, int>? GameStarted { add => Started += value; remove => Started -= value; }
