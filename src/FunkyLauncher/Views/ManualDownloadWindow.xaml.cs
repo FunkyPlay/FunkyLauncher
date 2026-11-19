@@ -18,6 +18,11 @@ public partial class ManualDownloadWindow : Window
     private readonly string _downloadsDir;
     private ManualItem? _current;
     private readonly HashSet<ManualItem> _skipped = new();
+    // Nexus sometimes answers "Something went wrong… the download link could not be retrieved" instead of the file:
+    // its own (temporary) refusal. The player then sees an English error and thinks the modlist is broken — we say what it is.
+    private readonly System.Windows.Threading.DispatcherTimer _nexusWatch = new() { Interval = TimeSpan.FromSeconds(2) };
+    private readonly HashSet<ManualItem> _refused = new();
+    private bool _refusalShown;
 
     public bool AllDone => _items.All(i => i.Done);
 
@@ -32,6 +37,9 @@ public partial class ManualDownloadWindow : Window
         TiredText.Text = Loc.T("manual.tired");
         SkipButton.Content = Loc.T("manual.skip");
         CloseButton.Content = Loc.T("manual.close");
+        RetryButton.Content = Loc.Lang == "en" ? "Try again" : "Повторить";
+        _nexusWatch.Tick += async (_, _) => await CheckNexusRefusalAsync();
+        Closed += (_, _) => _nexusWatch.Stop();
         Loaded += async (_, _) => await StartAsync();
     }
 
@@ -57,11 +65,52 @@ public partial class ManualDownloadWindow : Window
             if (u.Host == "www.nexusmods.com" && u.AbsolutePath.Trim('/') is "" or "cyberpunk2077")
                 Web.CoreWebView2.Navigate(_current.PageUrl);
         };
+        _nexusWatch.Start();
         Next();
+    }
+
+    /// <summary>Looks at the page text for Nexus's "could not give the download link" error and explains it in the status line.</summary>
+    private async Task CheckNexusRefusalAsync()
+    {
+        if (_current == null || Web.CoreWebView2 == null || _refusalShown) return;
+        string found;
+        try
+        {
+            found = await Web.CoreWebView2.ExecuteScriptAsync(
+                "(function(){var t=((document.body&&document.body.innerText)||'').toLowerCase();" +
+                "return /something went wrong[\s\S]{0,200}download link/.test(t);})()"); // the two phrases together: a mod description alone must not trigger it
+        }
+        catch { return; }
+        if (found != "true") return;
+        _refusalShown = true;
+        _refused.Add(_current);
+        var en = Loc.Lang == "en";
+        // the same answer for several mods in a row: Nexus is not giving links right now, a pause helps more than retries
+        StatusText.Text = _refused.Count >= 3
+            ? (en ? "Nexus is not giving download links right now. The modlist is fine. Press \"Continue later\" and come back in 30–60 minutes — we continue from this place."
+                  : "Nexus сейчас не выдаёт ссылки на файлы. Со сборкой всё в порядке. Нажмите «Продолжить позже» и вернитесь через 30–60 минут — продолжим с этого места.")
+            : (en ? "Nexus did not give the download link for this file — this is on its side, the modlist is fine. Press \"Try again\" or \"Skip\"; what is downloaded stays."
+                  : "Nexus не выдал ссылку на этот файл — это на его стороне, со сборкой всё в порядке. Нажмите «Повторить» или «Пропустить»: скачанное сохранено.");
+        RetryButton.Visibility = Visibility.Visible;
+    }
+
+    private void ClearRefusal()
+    {
+        _refusalShown = false;
+        RetryButton.Visibility = Visibility.Collapsed;
+    }
+
+    private void Retry_Click(object sender, RoutedEventArgs e)
+    {
+        if (_current == null) return;
+        ClearRefusal();
+        StatusText.Text = "";
+        Web.CoreWebView2.Navigate(_current.PageUrl);
     }
 
     private void Next()
     {
+        ClearRefusal();
         _current = _items.FirstOrDefault(i => !i.Done && !_skipped.Contains(i))
                    ?? _items.FirstOrDefault(i => !i.Done);
         if (_current == null)
@@ -114,6 +163,7 @@ public partial class ManualDownloadWindow : Window
             if (ManualQueue.IsPresent(_downloadsDir, item.ArchiveName, item.Size))
             {
                 item.Done = true;
+                _refused.Clear(); // a file came through: Nexus gives links again
                 Next();
             }
             else
@@ -163,6 +213,8 @@ public partial class ManualDownloadWindow : Window
         if (next == null) { _skipped.Clear(); next = _items.FirstOrDefault(i => !i.Done); }
         if (next == null) return;
         _current = next;
+        ClearRefusal();
+        StatusText.Text = "";
         Web.CoreWebView2.Navigate(_current.PageUrl);
         RenderQueue();
     }
