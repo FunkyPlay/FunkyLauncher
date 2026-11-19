@@ -18,7 +18,7 @@ There are no accounts in the launcher itself.
 | When you press “Funky Help” | `github.com` (official RustDesk release); then our support server `2.31.81.143` | Download RustDesk once; connect to Funky support. The supporter sees and controls your screen **only while the session you started is open**. Sessions are not recorded. The connection log (your PC's RustDesk ID and IP address) is kept no longer than 31 days; the server also remembers your RustDesk ID and last IP so the connection works — we delete that record on request (it appears again if you use Funky Help again) | Only on click; you close the session at any time |
 | When you press “Install” on the Software page | Microsoft winget (Windows) → the program author’s download server | Download and install that program; you accept its license once in the launcher | Only on click, after your consent |
 | When you write in “Contact support” and press Send | our support server `api.funkylauncher.com` (Germany) | Deliver your message and get our reply | Yes — don't use the chat; Telegram works too |
-| When you use the Funky Pro tools “Clip to my Telegram” or “Thanks from Funky” | our server `api.funkylauncher.com` | Check the Pro key signature (the key contains only an order number and an expiry date; it is not stored) and do what you asked | Only when you use these tools |
+| When you use the Funky Pro tools “Clip to my Telegram”, “Thanks from Funky”, “Voting” or “Wishlist” | our server `api.funkylauncher.com` | Check the Pro key signature (the key contains only an order number and an expiry date; it is not stored) and do what you asked | Only when you use these tools |
 | When you click links | Websites of the programs on the Software page, YouTube, Telegram | Open them in your browser | Only on click |
 
 These requests are normal web requests: the services see your IP address, as with any website.
@@ -34,6 +34,10 @@ Their own privacy policies apply:
 
 **“Thanks from Funky” (optional).** If you tick the box (it is off by default) and enter a name of up to 32 characters, the launcher sends the name to our server, which stores the installation ID, the name, an approval flag and the time. The name appears in a public list only after Funky approves it. You can remove it at any time by unticking the box: the data is deleted immediately. Do not enter a real name or personal data if you do not want it to be public. The list shows names only, not purchases or amounts.
 
+**Voting (optional).** When you vote in Funky Pro, our server stores an installation ID, a hash of its key, the option you chose and the time. One vote per launcher. Votes are used only to decide what to build next and are shown as totals, never with your ID. You can ask us to delete your vote at privacy@funkylauncher.com.
+
+**Wishlist (optional).** If you mark games, our server stores an installation ID, the IDs and names of the games, the time and the last discount it told you about, so the launcher can tell you about a new discount. Prices come from our discount bot and are for reference only; the launcher buys nothing. You can remove a game from the list at any time; removing it deletes it from the server.
+
 ## Data stored on your PC
 
 - `%LOCALAPPDATA%\FunkyLauncher` — settings, cached catalog, the built-in browser profile (your Nexus Mods login
@@ -45,7 +49,7 @@ Their own privacy policies apply:
   (OneDrive, Yandex Disk, Dropbox or Google Drive, `FunkyLauncher Backups`). The launcher does not upload anything itself —
   your cloud app syncs that folder under its own privacy policy. The Pro key is checked offline when you activate it.
 
-Nothing in this list is sent by the launcher, except what is described in “Funky Pro: Clip to my Telegram” and “Thanks from Funky” above.
+Nothing in this list is sent by the launcher, except what is described in “Funky Pro: Clip to my Telegram”, “Thanks from Funky”, “Voting” and “Wishlist” above.
 
 ## Error reports
 
@@ -71,7 +75,7 @@ you decide whether to send it to support.
   IP-адрес, чтобы соединение работало; по вашей просьбе мы удалим эту запись (если снова воспользуетесь Помощью,
   она появится снова);
 - **по кнопке «Установить» в разделе «Софт»** — Windows (winget, менеджер программ Microsoft) скачивает программу с сервера её автора; только после вашего согласия с лицензиями;
-- **инструменты Funky Pro «Клип в мой Telegram» и «Спасибо от Funky»** — к нашему серверу `api.funkylauncher.com`: проверка подписи ключа Pro (в ключе только номер заказа и срок; ключ не хранится) и то, что вы попросили; только когда вы пользуетесь этими инструментами;
+- **инструменты Funky Pro «Клип в мой Telegram», «Спасибо от Funky», «Голосование» и «Список желаемых»** — к нашему серверу `api.funkylauncher.com`: проверка подписи ключа Pro (в ключе только номер заказа и срок; ключ не хранится) и то, что вы попросили; только когда вы пользуетесь этими инструментами;
 - **по клику** на ссылки — открывает сайты в вашем браузере.
 
 Сервисы видят ваш IP-адрес, как при открытии любого сайта; действуют их политики конфиденциальности (ссылки выше).
@@ -86,3 +90,7 @@ Dropbox, Google Drive); сам лаунчер ничего не выгружае
 **Funky Pro: «Клип в мой Telegram» (по желанию).** Если вы привязываете свой Telegram к нашему боту @FunkyLauncherBot, наш сервер хранит номер установки, хэш её ключа, ваш chat_id и отображаемое имя из Telegram. Когда вы отправляете скриншот или клип, файл проходит через наш сервер только для доставки вам и на диск сервера не записывается. Перед отправкой лаунчер предупреждает: «Проверь кадр: на нём могут быть личные данные». Отвязать Telegram можно в любой момент кнопкой в лаунчере или командой /unlink: после этого сохранённые chat_id и имя удаляются. Для проверки ключа сервер хранит только номер установки и хэш её ключа. Журнал IP-адресов для этих запросов наш сервер не ведёт. На доставку действует политика конфиденциальности Telegram. Оператор данных — ИП Funky (Грузия).
 
 **«Спасибо от Funky» (по желанию).** Если вы ставите галочку (по умолчанию выключена) и вводите имя до 32 знаков, лаунчер отправляет имя на наш сервер, который хранит номер установки, имя, отметку об одобрении и время. Имя появляется в публичном списке только после одобрения Funky. Убрать имя можно в любой момент, сняв галочку: данные удаляются сразу. Не вводите настоящее имя и личные данные, если не хотите, чтобы их увидели. В списке только имена, без покупок и сумм.
+
+**Голосование (по желанию).** Когда вы голосуете в Funky Pro, наш сервер хранит номер установки, хэш её ключа, выбранный вариант и время. Один голос с лаунчера. Голоса нужны только чтобы решить, что делать дальше; публично показываются суммы, а не ваш номер. Удалить свой голос можно по просьбе: privacy@funkylauncher.com.
+
+**Список желаемых (по желанию).** Если вы отмечаете игры, наш сервер хранит номер установки, id и названия игр, время и последнюю показанную скидку, чтобы лаунчер сообщил о новой скидке. Цены берутся из нашего бота скидок и справочные; лаунчер ничего не покупает. Убрать игру из списка можно в любой момент; при удалении она стирается и на сервере.
