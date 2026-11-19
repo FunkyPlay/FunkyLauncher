@@ -396,7 +396,7 @@ public static class Loc
         ["comp.adult.hint.on"] = ("Включено. Нажми, чтобы изменить или выключить.", "On. Click to change or turn it off."),
         ["comp.apply"] = ("Применить изменения", "Apply changes"),
         ["trans.title"] = ("Русские названия вещей", "Russian item names"),
-        ["trans.note"] = ("Названия в русской версии переведены автоматически с помощью ИИ. Моды и их названия принадлежат авторам, их файлы не изменяются. Перевод названий — наш отдельный патч, он собирается на компьютере игрока.", "Russian item names are machine-translated with AI. Mods and their names belong to their authors; their files are not modified. The translation is our separate patch built on the player's PC."),
+        ["trans.note"] = ("Названия в русской версии переведены автоматически с помощью ИИ, возможны ошибки. Моды и их названия принадлежат авторам, их файлы не изменяются. Перевод названий — наш отдельный патч, он собирается на компьютере игрока.", "Russian item names are machine-translated with AI, mistakes are possible. Mods and their names belong to their authors; their files are not modified. The translation is our separate patch built on the player's PC."),
         ["trans.credit"] = ("Авторство: {0} — {1}, страница на Nexus Mods: ", "Credit: {0} — {1}, Nexus Mods page: "),
         ["trans.credit.tail"] = (" Перевод названий — наш отдельный патч, файлы авторов не меняются и не раздаются.", " The name translation is our separate patch; the authors' files are not modified or redistributed."),
         ["trans.credits.general"] = ("Все моды сборки принадлежат их авторам. Ссылка на страницу каждого мода — в списке модов сборки.", "All mods in this modlist belong to their authors. Each mod's page is linked in the modlist."),
