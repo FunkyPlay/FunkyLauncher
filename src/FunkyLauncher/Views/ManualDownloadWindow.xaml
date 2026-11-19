@@ -57,7 +57,7 @@
                         <TextBlock x:Name="AddressText" FontSize="12" Foreground="{StaticResource Muted}" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap"/>
                     </Border>
                     <Border DockPanel.Dock="Bottom" Background="{StaticResource Panel}" Padding="14,8">
-                        <TextBlock x:Name="StatusText" FontSize="13" Foreground="#FF7AD9"/>
+                        <TextBlock x:Name="StatusText" FontSize="13" Foreground="#FF7AD9" TextWrapping="Wrap"/>
                     </Border>
                     <wv2:WebView2 x:Name="Web"/>
                 </DockPanel>
@@ -66,6 +66,7 @@
 
         <!-- Footer -->
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,16,0,0">
+            <Button x:Name="RetryButton" Style="{StaticResource PrimaryButton}" Margin="0,0,10,0" Visibility="Collapsed" Click="Retry_Click"/>
             <Button x:Name="SkipButton" Style="{StaticResource SecondaryButton}" Margin="0,0,10,0" Click="Skip_Click"/>
             <Button x:Name="CloseButton" Style="{StaticResource SecondaryButton}" Click="Close_Click"/>
         </StackPanel>
