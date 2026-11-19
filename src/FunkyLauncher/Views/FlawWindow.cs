@@ -34,8 +34,12 @@ public sealed class FlawWindow : Window
     private readonly StackPanel _modPanel = new() { Visibility = Visibility.Collapsed };
     private readonly TextBlock _whatLabel = Label("", 16);
     private readonly TextBlock _placeholder = new() { FontSize = 13.5, Foreground = new SolidColorBrush(Color.FromRgb(0x77, 0x78, 0x8A)), Margin = new Thickness(12, 9, 12, 0), IsHitTestVisible = false, TextWrapping = TextWrapping.Wrap };
-    private readonly TextBlock _shotLabel = Label("", 16);
     private Button? _tabFlaw, _tabMod;
+    private readonly TextBlock _sentText = new() { FontSize = 11.5, LineHeight = 17, Foreground = Soft, TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 12, 0, 0) };
+    private readonly TextBlock _agreeText = new() { FontSize = 10.5, LineHeight = 15.5, Foreground = Small, TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 13, 0, 0) };
+    private readonly StackPanel _shotBlock = new();
+    private Button _addShot = null!;
+    private bool _shotOpen;
 
     private static readonly Brush Line = new SolidColorBrush(Color.FromRgb(0x34, 0x35, 0x4A));
     private static readonly Brush Field = new SolidColorBrush(Color.FromRgb(0x15, 0x15, 0x1C));
@@ -95,23 +99,6 @@ public sealed class FlawWindow : Window
         return new Border { Child = g, Margin = new Thickness(0, 7, 0, 0), CornerRadius = new CornerRadius(10), BorderBrush = Line, BorderThickness = new Thickness(1), Background = Field };
     }
 
-    /// <summary>Switches the window between "a modlist flaw" and "suggest a mod".</summary>
-    private void SetKind(string kind)
-    {
-        _kind = kind;
-        var mod = kind == "mod";
-        _modPanel.Visibility = mod ? Visibility.Visible : Visibility.Collapsed;
-        _whatLabel.Text = Loc.T(mod ? "mod.why" : "flaw.what");
-        _placeholder.Text = Loc.T(mod ? "mod.why.example" : "flaw.example");
-        _shotLabel.Text = Loc.T(mod ? "mod.shot" : "flaw.shot");
-        if (_tabFlaw != null && _tabMod != null)
-        {
-            _tabFlaw.Style = (Style)Application.Current.FindResource(mod ? "SecondaryButton" : "PrimaryButton");
-            _tabMod.Style = (Style)Application.Current.FindResource(mod ? "PrimaryButton" : "SecondaryButton");
-        }
-        Status("");
-    }
-
     private static Brush R(string key) => (Brush)Application.Current.FindResource(key);
 
     private static Button Btn(string text, bool primary, RoutedEventHandler click, bool small = false)
@@ -145,6 +132,7 @@ public sealed class FlawWindow : Window
         _shotHint = new TextBlock { FontSize = 11, Foreground = Small, TextTrimming = TextTrimming.CharacterEllipsis, Margin = new Thickness(0, 6, 0, 0), MaxWidth = 156 };
         _status = new TextBlock { FontSize = 12.5, Foreground = R("Pink"), TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 10, 0, 0), Visibility = Visibility.Collapsed };
         _send = Btn(Loc.T("flaw.send"), true, async (_, _) => await SendAsync());
+        _addShot = Btn(Loc.T("mod.addshot"), false, (_, _) => { _shotOpen = true; ShowShotBlock(); }, small: true);
         _frame = new Border
         {
             Width = 610, Padding = new Thickness(30, 26, 30, 24), Background = new SolidColorBrush(Color.FromRgb(0x10, 0x10, 0x16)),
@@ -165,6 +153,43 @@ public sealed class FlawWindow : Window
 
     private static TextBlock Label(string text, double top) => new() { Text = text, FontSize = 13.5, FontWeight = FontWeights.SemiBold, Margin = new Thickness(0, top, 0, 0) };
 
+    /// <summary>Switches the window between "a modlist flaw" and "suggest a mod" (design 0.1.16).</summary>
+    private void SetKind(string kind)
+    {
+        _kind = kind;
+        var mod = kind == "mod";
+        _modPanel.Visibility = mod ? Visibility.Visible : Visibility.Collapsed;
+        _whatLabel.Inlines.Clear();
+        _whatLabel.Inlines.Add(new System.Windows.Documents.Run(Loc.T(mod ? "mod.why" : "flaw.what")));
+        if (mod) _whatLabel.Inlines.Add(new System.Windows.Documents.Run(" — " + Loc.T("mod.optional")) { Foreground = Muted, FontWeight = FontWeights.Normal });
+        _placeholder.Text = Loc.T(mod ? "mod.why.example" : "flaw.example");
+        _box.Height = mod ? 64 : 80;
+        _sentText.Text = mod ? Loc.T("mod.sent") + "\n" + Loc.T("mod.consider") : Loc.T("flaw.sent");
+        _agreeText.Inlines.Clear();
+        _agreeText.Inlines.Add(new System.Windows.Documents.Run(Loc.T(mod ? "mod.agree" : "flaw.agree")));
+        var legal = new System.Windows.Documents.Hyperlink(new System.Windows.Documents.Run("funkylauncher.com/legal")) { Foreground = R("Cyan") };
+        legal.Click += (_, _) => PlayService.OpenUrl("https://funkylauncher.com/legal");
+        _agreeText.Inlines.Add(legal);
+        if (mod) _agreeText.Inlines.Add(new System.Windows.Documents.Run("."));
+        _send.Content = Loc.T(mod ? "mod.send" : "flaw.send");
+        ShowShotBlock();
+        if (_tabFlaw != null && _tabMod != null)
+        {
+            _tabFlaw.Style = (Style)Application.Current.FindResource(mod ? "SecondaryButton" : "PrimaryButton");
+            _tabMod.Style = (Style)Application.Current.FindResource(mod ? "PrimaryButton" : "SecondaryButton");
+            _tabFlaw.Height = _tabMod.Height = 38;
+        }
+        Status("");
+    }
+
+    /// <summary>The screenshot block: always for a flaw; for a mod folded into "＋ Add screenshot" until it is used.</summary>
+    private void ShowShotBlock()
+    {
+        var folded = _kind == "mod" && _picture == null && !_shotOpen;
+        _shotBlock.Visibility = folded ? Visibility.Collapsed : Visibility.Visible;
+        _addShot.Visibility = folded ? Visibility.Visible : Visibility.Collapsed;
+    }
+
     private UIElement Form()
     {
         var root = new StackPanel();
@@ -173,14 +198,18 @@ public sealed class FlawWindow : Window
         head.Inlines.Add(new System.Windows.Documents.Run(" · " + NiceTitle(_m.Title)) { Foreground = Muted, FontWeight = FontWeights.Normal });
         root.Children.Add(head);
 
-        // 0.1.16: what this is — a modlist flaw or a mod suggestion
-        var tabs = new StackPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(0, 16, 0, 0) };
+        // 0.1.16: two equal buttons in one plate, the chosen one pink (like the language choice on the setup page)
+        var tabs = new Grid();
+        tabs.ColumnDefinitions.Add(new ColumnDefinition());
+        tabs.ColumnDefinitions.Add(new ColumnDefinition());
         _tabFlaw = Btn(Loc.T("flaw.kind.flaw"), true, (_, _) => SetKind("flaw"), small: true);
-        _tabFlaw.Margin = new Thickness(0, 0, 8, 0);
         _tabMod = Btn(Loc.T("flaw.kind.mod"), false, (_, _) => SetKind("mod"), small: true);
+        _tabFlaw.Margin = new Thickness(0, 0, 3, 0); _tabMod.Margin = new Thickness(3, 0, 0, 0);
+        _tabFlaw.HorizontalAlignment = _tabMod.HorizontalAlignment = HorizontalAlignment.Stretch;
+        Grid.SetColumn(_tabMod, 1);
         tabs.Children.Add(_tabFlaw);
         tabs.Children.Add(_tabMod);
-        root.Children.Add(tabs);
+        root.Children.Add(new Border { Child = tabs, Background = new SolidColorBrush(Color.FromRgb(0x17, 0x17, 0x1F)), CornerRadius = new CornerRadius(14), Padding = new Thickness(5), Margin = new Thickness(0, 16, 0, 0) });
 
         _modPanel.Children.Add(Label(Loc.T("mod.name"), 16));
         _modPanel.Children.Add(Boxed(_modName, Loc.T("mod.name.example")));
@@ -195,7 +224,10 @@ public sealed class FlawWindow : Window
         field.Children.Add(_box);
         root.Children.Add(new Border { Child = field, Margin = new Thickness(0, 7, 0, 0), CornerRadius = new CornerRadius(10), BorderBrush = Line, BorderThickness = new Thickness(1), Background = Field });
 
-        root.Children.Add(_shotLabel);
+        _addShot.HorizontalAlignment = HorizontalAlignment.Left;
+        _addShot.Margin = new Thickness(0, 14, 0, 0);
+        root.Children.Add(_addShot);
+        _shotBlock.Children.Add(Label(Loc.T("flaw.shot"), 16));
         var row = new StackPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(0, 7, 0, 0) };
         var left = new StackPanel { VerticalAlignment = VerticalAlignment.Center };
         left.Children.Add(_shot);
@@ -218,14 +250,11 @@ public sealed class FlawWindow : Window
             if (FlawReport.LastShot() is { } p) SetPicture(p); else Status(Loc.T("flaw.last.none"));
         }, small: true));
         row.Children.Add(buttons);
-        root.Children.Add(row);
+        _shotBlock.Children.Add(row);
+        root.Children.Add(_shotBlock);
         SetPicture(_picture);
 
-        root.Children.Add(new TextBlock
-        {
-            Text = Loc.T("flaw.sent"),
-            FontSize = 11.5, LineHeight = 17, Foreground = Soft, TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 12, 0, 0),
-        });
+        root.Children.Add(_sentText);
 
         var plate = new DockPanel();
         var sup = Btn(Loc.T("flaw.support"), false, (_, _) => { PlayService.OpenSupportChat("", _s, _m); Close(); }, small: true);
@@ -234,13 +263,8 @@ public sealed class FlawWindow : Window
         plate.Children.Add(new TextBlock { Text = Loc.T("flaw.support.plate"), FontSize = 12.5, Foreground = new SolidColorBrush(Color.FromRgb(0xD9, 0xDA, 0xE6)), TextWrapping = TextWrapping.Wrap, VerticalAlignment = VerticalAlignment.Center, Margin = new Thickness(0, 0, 12, 0) });
         root.Children.Add(new Border { Child = plate, Background = Plate, CornerRadius = new CornerRadius(10), Padding = new Thickness(12, 9, 9, 9), Margin = new Thickness(0, 12, 0, 0) });
 
-        // Legal 20.11: the consent line next to Send, no tick box
-        var agree = new TextBlock { FontSize = 10.5, LineHeight = 15.5, Foreground = Small, TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 13, 0, 0) };
-        agree.Inlines.Add(new System.Windows.Documents.Run(Loc.T("flaw.agree")));
-        var legal = new System.Windows.Documents.Hyperlink(new System.Windows.Documents.Run("funkylauncher.com/legal")) { Foreground = R("Cyan") };
-        legal.Click += (_, _) => PlayService.OpenUrl("https://funkylauncher.com/legal");
-        agree.Inlines.Add(legal);
-        root.Children.Add(agree);
+        // Legal 20.11: the consent line next to Send, no tick box (its own text for a mod)
+        root.Children.Add(_agreeText);
         root.Children.Add(_status);
         var end = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Right, Margin = new Thickness(0, 15, 0, 0) };
         var cancel = Btn(Loc.T("flaw.cancel"), false, (_, _) => Close());
@@ -307,6 +331,7 @@ public sealed class FlawWindow : Window
     {
         _picture = file != null && File.Exists(file) ? file : null;
         Status("");
+        if (_addShot != null) ShowShotBlock();
         _shotHint.Inlines.Clear();
         if (_picture == null)
         {
@@ -330,14 +355,14 @@ public sealed class FlawWindow : Window
         if (_kind == "mod")
         {
             if (_modName.Text.Trim().Length == 0) { Status(Loc.T("mod.err.name")); _modName.Focus(); return; }
-            if (_modUrl.Text.Trim() is { Length: > 0 } u && !FlawReport.IsNexusUrl(u)) { Status(Loc.T("mod.err.url")); _modUrl.Focus(); return; }
+            if (_modUrl.Text.Trim() is { Length: > 0 } u && !FlawReport.IsNexusUrl(FlawReport.NexusUrl(u))) { Status(Loc.T("mod.err.url")); _modUrl.Focus(); return; }
         }
         else if (_box.Text.Trim().Length == 0 && _picture == null) { Status(Loc.T("flaw.empty")); return; }
         _send.IsEnabled = false;
         _status.Foreground = R("Cyan"); _status.Text = Loc.T("flaw.sending"); _status.Visibility = Visibility.Visible;
         try
         {
-            await FlawReport.SendAsync(_s, _m, _box.Text, _picture, CancellationToken.None, _kind, _modName.Text, _modUrl.Text);
+            await FlawReport.SendAsync(_s, _m, _box.Text, _picture, CancellationToken.None, _kind, _modName.Text, FlawReport.NexusUrl(_modUrl.Text));
             _frame.Child = Thanks();
             _frame.Width = 560;
         }

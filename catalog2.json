@@ -47,7 +47,7 @@
       "requiredTools": [
         {
           "name": { "ru": "REDmod", "en": "REDmod" },
-          "check": "tools/redmod/bin/redMod.exe"
+          "check": "tools/redmod/bin/redMod.exe;tools/redmod/metadata.json"
         }
       ],
       "tag": {

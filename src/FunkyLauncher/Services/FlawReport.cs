@@ -65,6 +65,9 @@ public static class FlawReport
     }
 
     /// <summary>Sends one report. Throws with a text for the player.</summary>
+    /// <summary>"nexusmods.com/…" without a scheme → "https://nexusmods.com/…".</summary>
+    public static string NexusUrl(string url) { url = url.Trim(); return url.Length == 0 || url.Contains("://") ? url : "https://" + url; }
+
     /// <summary>A mod page on Nexus Mods (the only link "suggest a mod" takes).</summary>
     public static bool IsNexusUrl(string url) =>
         Uri.TryCreate(url.Trim(), UriKind.Absolute, out var u) && u.Scheme == Uri.UriSchemeHttps

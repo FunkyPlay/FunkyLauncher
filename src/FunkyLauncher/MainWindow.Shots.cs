@@ -144,6 +144,22 @@ public partial class MainWindow
                     }
                 }
                 catch (Exception e) { File.AppendAllText(Path.Combine(dir, "errors.txt"), $"{lang}-flaw: {e}\n"); }
+                // 0.1.16: "How to install REDmod"
+                try
+                {
+                    if (Core.Catalog.Find("neon-nights") is { } nn)
+                    {
+                        var tool = nn.RequiredTools?.FirstOrDefault() ?? new Core.RequiredTool { Name = new Core.LocText { Ru = "REDmod", En = "REDmod" } };
+                        var (hb, hbg, hw) = Views.ToolHelpWindow.ForShots(tool, nn);
+                        var holder = new System.Windows.Controls.Border { Background = hbg, Child = hb, Width = hw - 16 };
+                        holder.Measure(new Size(holder.Width, double.PositiveInfinity));
+                        holder.Arrange(new Rect(holder.DesiredSize));
+                        holder.UpdateLayout();
+                        await Task.Delay(300);
+                        SaveElement(holder, Path.Combine(dir, $"{lang}-19-tool-help.png"));
+                    }
+                }
+                catch (Exception e) { File.AppendAllText(Path.Combine(dir, "errors.txt"), $"{lang}-toolhelp: {e}\n"); }
                 // the one-time "follow us" window after the first modlist install
                 try
                 {

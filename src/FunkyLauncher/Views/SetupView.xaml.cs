@@ -460,6 +460,7 @@ public partial class SetupView : UserControl
 
     private Border CheckRow(CheckItem c)
     {
+        if (c.Tool != null) return ToolRow(c);
         var error = c.State == CheckState.Error;
         var icon = new Border
         {
@@ -485,6 +486,42 @@ public partial class SetupView : UserControl
             Background = (Brush)FindResource(error ? "PinkSoft" : "Card"), CornerRadius = new CornerRadius(12), Padding = new Thickness(16, 12, 16, 12), Margin = new Thickness(0, 0, 0, 8),
             BorderThickness = new Thickness(error ? 1 : 0), BorderBrush = (Brush)FindResource("Pink"),
             Child = row,
+        };
+    }
+
+    /// <summary>0.1.16 (design): a missing required tool — red frame, red "!", the hint, "How to install" and "Check again".</summary>
+    private Border ToolRow(CheckItem c)
+    {
+        var red = new SolidColorBrush(Color.FromRgb(0xFF, 0x5A, 0x6A));
+        var icon = new Border
+        {
+            Width = 28, Height = 28, CornerRadius = new CornerRadius(14), Margin = new Thickness(0, 0, 14, 0), VerticalAlignment = VerticalAlignment.Center,
+            Background = new SolidColorBrush(Color.FromArgb(0x40, 0xFF, 0x5A, 0x6A)),
+            Child = new TextBlock { Text = "!", FontWeight = FontWeights.Bold, Foreground = red, HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center },
+        };
+        var texts = new StackPanel { VerticalAlignment = VerticalAlignment.Center };
+        texts.Children.Add(new TextBlock { Text = c.Title, FontWeight = FontWeights.SemiBold, FontSize = 14, Foreground = red });
+        if (!string.IsNullOrEmpty(c.Hint))
+            texts.Children.Add(new TextBlock { Text = c.Hint, FontSize = 12, TextWrapping = TextWrapping.Wrap, Foreground = new SolidColorBrush(Color.FromRgb(0xD9, 0xDA, 0xE6)), Margin = new Thickness(0, 3, 0, 0) });
+        Button Small(string text, RoutedEventHandler click)
+        {
+            var b = new Button { Content = text, Style = (Style)FindResource("SecondaryButton"), Height = 32, Padding = new Thickness(12, 0, 12, 0), FontSize = 12.5, Margin = new Thickness(0, 0, 0, 6) };
+            b.Click += click;
+            return b;
+        }
+        var buttons = new StackPanel { Margin = new Thickness(14, 0, 0, 0), VerticalAlignment = VerticalAlignment.Center };
+        buttons.Children.Add(Small(Loc.T("tool.howto"), (_, _) => { if (ToolHelpWindow.Show(_main, c.Tool!, Ml)) _ = RunChecksAsync(); }));
+        buttons.Children.Add(Small(Loc.T("tool.recheck"), (_, _) => _ = RunChecksAsync()));
+        var row = new DockPanel();
+        DockPanel.SetDock(icon, Dock.Left);
+        DockPanel.SetDock(buttons, Dock.Right);
+        row.Children.Add(icon);
+        row.Children.Add(buttons);
+        row.Children.Add(texts);
+        return new Border
+        {
+            Background = (Brush)FindResource("Card"), CornerRadius = new CornerRadius(12), Padding = new Thickness(16, 12, 14, 6), Margin = new Thickness(0, 0, 0, 8),
+            BorderThickness = new Thickness(1.5), BorderBrush = red, Child = row,
         };
     }
 

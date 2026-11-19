@@ -6,7 +6,8 @@ namespace FunkyLauncher.Services;
 
 public enum CheckState { Ok, Warning, Error }
 
-public sealed record CheckItem(CheckState State, string Title, string? Hint = null);
+/// <summary>A line of the check list. Tool: a missing required tool (REDmod) — its row gets "How to install" / "Check again".</summary>
+public sealed record CheckItem(CheckState State, string Title, string? Hint = null, RequiredTool? Tool = null);
 
 public sealed class GameInfo
 {
@@ -198,7 +199,7 @@ public static class SystemCheck
             var missing = MissingTools(ml, game.Path);
             foreach (var t in ml.RequiredTools ?? new())
                 items.Add(missing.Contains(t)
-                    ? new CheckItem(CheckState.Error, Loc.F("check.tool.no", t.Name), ToolHint(t))
+                    ? new CheckItem(CheckState.Error, Loc.F("check.tool.no", t.Name), ToolHint(t), t)
                     : new CheckItem(CheckState.Ok, Loc.F("check.tool.ok", t.Name)));
         }
 
