@@ -2,7 +2,7 @@
  "schema": 1,
  "modlistId": "starfield",
  "addonId": "starfield-main",
- "listVersion": "0.1.0",
+ "listVersion": "0.1.1",
  "forMainVersion": "0.1.0",
  "generated": "2026-11-17",
  "mods": [
@@ -3110,6 +3110,8 @@
   },
   {
    "id": "Antares Renewal - Reforged Prototype Modules - Antares Renewal",
+   "blocked": true,
+   "blockedReason": "Решение Funky 19.11 (Юридические): автор Antares Renewal (Nexus 17671) запрещает включать мод в сборки и коллекции — убран из публичной сборки.",
    "modFolder": "Antares Renewal - Reforged Prototype Modules - Antares Renewal",
    "order": 93,
    "nexus": {
