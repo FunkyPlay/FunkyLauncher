@@ -56,9 +56,7 @@ public partial class ToolsView : UserControl
             ToolCards.Children.Add(ToolCard("▦", Loc.T("tools.desktops"), Loc.T("tools.desktops.text"), "#FFFFFF", "desktops", S.DesktopsOn ? Loc.T("tools.on") : null));
         if (ProModules.Active)
             ToolCards.Children.Add(ToolCard("★", "Funky Pro", Loc.T("tools.pro.text"), "gradient", "pro", Loc.T("tools.on")));
-        foreach (var p in ProModules.Panels(ProPlace.Tools)) // Funky Pro tools: a card each
-            ToolCards.Children.Add(ToolCard(p.Icon, p.Title, p.Text, "gradient", "pro:" + p.Id, "PRO"));
-        if (_tool.StartsWith("pro:") && !ProModules.Panels(ProPlace.Tools).Any(p => "pro:" + p.Id == _tool)) _tool = "backup";
+        if (_tool.StartsWith("pro:") && !ProModules.Panels(ProPlace.Tools).Any(p => "pro:" + p.Id == _tool)) _tool = ProModules.Active ? "pro" : "backup";
         UpdateColumns();
         var isPro = _tool == "pro" || _tool.StartsWith("pro:");
         ProPanel.Visibility = isPro ? Visibility.Visible : Visibility.Collapsed;
@@ -190,24 +188,47 @@ public partial class ToolsView : UserControl
 
     private readonly Dictionary<string, FrameworkElement> _proTools = new();
 
+    /// <summary>Funky Pro: one card in the grid; its tools are tabs inside the Pro panel (many cards would push the panel off the page).</summary>
     private void RefreshPro()
     {
-        if (_tool.StartsWith("pro:") && ProModules.Panels(ProPlace.Tools).FirstOrDefault(p => "pro:" + p.Id == _tool) is { } panel)
-        {
-            ProTitle.Text = panel.Title;
-            ProInfo.Text = panel.Text;
-            if (!_proTools.TryGetValue(panel.Id, out var el)) _proTools[panel.Id] = el = ProPanels.Build(panel);
-            ProHost.Content = el;
-            return;
-        }
         ProTitle.Text = "Funky Pro";
         var (_, info) = ProLicense.Check(S.ProKey, DateTime.UtcNow);
         var until = info?.Until.ToString("dd.MM.yyyy") ?? "";
         if (ProModules.Use is { } m)
         {
             ProInfo.Text = Loc.F("tools.pro.active", until, m.Version);
-            try { _proPanel ??= m.CreatePanel(); } catch (Exception ex) { ProInfo.Text += "\n" + ex.Message; }
-            ProHost.Content = _proPanel;
+            var tools = ProModules.Panels(ProPlace.Tools).ToList();
+            var panel = tools.FirstOrDefault(p => "pro:" + p.Id == _tool);
+            var tabs = new WrapPanel { Margin = new Thickness(0, 0, 0, 14) };
+            Button Tab(string text, bool on, string id)
+            {
+                var b = new Button { Content = text, Height = 34, Padding = new Thickness(12, 0, 12, 0), Margin = new Thickness(0, 0, 8, 8), FontSize = 13,
+                    Style = (Style)FindResource(on ? "PrimaryButton" : "SecondaryButton") };
+                b.Click += (_, _) => { _tool = id; Refresh(); };
+                return b;
+            }
+            tabs.Children.Add(Tab("☁ " + Loc.T("tools.pro.main"), panel == null, "pro"));
+            foreach (var p in tools) tabs.Children.Add(Tab(p.Icon + " " + p.Title, panel == p, "pro:" + p.Id));
+            FrameworkElement? content;
+            if (panel != null)
+            {
+                if (!_proTools.TryGetValue(panel.Id, out var el)) _proTools[panel.Id] = el = ProPanels.Build(panel);
+                if (el.Parent is Panel old) old.Children.Remove(el); // the panel is kept between visits
+                var box = new StackPanel();
+                box.Children.Add(new TextBlock { Text = panel.Text, FontSize = 13, Foreground = (Brush)FindResource("Muted"), TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 0, 0, 10) });
+                box.Children.Add(el);
+                content = box;
+            }
+            else
+            {
+                try { _proPanel ??= m.CreatePanel(); } catch (Exception ex) { ProInfo.Text += "\n" + ex.Message; }
+                if (_proPanel?.Parent is Panel old) old.Children.Remove(_proPanel);
+                content = _proPanel;
+            }
+            var all = new StackPanel();
+            all.Children.Add(tabs);
+            if (content != null) all.Children.Add(content);
+            ProHost.Content = all;
         }
         else
         {
