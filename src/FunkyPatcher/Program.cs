@@ -61,10 +61,12 @@ public static class Program
         public List<PatchInfo> Patches { get; set; } = new();
         public int PluginsInLoadOrder { get; set; }
         public List<string> FixedFlagsInCopy { get; set; } = new();
+        public SortedDictionary<string, int> NotFoundByOwner { get; set; } = new();
         public void Skip(string why, string what)
         {
             Skipped[why] = Skipped.GetValueOrDefault(why) + 1;
-            if (SkippedSamples.Count < 60) SkippedSamples.Add(why + ": " + what);
+            if (why.StartsWith("record not found") || why.StartsWith("record the library")) { var k = why[..10] + " " + what.Split(':')[0] + " " + what.Split(' ')[1]; NotFoundByOwner[k] = NotFoundByOwner.GetValueOrDefault(k) + 1; }
+            if (SkippedSamples.Count < 60 && !why.StartsWith("record type left alone")) SkippedSamples.Add(why + ": " + what);
         }
     }
 
@@ -232,6 +234,7 @@ public static class Program
                     if (copy is ITranslatedNamed target) target.Name = text;
                     else if (NameComponent(copy) is FullNameComponent full) full.Name = text;
                     else { report.Skip("copy has no name field", what); continue; }
+                    DropChildRecords(copy); // e.g. a quest's dialogue and scenes: the patch overrides the quest itself only
                     cur.Mod.GetTopLevelGroup(copy.GetType()).AddUntyped(copy);
                     cur.Masters.UnionWith(need);
                     patches[^1] = (cur.Mod, cur.Masters, cur.Count + 1);
@@ -280,6 +283,18 @@ public static class Program
             res[id] = Encoding.UTF8.GetString(b, off, end - off);
         }
         return res;
+    }
+
+    /// <summary>Records kept inside this record (lists of other major records) are not part of our override.</summary>
+    private static void DropChildRecords(object copy)
+    {
+        foreach (var p in copy.GetType().GetProperties())
+        {
+            if (!p.PropertyType.IsGenericType || p.GetIndexParameters().Length > 0) continue;
+            var arg = p.PropertyType.GetGenericArguments()[0];
+            if (!typeof(IMajorRecordGetter).IsAssignableFrom(arg)) continue;
+            if (p.GetValue(copy) is System.Collections.IList list && !list.IsReadOnly) list.Clear();
+        }
     }
 
     /// <summary>The "full name" component of a record that keeps its name in components (null if it has none).</summary>
