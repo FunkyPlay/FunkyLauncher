@@ -157,6 +157,13 @@ public partial class MainWindow
                         holder.UpdateLayout();
                         await Task.Delay(300);
                         SaveElement(holder, Path.Combine(dir, $"{lang}-19-tool-help.png"));
+                        // the red check row as the player without REDmod sees it (test data: this PC may have REDmod)
+                        var redRow = new System.Windows.Controls.Border { Background = (Brush)FindResource("Bg"), Padding = new Thickness(20), Width = 820, Child = _setup.ShotToolRow(tool) };
+                        redRow.Measure(new Size(redRow.Width, double.PositiveInfinity));
+                        redRow.Arrange(new Rect(redRow.DesiredSize));
+                        redRow.UpdateLayout();
+                        await Task.Delay(300);
+                        SaveElement(redRow, Path.Combine(dir, $"{lang}-19b-tool-missing.png"));
                     }
                 }
                 catch (Exception e) { File.AppendAllText(Path.Combine(dir, "errors.txt"), $"{lang}-toolhelp: {e}\n"); }

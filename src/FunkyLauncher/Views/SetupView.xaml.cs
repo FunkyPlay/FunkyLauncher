@@ -525,6 +525,10 @@ public partial class SetupView : UserControl
         };
     }
 
+    /// <summary>For --shots: the "REDmod is not installed" row with test data (the PC itself may have REDmod).</summary>
+    internal Border ShotToolRow(RequiredTool tool) =>
+        ToolRow(new CheckItem(CheckState.Error, Loc.F("check.tool.no", tool.Name), SystemCheck.ToolHint(tool), tool));
+
     private void Recheck_Click(object sender, RoutedEventArgs e) => _ = RunChecksAsync();
 
     private void GameFolder_Click(object sender, RoutedEventArgs e)
