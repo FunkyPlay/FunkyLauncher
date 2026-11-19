@@ -34,6 +34,19 @@ public sealed class RawPlugin
         _index.TryGetValue((ownerPlugin.ToLowerInvariant(), id), out var at) && ownerPlugin.Equals(_name, StringComparison.OrdinalIgnoreCase) && (at.RawId >> 24) == 0xFE && Own != Style.Light;
     public uint RawFormId(string ownerPlugin, uint id) => _index[(ownerPlugin.ToLowerInvariant(), id)].RawId;
     public string Name => _name;
+    public bool Separated => _separated;
+    public int FullCount => _full.Count;
+    public int MediumCount => _medium.Count;
+    public int LightCount => _light.Count;
+    /// <summary>Largest local number a record of this plugin can have (light 12 bits, medium 16, full 24).</summary>
+    public uint OwnIdMask => OwnMask;
+    private HashSet<uint>? _ownTops;
+    /// <summary>The top bytes (full-master index) this plugin really uses in the FormIDs of its own records, apart from FD / FE forms.</summary>
+    public HashSet<uint> OwnFormTops => _ownTops ??= _index.Where(kv => kv.Key.Mod == _name.ToLowerInvariant() && (kv.Value.RawId >> 24) < 0xFD)
+        .Select(kv => kv.Value.RawId >> 24).ToHashSet();
+    private HashSet<uint>? _ownIds;
+    /// <summary>Local numbers of the records this plugin owns (read by the game's rules).</summary>
+    public HashSet<uint> OwnIds => _ownIds ??= _index.Keys.Where(k => k.Mod == _name.ToLowerInvariant()).Select(k => k.Id).ToHashSet();
     /// <summary>Type of the group the record sits in (0 top level, 3 interior cell sub-block, 5 exterior cell sub-block ...).</summary>
     public int ParentGroupType(string ownerPlugin, uint id) => _index[(ownerPlugin.ToLowerInvariant(), id)].Parent;
     /// <summary>Flags of the plugin's own header (0x80 = texts live in string tables, 0x1 = master...).</summary>

@@ -92,6 +92,9 @@ public static class Program
         public int DictionaryLines { get; set; }
         public int Made { get; set; }
         public int MadeByBytes { get; set; }
+        public int RewrittenReferences { get; set; }
+        public SortedDictionary<string, int> RewrittenBySubrecord { get; set; } = new();
+        public List<string> RewriteSamples { get; set; } = new();
         public SortedDictionary<string, int> SentToByteCopy { get; set; } = new();
         public SortedDictionary<string, int> Skipped { get; set; } = new();
         public List<string> SkippedSamples { get; set; } = new();
@@ -115,6 +118,7 @@ public static class Program
         public int Records { get; set; }
         public int Masters { get; set; }
         public string? Winner { get; set; }
+        public int RewrittenReferences { get; set; }
     }
 
     private sealed record Entry(string Owner, uint Id, string Record, string Field, string Ru);
@@ -318,13 +322,13 @@ public static class Program
                     // the library may not see a record whose number is written in a form it misreads; say so instead of "not found"
                     var ownerRaw = mods.FirstOrDefault(m => m.ModKey == formKey.ModKey);
                     if (ownerRaw != null && Raw(formKey.ModKey).Own != RawPlugin.Style.Light && Raw(formKey.ModKey).Has(e.Owner, e.Id) && Raw(formKey.ModKey).IsForeignForm(e.Owner, e.Id))
-                        report.Skip("owner keeps its own records in the light form although it is not light (the library cannot address them)", what);
+                    { fallback.Add(recKey); report.SentToByteCopy["owner writes its own records in the light form although it is not light"] = report.SentToByteCopy.GetValueOrDefault("owner writes its own records in the light form although it is not light") + 1; }
                     else report.Skip("record not found in the load order", what);
                     continue;
                 }
                 // protection: by the game's rules (numbers read by the plugin's type) this record must exist in the winning plugin
                 if (!Raw(winner.ModKey).Has(e.Owner, e.Id)) { report.Skip("record does not exist for the game (would be a new record, not an override)", what + " in " + winner.ModKey.FileName); continue; }
-                if (Raw(formKey.ModKey).IsForeignForm(e.Owner, e.Id)) { report.Skip("owner keeps its own records in the light form although it is not light (the library cannot address them)", what); continue; }
+                if (Raw(formKey.ModKey).IsForeignForm(e.Owner, e.Id)) { ToByteCopy("owner writes its own records in the light form although it is not light"); continue; }
                 try
                 {
                     var rec = winnerGroup![formKey];

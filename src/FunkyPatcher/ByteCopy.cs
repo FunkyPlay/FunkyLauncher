@@ -53,6 +53,62 @@ internal static class ByteCopy
             && (f[..hash].Equals("WNAM", StringComparison.OrdinalIgnoreCase) || f[..hash].Equals("OBTE-FULL", StringComparison.OrdinalIgnoreCase));
     }
 
+    /// <summary>The plugin's own record in the form the patch needs: the winner is the last master of its kind in the patch's list.</summary>
+    private static uint CanonicalOwn(RawPlugin w, uint id) => w.Own switch
+    {
+        RawPlugin.Style.Light => 0xFE000000u | ((uint)w.LightCount << 12) | (id & 0xFFF),
+        RawPlugin.Style.Medium => 0xFD000000u | ((uint)w.MediumCount << 16) | (id & 0xFFFF),
+        _ => ((uint)w.FullCount << 24) | (id & 0xFFFFFF),
+    };
+
+    /// <summary>A value that names a record of the winner itself in a form that would change meaning once the winner is a master
+    /// (a light plugin that numbers its own records like a full one, a medium one that writes them as FE…, an index above the
+    /// number of masters): the same record in the form the patch reads. Null = not such a value.</summary>
+    private static uint? OwnRef(RawPlugin w, uint v)
+    {
+        if (!w.Separated) return null; // Fallout 4: one master list, the form of own records is always the usual one
+        var top = v >> 24;
+        uint id;
+        if (top == 0xFE)
+        {
+            // a light plugin's usual form / a light master's record / too far above: data
+            var li = (v >> 12) & 0xFFF;
+            if (w.Own == RawPlugin.Style.Light || li != (uint)w.LightCount) return null;
+            id = v & w.OwnIdMask;
+        }
+        else if (top >= 0xFD) return null;
+        else
+        {
+            // only the index this very plugin uses for its own records (seen in their FormIDs) and that is not the usual one;
+            // anything else is data (floats, counters, navmesh) that merely looks like a number
+            if (!w.OwnFormTops.Contains(top) || (w.Own == RawPlugin.Style.Full && top == (uint)w.FullCount)) return null;
+            id = v & 0xFFFFFF;
+            if (id > w.OwnIdMask) return null;
+        }
+        if (!w.OwnIds.Contains(id)) return null; // only a number that really is one of the plugin's own records
+        var n = CanonicalOwn(w, id);
+        return n == v ? null : n;
+    }
+
+    /// <summary>Rewrites every such value anywhere in the bytes (not only at aligned places). Returns the new bytes and the replaced (offset, old, new).</summary>
+    public static (byte[] Data, List<(int At, uint Old, uint New)> Changes) Remap(RawPlugin w, byte[] data)
+    {
+        if (data.Length > 4096) return (data, new()); // big binary blocks (navmesh and the like) hold numbers, not references
+        List<(int, uint, uint)>? ch = null;
+        byte[]? res = null;
+        for (var o = 0; o + 4 <= data.Length; o++)
+        {
+            var v = BitConverter.ToUInt32(data, o);
+            if (v >> 24 == 0) continue;
+            if (OwnRef(w, v) is not { } n) continue;
+            res ??= (byte[])data.Clone();
+            BitConverter.GetBytes(n).CopyTo(res, o);
+            (ch ??= new()).Add((o, v, n));
+            o += 3;
+        }
+        return (res ?? data, ch ?? new());
+    }
+
     private static byte[] TextBytes(string text)
     {
         var b = Encoding.UTF8.GetBytes(text);
@@ -167,6 +223,7 @@ internal static class ByteCopy
         public List<RawPlugin.Sub> Subs = null!;
         public Dictionary<int, byte[]> Changed = new();
         public byte[] Raw = null!;
+        public int Rewritten;
     }
 
     /// <param name="modsLastFirst">plugin file names, the last loaded first (the first one that has the record wins)</param>
@@ -181,8 +238,6 @@ internal static class ByteCopy
             if (winner == null) { report.Skip("record not found in the load order", job.What); continue; }
             var w = raw(winner)!;
             if ((w.HeaderFlags & 0x80) != 0) { report.Skip("winner plugin keeps its texts in string tables (localized)", job.What + " in " + winner); continue; }
-            if (w.HasForeignOwnRecords) { report.Skip("winner plugin writes its own records in a form that cannot be moved (not light, FE numbers)", job.What + " in " + winner); continue; }
-            if (raw(job.Owner) is { } own && own.HasForeignOwnRecords) { report.Skip("owner plugin writes its own records in a form that cannot be moved (not light, FE numbers)", job.What); continue; }
             if (w.Masters.Count >= 250) { report.Skip("winner plugin has too many masters for a patch", job.What + " in " + winner); continue; }
             var rec = w.Read(job.Owner, job.Id)!;
             if (!rec.Type.Equals(job.Record, StringComparison.OrdinalIgnoreCase)) { report.Skip("record type differs from the dictionary (" + rec.Type + ")", job.What + " in " + winner); continue; }
@@ -198,6 +253,21 @@ internal static class ByteCopy
             }
             if (item.Changed.Count == 0) continue;
             foreach (var (i, data) in item.Changed) item.Subs[i] = new RawPlugin.Sub(item.Subs[i].Type, data);
+            // references of the winner to its own records that would change meaning in the patch's master list
+            for (var i = 0; i < item.Subs.Count; i++)
+            {
+                if (item.Changed.ContainsKey(i)) continue;
+                var (data, ch) = Remap(w, item.Subs[i].Data);
+                if (ch.Count > 0)
+                {
+                    item.Subs[i] = new RawPlugin.Sub(item.Subs[i].Type, data); item.Rewritten += ch.Count;
+                    var key = job.Record + " " + item.Subs[i].Type;
+                    report.RewrittenBySubrecord[key] = report.RewrittenBySubrecord.GetValueOrDefault(key) + ch.Count;
+                    if (report.RewriteSamples.Count < 80) report.RewriteSamples.Add($"{job.What} in {winner} {item.Subs[i].Type} len {item.Subs[i].Data.Length}: " + string.Join(", ", ch.Take(3).Select(c => $"@{c.At} {c.Old:X8}->{c.New:X8}")));
+                }
+            }
+            var (hid, hch) = Remap(w, item.Header.AsSpan(12, 4).ToArray());
+            if (hch.Count > 0) { hid.CopyTo(item.Header, 12); item.Rewritten++; }
             item.Raw = BuildRecord(item.Header, item.Flags, item.Subs);
             if (!byWinner.TryGetValue(winner, out var list)) byWinner[winner] = list = new();
             list.Add(item);
@@ -245,7 +315,8 @@ internal static class ByteCopy
             if (items.Count == 0) { if (File.Exists(file)) File.Delete(file); number--; continue; }
             report.Made += items.Count;
             report.MadeByBytes += items.Count;
-            report.Patches.Add(new Program.PatchInfo { File = name + shape.Extension, Records = items.Count, Masters = masters.Count, Winner = winner });
+            report.RewrittenReferences += items.Sum(i => i.Rewritten);
+            report.Patches.Add(new Program.PatchInfo { File = name + shape.Extension, Records = items.Count, Masters = masters.Count, Winner = winner, RewrittenReferences = items.Sum(i => i.Rewritten) });
         }
     }
 
@@ -261,13 +332,21 @@ internal static class ByteCopy
         if (a.Subs.Count != b.Subs.Count) return $"sub-record count {a.Subs.Count} -> {b.Subs.Count}";
         var h1 = src.RecordHeader(it.Job.Owner, it.Job.Id);
         var h2 = dst.RecordHeader(it.Job.Owner, it.Job.Id);
-        if (!h1.AsSpan(12, 12).SequenceEqual(h2.AsSpan(12, 12))) return "record header (FormID, version) differs";
+        if (!h1.AsSpan(16, 8).SequenceEqual(h2.AsSpan(16, 8))) return "record header (version info) differs";
         for (var i = 0; i < a.Subs.Count; i++)
         {
             if (a.Subs[i].Type != b.Subs[i].Type) return $"{a.Subs[i].Type} became {b.Subs[i].Type}";
             var changed = it.Changed.TryGetValue(i, out var want);
-            if (changed ? !b.Subs[i].Data.AsSpan().SequenceEqual(want) : !a.Subs[i].Data.AsSpan().SequenceEqual(b.Subs[i].Data))
-                return $"{a.Subs[i].Type} #{i} differs";
+            if (changed)
+            {
+                if (!b.Subs[i].Data.AsSpan().SequenceEqual(want)) return $"{a.Subs[i].Type} #{i} differs";
+                continue;
+            }
+            // everything else: the author's bytes, except references to the winner's own records, which must name the same record in the patch
+            var (expected, ch) = Remap(src, a.Subs[i].Data);
+            if (!b.Subs[i].Data.AsSpan().SequenceEqual(expected)) return $"{a.Subs[i].Type} #{i} differs";
+            foreach (var (_, oldv, newv) in ch)
+                if (src.Decode(oldv) is not { } p || dst.Decode(newv) is not { } q || p != q) return $"{a.Subs[i].Type} #{i} reference {oldv:X8} -> {newv:X8} does not name the same record";
         }
         return null;
     }
