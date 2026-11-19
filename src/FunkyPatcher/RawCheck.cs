@@ -20,7 +20,21 @@ public sealed class RawPlugin
     private readonly string _path;
     private readonly string _name;
     private readonly List<string> _full = new(), _medium = new(), _light = new();
-    private readonly Dictionary<(string Mod, uint Id), (long Offset, int Size, uint Flags, string Type)> _index = new();
+    private readonly Dictionary<(string Mod, uint Id), (long Offset, int Size, uint Flags, string Type, uint RawId)> _index = new();
+    /// <summary>How this plugin itself is flagged (decides how many bits its own record numbers have).</summary>
+    public Style Own { get; }
+    private uint OwnMask => Own switch { Style.Light => 0xFFFu, Style.Medium => 0xFFFFu, _ => 0xFFFFFFu };
+
+    /// <summary>Every record in the file: (owner plugin, id there, record type, FormID exactly as stored).</summary>
+    public IEnumerable<(string Mod, uint Id, string Type, uint RawId)> Records => _index.Select(kv => (kv.Key.Mod, kv.Key.Id, kv.Value.Type, kv.Value.RawId));
+    public bool Has(string ownerPlugin, uint id) => _index.ContainsKey((ownerPlugin.ToLowerInvariant(), id));
+    /// <summary>True when the record is the plugin's own one but written in the "light" form (FE...) although the plugin is not light:
+    /// the library cuts such numbers to 12 bits, the game reads them by the plugin's type (16 bits for medium).</summary>
+    public bool IsForeignForm(string ownerPlugin, uint id) =>
+        _index.TryGetValue((ownerPlugin.ToLowerInvariant(), id), out var at) && ownerPlugin.Equals(_name, StringComparison.OrdinalIgnoreCase) && (at.RawId >> 24) == 0xFE && Own != Style.Light;
+    public uint RawFormId(string ownerPlugin, uint id) => _index[(ownerPlugin.ToLowerInvariant(), id)].RawId;
+    public string Name => _name;
+    public IReadOnlyList<string> Masters => _full.Concat(_medium).Concat(_light).ToList();
 
     public static Style StyleOf(string path)
     {
@@ -41,6 +55,7 @@ public sealed class RawPlugin
     {
         _separated = separated;
         _path = path; _name = name;
+        Own = separated ? StyleOf(path) : Style.Full;
         using var f = File.OpenRead(path);
         var h = new byte[24];
         f.ReadExactly(h, 0, 24);
@@ -72,7 +87,7 @@ public sealed class RawPlugin
                 continue;
             }
             var key = Decode(BitConverter.ToUInt32(h, 12));
-            if (key != null) _index[key.Value] = (pos + 24, (int)size, BitConverter.ToUInt32(h, 8), type);
+            if (key != null) _index[key.Value] = (pos + 24, (int)size, BitConverter.ToUInt32(h, 8), type, BitConverter.ToUInt32(h, 12));
             pos += 24 + size;
         }
     }
@@ -85,7 +100,8 @@ public sealed class RawPlugin
         {
             var i = (int)((raw >> 12) & 0xFFF);
             // one past the last light master = the plugin's own record (files saved by newer tools; older ones use the full index)
-            return i < _light.Count ? (_light[i].ToLowerInvariant(), raw & 0xFFF) : i == _light.Count ? (_name.ToLowerInvariant(), raw & 0xFFF) : null;
+            // the plugin's own number has as many bits as the plugin's type allows (light 12, medium 16, full 24), not always 12
+            return i < _light.Count ? (_light[i].ToLowerInvariant(), raw & 0xFFF) : i == _light.Count ? (_name.ToLowerInvariant(), raw & OwnMask) : null;
         }
         if (_separated && top == 0xFD)
         {

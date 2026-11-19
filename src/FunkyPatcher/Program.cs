@@ -145,8 +145,19 @@ public static class Program
         // the starred mods follow in the order of plugins.txt
         foreach (var o in order)
             if (!names.Contains(o, StringComparer.OrdinalIgnoreCase) && Forced(o)) names.Add(o);
-        foreach (var o in order)
-            if (!names.Contains(o, StringComparer.OrdinalIgnoreCase) && on.Contains(o)) names.Add(o);
+        // the game (and MO2 when it starts the game) puts every master-flagged plugin (.esm, .esl, or the master flag in the header)
+        // before the ordinary plugins, whatever plugins.txt says; inside each group the order of plugins.txt stays
+        bool IsMasterFile(string n)
+        {
+            if (n.EndsWith(".esm", StringComparison.OrdinalIgnoreCase) || n.EndsWith(".esl", StringComparison.OrdinalIgnoreCase)) return true;
+            var p = Resolve(n);
+            if (p == null) return false;
+            try { var h = new byte[12]; using var f = File.OpenRead(p); return f.Read(h, 0, 12) == 12 && (BitConverter.ToUInt32(h, 8) & 1) != 0; }
+            catch { return false; }
+        }
+        foreach (var wantMaster in new[] { true, false })
+            foreach (var o in order)
+                if (!names.Contains(o, StringComparer.OrdinalIgnoreCase) && on.Contains(o) && IsMasterFile(o) == wantMaster) names.Add(o);
 
         // ---- a flat folder of links to the real plugin files (Mutagen reads one Data folder)
         var flat = Path.Combine(Path.GetTempPath(), "FunkyPatcher-" + Guid.NewGuid().ToString("N")[..8]);
@@ -218,6 +229,17 @@ public static class Program
                 return table != null && table.TryGetValue(id, out var s) && s.Length > 0 ? s : null;
             }
 
+            // our own byte reader of the plugins (numbers of records by the game's rules, see RawPlugin)
+            var styles = new Dictionary<string, RawPlugin.Style>(StringComparer.OrdinalIgnoreCase);
+            RawPlugin.Style StyleOf(string name)
+            {
+                if (styles.TryGetValue(name, out var st)) return st;
+                var f = Path.Combine(flat, name);
+                return styles[name] = File.Exists(f) ? RawPlugin.StyleOf(f) : RawPlugin.Style.Full;
+            }
+            var raws = new Dictionary<ModKey, RawPlugin>();
+            RawPlugin Raw(ModKey k) => raws.TryGetValue(k, out var r) ? r : raws[k] = new RawPlugin(Path.Combine(flat, k.FileName), k.FileName, StyleOf, info.SeparatedMasters);
+
             // ---- patches
             Directory.CreateDirectory(outDir);
             foreach (var old in Directory.EnumerateFiles(outDir, prefix + "_*.esm")) File.Delete(old);
@@ -246,7 +268,18 @@ public static class Program
                     var g = Group(mod, getterType);
                     if (g != null && g.ContainsKey(formKey)) { winner = mod; winnerGroup = g; break; }
                 }
-                if (winner == null) { report.Skip("record not found in the load order", what); continue; }
+                if (winner == null)
+                {
+                    // the library may not see a record whose number is written in a form it misreads; say so instead of "not found"
+                    var ownerRaw = mods.FirstOrDefault(m => m.ModKey == formKey.ModKey);
+                    if (ownerRaw != null && Raw(formKey.ModKey).Own != RawPlugin.Style.Light && Raw(formKey.ModKey).Has(e.Owner, e.Id) && Raw(formKey.ModKey).IsForeignForm(e.Owner, e.Id))
+                        report.Skip("owner keeps its own records in the light form although it is not light (the library cannot address them)", what);
+                    else report.Skip("record not found in the load order", what);
+                    continue;
+                }
+                // protection: by the game's rules (numbers read by the plugin's type) this record must exist in the winning plugin
+                if (!Raw(winner.ModKey).Has(e.Owner, e.Id)) { report.Skip("record does not exist for the game (would be a new record, not an override)", what + " in " + winner.ModKey.FileName); continue; }
+                if (Raw(formKey.ModKey).IsForeignForm(e.Owner, e.Id)) { report.Skip("owner keeps its own records in the light form although it is not light (the library cannot address them)", what); continue; }
                 try
                 {
                     var rec = winnerGroup![formKey];
@@ -281,15 +314,6 @@ public static class Program
             }
 
             // ---- write, then prove every record: byte-for-byte the winning record, apart from the name and renumbered FormIDs
-            var styles = new Dictionary<string, RawPlugin.Style>(StringComparer.OrdinalIgnoreCase);
-            RawPlugin.Style StyleOf(string name)
-            {
-                if (styles.TryGetValue(name, out var st)) return st;
-                var f = Path.Combine(flat, name);
-                return styles[name] = File.Exists(f) ? RawPlugin.StyleOf(f) : RawPlugin.Style.Full;
-            }
-            var raws = new Dictionary<ModKey, RawPlugin>();
-            RawPlugin Raw(ModKey k) => raws.TryGetValue(k, out var r) ? r : raws[k] = new RawPlugin(Path.Combine(flat, k.FileName), k.FileName, StyleOf, info.SeparatedMasters);
             var utf8 = new Mutagen.Bethesda.Plugins.Binary.Streams.EncodingBundle(Mutagen.Bethesda.Strings.DI.MutagenEncoding._utf8, Mutagen.Bethesda.Strings.DI.MutagenEncoding._utf8);
             foreach (var (mod, _, _) in patches)
             {
@@ -304,6 +328,10 @@ public static class Program
                     ((dynamic)mod).BeginWrite.ToPath(file).WithLoadOrder(env.LoadOrder).WithEmbeddedEncodings(utf8).Write();
                     var written = new RawPlugin(file, mod.ModKey.FileName, StyleOf, info.SeparatedMasters);
                     var bad = new List<int>();
+                    // protection: the patch holds exactly the records we made, each one an override of a record that exists (game's rules)
+                    var madeKeys = new HashSet<(string, uint)>(list.Select(m => (m.Key.ModKey.FileName.String.ToLowerInvariant(), m.Key.ID)));
+                    foreach (var r in written.Records)
+                        if (!madeKeys.Contains((r.Mod, r.Id))) throw new InvalidDataException($"{mod.ModKey.FileName}: unexpected record {r.Type} {r.Mod}:{r.Id:X}");
                     for (var n = 0; n < list.Count; n++)
                     {
                         var m = list[n];
