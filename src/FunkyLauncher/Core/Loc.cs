@@ -52,6 +52,7 @@ public static class Loc
         ["pro.group.play"] = ("Игра и ПК", "Game & PC"),
         ["pro.group.record"] = ("Запись", "Recording"),
         ["pro.group.look"] = ("Оформление", "Appearance"),
+        ["pro.group.community"] = ("Сообщество", "Community"),
         ["pro.group.other"] = ("Ещё", "More"),
         ["pro.set.active"] = ("Funky Pro активен ", "Funky Pro is active "),
         ["pro.set.until"] = ("до {0}", "until {0}"),

@@ -27,7 +27,7 @@ public sealed class ProView : UserControl
 
     public static readonly (string Id, string Color)[] Groups =
     {
-        ("saves", "#FF3FD2"), ("build", "#B98CFF"), ("play", "#7AE8FF"), ("record", "#FF9ADF"), ("look", "#9AC5F8"), ("other", "#C9C9D6"),
+        ("saves", "#FF3FD2"), ("build", "#B98CFF"), ("play", "#7AE8FF"), ("record", "#FF9ADF"), ("look", "#9AC5F8"), ("community", "#FFD27A"), ("other", "#C9C9D6"),
     };
 
     public ProView(MainWindow main)
