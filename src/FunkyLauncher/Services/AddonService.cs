@@ -127,6 +127,13 @@ public static class AddonService
             var x = wanted[i];
             var name = x.DisplayName.ToString();
             var target = Path.Combine(mods, x.ModFolder);
+            if (x.Install.Type == "bundled")
+            {
+                // nothing to download: the folder is laid down with the modlist's own files; the profile switches it on
+                done++;
+                if (Directory.Exists(target)) Mo2Profile.RememberOurs(s, m, x.ModFolder);
+                continue;
+            }
             if (IsCurrent(mods, x)) { done++; Mo2Profile.RememberOurs(s, m, x.ModFolder); continue; }
             var oldDir = target + ".old-version";
 

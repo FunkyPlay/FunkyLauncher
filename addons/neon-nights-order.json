@@ -1,8 +1,15 @@
 {
  "modlistId": "neon-nights",
  "generated": "2026-11-19",
- "source": "NeonNights-0.1.3.wabbajack profiles/Wabbajack/modlist.txt",
+ "source": "NeonNights-0.1.4.wabbajack profiles/Wabbajack/modlist.txt",
  "modlist": [
+  "Neon Nights - RU Names",
+  "Neon Nights - Archive Order",
+  "Expanded Dual Wielding - IFP patch 35626 1 2026",
+  "Expanded Dual Wielding 35626 3.8 2026",
+  "Auto Drive Enhanced RU 23229 0.0.0.22 2026",
+  "Auto Drive Enhanced 23157 0.0.0.22 2026",
+  "Visual Holsters 21936 1.4 2026",
   "Immersive V Dialogue Expanded RU 24467 1.2.2 2026",
   "Immersive V Dialogue Expanded 24377 1.1.0 2026",
   "Say Something Damn It RU 22270 1.18.1 2026",
@@ -210,7 +217,6 @@
   "VSS-Vintorez-Black-Wolf 34518 1.0.4 2026",
   "Pistol Pack",
   "All Guns",
-  "Оружие_separator",
   "Skill Trainers RU",
   "SFXToggle_RU",
   "Fresh Start_A_RU",
@@ -476,13 +482,12 @@
   "RED4ext 2380 1.31.1 2026",
   "redscript 1511 0.5.32 2026"
  ],
- "modlistOff": [
-  "Оружие_separator"
- ],
+ "modlistOff": [],
  "plugins": [],
  "ownFiles": "files/neon-nights/own.zip",
  "ownFolders": [
   "AVA_Output",
+  "Neon Nights - Archive Order",
   "Neon Nights - Defaults"
  ],
  "separators": [
@@ -492,7 +497,6 @@
   "AVA Магазины и Одежда_separator",
   "Апартаменты игрока_separator",
   "Интерфейис_separator",
-  "Оружие_separator",
   "Игровые Функции_separator",
   "Режим фото и прочие анимации_separator",
   "Миссии и квесты_separator",
@@ -504,57 +508,33 @@
  ],
  "patches": [
   {
-   "modFolder": "Cyberscript 6475 5.1.4 2026",
-   "file": "bin/x64/plugins/cyber_engine_tweaks/mods/cyberscript/mod/data/actiontemplate.json",
-   "delta": "files/neon-nights/patches/fa3bdff7-5119-4d6a-a963-0633af0ab556",
-   "size": 159806,
-   "resultSha256": "4433D58D6B76CD2EDDA02F00A56BBEEBF0AA8F0D5867E242A87D3E4EFCD4FB29",
-   "sourceSha256": "A6F1EEBCCA6362137C8F685F38C64E08646B44A91E3945CF817B81D608FB3615"
+   "modFolder": "Appearance Menu Mod 790 2.17.0 2026",
+   "file": "bin/x64/plugins/cyber_engine_tweaks/mods/AppearanceMenuMod/db.sqlite3",
+   "delta": "files/neon-nights/patches/caecfab1-475e-41bc-9c46-688826f566a9",
+   "size": 33337344,
+   "resultSha256": "9FC82CDF2CA285C39A64FFE589C8789256653C6BBDD4BF40CF81626DF84A1DA4",
+   "sourceSha256": "A8E2B6806AD29CCFDF00682ED373E96F8219630929C7CFB5EA75F276F931C4BE"
   },
   {
-   "modFolder": "808.9 Afterworks Radio",
-   "file": "bin/x64/plugins/cyber_engine_tweaks/mods/radioExt/radios/Afterworks/metadata.json",
-   "delta": "files/neon-nights/patches/e8428a30-c88e-4707-86f9-962d8c06c39c",
-   "size": 248,
-   "resultSha256": "E84E779BDCCA57127044C337BDAF6352CF5E57C406F48A12CC35522F6EE4173E",
-   "sourceSha256": "8BAD1D276685E4D3A3B2020AA341A325F30325C734041986F4614A9C22FCA104"
+   "modFolder": "Cyberscript 6475 5.1.4 2026",
+   "file": "bin/x64/plugins/cyber_engine_tweaks/mods/cyberscript/mod/data/triggertemplate.json",
+   "delta": "files/neon-nights/patches/b2c30c63-2e92-4cb4-90de-b3cf7537a72b",
+   "size": 37516,
+   "resultSha256": "B25818BE5CCBB6B0D83A82A8E230195063BB2037D93A585ED7C908347D002845",
+   "sourceSha256": "401A7563ADD07C6177D3DB29BCA2E79D3FC382D1F01175C1CDB46E0313FFA0F7"
   },
   {
    "modFolder": "Cyberscript 6475 5.1.4 2026",
    "file": "bin/x64/plugins/cyber_engine_tweaks/mods/cyberscript/mod/modules/observers/player.lua",
-   "delta": "files/neon-nights/patches/a835d776-81cd-49e5-8fd2-c17dc7f4af5c",
+   "delta": "files/neon-nights/patches/ef4c29c7-7e33-4e53-8913-e9e8aad35443",
    "size": 2600,
    "resultSha256": "E996089C54759823E075FCA889ACCDEE6CFE18A4BB8C603A014E9F4360673870",
    "sourceSha256": "D9A14E31489CBDCCC1B19F309A338A325DAFE9FBC3439818D9E57FE0C0C77D12"
   },
   {
-   "modFolder": "Appearance Menu Mod 790 2.17.0 2026",
-   "file": "bin/x64/plugins/cyber_engine_tweaks/mods/AppearanceMenuMod/db.sqlite3",
-   "delta": "files/neon-nights/patches/035bc990-ae69-471c-a358-230a4e44eac3",
-   "size": 33337344,
-   "resultSha256": "29D8B825D48DB39F4FF32E402758C0A6ECB62B5F11F830EAB8AC5AF054BAC71B",
-   "sourceSha256": "A8E2B6806AD29CCFDF00682ED373E96F8219630929C7CFB5EA75F276F931C4BE"
-  },
-  {
-   "modFolder": "Diviner Drugs radio",
-   "file": "bin/x64/plugins/cyber_engine_tweaks/mods/radioExt/radios/Diviner Drugs/metadata.json",
-   "delta": "files/neon-nights/patches/3cd36def-811d-4a57-90ee-1679499ec534",
-   "size": 267,
-   "resultSha256": "AED5A809FBE9CC603E89FBAD4F05ABE5DF7D771C93D8CF9304643CDE659D5070",
-   "sourceSha256": "0C1B6B2C1E925E711FF1F58F9A1DE401B9A69EB0E6296C11CEE0F4DBD85DDBCE"
-  },
-  {
-   "modFolder": "Cyberscript 6475 5.1.4 2026",
-   "file": "bin/x64/plugins/cyber_engine_tweaks/mods/cyberscript/mod/data/triggertemplate.json",
-   "delta": "files/neon-nights/patches/546e771d-d35d-486a-a083-d3ee36ca5069",
-   "size": 37516,
-   "resultSha256": "4E4A4060713B9A8F06A91D16C64F6D0C2C128C340D737AD12ADA18985B14F63D",
-   "sourceSha256": "401A7563ADD07C6177D3DB29BCA2E79D3FC382D1F01175C1CDB46E0313FFA0F7"
-  },
-  {
    "modFolder": "105.1 SyberLilly FM",
    "file": "bin/x64/plugins/cyber_engine_tweaks/mods/radioExt/radios/SyberLilly FM/metadata.json",
-   "delta": "files/neon-nights/patches/24986d25-7d72-4e1d-a45a-93bba7ceb346",
+   "delta": "files/neon-nights/patches/0d9c7f61-7535-473f-ae2f-b8032080030b",
    "size": 261,
    "resultSha256": "F9AB691C4AC87D7192DBD28A0DDC5DFD99BC0B0D953886B6BC59968507A3116F",
    "sourceSha256": "D7F8CAA8DAA20390877F25F80C63A7C3D068D9893D2F4C8360518542F34DA4FE"
@@ -562,7 +542,7 @@
   {
    "modFolder": "Cyberscript 6475 5.1.4 2026",
    "file": "bin/x64/plugins/cyber_engine_tweaks/mods/cyberscript/mod/modules/scripting.lua",
-   "delta": "files/neon-nights/patches/b6821c75-2b46-43e5-a289-5c8e41478a43",
+   "delta": "files/neon-nights/patches/b9bfb78c-4176-4b1a-9bce-74093671ab36",
    "size": 127779,
    "resultSha256": "2F8EB15EC0EC7A69C59337FFD1362F5FCC8C46E8AD1BC5B6B93DAACF5938FC88",
    "sourceSha256": "98F88EDBE0A9D08C291217ACFFA37C78BC4E4C34D2D28D051B8CE009FD4EB386"
@@ -570,7 +550,7 @@
   {
    "modFolder": "Cyberscript 6475 5.1.4 2026",
    "file": "bin/x64/plugins/cyber_engine_tweaks/mods/cyberscript/mod/modules/see.lua",
-   "delta": "files/neon-nights/patches/a43ed141-8dd3-4322-a8e0-d2bd15ab4e0f",
+   "delta": "files/neon-nights/patches/56e931f4-bb73-4143-93e1-75912b3f0263",
    "size": 467804,
    "resultSha256": "BE554FFBCE4EA422E969BABDD258BC7CE479737546ECDCFB952D4BE24E44B29D",
    "sourceSha256": "31F86B181A3A540DA670CC204E888CC5C326F6DA479CB993B5C7265B66619F59"
@@ -578,34 +558,58 @@
   {
    "modFolder": "ArchiveXL 1.28.8 + FunkyPlay crash fix",
    "file": "red4ext/plugins/ArchiveXL/ArchiveXL.dll",
-   "delta": "files/neon-nights/patches/cbd9a1f9-dc06-4b09-84cc-db348a02bf79",
+   "delta": "files/neon-nights/patches/a29c1c85-1381-4a39-b9a3-6240e7fe4df1",
    "size": 1985024,
    "resultSha256": "804DC9100474E36200F060D3C98464C58D6CE2513EE2C209CF1FA36CA2C48569",
    "sourceSha256": "2087A6A786A5EE2D6763574356BC8C8139A281872887D3E9EFC720C74BFA8756"
   },
   {
-   "modFolder": "Brainfunk radio",
-   "file": "bin/x64/plugins/cyber_engine_tweaks/mods/radioExt/radios/Brainfunk/metadata.json",
-   "delta": "files/neon-nights/patches/2925aeeb-5015-4b9d-aa0b-e37762bd622c",
-   "size": 263,
-   "resultSha256": "9D5CB22360BC47635223ED477CCA8A74EA6903577B80503CD1DC602C867163A1",
-   "sourceSha256": "1C643A4FA3904E18130DA091A58235B9AFA700909D79D6D5952F78DFF42FF386"
-  },
-  {
    "modFolder": "Input Loader v0.2.6 for 2.50 4575 0.2.6 2026",
    "file": "r6/cache/inputContexts.xml",
-   "delta": "files/neon-nights/patches/2e4dfbb4-9554-4dca-a345-a003e8d364a4",
-   "size": 121176,
-   "resultSha256": "7A4462031C340F139662A4B38E20E973116D50E3DE9312AC8F6FCBFFDD549697",
+   "delta": "files/neon-nights/patches/8629a36c-7902-4a07-af17-84feaa9aa5f9",
+   "size": 124126,
+   "resultSha256": "6FAB92E391C730CB3F0E62ABD89BC61538E00157C791F6D86BCEF80DAB3E8477",
    "sourceSha256": "EC2186F01BC6637D613BFFB66E0258482B51D39E42090CB603D3716990923FCF"
   },
   {
    "modFolder": "Input Loader v0.2.6 for 2.50 4575 0.2.6 2026",
    "file": "r6/cache/inputUserMappings.xml",
-   "delta": "files/neon-nights/patches/00a0c9a9-4279-4ec0-9c8e-8ae8ff7aa83a",
-   "size": 107728,
-   "resultSha256": "A894F1786E5F3D1DD66E22E6D55F03A46FC8C68C9A721C1859CD7A7AD2FD583A",
+   "delta": "files/neon-nights/patches/2fee69f6-6c0e-44b0-8c6f-eb412456a8a7",
+   "size": 108105,
+   "resultSha256": "766F8458A91D108C2593ABE9527D51CE646B619C99E1D7D08DFC76F0F0C8AD1C",
    "sourceSha256": "6BD75C50E34484C1022D879EC3EEA90EB9655459FD14256A98FFBBAEBB5F4782"
+  },
+  {
+   "modFolder": "Brainfunk radio",
+   "file": "bin/x64/plugins/cyber_engine_tweaks/mods/radioExt/radios/Brainfunk/metadata.json",
+   "delta": "files/neon-nights/patches/8dc77e1f-deff-43ea-9459-f206f7fe0f8a",
+   "size": 263,
+   "resultSha256": "9D5CB22360BC47635223ED477CCA8A74EA6903577B80503CD1DC602C867163A1",
+   "sourceSha256": "1C643A4FA3904E18130DA091A58235B9AFA700909D79D6D5952F78DFF42FF386"
+  },
+  {
+   "modFolder": "Cyberscript 6475 5.1.4 2026",
+   "file": "bin/x64/plugins/cyber_engine_tweaks/mods/cyberscript/mod/data/actiontemplate.json",
+   "delta": "files/neon-nights/patches/ada37625-049c-48b2-be8c-235bf8575121",
+   "size": 159806,
+   "resultSha256": "788948482F58E30C9A19FE84033B8991F9A688AEBEB3AC8630903ABBA08E379D",
+   "sourceSha256": "A6F1EEBCCA6362137C8F685F38C64E08646B44A91E3945CF817B81D608FB3615"
+  },
+  {
+   "modFolder": "808.9 Afterworks Radio",
+   "file": "bin/x64/plugins/cyber_engine_tweaks/mods/radioExt/radios/Afterworks/metadata.json",
+   "delta": "files/neon-nights/patches/ec173511-9140-4268-ac49-a38a0d8058cb",
+   "size": 248,
+   "resultSha256": "E84E779BDCCA57127044C337BDAF6352CF5E57C406F48A12CC35522F6EE4173E",
+   "sourceSha256": "8BAD1D276685E4D3A3B2020AA341A325F30325C734041986F4614A9C22FCA104"
+  },
+  {
+   "modFolder": "Diviner Drugs radio",
+   "file": "bin/x64/plugins/cyber_engine_tweaks/mods/radioExt/radios/Diviner Drugs/metadata.json",
+   "delta": "files/neon-nights/patches/36ea087a-d2c1-449c-a7b3-68b789922113",
+   "size": 267,
+   "resultSha256": "AED5A809FBE9CC603E89FBAD4F05ABE5DF7D771C93D8CF9304643CDE659D5070",
+   "sourceSha256": "0C1B6B2C1E925E711FF1F58F9A1DE401B9A69EB0E6296C11CEE0F4DBD85DDBCE"
   }
  ]
 }
