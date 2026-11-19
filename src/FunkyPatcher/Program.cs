@@ -123,8 +123,12 @@ public static class Program
             || (System.Text.RegularExpressions.Regex.IsMatch(n, @"^(BlueprintShips-)?SFBGS[0-9A-Fa-f]{3}\.esm$") && File.Exists(Path.Combine(gameData, n)));
         var names = new List<string>();
         foreach (var o in official) if (File.Exists(Path.Combine(gameData, o)) && !names.Contains(o, StringComparer.OrdinalIgnoreCase)) names.Add(o);
+        // the game loads its own plugins first (right after Starfield.esm and the DLC), wherever plugins.txt lists them;
+        // the starred mods follow in the order of plugins.txt
         foreach (var o in order)
-            if (!names.Contains(o, StringComparer.OrdinalIgnoreCase) && (on.Contains(o) || Forced(o))) names.Add(o);
+            if (!names.Contains(o, StringComparer.OrdinalIgnoreCase) && Forced(o)) names.Add(o);
+        foreach (var o in order)
+            if (!names.Contains(o, StringComparer.OrdinalIgnoreCase) && on.Contains(o)) names.Add(o);
 
         // ---- a flat folder of links to the real plugin files (Mutagen reads one Data folder)
         var flat = Path.Combine(Path.GetTempPath(), "FunkyPatcher-" + Guid.NewGuid().ToString("N")[..8]);
