@@ -70,8 +70,10 @@ public sealed class ProView : UserControl
         RenderOptions.SetBitmapScalingMode(sign, BitmapScalingMode.HighQuality);
         var frame = new Border
         {
-            Child = sign, CornerRadius = new CornerRadius(size * 0.24), VerticalAlignment = VerticalAlignment.Center, ClipToBounds = true,
-            BorderThickness = new Thickness(menu ? 1.5 : 0), Margin = new Thickness(0, 0, 1, 0),
+            Child = sign, CornerRadius = new CornerRadius(size * 0.24), ClipToBounds = true,
+            // the page title: the sign stands on the text's baseline (the font leaves room for descenders below it)
+            VerticalAlignment = menu ? VerticalAlignment.Center : VerticalAlignment.Bottom,
+            BorderThickness = new Thickness(menu ? 1.5 : 0), Margin = new Thickness(0, 0, 1, menu ? 0 : size * 0.22),
         };
         if (menu)
         {
@@ -180,7 +182,7 @@ public sealed class ProView : UserControl
         body.Children.Add(new TextBlock
         {
             Text = t.Text, FontSize = 13, LineHeight = 19, Foreground = new SolidColorBrush(Color.FromRgb(0xC9, 0xC9, 0xD6)),
-            TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 14, 0, 0), MaxHeight = 39, TextTrimming = TextTrimming.CharacterEllipsis,
+            TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 14, 0, 0), MaxHeight = 58, // up to three lines; a row of cards takes the tallest
         });
         var card = new Border
         {

@@ -40,7 +40,7 @@ public static class Loc
         ["tools.soon"] = ("Скоро", "Soon"),
         ["tools.pro.text"] = ("Сохранения, игра, клипы, профили сборки — все Pro-инструменты здесь.", "Saves, gaming, clips, modlist profiles — all Pro tools here."),
         ["tools.pro.main"] = ("Облачный бэкап", "Cloud backup"),
-        ["tools.pro.main.text"] = ("Бэкап сохранений копируется в твоё облако на выбор: Google, Яндекс, OneDrive.", "Save backups are copied to your own cloud of choice: Google, Yandex, OneDrive."),
+        ["tools.pro.main.text"] = ("Копия сохранений кладётся в папку твоего облака: Google, Яндекс, OneDrive.", "A copy of your saves goes into your cloud folder: Google, Yandex, OneDrive."),
         ["pro.page.sub"] = ("Инструменты Pro для сохранений, сборки, игры и записи.", "Pro tools for your saves, your modlist, gameplay and recording."),
         ["pro.page.status"] = ("● Активен до {0}", "● Active until {0}"),
         ["pro.page.count"] = ("{0} инструментов", "{0} tools"),
