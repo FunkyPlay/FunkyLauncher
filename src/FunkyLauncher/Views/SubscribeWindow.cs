@@ -47,7 +47,7 @@ public sealed class SubscribeWindow : Window
         Make(Loc.T("subscribe.later"), false, null);
         if (en)
         {
-            Make("YouTube", true, AppConfig.YouTubeUrl);
+            Make("YouTube", true, Catalog.YouTube);
             if (Catalog.Social.Instagram.Length > 0) Make("Instagram", true, Catalog.Social.Instagram);
         }
         else Make(Loc.T("subscribe.telegram"), true, AppConfig.TelegramUrl).IsDefault = true;

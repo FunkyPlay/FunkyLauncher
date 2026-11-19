@@ -7,6 +7,8 @@ public static class AppConfig
     public const string TelegramChannel = "FunkyPlayTV";
     public const string TelegramUrl = "https://t.me/" + TelegramChannel;
     public const string YouTubeUrl = "https://www.youtube.com/@" + TelegramChannel;
+    /// <summary>The English YouTube channel (Funky 20.11): the fallback when no catalog has "youtubeEn".</summary>
+    public const string YouTubeEnUrl = "https://www.youtube.com/@FunkyPlayTV_EN";
     /// <summary>Launcher news: since 2026-11-19 one Telegram channel for everything, @FunkyPlayTV (the old @FunkyLauncher only points to it).</summary>
     public const string LauncherNewsUrl = TelegramUrl;
     /// <summary>The support bot (Funky Help sends the RustDesk ID here).</summary>

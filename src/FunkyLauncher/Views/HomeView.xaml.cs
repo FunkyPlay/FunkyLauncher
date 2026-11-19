@@ -187,7 +187,7 @@ public partial class HomeView : UserControl
         Tiles.Children.Clear();
         Tiles.Children.Add(Tile("🎮", "tile.mods", "#FF3FD2", () => _main.ShowLibrary()));
         Tiles.Children.Add(Tile("🧰", "tile.soft", "#7AE8FF", () => _main.ShowSoft()));
-        Tiles.Children.Add(Tile("▶", "tile.video", "#B9A2F2", () => PlayService.OpenUrl(AppConfig.YouTubeUrl)));
+        Tiles.Children.Add(Tile("▶", "tile.video", "#B9A2F2", () => PlayService.OpenUrl(Catalog.YouTube)));
     }
 
     private Border Tile(string icon, string key, string color, Action open)
@@ -282,7 +282,7 @@ public partial class HomeView : UserControl
     private void Support_Click(object sender, RoutedEventArgs e) =>
         PlayService.OpenSupportChat(Loc.T("support.write.text"), _main.Settings, _main.Selected);
     private void Telegram_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(AppConfig.TelegramUrl);
-    private void YouTube_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(AppConfig.YouTubeUrl);
+    private void YouTube_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(Catalog.YouTube);
     private void Instagram_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(Catalog.Social.Instagram);
     private void TikTok_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(Catalog.Social.TikTok);
     private void GitHub_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(AppConfig.GitHubUrl);

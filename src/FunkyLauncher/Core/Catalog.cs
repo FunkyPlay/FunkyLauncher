@@ -192,6 +192,8 @@ public sealed class SocialLinks
 {
     [JsonPropertyName("instagram")] public string Instagram { get; set; } = "";
     [JsonPropertyName("tiktok")] public string TikTok { get; set; } = "";
+    /// <summary>The English YouTube channel (the Russian one stays AppConfig.YouTubeUrl).</summary>
+    [JsonPropertyName("youtubeEn")] public string YouTubeEn { get; set; } = "";
 }
 
 public sealed class RemoteHelpSource
@@ -300,6 +302,7 @@ public static class Catalog
         {
             Instagram = c.Social?.Instagram is { } ig && ig.StartsWith("https://") ? ig : BuiltInSocial.Instagram,
             TikTok = c.Social?.TikTok is { } tt && tt.StartsWith("https://") ? tt : BuiltInSocial.TikTok,
+            YouTubeEn = c.Social?.YouTubeEn is { } ye && ye.StartsWith("https://") ? ye : BuiltInSocial.YouTubeEn.StartsWith("https://") ? BuiltInSocial.YouTubeEn : AppConfig.YouTubeEnUrl,
         };
         RemoteHelp = c.RemoteHelp is { Url.Length: > 0, Host.Length: > 0 } ? c.RemoteHelp : BuiltInRemoteHelp;
         Mo2 = c.Mo2 is { Url.Length: > 0, Sha256.Length: > 0 } ? c.Mo2 : BuiltInMo2;
@@ -336,6 +339,9 @@ public static class Catalog
     }
 
     public static Modlist? Find(string? id) => Items.FirstOrDefault(m => m.Id == id);
+
+    /// <summary>The YouTube channel for the launcher's language: English → "youtubeEn", Russian → the Russian channel.</summary>
+    public static string YouTube => Loc.Lang == "en" ? (Social.YouTubeEn.StartsWith("https://") ? Social.YouTubeEn : AppConfig.YouTubeEnUrl) : AppConfig.YouTubeUrl;
 
     private static CatalogFile Parse(Stream s)
     {
