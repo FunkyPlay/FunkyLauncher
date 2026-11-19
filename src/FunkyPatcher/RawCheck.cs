@@ -20,7 +20,7 @@ public sealed class RawPlugin
     private readonly string _path;
     private readonly string _name;
     private readonly List<string> _full = new(), _medium = new(), _light = new();
-    private readonly Dictionary<(string Mod, uint Id), (long Offset, int Size, uint Flags, string Type, uint RawId)> _index = new();
+    private readonly Dictionary<(string Mod, uint Id), (long Offset, int Size, uint Flags, string Type, uint RawId, int Parent)> _index = new();
     /// <summary>How this plugin itself is flagged (decides how many bits its own record numbers have).</summary>
     public Style Own { get; }
     private uint OwnMask => Own switch { Style.Light => 0xFFFu, Style.Medium => 0xFFFFu, _ => 0xFFFFFFu };
@@ -34,6 +34,26 @@ public sealed class RawPlugin
         _index.TryGetValue((ownerPlugin.ToLowerInvariant(), id), out var at) && ownerPlugin.Equals(_name, StringComparison.OrdinalIgnoreCase) && (at.RawId >> 24) == 0xFE && Own != Style.Light;
     public uint RawFormId(string ownerPlugin, uint id) => _index[(ownerPlugin.ToLowerInvariant(), id)].RawId;
     public string Name => _name;
+    /// <summary>Type of the group the record sits in (0 top level, 3 interior cell sub-block, 5 exterior cell sub-block ...).</summary>
+    public int ParentGroupType(string ownerPlugin, uint id) => _index[(ownerPlugin.ToLowerInvariant(), id)].Parent;
+    /// <summary>Flags of the plugin's own header (0x80 = texts live in string tables, 0x1 = master...).</summary>
+    public uint HeaderFlags { get; private set; }
+    /// <summary>Master names in the order of the file (all kinds together).</summary>
+    public List<string> MastersInFileOrder { get; } = new();
+    private bool? _foreign;
+    /// <summary>The plugin is not light yet writes its own records in the light form (FE...): its raw bytes cannot be moved to another plugin as they are.</summary>
+    public bool HasForeignOwnRecords => _foreign ??= _separated && Own != Style.Light
+        && _index.Any(kv => kv.Key.Mod == _name.ToLowerInvariant() && (kv.Value.RawId >> 24) == 0xFE);
+    /// <summary>The 24 bytes of the record header exactly as stored.</summary>
+    public byte[] RecordHeader(string ownerPlugin, uint id)
+    {
+        var at = _index[(ownerPlugin.ToLowerInvariant(), id)];
+        using var f = File.OpenRead(_path);
+        f.Position = at.Offset - 24;
+        var h = new byte[24];
+        f.ReadExactly(h, 0, 24);
+        return h;
+    }
     public IReadOnlyList<string> Masters => _full.Concat(_medium).Concat(_light).ToList();
 
     public static Style StyleOf(string path)
@@ -59,6 +79,7 @@ public sealed class RawPlugin
         using var f = File.OpenRead(path);
         var h = new byte[24];
         f.ReadExactly(h, 0, 24);
+        HeaderFlags = BitConverter.ToUInt32(h, 8);
         var headerSize = BitConverter.ToInt32(h, 4);
         var header = new byte[headerSize];
         f.ReadExactly(header, 0, headerSize);
@@ -66,12 +87,13 @@ public sealed class RawPlugin
         {
             if (s.Type != "MAST") continue;
             var m = Encoding.UTF8.GetString(s.Data).TrimEnd('\0');
+            MastersInFileOrder.Add(m);
             (!separated ? _full : styleOfMaster(m) switch { Style.Light => _light, Style.Medium => _medium, _ => _full }).Add(m);
         }
-        Walk(f, 24 + headerSize, f.Length);
+        Walk(f, 24 + headerSize, f.Length, 0);
     }
 
-    private void Walk(FileStream f, long pos, long end)
+    private void Walk(FileStream f, long pos, long end, int parentGroupType)
     {
         var h = new byte[24];
         while (pos + 24 <= end)
@@ -82,12 +104,12 @@ public sealed class RawPlugin
             var size = BitConverter.ToUInt32(h, 4);
             if (type == "GRUP")
             {
-                Walk(f, pos + 24, pos + size);
+                Walk(f, pos + 24, pos + size, BitConverter.ToInt32(h, 12));
                 pos += size;
                 continue;
             }
             var key = Decode(BitConverter.ToUInt32(h, 12));
-            if (key != null) _index[key.Value] = (pos + 24, (int)size, BitConverter.ToUInt32(h, 8), type, BitConverter.ToUInt32(h, 12));
+            if (key != null) _index[key.Value] = (pos + 24, (int)size, BitConverter.ToUInt32(h, 8), type, BitConverter.ToUInt32(h, 12), parentGroupType);
             pos += 24 + size;
         }
     }

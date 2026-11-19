@@ -22,7 +22,7 @@ namespace FunkyPatcher;
 public static class Program
 {
     private const int MaxMastersPerPatch = 180;
-    private static readonly HashSet<string> SkippedTypes = new(StringComparer.OrdinalIgnoreCase) { "REFR", "CELL", "WRLD", "DIAL" };
+    private static readonly HashSet<string> SkippedTypes = new(StringComparer.OrdinalIgnoreCase) { "REFR", "WRLD", "DIAL" };
 
     public static int Main(string[] args)
     {
@@ -55,12 +55,14 @@ public static class Program
         return report.Ok ? 0 : 1;
     }
 
-    private sealed class Report
+    internal sealed class Report
     {
         public bool Ok { get; set; }
         public string? Error { get; set; }
         public int DictionaryLines { get; set; }
         public int Made { get; set; }
+        public int MadeByBytes { get; set; }
+        public SortedDictionary<string, int> SentToByteCopy { get; set; } = new();
         public SortedDictionary<string, int> Skipped { get; set; } = new();
         public List<string> SkippedSamples { get; set; } = new();
         public List<PatchInfo> Patches { get; set; } = new();
@@ -73,29 +75,30 @@ public static class Program
         {
             Skipped[why] = Skipped.GetValueOrDefault(why) + 1;
             if (why.StartsWith("record not found") || why.StartsWith("record the library")) { var k = why[..10] + " " + what.Split(':')[0] + " " + what.Split(' ')[1]; NotFoundByOwner[k] = NotFoundByOwner.GetValueOrDefault(k) + 1; }
-            if ((SkippedSamples.Count < 60 || (why.StartsWith("copy would") && SkippedSamples.Count < 1600)) && !why.StartsWith("record type left alone")) SkippedSamples.Add(why + ": " + what);
+            if ((SkippedSamples.Count < 60 || ((why.StartsWith("copy would") || why.StartsWith("byte copy")) && SkippedSamples.Count < 2400)) && !why.StartsWith("record type left alone")) SkippedSamples.Add(why + ": " + what);
         }
     }
 
-    private sealed class PatchInfo
+    internal sealed class PatchInfo
     {
         public string File { get; set; } = "";
         public int Records { get; set; }
         public int Masters { get; set; }
+        public string? Winner { get; set; }
     }
 
     private sealed record Entry(string Owner, uint Id, string Record, string Field, string Ru);
 
     /// <summary>What differs between the games we patch.</summary>
     private sealed record GameInfo(GameRelease Release, string[] Official, string Ccc, string ForcedPattern, bool SeparatedMasters,
-        string OfficialTextPrefix, ModType PatchType, int PatchFlags)
+        string OfficialTextPrefix, ModType PatchType, int PatchFlags, PluginShape Shape)
     {
         public static readonly GameInfo Starfield = new(GameRelease.Starfield,
             new[] { "Starfield.esm", "Constellation.esm", "OldMars.esm", "SFBGS003.esm", "SFBGS004.esm", "SFBGS006.esm", "SFBGS007.esm", "SFBGS008.esm", "ShatteredSpace.esm", "BlueprintShips-Starfield.esm" },
-            "Starfield.ccc", @"^(BlueprintShips-)?SFBGS[0-9A-Fa-f]{3}\.esm$", true, "@segnet:", ModType.Master, 0x1 | 0x100); // master + light (small)
+            "Starfield.ccc", @"^(BlueprintShips-)?SFBGS[0-9A-Fa-f]{3}\.esm$", true, "@segnet:", ModType.Master, 0x1 | 0x100, new PluginShape(0x101, 0x240, 0.96f, false, ".esm")); // master + light (small)
         public static readonly GameInfo Fallout4 = new(GameRelease.Fallout4,
             new[] { "Fallout4.esm", "DLCRobot.esm", "DLCworkshop01.esm", "DLCCoast.esm", "DLCworkshop02.esm", "DLCworkshop03.esm", "DLCNukaWorld.esm" },
-            "Fallout4.ccc", @"^cc[A-Za-z0-9]+-.*\.es[lm]$", false, "@game:", ModType.Plugin, 0x200); // a light (ESL-flagged) .esp
+            "Fallout4.ccc", @"^cc[A-Za-z0-9]+-.*\.es[lm]$", false, "@game:", ModType.Plugin, 0x200, new PluginShape(0x200, 0x83, 1.0f, true, ".esp")); // a light (ESL-flagged) .esp
     }
 
     private static void Run<TMod, TModGetter>(GameInfo info, string mo2, string profile, string game, string dictPath, string outDir, string prefix, bool allowStop, Report report)
@@ -242,7 +245,7 @@ public static class Program
 
             // ---- patches
             Directory.CreateDirectory(outDir);
-            foreach (var old in Directory.EnumerateFiles(outDir, prefix + "_*.esm")) File.Delete(old);
+            foreach (var pat in new[] { prefix + "_*.esm", prefix + "_*.esp" }) foreach (var old in Directory.EnumerateFiles(outDir, pat)) File.Delete(old);
             var patches = new List<(TMod Mod, HashSet<ModKey> Masters, int Count)>();
             void NewPatch()
             {
@@ -253,15 +256,21 @@ public static class Program
             NewPatch();
             var made = new Dictionary<TMod, List<(FormKey Key, ModKey Winner, IMajorRecord Copy, string What)>>();
 
+            // records that have a field the library cannot address (OBTE-FULL#n, WNAM#n, ATTX) go to the byte copy as a whole
+            var byteOnly = new HashSet<(string, uint)>(entries.Where(x => !x.Field.Equals("FULL", StringComparison.OrdinalIgnoreCase) || x.Record.Equals("CELL", StringComparison.OrdinalIgnoreCase)).Select(x => (x.Owner.ToLowerInvariant(), x.Id)));
+            var fallback = new HashSet<(string, uint)>();
             foreach (var e in entries)
             {
                 var what = $"{e.Owner}:{e.Id:X6} {e.Record}";
-                if (!e.Field.Equals("FULL", StringComparison.OrdinalIgnoreCase)) { report.Skip("field not supported", what); continue; }
+                var recKey = (e.Owner.ToLowerInvariant(), e.Id);
+                if (!ByteCopy.IsKnownField(e.Field)) { report.Skip("field not supported", what + " " + e.Field); continue; }
+                if (!e.Field.Equals("FULL", StringComparison.OrdinalIgnoreCase) || byteOnly.Contains(recKey)) continue; // done by the byte copy below
+                void ToByteCopy(string why) { fallback.Add(recKey); report.SentToByteCopy[why] = report.SentToByteCopy.GetValueOrDefault(why) + 1; }
                 if (SkippedTypes.Contains(e.Record)) { report.Skip("record type left alone (" + e.Record.ToUpperInvariant() + ")", what); continue; }
                 var text = Text(e);
                 if (text == null) { report.Skip("no text (official translation not found)", what + " " + e.Ru); continue; }
                 var formKey = new FormKey(ModKey.FromFileName(e.Owner), e.Id);
-                if (!typeBySignature.TryGetValue(e.Record, out var getterType)) { report.Skip("record type unknown to the library (" + e.Record + ")", what); continue; }
+                if (!typeBySignature.TryGetValue(e.Record, out var getterType)) { ToByteCopy("record type unknown to the library"); continue; }
                 TModGetter? winner = null; IGroupGetter? winnerGroup = null;
                 foreach (var mod in mods)
                 {
@@ -287,7 +296,7 @@ public static class Program
                     var nameNow = rec is ITranslatedNamedGetter named ? named.Name?.String
                         : rec is INamedGetter plain ? plain.Name
                         : (NameComponent(rec) as ITranslatedNamedGetter)?.Name?.String;
-                    if (rec is not ITranslatedNamedGetter && rec is not INamedGetter && NameComponent(rec) == null) { report.Skip("record has no name field", what + " " + rec.GetType().Name); continue; }
+                    if (rec is not ITranslatedNamedGetter && rec is not INamedGetter && NameComponent(rec) == null) { ToByteCopy("record has no name field in the library"); continue; }
                     if (string.Equals(nameNow, text, StringComparison.Ordinal)) { report.Skip("already has this name", what); continue; }
 
                     var need = new HashSet<ModKey> { formKey.ModKey, winner.ModKey };
@@ -299,7 +308,7 @@ public static class Program
                     if (copy is ITranslatedNamed target) target.Name = text;
                     else if (copy is INamed simple) simple.Name = text; // a few record types keep the name as plain text
                     else if (NameComponent(copy) is ITranslatedNamed full) full.Name = text;
-                    else { report.Skip("copy has no name field", what); continue; }
+                    else { ToByteCopy("copy has no name field in the library"); continue; }
                     DropChildRecords(copy); // e.g. a quest's dialogue and scenes: the patch overrides the quest itself only
                     cur.Mod.GetTopLevelGroup(copy.GetType()).AddUntyped(copy);
                     cur.Masters.UnionWith(need);
@@ -309,7 +318,7 @@ public static class Program
                 }
                 catch (Exception ex)
                 {
-                    report.Skip("record the library cannot read", what + " in " + winner.ModKey.FileName + ": " + ex.GetBaseException().Message);
+                    ToByteCopy("record the library cannot read");
                 }
             }
 
@@ -341,12 +350,13 @@ public static class Program
                             var a = Raw(m.Winner).Read(m.Key.ModKey.FileName, m.Key.ID);
                             var b = written.Read(m.Key.ModKey.FileName, m.Key.ID);
                             diff = a == null ? "source record not found by the byte reader" : b == null ? "record missing in the patch"
-                                : RawPlugin.Difference(Raw(m.Winner), a, written, b, allowStop, pass == 1 ? report.AcceptedDifferences : new());
+                                : RawPlugin.Difference(Raw(m.Winner), a, written, b, false, pass == 1 ? report.AcceptedDifferences : new());
                         }
                         catch (Exception ex) { diff = "check failed: " + ex.GetBaseException().Message; }
                         if (diff == null) continue;
                         bad.Add(n);
-                        report.Skip("copy would change more than the name", m.What + " in " + m.Winner.FileName + ": " + diff);
+                        report.SentToByteCopy["copy would change more than the name"] = report.SentToByteCopy.GetValueOrDefault("copy would change more than the name") + 1;
+                        fallback.Add((m.Key.ModKey.FileName.String.ToLowerInvariant(), m.Key.ID));
                         var kind = m.What.Split(' ')[^1] + " " + System.Text.RegularExpressions.Regex.Replace(diff, @"\d+", "N");
                         report.ChangedBeyondName[kind] = report.ChangedBeyondName.GetValueOrDefault(kind) + 1;
                     }
@@ -367,6 +377,26 @@ public static class Program
                 report.Made += list.Count;
                 report.Patches.Add(new PatchInfo { File = mod.ModKey.FileName, Records = list.Count, Masters = final.MasterCount });
             }
+            // ---- byte copy: the records the library cannot (or may not) copy, and the fields it cannot address
+            var jobs = new List<ByteJob>();
+            foreach (var g in entries.Where(x => !SkippedTypes.Contains(x.Record) && ByteCopy.IsKnownField(x.Field))
+                         .GroupBy(x => (x.Owner.ToLowerInvariant(), x.Id)))
+            {
+                if (!byteOnly.Contains(g.Key) && !fallback.Contains(g.Key)) continue;
+                var fields = new List<(string, string)>();
+                foreach (var x in g)
+                {
+                    var t = Text(x);
+                    if (t == null) { report.Skip("no text (official translation not found)", $"{x.Owner}:{x.Id:X6} {x.Record} {x.Field} {x.Ru}"); continue; }
+                    fields.Add((x.Field, t));
+                }
+                var first = g.First();
+                if (fields.Count > 0) jobs.Add(new ByteJob(first.Owner, first.Id, first.Record, fields, $"{first.Owner}:{first.Id:X6} {first.Record}"));
+            }
+            ByteCopy.Run(report, info.Shape, info.SeparatedMasters, outDir, prefix,
+                mods.Select(m => m.ModKey.FileName.String).ToList(),
+                n => { var k = mods.FirstOrDefault(m => string.Equals(m.ModKey.FileName.String, n, StringComparison.OrdinalIgnoreCase)); return k == null ? null : Raw(k.ModKey); },
+                StyleOf, jobs);
         }
         finally
         {
