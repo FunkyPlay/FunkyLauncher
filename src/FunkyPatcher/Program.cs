@@ -250,7 +250,7 @@ public static class Program
             {
                 if (count == 0) continue;
                 var file = Path.Combine(outDir, mod.ModKey.FileName);
-                mod.ModHeader.Flags |= StarfieldModHeader.HeaderFlag.Master;
+                mod.ModHeader.Flags |= StarfieldModHeader.HeaderFlag.Master | StarfieldModHeader.HeaderFlag.Light; // overrides only: a light plugin does not take a full plugin slot
                 // Starfield keeps texts inside plugins as UTF-8 (so do the Russian translations of mods)
                 var utf8 = new Mutagen.Bethesda.Plugins.Binary.Streams.EncodingBundle(Mutagen.Bethesda.Strings.DI.MutagenEncoding._utf8, Mutagen.Bethesda.Strings.DI.MutagenEncoding._utf8);
                 mod.BeginWrite.ToPath(file).WithLoadOrder(env.LoadOrder).WithEmbeddedEncodings(utf8).Write();
