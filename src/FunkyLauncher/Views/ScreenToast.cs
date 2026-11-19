@@ -110,6 +110,28 @@ public static class ScreenToast
         w.Show();
     }
 
+    /// <summary>A short message near the clock (Funky Pro: reminders, backup done…), closes by itself.</summary>
+    public static void Message(string title, string text)
+    {
+        var body = new StackPanel { Width = 340 };
+        body.Children.Add(new TextBlock { Text = title, FontSize = 15, FontWeight = FontWeights.Bold, TextWrapping = TextWrapping.Wrap, Foreground = (Brush)Application.Current.FindResource("Text") });
+        if (text.Length > 0)
+            body.Children.Add(new TextBlock { Text = text, FontSize = 13, TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 6, 0, 0), Foreground = (Brush)Application.Current.FindResource("Muted") });
+        var w = Frame(body);
+        w.MouseLeftButtonUp += (_, _) => w.Close();
+        var timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(8) };
+        timer.Tick += (_, _) => { if (!w.IsMouseOver) { timer.Stop(); w.Close(); } };
+        w.Loaded += (_, _) =>
+        {
+            var area = SystemParameters.WorkArea;
+            w.Left = area.Right - w.ActualWidth - 16;
+            w.Top = area.Bottom - w.ActualHeight - 16;
+            timer.Start();
+        };
+        w.Closed += (_, _) => timer.Stop();
+        w.Show();
+    }
+
     private static Window? _badge;
 
     /// <summary>The "● REC 00:12" badge at the top of the main screen with a Stop button. Null hides it.</summary>

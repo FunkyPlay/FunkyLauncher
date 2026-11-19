@@ -17,7 +17,7 @@ public static class LaunchWatcher
     private static readonly TimeSpan StartTimeout = TimeSpan.FromMinutes(3);
     private static readonly TimeSpan EarlyExit = TimeSpan.FromSeconds(60);
 
-    public static async Task<LaunchReport> WatchAsync(Settings settings, Modlist ml, CancellationToken token)
+    public static async Task<LaunchReport> WatchAsync(Settings settings, Modlist ml, CancellationToken token, Action<int>? started = null)
     {
         var launched = DateTime.Now;
         var name = Path.GetFileNameWithoutExtension(ml.GameExe);
@@ -41,14 +41,16 @@ public static class LaunchWatcher
             await Task.Delay(300, token);
         }
 
+        try { started?.Invoke(game.Id); } catch { /* a Pro hook never breaks the watch */ }
+
         // 2) wait for it to close
-        var started = DateTime.Now;
+        var startTime = DateTime.Now;
         while (Process.GetProcessesByName(name).Length > 0)
         {
             mo2.HideAll();
             await Task.Delay(1000, token);
         }
-        var runTime = DateTime.Now - started;
+        var runTime = DateTime.Now - startTime;
 
         // 3) normal exit or a problem?
         await Task.Delay(3000, token); // crash reporters write their files right after the exit

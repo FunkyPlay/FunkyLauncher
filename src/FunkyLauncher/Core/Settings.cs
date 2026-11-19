@@ -142,12 +142,17 @@ public sealed class Settings
     /// <summary>Remembers that this folder holds a working modlist of this version.</summary>
     public void MarkInstalled(Modlist m, string dir, string version)
     {
+        var old = InstalledVersions.TryGetValue(m.Id, out var ov) && ov.Length > 0 ? ov : null;
         File.WriteAllText(Path.Combine(dir, MarkerName), JsonSerializer.Serialize(
             new { modlist = m.Id, version, date = DateTime.Now.ToString("yyyy-MM-dd HH:mm") },
             new JsonSerializerOptions { WriteIndented = true }));
         InstalledVersions[m.Id] = version;
         Save();
+        try { Installed?.Invoke(this, m, old, version); } catch { /* a Pro hook never breaks an install */ }
     }
+
+    /// <summary>A modlist was installed or updated: (settings, modlist, old version or null, new version). Funky Pro listens.</summary>
+    public static event Action<Settings, Modlist, string?, string>? Installed;
 
     /// <summary>Installed version; installs made before version tracking count as the catalog version.</summary>
     public string? InstalledVersion(Modlist m) =>

@@ -208,6 +208,7 @@ public static class BackupService
     {
         foreach (var old in List(s, m).Where(x => x.Kind == BackupKind.Auto).Skip(KeepAuto))
         {
+            if (ProModules.KeepBackup(m, old.Dir)) continue; // Funky Pro: pinned backup
             try { Delete(s, m, old); } catch { /* try again next time */ }
         }
     }

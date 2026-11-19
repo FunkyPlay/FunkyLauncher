@@ -3,6 +3,7 @@ using System.IO;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using FunkyLauncher.Services;
 
 namespace FunkyLauncher;
 
@@ -82,7 +83,14 @@ public partial class MainWindow
                     ("10-tools-shoot", () => { NavTools.IsChecked = true; _tools.ShowShoot(); }, 1000),
                     ("11-tools-game", () => { NavTools.IsChecked = true; _tools.ShowGame(); }, 1000),
                     ("12-tools-pc", () => { NavTools.IsChecked = true; _tools.ShowPc(); _tools.RunPcCheck(); }, 1100),
-                };
+                }.ToList();
+                if (ProModules.Active) // Funky Pro pages: only with a Pro key (developer data folder)
+                {
+                    pages.Add(("15-pro", () => { NavTools.IsChecked = true; _tools.ShowPro(); }, 1000));
+                    foreach (var p in ProModules.Panels(Core.ProPlace.Tools))
+                        pages.Add(("16-pro-" + p.Id, () => { NavTools.IsChecked = true; _tools.ShowProTool(p.Id); }, 1000));
+                    pages.Add(("17-pro-settings", () => NavSettings.IsChecked = true, 1600));
+                }
                 foreach (var (name, show, height) in pages)
                 {
                     try

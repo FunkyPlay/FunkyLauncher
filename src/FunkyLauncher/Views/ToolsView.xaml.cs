@@ -56,9 +56,13 @@ public partial class ToolsView : UserControl
             ToolCards.Children.Add(ToolCard("▦", Loc.T("tools.desktops"), Loc.T("tools.desktops.text"), "#FFFFFF", "desktops", S.DesktopsOn ? Loc.T("tools.on") : null));
         if (ProModules.Active)
             ToolCards.Children.Add(ToolCard("★", "Funky Pro", Loc.T("tools.pro.text"), "gradient", "pro", Loc.T("tools.on")));
+        foreach (var p in ProModules.Panels(ProPlace.Tools)) // Funky Pro tools: a card each
+            ToolCards.Children.Add(ToolCard(p.Icon, p.Title, p.Text, "gradient", "pro:" + p.Id, "PRO"));
+        if (_tool.StartsWith("pro:") && !ProModules.Panels(ProPlace.Tools).Any(p => "pro:" + p.Id == _tool)) _tool = "backup";
         UpdateColumns();
-        ProPanel.Visibility = _tool == "pro" ? Visibility.Visible : Visibility.Collapsed;
-        if (_tool == "pro") RefreshPro();
+        var isPro = _tool == "pro" || _tool.StartsWith("pro:");
+        ProPanel.Visibility = isPro ? Visibility.Visible : Visibility.Collapsed;
+        if (isPro) RefreshPro();
         DeskPanel.Visibility = _tool == "desktops" ? Visibility.Visible : Visibility.Collapsed;
         if (_tool == "desktops") RefreshDesk();
         GamePanel.Visibility = _tool == "game" ? Visibility.Visible : Visibility.Collapsed;
@@ -172,9 +176,21 @@ public partial class ToolsView : UserControl
     private FrameworkElement? _proPanel;
 
     public void ShowPro() { _tool = "pro"; Refresh(); }
+    public void ShowProTool(string id) { _tool = "pro:" + id; Refresh(); }
+
+    private readonly Dictionary<string, FrameworkElement> _proTools = new();
 
     private void RefreshPro()
     {
+        if (_tool.StartsWith("pro:") && ProModules.Panels(ProPlace.Tools).FirstOrDefault(p => "pro:" + p.Id == _tool) is { } panel)
+        {
+            ProTitle.Text = panel.Title;
+            ProInfo.Text = panel.Text;
+            if (!_proTools.TryGetValue(panel.Id, out var el)) _proTools[panel.Id] = el = ProPanels.Build(panel);
+            ProHost.Content = el;
+            return;
+        }
+        ProTitle.Text = "Funky Pro";
         var (_, info) = ProLicense.Check(S.ProKey, DateTime.UtcNow);
         var until = info?.Until.ToString("dd.MM.yyyy") ?? "";
         if (ProModules.Use is { } m)

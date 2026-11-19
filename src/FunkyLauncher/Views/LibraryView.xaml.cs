@@ -35,6 +35,7 @@ public partial class LibraryView : UserControl
         var s = _main.Settings;
         var m = _main.Selected;
         var installed = m.IsReleased && s.IsInstalled(m);
+        if (installed) ProPanels.Fill(ProLibraryHost, ProPlace.Library); else ProLibraryHost.Children.Clear();
         var img = Images.Load(m.Banner);
         Banner.Background = img != null
             ? new ImageBrush(img) { Stretch = Stretch.UniformToFill, AlignmentY = AlignmentY.Center }
@@ -195,10 +196,16 @@ public partial class LibraryView : UserControl
 
     public void Play() => MainButton_Click(this, new RoutedEventArgs());
 
+    /// <summary>Funky Pro: PLAY with another MO2 profile of the selected modlist (once).</summary>
+    public void Play(string? mo2Profile) { _playProfile = mo2Profile; Play(); }
+
+    private string? _playProfile;
+
     private async void MainButton_Click(object sender, RoutedEventArgs e)
     {
         var m = _main.Selected;
         var s = _main.Settings;
+        var profile = _playProfile; _playProfile = null;
         if (!s.IsInstalled(m)) { _main.ShowSetup(); return; }
         if (_watching) return;
         MainButton.IsEnabled = false;
@@ -258,11 +265,16 @@ public partial class LibraryView : UserControl
             }
 
             // 4) start and watch
-            PlayService.Play(s, m);
+            ProModules.RaiseGameStarting(s, m);
+            PlayService.Play(s, m, profile);
             PlayMessage.Text = backupNote == null ? Loc.T("play.watch") : backupNote + "\n" + Loc.T("play.watch");
             _watching = true;
             LaunchReport report;
-            try { report = await LaunchWatcher.WatchAsync(s, m, CancellationToken.None); }
+            try
+            {
+                report = await LaunchWatcher.WatchAsync(s, m, CancellationToken.None,
+                    pid => Dispatcher.Invoke(() => ProModules.RaiseGameStarted(s, m, pid)));
+            }
             finally
             {
                 // the game has exited (or the watch failed): give the programs back
@@ -270,6 +282,7 @@ public partial class LibraryView : UserControl
             }
             _watching = false;
             PlayMessage.Text = "";
+            ProModules.RaiseGameExited(s, m, report);
             if (report.Result != LaunchResult.Ok) await HandleProblemAsync(m, report);
         }
         catch (Exception ex)

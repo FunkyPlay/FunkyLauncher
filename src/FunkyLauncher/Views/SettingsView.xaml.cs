@@ -61,6 +61,7 @@ public partial class SettingsView : UserControl
         ProText.Text = Loc.T("pro.text");
         ProRemove.Visibility = string.IsNullOrEmpty(_main.Settings.ProKey) ? Visibility.Collapsed : Visibility.Visible;
         if (status == ProKeyStatus.Valid) ProKeyBox.Text = "";
+        ProPanels.Fill(ProSettingsHost, ProPlace.Settings);
     }
 
     private void ProActivate_Click(object sender, RoutedEventArgs e)

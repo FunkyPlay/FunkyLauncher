@@ -66,6 +66,7 @@
                             <Button x:Name="Mo2Button" Style="{StaticResource SecondaryButton}" Height="54" Margin="0,0,0,8" Click="Mo2Button_Click"/>
                         </WrapPanel>
                         <TextBlock x:Name="PlayMessage" FontSize="13" Foreground="{StaticResource Muted}" Margin="0,10,0,0" TextWrapping="Wrap"/>
+                        <StackPanel x:Name="ProLibraryHost" Margin="0,8,0,0"/>
                     </StackPanel>
                 </Grid>
             </Border>

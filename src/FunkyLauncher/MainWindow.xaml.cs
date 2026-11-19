@@ -7,7 +7,7 @@ using FunkyLauncher.Views;
 
 namespace FunkyLauncher;
 
-public partial class MainWindow : Window
+public partial class MainWindow : Window, IProUi
 {
     public Settings Settings { get; } = Settings.Load();
 
@@ -78,6 +78,7 @@ public partial class MainWindow : Window
         // Funky Desktops is a test only for Funky: turned on once with --enable-desktops
         if (args.Contains("--enable-desktops") && !Settings.DesktopsBeta) { Settings.DesktopsBeta = true; Settings.Save(); }
         StartDesktops();
+        ProModules.Ui = this;
         ProModules.Refresh(Settings); // Funky Pro: loads the module only with a valid key
         ProModules.ShowUi = ProModules.SalesOpen || args.Contains("--show-pro") || ProLicense.Active(Settings);
         var i = Array.IndexOf(args, "--test-manual");
@@ -302,6 +303,7 @@ public partial class MainWindow : Window
     {
         Settings.SelectedId = m.Id;
         Settings.Save();
+        ProModules.RaiseSelectionChanged(Settings, m);
         _setup.ResetForModlist();
         ShowLibrary();
     }
@@ -344,6 +346,8 @@ public partial class MainWindow : Window
         RegisterHotKey(src.Handle, ShootHotkeyId, 0x1 | 0x2 | 0x4000, 0x7B);
         _hwnd = src.Handle;
         ApplyScreenHotkeys();
+        foreach (var (id, k) in _proHotkeys.ToList())
+            if (!RegisterHotKey(_hwnd, id, k.Mods, k.Vk)) _proHotkeys.Remove(id); // taken by another program
         src.AddHook((IntPtr hwnd, int msg, IntPtr wp, IntPtr lp, ref bool handled) =>
         {
             if (msg == 0x0312 && wp.ToInt32() is >= ScreenAreaId and <= ScreenRecId) // Funky Screen
@@ -356,6 +360,7 @@ public partial class MainWindow : Window
                 }
                 handled = true;
             }
+            else if (msg == 0x0312 && ProModules.HotkeyPressed(wp.ToInt32())) handled = true; // Funky Pro hotkey
             else if (msg == 0x0312 && wp.ToInt32() == ShootHotkeyId) // WM_HOTKEY
             {
                 var wasOn = RecordingMode.IsActive;
@@ -388,7 +393,7 @@ public partial class MainWindow : Window
             _deskTimer?.Stop();
             _lastDesk = null;
             try { Services.Desktops.ShowAll(); } catch { }
-            _tray?.Dispose(); _tray = null;
+            RebuildTray();
         }
         RefreshToolsDot();
     }
@@ -407,18 +412,7 @@ public partial class MainWindow : Window
             try { if (Services.Desktops.HasHidden) Services.Desktops.ShowAll(); } catch { }
             return;
         }
-        if (_tray == null)
-        {
-            System.Drawing.Icon? icon = null;
-            try { using var s = Application.GetResourceStream(new Uri("pack://application:,,,/Assets/launcher.ico"))!.Stream; icon = new System.Drawing.Icon(s); } catch { }
-            _tray = new System.Windows.Forms.NotifyIcon { Icon = icon ?? System.Drawing.SystemIcons.Application, Text = "Funky Launcher · Desktops", Visible = true };
-            var menu = new System.Windows.Forms.ContextMenuStrip();
-            menu.Items.Add(Loc.T("tray.open"), null, (_, _) => ShowFromTray());
-            menu.Items.Add(Loc.T("tray.showall"), null, (_, _) => Dispatcher.Invoke(() => { SetDesktops(false); _tools.Refresh(); }));
-            menu.Items.Add(Loc.T("tray.exit"), null, (_, _) => Dispatcher.Invoke(ExitApp));
-            _tray.ContextMenuStrip = menu;
-            _tray.DoubleClick += (_, _) => ShowFromTray();
-        }
+        RebuildTray();
         _deskTimer ??= new System.Windows.Threading.DispatcherTimer { Interval = TimeSpan.FromMilliseconds(600) };
         _deskTimer.Tick -= DeskTimer_Tick;
         _deskTimer.Tick += DeskTimer_Tick;
@@ -439,6 +433,66 @@ public partial class MainWindow : Window
             Services.Desktops.Apply(hide ?? new List<string>());
         }
         catch { /* never break the launcher because of the desktop */ }
+    }
+
+    /// <summary>The tray icon: shown while Funky Desktops is on or Funky Pro has tray items; the menu is built again each time.</summary>
+    private bool _trayExitHooked;
+    private void RebuildTray()
+    {
+        var pro = ProModules.TrayItems;
+        if (!Settings.DesktopsOn && pro.Count == 0) { _tray?.Dispose(); _tray = null; return; }
+        if (_tray == null)
+        {
+            System.Drawing.Icon? icon = null;
+            try { using var s = Application.GetResourceStream(new Uri("pack://application:,,,/Assets/launcher.ico"))!.Stream; icon = new System.Drawing.Icon(s); } catch { }
+            _tray = new System.Windows.Forms.NotifyIcon { Icon = icon ?? System.Drawing.SystemIcons.Application, Visible = true };
+            _tray.DoubleClick += (_, _) => ShowFromTray();
+            if (!_trayExitHooked) { _trayExitHooked = true; Application.Current.Exit += (_, _) => { _tray?.Dispose(); _tray = null; }; } // no ghost icon
+        }
+        _tray.Text = Settings.DesktopsOn ? "Funky Launcher · Desktops" : "Funky Launcher";
+        var menu = new System.Windows.Forms.ContextMenuStrip();
+        menu.Items.Add(Loc.T("tray.open"), null, (_, _) => ShowFromTray());
+        foreach (var (_, text, click) in pro)
+            menu.Items.Add(text, null, (_, _) => Dispatcher.Invoke(() => { try { click(); } catch { /* Pro item */ } }));
+        if (Settings.DesktopsOn)
+            menu.Items.Add(Loc.T("tray.showall"), null, (_, _) => Dispatcher.Invoke(() => { SetDesktops(false); _tools.Refresh(); }));
+        menu.Items.Add(Loc.T("tray.exit"), null, (_, _) => Dispatcher.Invoke(ExitApp));
+        var old = _tray.ContextMenuStrip;
+        _tray.ContextMenuStrip = menu;
+        old?.Dispose();
+    }
+
+    // ---------- Funky Pro doors (IProUi) ----------
+
+    void IProUi.Play(Modlist m, string? mo2Profile)
+    {
+        Select(m);
+        if (Settings.IsInstalled(m)) _library.Play(mo2Profile);
+    }
+
+    void IProUi.RefreshPages()
+    {
+        _library.Refresh();
+        _tools.Refresh();
+        _settingsView.Refresh();
+    }
+
+    void IProUi.TrayItemsChanged() => RebuildTray();
+
+    // Pro hotkeys asked for before the window handle exists are registered when it appears
+    private readonly Dictionary<int, (uint Mods, uint Vk)> _proHotkeys = new();
+
+    bool IProUi.RegisterHotkey(int id, uint mods, uint vk)
+    {
+        if (_hwnd != IntPtr.Zero && !RegisterHotKey(_hwnd, id, mods, vk)) return false;
+        _proHotkeys[id] = (mods, vk);
+        return true;
+    }
+
+    void IProUi.UnregisterHotkey(int id)
+    {
+        _proHotkeys.Remove(id);
+        if (_hwnd != IntPtr.Zero) UnregisterHotKey(_hwnd, id);
     }
 
     private void ShowFromTray() => Dispatcher.Invoke(() => { Show(); if (WindowState == WindowState.Minimized) WindowState = WindowState.Normal; Activate(); });
