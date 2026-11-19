@@ -52,16 +52,48 @@ public static class PlayService
         catch { OpenUrl($"{AppConfig.SupportBotUrl}?text={enc}"); }
     }
 
-    public static void OpenWabbajackGui()
+    /// <summary>
+    /// Opens Wabbajack's window (the Nexus login). Wabbajack refuses to run as administrator ("Don't run Wabbajack as Admin!"),
+    /// so with administrator rights (also: UAC off, or the built-in "Administrator" account) it is started as a normal user
+    /// (0.1.17, support #55/#57). False = it could not be done: the player got a clear message instead of Wabbajack's error.
+    /// </summary>
+    public static bool OpenWabbajackGui()
     {
         var gui = WabbajackService.FindGui();
-        if (gui == null) return;
-        // Wabbajack refuses to run as administrator ("Don't run Wabbajack as Admin!"). If the launcher itself was started
-        // elevated, Explorer starts Wabbajack for us — with the player's normal rights.
-        if (IsElevated())
+        if (gui == null) return false;
+        var dir = Path.GetDirectoryName(gui)!;
+        if (!LowRights.IsAdminToken())
+        {
+            Process.Start(new ProcessStartInfo(gui) { WorkingDirectory = dir, UseShellExecute = true });
+            return true;
+        }
+        if (LowRights.TryStart(gui, dir, out var error)) { Log("wabbajack window as a normal user"); return true; }
+        Log("wabbajack window as a normal user failed: " + error);
+        // the old way still helps when UAC is on: Explorer then runs with the player's normal rights
+        if (UacOn())
+        {
             Process.Start(new ProcessStartInfo("explorer.exe", $"\"{gui}\"") { UseShellExecute = true });
-        else
-            Process.Start(new ProcessStartInfo(gui) { WorkingDirectory = Path.GetDirectoryName(gui)!, UseShellExecute = true });
+            return true;
+        }
+        Views.Dialog.Show(System.Windows.Application.Current?.MainWindow, Loc.T("wj.admin.text"), Loc.T("wj.admin.title"),
+            System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Warning);
+        return false;
+    }
+
+    /// <summary>User Account Control is on (EnableLUA = 1, the Windows default).</summary>
+    private static bool UacOn()
+    {
+        try
+        {
+            using var k = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System");
+            return k?.GetValue("EnableLUA") is not int v || v != 0;
+        }
+        catch { return true; }
+    }
+
+    private static void Log(string msg)
+    {
+        try { File.AppendAllText(Path.Combine(AppConfig.DataDir, "launcher.log"), $"{DateTime.Now:yyyy-MM-dd HH:mm:ss} {msg}\n"); } catch { }
     }
 
     /// <summary>The launcher runs with administrator rights ("Run as administrator").</summary>
