@@ -19,6 +19,7 @@ public partial class MainWindow : Window, IProUi
     private readonly SetupView _setup;
     private readonly SoftView _soft;
     private readonly ToolsView _tools;
+    private readonly ProView _proView;
     private readonly SettingsView _settingsView;
 
     public MainWindow()
@@ -34,6 +35,7 @@ public partial class MainWindow : Window, IProUi
         _setup = new SetupView(this);
         _soft = new SoftView();
         _tools = new ToolsView(this);
+        _proView = new ProView(this);
         _settingsView = new SettingsView(this);
 
         (Loc.Lang == "en" ? LangEn : LangRu).IsChecked = true;
@@ -97,7 +99,7 @@ public partial class MainWindow : Window, IProUi
             ContentRendered += (_, _) => { NavTools.IsChecked = true; _tools.ShowDesktops(); };
         // developer test: FunkyLauncher.exe --test-pro → opens Tools → Funky Pro
         if (args.Contains("--test-pro"))
-            ContentRendered += (_, _) => { NavTools.IsChecked = true; _tools.ShowPro(); };
+            ContentRendered += (_, _) => ShowProPage();
         // developer test: FunkyLauncher.exe --test-addon → opens the 18+ add-on window for the selected modlist (changes nothing by itself)
         if (args.Contains("--test-addon"))
             ContentRendered += (_, _) =>
@@ -186,6 +188,7 @@ public partial class MainWindow : Window, IProUi
     {
         NavHome.Content = Loc.T("nav.home");
         NavLibrary.Content = Loc.T("nav.library");
+        RefreshProNav();
         NavSoft.Content = Loc.T("nav.soft");
         RefreshToolsDot();
         NavSettings.Content = Loc.T("nav.settings");
@@ -419,6 +422,8 @@ public partial class MainWindow : Window, IProUi
     {
         ProModules.Refresh(Settings);
         if (!ProModules.Active) { ((IProUi)this).SetBadge(null); ((IProUi)this).SetHomeBackground(null); } // Pro look goes with the key
+        RefreshProNav();
+        if (!ProModules.Active && NavPro.IsChecked == true) NavTools.IsChecked = true;
         _tools.Refresh();
     }
 
@@ -488,8 +493,25 @@ public partial class MainWindow : Window, IProUi
         if (Settings.IsInstalled(m)) _library.Play(mo2Profile);
     }
 
+    /// <summary>"Funky Pro" in the menu (under Library) — only with a valid key and the module loaded.</summary>
+    private void RefreshProNav()
+    {
+        NavPro.Visibility = ProModules.Use != null ? Visibility.Visible : Visibility.Collapsed;
+        if (NavPro.Content == null) NavPro.Content = ProView.Title(15, true);
+    }
+
+    /// <summary>Opens the Funky Pro page (toolId = one tool, null = all).</summary>
+    public void ShowProPage(string? toolId = null)
+    {
+        if (ProModules.Use == null) { NavTools.IsChecked = true; return; }
+        if (NavPro.IsChecked != true) NavPro.IsChecked = true;
+        _proView.Show(toolId);
+        Page.Content = _proView;
+    }
+
     void IProUi.RefreshPages()
     {
+        if (Page.Content == _proView) _proView.Refresh();
         _library.Refresh();
         _tools.Refresh();
         _settingsView.Refresh();
@@ -595,7 +617,8 @@ public partial class MainWindow : Window, IProUi
     /// </summary>
     private void Nav_Click(object sender, RoutedEventArgs e)
     {
-        var target = sender == NavHome ? (object)_home : sender == NavLibrary ? _library : sender == NavSoft ? _soft : sender == NavTools ? _tools : _settingsView;
+        var target = sender == NavHome ? (object)_home : sender == NavLibrary ? _library : sender == NavSoft ? _soft : sender == NavTools ? _tools : sender == NavPro ? _proView : _settingsView;
+        if (sender == NavPro && ReferenceEquals(Page.Content, _proView)) { _proView.Show(null); return; } // the menu item again → all Pro tools
         if (!ReferenceEquals(Page.Content, target)) Nav_Checked(sender, e);
     }
 
@@ -613,6 +636,7 @@ public partial class MainWindow : Window, IProUi
         else if (sender == NavLibrary) { _library.Refresh(); Page.Content = _library; }
         else if (sender == NavSoft) { _soft.Refresh(); Page.Content = _soft; }
         else if (sender == NavTools) { _tools.Refresh(); Page.Content = _tools; }
+        else if (sender == NavPro) { _proView.Refresh(); Page.Content = _proView; }
         else if (sender == NavSettings) { _settingsView.Refresh(); Page.Content = _settingsView; }
     }
 

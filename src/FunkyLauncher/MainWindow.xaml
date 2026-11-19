@@ -20,22 +20,23 @@
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Assets/icon.png" Width="40" Height="40" RenderOptions.BitmapScalingMode="HighQuality"/>
                         <StackPanel Margin="10,0,0,0" VerticalAlignment="Center">
+                            <TextBlock Text="FUNKY" FontFamily="{StaticResource TitleFont}" FontSize="16"/>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="FUNKY" FontFamily="{StaticResource TitleFont}" FontSize="16"/>
-                                <Border x:Name="ProBadge" Visibility="Collapsed" CornerRadius="6" Padding="6,1" Margin="6,0,0,0" VerticalAlignment="Center">
+                                <TextBlock Text="LAUNCHER" FontSize="11" Foreground="{StaticResource Muted}" VerticalAlignment="Center"/>
+                                <Border x:Name="ProBadge" Visibility="Collapsed" CornerRadius="4" Padding="5,0,5,1" Margin="6,1,0,0" VerticalAlignment="Center">
                                     <Border.Background>
-                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1"><GradientStop Color="#FF3FD2" Offset="0"/><GradientStop Color="#7AE8FF" Offset="1"/></LinearGradientBrush>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0"><GradientStop Color="#FF3FD2" Offset="0"/><GradientStop Color="#7AE8FF" Offset="1"/></LinearGradientBrush>
                                     </Border.Background>
                                     <TextBlock x:Name="ProBadgeText" Text="PRO" FontSize="10" FontWeight="Bold" Foreground="#07070D"/>
                                 </Border>
                             </StackPanel>
-                            <TextBlock Text="LAUNCHER" FontSize="11" Foreground="{StaticResource Muted}"/>
                         </StackPanel>
                     </StackPanel>
                 </DockPanel>
 
                 <RadioButton x:Name="NavHome" DockPanel.Dock="Top" Style="{StaticResource NavButton}" GroupName="nav" IsChecked="True" Checked="Nav_Checked" Click="Nav_Click"/>
                 <RadioButton x:Name="NavLibrary" DockPanel.Dock="Top" Style="{StaticResource NavButton}" GroupName="nav" Checked="Nav_Checked" Click="Nav_Click"/>
+                <RadioButton x:Name="NavPro" DockPanel.Dock="Top" Style="{StaticResource NavButton}" GroupName="nav" Visibility="Collapsed" Checked="Nav_Checked" Click="Nav_Click"/>
                 <RadioButton x:Name="NavSoft" DockPanel.Dock="Top" Style="{StaticResource NavButton}" GroupName="nav" Checked="Nav_Checked" Click="Nav_Click"/>
                 <RadioButton x:Name="NavTools" DockPanel.Dock="Top" Style="{StaticResource NavButton}" GroupName="nav" Checked="Nav_Checked" Click="Nav_Click"/>
                 <RadioButton x:Name="NavSettings" DockPanel.Dock="Top" Style="{StaticResource NavButton}" GroupName="nav" Checked="Nav_Checked" Click="Nav_Click"/>

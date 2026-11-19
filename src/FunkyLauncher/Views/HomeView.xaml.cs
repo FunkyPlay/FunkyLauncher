@@ -98,7 +98,6 @@ public partial class HomeView : UserControl
         PremiumText.Text = Loc.T("start.premium");
         FreeText.Text = Loc.T("start.free");
         LibraryButton.Content = Loc.T("start.library");
-        LauncherNewsButton.Content = Loc.T("home.launchernews");
         NewsTitle.Text = Loc.T("home.news");
         AllNews.Text = Loc.T("home.news.all");
         WhatsNewTitle.Text = Loc.F("start.whatsnew", AppConfig.Version);
@@ -123,7 +122,7 @@ public partial class HomeView : UserControl
     private void ApplyAudience()
     {
         var en = Loc.Lang == "en";
-        TelegramButton.Visibility = LauncherNewsButton.Visibility = en ? Visibility.Collapsed : Visibility.Visible;
+        TelegramButton.Visibility = en ? Visibility.Collapsed : Visibility.Visible;
         InstagramButton.Visibility = en && Catalog.Social.Instagram.Length > 0 ? Visibility.Visible : Visibility.Collapsed;
         TikTokButton.Visibility = en && Catalog.Social.TikTok.Length > 0 ? Visibility.Visible : Visibility.Collapsed;
         NewsPanel.Visibility = en ? Visibility.Collapsed : Visibility.Visible;
@@ -283,7 +282,6 @@ public partial class HomeView : UserControl
     private void Support_Click(object sender, RoutedEventArgs e) =>
         PlayService.OpenSupportChat(Loc.T("support.write.text"), _main.Settings, _main.Selected);
     private void Telegram_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(AppConfig.TelegramUrl);
-    private void LauncherNews_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(AppConfig.LauncherNewsUrl);
     private void YouTube_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(AppConfig.YouTubeUrl);
     private void Instagram_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(Catalog.Social.Instagram);
     private void TikTok_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(Catalog.Social.TikTok);

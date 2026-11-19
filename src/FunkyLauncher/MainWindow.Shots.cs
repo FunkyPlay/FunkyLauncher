@@ -86,9 +86,11 @@ public partial class MainWindow
                 }.ToList();
                 if (ProModules.Active) // Funky Pro pages: only with a Pro key (developer data folder)
                 {
-                    pages.Add(("15-pro", () => { NavTools.IsChecked = true; _tools.ShowPro(); }, 1000));
+                    pages.Add(("15-pro", () => ShowProPage(), 800));
+                    pages.Add(("15b-pro-full", () => ShowProPage(), 2600));
+                    pages.Add(("16-pro-main", () => ShowProPage("main"), 1000));
                     foreach (var p in ProModules.Panels(Core.ProPlace.Tools))
-                        pages.Add(("16-pro-" + p.Id, () => { NavTools.IsChecked = true; _tools.ShowProTool(p.Id); _tools.ScrollToProPanel(); }, 1300));
+                        pages.Add(("16-pro-" + p.Id, () => ShowProPage(p.Id), 1000));
                     pages.Add(("17-pro-settings", () => NavSettings.IsChecked = true, 1600));
                 }
                 foreach (var (name, show, height) in pages)

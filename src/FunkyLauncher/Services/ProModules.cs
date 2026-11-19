@@ -24,7 +24,7 @@ public sealed record ProPanelInfo(ProPlace Place, string Id, string Icon, string
 /// <summary>Loads the Funky Pro module (%LOCALAPPDATA%\FunkyLauncher\pro\FunkyLauncher.Pro.dll) when a valid key is saved.</summary>
 public static class ProModules
 {
-    public const int ApiVersion = 5;
+    public const int ApiVersion = 6;
 
     public static string Dir => Path.Combine(AppConfig.DataDir, "pro");
     public static string DllPath => Path.Combine(Dir, "FunkyLauncher.Pro.dll");
@@ -103,6 +103,10 @@ public static class ProModules
 
     public static IReadOnlyList<(string Id, string Text, Action Click)> TrayItems =>
         Live == null ? Array.Empty<(string, string, Action)>() : _host!.Tray.ToList();
+
+    /// <summary>Group, order and state of a Pro tool (defaults: "other", 99, no state).</summary>
+    public static (string Group, int Order, Func<bool?>? IsOn) ToolInfo(string id) =>
+        _host != null && _host.Info.TryGetValue(id, out var i) ? i : ("other", 99, null);
 
     /// <summary>A WM_HOTKEY the main window did not know: true if it was a Pro hotkey.</summary>
     public static bool HotkeyPressed(int id)
@@ -250,6 +254,8 @@ public static class ProModules
         public void RemovePanel(string id) => PanelList.RemoveAll(p => p.Id == id);
 
         public void RefreshUi() => OnUi(() => Ui?.RefreshPages());
+        internal readonly Dictionary<string, (string Group, int Order, Func<bool?>? IsOn)> Info = new();
+        public void SetToolInfo(string id, string group, int order, Func<bool?>? isOn) => Info[id] = (group, order, isOn);
         public void SetHomeBackground(string? file) => OnUi(() => Ui?.SetHomeBackground(file));
         public void SetBadge(string? text) => OnUi(() => Ui?.SetBadge(text));
 

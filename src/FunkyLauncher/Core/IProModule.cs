@@ -50,7 +50,7 @@ public sealed record ProGameExit(TimeSpan Played, bool Crashed, bool NotStarted)
 /// <summary>
 /// What the launcher gives the Pro module.
 /// API 1 (launcher 0.1.13): Settings, DataDir, Language, Log.
-/// API 2 (launcher 0.1.14): everything below. API 3: PlayProfile. API 4: CaptureSaved. API 5: SetHomeBackground, SetBadge. A module must check <see cref="ApiVersion"/> (missing on API 1 → MissingMethodException).
+/// API 2 (launcher 0.1.14): everything below. API 3: PlayProfile. API 4: CaptureSaved. API 5: SetHomeBackground, SetBadge. API 6: SetToolInfo (Funky Pro page). A module must check <see cref="ApiVersion"/> (missing on API 1 → MissingMethodException).
 /// </summary>
 public interface IProHost
 {
@@ -85,6 +85,10 @@ public interface IProHost
     event Action<ProModlist?>? SelectionChanged;
     /// <summary>The launcher is closing.</summary>
     event Action? Closing;
+
+    /// <summary>API 6: where a Tools panel stands on the Funky Pro page — group ("saves", "build", "play", "record", "look"),
+    /// order inside the group, and its on/off state (null = no state, e.g. a one-off action). id "main" = the module's CreatePanel.</summary>
+    void SetToolInfo(string id, string group, int order, Func<bool?>? isOn);
 
     /// <summary>API 5: the player's own picture or video behind the home header (null = ours).</summary>
     void SetHomeBackground(string? file);

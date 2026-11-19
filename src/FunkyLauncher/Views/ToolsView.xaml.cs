@@ -55,9 +55,7 @@ public partial class ToolsView : UserControl
         if (S.DesktopsBeta || ProModules.Active) // a test for everyone else; a full tool in Funky Pro
             ToolCards.Children.Add(ToolCard("▦", ProModules.Active ? "Funky Desktops" : Loc.T("tools.desktops"), Loc.T("tools.desktops.text"), "#FFFFFF", "desktops",
                 S.DesktopsOn ? Loc.T("tools.on") : ProModules.Active ? "PRO" : null));
-        if (ProModules.Active)
-            ToolCards.Children.Add(ToolCard("★", "Funky Pro", Loc.T("tools.pro.text"), "gradient", "pro", Loc.T("tools.on")));
-        if (_tool.StartsWith("pro:") && !ProModules.Panels(ProPlace.Tools).Any(p => "pro:" + p.Id == _tool)) _tool = ProModules.Active ? "pro" : "backup";
+        if (_tool == "pro" || _tool.StartsWith("pro:")) _tool = "backup"; // Funky Pro has its own page now (menu item under Library)
         UpdateColumns();
         var isPro = _tool == "pro" || _tool.StartsWith("pro:");
         ProPanel.Visibility = isPro ? Visibility.Visible : Visibility.Collapsed;
@@ -174,8 +172,8 @@ public partial class ToolsView : UserControl
 
     private FrameworkElement? _proPanel;
 
-    public void ShowPro() { _tool = "pro"; Refresh(); }
-    public void ShowProTool(string id) { _tool = "pro:" + id; Refresh(); }
+    public void ShowPro() => _main.ShowProPage();
+    public void ShowProTool(string id) => _main.ShowProPage(id);
 
     /// <summary>Scrolls the Pro panel to the top of the page (screenshots of Pro tools).</summary>
     public void ScrollToProPanel() =>
