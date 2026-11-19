@@ -51,7 +51,7 @@ public static class ScreenToast
     }
 
     /// <summary>"Saved and copied": picture preview (or video name) and buttons Open / Folder (+ Player / GIF for a video).</summary>
-    public static void Saved(string file, bool video, Action<string>? openInPlayer)
+    public static void Saved(string file, bool video, Action<string>? openInPlayer, Action<string>? reportFlaw = null)
     {
         _toast?.Close();
         var body = new StackPanel { Width = 340 };
@@ -78,6 +78,8 @@ public static class ScreenToast
         Window? w = null;
         row.Children.Add(Btn(Loc.T("screen.open"), true, () => { FunkyScreen.OpenFile(file); w?.Close(); }));
         row.Children.Add(Btn(Loc.T("screen.folder"), false, () => { FunkyScreen.ShowInFolder(file); w?.Close(); }));
+        if (!video && reportFlaw != null) // 0.1.15: a small flaw in a modlist goes to its own queue, not to support
+            row.Children.Add(Btn(Loc.Lang == "en" ? "Send as a modlist flaw" : "Отправить как недочёт сборки", false, () => { reportFlaw(file); w?.Close(); }));
         if (video && openInPlayer != null)
             row.Children.Add(Btn(Loc.T("screen.toplayer"), false, () => { openInPlayer(file); w?.Close(); }));
         if (video)

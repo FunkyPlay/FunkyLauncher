@@ -629,7 +629,8 @@ public partial class ToolsView : UserControl
             Clipboard.SetImage(bi);
         }
         catch { /* the clipboard may be busy, the file is saved anyway */ }
-        ScreenToast.Saved(file, false, null);
+        var flaw = FlawWindow.Target(S, _main.Selected);
+        ScreenToast.Saved(file, false, null, flaw == null ? null : f => FlawWindow.Open(_main, S, flaw, f));
         ScreenMessage.Text = Loc.F("screen.saved.where", file);
     }
 

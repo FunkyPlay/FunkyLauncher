@@ -125,6 +125,24 @@ public partial class MainWindow
                     SaveElement(holder, Path.Combine(dir, $"{lang}-13-update-window.png"));
                 }
                 catch (Exception e) { File.AppendAllText(Path.Combine(dir, "errors.txt"), $"{lang}-update: {e}\n"); }
+                // "Report a flaw" (0.1.15): the form and the thank-you screen
+                try
+                {
+                    if (Views.FlawWindow.Target(Settings, Selected) is { } fm)
+                    {
+                        var (form, thanks, bg, fw) = Views.FlawWindow.ForShots(Settings, fm);
+                        foreach (var (el, nm) in new[] { (form, "18-flaw-window"), (thanks, "18b-flaw-thanks") })
+                        {
+                            var holder = new System.Windows.Controls.Border { Background = bg, Child = el, Width = fw - 16 };
+                            holder.Measure(new Size(holder.Width, double.PositiveInfinity));
+                            holder.Arrange(new Rect(holder.DesiredSize));
+                            holder.UpdateLayout();
+                            await Task.Delay(300);
+                            SaveElement(holder, Path.Combine(dir, $"{lang}-{nm}.png"));
+                        }
+                    }
+                }
+                catch (Exception e) { File.AppendAllText(Path.Combine(dir, "errors.txt"), $"{lang}-flaw: {e}\n"); }
                 // the one-time "follow us" window after the first modlist install
                 try
                 {

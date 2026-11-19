@@ -82,6 +82,7 @@ public partial class LibraryView : UserControl
             DeleteOldButton.Content = Loc.T("lib.deleteold");
         }
 
+        ShowFlawLine(m, installed);
         StatusList.Children.Clear();
         if (m.IsReleased)
         {
@@ -123,6 +124,19 @@ public partial class LibraryView : UserControl
         };
         line.MouseLeftButtonUp += (_, _) => _main.ShowTools();
         StatusList.Children.Add(line);
+    }
+
+    /// <summary>"Report a flaw" (0.1.15, free): a short call and a link under PLAY.</summary>
+    private void ShowFlawLine(Modlist m, bool installed)
+    {
+        FlawLine.Inlines.Clear();
+        FlawLine.Visibility = installed ? Visibility.Visible : Visibility.Collapsed;
+        if (!installed) return;
+        FlawLine.Inlines.Add(new System.Windows.Documents.Run(FlawReport.Texts.T("Заметил мелочь — сломанную текстуру, английское название, странный предмет? Пришли нам снимок — так сборка становится лучше.  ",
+            "Spotted something small — a broken texture, an untranslated name, an odd item? Send us a screenshot — that's how the modlist gets better.  ")) { Foreground = (Brush)FindResource("Muted") });
+        var link = new System.Windows.Documents.Hyperlink(new System.Windows.Documents.Run("✎ " + FlawReport.Texts.T("Сообщить о недочёте", "Report a flaw"))) { Foreground = (Brush)FindResource("Cyan"), FontWeight = FontWeights.SemiBold };
+        link.Click += (_, _) => FlawWindow.Open(Window.GetWindow(this), _main.Settings, m);
+        FlawLine.Inlines.Add(link);
     }
 
     /// <summary>"18+ add-on · off" — one neutral line; a click opens the add-on window (age confirmation first).</summary>

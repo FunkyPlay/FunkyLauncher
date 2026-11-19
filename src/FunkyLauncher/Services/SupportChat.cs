@@ -116,6 +116,9 @@ public static class SupportChat
         return new();
     }
 
+    /// <summary>The same anonymous id and secret for the other queues of our server (flaw reports).</summary>
+    public static (string Install, string Key) Ids() { var me = Me(); return (me.Install, me.Key); }
+
     /// <summary>This PC's anonymous id, shown in the chat window (random, not taken from hardware or the Windows name).</summary>
     public static string InstallId => Me().Install;
 
