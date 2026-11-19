@@ -2,10 +2,10 @@
   "schema": 1,
   "modlistId": "neon-nights",
   "addonId": "neon-nights-adult",
-  "listVersion": "0.1.3",
-  "forMainVersion": "0.1.3",
+  "listVersion": "0.1.4",
+  "forMainVersion": "0.1.4",
   "draft": false,
-  "generated": "2026-11-12",
+  "generated": "2026-11-19",
   "rules": {
     "hash": "sha256 обязателен для проверки; wabbajackXxHash64 (base64, как в .wabbajack) — только где он был в 0.1.0",
     "matchDownloadBy": "sha256, а не имя файла: при скачивании из браузера Nexus даёт другое имя, чем у нас локально",

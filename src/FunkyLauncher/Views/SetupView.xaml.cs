@@ -610,6 +610,7 @@ public partial class SetupView : UserControl
     private async Task InstallAsync(string? updateDir = null)
     {
         BeginBusy();
+        var firstInstall = !Installed; // an update of an installed modlist is not "the first install"
         try
         {
             while (true)
@@ -650,7 +651,7 @@ public partial class SetupView : UserControl
                     DoneTelegram.Visibility = Loc.Lang == "en" ? Visibility.Collapsed : Visibility.Visible; // Russian channel: RU only
                     try { await AfterInstallAsync(); }
                     catch (Exception ex) { ProgressText.Text += "\n" + ex.Message; }
-                    if (updateDir == null) SubscribeWindow.ShowOnce(_main); // once ever, after the first modlist install
+                    if (firstInstall) SubscribeWindow.ShowOnce(_main); // once ever, after the first modlist install (not after an update)
                 }
                 break;
             }

@@ -272,9 +272,11 @@ public static class Addons
                 a = JsonSerializer.Deserialize<AddonFile>(s);
             }
             if (a == null || a.ModlistId != modlistId) return null;
+            foreach (var m in a.Mods) { m.Archive ??= new(); m.Nexus ??= new(); } // "archive": null in a list must not break the whole pack
+            // "bundled": our own mod whose folder comes with the base install — the pack downloads nothing, it only switches it on
             a.Mods = a.Mods.Where(m => !m.Blocked && m.Install.Type != "skip" && m.ModFolder.Length > 0
                 && (string.IsNullOrEmpty(m.Status) || m.Status == "ready")
-                && (!string.IsNullOrEmpty(m.Archive.LocalFileName) || m.Archives.Count > 0)).ToList();
+                && (!string.IsNullOrEmpty(m.Archive.LocalFileName) || m.Archives.Count > 0 || m.Install.Type == "bundled")).ToList();
             foreach (var m in a.Mods)
                 if (m.DisplayName.Ru.Length == 0) { m.DisplayName.Ru = m.Id; m.DisplayName.En = m.Id; }
             return a.Mods.Count > 0 ? a : null;

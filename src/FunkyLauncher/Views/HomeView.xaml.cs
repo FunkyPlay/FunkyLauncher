@@ -97,7 +97,8 @@ public partial class HomeView : UserControl
     private void ApplyAudience()
     {
         var en = Loc.Lang == "en";
-        TelegramButton.Visibility = LauncherNewsButton.Visibility = en ? Visibility.Collapsed : Visibility.Visible;
+        TelegramButton.Visibility = en ? Visibility.Collapsed : Visibility.Visible;
+        LauncherNewsButton.Visibility = Visibility.Collapsed; // one Telegram channel since 0.1.14: the "Telegram" button is enough
         InstagramButton.Visibility = en && Catalog.Social.Instagram.Length > 0 ? Visibility.Visible : Visibility.Collapsed;
         TikTokButton.Visibility = en && Catalog.Social.TikTok.Length > 0 ? Visibility.Visible : Visibility.Collapsed;
         NewsPanel.Visibility = en ? Visibility.Collapsed : Visibility.Visible;
