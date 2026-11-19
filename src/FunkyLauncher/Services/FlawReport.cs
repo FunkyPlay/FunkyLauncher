@@ -65,7 +65,13 @@ public static class FlawReport
     }
 
     /// <summary>Sends one report. Throws with a text for the player.</summary>
-    public static async Task SendAsync(Settings s, Modlist m, string text, string? picture, CancellationToken token)
+    /// <summary>A mod page on Nexus Mods (the only link "suggest a mod" takes).</summary>
+    public static bool IsNexusUrl(string url) =>
+        Uri.TryCreate(url.Trim(), UriKind.Absolute, out var u) && u.Scheme == Uri.UriSchemeHttps
+        && (u.Host.Equals("nexusmods.com", StringComparison.OrdinalIgnoreCase) || u.Host.EndsWith(".nexusmods.com", StringComparison.OrdinalIgnoreCase));
+
+    public static async Task SendAsync(Settings s, Modlist m, string text, string? picture, CancellationToken token,
+        string kind = "flaw", string modName = "", string modUrl = "")
     {
         text = text.Trim();
         if (text.Length > MaxText) text = text[..MaxText];
@@ -82,6 +88,7 @@ public static class FlawReport
         {
             install, key, game = Game(m), modlist = m.Id, title = m.Title, version = s.InstalledVersion(m) ?? m.Version,
             variant = Variant(s, m), launcher = AppConfig.Version, lang = Loc.Lang, text, file,
+            kind, mod_name = kind == "mod" ? modName.Trim() : null, mod_url = kind == "mod" && modUrl.Trim().Length > 0 ? modUrl.Trim() : null,
         }, token);
         if (resp.IsSuccessStatusCode) return;
         string? error = null;

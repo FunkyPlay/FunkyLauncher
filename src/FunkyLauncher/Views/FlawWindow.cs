@@ -27,6 +27,15 @@ public sealed class FlawWindow : Window
     private readonly Button _send;
     private readonly Border _frame;
     private string? _picture;
+    /// <summary>0.1.16: "flaw" (a modlist flaw) or "mod" (suggest a mod for the modlist).</summary>
+    private string _kind = "flaw";
+    private readonly TextBox _modName = Line1(200);
+    private readonly TextBox _modUrl = Line1(300);
+    private readonly StackPanel _modPanel = new() { Visibility = Visibility.Collapsed };
+    private readonly TextBlock _whatLabel = Label("", 16);
+    private readonly TextBlock _placeholder = new() { FontSize = 13.5, Foreground = new SolidColorBrush(Color.FromRgb(0x77, 0x78, 0x8A)), Margin = new Thickness(12, 9, 12, 0), IsHitTestVisible = false, TextWrapping = TextWrapping.Wrap };
+    private readonly TextBlock _shotLabel = Label("", 16);
+    private Button? _tabFlaw, _tabMod;
 
     private static readonly Brush Line = new SolidColorBrush(Color.FromRgb(0x34, 0x35, 0x4A));
     private static readonly Brush Field = new SolidColorBrush(Color.FromRgb(0x15, 0x15, 0x1C));
@@ -54,16 +63,53 @@ public sealed class FlawWindow : Window
         selected != null && s.IsInstalled(selected) ? selected : Catalog.Items.FirstOrDefault(x => x.IsReleased && s.IsInstalled(x));
 
     /// <summary>For --shots: the form (with the last Funky Screen shot) and the thank-you screen, not shown on screen.</summary>
-    internal static (FrameworkElement Form, FrameworkElement Thanks, Brush Bg, double Width) ForShots(Settings s, Modlist m)
+    internal static (FrameworkElement Form, FrameworkElement Thanks, Brush Bg, double Width) ForShots(Settings s, Modlist m, string kind = "flaw")
     {
         var w = new FlawWindow(s, m);
-        w.SetPicture(FlawReport.LastShot());
+        w.SetKind(kind);
+        if (kind == "mod") { w._modName.Text = "Appearance Menu Mod"; w._modUrl.Text = "https://www.nexusmods.com/cyberpunk2077/mods/790"; }
+        else w.SetPicture(FlawReport.LastShot());
         w.Content = null;
         var t = new FlawWindow(s, m);
+        t._kind = kind;
         t._frame.Child = t.Thanks();
         t._frame.Width = 560;
         t.Content = null;
         return (w._frame, t._frame, R("Bg"), 640 + 16);
+    }
+
+    /// <summary>A one-line text field in the window's look (the placeholder sits on top).</summary>
+    private static TextBox Line1(int max) => new()
+    {
+        MaxLength = max, Padding = new Thickness(10, 8, 10, 8), FontSize = 13.5, Background = Brushes.Transparent, Foreground = Brushes.White,
+        BorderThickness = new Thickness(0), CaretBrush = Brushes.White,
+    };
+
+    private static Border Boxed(TextBox box, string placeholder)
+    {
+        var ph = new TextBlock { Text = placeholder, FontSize = 13.5, Foreground = new SolidColorBrush(Color.FromRgb(0x77, 0x78, 0x8A)), Margin = new Thickness(12, 9, 12, 0), IsHitTestVisible = false };
+        box.TextChanged += (_, _) => ph.Visibility = box.Text.Length == 0 ? Visibility.Visible : Visibility.Collapsed;
+        var g = new Grid();
+        g.Children.Add(ph);
+        g.Children.Add(box);
+        return new Border { Child = g, Margin = new Thickness(0, 7, 0, 0), CornerRadius = new CornerRadius(10), BorderBrush = Line, BorderThickness = new Thickness(1), Background = Field };
+    }
+
+    /// <summary>Switches the window between "a modlist flaw" and "suggest a mod".</summary>
+    private void SetKind(string kind)
+    {
+        _kind = kind;
+        var mod = kind == "mod";
+        _modPanel.Visibility = mod ? Visibility.Visible : Visibility.Collapsed;
+        _whatLabel.Text = Loc.T(mod ? "mod.why" : "flaw.what");
+        _placeholder.Text = Loc.T(mod ? "mod.why.example" : "flaw.example");
+        _shotLabel.Text = Loc.T(mod ? "mod.shot" : "flaw.shot");
+        if (_tabFlaw != null && _tabMod != null)
+        {
+            _tabFlaw.Style = (Style)Application.Current.FindResource(mod ? "SecondaryButton" : "PrimaryButton");
+            _tabMod.Style = (Style)Application.Current.FindResource(mod ? "PrimaryButton" : "SecondaryButton");
+        }
+        Status("");
     }
 
     private static Brush R(string key) => (Brush)Application.Current.FindResource(key);
@@ -127,15 +173,29 @@ public sealed class FlawWindow : Window
         head.Inlines.Add(new System.Windows.Documents.Run(" · " + NiceTitle(_m.Title)) { Foreground = Muted, FontWeight = FontWeights.Normal });
         root.Children.Add(head);
 
-        root.Children.Add(Label(Loc.T("flaw.what"), 18));
-        var placeholder = new TextBlock { Text = Loc.T("flaw.example"), FontSize = 13.5, Foreground = new SolidColorBrush(Color.FromRgb(0x77, 0x78, 0x8A)), Margin = new Thickness(12, 9, 12, 0), IsHitTestVisible = false };
-        _box.TextChanged += (_, _) => placeholder.Visibility = _box.Text.Length == 0 ? Visibility.Visible : Visibility.Collapsed;
+        // 0.1.16: what this is — a modlist flaw or a mod suggestion
+        var tabs = new StackPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(0, 16, 0, 0) };
+        _tabFlaw = Btn(Loc.T("flaw.kind.flaw"), true, (_, _) => SetKind("flaw"), small: true);
+        _tabFlaw.Margin = new Thickness(0, 0, 8, 0);
+        _tabMod = Btn(Loc.T("flaw.kind.mod"), false, (_, _) => SetKind("mod"), small: true);
+        tabs.Children.Add(_tabFlaw);
+        tabs.Children.Add(_tabMod);
+        root.Children.Add(tabs);
+
+        _modPanel.Children.Add(Label(Loc.T("mod.name"), 16));
+        _modPanel.Children.Add(Boxed(_modName, Loc.T("mod.name.example")));
+        _modPanel.Children.Add(Label(Loc.T("mod.url"), 12));
+        _modPanel.Children.Add(Boxed(_modUrl, "https://www.nexusmods.com/…"));
+        root.Children.Add(_modPanel);
+
+        root.Children.Add(_whatLabel);
+        _box.TextChanged += (_, _) => _placeholder.Visibility = _box.Text.Length == 0 ? Visibility.Visible : Visibility.Collapsed;
         var field = new Grid();
-        field.Children.Add(placeholder);
+        field.Children.Add(_placeholder);
         field.Children.Add(_box);
         root.Children.Add(new Border { Child = field, Margin = new Thickness(0, 7, 0, 0), CornerRadius = new CornerRadius(10), BorderBrush = Line, BorderThickness = new Thickness(1), Background = Field });
 
-        root.Children.Add(Label(Loc.T("flaw.shot"), 16));
+        root.Children.Add(_shotLabel);
         var row = new StackPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(0, 7, 0, 0) };
         var left = new StackPanel { VerticalAlignment = VerticalAlignment.Center };
         left.Children.Add(_shot);
@@ -188,6 +248,7 @@ public sealed class FlawWindow : Window
         end.Children.Add(cancel);
         end.Children.Add(_send);
         root.Children.Add(end);
+        SetKind(_kind);
         return root;
     }
 
@@ -199,12 +260,12 @@ public sealed class FlawWindow : Window
     {
         var root = new StackPanel();
         var head = new TextBlock { FontSize = 23, FontWeight = FontWeights.Bold, TextWrapping = TextWrapping.Wrap };
-        head.Inlines.Add(new System.Windows.Documents.Run(Loc.T("flaw.thanks.title")));
+        head.Inlines.Add(new System.Windows.Documents.Run(Loc.T(_kind == "mod" ? "mod.thanks.title" : "flaw.thanks.title")));
         head.Inlines.Add(new System.Windows.Documents.Run("✓") { Foreground = R("Cyan") });
         root.Children.Add(head);
         root.Children.Add(new TextBlock
         {
-            Text = Loc.T("flaw.thanks.text"),
+            Text = Loc.T(_kind == "mod" ? "mod.thanks.text" : "flaw.thanks.text"),
             FontSize = 15, LineHeight = 22, Foreground = new SolidColorBrush(Color.FromRgb(0xB9, 0xB9, 0xC8)), TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 11, 0, 0),
         });
         var end = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Right, Margin = new Thickness(0, 22, 0, 0) };
@@ -266,12 +327,17 @@ public sealed class FlawWindow : Window
 
     private async Task SendAsync()
     {
-        if (_box.Text.Trim().Length == 0 && _picture == null) { Status(Loc.T("flaw.empty")); return; }
+        if (_kind == "mod")
+        {
+            if (_modName.Text.Trim().Length == 0) { Status(Loc.T("mod.err.name")); _modName.Focus(); return; }
+            if (_modUrl.Text.Trim() is { Length: > 0 } u && !FlawReport.IsNexusUrl(u)) { Status(Loc.T("mod.err.url")); _modUrl.Focus(); return; }
+        }
+        else if (_box.Text.Trim().Length == 0 && _picture == null) { Status(Loc.T("flaw.empty")); return; }
         _send.IsEnabled = false;
         _status.Foreground = R("Cyan"); _status.Text = Loc.T("flaw.sending"); _status.Visibility = Visibility.Visible;
         try
         {
-            await FlawReport.SendAsync(_s, _m, _box.Text, _picture, CancellationToken.None);
+            await FlawReport.SendAsync(_s, _m, _box.Text, _picture, CancellationToken.None, _kind, _modName.Text, _modUrl.Text);
             _frame.Child = Thanks();
             _frame.Width = 560;
         }

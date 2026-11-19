@@ -13,6 +13,15 @@ public sealed class LocText
     public override string ToString() => Loc.Lang == "en" && En.Length > 0 ? En : Ru;
 }
 
+/// <summary>A free add-on or tool of the game the modlist needs: its name, files that prove it is there (";"), an own hint.</summary>
+public sealed class RequiredTool
+{
+    [JsonPropertyName("name")] public LocText Name { get; set; } = new();
+    /// <summary>Paths inside the game folder, ";"-separated; all must exist.</summary>
+    [JsonPropertyName("check")] public string Check { get; set; } = "";
+    [JsonPropertyName("hint")] public LocText? Hint { get; set; }
+}
+
 /// <summary>One modlist (project) in the catalog.</summary>
 public sealed class Modlist
 {
@@ -28,6 +37,8 @@ public sealed class Modlist
     [JsonPropertyName("dlcName")] public LocText? DlcName { get; set; }
     /// <summary>Folder inside the game that proves the DLC is installed (relative path).</summary>
     [JsonPropertyName("dlcCheckPath")] public string? DlcCheckPath { get; set; }
+    /// <summary>0.1.16: free game add-ons / tools the modlist needs in the game folder (e.g. REDmod). Older launchers skip the field.</summary>
+    [JsonPropertyName("requiredTools")] public List<RequiredTool>? RequiredTools { get; set; }
 
     [JsonPropertyName("tag")] public LocText Tag { get; set; } = new();
     [JsonPropertyName("description")] public LocText Description { get; set; } = new();

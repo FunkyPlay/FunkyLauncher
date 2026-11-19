@@ -131,7 +131,8 @@ public partial class MainWindow
                     if (Views.FlawWindow.Target(Settings, Selected) is { } fm)
                     {
                         var (form, thanks, bg, fw) = Views.FlawWindow.ForShots(Settings, fm);
-                        foreach (var (el, nm) in new[] { (form, "18-flaw-window"), (thanks, "18b-flaw-thanks") })
+                        var (mform, mthanks, _, _) = Views.FlawWindow.ForShots(Settings, fm, "mod");
+                        foreach (var (el, nm) in new[] { (form, "18-flaw-window"), (thanks, "18b-flaw-thanks"), (mform, "18c-mod-window"), (mthanks, "18d-mod-thanks") })
                         {
                             var holder = new System.Windows.Controls.Border { Background = bg, Child = el, Width = fw - 16 };
                             holder.Measure(new Size(holder.Width, double.PositiveInfinity));

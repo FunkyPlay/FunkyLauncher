@@ -44,6 +44,12 @@
         "en": "Phantom Liberty"
       },
       "dlcCheckPath": "archive/pc/ep1",
+      "requiredTools": [
+        {
+          "name": { "ru": "REDmod", "en": "REDmod" },
+          "check": "tools/redmod/bin/redMod.exe"
+        }
+      ],
       "tag": {
         "ru": "Cyberpunk 2077 · 2.5 + Phantom Liberty",
         "en": "Cyberpunk 2077 · 2.5 + Phantom Liberty"

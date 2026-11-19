@@ -114,6 +114,12 @@ public static class SystemCheck
             return Directory.Exists(p) || File.Exists(p);
         });
 
+    /// <summary>Required game tools (REDmod…) missing from the game folder.</summary>
+    public static List<RequiredTool> MissingTools(Modlist ml, string gamePath) =>
+        (ml.RequiredTools ?? new()).Where(t => t.Check.Length > 0 && !DlcPresent(gamePath, t.Check)).ToList();
+
+    public static string ToolHint(RequiredTool t) => t.Hint?.ToString() is { Length: > 0 } h ? h : Loc.F("check.tool.hint", t.Name);
+
     public static (long FreeBytes, string Drive) FreeSpace(string dir)
     {
         try
@@ -189,6 +195,11 @@ public static class SystemCheck
                     ? new CheckItem(CheckState.Ok, Loc.F("check.dlc.ok", dlc))
                     : new CheckItem(CheckState.Error, Loc.F("check.dlc.no", dlc), Loc.T("check.dlc.hint")));
             }
+            var missing = MissingTools(ml, game.Path);
+            foreach (var t in ml.RequiredTools ?? new())
+                items.Add(missing.Contains(t)
+                    ? new CheckItem(CheckState.Error, Loc.F("check.tool.no", t.Name), ToolHint(t))
+                    : new CheckItem(CheckState.Ok, Loc.F("check.tool.ok", t.Name)));
         }
 
         items.Add(IsGameFolder(installDir, ml, game?.Path)
@@ -242,6 +253,8 @@ public static class SystemCheck
             var dlc = ml.DlcName?.ToString() ?? "DLC";
             throw new GameCheckException(Loc.F("check.dlc.no", dlc) + ". " + Loc.T("check.dlc.hint"));
         }
+        if (MissingTools(ml, game.Path).FirstOrDefault() is { } tool)
+            throw new GameCheckException(Loc.F("check.tool.no", tool.Name) + ". " + ToolHint(tool));
         return game;
     }
 }

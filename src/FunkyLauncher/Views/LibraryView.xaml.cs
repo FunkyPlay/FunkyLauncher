@@ -92,6 +92,7 @@ public partial class LibraryView : UserControl
             if (prev != null) AddStatus(true, Loc.F("lib.previous", prev.Version));
             if (installed && BackupService.Supported(m)) AddBackupStatus(m);
             if (installed) AddAddonStatus(m);
+            if (installed && m.RequiredTools is { Count: > 0 }) _ = AddToolStatusAsync(m);
         }
         if (!_watching) PlayMessage.Text = "";
     }
@@ -131,11 +132,22 @@ public partial class LibraryView : UserControl
     {
         FlawButton.Visibility = FlawLine.Visibility = installed ? Visibility.Visible : Visibility.Collapsed;
         FlawButton.Content = Loc.T("flaw.button");
-        FlawLine.Text = Loc.T("flaw.call");
+        FlawLine.Text = Loc.T("flaw.call") + " " + Loc.T("flaw.call.mod");
     }
 
     private void FlawButton_Click(object sender, RoutedEventArgs e) =>
         FlawWindow.Open(Window.GetWindow(this), _main.Settings, _main.Selected);
+
+    /// <summary>0.1.16: "REDmod installed" / "REDmod is not installed" in the ready list (the game is looked up first).</summary>
+    private async Task AddToolStatusAsync(Modlist m)
+    {
+        GameInfo? game = null;
+        try { game = await SystemCheck.FindGameAsync(m, CancellationToken.None); } catch { }
+        if (game == null || _main.Selected.Id != m.Id) return;
+        var missing = SystemCheck.MissingTools(m, game.Path);
+        foreach (var t in m.RequiredTools!)
+            AddStatus(!missing.Contains(t), missing.Contains(t) ? Loc.F("check.tool.no", t.Name) + " — " + SystemCheck.ToolHint(t) : Loc.F("check.tool.ok", t.Name));
+    }
 
     /// <summary>"18+ add-on · off" — one neutral line; a click opens the add-on window (age confirmation first).</summary>
     private void AddAddonStatus(Modlist m)
@@ -232,6 +244,12 @@ public partial class LibraryView : UserControl
                     Loc.T("play.version.title"), MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No);
                 if (answer != MessageBoxResult.Yes) { PlayMessage.Text = ""; return; }
             }
+
+            // 1-) 0.1.16: a required game tool (REDmod) is missing → the modlist won't start
+            if (game != null && SystemCheck.MissingTools(m, game.Path).FirstOrDefault() is { } tool
+                && Views.Dialog.Show(_main, Loc.F("play.tool.text", tool.Name, m.Title) + "\n\n" + SystemCheck.ToolHint(tool),
+                    Loc.F("check.tool.no", tool.Name), MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No) != MessageBoxResult.Yes)
+            { PlayMessage.Text = ""; return; }
 
             // 1a) our fixes made on this PC (broken meshes): also for modlists installed by an older launcher
             await Task.Run(() => { try { Mo2Profile.EnsureFixes(s, m); } catch { } });
