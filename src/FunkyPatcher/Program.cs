@@ -28,6 +28,7 @@ public static class Program
         string? Arg(string name) { var i = Array.IndexOf(args, name); return i >= 0 && i + 1 < args.Length ? args[i + 1] : null; }
         var mo2 = Arg("--mo2"); var profile = Arg("--profile"); var dict = Arg("--dict"); var outDir = Arg("--out");
         var game = Arg("--game"); var prefix = Arg("--name") ?? "FunkyPlay_RU_Names";
+        var allowStop = args.Contains("--allow-added-stop");
         if (mo2 == null || profile == null || dict == null || outDir == null || game == null)
         {
             Console.Error.WriteLine("FunkyPatcher --mo2 <MO2 folder> --profile <MO2 profile> --game <game folder> --dict <dictionary.tsv> --out <output mod folder> [--name <plugin name prefix>]");
@@ -36,7 +37,7 @@ public static class Program
         var report = new Report();
         try
         {
-            Run(mo2, profile, game, dict, outDir, prefix, report);
+            Run(mo2, profile, game, dict, outDir, prefix, allowStop, report);
             report.Ok = true;
         }
         catch (Exception ex)
@@ -61,12 +62,14 @@ public static class Program
         public List<PatchInfo> Patches { get; set; } = new();
         public int PluginsInLoadOrder { get; set; }
         public List<string> FixedFlagsInCopy { get; set; } = new();
+        public Dictionary<string, int> AcceptedDifferences { get; set; } = new();
+        public SortedDictionary<string, int> ChangedBeyondName { get; set; } = new();
         public SortedDictionary<string, int> NotFoundByOwner { get; set; } = new();
         public void Skip(string why, string what)
         {
             Skipped[why] = Skipped.GetValueOrDefault(why) + 1;
             if (why.StartsWith("record not found") || why.StartsWith("record the library")) { var k = why[..10] + " " + what.Split(':')[0] + " " + what.Split(' ')[1]; NotFoundByOwner[k] = NotFoundByOwner.GetValueOrDefault(k) + 1; }
-            if (SkippedSamples.Count < 60 && !why.StartsWith("record type left alone")) SkippedSamples.Add(why + ": " + what);
+            if ((SkippedSamples.Count < 60 || (why.StartsWith("copy would") && SkippedSamples.Count < 1600)) && !why.StartsWith("record type left alone")) SkippedSamples.Add(why + ": " + what);
         }
     }
 
@@ -79,7 +82,7 @@ public static class Program
 
     private sealed record Entry(string Owner, uint Id, string Record, string Field, string Ru);
 
-    private static void Run(string mo2, string profile, string game, string dictPath, string outDir, string prefix, Report report)
+    private static void Run(string mo2, string profile, string game, string dictPath, string outDir, string prefix, bool allowStop, Report report)
     {
         var profileDir = Path.Combine(mo2, "profiles", profile);
         var modsDir = Path.Combine(mo2, "mods");
@@ -200,6 +203,7 @@ public static class Program
                 patches.Add((mod, new HashSet<ModKey>(), 0));
             }
             NewPatch();
+            var made = new Dictionary<StarfieldMod, List<(FormKey Key, ModKey Winner, IStarfieldMajorRecord Copy, string What)>>();
 
             foreach (var e in entries)
             {
@@ -238,7 +242,8 @@ public static class Program
                     cur.Mod.GetTopLevelGroup(copy.GetType()).AddUntyped(copy);
                     cur.Masters.UnionWith(need);
                     patches[^1] = (cur.Mod, cur.Masters, cur.Count + 1);
-                    report.Made++;
+                    if (!made.TryGetValue(cur.Mod, out var list)) made[cur.Mod] = list = new();
+                    list.Add((formKey, winner.ModKey, copy, what));
                 }
                 catch (Exception ex)
                 {
@@ -246,19 +251,63 @@ public static class Program
                 }
             }
 
-            foreach (var (mod, _, count) in patches)
+            // ---- write, then prove every record: byte-for-byte the winning record, apart from the name and renumbered FormIDs
+            var styles = new Dictionary<string, RawPlugin.Style>(StringComparer.OrdinalIgnoreCase);
+            RawPlugin.Style StyleOf(string name)
             {
-                if (count == 0) continue;
+                if (styles.TryGetValue(name, out var st)) return st;
+                var f = Path.Combine(flat, name);
+                return styles[name] = File.Exists(f) ? RawPlugin.StyleOf(f) : RawPlugin.Style.Full;
+            }
+            var raws = new Dictionary<ModKey, RawPlugin>();
+            RawPlugin Raw(ModKey k) => raws.TryGetValue(k, out var r) ? r : raws[k] = new RawPlugin(Path.Combine(flat, k.FileName), k.FileName, StyleOf);
+            var utf8 = new Mutagen.Bethesda.Plugins.Binary.Streams.EncodingBundle(Mutagen.Bethesda.Strings.DI.MutagenEncoding._utf8, Mutagen.Bethesda.Strings.DI.MutagenEncoding._utf8);
+            foreach (var (mod, _, _) in patches)
+            {
+                if (!made.TryGetValue(mod, out var list) || list.Count == 0) continue;
                 var file = Path.Combine(outDir, mod.ModKey.FileName);
                 mod.ModHeader.Flags |= StarfieldModHeader.HeaderFlag.Master | StarfieldModHeader.HeaderFlag.Light; // overrides only: a light plugin does not take a full plugin slot
-                // Starfield keeps texts inside plugins as UTF-8 (so do the Russian translations of mods)
-                var utf8 = new Mutagen.Bethesda.Plugins.Binary.Streams.EncodingBundle(Mutagen.Bethesda.Strings.DI.MutagenEncoding._utf8, Mutagen.Bethesda.Strings.DI.MutagenEncoding._utf8);
-                mod.BeginWrite.ToPath(file).WithLoadOrder(env.LoadOrder).WithEmbeddedEncodings(utf8).Write();
-                // read the written file back: the real master list and a check that every record opens
+                for (var pass = 1; ; pass++)
+                {
+                    // Starfield keeps texts inside plugins as UTF-8 (so do the Russian translations of mods)
+                    mod.BeginWrite.ToPath(file).WithLoadOrder(env.LoadOrder).WithEmbeddedEncodings(utf8).Write();
+                    var written = new RawPlugin(file, mod.ModKey.FileName, StyleOf);
+                    var bad = new List<int>();
+                    for (var n = 0; n < list.Count; n++)
+                    {
+                        var m = list[n];
+                        string? diff;
+                        try
+                        {
+                            var a = Raw(m.Winner).Read(m.Key.ModKey.FileName, m.Key.ID);
+                            var b = written.Read(m.Key.ModKey.FileName, m.Key.ID);
+                            diff = a == null ? "source record not found by the byte reader" : b == null ? "record missing in the patch"
+                                : RawPlugin.Difference(Raw(m.Winner), a, written, b, allowStop, pass == 1 ? report.AcceptedDifferences : new());
+                        }
+                        catch (Exception ex) { diff = "check failed: " + ex.GetBaseException().Message; }
+                        if (diff == null) continue;
+                        bad.Add(n);
+                        report.Skip("copy would change more than the name", m.What + " in " + m.Winner.FileName + ": " + diff);
+                        var kind = m.What.Split(' ')[^1] + " " + System.Text.RegularExpressions.Regex.Replace(diff, @"\d+", "N");
+                        report.ChangedBeyondName[kind] = report.ChangedBeyondName.GetValueOrDefault(kind) + 1;
+                    }
+                    if (bad.Count == 0) break;
+                    if (pass >= 3) throw new InvalidDataException($"{mod.ModKey.FileName}: records still differ after {pass} passes");
+                    for (var q = bad.Count - 1; q >= 0; q--)
+                    {
+                        var at = bad[q];
+                        mod.Remove(list[at].Key);
+                        list.RemoveAt(at);
+                    }
+                    if (list.Count == 0) { File.Delete(file); break; }
+                }
+                if (list.Count == 0) continue;
+                // read the written file back with the library too: the real master list and that every record opens
                 using var back = StarfieldMod.Create(StarfieldRelease.Starfield).FromPath(file).WithLoadOrder(env.LoadOrder.ListedOrder.Select(l => l.ModKey)).WithDataFolder(flat).Construct();
                 var readable = back.EnumerateMajorRecords().Count();
-                if (readable != count) throw new InvalidDataException($"{mod.ModKey.FileName}: wrote {count} records, read back {readable}");
-                report.Patches.Add(new PatchInfo { File = mod.ModKey.FileName, Records = count, Masters = back.ModHeader.MasterReferences.Count });
+                if (readable != list.Count) throw new InvalidDataException($"{mod.ModKey.FileName}: wrote {list.Count} records, read back {readable}");
+                report.Made += list.Count;
+                report.Patches.Add(new PatchInfo { File = mod.ModKey.FileName, Records = list.Count, Masters = back.ModHeader.MasterReferences.Count });
             }
         }
         finally
