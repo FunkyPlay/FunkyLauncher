@@ -245,7 +245,12 @@ public partial class MainWindow : Window, IProUi
     private static string? OpenId(string[] args)
     {
         var i = Array.IndexOf(args, "--open");
-        return i >= 0 && i + 1 < args.Length ? args[i + 1].Trim() : null;
+        if (i < 0) i = Array.IndexOf(args, "--play"); // Funky Pro shortcut "straight into the game"
+        if (i < 0 || i + 1 >= args.Length) return null;
+        var id = args[i + 1].Trim();
+        if (!args.Contains("--play")) return id;
+        var p = Array.IndexOf(args, "--profile");
+        return "play:" + id + (p >= 0 && p + 1 < args.Length ? "|" + args[p + 1].Trim() : "");
     }
 
     /// <summary>A second start while the launcher runs: leave the modlist id for the running window.</summary>
@@ -292,6 +297,14 @@ public partial class MainWindow : Window, IProUi
 
     private void OpenModlist(string id)
     {
+        // "--play <id> [--profile <MO2 profile>]": a Funky Pro desktop shortcut; without an active Pro key it just opens the modlist
+        if (id.StartsWith("play:"))
+        {
+            var parts = id[5..].Split('|', 2);
+            if (Catalog.Find(parts[0]) is not { } pm) return;
+            if (ProModules.Active && Settings.IsInstalled(pm)) { ((IProUi)this).Play(pm, parts.Length > 1 ? parts[1] : null); return; }
+            id = parts[0];
+        }
         if (Catalog.Find(id) is not { } m) return;
         Select(m);
         if (Settings.IsInstalled(m)) return; // installed: the library with PLAY is the right page
