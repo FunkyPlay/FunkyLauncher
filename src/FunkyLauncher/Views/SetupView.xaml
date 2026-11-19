@@ -84,7 +84,7 @@
             <TextBlock x:Name="LogLine" FontSize="12" Foreground="{StaticResource Muted}" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap"/>
             <TextBlock x:Name="ContinueHint" FontSize="12" Foreground="{StaticResource Muted}" Margin="0,4,0,0"/>
             <!-- its own line under the bar (it used to sit next to the status text and run into it) -->
-            <TextBlock x:Name="DoneTelegram" Visibility="Collapsed" FontSize="13.5" Margin="0,10,0,0" TextWrapping="Wrap"><Run x:Name="DoneTelegramText"/> <Hyperlink Click="DoneTelegram_Click" Foreground="{StaticResource Cyan}"><Run Text="@FunkyLauncher"/></Hyperlink></TextBlock>
+            <TextBlock x:Name="DoneTelegram" Visibility="Collapsed" FontSize="13.5" Margin="0,10,0,0" TextWrapping="Wrap"><Run x:Name="DoneTelegramText"/> <Hyperlink Click="DoneTelegram_Click" Foreground="{StaticResource Cyan}"><Run Text="@FunkyPlayTV"/></Hyperlink></TextBlock>
         </StackPanel>
     </Grid>
     </Grid>

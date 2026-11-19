@@ -7,10 +7,8 @@ public static class AppConfig
     public const string TelegramChannel = "FunkyPlayTV";
     public const string TelegramUrl = "https://t.me/" + TelegramChannel;
     public const string YouTubeUrl = "https://www.youtube.com/@" + TelegramChannel;
-    /// <summary>Launcher community in Telegram: download + support.</summary>
-    public const string SupportUrl = "https://t.me/FunkyLauncher";
-    /// <summary>Launcher news channel (updates, what to do when something breaks).</summary>
-    public const string LauncherNewsUrl = "https://t.me/FunkyLauncher";
+    /// <summary>Launcher news: since 2026-11-19 one Telegram channel for everything, @FunkyPlayTV (the old @FunkyLauncher only points to it).</summary>
+    public const string LauncherNewsUrl = TelegramUrl;
     /// <summary>The support bot (Funky Help sends the RustDesk ID here).</summary>
     public const string SupportBotName = "FunkyLauncherBot";
     /// <summary>Support chat inside the launcher (same queue as the bot). The catalog's "supportApi" overrides it.</summary>
