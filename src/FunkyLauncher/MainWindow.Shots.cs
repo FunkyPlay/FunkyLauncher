@@ -114,6 +114,20 @@ public partial class MainWindow
                     SaveElement(holder, Path.Combine(dir, $"{lang}-13-update-window.png"));
                 }
                 catch (Exception e) { File.AppendAllText(Path.Combine(dir, "errors.txt"), $"{lang}-update: {e}\n"); }
+                // the one-time "follow us" window after the first modlist install
+                try
+                {
+                    var sw = new Views.SubscribeWindow(this);
+                    var body = (FrameworkElement)sw.Content;
+                    sw.Content = null;
+                    var holder = new System.Windows.Controls.Border { Background = sw.Background, Child = body, Width = sw.Width - 16 };
+                    holder.Measure(new Size(holder.Width, double.PositiveInfinity));
+                    holder.Arrange(new Rect(holder.DesiredSize));
+                    holder.UpdateLayout();
+                    await Task.Delay(300);
+                    SaveElement(holder, Path.Combine(dir, $"{lang}-14-subscribe-window.png"));
+                }
+                catch (Exception e) { File.AppendAllText(Path.Combine(dir, "errors.txt"), $"{lang}-subscribe: {e}\n"); }
             }
         }
         finally

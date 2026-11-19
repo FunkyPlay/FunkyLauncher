@@ -68,8 +68,7 @@ public partial class MainWindow : Window
             var startArgs = Environment.GetCommandLineArgs();
             if (startArgs.Contains("--from-setup")) EnsureDesktopShortcut();
             if (OpenId(startArgs) is { } open) OpenModlist(open);
-            ShowPrivacyNoticeOnce(); RemindRecordingMode(); RemindGameMode();
-        };
+            ShowPrivacyNoticeOnce(); RemindRecordingMode(); RemindGameMode();        };
         SourceInitialized += (_, _) => RegisterShootHotkey();
 
         // developer test: FunkyLauncher.exe --test-manual N  → manual download of the N smallest Nexus files into %TEMP%
