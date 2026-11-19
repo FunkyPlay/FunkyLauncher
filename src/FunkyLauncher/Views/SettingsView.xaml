@@ -16,7 +16,7 @@
                 <CheckBox x:Name="NewsCheck" Click="Privacy_Changed"/>
                 <CheckBox x:Name="CatalogCheck" Margin="0,10,0,0" Click="Privacy_Changed"/>
                 <TextBlock x:Name="PrivacyText" FontSize="12.5" Foreground="{StaticResource Muted}" TextWrapping="Wrap" Margin="0,12,0,0"/>
-                <TextBlock x:Name="PrivacyLink" FontSize="13" Foreground="{StaticResource Cyan}" Cursor="Hand" Margin="0,6,0,0" MouseLeftButtonUp="PrivacyLink_Click"/>
+                <TextBlock x:Name="PrivacyLink" FontSize="13" Foreground="{DynamicResource Cyan}" Cursor="Hand" Margin="0,6,0,0" MouseLeftButtonUp="PrivacyLink_Click"/>
             </StackPanel>
         </Border>
 
@@ -30,7 +30,7 @@
                     <Button x:Name="ProActivate" DockPanel.Dock="Right" Style="{StaticResource SecondaryButton}" Margin="10,0,0,0" Click="ProActivate_Click"/>
                     <TextBox x:Name="ProKeyBox" FontFamily="Consolas" FontSize="12"/>
                 </DockPanel>
-                <TextBlock x:Name="ProMessage" FontSize="12.5" Foreground="{StaticResource Cyan}" TextWrapping="Wrap" Margin="0,8,0,0"/>
+                <TextBlock x:Name="ProMessage" FontSize="12.5" Foreground="{DynamicResource Cyan}" TextWrapping="Wrap" Margin="0,8,0,0"/>
             </StackPanel>
         </Border>
         <StackPanel x:Name="ProSettingsHost"/>

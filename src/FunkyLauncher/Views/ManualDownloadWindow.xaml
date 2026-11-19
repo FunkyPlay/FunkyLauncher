@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
         Title="Funky Launcher" Width="1280" Height="800" WindowStartupLocation="CenterOwner"
-        Background="{StaticResource Bg}" FontFamily="{StaticResource UiFont}">
+        Background="{DynamicResource Bg}" FontFamily="{StaticResource UiFont}">
     <Grid Margin="28,24">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -18,7 +18,7 @@
                     <TextBlock x:Name="Percent" DockPanel.Dock="Right" FontWeight="Bold" Foreground="#FF7AD9"/>
                     <TextBlock x:Name="ProgressText" FontWeight="SemiBold"/>
                 </DockPanel>
-                <Border Height="10" CornerRadius="5" Background="{StaticResource CardActive}" Margin="0,8,0,0" ClipToBounds="True">
+                <Border Height="10" CornerRadius="5" Background="{DynamicResource CardActive}" Margin="0,8,0,0" ClipToBounds="True">
                     <Border x:Name="Fill" HorizontalAlignment="Left" Width="0" CornerRadius="5">
                         <Border.Background>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
@@ -42,7 +42,7 @@
                 <ColumnDefinition Width="18"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Border Grid.Column="0" Background="{StaticResource Panel}" CornerRadius="14" Padding="14">
+            <Border Grid.Column="0" Background="{DynamicResource Panel}" CornerRadius="14" Padding="14">
                 <DockPanel>
                     <TextBlock x:Name="QueueTitle" DockPanel.Dock="Top" FontSize="13" FontWeight="SemiBold" Foreground="{StaticResource Muted}" Margin="4,0,0,8"/>
                     <TextBlock x:Name="TiredText" DockPanel.Dock="Bottom" FontSize="12" Foreground="#C9C9D6" Margin="4,10,0,0"/>
@@ -51,12 +51,12 @@
                     </ScrollViewer>
                 </DockPanel>
             </Border>
-            <Border Grid.Column="2" Background="{StaticResource Card}" CornerRadius="14" ClipToBounds="True">
+            <Border Grid.Column="2" Background="{DynamicResource Card}" CornerRadius="14" ClipToBounds="True">
                 <DockPanel>
-                    <Border DockPanel.Dock="Top" Background="{StaticResource Panel}" Padding="14,10">
+                    <Border DockPanel.Dock="Top" Background="{DynamicResource Panel}" Padding="14,10">
                         <TextBlock x:Name="AddressText" FontSize="12" Foreground="{StaticResource Muted}" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap"/>
                     </Border>
-                    <Border DockPanel.Dock="Bottom" Background="{StaticResource Panel}" Padding="14,8">
+                    <Border DockPanel.Dock="Bottom" Background="{DynamicResource Panel}" Padding="14,8">
                         <TextBlock x:Name="StatusText" FontSize="13" Foreground="#FF7AD9"/>
                     </Border>
                     <wv2:WebView2 x:Name="Web"/>

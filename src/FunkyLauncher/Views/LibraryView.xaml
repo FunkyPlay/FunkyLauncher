@@ -32,7 +32,7 @@
                     <Border x:Name="DetailsPanel" Panel.ZIndex="2" CornerRadius="18" Background="#F20F0F14" Visibility="Collapsed" Padding="30,24">
                         <DockPanel>
                             <DockPanel DockPanel.Dock="Top" Margin="0,0,0,12">
-                                <TextBlock x:Name="LessLink" DockPanel.Dock="Right" FontSize="13" Foreground="{StaticResource Cyan}" Cursor="Hand" MouseLeftButtonUp="Details_Toggle"/>
+                                <TextBlock x:Name="LessLink" DockPanel.Dock="Right" FontSize="13" Foreground="{DynamicResource Cyan}" Cursor="Hand" MouseLeftButtonUp="Details_Toggle"/>
                                 <TextBlock x:Name="DetailsTitle" FontFamily="{StaticResource TitleFont}" FontSize="24"/>
                             </DockPanel>
                             <ScrollViewer VerticalScrollBarVisibility="Auto">
@@ -58,7 +58,7 @@
                             <TextBlock x:Name="TitleText" FontFamily="{StaticResource TitleFont}" FontSize="54" TextWrapping="NoWrap"/>
                         </Viewbox>
                         <TextBlock x:Name="Description" FontSize="14" Foreground="#D6D6E2" TextWrapping="Wrap" MaxWidth="560" HorizontalAlignment="Left"/>
-                        <TextBlock x:Name="MoreLink" FontSize="13" FontWeight="SemiBold" Foreground="{StaticResource Cyan}" Cursor="Hand" Margin="0,6,0,0" HorizontalAlignment="Left" MouseLeftButtonUp="Details_Toggle"/>
+                        <TextBlock x:Name="MoreLink" FontSize="13" FontWeight="SemiBold" Foreground="{DynamicResource Cyan}" Cursor="Hand" Margin="0,6,0,0" HorizontalAlignment="Left" MouseLeftButtonUp="Details_Toggle"/>
                         <TextBlock x:Name="Sub" FontSize="13" Foreground="{StaticResource Muted}" Margin="0,6,0,0"/>
                         <WrapPanel Orientation="Horizontal" Margin="0,16,0,0">
                             <Button x:Name="MainButton" Style="{StaticResource PrimaryButton}" Margin="0,0,12,8" Click="MainButton_Click"/>

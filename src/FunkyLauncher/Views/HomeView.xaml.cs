@@ -15,6 +15,32 @@ public partial class HomeView : UserControl
     private List<NewsPost>? _news;
     private bool _newsFailed;
 
+    private System.Windows.Media.Brush? _heroDefault;
+    private MediaElement? _heroVideo;
+
+    /// <summary>Funky Pro: the player's own picture or video (mp4/wmv, muted, looped) behind the home header; null = ours.</summary>
+    public void SetHeroBackground(string? file)
+    {
+        _heroDefault ??= Hero.Background;
+        if (_heroVideo != null) { _heroVideo.Stop(); HeroGrid.Children.Remove(_heroVideo); _heroVideo = null; }
+        Hero.Background = _heroDefault;
+        if (file == null || !File.Exists(file)) return;
+        var ext = Path.GetExtension(file).ToLowerInvariant();
+        if (ext is ".mp4" or ".wmv" or ".mov" or ".avi")
+        {
+            _heroVideo = new MediaElement { Source = new Uri(file), IsMuted = true, Stretch = System.Windows.Media.Stretch.UniformToFill, LoadedBehavior = MediaState.Manual };
+            _heroVideo.MediaEnded += (_, _) => { _heroVideo!.Position = TimeSpan.Zero; _heroVideo.Play(); };
+            HeroGrid.Children.Insert(0, _heroVideo);
+            _heroVideo.Play();
+        }
+        else
+        {
+            var bi = new System.Windows.Media.Imaging.BitmapImage();
+            bi.BeginInit(); bi.CacheOption = System.Windows.Media.Imaging.BitmapCacheOption.OnLoad; bi.DecodePixelWidth = 1920; bi.UriSource = new Uri(file); bi.EndInit();
+            Hero.Background = new System.Windows.Media.ImageBrush(bi) { Stretch = System.Windows.Media.Stretch.UniformToFill, AlignmentY = System.Windows.Media.AlignmentY.Center };
+        }
+    }
+
     public HomeView(MainWindow main)
     {
         InitializeComponent();

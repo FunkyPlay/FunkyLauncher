@@ -9,6 +9,8 @@ namespace FunkyLauncher.Services;
 /// <summary>What the main window does for the Pro doors (set by MainWindow).</summary>
 public interface IProUi
 {
+    void SetHomeBackground(string? file);
+    void SetBadge(string? text);
     void Play(Modlist m, string? mo2Profile);
     void RefreshPages();
     void TrayItemsChanged();
@@ -22,7 +24,7 @@ public sealed record ProPanelInfo(ProPlace Place, string Id, string Icon, string
 /// <summary>Loads the Funky Pro module (%LOCALAPPDATA%\FunkyLauncher\pro\FunkyLauncher.Pro.dll) when a valid key is saved.</summary>
 public static class ProModules
 {
-    public const int ApiVersion = 4;
+    public const int ApiVersion = 5;
 
     public static string Dir => Path.Combine(AppConfig.DataDir, "pro");
     public static string DllPath => Path.Combine(Dir, "FunkyLauncher.Pro.dll");
@@ -64,6 +66,27 @@ public static class ProModules
         }
         catch (Exception ex) { LoadError = ex.Message; Log("load: " + ex); }
         Ui?.TrayItemsChanged();
+    }
+
+    /// <summary>
+    /// Funky Pro theme, applied before any window is built (a launcher's XAML takes its colours once):
+    /// pro	heme.json = { "Pink": "#RRGGBB", … } written by the Pro module; only with a valid key; only known colour keys.
+    /// </summary>
+    public static void ApplyEarlyTheme(Settings s)
+    {
+        try
+        {
+            var file = Path.Combine(Dir, "theme.json");
+            if (!File.Exists(file) || !ProLicense.Active(s) || Application.Current == null) return;
+            var map = System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, string>>(File.ReadAllText(file)) ?? new();
+            foreach (var (key, hex) in map)
+            {
+                if (key is not ("Pink" or "PinkSoft" or "Cyan" or "Bg" or "Panel" or "Card" or "CardActive")) continue;
+                if (System.Windows.Media.ColorConverter.ConvertFromString(hex) is System.Windows.Media.Color c)
+                    Application.Current.Resources[key] = new System.Windows.Media.SolidColorBrush(c);
+            }
+        }
+        catch (Exception ex) { Log("theme: " + ex.Message); }
     }
 
     /// <summary>Key valid right now (the module, if loaded, is only used while this is true).</summary>
@@ -227,6 +250,8 @@ public static class ProModules
         public void RemovePanel(string id) => PanelList.RemoveAll(p => p.Id == id);
 
         public void RefreshUi() => OnUi(() => Ui?.RefreshPages());
+        public void SetHomeBackground(string? file) => OnUi(() => Ui?.SetHomeBackground(file));
+        public void SetBadge(string? text) => OnUi(() => Ui?.SetBadge(text));
 
         public void Notify(string title, string text) => OnUi(() => Views.ScreenToast.Message(title, text));
 

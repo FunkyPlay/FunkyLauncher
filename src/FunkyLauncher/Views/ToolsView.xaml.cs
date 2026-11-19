@@ -52,8 +52,9 @@ public partial class ToolsView : UserControl
         ToolCards.Children.Add(ToolCard("▷", Loc.T("tools.player"), Loc.T("tools.player.text"), "#7AE8FF", "player", null));
         ToolCards.Children.Add(ToolCard("◳", Loc.T("tools.screen"), Loc.T("tools.screen.text"), "#FF8FE3", "screen",
             FunkyScreen.Recording ? Loc.T("screen.rec.badge") : null));
-        if (S.DesktopsBeta)
-            ToolCards.Children.Add(ToolCard("▦", Loc.T("tools.desktops"), Loc.T("tools.desktops.text"), "#FFFFFF", "desktops", S.DesktopsOn ? Loc.T("tools.on") : null));
+        if (S.DesktopsBeta || ProModules.Active) // a test for everyone else; a full tool in Funky Pro
+            ToolCards.Children.Add(ToolCard("▦", ProModules.Active ? "Funky Desktops" : Loc.T("tools.desktops"), Loc.T("tools.desktops.text"), "#FFFFFF", "desktops",
+                S.DesktopsOn ? Loc.T("tools.on") : ProModules.Active ? "PRO" : null));
         if (ProModules.Active)
             ToolCards.Children.Add(ToolCard("★", "Funky Pro", Loc.T("tools.pro.text"), "gradient", "pro", Loc.T("tools.on")));
         if (_tool.StartsWith("pro:") && !ProModules.Panels(ProPlace.Tools).Any(p => "pro:" + p.Id == _tool)) _tool = ProModules.Active ? "pro" : "backup";

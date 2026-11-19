@@ -3,10 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Funky Launcher" Width="620" SizeToContent="Height" Icon="/Assets/launcher.ico"
         WindowStartupLocation="CenterOwner" ResizeMode="NoResize"
-        Background="{StaticResource Bg}" FontFamily="{StaticResource UiFont}">
+        Background="{DynamicResource Bg}" FontFamily="{StaticResource UiFont}">
     <Border Padding="32,28">
         <StackPanel>
-            <TextBlock x:Name="TitleText" FontFamily="{StaticResource TitleFont}" FontSize="26" Foreground="{StaticResource Pink}"/>
+            <TextBlock x:Name="TitleText" FontFamily="{StaticResource TitleFont}" FontSize="26" Foreground="{DynamicResource Pink}"/>
             <TextBlock x:Name="BodyText" FontSize="14" LineHeight="21" Foreground="{StaticResource Text}" TextWrapping="Wrap" Margin="0,12,0,0"/>
             <TextBlock x:Name="HelpText" FontSize="13" LineHeight="20" Foreground="#C9C9D6" TextWrapping="Wrap" Margin="0,14,0,0"/>
             <TextBlock x:Name="CrashText" FontSize="11.5" Foreground="{StaticResource Muted}" TextWrapping="Wrap" Margin="0,10,0,0"/>

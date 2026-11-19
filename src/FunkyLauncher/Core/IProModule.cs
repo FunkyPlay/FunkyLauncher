@@ -50,7 +50,7 @@ public sealed record ProGameExit(TimeSpan Played, bool Crashed, bool NotStarted)
 /// <summary>
 /// What the launcher gives the Pro module.
 /// API 1 (launcher 0.1.13): Settings, DataDir, Language, Log.
-/// API 2 (launcher 0.1.14): everything below. API 3: PlayProfile. API 4: CaptureSaved. A module must check <see cref="ApiVersion"/> (missing on API 1 → MissingMethodException).
+/// API 2 (launcher 0.1.14): everything below. API 3: PlayProfile. API 4: CaptureSaved. API 5: SetHomeBackground, SetBadge. A module must check <see cref="ApiVersion"/> (missing on API 1 → MissingMethodException).
 /// </summary>
 public interface IProHost
 {
@@ -85,6 +85,11 @@ public interface IProHost
     event Action<ProModlist?>? SelectionChanged;
     /// <summary>The launcher is closing.</summary>
     event Action? Closing;
+
+    /// <summary>API 5: the player's own picture or video behind the home header (null = ours).</summary>
+    void SetHomeBackground(string? file);
+    /// <summary>API 5: a small badge next to the logo ("PRO"; null = none).</summary>
+    void SetBadge(string? text);
 
     /// <summary>API 4: Funky Screen saved a screenshot (video=false; the file can still be changed — it goes to the clipboard after this) or a recording.</summary>
     event Action<string, bool>? CaptureSaved;

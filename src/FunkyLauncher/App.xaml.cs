@@ -58,6 +58,7 @@ public partial class App : Application
 
         // every launcher window gets a dark title bar, whatever the Windows theme is
         EventManager.RegisterClassHandler(typeof(Window), FrameworkElement.LoadedEvent, new RoutedEventHandler((s, _) => DarkTitleBar((Window)s)));
+        Services.ProModules.ApplyEarlyTheme(Core.Settings.Load()); // Funky Pro theme: before the main window takes its colours
         base.OnStartup(e);
     }
 

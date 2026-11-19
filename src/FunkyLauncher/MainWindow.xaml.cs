@@ -415,7 +415,12 @@ public partial class MainWindow : Window, IProUi
     public void ApplyDesktopNow() { _lastDesk = null; DeskTick(); }
 
     /// <summary>The Pro key was added or removed.</summary>
-    public void OnProChanged() { ProModules.Refresh(Settings); _tools.Refresh(); }
+    public void OnProChanged()
+    {
+        ProModules.Refresh(Settings);
+        if (!ProModules.Active) { ((IProUi)this).SetBadge(null); ((IProUi)this).SetHomeBackground(null); } // Pro look goes with the key
+        _tools.Refresh();
+    }
 
     private void StartDesktops()
     {
@@ -491,6 +496,14 @@ public partial class MainWindow : Window, IProUi
     }
 
     void IProUi.TrayItemsChanged() => RebuildTray();
+
+    void IProUi.SetHomeBackground(string? file) { try { _home.SetHeroBackground(file); } catch { /* a broken file never breaks the page */ } }
+
+    void IProUi.SetBadge(string? text)
+    {
+        ProBadge.Visibility = string.IsNullOrEmpty(text) ? Visibility.Collapsed : Visibility.Visible;
+        ProBadgeText.Text = text ?? "";
+    }
 
     // Pro hotkeys asked for before the window handle exists are registered when it appears
     private readonly Dictionary<int, (uint Mods, uint Vk)> _proHotkeys = new();
