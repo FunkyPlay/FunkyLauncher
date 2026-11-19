@@ -126,17 +126,37 @@ public partial class LibraryView : UserControl
         StatusList.Children.Add(line);
     }
 
-    /// <summary>"Report a flaw" (0.1.15, free): a short call and a link under PLAY.</summary>
+    /// <summary>"Report a flaw" (0.1.15, free): a card under the setup button (design 20.11) for an installed modlist.</summary>
     private void ShowFlawLine(Modlist m, bool installed)
     {
-        FlawLine.Inlines.Clear();
-        FlawLine.Visibility = installed ? Visibility.Visible : Visibility.Collapsed;
-        if (!installed) return;
-        FlawLine.Inlines.Add(new System.Windows.Documents.Run(FlawReport.Texts.T("Заметил мелочь — сломанную текстуру, английское название, странный предмет? Пришли нам снимок — так сборка становится лучше.  ",
-            "Spotted something small — a broken texture, an untranslated name, an odd item? Send us a screenshot — that's how the modlist gets better.  ")) { Foreground = (Brush)FindResource("Muted") });
-        var link = new System.Windows.Documents.Hyperlink(new System.Windows.Documents.Run("✎ " + FlawReport.Texts.T("Сообщить о недочёте", "Report a flaw"))) { Foreground = (Brush)FindResource("Cyan"), FontWeight = FontWeights.SemiBold };
-        link.Click += (_, _) => FlawWindow.Open(Window.GetWindow(this), _main.Settings, m);
-        FlawLine.Inlines.Add(link);
+        FlawCard.Visibility = installed ? Visibility.Visible : Visibility.Collapsed;
+        if (!installed) { FlawCard.Child = null; return; }
+        var t = FlawReport.Texts.T;
+        var box = new StackPanel();
+        var head = new DockPanel();
+        var sign = new Border
+        {
+            Width = 34, Height = 34, CornerRadius = new CornerRadius(9), Margin = new Thickness(0, 0, 12, 0),
+            Background = new LinearGradientBrush(Color.FromRgb(0xFF, 0x3F, 0xD2), Color.FromRgb(0x7A, 0xE8, 0xFF), 45),
+            Child = new TextBlock { Text = "!", FontSize = 19, FontWeight = FontWeights.ExtraBold, Foreground = new SolidColorBrush(Color.FromRgb(0x0B, 0x0B, 0x12)), HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center },
+        };
+        DockPanel.SetDock(sign, Dock.Left);
+        head.Children.Add(sign);
+        head.Children.Add(new TextBlock { Text = t("Заметил недочёт в сборке?", "Spotted a flaw in the modlist?"), FontSize = 16, FontWeight = FontWeights.Bold, VerticalAlignment = VerticalAlignment.Center, TextWrapping = TextWrapping.Wrap });
+        box.Children.Add(head);
+        box.Children.Add(new TextBlock
+        {
+            Text = t("Сломанная текстура, название на английском, странный предмет — пришли снимок. Так мы сможем улучшить сборку.",
+                     "A broken texture, an untranslated name, a weird item — send us a screenshot. It helps us improve the modlist."),
+            FontSize = 12.5, LineHeight = 18, TextWrapping = TextWrapping.Wrap, Foreground = new SolidColorBrush(Color.FromRgb(0xC7, 0xC8, 0xD6)), Margin = new Thickness(0, 9, 0, 0),
+        });
+        var b = new Button { Content = t("Сообщить о недочёте", "Report a flaw"), Height = 38, Padding = new Thickness(18, 0, 18, 0), Margin = new Thickness(0, 11, 0, 0), HorizontalAlignment = HorizontalAlignment.Left, Style = (Style)FindResource("SecondaryButton") };
+        b.Click += (_, _) => FlawWindow.Open(Window.GetWindow(this), _main.Settings, m);
+        box.Children.Add(b);
+        var sup = new TextBlock { Text = t("Игра не запускается или вылетает — пиши в поддержку.", "Game won't start or crashes? Write to support."), FontSize = 11, Foreground = new SolidColorBrush(Color.FromRgb(0x8D, 0x8E, 0xA0)), Margin = new Thickness(0, 10, 0, 0), TextWrapping = TextWrapping.Wrap, Cursor = Cursors.Hand };
+        sup.MouseLeftButtonUp += (_, _) => PlayService.OpenSupportChat("", _main.Settings, m);
+        box.Children.Add(sup);
+        FlawCard.Child = box;
     }
 
     /// <summary>"18+ add-on · off" — one neutral line; a click opens the add-on window (age confirmation first).</summary>

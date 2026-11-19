@@ -1,6 +1,7 @@
 // Funky Launcher — Copyright (C) 2026 Funky. Licensed under GPL-3.0-or-later.
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using FunkyLauncher.Core;
@@ -11,9 +12,9 @@ using static FunkyLauncher.Services.FlawReport.Texts;
 namespace FunkyLauncher.Views;
 
 /// <summary>
-/// "Report a flaw" window (free): a few words + one screenshot (a file / from the clipboard / the last Funky Screen
-/// shot), what the launcher adds is shown under it, Send → "Thank you" with a way to support. Working frame in the
-/// support window's style; the final look and texts come from the design and copy team.
+/// "Report a flaw" window (free, 0.1.15): "What's wrong?" + one screenshot (a file / the clipboard / the last Funky Screen
+/// shot), what is sent, a support plate, the consent line, Cancel / Send → "Thanks". Look: the design team's approved
+/// mock-up (Бренд\Стиль v4\make_launcher_report.py, 20.11); texts: Copywriter + Legal (Сообщить о недочёте — тексты).
 /// </summary>
 public sealed class FlawWindow : Window
 {
@@ -21,43 +22,60 @@ public sealed class FlawWindow : Window
     private readonly Settings _s;
     private readonly Modlist _m;
     private readonly TextBox _box;
-    private readonly Image _preview = new() { MaxHeight = 220, Stretch = Stretch.Uniform, HorizontalAlignment = HorizontalAlignment.Left };
-    private readonly TextBlock _picName;
+    private readonly Border _shot;
+    private readonly TextBlock _shotHint;
     private readonly TextBlock _status;
     private readonly Button _send;
-    private readonly Button _drop;
+    private readonly Border _frame;
     private string? _picture;
-    private UIElement? _form;
+
+    private static readonly Brush Line = new SolidColorBrush(Color.FromRgb(0x34, 0x35, 0x4A));
+    private static readonly Brush Field = new SolidColorBrush(Color.FromRgb(0x15, 0x15, 0x1C));
+    private static readonly Brush Plate = new SolidColorBrush(Color.FromRgb(0x1D, 0x1D, 0x26));
+    private static readonly Brush Soft = new SolidColorBrush(Color.FromRgb(0x9D, 0x9E, 0xB0));
+    private static readonly Brush Small = new SolidColorBrush(Color.FromRgb(0x8D, 0x8E, 0xA0));
+    private static readonly Brush Muted = new SolidColorBrush(Color.FromRgb(0xB4, 0xB5, 0xC4));
 
     /// <summary>Opens (or brings forward) the window for the modlist; <paramref name="picture"/> prefills the screenshot.</summary>
     public static void Open(Window? owner, Settings s, Modlist m, string? picture = null)
     {
         if (_open != null && _open._m.Id != m.Id) { _open.Close(); _open = null; }
-        if (_open == null) { _open = new FlawWindow(s, m); if (owner is { IsVisible: true }) _open.Owner = owner; _open.Show(); }
+        if (_open == null)
+        {
+            _open = new FlawWindow(s, m);
+            if (owner is { IsVisible: true }) _open.Owner = owner; else _open.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            _open.Show();
+        }
         else { _open.Activate(); if (_open.WindowState == WindowState.Minimized) _open.WindowState = WindowState.Normal; }
         if (picture != null) _open.SetPicture(picture);
-    }
-
-    /// <summary>For --shots: the form (with the last Funky Screen shot) and the thank-you screen, not shown on screen.</summary>
-    internal static (FrameworkElement Form, FrameworkElement Thanks, Brush Bg, double Width) ForShots(Settings s, Modlist m)
-    {
-        var w = new FlawWindow(s, m);
-        w._box.Text = Loc.Lang == "en" ? "The jacket in the shop is called in English" : "Куртка в магазине называется по-английски";
-        w.SetPicture(FlawReport.LastShot());
-        var form = (FrameworkElement)w.Content;
-        w.Content = null;
-        return (form, (FrameworkElement)w.Thanks(), w.Background, w.Width);
     }
 
     /// <summary>The installed modlist a report is about: the selected one, else the first installed (null = none).</summary>
     public static Modlist? Target(Settings s, Modlist? selected) =>
         selected != null && s.IsInstalled(selected) ? selected : Catalog.Items.FirstOrDefault(x => x.IsReleased && s.IsInstalled(x));
 
+    /// <summary>For --shots: the form (with the last Funky Screen shot) and the thank-you screen, not shown on screen.</summary>
+    internal static (FrameworkElement Form, FrameworkElement Thanks, Brush Bg, double Width) ForShots(Settings s, Modlist m)
+    {
+        var w = new FlawWindow(s, m);
+        w.SetPicture(FlawReport.LastShot());
+        w.Content = null;
+        var t = new FlawWindow(s, m);
+        t._frame.Child = t.Thanks();
+        t._frame.Width = 560;
+        t.Content = null;
+        return (w._frame, t._frame, R("Bg"), 640 + 16);
+    }
+
     private static Brush R(string key) => (Brush)Application.Current.FindResource(key);
 
-    private static Button Btn(string text, bool primary, RoutedEventHandler click, double height = 34)
+    private static Button Btn(string text, bool primary, RoutedEventHandler click, bool small = false)
     {
-        var b = new Button { Content = text, Height = height, Padding = new Thickness(14, 0, 14, 0), Margin = new Thickness(0, 0, 8, 0), FontSize = 13, Style = (Style)Application.Current.FindResource(primary ? "PrimaryButton" : "SecondaryButton") };
+        var b = new Button
+        {
+            Content = text, Height = small ? 34 : 42, Padding = new Thickness(small ? 14 : 22, 0, small ? 14 : 22, 0), FontSize = small ? 13 : 15,
+            FontWeight = FontWeights.SemiBold, Style = (Style)Application.Current.FindResource(primary ? "PrimaryButton" : "SecondaryButton"),
+        };
         b.Click += click;
         return b;
     }
@@ -66,114 +84,138 @@ public sealed class FlawWindow : Window
     {
         _s = s; _m = m;
         Title = T("Сообщить о недочёте", "Report a flaw");
-        Width = 560; SizeToContent = SizeToContent.Height; MinWidth = 440;
-        ResizeMode = ResizeMode.CanMinimize;
+        WindowStyle = WindowStyle.None; AllowsTransparency = true; Background = Brushes.Transparent;
+        ResizeMode = ResizeMode.NoResize; SizeToContent = SizeToContent.WidthAndHeight;
         WindowStartupLocation = WindowStartupLocation.CenterOwner;
-        Background = R("Bg"); Foreground = R("Text");
+        Foreground = Brushes.White;
         if (Application.Current.TryFindResource("UiFont") is FontFamily f) FontFamily = f;
 
         _box = new TextBox
         {
-            AcceptsReturn = true, TextWrapping = TextWrapping.Wrap, MinHeight = 80, MaxHeight = 160, MaxLength = FlawReport.MaxText,
-            VerticalScrollBarVisibility = ScrollBarVisibility.Auto, Padding = new Thickness(10, 8, 10, 8), FontSize = 14,
-            Background = R("Card"), Foreground = R("Text"), BorderBrush = R("CardActive"), CaretBrush = R("Text"),
+            AcceptsReturn = true, TextWrapping = TextWrapping.Wrap, Height = 80, MaxLength = FlawReport.MaxText,
+            VerticalScrollBarVisibility = ScrollBarVisibility.Auto, Padding = new Thickness(10, 8, 10, 8), FontSize = 13.5,
+            Background = Brushes.Transparent, Foreground = Brushes.White, BorderThickness = new Thickness(0), CaretBrush = Brushes.White,
         };
-        _picName = new TextBlock { FontSize = 12, Foreground = R("Muted"), Margin = new Thickness(0, 6, 0, 0), TextTrimming = TextTrimming.CharacterEllipsis };
-        _status = new TextBlock { FontSize = 12.5, Foreground = R("Pink"), Margin = new Thickness(0, 8, 0, 0), TextWrapping = TextWrapping.Wrap };
-        _send = Btn(T("Отправить", "Send"), true, async (_, _) => await SendAsync(), 40);
-        _send.MinWidth = 140;
-        _drop = Btn(T("Убрать снимок", "Remove the screenshot"), false, (_, _) => SetPicture(null), 30);
-        Content = _form = Form();
-        Loaded += (_, _) => { App.DarkTitleBar(this); _box.Focus(); };
+        _shot = new Border { Width = 156, Height = 88, CornerRadius = new CornerRadius(8), BorderBrush = Line, BorderThickness = new Thickness(1), Background = Field, ClipToBounds = true };
+        _shotHint = new TextBlock { FontSize = 11, Foreground = Small, TextTrimming = TextTrimming.CharacterEllipsis, Margin = new Thickness(0, 6, 0, 0), MaxWidth = 156 };
+        _status = new TextBlock { FontSize = 12.5, Foreground = R("Pink"), TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 10, 0, 0), Visibility = Visibility.Collapsed };
+        _send = Btn(T("Отправить", "Send"), true, async (_, _) => await SendAsync());
+        _frame = new Border
+        {
+            Width = 610, Padding = new Thickness(30, 26, 30, 24), Background = new SolidColorBrush(Color.FromRgb(0x10, 0x10, 0x16)),
+            BorderBrush = new SolidColorBrush(Color.FromRgb(0x2C, 0x2C, 0x3A)), BorderThickness = new Thickness(1), CornerRadius = new CornerRadius(18),
+            Margin = new Thickness(8),
+        };
+        _frame.Child = Form();
+        Content = _frame;
+        MouseLeftButtonDown += (_, e) => { if (e.OriginalSource is Border or StackPanel or TextBlock && e.ButtonState == MouseButtonState.Pressed) try { DragMove(); } catch { } };
+        Loaded += (_, _) => _box.Focus();
         Closed += (_, _) => { if (_open == this) _open = null; };
-        // Ctrl+V anywhere in the window takes a picture from the clipboard
         PreviewKeyDown += (_, e) =>
         {
-            if (e.Key == System.Windows.Input.Key.V && System.Windows.Input.Keyboard.Modifiers == System.Windows.Input.ModifierKeys.Control && ClipboardPicture() is { } p)
-            { SetPicture(p); e.Handled = true; }
+            if (e.Key == Key.Escape) { Close(); e.Handled = true; }
+            else if (e.Key == Key.V && Keyboard.Modifiers == ModifierKeys.Control && !_box.IsKeyboardFocused && ClipboardPicture() is { } p) { SetPicture(p); e.Handled = true; }
         };
     }
+
+    private static TextBlock Label(string text, double top) => new() { Text = text, FontSize = 13.5, FontWeight = FontWeights.SemiBold, Margin = new Thickness(0, top, 0, 0) };
 
     private UIElement Form()
     {
-        var root = new StackPanel { Margin = new Thickness(22, 18, 22, 20) };
-        root.Children.Add(new TextBlock { Text = T("Сообщить о недочёте", "Report a flaw") + " — " + _m.Title, FontSize = 18, FontWeight = FontWeights.Bold, TextWrapping = TextWrapping.Wrap });
-        root.Children.Add(new TextBlock
-        {
-            Text = T("Заметил мелочь — сломанную текстуру, английское название, странный предмет? Пришли пару слов и снимок. Мы разберём и поправим сборку в обновлении.",
-                     "Spotted something small — a broken texture, an untranslated name, an odd item? Send a few words and a screenshot. We'll look into it and fix the modlist in an update."),
-            FontSize = 13, Foreground = R("Muted"), TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 6, 0, 12),
-        });
-        root.Children.Add(new TextBlock { Text = T("Что не так", "What's wrong"), FontSize = 13, FontWeight = FontWeights.SemiBold, Margin = new Thickness(0, 0, 0, 6) });
-        root.Children.Add(_box);
+        var root = new StackPanel();
+        var head = new TextBlock { FontSize = 23, FontWeight = FontWeights.Bold, TextWrapping = TextWrapping.Wrap };
+        head.Inlines.Add(new System.Windows.Documents.Run(T("Сообщить о недочёте", "Report a flaw")));
+        head.Inlines.Add(new System.Windows.Documents.Run(" · " + NiceTitle(_m.Title)) { Foreground = Muted, FontWeight = FontWeights.Normal });
+        root.Children.Add(head);
 
-        root.Children.Add(new TextBlock { Text = T("Снимок экрана", "Screenshot"), FontSize = 13, FontWeight = FontWeights.SemiBold, Margin = new Thickness(0, 14, 0, 6) });
-        var pick = new WrapPanel();
-        pick.Children.Add(Btn(T("Выбрать файл…", "Choose a file…"), false, (_, _) =>
+        root.Children.Add(Label(T("Что не так?", "What's wrong?"), 18));
+        var placeholder = new TextBlock { Text = T("Например: у куртки в магазине сломана текстура", "For example: a jacket in the shop has a broken texture"), FontSize = 13.5, Foreground = new SolidColorBrush(Color.FromRgb(0x77, 0x78, 0x8A)), Margin = new Thickness(12, 9, 12, 0), IsHitTestVisible = false };
+        _box.TextChanged += (_, _) => placeholder.Visibility = _box.Text.Length == 0 ? Visibility.Visible : Visibility.Collapsed;
+        var field = new Grid();
+        field.Children.Add(placeholder);
+        field.Children.Add(_box);
+        root.Children.Add(new Border { Child = field, Margin = new Thickness(0, 7, 0, 0), CornerRadius = new CornerRadius(10), BorderBrush = Line, BorderThickness = new Thickness(1), Background = Field });
+
+        root.Children.Add(Label(T("Снимок экрана", "Screenshot"), 16));
+        var row = new StackPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(0, 7, 0, 0) };
+        var left = new StackPanel { VerticalAlignment = VerticalAlignment.Center };
+        left.Children.Add(_shot);
+        left.Children.Add(_shotHint);
+        row.Children.Add(left);
+        var buttons = new StackPanel { Margin = new Thickness(14, 0, 0, 0), VerticalAlignment = VerticalAlignment.Center };
+        void Add(Button b) { b.HorizontalAlignment = HorizontalAlignment.Left; b.Margin = new Thickness(0, 0, 0, 7); buttons.Children.Add(b); }
+        Add(Btn(T("Выбрать файл", "Choose file"), false, (_, _) =>
         {
-            var dlg = new OpenFileDialog { Filter = T("Картинки", "Pictures") + "|*.png;*.jpg;*.jpeg;*.bmp" };
+            var dlg = new OpenFileDialog { Filter = T("Картинки", "Pictures") + "|*.png;*.jpg;*.jpeg;*.webp;*.bmp" };
             if (Directory.Exists(FunkyScreen.ShotsDir)) dlg.InitialDirectory = FunkyScreen.ShotsDir;
             if (dlg.ShowDialog(this) == true) SetPicture(dlg.FileName);
-        }, 30));
-        pick.Children.Add(Btn(T("Из буфера (Ctrl+V)", "From the clipboard (Ctrl+V)"), false, (_, _) =>
+        }, small: true));
+        Add(Btn(T("Вставить из буфера", "Paste from clipboard"), false, (_, _) =>
         {
-            if (ClipboardPicture() is { } p) SetPicture(p); else _status.Text = T("В буфере нет картинки.", "There is no picture in the clipboard.");
-        }, 30));
-        var last = FlawReport.LastShot();
-        if (last != null)
-            pick.Children.Add(Btn(T("Последний снимок Funky Скрин", "The last Funky Screen shot"), false, (_, _) => SetPicture(FlawReport.LastShot()), 30));
-        root.Children.Add(pick);
-        root.Children.Add(new Border { Child = _preview, Margin = new Thickness(0, 8, 0, 0) });
-        var picRow = new DockPanel();
-        _drop.Visibility = Visibility.Collapsed;
-        DockPanel.SetDock(_drop, Dock.Right);
-        picRow.Children.Add(_drop);
-        picRow.Children.Add(_picName);
-        root.Children.Add(picRow);
+            if (ClipboardPicture() is { } p) SetPicture(p); else Status(T("В буфере нет картинки.", "There is no picture in the clipboard."));
+        }, small: true));
+        Add(Btn(T("Последний снимок Funky Скрин", "Last Funky Screen shot"), false, (_, _) =>
+        {
+            if (FlawReport.LastShot() is { } p) SetPicture(p); else Status(T("Снимков Funky Скрин пока нет.", "No Funky Screen shots yet."));
+        }, small: true));
+        row.Children.Add(buttons);
+        root.Children.Add(row);
+        SetPicture(_picture);
 
         root.Children.Add(new TextBlock
         {
-            Text = T("Вместе с сообщением уйдёт: ", "Sent with the message: ") + FlawReport.Label(_s, _m) + T(". Больше ничего о ПК и о тебе.", ". Nothing else about your PC or you."),
-            FontSize = 12, Foreground = R("Muted"), TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 12, 0, 0),
+            Text = T("Уйдут твой текст, снимок, название и версия сборки, версия (RU/EN), версия лаунчера и случайный номер установки (для защиты от спама). О ПК — ничего. Закрой на снимке личное и не присылай откровенные кадры.",
+                     "Sent: your text, the screenshot, the modlist name and version, its edition (RU/EN), the launcher version and a random installation ID (to limit spam). Nothing about your PC. Hide personal data and do not send explicit frames."),
+            FontSize = 11.5, LineHeight = 17, Foreground = Soft, TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 12, 0, 0),
         });
-        // consent: the final text comes from Legal
+
+        var plate = new DockPanel();
+        var sup = Btn(T("В поддержку", "Support"), false, (_, _) => { PlayService.OpenSupportChat("", _s, _m); Close(); }, small: true);
+        DockPanel.SetDock(sup, Dock.Right);
+        plate.Children.Add(sup);
+        plate.Children.Add(new TextBlock { Text = T("Не запускается или вылетает? Это не сюда — напиши в поддержку.", "Won't start or crashes? Not here — write to support."), FontSize = 12.5, Foreground = new SolidColorBrush(Color.FromRgb(0xD9, 0xDA, 0xE6)), TextWrapping = TextWrapping.Wrap, VerticalAlignment = VerticalAlignment.Center, Margin = new Thickness(0, 0, 12, 0) });
+        root.Children.Add(new Border { Child = plate, Background = Plate, CornerRadius = new CornerRadius(10), Padding = new Thickness(12, 9, 9, 9), Margin = new Thickness(0, 12, 0, 0) });
+
+        // Legal 20.11: the consent line next to Send, no tick box
         root.Children.Add(new TextBlock
         {
-            Text = T("Нажимая «Отправить», ты передаёшь текст и снимок команде FunkyPlay, чтобы улучшить сборку. Не присылай личные данные. Удалить свои сообщения можно по просьбе в поддержку.",
-                     "By pressing Send you give the text and screenshot to the FunkyPlay team to improve the modlist. Don't send personal data. Ask support to delete your messages any time."),
-            FontSize = 12, Foreground = R("Muted"), TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 6, 0, 0),
+            Text = T("Отправляя, ты соглашаешься, что мы получим этот текст и снимок и будем использовать их, чтобы улучшить сборку. Ответа не будет. Не присылай личное на снимке: имена, почту, переписки, платёжные данные. Подробнее — в политике конфиденциальности.",
+                     "By sending, you agree that we will receive this text and screenshot and use them to improve the modlist. We will not reply. Please do not include personal data in the screenshot: names, email, chats, payment details. See our privacy policy."),
+            FontSize = 10.5, LineHeight = 15.5, Foreground = Small, TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 13, 0, 0),
         });
         root.Children.Add(_status);
-        var row = new DockPanel { Margin = new Thickness(0, 12, 0, 0), LastChildFill = false };
-        DockPanel.SetDock(_send, Dock.Right);
-        _send.Margin = new Thickness(0);
-        row.Children.Add(_send);
-        var support = new TextBlock { FontSize = 12.5, VerticalAlignment = VerticalAlignment.Center, TextWrapping = TextWrapping.Wrap, MaxWidth = 330 };
-        support.Inlines.Add(new System.Windows.Documents.Run(T("Игра не запускается или вылетает? ", "The game won't start or crashes? ")) { Foreground = R("Muted") });
-        var link = new System.Windows.Documents.Hyperlink(new System.Windows.Documents.Run(T("Это в поддержку", "That's for support"))) { Foreground = R("Cyan") };
-        link.Click += (_, _) => { PlayService.OpenSupportChat("", _s, _m); Close(); };
-        support.Inlines.Add(link);
-        DockPanel.SetDock(support, Dock.Left);
-        row.Children.Add(support);
-        root.Children.Add(row);
+        var end = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Right, Margin = new Thickness(0, 15, 0, 0) };
+        var cancel = Btn(T("Отмена", "Cancel"), false, (_, _) => Close());
+        cancel.Margin = new Thickness(0, 0, 12, 0);
+        end.Children.Add(cancel);
+        end.Children.Add(_send);
+        root.Children.Add(end);
         return root;
     }
 
+    /// <summary>"NEON NIGHTS" → "Neon Nights" next to the window title (as on the mock-up).</summary>
+    private static string NiceTitle(string t) =>
+        t.Length > 0 && t == t.ToUpperInvariant() ? string.Join(' ', t.ToLowerInvariant().Split(' ').Select(w => w.Length > 0 ? char.ToUpperInvariant(w[0]) + w[1..] : w)) : t;
+
     private UIElement Thanks()
     {
-        var root = new StackPanel { Margin = new Thickness(22, 22, 22, 22) };
-        root.Children.Add(new TextBlock { Text = T("Спасибо!", "Thank you!"), FontSize = 22, FontWeight = FontWeights.Bold });
+        var root = new StackPanel();
+        var head = new TextBlock { FontSize = 23, FontWeight = FontWeights.Bold, TextWrapping = TextWrapping.Wrap };
+        head.Inlines.Add(new System.Windows.Documents.Run(T("Спасибо! Сообщение у нас ", "Thanks! We've got it ")));
+        head.Inlines.Add(new System.Windows.Documents.Run("✓") { Foreground = R("Cyan") });
+        root.Children.Add(head);
         root.Children.Add(new TextBlock
         {
-            Text = T("Мы разбираем такие сообщения и правим сборку в обновлениях. Отвечать на них не будем.\n\nЕсли игра не запускается или вылетает — это в поддержку.",
-                     "We go through these messages and fix the modlist in updates. We won't reply to them.\n\nIf the game won't start or crashes — that's for support."),
-            FontSize = 14, Foreground = R("Muted"), TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 10, 0, 16),
+            Text = T("Мы читаем такие сообщения и стараемся исправить в обновлениях. Отвечать на них не будем. Если игра не запускается или вылетает — напиши в поддержку.",
+                     "We read these reports and try to fix things in updates. We won't reply to them. If the game won't start or crashes, write to support."),
+            FontSize = 15, LineHeight = 22, Foreground = new SolidColorBrush(Color.FromRgb(0xB9, 0xB9, 0xC8)), TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 11, 0, 0),
         });
-        var row = new WrapPanel();
-        row.Children.Add(Btn(T("Написать в поддержку", "Write to support"), false, (_, _) => { PlayService.OpenSupportChat("", _s, _m); Close(); }, 38));
-        row.Children.Add(Btn(T("Ещё один недочёт", "One more flaw"), false, (_, _) => { _box.Text = ""; SetPicture(null); _status.Text = ""; Content = _form; }, 38));
-        row.Children.Add(Btn(T("Закрыть", "Close"), true, (_, _) => Close(), 38));
-        root.Children.Add(row);
+        var end = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Right, Margin = new Thickness(0, 22, 0, 0) };
+        var sup = Btn(T("В поддержку", "Support"), false, (_, _) => { PlayService.OpenSupportChat("", _s, _m); Close(); });
+        sup.Margin = new Thickness(0, 0, 12, 0);
+        end.Children.Add(sup);
+        end.Children.Add(Btn(T("Готово", "Done"), true, (_, _) => Close()));
+        root.Children.Add(end);
         return root;
     }
 
@@ -184,7 +226,7 @@ public sealed class FlawWindow : Window
         {
             if (Clipboard.ContainsFileDropList())
                 foreach (var f in Clipboard.GetFileDropList())
-                    if (f != null && new[] { ".png", ".jpg", ".jpeg", ".bmp" }.Contains(Path.GetExtension(f).ToLowerInvariant())) return f;
+                    if (f != null && new[] { ".png", ".jpg", ".jpeg", ".webp", ".bmp" }.Contains(Path.GetExtension(f).ToLowerInvariant())) return f;
             if (!Clipboard.ContainsImage() || Clipboard.GetImage() is not { } img) return null;
             var file = Path.Combine(Path.GetTempPath(), $"funky-flaw-{DateTime.Now:yyyyMMdd-HHmmss}.png");
             var enc = new PngBitmapEncoder();
@@ -195,38 +237,49 @@ public sealed class FlawWindow : Window
         catch { return null; }
     }
 
+    private void Status(string text)
+    {
+        _status.Foreground = R("Pink");
+        _status.Text = text;
+        _status.Visibility = text.Length > 0 ? Visibility.Visible : Visibility.Collapsed;
+    }
+
+    /// <summary>Shows the picture before it is sent (Legal: the player sees it and can take it back).</summary>
     private void SetPicture(string? file)
     {
         _picture = file != null && File.Exists(file) ? file : null;
-        _status.Text = "";
-        if (_picture == null) { _preview.Source = null; _picName.Text = ""; _drop.Visibility = Visibility.Collapsed; return; }
+        Status("");
+        _shotHint.Inlines.Clear();
+        if (_picture == null)
+        {
+            _shot.Child = new TextBlock { Text = T("Без снимка", "No screenshot"), FontSize = 11.5, Foreground = Small, HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center };
+            return;
+        }
         try
         {
             var bi = new BitmapImage();
-            bi.BeginInit(); bi.CacheOption = BitmapCacheOption.OnLoad; bi.DecodePixelWidth = 520; bi.UriSource = new Uri(_picture); bi.EndInit();
-            _preview.Source = bi;
+            bi.BeginInit(); bi.CacheOption = BitmapCacheOption.OnLoad; bi.DecodePixelWidth = 320; bi.UriSource = new Uri(_picture); bi.EndInit();
+            _shot.Child = new Image { Source = bi, Stretch = Stretch.UniformToFill };
         }
-        catch { _preview.Source = null; }
-        _picName.Text = "🖼 " + Path.GetFileName(_picture);
-        _drop.Visibility = Visibility.Visible;
+        catch { _shot.Child = null; }
+        var drop = new System.Windows.Documents.Hyperlink(new System.Windows.Documents.Run("✕ " + T("убрать", "remove"))) { Foreground = R("Cyan") };
+        drop.Click += (_, _) => SetPicture(null);
+        _shotHint.Inlines.Add(drop);
+        _shotHint.Inlines.Add(new System.Windows.Documents.Run("  " + Path.GetFileName(_picture)));
     }
 
     private async Task SendAsync()
     {
-        if (_box.Text.Trim().Length == 0 && _picture == null) { _status.Text = T("Напиши пару слов или добавь снимок.", "Write a few words or add a screenshot."); return; }
+        if (_box.Text.Trim().Length == 0 && _picture == null) { Status(T("Напиши пару слов или добавь снимок.", "Write a few words or add a screenshot.")); return; }
         _send.IsEnabled = false;
-        _status.Foreground = R("Cyan");
-        _status.Text = T("Отправляю…", "Sending…");
+        _status.Foreground = R("Cyan"); _status.Text = T("Отправляю…", "Sending…"); _status.Visibility = Visibility.Visible;
         try
         {
             await FlawReport.SendAsync(_s, _m, _box.Text, _picture, CancellationToken.None);
-            Content = Thanks();
+            _frame.Child = Thanks();
+            _frame.Width = 560;
         }
-        catch (Exception ex)
-        {
-            _status.Foreground = R("Pink");
-            _status.Text = ex is InvalidOperationException ? ex.Message : T("Не отправилось: ", "Not sent: ") + ex.Message;
-        }
+        catch (Exception ex) { Status(ex is InvalidOperationException ? ex.Message : T("Не отправилось: ", "Not sent: ") + ex.Message); }
         finally { _send.IsEnabled = true; }
     }
 }

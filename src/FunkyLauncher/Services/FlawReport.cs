@@ -12,7 +12,9 @@ namespace FunkyLauncher.Services;
 /// few words and a screenshot goes to its own queue on our server — not to support, nobody answers it, the game's team
 /// sorts it out for the next modlist update. The launcher adds only: game, modlist, its version, variant (RU/EN, 18+),
 /// launcher version. Same anonymous install id as the support chat; nothing else about the PC or the player.
-/// Server side: "Боты" chat, POST {supportApi}/flaw.
+/// Server side: "Боты" chat, POST {supportApi}/flaw (200 {ok,id}; 400 empty/bad fields; 403 another key; 413 big file;
+/// 429 the daily limit, 10 per install — "error" is a ready text in the player's language). "Delete my data" in the
+/// support chat erases these reports too.
 /// </summary>
 public static class FlawReport
 {
@@ -98,7 +100,6 @@ public static class FlawReport
         try { error = JsonDocument.Parse(await resp.Content.ReadAsStringAsync(token)).RootElement.GetProperty("error").GetString(); } catch { }
         throw new InvalidOperationException((int)resp.StatusCode switch
         {
-            404 => Texts.T("Приём недочётов включится на сервере в ближайшем обновлении.", "Flaw reports are switched on at the server in an upcoming update."),
             429 => error ?? Texts.T("На сегодня хватит — спасибо! Пришли остальное завтра.", "That's enough for today — thank you! Send the rest tomorrow."),
             413 => Texts.T("Снимок слишком большой.", "The screenshot is too big."),
             _ => error ?? Texts.T($"Не отправилось (ошибка {(int)resp.StatusCode}). Попробуй позже.", $"Not sent (error {(int)resp.StatusCode}). Try again later."),

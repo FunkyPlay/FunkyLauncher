@@ -76,10 +76,10 @@ public static class ScreenToast
         var status = new TextBlock { FontSize = 12, Margin = new Thickness(0, 6, 0, 0), TextWrapping = TextWrapping.Wrap, Foreground = (Brush)Application.Current.FindResource("Cyan") };
         var row = new WrapPanel { Margin = new Thickness(0, 12, 0, 0) };
         Window? w = null;
-        row.Children.Add(Btn(Loc.T("screen.open"), true, () => { FunkyScreen.OpenFile(file); w?.Close(); }));
+        row.Children.Add(Btn(Loc.T("screen.open"), reportFlaw == null || video, () => { FunkyScreen.OpenFile(file); w?.Close(); }));
         row.Children.Add(Btn(Loc.T("screen.folder"), false, () => { FunkyScreen.ShowInFolder(file); w?.Close(); }));
         if (!video && reportFlaw != null) // 0.1.15: a small flaw in a modlist goes to its own queue, not to support
-            row.Children.Add(Btn(Loc.Lang == "en" ? "Send as a modlist flaw" : "Отправить как недочёт сборки", false, () => { reportFlaw(file); w?.Close(); }));
+            row.Children.Add(Btn(Loc.Lang == "en" ? "Send as a modlist flaw" : "Отправить как недочёт сборки", true, () => { reportFlaw(file); w?.Close(); }));
         if (video && openInPlayer != null)
             row.Children.Add(Btn(Loc.T("screen.toplayer"), false, () => { openInPlayer(file); w?.Close(); }));
         if (video)
