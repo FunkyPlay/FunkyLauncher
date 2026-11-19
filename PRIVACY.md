@@ -1,8 +1,9 @@
 # Privacy policy — Funky Launcher
 
-*Last updated: 2026-11-12*
+*Last updated: 2026-11-19*
 
-Funky Launcher does **not** collect personal data, has **no telemetry** and sends **no usage statistics**.
+Funky Launcher does **not** collect personal data on its own, has **no telemetry** and sends **no usage statistics**.
+Data is sent only when you yourself use the optional functions described below (support chat, Funky Help, Funky Pro tools).
 There are no accounts in the launcher itself.
 
 ## Internet connections
@@ -17,6 +18,7 @@ There are no accounts in the launcher itself.
 | When you press “Funky Help” | `github.com` (official RustDesk release); then our support server `2.31.81.143` | Download RustDesk once; connect to Funky support. The supporter sees and controls your screen **only while the session you started is open**. Sessions are not recorded. The connection log (your PC's RustDesk ID and IP address) is kept no longer than 31 days; the server also remembers your RustDesk ID and last IP so the connection works — we delete that record on request (it appears again if you use Funky Help again) | Only on click; you close the session at any time |
 | When you press “Install” on the Software page | Microsoft winget (Windows) → the program author’s download server | Download and install that program; you accept its license once in the launcher | Only on click, after your consent |
 | When you write in “Contact support” and press Send | our support server `api.funkylauncher.com` (Germany) | Deliver your message and get our reply | Yes — don't use the chat; Telegram works too |
+| When you use the Funky Pro tools “Clip to my Telegram” or “Thanks from Funky” | our server `api.funkylauncher.com` | Check the Pro key signature (the key contains only an order number and an expiry date; it is not stored) and do what you asked | Only when you use these tools |
 | When you click links | Websites of the programs on the Software page, YouTube, Telegram | Open them in your browser | Only on click |
 
 These requests are normal web requests: the services see your IP address, as with any website.
@@ -28,6 +30,10 @@ Their own privacy policies apply:
 
 **Support chat.** When you write to support in the launcher, we receive your message text, an attached screenshot or report (if you choose to send one), a random installation ID, the modlist name and the launcher version. We use them only to answer you. They are stored on our server in Germany (Hetzner): screenshots for 90 days, everything else for 12 months after your last contact. We do not share them with third parties. You can delete your data with the “Delete my data” button in the chat or by email privacy@funkylauncher.com; we will respond within 10 working days. The data controller is the individual entrepreneur Funky (Georgia).
 
+**Funky Pro: “Clip to my Telegram” (optional).** If you link your Telegram to our bot @FunkyLauncherBot, our server stores an installation ID, a hash of its key, your Telegram chat ID and your display name from Telegram. When you send a screenshot or a clip, the file passes through our server only to be delivered to you and is not written to the server disk. Before sending, the launcher warns you: “Check the frame: it may contain personal data.” You can unlink at any time with the button in the launcher or the command /unlink; we then delete the stored chat ID and name. To check the key, the server keeps only the installation ID and a hash of its key. Our server keeps no log of IP addresses for these requests. Telegram's own privacy policy applies to the delivery. Controller: the individual entrepreneur Funky (Georgia).
+
+**“Thanks from Funky” (optional).** If you tick the box (it is off by default) and enter a name of up to 32 characters, the launcher sends the name to our server, which stores the installation ID, the name, an approval flag and the time. The name appears in a public list only after Funky approves it. You can remove it at any time by unticking the box: the data is deleted immediately. Do not enter a real name or personal data if you do not want it to be public. The list shows names only, not purchases or amounts.
+
 ## Data stored on your PC
 
 - `%LOCALAPPDATA%\FunkyLauncher` — settings, cached catalog, the built-in browser profile (your Nexus Mods login
@@ -37,9 +43,9 @@ Their own privacy policies apply:
 - Save backups — `%LOCALAPPDATA%\FunkyLauncher\Backups` or the folder you chose.
 - Funky Pro (if you have it): the cloud backup only writes archives into the cloud folder already on your PC
   (OneDrive, Yandex Disk, Dropbox or Google Drive, `FunkyLauncher Backups`). The launcher does not upload anything itself —
-  your cloud app syncs that folder under its own privacy policy. The Pro key is checked offline.
+  your cloud app syncs that folder under its own privacy policy. The Pro key is checked offline when you activate it.
 
-Nothing of this is sent anywhere by the launcher.
+Nothing in this list is sent by the launcher, except what is described in “Funky Pro: Clip to my Telegram” and “Thanks from Funky” above.
 
 ## Error reports
 
@@ -50,7 +56,7 @@ you decide whether to send it to support.
 
 # Политика конфиденциальности — Funky Launcher
 
-Лаунчер **не собирает** личные данные, **не отправляет** статистику и телеметрию, своих аккаунтов у него нет.
+Лаунчер сам **не собирает** личные данные, **не отправляет** статистику и телеметрию, своих аккаунтов у него нет. Данные передаются только когда вы сами пользуетесь необязательными функциями ниже (чат поддержки, Funky Помощь, инструменты Funky Pro).
 
 Он обращается в интернет только:
 - **при запуске** — к GitHub (список сборок) и к публичному Telegram-каналу @FunkyPlayTV (новости). Оба можно
@@ -65,13 +71,18 @@ you decide whether to send it to support.
   IP-адрес, чтобы соединение работало; по вашей просьбе мы удалим эту запись (если снова воспользуетесь Помощью,
   она появится снова);
 - **по кнопке «Установить» в разделе «Софт»** — Windows (winget, менеджер программ Microsoft) скачивает программу с сервера её автора; только после вашего согласия с лицензиями;
+- **инструменты Funky Pro «Клип в мой Telegram» и «Спасибо от Funky»** — к нашему серверу `api.funkylauncher.com`: проверка подписи ключа Pro (в ключе только номер заказа и срок; ключ не хранится) и то, что вы попросили; только когда вы пользуетесь этими инструментами;
 - **по клику** на ссылки — открывает сайты в вашем браузере.
 
 Сервисы видят ваш IP-адрес, как при открытии любого сайта; действуют их политики конфиденциальности (ссылки выше).
 
 Данные лаунчера лежат только у вас на ПК: `%LOCALAPPDATA%\FunkyLauncher` (настройки, бэкапы сохранений) и папка сборки.
 Funky Pro: облачный бэкап только кладёт архивы в папку облака, которая уже есть на вашем ПК (OneDrive, Яндекс Диск,
-Dropbox, Google Drive); сам лаунчер ничего не выгружает. Ключ Pro проверяется без интернета.
+Dropbox, Google Drive); сам лаунчер ничего не выгружает. Ключ Pro при активации проверяется без интернета.
 Отчёт об ошибке сохраняется на рабочий стол и никуда сам не отправляется.
 
 **Чат поддержки.** Когда вы пишете в поддержку из лаунчера, мы получаем текст сообщения, скриншот или отчёт (если вы сами его приложите), случайный номер установки, название сборки и версию лаунчера. Мы используем их только чтобы ответить вам. Данные хранятся на нашем сервере в Германии (Hetzner): скриншоты — 90 дней, остальное — 12 месяцев после последнего обращения. Третьим лицам мы их не передаём. Удалить данные можно кнопкой «Удалить мои данные» в чате или письмом на privacy@funkylauncher.com: ответим не позднее чем через 10 рабочих дней. Контролёр данных — индивидуальный предприниматель Funky (Грузия).
+
+**Funky Pro: «Клип в мой Telegram» (по желанию).** Если вы привязываете свой Telegram к нашему боту @FunkyLauncherBot, наш сервер хранит номер установки, хэш её ключа, ваш chat_id и отображаемое имя из Telegram. Когда вы отправляете скриншот или клип, файл проходит через наш сервер только для доставки вам и на диск сервера не записывается. Перед отправкой лаунчер предупреждает: «Проверь кадр: на нём могут быть личные данные». Отвязать Telegram можно в любой момент кнопкой в лаунчере или командой /unlink: после этого сохранённые chat_id и имя удаляются. Для проверки ключа сервер хранит только номер установки и хэш её ключа. Журнал IP-адресов для этих запросов наш сервер не ведёт. На доставку действует политика конфиденциальности Telegram. Оператор данных — ИП Funky (Грузия).
+
+**«Спасибо от Funky» (по желанию).** Если вы ставите галочку (по умолчанию выключена) и вводите имя до 32 знаков, лаунчер отправляет имя на наш сервер, который хранит номер установки, имя, отметку об одобрении и время. Имя появляется в публичном списке только после одобрения Funky. Убрать имя можно в любой момент, сняв галочку: данные удаляются сразу. Не вводите настоящее имя и личные данные, если не хотите, чтобы их увидели. В списке только имена, без покупок и сумм.
