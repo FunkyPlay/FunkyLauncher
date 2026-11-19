@@ -88,7 +88,7 @@ public partial class MainWindow
                 {
                     pages.Add(("15-pro", () => { NavTools.IsChecked = true; _tools.ShowPro(); }, 1000));
                     foreach (var p in ProModules.Panels(Core.ProPlace.Tools))
-                        pages.Add(("16-pro-" + p.Id, () => { NavTools.IsChecked = true; _tools.ShowProTool(p.Id); }, 1000));
+                        pages.Add(("16-pro-" + p.Id, () => { NavTools.IsChecked = true; _tools.ShowProTool(p.Id); _tools.ScrollToProPanel(); }, 1300));
                     pages.Add(("17-pro-settings", () => NavSettings.IsChecked = true, 1600));
                 }
                 foreach (var (name, show, height) in pages)

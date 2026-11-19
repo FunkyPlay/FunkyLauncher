@@ -178,6 +178,16 @@ public partial class ToolsView : UserControl
     public void ShowPro() { _tool = "pro"; Refresh(); }
     public void ShowProTool(string id) { _tool = "pro:" + id; Refresh(); }
 
+    /// <summary>Scrolls the Pro panel to the top of the page (screenshots of Pro tools).</summary>
+    public void ScrollToProPanel() =>
+        Dispatcher.BeginInvoke(() =>
+        {
+            DependencyObject? d = ProPanel;
+            while (d != null && d is not ScrollViewer) d = System.Windows.Media.VisualTreeHelper.GetParent(d);
+            if (d is ScrollViewer sv)
+                sv.ScrollToVerticalOffset(sv.VerticalOffset + ProPanel.TransformToAncestor(sv).Transform(new Point(0, 0)).Y - 24);
+        }, System.Windows.Threading.DispatcherPriority.Loaded);
+
     private readonly Dictionary<string, FrameworkElement> _proTools = new();
 
     private void RefreshPro()
