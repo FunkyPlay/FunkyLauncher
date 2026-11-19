@@ -22,7 +22,7 @@ public sealed record ProPanelInfo(ProPlace Place, string Id, string Icon, string
 /// <summary>Loads the Funky Pro module (%LOCALAPPDATA%\FunkyLauncher\pro\FunkyLauncher.Pro.dll) when a valid key is saved.</summary>
 public static class ProModules
 {
-    public const int ApiVersion = 2;
+    public const int ApiVersion = 3;
 
     public static string Dir => Path.Combine(AppConfig.DataDir, "pro");
     public static string DllPath => Path.Combine(Dir, "FunkyLauncher.Pro.dll");
@@ -88,6 +88,17 @@ public static class ProModules
         if (Live != null) Safe("hotkey", a);
         return true;
     }
+
+    /// <summary>MO2 profile Funky Pro picked for PLAY (null = the modlist's own).</summary>
+    public static string? PlayProfile(Modlist m)
+    {
+        var f = Live?.PlayProfile;
+        if (f == null) return null;
+        try { return f(m.Id) is { Length: > 0 } p && Directory.Exists(Path.Combine(AppSettingsInstallDir(m), "profiles", p)) ? p : null; }
+        catch (Exception ex) { Log("profile: " + ex.Message); return null; }
+    }
+
+    private static string AppSettingsInstallDir(Modlist m) => _host!.Settings.InstallDir(m);
 
     /// <summary>Asked by backup rotation.</summary>
     public static bool KeepBackup(Modlist m, string dir)
@@ -182,6 +193,7 @@ public static class ProModules
         public void Fire(Action<Host> raise) => Safe("event", () => raise(this));
 
         public Func<string, string, bool>? KeepBackup { get; set; }
+        public Func<string, string?>? PlayProfile { get; set; }
 
         public IReadOnlyList<ProBackup> Backups(string modlistId) =>
             Catalog.Find(modlistId) is { } m ? BackupService.List(s, m).Select(ToPro).ToList() : Array.Empty<ProBackup>();

@@ -205,7 +205,7 @@ public partial class LibraryView : UserControl
     {
         var m = _main.Selected;
         var s = _main.Settings;
-        var profile = _playProfile; _playProfile = null;
+        var profile = _playProfile ?? ProModules.PlayProfile(m); _playProfile = null; // Funky Pro: the player's own profile
         if (!s.IsInstalled(m)) { _main.ShowSetup(); return; }
         if (_watching) return;
         MainButton.IsEnabled = false;

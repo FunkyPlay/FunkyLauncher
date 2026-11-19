@@ -50,7 +50,7 @@ public sealed record ProGameExit(TimeSpan Played, bool Crashed, bool NotStarted)
 /// <summary>
 /// What the launcher gives the Pro module.
 /// API 1 (launcher 0.1.13): Settings, DataDir, Language, Log.
-/// API 2 (launcher 0.1.14): everything below. A module must check <see cref="ApiVersion"/> (missing on API 1 → MissingMethodException).
+/// API 2 (launcher 0.1.14): everything below. API 3: PlayProfile. A module must check <see cref="ApiVersion"/> (missing on API 1 → MissingMethodException).
 /// </summary>
 public interface IProHost
 {
@@ -85,6 +85,9 @@ public interface IProHost
     event Action<ProModlist?>? SelectionChanged;
     /// <summary>The launcher is closing.</summary>
     event Action? Closing;
+
+    /// <summary>API 3: asked at PLAY (modlist id → MO2 profile to start, null = the modlist's own).</summary>
+    Func<string, string?>? PlayProfile { get; set; }
 
     /// <summary>Asked before rotation removes an automatic backup: (modlist id, backup folder) → true = keep it (pinned).</summary>
     Func<string, string, bool>? KeepBackup { get; set; }
