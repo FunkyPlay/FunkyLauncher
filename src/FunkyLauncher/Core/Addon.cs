@@ -1,4 +1,4 @@
-// Funky Launcher — Copyright (C) 2026 Funky. Licensed under GPL-3.0-or-later.
+﻿// Funky Launcher — Copyright (C) 2026 Funky. Licensed under GPL-3.0-or-later.
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -132,6 +132,39 @@ public sealed class ModOrder
     [JsonPropertyName("separators")] public List<string> Separators { get; set; } = new();
     /// <summary>Binary deltas applied to a mod's file on the player's PC (Wabbajack's OCTODELTA), only to the expected original.</summary>
     [JsonPropertyName("patches")] public List<FilePatchDelta> Patches { get; set; } = new();
+    /// <summary>Russian names of items from the mods, made on the player's PC (Services/TranslationService); older launchers ignore this field.</summary>
+    [JsonPropertyName("translation")] public TranslationSpec? Translation { get; set; }
+}
+
+/// <summary>
+/// The "Russian names" mod: a small set of patch plugins the launcher builds on the player's PC from a dictionary
+/// (owner plugin + FormID + field -> Russian text). Our own generated files: replaced at every rebuild.
+/// </summary>
+public sealed class TranslationSpec
+{
+    /// <summary>Our own mod folder in MO2's "mods" (switched on only for the Russian version).</summary>
+    [JsonPropertyName("modFolder")] public string ModFolder { get; set; } = "";
+    /// <summary>Names of the generated plugins start with this (they are put at the end of the load order).</summary>
+    [JsonPropertyName("prefix")] public string Prefix { get; set; } = "FunkyPlay_RU_Names";
+    /// <summary>"starfield" or "fallout4".</summary>
+    [JsonPropertyName("gameType")] public string GameType { get; set; } = "";
+    /// <summary>Dictionaries: built into the launcher ("files/…") and refreshed online; the hash tells a good file from a broken one.</summary>
+    [JsonPropertyName("dicts")] public List<TranslationDict> Dicts { get; set; } = new();
+    /// <summary>Authors of the mods whose names we translated and who asked to be named (name + link to the mod page).</summary>
+    [JsonPropertyName("credits")] public List<TranslationCredit> Credits { get; set; } = new();
+}
+
+public sealed class TranslationDict
+{
+    [JsonPropertyName("path")] public string Path { get; set; } = "";
+    [JsonPropertyName("sha256")] public string Sha256 { get; set; } = "";
+}
+
+public sealed class TranslationCredit
+{
+    [JsonPropertyName("mod")] public string Mod { get; set; } = "";
+    [JsonPropertyName("author")] public string Author { get; set; } = "";
+    [JsonPropertyName("url")] public string Url { get; set; } = "";
 }
 
 public sealed class FilePatchDelta
@@ -253,6 +286,10 @@ public static class Addons
                 }
                 catch { /* offline, 404 (no such pack) — keep what we have */ }
             }
+        // the dictionaries of the Russian item names (a changed one reaches players without a new launcher)
+        foreach (var id in modlistIds)
+            try { if (Order(id)?.Translation is { } t) await Services.TranslationService.RefreshDictsAsync(http, OnlineBase, t, token); }
+            catch { }
     }
 
     private static AddonFile? Load(string modlistId, string kind)

@@ -35,6 +35,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <!-- the helper that gives Russian names to the items of the installed mods (builds small patch plugins on the player's PC) -->
+    <ProjectReference Include="..\FunkyPatcher\FunkyPatcher.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.4314.35" />
     <PackageReference Include="SharpCompress" Version="0.50.9" />
     <PackageReference Include="System.Management" Version="11.0.0" />

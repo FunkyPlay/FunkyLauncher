@@ -107,6 +107,14 @@ public static partial class Mo2Profile
         foreach (var folder in order.OwnFolders.Concat(order.Separators))
             if (OnDisk(folder)) { wanted[folder] = true; RememberOurs(s, m, folder); }
         foreach (var folder in order.ModlistOff) wanted[folder] = false;
+        // the Russian names (made on this PC from a dictionary): our own mod, on only for the Russian version
+        var tr = order.Translation;
+        var ruOn = Addons.Russian(m.Id) is { } ruPack && AddonService.Prefs(s, ruPack).On;
+        if (tr != null && tr.ModFolder.Length > 0 && OnDisk(tr.ModFolder))
+        {
+            wanted[tr.ModFolder] = ruOn;
+            RememberOurs(s, m, tr.ModFolder);
+        }
 
         // ---- modlist.txt (top = highest priority)
         var listPath = Path.Combine(profile, "modlist.txt");
@@ -151,6 +159,15 @@ public static partial class Mo2Profile
             if (!available.Contains(p) && !InGame(p)) continue;
             plugins.Add(off.Contains(p) ? p : "*" + p);
             order2.Add(p);
+        }
+        // the patch plugins we generated (Russian names): switched on, at the very end of the load order
+        if (tr != null && tr.ModFolder.Length > 0 && enabledMods.Contains(tr.ModFolder, StringComparer.OrdinalIgnoreCase))
+        {
+            var dir = Path.Combine(modsDir, tr.ModFolder);
+            if (Directory.Exists(dir))
+                foreach (var p in Directory.EnumerateFiles(dir).Where(f => IsPlugin(f) && Path.GetFileName(f).StartsWith(tr.Prefix + "_", StringComparison.OrdinalIgnoreCase))
+                             .Select(Path.GetFileName).OfType<string>().OrderBy(p => p, StringComparer.Ordinal))
+                    if (!order2.Contains(p, StringComparer.OrdinalIgnoreCase)) { plugins.Add("*" + p); order2.Add(p); }
         }
         // plugins of enabled mods that the order file does not list: switched off, at the end (never guessed into the order)
         var listed = new HashSet<string>(order2, StringComparer.OrdinalIgnoreCase);

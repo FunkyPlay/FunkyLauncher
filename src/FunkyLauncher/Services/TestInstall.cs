@@ -37,6 +37,27 @@ public static class TestInstall
             }
             catch (Exception ex) { File.WriteAllText(Path.GetFullPath(args[3]).TrimEnd('\\') + ".ensure.error.txt", ex.ToString()); return 1; }
         }
+        // "--test-install --translate <modlistId> <install folder> [en]": build the Russian item names for an installed modlist
+        // (the Russian pack is counted as on unless "en"); result and reason go to <folder>.translate.log
+        if (args.Length >= 4 && args[1] == "--translate")
+        {
+            var tlog = Path.GetFullPath(args[3]).TrimEnd('\\') + ".translate.log";
+            try
+            {
+                Loc.Set("ru");
+                Catalog.LoadBuiltIn();
+                var ts = Settings.Load();
+                Modlist.InstallDirOf = m => ts.InstallDir(m);
+                var tml = Catalog.Find(args[2]) ?? throw new InvalidOperationException("no modlist " + args[2]);
+                ts.SetInstallDir(tml, Path.GetFullPath(args[3]));
+                if (Addons.Russian(tml.Id) is { } tru) AddonService.Prefs(ts, tru).On = !(args.Length > 4 && args[4] == "en");
+                var lines = new List<string>();
+                var tr = await TranslationService.BuildAsync(ts, tml, new Progress<string>(lines.Add), CancellationToken.None);
+                File.WriteAllLines(tlog, lines.Append($"built={tr.Built} skipped={tr.Skipped} made={tr.Made} patches={tr.Patches} error={tr.Error}"));
+                return tr.Error == null ? 0 : 1;
+            }
+            catch (Exception ex) { File.WriteAllText(tlog, ex.ToString()); return 1; }
+        }
         if (args.Length >= 4 && args[1] == "--profile")
         {
             var plog = Path.GetFullPath(args[3]).TrimEnd('\\') + ".profile.log";

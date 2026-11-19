@@ -24,39 +24,69 @@ public static class Program
     private const int MaxMastersPerPatch = 180;
     private static readonly HashSet<string> SkippedTypes = new(StringComparer.OrdinalIgnoreCase) { "REFR", "WRLD", "DIAL" };
 
-    public static int Main(string[] args)
+    /// <summary>What the launcher (or the command line) gives the helper.</summary>
+    /// <param name="Mo2Dir">the portable MO2 folder of the modlist</param>
+    /// <param name="Profile">MO2 profile name (its plugins.txt / modlist.txt give the load order)</param>
+    /// <param name="GameDir">the game folder</param>
+    /// <param name="DictPaths">dictionaries: "owner plugin, FormID, record, field, Russian text" (tab separated, one header line each)</param>
+    /// <param name="OutDir">folder of our own mod: the patch plugins are written here, older ones of this name are replaced</param>
+    /// <param name="GameType">starfield or fallout4</param>
+    /// <param name="ReportPath">where to write the JSON report (null = in OutDir)</param>
+    public sealed record PatcherOptions(string Mo2Dir, string Profile, string GameDir, IReadOnlyList<string> DictPaths, string OutDir,
+        string GameType = "starfield", string Prefix = "FunkyPlay_RU_Names", string? ReportPath = null);
+
+    public sealed record PatcherResult(bool Ok, string? Error, int Made, int Skipped, int Patches, string ReportJson);
+
+    /// <summary>The whole job: reads the load order, builds the patch plugins into OutDir. Never throws: errors come back in the result.</summary>
+    public static PatcherResult Build(PatcherOptions o, Action<string>? progress = null)
     {
-        Console.OutputEncoding = Encoding.UTF8;
-        string? Arg(string name) { var i = Array.IndexOf(args, name); return i >= 0 && i + 1 < args.Length ? args[i + 1] : null; }
-        var mo2 = Arg("--mo2"); var profile = Arg("--profile"); var dict = Arg("--dict"); var outDir = Arg("--out");
-        var game = Arg("--game"); var prefix = Arg("--name") ?? "FunkyPlay_RU_Names";
-        var allowStop = args.Contains("--allow-added-stop");
-        var gameType = (Arg("--game-type") ?? "starfield").ToLowerInvariant();
-        if (mo2 == null || profile == null || dict == null || outDir == null || game == null)
-        {
-            Console.Error.WriteLine("FunkyPatcher --mo2 <MO2 folder> --profile <MO2 profile> --game <game folder> --dict <dictionary.tsv> --out <output mod folder> [--name <plugin name prefix>]");
-            return 2;
-        }
-        var report = new Report();
+        var report = new Report { Progress = progress };
         try
         {
-            if (gameType == "fallout4") Run<IFallout4Mod, IFallout4ModGetter>(GameInfo.Fallout4, mo2, profile, game, dict, outDir, prefix, allowStop, report);
-            else Run<IStarfieldMod, IStarfieldModGetter>(GameInfo.Starfield, mo2, profile, game, dict, outDir, prefix, allowStop, report);
+            if (o.GameType.Equals("fallout4", StringComparison.OrdinalIgnoreCase))
+                Run<IFallout4Mod, IFallout4ModGetter>(GameInfo.Fallout4, o.Mo2Dir, o.Profile, o.GameDir, o.DictPaths, o.OutDir, o.Prefix, false, report);
+            else
+                Run<IStarfieldMod, IStarfieldModGetter>(GameInfo.Starfield, o.Mo2Dir, o.Profile, o.GameDir, o.DictPaths, o.OutDir, o.Prefix, false, report);
             report.Ok = true;
         }
         catch (Exception ex)
         {
             report.Error = ex.ToString();
         }
-        Directory.CreateDirectory(outDir);
-        File.WriteAllText(Path.Combine(outDir, "funkypatcher-report.json"), JsonSerializer.Serialize(report, new JsonSerializerOptions { WriteIndented = true, Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping }));
-        Console.WriteLine($"ok={report.Ok} made={report.Made} skipped={report.Skipped.Values.Sum()} patches={report.Patches.Count}");
-        if (report.Error != null) Console.Error.WriteLine(report.Error);
-        return report.Ok ? 0 : 1;
+        var json = JsonSerializer.Serialize(report, new JsonSerializerOptions { WriteIndented = true, Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping });
+        try
+        {
+            var path = o.ReportPath ?? Path.Combine(o.OutDir, "funkypatcher-report.json");
+            Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(path))!);
+            File.WriteAllText(path, json);
+        }
+        catch { /* the report is for us; the patch itself is already written */ }
+        return new PatcherResult(report.Ok, report.Error, report.Made, report.Skipped.Values.Sum(), report.Patches.Count, json);
+    }
+
+    public static int Main(string[] args)
+    {
+        Console.OutputEncoding = Encoding.UTF8;
+        string? Arg(string name) { var i = Array.IndexOf(args, name); return i >= 0 && i + 1 < args.Length ? args[i + 1] : null; }
+        var dicts = new List<string>();
+        for (var i = 0; i < args.Length - 1; i++) if (args[i] == "--dict") dicts.Add(args[i + 1]);
+        var mo2 = Arg("--mo2"); var profile = Arg("--profile"); var outDir = Arg("--out");
+        var game = Arg("--game"); var prefix = Arg("--name") ?? "FunkyPlay_RU_Names";
+        var gameType = (Arg("--game-type") ?? "starfield").ToLowerInvariant();
+        if (mo2 == null || profile == null || dicts.Count == 0 || outDir == null || game == null)
+        {
+            Console.Error.WriteLine("FunkyPatcher --mo2 <MO2 folder> --profile <MO2 profile> --game <game folder> --dict <dictionary.tsv> [--dict <another.tsv>] --out <output mod folder> [--name <plugin name prefix>] [--game-type starfield|fallout4]");
+            return 2;
+        }
+        var r = Build(new PatcherOptions(mo2, profile, game, dicts, outDir, gameType, prefix), Console.WriteLine);
+        Console.WriteLine($"ok={r.Ok} made={r.Made} skipped={r.Skipped} patches={r.Patches}");
+        if (r.Error != null) Console.Error.WriteLine(r.Error);
+        return r.Ok ? 0 : 1;
     }
 
     internal sealed class Report
     {
+        [System.Text.Json.Serialization.JsonIgnore] public Action<string>? Progress { get; set; }
         public bool Ok { get; set; }
         public string? Error { get; set; }
         public int DictionaryLines { get; set; }
@@ -101,7 +131,7 @@ public static class Program
             "Fallout4.ccc", @"^cc[A-Za-z0-9]+-.*\.es[lm]$", false, "@game:", ModType.Plugin, 0x200, new PluginShape(0x200, 0x83, 1.0f, true, ".esp")); // a light (ESL-flagged) .esp
     }
 
-    private static void Run<TMod, TModGetter>(GameInfo info, string mo2, string profile, string game, string dictPath, string outDir, string prefix, bool allowStop, Report report)
+    private static void Run<TMod, TModGetter>(GameInfo info, string mo2, string profile, string game, IReadOnlyList<string> dictPaths, string outDir, string prefix, bool allowStop, Report report)
         where TMod : class, IContextMod<TMod, TModGetter>, TModGetter
         where TModGetter : class, IContextGetterMod<TMod, TModGetter>
     {
@@ -146,6 +176,10 @@ public static class Program
         foreach (var o in official) if (File.Exists(Path.Combine(gameData, o)) && !names.Contains(o, StringComparer.OrdinalIgnoreCase)) names.Add(o);
         // the game loads its own plugins first (right after Starfield.esm and the DLC), wherever plugins.txt lists them;
         // the starred mods follow in the order of plugins.txt
+        // the Creation Club plugins named in the game's .ccc file are loaded by the game even when plugins.txt does not list them
+        if (File.Exists(ccc))
+            foreach (var l in File.ReadAllLines(ccc).Select(l => l.Trim()).Where(l => l.Length > 0 && !l.StartsWith('#')))
+                if (!names.Contains(l, StringComparer.OrdinalIgnoreCase) && File.Exists(Path.Combine(gameData, l))) names.Add(l);
         foreach (var o in order)
             if (!names.Contains(o, StringComparer.OrdinalIgnoreCase) && Forced(o)) names.Add(o);
         // the game (and MO2 when it starts the game) puts every master-flagged plugin (.esm, .esl, or the master flag in the header)
@@ -207,7 +241,8 @@ public static class Program
 
             // ---- dictionary
             var entries = new List<Entry>();
-            foreach (var line in File.ReadLines(dictPath).Skip(1))
+            report.Progress?.Invoke("dictionary");
+            foreach (var line in dictPaths.SelectMany(d => File.ReadLines(d).Skip(1)))
             {
                 if (line.Length == 0) continue;
                 var c = line.Split('\t');
@@ -263,6 +298,7 @@ public static class Program
             {
                 var what = $"{e.Owner}:{e.Id:X6} {e.Record}";
                 var recKey = (e.Owner.ToLowerInvariant(), e.Id);
+                if (!mods.Any(m => string.Equals(m.ModKey.FileName.String, e.Owner, StringComparison.OrdinalIgnoreCase))) { report.Skip("owner plugin is not in the load order", what); continue; }
                 if (!ByteCopy.IsKnownField(e.Field)) { report.Skip("field not supported", what + " " + e.Field); continue; }
                 if (!e.Field.Equals("FULL", StringComparison.OrdinalIgnoreCase) || byteOnly.Contains(recKey)) continue; // done by the byte copy below
                 void ToByteCopy(string why) { fallback.Add(recKey); report.SentToByteCopy[why] = report.SentToByteCopy.GetValueOrDefault(why) + 1; }
@@ -377,6 +413,7 @@ public static class Program
                 report.Made += list.Count;
                 report.Patches.Add(new PatchInfo { File = mod.ModKey.FileName, Records = list.Count, Masters = final.MasterCount });
             }
+            report.Progress?.Invoke("byte copy");
             // ---- byte copy: the records the library cannot (or may not) copy, and the fields it cannot address
             var jobs = new List<ByteJob>();
             foreach (var g in entries.Where(x => !SkippedTypes.Contains(x.Record) && ByteCopy.IsKnownField(x.Field))

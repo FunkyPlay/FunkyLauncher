@@ -1,5 +1,21 @@
 {
  "modlistId": "fallout4",
+ "translation": {
+  "modFolder": "FunkyPlay - Русские названия",
+  "prefix": "FunkyPlay_RU_Names",
+  "gameType": "fallout4",
+  "dicts": [ { "path": "files/fallout4/names-ru.tsv", "sha256": "3a4ac89501706f8d4b43273b062b49a51ffa1f8884cbc716f60a06f367bc9feb" } ],
+  "credits": [
+   { "mod": "Amazing FollowerTweaks", "author": "Dheuster", "url": "https://www.nexusmods.com/fallout4/mods/26976" },
+   { "mod": "Sidearms of the Wasteland", "author": "Gecko In A Can 77", "url": "https://www.nexusmods.com/fallout4/mods/96613" },
+   { "mod": "Boon Island - Isles Of New England", "author": "Tenhats и Shreddah4", "url": "https://www.nexusmods.com/fallout4/mods/84449" },
+   { "mod": "Misery Island - Isles Of New England", "author": "Tenhats и Shreddah4", "url": "https://www.nexusmods.com/fallout4/mods/87983" },
+   { "mod": "Caves Of The Commonwealth", "author": "shreddah4", "url": "https://www.nexusmods.com/fallout4/mods/75647" },
+   { "mod": "Eli's Armour Compendium", "author": "Elianora", "url": "https://www.nexusmods.com/fallout4/mods/22431" },
+   { "mod": "West Tek Tactical Optics", "author": "fadingsignal", "url": "https://www.nexusmods.com/fallout4/mods/12220" },
+   { "mod": "K-9 Harness", "author": "fadingsignal", "url": "https://www.nexusmods.com/fallout4/mods/17686" }
+  ]
+ },
  "generated": "2026-11-17",
  "forGameVersion": "1.11.240",
  "source": "MO2 профили Public RU + 18 / Public RU / Public EN (C:\\Games\\Fallout 4 MO2)",

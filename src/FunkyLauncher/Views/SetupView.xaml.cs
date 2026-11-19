@@ -178,6 +178,40 @@ public partial class SetupView : UserControl
             CompositionPanel.Children.Add(row);
         }
 
+        // Russian names of items from the mods (made on this PC): what it is, who the authors are, and a rebuild button
+        if (showLang == "ru" && TranslationService.Spec(Ml) is { } names)
+        {
+            CompositionPanel.Children.Add(Separator());
+            var row = Row(Loc.T("trans.title"), Loc.T("trans.note"), out var right);
+            var rebuild = new Button
+            {
+                Content = Loc.T("trans.rebuild"), Style = (Style)FindResource("SecondaryButton"),
+                Height = 32, Padding = new Thickness(12, 0, 12, 0), FontSize = 13,
+                IsEnabled = !_busy && installed && _pendingLang == null,
+            };
+            rebuild.Click += (_, _) => _ = RebuildNamesAsync();
+            right.Child = rebuild;
+            CompositionPanel.Children.Add(row);
+            if (names.Credits.Count > 0)
+            {
+                foreach (var c in names.Credits)
+                {
+                    var line = new TextBlock { FontSize = 12, Foreground = (Brush)FindResource("Muted"), TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 2, 0, 0) };
+                    line.Inlines.Add(new System.Windows.Documents.Run(Loc.F("trans.credit", c.Mod, c.Author)));
+                    if (c.Url.StartsWith("https://"))
+                    {
+                        var link = new System.Windows.Documents.Hyperlink(new System.Windows.Documents.Run(c.Url)) { Foreground = (Brush)FindResource("Cyan") };
+                        var url = c.Url;
+                        link.Click += (_, _) => PlayService.OpenUrl(url);
+                        line.Inlines.Add(link);
+                    }
+                    line.Inlines.Add(new System.Windows.Documents.Run("." + Loc.T("trans.credit.tail")));
+                    CompositionPanel.Children.Add(line);
+                }
+                CompositionPanel.Children.Add(new TextBlock { Text = Loc.T("trans.credits.general"), FontSize = 12, Foreground = (Brush)FindResource("Muted"), TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 6, 0, 0) });
+            }
+        }
+
         foreach (var (kind, pack) in extras)
         {
             CompositionPanel.Children.Add(Separator());
@@ -291,6 +325,25 @@ public partial class SetupView : UserControl
                     : r.NeedManual.Any(i => !i.Done) ? Loc.F("comp.lang.notdownloaded", r.NeedManual.Count(i => !i.Done))
                     : Loc.T("comp.extra.on");
             }
+        }
+        catch (OperationCanceledException) { ProgressText.Text = Loc.T("inst.stopped"); }
+        catch (Exception ex) { ProgressText.Text = ex.Message; }
+        finally { await EndBusyAsync(); }
+    }
+
+    /// <summary>The "Rebuild the Russian names" button: the helper runs again (new mods, a new dictionary, a failed first try).</summary>
+    private async Task RebuildNamesAsync()
+    {
+        var s = _main.Settings;
+        BeginBusy();
+        try
+        {
+            ProgressText.Text = Loc.T("trans.building");
+            var progress = new Progress<string>(t => LogLine.Text = t);
+            var r = await TranslationService.BuildAsync(s, Ml, progress, _cts!.Token);
+            ProgressText.Text = r.Skipped ? Loc.T("trans.skipped")
+                : r.Error != null ? Loc.F("trans.failed", r.Error)
+                : Loc.F("trans.done", r.Made);
         }
         catch (OperationCanceledException) { ProgressText.Text = Loc.T("inst.stopped"); }
         catch (Exception ex) { ProgressText.Text = ex.Message; }

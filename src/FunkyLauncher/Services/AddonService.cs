@@ -112,6 +112,7 @@ public static class AddonService
         {
             progress.Report(Loc.T("addon.enabling"));
             await Task.Run(() => SetEnabled(s, m, a, level2, on: true), token);
+            await AfterRussianAsync(s, m, a, progress, token);
             return new AddonResult(wanted.Count, new List<ManualItem>(), new List<string>());
         }
         var downloads = s.DownloadsDir(m);
@@ -270,7 +271,15 @@ public static class AddonService
 
         progress.Report(Loc.T("addon.enabling"));
         SetEnabled(s, m, a, level2, on: true);
+        await AfterRussianAsync(s, m, a, progress, token);
         return new AddonResult(done, manual, errors);
+    }
+
+    /// <summary>The Russian pack is on: the Russian names of items from the mods are built on this PC (a failure only leaves them in English).</summary>
+    private static async Task AfterRussianAsync(Settings s, Modlist m, AddonFile a, IProgress<string> progress, CancellationToken token)
+    {
+        if (Addons.Russian(m.Id) is { } ru && ru.AddonId == a.AddonId && TranslationService.Spec(m) != null)
+            await TranslationService.BuildAsync(s, m, progress, token);
     }
 
     /// <summary>Switches the add-on's mods off in modlist.txt. The files stay in the mods folder.</summary>

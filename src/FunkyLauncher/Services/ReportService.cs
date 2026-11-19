@@ -43,6 +43,9 @@ public static class ReportService
             AddNewest(zip, "mo2", Path.Combine(dir, "logs"), "*.log", 5, false);
             AddNewest(zip, "mods-logs", Path.Combine(dir, "overwrite"), "*.log", 30, true);
             AddNewest(zip, "crashes", Path.Combine(dir, "overwrite"), "crash-*.txt", 3, true);
+            // the Russian names helper: its log (why a build failed) and its report
+            foreach (var f in new[] { "funkypatcher-log.txt", "funkypatcher-report.json" })
+                try { if (File.Exists(Path.Combine(dir, f))) Add(zip, "translation", Path.Combine(dir, f)); } catch { }
 
             if (game != null)
             {
