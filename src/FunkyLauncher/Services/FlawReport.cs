@@ -45,17 +45,15 @@ public static class FlawReport
         return $"{m.Title} {version}{(variant.Length > 0 ? " · " + variant : "")} · Funky Launcher {AppConfig.Version}";
     }
 
-    /// <summary>A picture made small enough to send: up to 2560 px wide, JPEG when the PNG is too big.</summary>
+    /// <summary>The picture as it is sent: JPEG, the long side up to 1920 px, quality 85 (less traffic, a quick send).</summary>
     public static (string Name, byte[] Data) Picture(string file)
     {
-        var bytes = File.ReadAllBytes(file);
-        var name = Path.GetFileName(file);
-        if (bytes.Length <= MaxBytes && !TooWide(bytes)) return (name, bytes);
         var bi = new BitmapImage();
-        bi.BeginInit(); bi.CacheOption = BitmapCacheOption.OnLoad; bi.StreamSource = new MemoryStream(bytes); bi.EndInit();
+        bi.BeginInit(); bi.CacheOption = BitmapCacheOption.OnLoad; bi.StreamSource = new MemoryStream(File.ReadAllBytes(file)); bi.EndInit();
         BitmapSource src = bi;
-        if (bi.PixelWidth > 2560) src = new TransformedBitmap(bi, new System.Windows.Media.ScaleTransform(2560.0 / bi.PixelWidth, 2560.0 / bi.PixelWidth));
-        foreach (var q in new[] { 88, 75, 60 })
+        var side = Math.Max(bi.PixelWidth, bi.PixelHeight);
+        if (side > 1920) src = new TransformedBitmap(bi, new System.Windows.Media.ScaleTransform(1920.0 / side, 1920.0 / side));
+        foreach (var q in new[] { 85, 70, 55 })
         {
             var enc = new JpegBitmapEncoder { QualityLevel = q };
             enc.Frames.Add(BitmapFrame.Create(src));
@@ -63,17 +61,7 @@ public static class FlawReport
             enc.Save(ms);
             if (ms.Length <= MaxBytes) return (Path.GetFileNameWithoutExtension(file) + ".jpg", ms.ToArray());
         }
-        throw new InvalidOperationException(Texts.T("Снимок слишком большой — выбери другой.", "The screenshot is too big — pick another one."));
-    }
-
-    private static bool TooWide(byte[] bytes)
-    {
-        try
-        {
-            var d = BitmapDecoder.Create(new MemoryStream(bytes), BitmapCreateOptions.DelayCreation, BitmapCacheOption.None);
-            return d.Frames[0].PixelWidth > 3840;
-        }
-        catch { return false; }
+        throw new InvalidOperationException(Loc.T("flaw.err.big"));
     }
 
     /// <summary>Sends one report. Throws with a text for the player.</summary>
@@ -100,9 +88,9 @@ public static class FlawReport
         try { error = JsonDocument.Parse(await resp.Content.ReadAsStringAsync(token)).RootElement.GetProperty("error").GetString(); } catch { }
         throw new InvalidOperationException((int)resp.StatusCode switch
         {
-            429 => error ?? Texts.T("На сегодня хватит — спасибо! Пришли остальное завтра.", "That's enough for today — thank you! Send the rest tomorrow."),
-            413 => Texts.T("Снимок слишком большой.", "The screenshot is too big."),
-            _ => error ?? Texts.T($"Не отправилось (ошибка {(int)resp.StatusCode}). Попробуй позже.", $"Not sent (error {(int)resp.StatusCode}). Try again later."),
+            429 => error ?? Loc.T("flaw.err.429"),
+            413 => Loc.T("flaw.err.413"),
+            _ => error ?? Loc.F("flaw.err.code", (int)resp.StatusCode),
         });
     }
 
@@ -115,11 +103,5 @@ public static class FlawReport
             return Directory.Exists(dir) ? new DirectoryInfo(dir).EnumerateFiles("*.png").OrderByDescending(f => f.LastWriteTime).FirstOrDefault()?.FullName : null;
         }
         catch { return null; }
-    }
-
-    /// <summary>RU/EN texts of this feature live here (not in Loc) until the design and copy team give the final ones.</summary>
-    public static class Texts
-    {
-        public static string T(string ru, string en) => Loc.Lang == "en" ? en : ru;
     }
 }

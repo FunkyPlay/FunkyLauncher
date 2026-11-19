@@ -7,7 +7,6 @@ using System.Windows.Media.Imaging;
 using FunkyLauncher.Core;
 using FunkyLauncher.Services;
 using Microsoft.Win32;
-using static FunkyLauncher.Services.FlawReport.Texts;
 
 namespace FunkyLauncher.Views;
 
@@ -83,7 +82,7 @@ public sealed class FlawWindow : Window
     private FlawWindow(Settings s, Modlist m)
     {
         _s = s; _m = m;
-        Title = T("Сообщить о недочёте", "Report a flaw");
+        Title = Loc.T("flaw.title");
         WindowStyle = WindowStyle.None; AllowsTransparency = true; Background = Brushes.Transparent;
         ResizeMode = ResizeMode.NoResize; SizeToContent = SizeToContent.WidthAndHeight;
         WindowStartupLocation = WindowStartupLocation.CenterOwner;
@@ -99,7 +98,7 @@ public sealed class FlawWindow : Window
         _shot = new Border { Width = 156, Height = 88, CornerRadius = new CornerRadius(8), BorderBrush = Line, BorderThickness = new Thickness(1), Background = Field, ClipToBounds = true };
         _shotHint = new TextBlock { FontSize = 11, Foreground = Small, TextTrimming = TextTrimming.CharacterEllipsis, Margin = new Thickness(0, 6, 0, 0), MaxWidth = 156 };
         _status = new TextBlock { FontSize = 12.5, Foreground = R("Pink"), TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 10, 0, 0), Visibility = Visibility.Collapsed };
-        _send = Btn(T("Отправить", "Send"), true, async (_, _) => await SendAsync());
+        _send = Btn(Loc.T("flaw.send"), true, async (_, _) => await SendAsync());
         _frame = new Border
         {
             Width = 610, Padding = new Thickness(30, 26, 30, 24), Background = new SolidColorBrush(Color.FromRgb(0x10, 0x10, 0x16)),
@@ -124,19 +123,19 @@ public sealed class FlawWindow : Window
     {
         var root = new StackPanel();
         var head = new TextBlock { FontSize = 23, FontWeight = FontWeights.Bold, TextWrapping = TextWrapping.Wrap };
-        head.Inlines.Add(new System.Windows.Documents.Run(T("Сообщить о недочёте", "Report a flaw")));
+        head.Inlines.Add(new System.Windows.Documents.Run(Loc.T("flaw.title")));
         head.Inlines.Add(new System.Windows.Documents.Run(" · " + NiceTitle(_m.Title)) { Foreground = Muted, FontWeight = FontWeights.Normal });
         root.Children.Add(head);
 
-        root.Children.Add(Label(T("Что не так?", "What's wrong?"), 18));
-        var placeholder = new TextBlock { Text = T("Например: у куртки в магазине сломана текстура", "For example: a jacket in the shop has a broken texture"), FontSize = 13.5, Foreground = new SolidColorBrush(Color.FromRgb(0x77, 0x78, 0x8A)), Margin = new Thickness(12, 9, 12, 0), IsHitTestVisible = false };
+        root.Children.Add(Label(Loc.T("flaw.what"), 18));
+        var placeholder = new TextBlock { Text = Loc.T("flaw.example"), FontSize = 13.5, Foreground = new SolidColorBrush(Color.FromRgb(0x77, 0x78, 0x8A)), Margin = new Thickness(12, 9, 12, 0), IsHitTestVisible = false };
         _box.TextChanged += (_, _) => placeholder.Visibility = _box.Text.Length == 0 ? Visibility.Visible : Visibility.Collapsed;
         var field = new Grid();
         field.Children.Add(placeholder);
         field.Children.Add(_box);
         root.Children.Add(new Border { Child = field, Margin = new Thickness(0, 7, 0, 0), CornerRadius = new CornerRadius(10), BorderBrush = Line, BorderThickness = new Thickness(1), Background = Field });
 
-        root.Children.Add(Label(T("Снимок экрана", "Screenshot"), 16));
+        root.Children.Add(Label(Loc.T("flaw.shot"), 16));
         var row = new StackPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(0, 7, 0, 0) };
         var left = new StackPanel { VerticalAlignment = VerticalAlignment.Center };
         left.Children.Add(_shot);
@@ -144,19 +143,19 @@ public sealed class FlawWindow : Window
         row.Children.Add(left);
         var buttons = new StackPanel { Margin = new Thickness(14, 0, 0, 0), VerticalAlignment = VerticalAlignment.Center };
         void Add(Button b) { b.HorizontalAlignment = HorizontalAlignment.Left; b.Margin = new Thickness(0, 0, 0, 7); buttons.Children.Add(b); }
-        Add(Btn(T("Выбрать файл", "Choose file"), false, (_, _) =>
+        Add(Btn(Loc.T("flaw.file"), false, (_, _) =>
         {
-            var dlg = new OpenFileDialog { Filter = T("Картинки", "Pictures") + "|*.png;*.jpg;*.jpeg;*.webp;*.bmp" };
+            var dlg = new OpenFileDialog { Filter = Loc.T("flaw.pictures") + "|*.png;*.jpg;*.jpeg;*.webp;*.bmp" };
             if (Directory.Exists(FunkyScreen.ShotsDir)) dlg.InitialDirectory = FunkyScreen.ShotsDir;
             if (dlg.ShowDialog(this) == true) SetPicture(dlg.FileName);
         }, small: true));
-        Add(Btn(T("Вставить из буфера", "Paste from clipboard"), false, (_, _) =>
+        Add(Btn(Loc.T("flaw.paste"), false, (_, _) =>
         {
-            if (ClipboardPicture() is { } p) SetPicture(p); else Status(T("В буфере нет картинки.", "There is no picture in the clipboard."));
+            if (ClipboardPicture() is { } p) SetPicture(p); else Status(Loc.T("flaw.paste.none"));
         }, small: true));
-        Add(Btn(T("Последний снимок Funky Скрин", "Last Funky Screen shot"), false, (_, _) =>
+        Add(Btn(Loc.T("flaw.last"), false, (_, _) =>
         {
-            if (FlawReport.LastShot() is { } p) SetPicture(p); else Status(T("Снимков Funky Скрин пока нет.", "No Funky Screen shots yet."));
+            if (FlawReport.LastShot() is { } p) SetPicture(p); else Status(Loc.T("flaw.last.none"));
         }, small: true));
         row.Children.Add(buttons);
         root.Children.Add(row);
@@ -164,28 +163,27 @@ public sealed class FlawWindow : Window
 
         root.Children.Add(new TextBlock
         {
-            Text = T("Уйдут твой текст, снимок, название и версия сборки, версия (RU/EN), версия лаунчера и случайный номер установки (для защиты от спама). О ПК — ничего. Закрой на снимке личное и не присылай откровенные кадры.",
-                     "Sent: your text, the screenshot, the modlist name and version, its edition (RU/EN), the launcher version and a random installation ID (to limit spam). Nothing about your PC. Hide personal data and do not send explicit frames."),
+            Text = Loc.T("flaw.sent"),
             FontSize = 11.5, LineHeight = 17, Foreground = Soft, TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 12, 0, 0),
         });
 
         var plate = new DockPanel();
-        var sup = Btn(T("В поддержку", "Support"), false, (_, _) => { PlayService.OpenSupportChat("", _s, _m); Close(); }, small: true);
+        var sup = Btn(Loc.T("flaw.support"), false, (_, _) => { PlayService.OpenSupportChat("", _s, _m); Close(); }, small: true);
         DockPanel.SetDock(sup, Dock.Right);
         plate.Children.Add(sup);
-        plate.Children.Add(new TextBlock { Text = T("Не запускается или вылетает? Это не сюда — напиши в поддержку.", "Won't start or crashes? Not here — write to support."), FontSize = 12.5, Foreground = new SolidColorBrush(Color.FromRgb(0xD9, 0xDA, 0xE6)), TextWrapping = TextWrapping.Wrap, VerticalAlignment = VerticalAlignment.Center, Margin = new Thickness(0, 0, 12, 0) });
+        plate.Children.Add(new TextBlock { Text = Loc.T("flaw.support.plate"), FontSize = 12.5, Foreground = new SolidColorBrush(Color.FromRgb(0xD9, 0xDA, 0xE6)), TextWrapping = TextWrapping.Wrap, VerticalAlignment = VerticalAlignment.Center, Margin = new Thickness(0, 0, 12, 0) });
         root.Children.Add(new Border { Child = plate, Background = Plate, CornerRadius = new CornerRadius(10), Padding = new Thickness(12, 9, 9, 9), Margin = new Thickness(0, 12, 0, 0) });
 
         // Legal 20.11: the consent line next to Send, no tick box
-        root.Children.Add(new TextBlock
-        {
-            Text = T("Отправляя, ты соглашаешься, что мы получим этот текст и снимок и будем использовать их, чтобы улучшить сборку. Ответа не будет. Не присылай личное на снимке: имена, почту, переписки, платёжные данные. Подробнее — в политике конфиденциальности.",
-                     "By sending, you agree that we will receive this text and screenshot and use them to improve the modlist. We will not reply. Please do not include personal data in the screenshot: names, email, chats, payment details. See our privacy policy."),
-            FontSize = 10.5, LineHeight = 15.5, Foreground = Small, TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 13, 0, 0),
-        });
+        var agree = new TextBlock { FontSize = 10.5, LineHeight = 15.5, Foreground = Small, TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 13, 0, 0) };
+        agree.Inlines.Add(new System.Windows.Documents.Run(Loc.T("flaw.agree")));
+        var legal = new System.Windows.Documents.Hyperlink(new System.Windows.Documents.Run("funkylauncher.com/legal")) { Foreground = R("Cyan") };
+        legal.Click += (_, _) => PlayService.OpenUrl("https://funkylauncher.com/legal");
+        agree.Inlines.Add(legal);
+        root.Children.Add(agree);
         root.Children.Add(_status);
         var end = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Right, Margin = new Thickness(0, 15, 0, 0) };
-        var cancel = Btn(T("Отмена", "Cancel"), false, (_, _) => Close());
+        var cancel = Btn(Loc.T("flaw.cancel"), false, (_, _) => Close());
         cancel.Margin = new Thickness(0, 0, 12, 0);
         end.Children.Add(cancel);
         end.Children.Add(_send);
@@ -201,20 +199,19 @@ public sealed class FlawWindow : Window
     {
         var root = new StackPanel();
         var head = new TextBlock { FontSize = 23, FontWeight = FontWeights.Bold, TextWrapping = TextWrapping.Wrap };
-        head.Inlines.Add(new System.Windows.Documents.Run(T("Спасибо! Сообщение у нас ", "Thanks! We've got it ")));
+        head.Inlines.Add(new System.Windows.Documents.Run(Loc.T("flaw.thanks.title")));
         head.Inlines.Add(new System.Windows.Documents.Run("✓") { Foreground = R("Cyan") });
         root.Children.Add(head);
         root.Children.Add(new TextBlock
         {
-            Text = T("Мы читаем такие сообщения и стараемся исправить в обновлениях. Отвечать на них не будем. Если игра не запускается или вылетает — напиши в поддержку.",
-                     "We read these reports and try to fix things in updates. We won't reply to them. If the game won't start or crashes, write to support."),
+            Text = Loc.T("flaw.thanks.text"),
             FontSize = 15, LineHeight = 22, Foreground = new SolidColorBrush(Color.FromRgb(0xB9, 0xB9, 0xC8)), TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 11, 0, 0),
         });
         var end = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Right, Margin = new Thickness(0, 22, 0, 0) };
-        var sup = Btn(T("В поддержку", "Support"), false, (_, _) => { PlayService.OpenSupportChat("", _s, _m); Close(); });
+        var sup = Btn(Loc.T("flaw.support"), false, (_, _) => { PlayService.OpenSupportChat("", _s, _m); Close(); });
         sup.Margin = new Thickness(0, 0, 12, 0);
         end.Children.Add(sup);
-        end.Children.Add(Btn(T("Готово", "Done"), true, (_, _) => Close()));
+        end.Children.Add(Btn(Loc.T("flaw.done"), true, (_, _) => Close()));
         root.Children.Add(end);
         return root;
     }
@@ -252,34 +249,33 @@ public sealed class FlawWindow : Window
         _shotHint.Inlines.Clear();
         if (_picture == null)
         {
-            _shot.Child = new TextBlock { Text = T("Без снимка", "No screenshot"), FontSize = 11.5, Foreground = Small, HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center };
+            _shot.Child = new TextBlock { Text = Loc.T("flaw.noshot"), FontSize = 11.5, Foreground = Small, HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center };
             return;
         }
         try
         {
             var bi = new BitmapImage();
             bi.BeginInit(); bi.CacheOption = BitmapCacheOption.OnLoad; bi.DecodePixelWidth = 320; bi.UriSource = new Uri(_picture); bi.EndInit();
-            _shot.Child = new Image { Source = bi, Stretch = Stretch.UniformToFill };
+            _shot.Child = new Image { Source = bi, Stretch = Stretch.Uniform };
         }
         catch { _shot.Child = null; }
-        var drop = new System.Windows.Documents.Hyperlink(new System.Windows.Documents.Run("✕ " + T("убрать", "remove"))) { Foreground = R("Cyan") };
+        var drop = new System.Windows.Documents.Hyperlink(new System.Windows.Documents.Run("✕ " + Loc.T("flaw.remove"))) { Foreground = R("Cyan") };
         drop.Click += (_, _) => SetPicture(null);
         _shotHint.Inlines.Add(drop);
-        _shotHint.Inlines.Add(new System.Windows.Documents.Run("  " + Path.GetFileName(_picture)));
     }
 
     private async Task SendAsync()
     {
-        if (_box.Text.Trim().Length == 0 && _picture == null) { Status(T("Напиши пару слов или добавь снимок.", "Write a few words or add a screenshot.")); return; }
+        if (_box.Text.Trim().Length == 0 && _picture == null) { Status(Loc.T("flaw.empty")); return; }
         _send.IsEnabled = false;
-        _status.Foreground = R("Cyan"); _status.Text = T("Отправляю…", "Sending…"); _status.Visibility = Visibility.Visible;
+        _status.Foreground = R("Cyan"); _status.Text = Loc.T("flaw.sending"); _status.Visibility = Visibility.Visible;
         try
         {
             await FlawReport.SendAsync(_s, _m, _box.Text, _picture, CancellationToken.None);
             _frame.Child = Thanks();
             _frame.Width = 560;
         }
-        catch (Exception ex) { Status(ex is InvalidOperationException ? ex.Message : T("Не отправилось: ", "Not sent: ") + ex.Message); }
+        catch (Exception ex) { Status(ex is InvalidOperationException ? ex.Message : Loc.T("flaw.err.notsent") + ex.Message); }
         finally { _send.IsEnabled = true; }
     }
 }

@@ -63,8 +63,10 @@
                         <WrapPanel Orientation="Horizontal" Margin="0,16,0,0">
                             <Button x:Name="MainButton" Style="{StaticResource PrimaryButton}" Margin="0,0,12,8" Click="MainButton_Click"/>
                             <Button x:Name="FolderButton" Style="{StaticResource SecondaryButton}" Height="54" Margin="0,0,12,8" Click="FolderButton_Click"/>
-                            <Button x:Name="Mo2Button" Style="{StaticResource SecondaryButton}" Height="54" Margin="0,0,0,8" Click="Mo2Button_Click"/>
+                            <Button x:Name="Mo2Button" Style="{StaticResource SecondaryButton}" Height="54" Margin="0,0,12,8" Click="Mo2Button_Click"/>
+                            <Button x:Name="FlawButton" Style="{StaticResource SecondaryButton}" Height="54" Margin="0,0,0,8" Visibility="Collapsed" Click="FlawButton_Click"/>
                         </WrapPanel>
+                        <TextBlock x:Name="FlawLine" FontSize="13" Foreground="{StaticResource Muted}" Margin="0,2,0,0" TextWrapping="Wrap" MaxWidth="640" HorizontalAlignment="Left" Visibility="Collapsed"/>
                         <TextBlock x:Name="PlayMessage" FontSize="13" Foreground="{StaticResource Muted}" Margin="0,10,0,0" TextWrapping="Wrap"/>
                         <StackPanel x:Name="ProLibraryHost" Margin="0,8,0,0"/>
                     </StackPanel>
@@ -73,7 +75,6 @@
 
             <Border Grid.Column="2" Style="{StaticResource CardBorder}" Padding="18,16">
                 <DockPanel>
-                    <Border x:Name="FlawCard" DockPanel.Dock="Bottom" Visibility="Collapsed" Margin="0,12,0,0" Padding="16,14" CornerRadius="14" Background="#1D1D26" BorderBrush="#2C2C3A" BorderThickness="1"/>
                     <Button x:Name="SetupButton" DockPanel.Dock="Bottom" Style="{StaticResource SecondaryButton}" Height="42" Click="Setup_Click"/>
                     <Button x:Name="DeleteOldButton" DockPanel.Dock="Bottom" Style="{StaticResource SecondaryButton}" Height="38" Margin="0,0,0,8" Click="DeleteOld_Click"/>
                     <Button x:Name="ShaderCacheButton" DockPanel.Dock="Bottom" Style="{StaticResource SecondaryButton}" Height="38" Margin="0,0,0,8" Visibility="Collapsed" Click="ShaderCache_Click"/>

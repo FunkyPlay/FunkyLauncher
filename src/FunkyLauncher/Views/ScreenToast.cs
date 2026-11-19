@@ -79,7 +79,7 @@ public static class ScreenToast
         row.Children.Add(Btn(Loc.T("screen.open"), reportFlaw == null || video, () => { FunkyScreen.OpenFile(file); w?.Close(); }));
         row.Children.Add(Btn(Loc.T("screen.folder"), false, () => { FunkyScreen.ShowInFolder(file); w?.Close(); }));
         if (!video && reportFlaw != null) // 0.1.15: a small flaw in a modlist goes to its own queue, not to support
-            row.Children.Add(Btn(Loc.Lang == "en" ? "Send as a modlist flaw" : "Отправить как недочёт сборки", true, () => { reportFlaw(file); w?.Close(); }));
+            row.Children.Add(Btn(Loc.T("flaw.toast"), true, () => { reportFlaw(file); w?.Close(); }));
         if (video && openInPlayer != null)
             row.Children.Add(Btn(Loc.T("screen.toplayer"), false, () => { openInPlayer(file); w?.Close(); }));
         if (video)
