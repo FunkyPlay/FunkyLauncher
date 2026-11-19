@@ -163,7 +163,7 @@ public sealed class FlawWindow : Window
         _whatLabel.Inlines.Add(new System.Windows.Documents.Run(Loc.T(mod ? "mod.why" : "flaw.what")));
         if (mod) _whatLabel.Inlines.Add(new System.Windows.Documents.Run(" — " + Loc.T("mod.optional")) { Foreground = Muted, FontWeight = FontWeights.Normal });
         _placeholder.Text = Loc.T(mod ? "mod.why.example" : "flaw.example");
-        _box.Height = mod ? 64 : 80;
+        _box.Height = mod ? 52 : 80;
         _sentText.Text = mod ? Loc.T("mod.sent") + "\n" + Loc.T("mod.consider") : Loc.T("flaw.sent");
         _agreeText.Inlines.Clear();
         _agreeText.Inlines.Add(new System.Windows.Documents.Run(Loc.T(mod ? "mod.agree" : "flaw.agree")));
@@ -178,6 +178,7 @@ public sealed class FlawWindow : Window
             _tabFlaw.Style = (Style)Application.Current.FindResource(mod ? "SecondaryButton" : "PrimaryButton");
             _tabMod.Style = (Style)Application.Current.FindResource(mod ? "PrimaryButton" : "SecondaryButton");
             _tabFlaw.Height = _tabMod.Height = 38;
+            _tabFlaw.FontSize = _tabMod.FontSize = 14;
         }
         Status("");
     }
@@ -209,11 +210,11 @@ public sealed class FlawWindow : Window
         Grid.SetColumn(_tabMod, 1);
         tabs.Children.Add(_tabFlaw);
         tabs.Children.Add(_tabMod);
-        root.Children.Add(new Border { Child = tabs, Background = new SolidColorBrush(Color.FromRgb(0x17, 0x17, 0x1F)), CornerRadius = new CornerRadius(14), Padding = new Thickness(5), Margin = new Thickness(0, 16, 0, 0) });
+        root.Children.Add(new Border { Child = tabs, Background = new SolidColorBrush(Color.FromRgb(0x17, 0x17, 0x1F)), CornerRadius = new CornerRadius(13.5), Padding = new Thickness(5.4), Margin = new Thickness(0, 14, 0, 0) });
 
-        _modPanel.Children.Add(Label(Loc.T("mod.name"), 16));
+        _modPanel.Children.Add(Label(Loc.T("mod.name"), 14));
         _modPanel.Children.Add(Boxed(_modName, Loc.T("mod.name.example")));
-        _modPanel.Children.Add(Label(Loc.T("mod.url"), 12));
+        _modPanel.Children.Add(Label(Loc.T("mod.url"), 10));
         _modPanel.Children.Add(Boxed(_modUrl, "https://www.nexusmods.com/…"));
         root.Children.Add(_modPanel);
 
@@ -225,7 +226,7 @@ public sealed class FlawWindow : Window
         root.Children.Add(new Border { Child = field, Margin = new Thickness(0, 7, 0, 0), CornerRadius = new CornerRadius(10), BorderBrush = Line, BorderThickness = new Thickness(1), Background = Field });
 
         _addShot.HorizontalAlignment = HorizontalAlignment.Left;
-        _addShot.Margin = new Thickness(0, 14, 0, 0);
+        _addShot.Margin = new Thickness(0, 10, 0, 0);
         root.Children.Add(_addShot);
         _shotBlock.Children.Add(Label(Loc.T("flaw.shot"), 16));
         var row = new StackPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(0, 7, 0, 0) };
