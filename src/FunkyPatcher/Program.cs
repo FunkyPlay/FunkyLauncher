@@ -13,6 +13,8 @@ using Mutagen.Bethesda.Plugins.Cache;
 using Mutagen.Bethesda.Plugins.Order;
 using Mutagen.Bethesda.Plugins.Records;
 using Mutagen.Bethesda.Starfield;
+using Mutagen.Bethesda.Fallout4;
+using Mutagen.Bethesda.Archives;
 using Noggog;
 
 namespace FunkyPatcher;
@@ -29,6 +31,7 @@ public static class Program
         var mo2 = Arg("--mo2"); var profile = Arg("--profile"); var dict = Arg("--dict"); var outDir = Arg("--out");
         var game = Arg("--game"); var prefix = Arg("--name") ?? "FunkyPlay_RU_Names";
         var allowStop = args.Contains("--allow-added-stop");
+        var gameType = (Arg("--game-type") ?? "starfield").ToLowerInvariant();
         if (mo2 == null || profile == null || dict == null || outDir == null || game == null)
         {
             Console.Error.WriteLine("FunkyPatcher --mo2 <MO2 folder> --profile <MO2 profile> --game <game folder> --dict <dictionary.tsv> --out <output mod folder> [--name <plugin name prefix>]");
@@ -37,7 +40,8 @@ public static class Program
         var report = new Report();
         try
         {
-            Run(mo2, profile, game, dict, outDir, prefix, allowStop, report);
+            if (gameType == "fallout4") Run<IFallout4Mod, IFallout4ModGetter>(GameInfo.Fallout4, mo2, profile, game, dict, outDir, prefix, allowStop, report);
+            else Run<IStarfieldMod, IStarfieldModGetter>(GameInfo.Starfield, mo2, profile, game, dict, outDir, prefix, allowStop, report);
             report.Ok = true;
         }
         catch (Exception ex)
@@ -82,7 +86,21 @@ public static class Program
 
     private sealed record Entry(string Owner, uint Id, string Record, string Field, string Ru);
 
-    private static void Run(string mo2, string profile, string game, string dictPath, string outDir, string prefix, bool allowStop, Report report)
+    /// <summary>What differs between the games we patch.</summary>
+    private sealed record GameInfo(GameRelease Release, string[] Official, string Ccc, string ForcedPattern, bool SeparatedMasters,
+        string OfficialTextPrefix, ModType PatchType, int PatchFlags)
+    {
+        public static readonly GameInfo Starfield = new(GameRelease.Starfield,
+            new[] { "Starfield.esm", "Constellation.esm", "OldMars.esm", "SFBGS003.esm", "SFBGS004.esm", "SFBGS006.esm", "SFBGS007.esm", "SFBGS008.esm", "ShatteredSpace.esm", "BlueprintShips-Starfield.esm" },
+            "Starfield.ccc", @"^(BlueprintShips-)?SFBGS[0-9A-Fa-f]{3}\.esm$", true, "@segnet:", ModType.Master, 0x1 | 0x100); // master + light (small)
+        public static readonly GameInfo Fallout4 = new(GameRelease.Fallout4,
+            new[] { "Fallout4.esm", "DLCRobot.esm", "DLCworkshop01.esm", "DLCCoast.esm", "DLCworkshop02.esm", "DLCworkshop03.esm", "DLCNukaWorld.esm" },
+            "Fallout4.ccc", @"^cc[A-Za-z0-9]+-.*\.es[lm]$", false, "@game:", ModType.Plugin, 0x200); // a light (ESL-flagged) .esp
+    }
+
+    private static void Run<TMod, TModGetter>(GameInfo info, string mo2, string profile, string game, string dictPath, string outDir, string prefix, bool allowStop, Report report)
+        where TMod : class, IContextMod<TMod, TModGetter>, TModGetter
+        where TModGetter : class, IContextGetterMod<TMod, TModGetter>
     {
         var profileDir = Path.Combine(mo2, "profiles", profile);
         var modsDir = Path.Combine(mo2, "mods");
@@ -114,13 +132,13 @@ public static class Program
             foreach (var l in File.ReadAllLines(loadOrderFile).Select(l => l.Trim()).Where(l => l.Length > 0 && !l.StartsWith('#')))
                 if (!order.Contains(l, StringComparer.OrdinalIgnoreCase)) order.Add(l);
         // the game's own masters are always loaded, whatever plugins.txt says
-        var official = new[] { "Starfield.esm", "Constellation.esm", "OldMars.esm", "SFBGS003.esm", "SFBGS004.esm", "SFBGS006.esm", "SFBGS007.esm", "SFBGS008.esm", "ShatteredSpace.esm", "BlueprintShips-Starfield.esm" };
+        var official = info.Official;
         // Bethesda's own plugins (the game and its official add-ons, also the ones named in Starfield.ccc) load without a star
-        var ccc = Path.Combine(game, "Starfield.ccc");
+        var ccc = Path.Combine(game, info.Ccc);
         var forced = new HashSet<string>(official, StringComparer.OrdinalIgnoreCase);
         if (File.Exists(ccc)) foreach (var l in File.ReadAllLines(ccc)) if (l.Trim().Length > 0) forced.Add(l.Trim());
         bool Forced(string n) => forced.Contains(n)
-            || (System.Text.RegularExpressions.Regex.IsMatch(n, @"^(BlueprintShips-)?SFBGS[0-9A-Fa-f]{3}\.esm$") && File.Exists(Path.Combine(gameData, n)));
+            || (System.Text.RegularExpressions.Regex.IsMatch(n, info.ForcedPattern) && File.Exists(Path.Combine(gameData, n)));
         var names = new List<string>();
         foreach (var o in official) if (File.Exists(Path.Combine(gameData, o)) && !names.Contains(o, StringComparer.OrdinalIgnoreCase)) names.Add(o);
         // the game loads its own plugins first (right after Starfield.esm and the DLC), wherever plugins.txt lists them;
@@ -142,7 +160,7 @@ public static class Program
                 var src = Resolve(n);
                 if (src == null) { report.Skip("plugin file not found", n); continue; }
                 var dst = Path.Combine(flat, n);
-                if (BothLightAndMedium(src))
+                if (info.SeparatedMasters && BothLightAndMedium(src))
                 {
                     // a few mods carry both the "light" and the "medium" flag; the game then treats the plugin as light.
                     // Our temporary copy gets only the light flag so the library can read it; the author's file is untouched.
@@ -156,16 +174,16 @@ public static class Program
             }
             report.PluginsInLoadOrder = listings.Count;
 
-            using var env = GameEnvironment.Typical.Builder<IStarfieldMod, IStarfieldModGetter>(GameRelease.Starfield)
+            using var env = GameEnvironment.Typical.Builder<TMod, TModGetter>(info.Release)
                 .WithTargetDataFolder(flat)
                 .WithLoadOrder(listings.ToArray())
                 .Build();
             // Not the library's link cache: it reads every record of every mod and one record it cannot read stops everything.
             // We look only at the record lists (FormID -> place in file) and read just the records we translate.
             var mods = env.LoadOrder.ListedOrder.Where(l => l.Mod != null).Select(l => l.Mod!).Reverse().ToList(); // last loaded first
-            var typeBySignature = RecordTypesBySignature();
+            var typeBySignature = RecordTypesBySignature(typeof(TMod).Assembly);
             var groups = new Dictionary<(ModKey, Type), IGroupGetter?>();
-            IGroupGetter? Group(IStarfieldModGetter mod, Type getter)
+            IGroupGetter? Group(TModGetter mod, Type getter)
             {
                 if (groups.TryGetValue((mod.ModKey, getter), out var g)) return g;
                 try { g = mod.GetTopLevelGroup(getter); } catch { g = null; }
@@ -185,13 +203,16 @@ public static class Program
             var strings = new Dictionary<string, Dictionary<uint, string>?>(StringComparer.OrdinalIgnoreCase);
             string? Text(Entry e)
             {
-                if (!e.Ru.StartsWith("@segnet:")) return e.Ru;
+                if (!e.Ru.StartsWith(info.OfficialTextPrefix)) return e.Ru;
                 var parts = e.Ru.Split(':');
                 if (parts.Length != 3 || !uint.TryParse(parts[2], out var id)) return null;
                 if (!strings.TryGetValue(parts[1], out var table))
                 {
-                    var file = Resolve(Path.Combine("Strings", parts[1] + "_ru.STRINGS"));
-                    strings[parts[1]] = table = file == null ? null : ReadStrings(file);
+                    var rel = Path.Combine("Strings", parts[1] + "_ru.STRINGS");
+                    var file = Resolve(rel);
+                    // the game's own Russian texts may sit inside its archives (Fallout 4: "… - Interface.ba2")
+                    var bytes = file != null ? File.ReadAllBytes(file) : FromArchives(info.Release, gameData, rel);
+                    strings[parts[1]] = table = bytes == null ? null : ReadStrings(bytes);
                 }
                 return table != null && table.TryGetValue(id, out var s) && s.Length > 0 ? s : null;
             }
@@ -199,15 +220,15 @@ public static class Program
             // ---- patches
             Directory.CreateDirectory(outDir);
             foreach (var old in Directory.EnumerateFiles(outDir, prefix + "_*.esm")) File.Delete(old);
-            var patches = new List<(StarfieldMod Mod, HashSet<ModKey> Masters, int Count)>();
+            var patches = new List<(TMod Mod, HashSet<ModKey> Masters, int Count)>();
             void NewPatch()
             {
-                var key = new ModKey($"{prefix}_{patches.Count + 1:00}", ModType.Master);
-                var mod = new StarfieldMod(key, StarfieldRelease.Starfield);
+                var key = new ModKey($"{prefix}_{patches.Count + 1:00}", info.PatchType);
+                var mod = ModInstantiator<TMod>.Activator(key, info.Release);
                 patches.Add((mod, new HashSet<ModKey>(), 0));
             }
             NewPatch();
-            var made = new Dictionary<StarfieldMod, List<(FormKey Key, ModKey Winner, IStarfieldMajorRecord Copy, string What)>>();
+            var made = new Dictionary<TMod, List<(FormKey Key, ModKey Winner, IMajorRecord Copy, string What)>>();
 
             foreach (var e in entries)
             {
@@ -218,7 +239,7 @@ public static class Program
                 if (text == null) { report.Skip("no text (official translation not found)", what + " " + e.Ru); continue; }
                 var formKey = new FormKey(ModKey.FromFileName(e.Owner), e.Id);
                 if (!typeBySignature.TryGetValue(e.Record, out var getterType)) { report.Skip("record type unknown to the library (" + e.Record + ")", what); continue; }
-                IStarfieldModGetter? winner = null; IGroupGetter? winnerGroup = null;
+                TModGetter? winner = null; IGroupGetter? winnerGroup = null;
                 foreach (var mod in mods)
                 {
                     var g = Group(mod, getterType);
@@ -229,8 +250,10 @@ public static class Program
                 {
                     var rec = winnerGroup![formKey];
                     // the name is the record's own field, or (generic base forms and the like) a "full name" component
-                    var nameNow = rec is ITranslatedNamedGetter named ? named.Name?.String : NameComponent(rec)?.Name?.String;
-                    if (rec is not ITranslatedNamedGetter && NameComponent(rec) == null) { report.Skip("record has no name field", what + " " + rec.GetType().Name); continue; }
+                    var nameNow = rec is ITranslatedNamedGetter named ? named.Name?.String
+                        : rec is INamedGetter plain ? plain.Name
+                        : (NameComponent(rec) as ITranslatedNamedGetter)?.Name?.String;
+                    if (rec is not ITranslatedNamedGetter && rec is not INamedGetter && NameComponent(rec) == null) { report.Skip("record has no name field", what + " " + rec.GetType().Name); continue; }
                     if (string.Equals(nameNow, text, StringComparison.Ordinal)) { report.Skip("already has this name", what); continue; }
 
                     var need = new HashSet<ModKey> { formKey.ModKey, winner.ModKey };
@@ -238,9 +261,10 @@ public static class Program
                     var cur = patches[^1];
                     if (cur.Count > 0 && cur.Masters.Union(need).Count() > MaxMastersPerPatch) { NewPatch(); cur = patches[^1]; }
 
-                    var copy = (IStarfieldMajorRecord)((IStarfieldMajorRecordGetter)rec).DeepCopy();
+                    var copy = (IMajorRecord)((IMajorRecordGetter)rec).Duplicate(formKey);
                     if (copy is ITranslatedNamed target) target.Name = text;
-                    else if (NameComponent(copy) is FullNameComponent full) full.Name = text;
+                    else if (copy is INamed simple) simple.Name = text; // a few record types keep the name as plain text
+                    else if (NameComponent(copy) is ITranslatedNamed full) full.Name = text;
                     else { report.Skip("copy has no name field", what); continue; }
                     DropChildRecords(copy); // e.g. a quest's dialogue and scenes: the patch overrides the quest itself only
                     cur.Mod.GetTopLevelGroup(copy.GetType()).AddUntyped(copy);
@@ -264,18 +288,20 @@ public static class Program
                 return styles[name] = File.Exists(f) ? RawPlugin.StyleOf(f) : RawPlugin.Style.Full;
             }
             var raws = new Dictionary<ModKey, RawPlugin>();
-            RawPlugin Raw(ModKey k) => raws.TryGetValue(k, out var r) ? r : raws[k] = new RawPlugin(Path.Combine(flat, k.FileName), k.FileName, StyleOf);
+            RawPlugin Raw(ModKey k) => raws.TryGetValue(k, out var r) ? r : raws[k] = new RawPlugin(Path.Combine(flat, k.FileName), k.FileName, StyleOf, info.SeparatedMasters);
             var utf8 = new Mutagen.Bethesda.Plugins.Binary.Streams.EncodingBundle(Mutagen.Bethesda.Strings.DI.MutagenEncoding._utf8, Mutagen.Bethesda.Strings.DI.MutagenEncoding._utf8);
             foreach (var (mod, _, _) in patches)
             {
                 if (!made.TryGetValue(mod, out var list) || list.Count == 0) continue;
                 var file = Path.Combine(outDir, mod.ModKey.FileName);
-                mod.ModHeader.Flags |= StarfieldModHeader.HeaderFlag.Master | StarfieldModHeader.HeaderFlag.Light; // overrides only: a light plugin does not take a full plugin slot
+                // overrides only: a light plugin does not take a full plugin slot
+                dynamic header = ((dynamic)mod).ModHeader;
+                header.Flags = (dynamic)Enum.ToObject(((object)header.Flags).GetType(), Convert.ToInt32((object)header.Flags) | info.PatchFlags);
                 for (var pass = 1; ; pass++)
                 {
                     // Starfield keeps texts inside plugins as UTF-8 (so do the Russian translations of mods)
-                    mod.BeginWrite.ToPath(file).WithLoadOrder(env.LoadOrder).WithEmbeddedEncodings(utf8).Write();
-                    var written = new RawPlugin(file, mod.ModKey.FileName, StyleOf);
+                    ((dynamic)mod).BeginWrite.ToPath(file).WithLoadOrder(env.LoadOrder).WithEmbeddedEncodings(utf8).Write();
+                    var written = new RawPlugin(file, mod.ModKey.FileName, StyleOf, info.SeparatedMasters);
                     var bad = new List<int>();
                     for (var n = 0; n < list.Count; n++)
                     {
@@ -306,12 +332,11 @@ public static class Program
                     if (list.Count == 0) { File.Delete(file); break; }
                 }
                 if (list.Count == 0) continue;
-                // read the written file back with the library too: the real master list and that every record opens
-                using var back = StarfieldMod.Create(StarfieldRelease.Starfield).FromPath(file).WithLoadOrder(env.LoadOrder.ListedOrder.Select(l => l.ModKey)).WithDataFolder(flat).Construct();
-                var readable = back.EnumerateMajorRecords().Count();
-                if (readable != list.Count) throw new InvalidDataException($"{mod.ModKey.FileName}: wrote {list.Count} records, read back {readable}");
+                // the written file once more, by our own reader: every record is there, and the real master list
+                var final = new RawPlugin(file, mod.ModKey.FileName, StyleOf, info.SeparatedMasters);
+                if (final.RecordCount != list.Count) throw new InvalidDataException($"{mod.ModKey.FileName}: wrote {list.Count} records, the file has {final.RecordCount}");
                 report.Made += list.Count;
-                report.Patches.Add(new PatchInfo { File = mod.ModKey.FileName, Records = list.Count, Masters = back.ModHeader.MasterReferences.Count });
+                report.Patches.Add(new PatchInfo { File = mod.ModKey.FileName, Records = list.Count, Masters = final.MasterCount });
             }
         }
         finally
@@ -321,9 +346,27 @@ public static class Program
     }
 
     /// <summary>.STRINGS: count, data size, then (id, offset) pairs, then zero-terminated UTF-8 texts.</summary>
-    private static Dictionary<uint, string> ReadStrings(string path)
+    /// <summary>A file of the game's archives (BA2), by its path inside; null when no archive has it.</summary>
+    private static byte[]? FromArchives(GameRelease release, string gameData, string relative)
     {
-        var b = File.ReadAllBytes(path);
+        var want = relative.Replace('/', '\\');
+        foreach (var path in Directory.EnumerateFiles(gameData, "*.ba2"))
+        {
+            var name = Path.GetFileName(path);
+            if (name.Contains("Textures", StringComparison.OrdinalIgnoreCase) || name.Contains("Voices", StringComparison.OrdinalIgnoreCase)) continue;
+            try
+            {
+                var reader = Archive.CreateReader(release, path);
+                foreach (var f in reader.Files)
+                    if (f.Path.Replace('/', '\\').Equals(want, StringComparison.OrdinalIgnoreCase)) return f.GetBytes();
+            }
+            catch { }
+        }
+        return null;
+    }
+
+    private static Dictionary<uint, string> ReadStrings(byte[] b)
+    {
         var count = BitConverter.ToUInt32(b, 0);
         var dataStart = 8 + (int)count * 8;
         var res = new Dictionary<uint, string>((int)count);
@@ -351,23 +394,23 @@ public static class Program
     }
 
     /// <summary>The "full name" component of a record that keeps its name in components (null if it has none).</summary>
-    private static IFullNameComponentGetter? NameComponent(object rec)
+    private static object? NameComponent(object rec)
     {
         if (rec.GetType().GetProperty("Components")?.GetValue(rec) is not System.Collections.IEnumerable list) return null;
-        foreach (var c in list) if (c is IFullNameComponentGetter f) return f;
+        foreach (var c in list) if (c != null && c.GetType().Name.Contains("FullNameComponent")) return c;
         return null;
     }
 
     /// <summary>"WEAP" -> IWeaponGetter and so on, from the library's own record registrations (top-level record types).</summary>
-    private static Dictionary<string, Type> RecordTypesBySignature()
+    private static Dictionary<string, Type> RecordTypesBySignature(System.Reflection.Assembly assembly)
     {
         var res = new Dictionary<string, Type>(StringComparer.OrdinalIgnoreCase);
-        foreach (var t in typeof(StarfieldMod).Assembly.GetTypes())
+        foreach (var t in assembly.GetTypes())
         {
             if (!t.Name.EndsWith("_Registration")) continue;
             var sig = t.GetField("TriggeringRecordType", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static)?.GetValue(null);
             var getter = t.GetField("GetterType", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static)?.GetValue(null) as Type;
-            if (sig is RecordType rt && getter != null && typeof(IStarfieldMajorRecordGetter).IsAssignableFrom(getter))
+            if (sig is RecordType rt && getter != null && typeof(IMajorRecordGetter).IsAssignableFrom(getter))
                 res.TryAdd(rt.Type, getter);
         }
         return res;

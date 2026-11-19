@@ -32,8 +32,14 @@ public sealed class RawPlugin
     }
 
     /// <param name="styleOfMaster">master file name -> its style (from the same files the library reads)</param>
-    public RawPlugin(string path, string name, Func<string, Style> styleOfMaster)
+    public int RecordCount => _index.Count;
+    public int MasterCount => _full.Count + _medium.Count + _light.Count;
+    private readonly bool _separated;
+
+    /// <param name="separated">Starfield: three master lists. Fallout 4 and older games: one list, the top byte is simply the master's number.</param>
+    public RawPlugin(string path, string name, Func<string, Style> styleOfMaster, bool separated = true)
     {
+        _separated = separated;
         _path = path; _name = name;
         using var f = File.OpenRead(path);
         var h = new byte[24];
@@ -45,7 +51,7 @@ public sealed class RawPlugin
         {
             if (s.Type != "MAST") continue;
             var m = Encoding.UTF8.GetString(s.Data).TrimEnd('\0');
-            (styleOfMaster(m) switch { Style.Light => _light, Style.Medium => _medium, _ => _full }).Add(m);
+            (!separated ? _full : styleOfMaster(m) switch { Style.Light => _light, Style.Medium => _medium, _ => _full }).Add(m);
         }
         Walk(f, 24 + headerSize, f.Length);
     }
@@ -75,13 +81,13 @@ public sealed class RawPlugin
     public (string Mod, uint Id)? Decode(uint raw)
     {
         var top = raw >> 24;
-        if (top == 0xFE)
+        if (_separated && top == 0xFE)
         {
             var i = (int)((raw >> 12) & 0xFFF);
             // one past the last light master = the plugin's own record (files saved by newer tools; older ones use the full index)
             return i < _light.Count ? (_light[i].ToLowerInvariant(), raw & 0xFFF) : i == _light.Count ? (_name.ToLowerInvariant(), raw & 0xFFF) : null;
         }
-        if (top == 0xFD)
+        if (_separated && top == 0xFD)
         {
             var i = (int)((raw >> 16) & 0xFF);
             return i < _medium.Count ? (_medium[i].ToLowerInvariant(), raw & 0xFFFF) : i == _medium.Count ? (_name.ToLowerInvariant(), raw & 0xFFFF) : null;
