@@ -650,6 +650,7 @@ public partial class SetupView : UserControl
                     DoneTelegram.Visibility = Loc.Lang == "en" ? Visibility.Collapsed : Visibility.Visible; // Russian channel: RU only
                     try { await AfterInstallAsync(); }
                     catch (Exception ex) { ProgressText.Text += "\n" + ex.Message; }
+                    if (updateDir == null) SubscribeWindow.ShowOnce(_main); // once ever, after the first modlist install
                 }
                 break;
             }
