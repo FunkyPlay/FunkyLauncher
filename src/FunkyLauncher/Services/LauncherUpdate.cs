@@ -23,6 +23,12 @@ public static class LauncherUpdate
     /// <summary>Test hook: another release endpoint (a local test server), like FUNKYLAUNCHER_DATA for the data folder.</summary>
     private static string Api => Environment.GetEnvironmentVariable("FUNKYLAUNCHER_UPDATE_API") is { Length: > 0 } t ? t : LatestApi;
 
+    /// <summary>Funky Pro "launcher betas": all releases, prereleases included (the newest is taken).</summary>
+    public const string AllApi = "https://api.github.com/repos/FunkyPlay/FunkyLauncher/releases?per_page=15";
+
+    /// <summary>Beta channel: only with an active Pro key and the player's choice in Funky Pro.</summary>
+    private static bool Beta => ProModules.BetaUpdates;
+
     private static HttpClient Http(int seconds)
     {
         var http = new HttpClient { Timeout = TimeSpan.FromSeconds(seconds) };
@@ -36,10 +42,21 @@ public static class LauncherUpdate
         try
         {
             using var http = Http(10);
-            using var doc = JsonDocument.Parse(await http.GetStringAsync(Api, token));
+            using var doc = JsonDocument.Parse(await http.GetStringAsync(Beta && Api == LatestApi ? AllApi : Api, token));
             var root = doc.RootElement;
+            if (root.ValueKind == JsonValueKind.Array) // beta: the newest non-draft release, beta or not
+            {
+                JsonElement? best = null; Version? bestV = null;
+                foreach (var r in root.EnumerateArray())
+                {
+                    if (r.TryGetProperty("draft", out var dr) && dr.GetBoolean()) continue;
+                    if (Version.TryParse(r.GetProperty("tag_name").GetString()?.TrimStart('v', 'V').Split('-')[0], out var v) && (bestV == null || v > bestV)) { bestV = v; best = r; }
+                }
+                if (best == null) return null;
+                root = best.Value;
+            }
             var tag = root.GetProperty("tag_name").GetString()?.TrimStart('v', 'V') ?? "";
-            if (!(Version.TryParse(tag, out var latest) && Version.TryParse(AppConfig.Version, out var mine) && latest > mine)) return null;
+            if (!(Version.TryParse(tag.Split('-')[0], out var latest) && Version.TryParse(AppConfig.Version, out var mine) && latest > mine)) return null;
             string? exe = null, sha = null;
             if (root.TryGetProperty("assets", out var assets))
                 foreach (var a in assets.EnumerateArray())

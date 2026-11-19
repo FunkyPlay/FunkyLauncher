@@ -47,6 +47,8 @@ public sealed class Settings
     public string ProKey { get; set; } = "";
 
     public bool DesktopsBeta { get; set; }
+    /// <summary>Funky Pro: also offer beta versions of the launcher (prereleases on GitHub). Used only with an active Pro key.</summary>
+    public bool LauncherBeta { get; set; }
     public bool DesktopsOn { get; set; }
     public Dictionary<string, List<string>> DesktopHide { get; set; } = new();
 

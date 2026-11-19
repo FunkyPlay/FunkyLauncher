@@ -104,6 +104,9 @@ public static class ProModules
     public static IReadOnlyList<(string Id, string Text, Action Click)> TrayItems =>
         Live == null ? Array.Empty<(string, string, Action)>() : _host!.Tray.ToList();
 
+    /// <summary>Funky Pro "launcher betas" is on (only while the key is valid).</summary>
+    public static bool BetaUpdates => Live != null && _host!.Settings.LauncherBeta;
+
     /// <summary>Group, order and state of a Pro tool (defaults: "other", 99, no state).</summary>
     public static (string Group, int Order, Func<bool?>? IsOn) ToolInfo(string id) =>
         _host != null && _host.Info.TryGetValue(id, out var i) ? i : ("other", 99, null);

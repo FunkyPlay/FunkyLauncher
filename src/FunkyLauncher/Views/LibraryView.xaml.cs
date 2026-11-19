@@ -254,6 +254,9 @@ public partial class LibraryView : UserControl
                 catch (Exception ex) { backupNote = Loc.F("backup.play.skip", ex.Message); }
             }
 
+            // Funky Pro: right before the game (its own program list for the game mode can still be swapped in)
+            ProModules.RaiseGameStarting(s, m);
+
             // 3) game mode (if the player turned it on for PLAY): close the picked programs before the game
             var gameModeByUs = false;
             if (s.GameOnPlay && !GameMode.IsActive)
@@ -265,7 +268,6 @@ public partial class LibraryView : UserControl
             }
 
             // 4) start and watch
-            ProModules.RaiseGameStarting(s, m);
             PlayService.Play(s, m, profile);
             PlayMessage.Text = backupNote == null ? Loc.T("play.watch") : backupNote + "\n" + Loc.T("play.watch");
             _watching = true;
