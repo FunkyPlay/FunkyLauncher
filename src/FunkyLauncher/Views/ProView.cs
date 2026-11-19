@@ -59,6 +59,9 @@ public sealed class ProView : UserControl
 
     public int Count => Tools().Count;
 
+    /// <summary>Scrolls to the end of the page (screenshots).</summary>
+    public void ScrollToBottom() => Dispatcher.BeginInvoke(() => _scroll.ScrollToEnd(), System.Windows.Threading.DispatcherPriority.Loaded);
+
     /// <summary>Opens one tool (null = the grouped list).</summary>
     public void Show(string? toolId) { _open = toolId; Refresh(); _scroll.ScrollToTop(); }
 
@@ -182,7 +185,7 @@ public sealed class ProView : UserControl
         body.Children.Add(new TextBlock
         {
             Text = t.Text, FontSize = 13, LineHeight = 19, Foreground = new SolidColorBrush(Color.FromRgb(0xC9, 0xC9, 0xD6)),
-            TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 14, 0, 0), MaxHeight = 58, // up to three lines; a row of cards takes the tallest
+            TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 14, 0, 0), MaxHeight = 78, // up to four lines (no cut-off); a row of cards takes the tallest
         });
         var card = new Border
         {

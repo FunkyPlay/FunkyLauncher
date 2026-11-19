@@ -88,6 +88,7 @@ public partial class MainWindow
                 {
                     pages.Add(("15-pro", () => ShowProPage(), 800));
                     pages.Add(("15b-pro-full", () => ShowProPage(), 2600));
+                    pages.Add(("15c-pro-bottom", () => { ShowProPage(); _proView.ScrollToBottom(); }, 1300));
                     pages.Add(("16-pro-main", () => ShowProPage("main"), 1000));
                     foreach (var p in ProModules.Panels(Core.ProPlace.Tools))
                         pages.Add(("16-pro-" + p.Id, () => ShowProPage(p.Id), 1000));
