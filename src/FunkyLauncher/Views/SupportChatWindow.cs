@@ -35,6 +35,9 @@ public sealed class SupportChatWindow : Window
         if (attach != null) _open.SetAttach(attach);
     }
 
+    /// <summary>--shots: the open chat window.</summary>
+    internal static Window? Current => _open;
+
     private Brush R(string key) => (Brush)Application.Current.FindResource(key);
 
     private SupportChatWindow(string label)
@@ -90,9 +93,11 @@ public sealed class SupportChatWindow : Window
         };
         DockPanel.SetDock(attach, Dock.Left);
         row.Children.Add(attach);
-        _attachText = new TextBlock { FontSize = 12, Foreground = R("Muted"), VerticalAlignment = VerticalAlignment.Center, TextTrimming = TextTrimming.CharacterEllipsis, Text = Loc.T("chat.paste") + ". " + Loc.T("chat.drop") };
+        _attachText = new TextBlock { FontSize = 12, Foreground = R("Muted"), VerticalAlignment = VerticalAlignment.Center, TextTrimming = TextTrimming.CharacterEllipsis };
         row.Children.Add(_attachText);
         bottom.Children.Add(row);
+        // 0.1.17: a screenshot without a file (Win+Shift+S) is pasted, a file can be dropped
+        bottom.Children.Add(new TextBlock { Text = Loc.T("chat.paste") + ". " + Loc.T("chat.drop"), FontSize = 12, Foreground = R("Muted"), Margin = new Thickness(0, 6, 0, 0), TextWrapping = TextWrapping.Wrap });
         _status = new TextBlock { FontSize = 12, Foreground = R("Muted"), Margin = new Thickness(0, 6, 0, 0), TextWrapping = TextWrapping.Wrap };
         bottom.Children.Add(_status);
         var tg = new TextBlock { FontSize = 12, Margin = new Thickness(0, 6, 0, 0) };
@@ -191,7 +196,7 @@ public sealed class SupportChatWindow : Window
         try
         {
             await SupportChat.SendAsync(text, _label, _attach, CancellationToken.None);
-            _box.Text = ""; _attach = null; _attachText.Text = Loc.T("chat.paste") + ". " + Loc.T("chat.drop");
+            _box.Text = ""; _attach = null; _attachText.Text = "";
             _status.Text = Loc.T("chat.sent");
             await RefreshAsync();
         }
