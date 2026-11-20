@@ -59,9 +59,9 @@ public static class SupportChat
         File.WriteAllText(FilePath, JsonSerializer.Serialize(id));
     }
 
-    private static HttpClient Http()
+    private static HttpClient Http(int seconds = 30)
     {
-        var h = new HttpClient { Timeout = TimeSpan.FromSeconds(30) };
+        var h = new HttpClient { Timeout = TimeSpan.FromSeconds(seconds) };
         h.DefaultRequestHeaders.UserAgent.ParseAdd("FunkyLauncher/" + AppConfig.Version);
         return h;
     }
@@ -73,17 +73,62 @@ public static class SupportChat
         object? file = null;
         if (attachPath != null && File.Exists(attachPath))
         {
-            var bytes = await File.ReadAllBytesAsync(attachPath, token);
+            byte[] bytes;
+            var name = Path.GetFileName(attachPath);
+            try
+            {
+                bytes = await File.ReadAllBytesAsync(attachPath, token);
+                // a big screenshot (a 4K PNG is 10-25 MB) becomes a JPEG of the same size in pixels: readable, a few MB
+                if (bytes.Length > 3 * 1024 * 1024 && IsPicture(name))
+                    (name, bytes) = await Task.Run(() => SmallerPicture(name, bytes), token);
+            }
+            catch (IOException ex) { throw new InvalidOperationException(Loc.F("chat.err.file", ex.Message)); }
+            catch (UnauthorizedAccessException ex) { throw new InvalidOperationException(Loc.F("chat.err.file", ex.Message)); }
             if (bytes.Length > 10 * 1024 * 1024) throw new InvalidOperationException(Loc.T("chat.err.big"));
-            file = new { name = Path.GetFileName(attachPath), data = Convert.ToBase64String(bytes) };
+            file = new { name, data = Convert.ToBase64String(bytes) };
         }
-        using var http = Http();
-        var resp = await http.PostAsJsonAsync(Api + "/send", new
+        // a file on a slow connection needs more than 30 seconds (0.1.17: 8 MB at 2 Mbit/s is ~45 s)
+        using var http = Http(file != null ? 300 : 30);
+        HttpResponseMessage resp;
+        try
         {
-            install = me.Install, key = me.Key, text, label, lang = Loc.Lang, file,
-        }, token);
+            resp = await http.PostAsJsonAsync(Api + "/send", new
+            {
+                install = me.Install, key = me.Key, text, label, lang = Loc.Lang, file,
+            }, token);
+        }
+        catch (TaskCanceledException) when (!token.IsCancellationRequested)
+        {
+            AppLog.Write("support chat: sending timed out" + (file != null ? " (with a file)" : ""));
+            throw new InvalidOperationException(Loc.T("chat.err.slow"));
+        }
         if (!resp.IsSuccessStatusCode)
-            throw new InvalidOperationException(Loc.F("chat.err.send", (int)resp.StatusCode));
+        {
+            AppLog.Write($"support chat: send answered {(int)resp.StatusCode}");
+            throw new InvalidOperationException((int)resp.StatusCode == 413 ? Loc.T("chat.err.big") : Loc.F("chat.err.send", (int)resp.StatusCode));
+        }
+    }
+
+    private static bool IsPicture(string name) =>
+        Path.GetExtension(name).ToLowerInvariant() is ".png" or ".bmp" or ".jpg" or ".jpeg" or ".tif" or ".tiff";
+
+    /// <summary>The picture as a JPEG (quality 90, long side at most 3840 px). Unreadable as a picture = sent as it is.</summary>
+    private static (string, byte[]) SmallerPicture(string name, byte[] bytes)
+    {
+        try
+        {
+            var bi = new System.Windows.Media.Imaging.BitmapImage();
+            bi.BeginInit(); bi.CacheOption = System.Windows.Media.Imaging.BitmapCacheOption.OnLoad; bi.StreamSource = new MemoryStream(bytes); bi.EndInit();
+            System.Windows.Media.Imaging.BitmapSource src = bi;
+            var side = Math.Max(bi.PixelWidth, bi.PixelHeight);
+            if (side > 3840) src = new System.Windows.Media.Imaging.TransformedBitmap(bi, new System.Windows.Media.ScaleTransform(3840.0 / side, 3840.0 / side));
+            var enc = new System.Windows.Media.Imaging.JpegBitmapEncoder { QualityLevel = 90 };
+            enc.Frames.Add(System.Windows.Media.Imaging.BitmapFrame.Create(src));
+            using var ms = new MemoryStream();
+            enc.Save(ms);
+            return ms.Length < bytes.Length ? (Path.GetFileNameWithoutExtension(name) + ".jpg", ms.ToArray()) : (name, bytes);
+        }
+        catch { return (name, bytes); }
     }
 
     /// <summary>All messages of this PC's conversation (kept locally too, so the history shows offline).</summary>

@@ -81,12 +81,16 @@ public sealed class SupportChatWindow : Window
         var attach = new Button { Content = Loc.T("chat.attach"), Height = 38, Padding = new Thickness(14, 0, 14, 0), Margin = new Thickness(0, 0, 10, 0), Style = (Style)Application.Current.FindResource("SecondaryButton") };
         attach.Click += (_, _) =>
         {
-            var dlg = new OpenFileDialog { Filter = Loc.T("chat.attach.filter") };
-            if (dlg.ShowDialog(this) == true) SetAttach(dlg.FileName);
+            try
+            {
+                var dlg = new OpenFileDialog { Filter = Loc.T("chat.attach.filter") };
+                if (dlg.ShowDialog(this) == true) SetAttach(dlg.FileName);
+            }
+            catch (Exception ex) { AppLog.Write("support chat: file dialog failed: " + ex.Message); _status.Text = Loc.F("chat.err.file", ex.Message); }
         };
         DockPanel.SetDock(attach, Dock.Left);
         row.Children.Add(attach);
-        _attachText = new TextBlock { FontSize = 12, Foreground = R("Muted"), VerticalAlignment = VerticalAlignment.Center, TextTrimming = TextTrimming.CharacterEllipsis };
+        _attachText = new TextBlock { FontSize = 12, Foreground = R("Muted"), VerticalAlignment = VerticalAlignment.Center, TextTrimming = TextTrimming.CharacterEllipsis, Text = Loc.T("chat.paste") };
         row.Children.Add(_attachText);
         bottom.Children.Add(row);
         _status = new TextBlock { FontSize = 12, Foreground = R("Muted"), Margin = new Thickness(0, 6, 0, 0), TextWrapping = TextWrapping.Wrap };
@@ -103,9 +107,46 @@ public sealed class SupportChatWindow : Window
         root.Children.Add(new Border { CornerRadius = new CornerRadius(12), Background = R("Panel"), Padding = new Thickness(10), Child = _scroll });
         Content = root;
 
+        PreviewKeyDown += OnPreviewKeyDown;
+        AllowDrop = true;
+        Drop += OnDrop;
         Loaded += async (_, _) => { App.DarkTitleBar(this); await RefreshAsync(); _timer.Start(); };
         _timer.Tick += async (_, _) => await RefreshAsync();
         Closed += (_, _) => { _timer.Stop(); _open = null; };
+    }
+
+    /// <summary>
+    /// Ctrl+V with a picture in the clipboard (Win+Shift+S, Print Screen: there is no file then): the picture is saved as a PNG
+    /// and attached (0.1.17, support: "can't send screenshots"). Also works when the launcher runs as administrator.
+    /// </summary>
+    private void OnPreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+    {
+        if (e.Key != System.Windows.Input.Key.V || (System.Windows.Input.Keyboard.Modifiers & System.Windows.Input.ModifierKeys.Control) == 0) return;
+        try
+        {
+            if (Clipboard.ContainsFileDropList() && Clipboard.GetFileDropList() is { Count: > 0 } files && File.Exists(files[0]))
+            {
+                SetAttach(files[0]!);
+                e.Handled = true;
+                return;
+            }
+            if (!Clipboard.ContainsImage() || Clipboard.GetImage() is not { } img) return;
+            var dir = Path.Combine(AppConfig.DataDir, "chat-pictures");
+            Directory.CreateDirectory(dir);
+            var file = Path.Combine(dir, $"screenshot-{DateTime.Now:yyyyMMdd-HHmmss}.png");
+            var enc = new System.Windows.Media.Imaging.PngBitmapEncoder();
+            enc.Frames.Add(System.Windows.Media.Imaging.BitmapFrame.Create(img));
+            using (var fs = File.Create(file)) enc.Save(fs);
+            SetAttach(file);
+            e.Handled = true;
+        }
+        catch (Exception ex) { AppLog.Write("support chat: paste failed: " + ex.Message); _status.Text = Loc.F("chat.err.file", ex.Message); }
+    }
+
+    /// <summary>A file dropped onto the window.</summary>
+    private void OnDrop(object sender, DragEventArgs e)
+    {
+        if (e.Data.GetData(DataFormats.FileDrop) is string[] { Length: > 0 } f && File.Exists(f[0])) SetAttach(f[0]);
     }
 
     private void SetAttach(string path)
@@ -150,7 +191,7 @@ public sealed class SupportChatWindow : Window
         try
         {
             await SupportChat.SendAsync(text, _label, _attach, CancellationToken.None);
-            _box.Text = ""; _attach = null; _attachText.Text = "";
+            _box.Text = ""; _attach = null; _attachText.Text = Loc.T("chat.paste");
             _status.Text = Loc.T("chat.sent");
             await RefreshAsync();
         }

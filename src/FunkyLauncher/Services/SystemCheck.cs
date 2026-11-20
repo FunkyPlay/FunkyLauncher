@@ -162,6 +162,12 @@ public static class SystemCheck
             ? new CheckItem(CheckState.Ok, Loc.F("check.wj.ok", wjVer))
             : new CheckItem(CheckState.Warning, Loc.T("check.wj.no")));
 
+        // the built-in browser of the manual downloads (free Nexus accounts) and the Nexus login page (0.1.17)
+        var web = WebProfile.RuntimeVersion();
+        items.Add(web != null
+            ? new CheckItem(CheckState.Ok, Loc.F("check.webview.ok", web))
+            : new CheckItem(CheckState.Warning, Loc.T("check.webview.no"), Loc.T("check.webview.hint")));
+
         GameInfo? game = null;
         if (wjVer != null || nexusList)
         {

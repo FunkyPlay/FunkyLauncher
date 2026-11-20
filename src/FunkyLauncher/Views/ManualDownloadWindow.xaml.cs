@@ -23,6 +23,11 @@ public partial class ManualDownloadWindow : Window
     private readonly System.Windows.Threading.DispatcherTimer _nexusWatch = new() { Interval = TimeSpan.FromSeconds(2) };
     private readonly HashSet<ManualItem> _refused = new();
     private bool _refusalShown;
+    // the built-in browser did not work: the player downloads in the normal browser, the launcher takes the files from Downloads
+    private readonly WebGuard _guard;
+    private readonly System.Windows.Threading.DispatcherTimer _downloadsWatch = new() { Interval = TimeSpan.FromSeconds(3) };
+    private bool _outside, _copying;
+    private Microsoft.Web.WebView2.Wpf.WebView2 Web => _guard.Web;
 
     public bool AllDone => _items.All(i => i.Done);
 
@@ -39,35 +44,89 @@ public partial class ManualDownloadWindow : Window
         CloseButton.Content = Loc.T("manual.close");
         RetryButton.Content = Loc.Lang == "en" ? "Try again" : "Повторить";
         _nexusWatch.Tick += async (_, _) => await CheckNexusRefusalAsync();
-        Closed += (_, _) => _nexusWatch.Stop();
-        Loaded += async (_, _) => await StartAsync();
+        _downloadsWatch.Tick += async (_, _) => await TakeFromDownloadsAsync();
+        Closed += (_, _) => { _nexusWatch.Stop(); _downloadsWatch.Stop(); };
+        // the launcher's own browser profile, so the Nexus login is remembered between runs
+        _guard = new WebGuard(WebHost, SetupAsync, () => _current?.PageUrl, Loc.T("manual.outside.note"))
+        {
+            OpenedOutside = () => { _outside = true; _downloadsWatch.Start(); StatusText.Text = Loc.T("manual.outside.status"); },
+        };
+        Loaded += async (_, _) =>
+        {
+            UpdateProgress();
+            RenderQueueSafe();
+            await _guard.StartAsync();
+        };
     }
 
-    private async Task StartAsync()
+    /// <summary>Hooks a freshly started browser (also after "Try again") and opens the current mod.</summary>
+    private Task SetupAsync(Microsoft.Web.WebView2.Wpf.WebView2 web)
     {
-        try
-        {
-            // the launcher's own browser profile, so the Nexus login is remembered between runs
-            await WebProfile.InitAsync(Web);
-        }
-        catch (Exception ex)
-        {
-            StatusText.Text = Loc.F("manual.nowebview", ex.Message);
-            return;
-        }
-        Web.CoreWebView2.DownloadStarting += OnDownloadStarting;
-        Web.CoreWebView2.NewWindowRequested += (_, e) => { e.Handled = true; Web.CoreWebView2.Navigate(e.Uri); };
-        Web.CoreWebView2.SourceChanged += (_, _) => AddressText.Text = Web.CoreWebView2.Source;
+        var core = web.CoreWebView2;
+        core.DownloadStarting += OnDownloadStarting;
+        core.NewWindowRequested += (_, e) => { e.Handled = true; core.Navigate(e.Uri); };
+        core.SourceChanged += (_, _) => AddressText.Text = core.Source;
         // after logging in Nexus lands on its home page — go back to the current mod's file page
-        Web.CoreWebView2.NavigationCompleted += (_, _) =>
+        core.NavigationCompleted += (_, _) =>
         {
-            if (_current == null || !Uri.TryCreate(Web.CoreWebView2.Source, UriKind.Absolute, out var u)) return;
+            if (_current == null || !Uri.TryCreate(core.Source, UriKind.Absolute, out var u)) return;
             if (u.Host == "www.nexusmods.com" && u.AbsolutePath.Trim('/') is "" or "cyberpunk2077")
-                Web.CoreWebView2.Navigate(_current.PageUrl);
+                core.Navigate(_current.PageUrl);
         };
         _nexusWatch.Start();
-        Next();
+        if (_current == null) Next(); else Open(_current);
+        return Task.CompletedTask;
     }
+
+    /// <summary>Opens a mod's page: in the built-in browser, or in the normal one after "Open in the normal browser".</summary>
+    private void Open(ManualItem item)
+    {
+        if (!_guard.Failed && Web.CoreWebView2 != null) { Web.CoreWebView2.Navigate(item.PageUrl); return; }
+        if (!_outside) return;
+        try { PlayService.OpenUrl(item.PageUrl); } catch (Exception ex) { AppLog.Write("open url failed: " + ex.Message); }
+    }
+
+    /// <summary>
+    /// After "Open in the normal browser": a file with the expected name and size in the player's Downloads folder is copied
+    /// into the modlist's downloads (the player's own file stays where it is) and the next mod opens.
+    /// </summary>
+    private async Task TakeFromDownloadsAsync()
+    {
+        if (_copying) return;
+        var downloads = DownloadsForTests ?? KnownFolders.Downloads;
+        var found = _items.Where(i => !i.Done && i.ArchiveName.Length > 0)
+            .Select(i => (Item: i, File: Path.Combine(downloads, i.ArchiveName)))
+            .Where(x => File.Exists(x.File) && (x.Item.Size <= 0 || new FileInfo(x.File).Length == x.Item.Size))
+            .ToList();
+        if (found.Count == 0) return;
+        _copying = true;
+        try
+        {
+            foreach (var (item, file) in found)
+            {
+                StatusText.Text = Loc.F("manual.saving", item.ArchiveName, 100);
+                var target = Path.Combine(_downloadsDir, item.ArchiveName);
+                try
+                {
+                    await Task.Run(() => { Directory.CreateDirectory(_downloadsDir); if (!ManualQueue.IsPresent(_downloadsDir, item.ArchiveName, item.Size)) File.Copy(file, target, true); });
+                    item.Done = true;
+                    AppLog.Write("manual download taken from Downloads: " + item.ArchiveName);
+                }
+                catch (Exception ex) { AppLog.Write("manual download copy failed: " + ex.Message); }
+            }
+            var wasCurrent = _current is { Done: true };
+            if (wasCurrent) Next(); else { UpdateProgress(); RenderQueueSafe(); }
+            if (_current != null) StatusText.Text = Loc.T("manual.outside.status");
+        }
+        finally { _copying = false; }
+    }
+
+    /// <summary>--shots test only: another "Downloads" folder, and the "normal browser" mode without opening a browser.</summary>
+    internal static string? DownloadsForTests;
+    internal void OutsideForTests() { _outside = true; _downloadsWatch.Start(); }
+    internal bool WebFailed => _guard.Failed;
+
+    private void RenderQueueSafe() { if (_current != null) RenderQueue(); }
 
     /// <summary>Looks at the page text for Nexus's "could not give the download link" error and explains it in the status line.</summary>
     private async Task CheckNexusRefusalAsync()
@@ -105,7 +164,7 @@ public partial class ManualDownloadWindow : Window
         if (_current == null) return;
         ClearRefusal();
         StatusText.Text = "";
-        Web.CoreWebView2.Navigate(_current.PageUrl);
+        Open(_current);
     }
 
     private void Next()
@@ -117,14 +176,14 @@ public partial class ManualDownloadWindow : Window
         {
             StatusText.Text = Loc.T("manual.done");
             UpdateProgress();
-            DialogResult = true;
+            try { DialogResult = true; } catch (InvalidOperationException) { Close(); } // shown without ShowDialog (the --shots test)
             return;
         }
         _skipped.Remove(_current);
         StatusText.Text = "";
         // a file on its author's site (not Nexus): a different hint — "press the download button on the page"
         HintText.Text = Loc.T(string.IsNullOrEmpty(_current.Url) ? "manual.hint" : "manual.hint.site");
-        Web.CoreWebView2.Navigate(_current.PageUrl);
+        Open(_current);
         UpdateProgress();
         RenderQueue();
     }
@@ -215,7 +274,7 @@ public partial class ManualDownloadWindow : Window
         _current = next;
         ClearRefusal();
         StatusText.Text = "";
-        Web.CoreWebView2.Navigate(_current.PageUrl);
+        Open(_current);
         RenderQueue();
     }
 

@@ -109,6 +109,18 @@ public partial class MainWindow : Window, IProUi
             };
         if (args.Contains("--test-pccheck"))
             ContentRendered += (_, _) => { NavTools.IsChecked = true; _tools.ShowPc(); _tools.RunPcCheck(); };
+        // developer test: FunkyLauncher.exe --test-web → the built-in browser opens Nexus for 15 s, then says whether it worked
+        // (0.1.17: run "as administrator" to check WebView2 with administrator rights)
+        if (args.Contains("--test-web"))
+            ContentRendered += async (_, _) =>
+            {
+                var bw = new BrowserWindow("https://www.nexusmods.com/") { Owner = this };
+                bw.Show();
+                await Task.Delay(15000);
+                var result = $"admin token: {LowRights.IsAdminToken()}, WebView2 {WebProfile.RuntimeVersion() ?? "none"}, failed: {bw.WebFailed}, page: {bw.WebSource ?? "-"}";
+                AppLog.Write("test-web: " + result);
+                Dialog.Show(this, result, "--test-web", MessageBoxButton.OK, MessageBoxImage.Information);
+            };
         if (args.Contains("--test-problem"))
             Loaded += (_, _) => new LaunchProblemWindow(new LaunchReport(LaunchResult.Crashed, TimeSpan.FromMinutes(7), @"C:\Games\NeonNights\overwrite\red4ext\...\crash-test.txt"), Settings.PreviousOf(Selected)) { Owner = this }.ShowDialog();
         if (i >= 0) Loaded += (_, _) => TestManual(i + 1 < args.Length && int.TryParse(args[i + 1], out var n) ? n : 2,

@@ -27,7 +27,9 @@ public static class ReportService
             .AppendLine($"Install dir: {settings.InstallDir(ml)} (installed: {settings.IsInstalled(ml)})")
             .AppendLine($"Game: {game?.Version ?? "not found"} {game?.Path}")
             .AppendLine($"Wabbajack: {WabbajackService.CliVersion() ?? "not found"}")
-            .AppendLine($"Nexus login: {WabbajackService.IsNexusLoggedIn}");
+            .AppendLine($"Nexus login: {WabbajackService.IsNexusLoggedIn}")
+            .AppendLine($"Admin rights: {LowRights.IsAdminToken()}")
+            .AppendLine($"WebView2: {WebProfile.RuntimeVersion() ?? "not installed"}");
 
         await Task.Run(() =>
         {
@@ -36,6 +38,7 @@ public static class ReportService
             using (var w = new StreamWriter(e.Open())) w.Write(info.ToString());
 
             AddSettings(zip, Path.Combine(AppConfig.DataDir, "settings.json"));
+            AddLogTail(zip, AppLog.File, "launcher/launcher.log"); // the launcher's own reasons of failures
             var cli = WabbajackService.FindCli();
             if (cli != null) AddNewest(zip, "wabbajack", Path.Combine(Path.GetDirectoryName(cli)!, "logs"), "*.log", 3, false);
 
@@ -54,6 +57,20 @@ public static class ReportService
             }
         }, token);
         return target;
+    }
+
+    /// <summary>The last 256 KB of a log (the launcher's log grows over months).</summary>
+    private static void AddLogTail(ZipArchive zip, string file, string entryName)
+    {
+        try
+        {
+            if (!File.Exists(file)) return;
+            using var src = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+            if (src.Length > 256 * 1024) src.Seek(-256 * 1024, SeekOrigin.End);
+            using var dst = zip.CreateEntry(entryName).Open();
+            src.CopyTo(dst);
+        }
+        catch { }
     }
 
     /// <summary>settings.json without secrets: the Funky Pro key never goes into a report.</summary>

@@ -366,21 +366,24 @@ public static class Catalog
 internal static class KnownFolders
 {
     private static readonly Guid SavedGamesId = new("4C5C32FF-BB9D-43b0-B5B4-2D72E54EAAA4");
+    private static readonly Guid DownloadsId = new("374DE290-123F-4565-9164-39C4925E467B");
 
-    public static string SavedGames
+    public static string SavedGames => Get(SavedGamesId, "Saved Games");
+
+    /// <summary>The player's Downloads folder (where the normal browser saves files; it can be moved to another drive).</summary>
+    public static string Downloads => Get(DownloadsId, "Downloads");
+
+    private static string Get(Guid id, string fallback)
     {
-        get
+        if (SHGetKnownFolderPath(id, 0, IntPtr.Zero, out var ptr) == 0)
         {
-            if (SHGetKnownFolderPath(SavedGamesId, 0, IntPtr.Zero, out var ptr) == 0)
-            {
-                try { return System.Runtime.InteropServices.Marshal.PtrToStringUni(ptr) ?? Fallback; }
-                finally { System.Runtime.InteropServices.Marshal.FreeCoTaskMem(ptr); }
-            }
-            return Fallback;
+            try { return System.Runtime.InteropServices.Marshal.PtrToStringUni(ptr) ?? Fallback(fallback); }
+            finally { System.Runtime.InteropServices.Marshal.FreeCoTaskMem(ptr); }
         }
+        return Fallback(fallback);
     }
 
-    private static string Fallback => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Saved Games");
+    private static string Fallback(string name) => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), name);
 
     [System.Runtime.InteropServices.DllImport("shell32.dll")]
     private static extern int SHGetKnownFolderPath([System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.LPStruct)] Guid rfid, uint dwFlags, IntPtr hToken, out IntPtr ppszPath);

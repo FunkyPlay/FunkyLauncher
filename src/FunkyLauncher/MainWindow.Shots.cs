@@ -167,6 +167,71 @@ public partial class MainWindow
                     }
                 }
                 catch (Exception e) { File.AppendAllText(Path.Combine(dir, "errors.txt"), $"{lang}-toolhelp: {e}\n"); }
+                // 0.1.17: the built-in browser can't work — the message in the middle of the manual-download window
+                try
+                {
+                    foreach (var (kind, nm, detail) in new[] { (Views.WebGuard.Fail.NoRuntime, "20-web-noruntime", "WebView2RuntimeNotFoundException"),
+                        (Views.WebGuard.Fail.Start, "20b-web-start", "COMException 0x80070005"), (Views.WebGuard.Fail.Page, "20c-web-page", "ConnectionReset"),
+                        (Views.WebGuard.Fail.Crash, "20d-web-crash", "BrowserProcessExited") })
+                    {
+                        var panel = Views.WebGuard.Panel(kind, detail, Core.Loc.T("manual.outside.note"), () => { }, () => { }, () => { });
+                        var holder = new System.Windows.Controls.Border { Width = 920, Height = 600, Background = (System.Windows.Media.Brush)FindResource("Bg"), Padding = new Thickness(18), Child = panel };
+                        holder.Measure(new Size(920, 600));
+                        holder.Arrange(new Rect(0, 0, 920, 600));
+                        holder.UpdateLayout();
+                        await Task.Delay(200);
+                        SaveElement(holder, Path.Combine(dir, $"{lang}-{nm}.png"));
+                    }
+                }
+                catch (Exception e) { File.AppendAllText(Path.Combine(dir, "errors.txt"), $"{lang}-webfail: {e}\n"); }
+                // 0.1.17 live test of the built-in browser (FUNKYLAUNCHER_WEBTEST=1): starts, or shows the message; manual files taken from Downloads
+                if (lang == "ru" && Environment.GetEnvironmentVariable("FUNKYLAUNCHER_WEBTEST") == "1")
+                {
+                    var rep = new System.Text.StringBuilder();
+                    try
+                    {
+                        var bw = new Views.BrowserWindow("https://www.nexusmods.com/") { Owner = this, Left = 0, Top = 0 };
+                        bw.Show();
+                        await Task.Delay(12000);
+                        rep.AppendLine($"browser: failed={bw.WebFailed} source={bw.WebSource}");
+                        bw.Close();
+
+                        var fake = Path.Combine(dir, "webtest-downloads");
+                        var target = Path.Combine(dir, "webtest-modlist-downloads");
+                        Directory.CreateDirectory(fake);
+                        var bytes = new byte[123457];
+                        new Random(1).NextBytes(bytes);
+                        var item = new Services.ManualItem { ArchiveName = "webtest-mod.7z", Size = bytes.Length, ModName = "Webtest mod", GameDomain = "cyberpunk2077", ModId = 107, FileId = 1 };
+                        Views.ManualDownloadWindow.DownloadsForTests = fake;
+                        var mw = new Views.ManualDownloadWindow(new List<Services.ManualItem> { item }, target) { Owner = this, Left = 0, Top = 0 };
+                        mw.Show();
+                        await Task.Delay(8000);
+                        rep.AppendLine($"manual: failed={mw.WebFailed}");
+                        mw.OutsideForTests();
+                        File.WriteAllBytes(Path.Combine(fake, item.ArchiveName), bytes);
+                        await Task.Delay(5000);
+                        rep.AppendLine($"manual outside: done={item.Done} copied={File.Exists(Path.Combine(target, item.ArchiveName)) && new FileInfo(Path.Combine(target, item.ArchiveName)).Length == bytes.Length}");
+                        try { mw.Close(); } catch { }
+                    }
+                    catch (Exception e) { rep.AppendLine("error: " + e); }
+                    // the support chat with a big screenshot (a 4K PNG over 10 MB is made a JPEG and sent)
+                    try
+                    {
+                        var big = Path.Combine(dir, "webtest-big-screenshot.png");
+                        var px = new byte[3840 * 2160 * 3];
+                        var rnd = new Random(2); // like a game screenshot: smooth colours with fine detail
+                        for (var k2 = 0; k2 < px.Length; k2++) { var p2 = k2 / 3; px[k2] = (byte)((p2 % 3840) / 15 + (p2 / 3840) / 9 + k2 % 3 * 40 + rnd.Next(8)); }
+                        var bmp = System.Windows.Media.Imaging.BitmapSource.Create(3840, 2160, 96, 96, System.Windows.Media.PixelFormats.Rgb24, null, px, 3840 * 3);
+                        var enc = new System.Windows.Media.Imaging.PngBitmapEncoder();
+                        enc.Frames.Add(System.Windows.Media.Imaging.BitmapFrame.Create(bmp));
+                        using (var fs = File.Create(big)) enc.Save(fs);
+                        var t0 = DateTime.Now;
+                        await Services.SupportChat.SendAsync("ТЕСТ чата Pro: большой снимок 4K (проверка сжатия, ответа не нужно)", "test", big, CancellationToken.None);
+                        rep.AppendLine($"chat big png {new FileInfo(big).Length / 1048576.0:0.0} MB: sent in {(DateTime.Now - t0).TotalSeconds:0.0} s");
+                    }
+                    catch (Exception e) { rep.AppendLine("chat error: " + e.Message); }
+                    File.WriteAllText(Path.Combine(dir, "web-live.txt"), rep.ToString());
+                }
                 // the one-time "follow us" window after the first modlist install
                 try
                 {

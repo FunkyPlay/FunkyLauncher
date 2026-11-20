@@ -10,30 +10,39 @@ namespace FunkyLauncher.Views;
 public partial class BrowserWindow : Window
 {
     private readonly string _home;
+    private readonly WebGuard _guard;
+    private Microsoft.Web.WebView2.Wpf.WebView2 Web => _guard.Web;
+    internal bool WebFailed => _guard.Failed;
+    internal string? WebSource => Web.CoreWebView2?.Source;
 
     public BrowserWindow(string home)
     {
         InitializeComponent();
         _home = home;
         Title = "Funky Launcher · " + Loc.T("browser.title");
-        Loaded += async (_, _) =>
+        // a clear message instead of an empty window when the built-in browser can't work (0.1.17)
+        _guard = new WebGuard(WebHost, web =>
         {
-            try { await WebProfile.InitAsync(Web); }
-            catch (Exception ex) { Address.Text = Loc.F("manual.nowebview", ex.Message); return; }
-            Web.CoreWebView2.NewWindowRequested += (_, e) => { e.Handled = true; Web.CoreWebView2.Navigate(e.Uri); };
-            Web.CoreWebView2.SourceChanged += (_, _) => Address.Text = Web.CoreWebView2.Source;
-            Web.CoreWebView2.HistoryChanged += (_, _) =>
+            var core = web.CoreWebView2;
+            core.NewWindowRequested += (_, e) => { e.Handled = true; core.Navigate(e.Uri); };
+            core.SourceChanged += (_, _) => Address.Text = core.Source;
+            core.HistoryChanged += (_, _) =>
             {
-                BackButton.IsEnabled = Web.CoreWebView2.CanGoBack;
-                ForwardButton.IsEnabled = Web.CoreWebView2.CanGoForward;
+                BackButton.IsEnabled = core.CanGoBack;
+                ForwardButton.IsEnabled = core.CanGoForward;
             };
-            Web.CoreWebView2.Navigate(_home);
-        };
+            core.Navigate(Address.Text.StartsWith("http") ? Address.Text : _home);
+            return Task.CompletedTask;
+        }, () => Address.Text.StartsWith("http") ? Address.Text : _home);
+        Loaded += async (_, _) => await _guard.StartAsync();
     }
 
     private void Back_Click(object sender, RoutedEventArgs e) { if (Web.CoreWebView2?.CanGoBack == true) Web.CoreWebView2.GoBack(); }
     private void Forward_Click(object sender, RoutedEventArgs e) { if (Web.CoreWebView2?.CanGoForward == true) Web.CoreWebView2.GoForward(); }
-    private void Reload_Click(object sender, RoutedEventArgs e) => Web.CoreWebView2?.Reload();
+    private async void Reload_Click(object sender, RoutedEventArgs e)
+    {
+        if (_guard.Failed || Web.CoreWebView2 == null) await _guard.RetryAsync(); else Web.CoreWebView2.Reload();
+    }
     private void Home_Click(object sender, RoutedEventArgs e) => Web.CoreWebView2?.Navigate(_home);
 
     private void Address_KeyDown(object sender, KeyEventArgs e)

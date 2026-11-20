@@ -17,6 +17,6 @@
                 <TextBox x:Name="Address" VerticalContentAlignment="Center" KeyDown="Address_KeyDown"/>
             </DockPanel>
         </Border>
-        <wv2:WebView2 x:Name="Web"/>
+        <Grid x:Name="WebHost"/>
     </DockPanel>
 </Window>
