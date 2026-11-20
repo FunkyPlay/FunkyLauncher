@@ -612,6 +612,9 @@ public static class Loc
         ["chat.sent"] = ("Отправлено. Ответ появится здесь, окно можно закрыть.", "Sent. The answer will show up here; you can close the window."),
         ["chat.err.send"] = ("Не отправилось ({0}). Проверь интернет и попробуй ещё раз или напиши в Telegram.", "Not sent ({0}). Check the internet and try again, or write in Telegram."),
         ["chat.err.big"] = ("Файл больше 10 МБ — приложи поменьше.", "The file is over 10 MB — attach a smaller one."),
+        // 0.1.18 (draft, for the Copywriter): an upload that broke three times; a report sent without a word about the problem
+        ["chat.err.net"] = ("Не отправилось: связь оборвалась ({0}). Попробуй ещё раз. Если не выходит — отправь файл боту в Telegram.", "Not sent: the connection broke ({0}). Try again. If it keeps failing, send the file to the Telegram bot."),
+        ["chat.err.what"] = ("Напиши в двух словах, что случилось: когда и что ты делал. Без этого по отчёту трудно найти причину.", "Write a few words about what happened: when and what you were doing. Without it the report is hard to read."),
         ["chat.telegram"] = ("Удобнее в Telegram? Написать боту @FunkyLauncherBot", "Prefer Telegram? Message @FunkyLauncherBot"),
         ["comp.voice.link"] = ("Страница авторов", "Authors' page"),
         ["comp.voice.link.hint"] = ("Ставится отдельно со страницы авторов, по их инструкции: включить её в сборку без их разрешения мы не можем.", "Installed separately from the authors' page, following their instructions: we can't include it in the modlist without their permission."),

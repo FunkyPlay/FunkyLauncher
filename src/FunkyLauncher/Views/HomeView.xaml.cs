@@ -281,10 +281,10 @@ public partial class HomeView : UserControl
     // "Contact support": the support bot with a ready message (was the news channel)
     private void Support_Click(object sender, RoutedEventArgs e) =>
         PlayService.OpenSupportChat(Loc.T("support.write.text"), _main.Settings, _main.Selected);
-    private void Telegram_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(AppConfig.TelegramUrl);
+    private void Telegram_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(AppConfig.Telegram);
     private void YouTube_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(Catalog.YouTube);
     private void Instagram_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(Catalog.Social.Instagram);
     private void TikTok_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(Catalog.Social.TikTok);
     private void GitHub_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(AppConfig.GitHubUrl);
-    private void AllNews_Click(object sender, System.Windows.Input.MouseButtonEventArgs e) => PlayService.OpenUrl(AppConfig.TelegramUrl);
+    private void AllNews_Click(object sender, System.Windows.Input.MouseButtonEventArgs e) => PlayService.OpenUrl(AppConfig.Telegram);
 }

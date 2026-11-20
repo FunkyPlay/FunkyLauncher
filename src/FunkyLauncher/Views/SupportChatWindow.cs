@@ -187,10 +187,34 @@ public sealed class SupportChatWindow : Window
         };
     }
 
+    /// <summary>
+    /// False when the player says nothing about the problem: the prefilled template ends with an empty
+    /// "Что случилось:" / "What happened:", or an error report (.zip) is attached with no text at all.
+    /// A screenshot alone is fine: it usually shows the problem itself.
+    /// </summary>
+    internal static bool SaysWhatHappened(string text, string? attach)
+    {
+        foreach (var lang in new[] { "Что случилось:", "What happened:" })
+        {
+            var i = text.LastIndexOf(lang, StringComparison.OrdinalIgnoreCase);
+            if (i >= 0) return text[(i + lang.Length)..].Trim().Length > 0;
+        }
+        var isReport = attach != null && Path.GetExtension(attach).Equals(".zip", StringComparison.OrdinalIgnoreCase);
+        return !isReport || text.Length > 0;
+    }
+
     private async Task SendAsync()
     {
         var text = _box.Text.Trim();
         if (text.Length == 0 && _attach == null) return;
+        // 0.1.18: a report or a "Что случилось:" template with nothing written about the problem is not sent
+        if (!SaysWhatHappened(text, _attach))
+        {
+            _status.Text = Loc.T("chat.err.what");
+            _box.Focus();
+            _box.CaretIndex = _box.Text.Length;
+            return;
+        }
         _send.IsEnabled = false;
         _status.Text = Loc.T("chat.sending");
         try

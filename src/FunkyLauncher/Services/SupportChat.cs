@@ -87,26 +87,45 @@ public static class SupportChat
             if (bytes.Length > 10 * 1024 * 1024) throw new InvalidOperationException(Loc.T("chat.err.big"));
             file = new { name, data = Convert.ToBase64String(bytes) };
         }
+        // 0.1.18: the body is built in memory and sent with its length. PostAsJsonAsync streamed it without a length
+        // (chunked), and on some connections (antivirus web filter, proxy, flaky Wi-Fi) a report zip broke halfway:
+        // "Error while copying content to a stream". A broken upload is now retried twice before giving up.
+        var body = JsonSerializer.SerializeToUtf8Bytes(new { install = me.Install, key = me.Key, text, label, lang = Loc.Lang, file });
         // a file on a slow connection needs more than 30 seconds (0.1.17: 8 MB at 2 Mbit/s is ~45 s)
         using var http = Http(file != null ? 300 : 30);
-        HttpResponseMessage resp;
-        try
+        HttpResponseMessage? resp = null;
+        for (var attempt = 1; resp == null; attempt++)
         {
-            resp = await http.PostAsJsonAsync(Api + "/send", new
+            try
             {
-                install = me.Install, key = me.Key, text, label, lang = Loc.Lang, file,
-            }, token);
-        }
-        catch (TaskCanceledException) when (!token.IsCancellationRequested)
-        {
-            AppLog.Write("support chat: sending timed out" + (file != null ? " (with a file)" : ""));
-            throw new InvalidOperationException(Loc.T("chat.err.slow"));
+                using var content = new ByteArrayContent(body);
+                content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json") { CharSet = "utf-8" };
+                resp = await http.PostAsync(Api + "/send", content, token);
+            }
+            catch (TaskCanceledException) when (!token.IsCancellationRequested)
+            {
+                AppLog.Write($"support chat: sending timed out ({body.Length / 1024} KB" + (file != null ? ", with a file)" : ")"));
+                throw new InvalidOperationException(Loc.T("chat.err.slow"));
+            }
+            catch (HttpRequestException ex)
+            {
+                AppLog.Write($"support chat: send attempt {attempt} broke ({body.Length / 1024} KB): {Reason(ex)}");
+                if (attempt >= 3) throw new InvalidOperationException(Loc.F("chat.err.net", Reason(ex)));
+                await Task.Delay(attempt * 3000, token);
+            }
         }
         if (!resp.IsSuccessStatusCode)
         {
             AppLog.Write($"support chat: send answered {(int)resp.StatusCode}");
             throw new InvalidOperationException((int)resp.StatusCode == 413 ? Loc.T("chat.err.big") : Loc.F("chat.err.send", (int)resp.StatusCode));
         }
+    }
+
+    /// <summary>The innermost reason of a network failure ("connection was reset…"), not the generic outer text.</summary>
+    private static string Reason(Exception ex)
+    {
+        while (ex.InnerException != null) ex = ex.InnerException;
+        return ex.Message.TrimEnd('.');
     }
 
     private static bool IsPicture(string name) =>
