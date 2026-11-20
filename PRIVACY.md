@@ -50,6 +50,8 @@ Their own privacy policies apply:
 - Funky Pro (if you have it): the cloud backup only writes archives into the cloud folder already on your PC
   (OneDrive, Yandex Disk, Dropbox or Google Drive, `FunkyLauncher Backups`). The launcher does not upload anything itself —
   your cloud app syncs that folder under its own privacy policy. The Pro key is checked offline when you activate it.
+- If you download a mod in your normal browser, the launcher may look in your Downloads folder only for the file you
+  downloaded yourself to install that mod (by its name and size) and copies it to itself; nothing is sent.
 
 Nothing in this list is sent by the launcher, except what is described in “Funky Pro: Clip to my Telegram”, “Thanks from Funky”, “Voting” and “Wishlist” above.
 
@@ -57,6 +59,8 @@ Nothing in this list is sent by the launcher, except what is described in “Fun
 
 “Make an error report” creates a zip file with log files **on your Desktop**. It is never sent automatically —
 you decide whether to send it to support.
+The report may also include whether the launcher runs as administrator, the WebView2 version and the end of launcher.log
+(it can contain folder paths and the Windows user name). It stays on your Desktop; you decide whether to send it.
 
 ---
 
@@ -86,6 +90,8 @@ you decide whether to send it to support.
 Funky Pro: облачный бэкап только кладёт архивы в папку облака, которая уже есть на вашем ПК (OneDrive, Яндекс Диск,
 Dropbox, Google Drive); сам лаунчер ничего не выгружает. Ключ Pro при активации проверяется без интернета.
 Отчёт об ошибке сохраняется на рабочий стол и никуда сам не отправляется.
+В отчёт также попадают: запущен ли лаунчер от администратора, версия WebView2 и конец launcher.log (в нём могут быть пути к папкам и имя пользователя Windows). Он лежит на рабочем столе, отправлять ли его — решаешь ты.
+Лаунчер может искать в папке «Загрузки» только файл, который вы сами скачали для установки мода (по имени и размеру), и копирует его к себе; ничего не отправляется.
 
 **Чат поддержки.** Когда вы пишете в поддержку из лаунчера, мы получаем текст сообщения, скриншот или отчёт (если вы сами его приложите), случайный номер установки, название сборки и версию лаунчера. Мы используем их только чтобы ответить вам. Данные хранятся на нашем сервере в Германии (Hetzner): скриншоты — 90 дней, остальное — 12 месяцев после последнего обращения. Третьим лицам мы их не передаём. Удалить данные можно кнопкой «Удалить мои данные» в чате или письмом на privacy@funkylauncher.com: ответим не позднее чем через 10 рабочих дней. Контролёр данных — индивидуальный предприниматель Funky (Грузия).
 
