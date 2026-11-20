@@ -701,7 +701,7 @@ public static class Loc
         ["manual.close"] = ("Продолжить позже", "Continue later"),
         ["manual.tired"] = ("Устали? Закройте окно — продолжим с этого места. С Nexus Premium всё скачается само.", "Tired? Close the window — we continue from here. With Nexus Premium everything downloads by itself."),
         ["manual.nowebview"] = ("Не удалось открыть встроенный браузер (WebView2): {0}", "Could not open the built-in browser (WebView2): {0}"),
-        // 0.1.17: the built-in browser can't work — a clear message (drafts until the Copywriter's text)
+        // 0.1.17: the built-in browser can't work — a clear message (Copywriter 20.11)
         ["web.fail.runtime.title"] = ("Не хватает встроенного браузера", "The built-in browser is missing"),
         ["web.fail.runtime.text"] = ("Для этого окна нужен бесплатный компонент Microsoft — WebView2. Нажми «Установить WebView2», поставь его и нажми «Повторить».", "This window needs WebView2, a free component from Microsoft. Press “Install WebView2”, install it, then press “Try again”."),
         ["web.fail.start.title"] = ("Встроенный браузер не запустился", "The built-in browser didn't start"),
@@ -722,6 +722,7 @@ public static class Loc
         ["chat.err.slow"] = ("Файл не успел отправиться — интернет медленный. Попробуй ещё раз или приложи файл поменьше.", "The file didn't finish sending — the internet is slow. Try again or attach a smaller file."),
         ["chat.err.file"] = ("Не получилось открыть файл: {0}", "Couldn't open the file: {0}"),
         ["chat.paste"] = ("Снимок можно вставить: Ctrl+V", "You can paste a screenshot: Ctrl+V"),
+        ["chat.drop"] = ("Или перетащи файл в это окно.", "Or drag a file into this window."),
 
         ["settings.title"] = ("Настройки", "Settings"),
         ["settings.lang"] = ("Язык", "Language"),

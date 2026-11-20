@@ -90,7 +90,7 @@ public sealed class SupportChatWindow : Window
         };
         DockPanel.SetDock(attach, Dock.Left);
         row.Children.Add(attach);
-        _attachText = new TextBlock { FontSize = 12, Foreground = R("Muted"), VerticalAlignment = VerticalAlignment.Center, TextTrimming = TextTrimming.CharacterEllipsis, Text = Loc.T("chat.paste") };
+        _attachText = new TextBlock { FontSize = 12, Foreground = R("Muted"), VerticalAlignment = VerticalAlignment.Center, TextTrimming = TextTrimming.CharacterEllipsis, Text = Loc.T("chat.paste") + ". " + Loc.T("chat.drop") };
         row.Children.Add(_attachText);
         bottom.Children.Add(row);
         _status = new TextBlock { FontSize = 12, Foreground = R("Muted"), Margin = new Thickness(0, 6, 0, 0), TextWrapping = TextWrapping.Wrap };
@@ -191,7 +191,7 @@ public sealed class SupportChatWindow : Window
         try
         {
             await SupportChat.SendAsync(text, _label, _attach, CancellationToken.None);
-            _box.Text = ""; _attach = null; _attachText.Text = Loc.T("chat.paste");
+            _box.Text = ""; _attach = null; _attachText.Text = Loc.T("chat.paste") + ". " + Loc.T("chat.drop");
             _status.Text = Loc.T("chat.sent");
             await RefreshAsync();
         }
