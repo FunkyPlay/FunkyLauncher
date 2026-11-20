@@ -81,6 +81,10 @@ public static class SupportChat
                 // a big screenshot (a 4K PNG is 10-25 MB) becomes a JPEG of the same size in pixels: readable, a few MB
                 if (bytes.Length > 3 * 1024 * 1024 && IsPicture(name))
                     (name, bytes) = await Task.Run(() => SmallerPicture(name, bytes), token);
+                // a big error report: the server stops reading a body after 60 s, on a slow upload (~1 Mbit/s) that is
+                // ~7 MB of JSON. Each log is cut to its last 256 KB (the end shows the failure), usually under 1 MB.
+                else if (bytes.Length > SmallReport && Path.GetExtension(name).Equals(".zip", StringComparison.OrdinalIgnoreCase))
+                    bytes = await Task.Run(() => SmallerReport(bytes), token);
             }
             catch (IOException ex) { throw new InvalidOperationException(Loc.F("chat.err.file", ex.Message)); }
             catch (UnauthorizedAccessException ex) { throw new InvalidOperationException(Loc.F("chat.err.file", ex.Message)); }
@@ -88,8 +92,9 @@ public static class SupportChat
             file = new { name, data = Convert.ToBase64String(bytes) };
         }
         // 0.1.18: the body is built in memory and sent with its length. PostAsJsonAsync streamed it without a length
-        // (chunked), and on some connections (antivirus web filter, proxy, flaky Wi-Fi) a report zip broke halfway:
-        // "Error while copying content to a stream". A broken upload is now retried twice before giving up.
+        // (chunked). Player 21.11: six report uploads, each cut by the server after 60 s of reading the body (Caddy
+        // "i/o timeout", 504) and seen here as "Error while copying content to a stream". Now: a big report is made
+        // smaller (above), the body goes with its length, and a broken upload is retried twice before giving up.
         var body = JsonSerializer.SerializeToUtf8Bytes(new { install = me.Install, key = me.Key, text, label, lang = Loc.Lang, file });
         // a file on a slow connection needs more than 30 seconds (0.1.17: 8 MB at 2 Mbit/s is ~45 s)
         using var http = Http(file != null ? 300 : 30);
@@ -116,9 +121,46 @@ public static class SupportChat
         }
         if (!resp.IsSuccessStatusCode)
         {
-            AppLog.Write($"support chat: send answered {(int)resp.StatusCode}");
-            throw new InvalidOperationException((int)resp.StatusCode == 413 ? Loc.T("chat.err.big") : Loc.F("chat.err.send", (int)resp.StatusCode));
+            var code = (int)resp.StatusCode;
+            AppLog.Write($"support chat: send answered {code} ({body.Length / 1024} KB)");
+            // 504/408: the server gave up waiting for a slow upload (Caddy reads a body for 60 s at most)
+            throw new InvalidOperationException(code == 413 ? Loc.T("chat.err.big") : code is 504 or 408 ? Loc.T("chat.err.slow") : Loc.F("chat.err.send", code));
         }
+    }
+
+    private const int SmallReport = 2 * 1024 * 1024;
+    private const int ReportTail = 256 * 1024;
+
+    /// <summary>
+    /// A copy of a report zip with every file over 256 KB cut to its last 256 KB (marked in the file).
+    /// Not a zip, or nothing to cut = the original bytes.
+    /// </summary>
+    internal static byte[] SmallerReport(byte[] bytes)
+    {
+        try
+        {
+            using var src = new System.IO.Compression.ZipArchive(new MemoryStream(bytes), System.IO.Compression.ZipArchiveMode.Read);
+            if (src.Entries.All(e => e.Length <= ReportTail)) return bytes;
+            var ms = new MemoryStream();
+            using (var dst = new System.IO.Compression.ZipArchive(ms, System.IO.Compression.ZipArchiveMode.Create, leaveOpen: true))
+            {
+                foreach (var e in src.Entries)
+                {
+                    if (e.FullName.EndsWith('/')) continue;
+                    using var input = e.Open();
+                    using var output = dst.CreateEntry(e.FullName, System.IO.Compression.CompressionLevel.SmallestSize).Open();
+                    if (e.Length <= ReportTail) { input.CopyTo(output); continue; }
+                    var buf = new MemoryStream();
+                    input.CopyTo(buf);
+                    var mark = System.Text.Encoding.UTF8.GetBytes($"[Funky Launcher: only the last {ReportTail / 1024} KB of {e.Length / 1024} KB]\n");
+                    output.Write(mark);
+                    output.Write(buf.GetBuffer(), (int)(buf.Length - ReportTail), ReportTail);
+                }
+            }
+            AppLog.Write($"support chat: report {bytes.Length / 1024} KB cut to {ms.Length / 1024} KB");
+            return ms.Length < bytes.Length ? ms.ToArray() : bytes;
+        }
+        catch (Exception ex) { AppLog.Write("support chat: report not cut: " + ex.Message); return bytes; }
     }
 
     /// <summary>The innermost reason of a network failure ("connection was reset…"), not the generic outer text.</summary>
