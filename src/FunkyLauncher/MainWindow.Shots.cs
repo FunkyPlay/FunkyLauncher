@@ -167,6 +167,27 @@ public partial class MainWindow
                     }
                 }
                 catch (Exception e) { File.AppendAllText(Path.Combine(dir, "errors.txt"), $"{lang}-toolhelp: {e}\n"); }
+                // 0.1.17: the support chat with the "paste a screenshot / drag a file" hint
+                try
+                {
+                    Views.SupportChatWindow.Open(this, Settings, Selected);
+                    await Task.Delay(4000);
+                    if (Views.SupportChatWindow.Current is { } cw)
+                    {
+                        var body = (FrameworkElement)cw.Content;
+                        double w = ((FrameworkElement)cw.Content).ActualWidth, h = ((FrameworkElement)cw.Content).ActualHeight;
+                        cw.Content = null;
+                        var holder = new System.Windows.Controls.Border { Background = cw.Background, Child = body, Width = w, Height = h };
+                        holder.Measure(new Size(w, h));
+                        holder.Arrange(new Rect(0, 0, w, h));
+                        holder.UpdateLayout();
+                        await Task.Delay(300);
+                        SaveElement(holder, Path.Combine(dir, $"{lang}-21-support-chat.png"));
+                        holder.Child = null;
+                        cw.Close();
+                    }
+                }
+                catch (Exception e) { File.AppendAllText(Path.Combine(dir, "errors.txt"), $"{lang}-chat: {e}\n"); }
                 // 0.1.17: the built-in browser can't work — the message in the middle of the manual-download window
                 try
                 {
