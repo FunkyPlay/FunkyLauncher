@@ -1,6 +1,7 @@
 // Funky Launcher — Copyright (C) 2026 Funky. Licensed under GPL-3.0-or-later.
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Media;
 
 namespace FunkyLauncher.Views;
@@ -30,6 +31,31 @@ public static class Dialog
             Foreground = Res("Text", Brushes.White),
         };
         if (app?.TryFindResource("UiFont") is FontFamily font) win.FontFamily = font;
+        win.Content = Body(text, title, buttons, icon, defaultResult, r => { result = r; win.Close(); });
+        win.KeyDown += (_, e) => { if (e.Key == System.Windows.Input.Key.Escape) win.Close(); };
+        win.ShowDialog();
+        return result;
+    }
+
+    /// <summary>For --shots: the dialog's content in a dark frame of the dialog's width, not shown on screen.</summary>
+    internal static Border ForShots(string text, string title, MessageBoxButton buttons, MessageBoxImage icon, MessageBoxResult defaultResult = MessageBoxResult.None)
+    {
+        var app = Application.Current;
+        var b = new Border
+        {
+            Width = 620, Background = app?.TryFindResource("Bg") as Brush ?? Brushes.Black,
+            Child = Body(text, title, buttons, icon, defaultResult, _ => { }),
+        };
+        if (app?.TryFindResource("UiFont") is FontFamily font) TextElement.SetFontFamily(b, font);
+        TextElement.SetForeground(b, app?.TryFindResource("Text") as Brush ?? Brushes.White);
+        return b;
+    }
+
+    private static StackPanel Body(string text, string title, MessageBoxButton buttons, MessageBoxImage icon,
+        MessageBoxResult defaultResult, Action<MessageBoxResult> done)
+    {
+        var app = Application.Current;
+        Brush Res(string key, Brush fallback) => app?.TryFindResource(key) as Brush ?? fallback;
 
         var mark = icon switch
         {
@@ -61,7 +87,7 @@ public static class Dialog
         {
             var b = new Button { Content = label, MinWidth = 110, Height = 38, Margin = new Thickness(10, 0, 0, 0), Padding = new Thickness(16, 0, 16, 0) };
             if (app?.TryFindResource(primary ? "PrimaryButton" : "SecondaryButton") is Style st) b.Style = st;
-            b.Click += (_, _) => { result = r; win.Close(); };
+            b.Click += (_, _) => done(r);
             if (primary) b.IsDefault = true;
             row.Children.Add(b);
         }
@@ -84,9 +110,6 @@ public static class Dialog
                 break;
         }
         root.Children.Add(row);
-        win.Content = root;
-        win.KeyDown += (_, e) => { if (e.Key == System.Windows.Input.Key.Escape) win.Close(); };
-        win.ShowDialog();
-        return result;
+        return root;
     }
 }
