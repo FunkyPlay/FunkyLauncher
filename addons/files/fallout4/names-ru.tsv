@@ -84,7 +84,7 @@ owner_plugin	formid	record	field	ru
 3DNPC_FO4.esp	0030BB	NPC_	FULL	Гаррет
 3DNPC_FO4.esp	0030D6	NPC_	FULL	Энни
 3DNPC_FO4.esp	0030F8	QUST	FULL	Три маленьких жителя пустошей
-3DNPC_FO4.esp	003418	CELL	FULL	Убежище chem-наркомана
+3DNPC_FO4.esp	003418	CELL	FULL	Убежище наркомана
 3DNPC_FO4.esp	003426	KEYM	FULL	Ключ от служебного помещения Mass Pike
 3DNPC_FO4.esp	00346E	QUST	FULL	Китайское радио
 3DNPC_FO4.esp	003472	NPC_	FULL	@game:Fallout4:79822
@@ -1527,10 +1527,10 @@ AmericaRising2.esm	031782	QUST	FULL	RE Блокпост: защитники Ан
 AmericaRising2.esm	031783	QUST	FULL	RE Блокпост: защитники Анклава 03
 AmericaRising2.esm	031784	QUST	FULL	RE Блокпост: защитники Анклава 04
 AmericaRising2.esm	031785	QUST	FULL	RE Checkpoint: защитники Анклава 05
-AmericaRising2.esm	03178E	QUST	FULL	Путешествие - глаз-бот
+AmericaRising2.esm	03178E	QUST	FULL	Путешествие - робоглаз
 AmericaRising2.esm	03178F	QUST	FULL	Патруль Анклава против когтя смерти
 AmericaRising2.esm	031790	QUST	FULL	Патруль Анклава против рейдеров
-AmericaRising2.esm	031791	QUST	FULL	Путешествие - глаз-бот
+AmericaRising2.esm	031791	QUST	FULL	Путешествие - робоглаз
 AmericaRising2.esm	031792	QUST	FULL	Патруль Анклава с подкреплением на винтокрыле
 AmericaRising2.esm	031799	QUST	FULL	Faction Chokepoint: защитники Анклава
 AmericaRising2.esm	03179A	QUST	FULL	Faction Assault: Анклав против супермутантов
@@ -2092,7 +2092,7 @@ Eli_Armour_Compendium.esp	00510F	ARMO	FULL	Шорты и жилет
 Eli_Armour_Compendium.esp	0067DC	NPC_	FULL	@game:DLCCoast:18322
 Eli_Armour_Compendium.esp	007711	REFR	FULL	Магазин Элли
 Eli_Armour_Compendium.esp	0091D4	ARMO	FULL	Платье пустошного хипстера
-Eli_Armour_Compendium.esp	0091D9	ARMO	FULL	Защитный костюм Vault-Tec
+Eli_Armour_Compendium.esp	0091D9	ARMO	FULL	Защитный костюм «Волт-Тек»
 Eli_Armour_Compendium.esp	0091E8	MISC	FULL	Пимп-бой
 Eli_Armour_Compendium.esp	0091E9	OMOD	FULL	Пимп-бой
 Eli_Armour_Compendium.esp	00D628	ARMO	FULL	Плащ минитменов
@@ -2111,11 +2111,11 @@ Eli_Armour_Compendium.esp	011A9C	ARMO	FULL	Наряд генерала из Уб
 Eli_Armour_Compendium.esp	011A9D	ARMO	FULL	Наряд трибалиста из Убежища
 Eli_Armour_Compendium.esp	015EE1	ARMO	FULL	Противогаз Фар-Харбора
 Eli_Armour_Compendium.esp	015F08	OMOD	FULL	@game:Fallout4:45421
-Eli_Armour_Compendium.esp	015F0F	OMOD	FULL	Платье с логотипом Vault-Tec
-Eli_Armour_Compendium.esp	015F10	OMOD	FULL	Логотип Vault-Tec 101
-Eli_Armour_Compendium.esp	015F11	OMOD	FULL	Логотип Vault-Tec 111
-Eli_Armour_Compendium.esp	015F12	OMOD	FULL	Логотип Vault-Tec 76
-Eli_Armour_Compendium.esp	015F13	OMOD	FULL	Логотип Vault-Tec 81
+Eli_Armour_Compendium.esp	015F0F	OMOD	FULL	Платье с логотипом «Волт-Тек»
+Eli_Armour_Compendium.esp	015F10	OMOD	FULL	Логотип «Волт-Тек» 101
+Eli_Armour_Compendium.esp	015F11	OMOD	FULL	Логотип «Волт-Тек» 111
+Eli_Armour_Compendium.esp	015F12	OMOD	FULL	Логотип «Волт-Тек» 76
+Eli_Armour_Compendium.esp	015F13	OMOD	FULL	Логотип «Волт-Тек» 81
 Eli_Armour_Compendium.esp	01A369	ARMO	FULL	Рабочий комбинезон
 Eli_Armour_Compendium.esp	01A36C	ARMO	FULL	Бронированная футболка и кожаная одежда
 Eli_Armour_Compendium.esp	01A36F	ARMO	FULL	Футболка и камуфляж с экипировкой
@@ -2137,7 +2137,7 @@ Eli_Armour_Compendium.esp	027096	ARMO	FULL	Многослойный комбин
 Eli_Armour_Compendium.esp	02709A	ARMO	FULL	Противогаз капитана Фар-Харбора
 Eli_Armour_Compendium.esp	02709C	ARMO	FULL	Радиационно-стойкий мусорщик
 Eli_Armour_Compendium.esp	02709F	ARMO	FULL	Футболка и армейский камуфляж
-Eli_Armour_Compendium.esp	0270A2	ARMO	FULL	Наряд готa Пустоши
+Eli_Armour_Compendium.esp	0270A2	ARMO	FULL	Наряд гота Пустоши
 Eli_Armour_Compendium.esp	0270A5	ARMO	FULL	Средний рюкзак
 Eli_Armour_Compendium.esp	0270A6	ARMO	FULL	Средний рюкзак (со спальным мешком)
 Eli_Armour_Compendium.esp	0270AB	ARMO	FULL	Рюкзак сквайра
@@ -2816,8 +2816,8 @@ FO4 NPCs Travel.esp	0DBFCE	NPC_	FULL	@game:DLCCoast:1500
 FO4 NPCs Travel.esp	0DBFCF	NPC_	FULL	@game:DLCCoast:919
 FO4 NPCs Travel.esp	0DD253	NPC_	FULL	Ночная встреча с яо-гаем
 FO4 NPCs Travel.esp	0DD9F6	TERM	FULL	Яо-гай
-FO4 NPCs Travel.esp	0E0390	NPC_	FULL	Fog crawler (манекен)
-FO4 NPCs Travel.esp	0E0391	NPC_	FULL	Fog crawler (манекен)
+FO4 NPCs Travel.esp	0E0390	NPC_	FULL	Туманник (манекен)
+FO4 NPCs Travel.esp	0E0391	NPC_	FULL	Туманник (манекен)
 FO4 NPCs Travel.esp	0E763B	NPC_	FULL	@game:Fallout4:218872
 FO4 NPCs Travel.esp	0E763D	NPC_	FULL	@game:Fallout4:218872
 FO4 NPCs Travel.esp	0E763E	NPC_	FULL	@game:Fallout4:218872
@@ -4228,7 +4228,7 @@ INE_MiseryIsland.esp	BCCA8D	QUST	FULL	ВРАГИ - лагерь рейдеров
 INE_MiseryIsland.esp	BCCA8E	QUST	FULL	БИТВА - волки охотятся на радоленей
 INE_MiseryIsland.esp	BCCA8F	QUST	FULL	СОБЫТИЕ - беспорядок после вечеринки
 INE_MiseryIsland.esp	BCCA92	QUST	FULL	ВРАГИ - дважды мёртвые влюблённые
-INE_MiseryIsland.esp	BCCA94	QUST	FULL	ВРАГИ - кровяные жуки и мёртвые псы
+INE_MiseryIsland.esp	BCCA94	QUST	FULL	ВРАГИ - гнус и мёртвые псы
 INE_MiseryIsland.esp	BCCA95	QUST	FULL	ВРАГИ - спящий яо-гай
 INE_MiseryIsland.esp	BCCA96	QUST	FULL	СОБЫТИЕ - мигрирующее стадо радоленей
 INE_MiseryIsland.esp	BCCA97	QUST	FULL	СОБЫТИЕ - разбросанные кости кита
@@ -4271,7 +4271,7 @@ INE_MiseryIsland.esp	BFE2EF	QUST	FULL	БИТВА - Волки охотятся �
 INE_MiseryIsland.esp	BFE2F0	QUST	FULL	БИТВА - волки охотятся на радоленей
 INE_MiseryIsland.esp	BFE2F1	QUST	FULL	БИТВА - Охотники охотятся на радолений
 INE_MiseryIsland.esp	BFE2F2	QUST	FULL	БИТВА - Брамин против радскорпиона
-INE_MiseryIsland.esp	BFE2F3	QUST	FULL	БИТВА - Кровососы гонятся за безоружным фермером
+INE_MiseryIsland.esp	BFE2F3	QUST	FULL	БИТВА - Гнус гонится за безоружным фермером
 INE_MiseryIsland.esp	BFE2F5	QUST	FULL	СОБЫТИЕ - Стая радкроликов
 INE_MiseryIsland.esp	BFE2F6	QUST	FULL	СОБЫТИЕ - Несчастный случай на мине
 INE_MiseryIsland.esp	BFE2F7	NPC_	FULL	@game:Fallout4:76795
@@ -4330,7 +4330,7 @@ INE_MiseryIsland.esp	CAAE50	TERM	FULL	Терминал управления ко
 INE_MiseryIsland.esp	CAAE51	TERM	FULL	@game:Fallout4:75648
 INE_MiseryIsland.esp	CC0814	TERM	FULL	@game:Fallout4:75648
 INE_MiseryIsland.esp	CDA6D2	ACTI	FULL	Сломанный робоглаз
-INE_MiseryIsland.esp	CDA6D6	QUST	FULL	Починить глазбота
+INE_MiseryIsland.esp	CDA6D6	QUST	FULL	Починить робоглаз
 INE_MiseryIsland.esp	CF4FEC	QUST	FULL	Управляет добавлением топора Hazard в списки легендарных предметов
 INE_MiseryIsland.esp	D0A8EE	BOOK	FULL	Без свидетелей
 INE_MiseryIsland.esp	D0A8EF	BOOK	FULL	Не время
@@ -4433,7 +4433,7 @@ K9TacticalHarness.esp	000863	OMOD	FULL	Нашивки армии США
 K9TacticalHarness.esp	000864	OMOD	FULL	Нашивки армии США (по лору)
 K9TacticalHarness.esp	000866	OMOD	FULL	Без нашивок
 K9TacticalHarness.esp	000876	OMOD	FULL	Нашивки НКР
-K9TacticalHarness.esp	000877	OMOD	FULL	Нашивки Волт-Тек
+K9TacticalHarness.esp	000877	OMOD	FULL	Нашивки «Волт-Тек»
 K9TacticalHarness.esp	000878	OMOD	FULL	Нашивки рейнджеров Рейли
 K9TacticalHarness.esp	000879	MISC	FULL	Подсумки для жилета K-9
 K9TacticalHarness.esp	00087A	MISC	FULL	Подсумки и ранец для жилета K-9
@@ -5897,125 +5897,125 @@ OWR.esp	005B5C	TERM	FULL	Голозапись OWR: пропуск треков
 OWR_CraftableDecor.esp	000801	MSTT	FULL	Флаг - Agatha's Song
 OWR_CraftableDecor.esp	000810	MSTT	FULL	Флаг - Cadillac Jack's Radio Shack
 OWR_CraftableDecor.esp	000811	MSTT	FULL	Флаг - Civil Defense Radio
-OWR_CraftableDecor.esp	000812	MSTT	FULL	Флаг - Galaxy News Radio №1
+OWR_CraftableDecor.esp	000812	MSTT	FULL	Флаг - Galaxy News Radio #1
 OWR_CraftableDecor.esp	000813	MSTT	FULL	Флаг - Gopnik Radio
 OWR_CraftableDecor.esp	000814	MSTT	FULL	Флаг - Nightfall
-OWR_CraftableDecor.esp	000816	MSTT	FULL	Флаг - Red Rocket Radio Bop №1
-OWR_CraftableDecor.esp	000817	MSTT	FULL	Флаг - Synthstream FM №1
+OWR_CraftableDecor.esp	000816	MSTT	FULL	Флаг - Red Rocket Radio Bop #1
+OWR_CraftableDecor.esp	000817	MSTT	FULL	Флаг - Synthstream FM #1
 OWR_CraftableDecor.esp	000818	MSTT	FULL	Флаг - The French Connection
-OWR_CraftableDecor.esp	000819	MSTT	FULL	Флаг - Tumbleweed Tunes №1
+OWR_CraftableDecor.esp	000819	MSTT	FULL	Флаг - Tumbleweed Tunes #1
 OWR_CraftableDecor.esp	00081A	MSTT	FULL	Флаг - X Minus One
 OWR_CraftableDecor.esp	00081B	MSTT	FULL	Флаг - The Zero Hour
 OWR_CraftableDecor.esp	00082B	STAT	FULL	Плакат - Abraxo
 OWR_CraftableDecor.esp	00082F	STAT	FULL	Плакат Agatha's Song
 OWR_CraftableDecor.esp	000857	STAT	FULL	Плакат Cadillac Jack's Radio Shack
-OWR_CraftableDecor.esp	000858	STAT	FULL	Плакат Детей Атома №1
-OWR_CraftableDecor.esp	000859	STAT	FULL	Плакат Детей Атома №2
-OWR_CraftableDecor.esp	00085A	STAT	FULL	Плакат «Ядер-колы» №1
+OWR_CraftableDecor.esp	000858	STAT	FULL	Плакат Детей Атома #1
+OWR_CraftableDecor.esp	000859	STAT	FULL	Плакат Детей Атома #2
+OWR_CraftableDecor.esp	00085A	STAT	FULL	Плакат «Ядер-колы» #1
 OWR_CraftableDecor.esp	00085B	STAT	FULL	Плакат Gopnik Radio
 OWR_CraftableDecor.esp	00085C	STAT	FULL	Плакат ментатов
-OWR_CraftableDecor.esp	00085D	STAT	FULL	Плакат «Ядер-колы Квантум» №1
-OWR_CraftableDecor.esp	00085E	STAT	FULL	Плакат Galaxy News Radio №1
+OWR_CraftableDecor.esp	00085D	STAT	FULL	Плакат «Ядер-колы Квантум» #1
+OWR_CraftableDecor.esp	00085E	STAT	FULL	Плакат Galaxy News Radio #1
 OWR_CraftableDecor.esp	00085F	STAT	FULL	Плакат Radiation King
 OWR_CraftableDecor.esp	000860	STAT	FULL	Плакат Radio New Vegas
 OWR_CraftableDecor.esp	000861	STAT	FULL	Плакат Red Rocket Radio Bop
 OWR_CraftableDecor.esp	000862	STAT	FULL	Плакат стимулятора
-OWR_CraftableDecor.esp	000863	STAT	FULL	Плакат Sunset Sarsaparilla №1
-OWR_CraftableDecor.esp	000864	STAT	FULL	Плакат Sunset Sarsaparilla №2
+OWR_CraftableDecor.esp	000863	STAT	FULL	Плакат Sunset Sarsaparilla #1
+OWR_CraftableDecor.esp	000864	STAT	FULL	Плакат Sunset Sarsaparilla #2
 OWR_CraftableDecor.esp	000865	STAT	FULL	Плакат Tales From The Zone
 OWR_CraftableDecor.esp	000866	STAT	FULL	Плакат Убежища 101
-OWR_CraftableDecor.esp	000867	STAT	FULL	Плакат Tumbleweed Tunes №1
+OWR_CraftableDecor.esp	000867	STAT	FULL	Плакат Tumbleweed Tunes #1
 OWR_CraftableDecor.esp	000868	STAT	FULL	Плакат газировки Убежища
-OWR_CraftableDecor.esp	000869	STAT	FULL	Плакат «Vault-Tec хочет вас»
+OWR_CraftableDecor.esp	000869	STAT	FULL	Плакат «„Волт-Тек“ хочет вас»
 OWR_CraftableDecor.esp	00086A	STAT	FULL	Плакат Sugar Bombs
 OWR_CraftableDecor.esp	00086D	STAT	FULL	Рекламный щит Abraxo
 OWR_CraftableDecor.esp	000895	STAT	FULL	Рекламный щит Chryslus
-OWR_CraftableDecor.esp	000896	STAT	FULL	Рекламный щит Vault-Tec - Better Safe Than Sorry
-OWR_CraftableDecor.esp	000897	STAT	FULL	Рекламный щит «Ядер-колы» №1
+OWR_CraftableDecor.esp	000896	STAT	FULL	Рекламный щит «Волт-Тек» - Better Safe Than Sorry
+OWR_CraftableDecor.esp	000897	STAT	FULL	Рекламный щит «Ядер-колы» #1
 OWR_CraftableDecor.esp	000898	STAT	FULL	Рекламный щит «Ядер-колы Квантум»
-OWR_CraftableDecor.esp	000899	STAT	FULL	Рекламный щит стимулятора №1
-OWR_CraftableDecor.esp	00089A	STAT	FULL	Рекламный щит стимулятора №2
-OWR_CraftableDecor.esp	00089B	STAT	FULL	Рекламный щит Убежища 101 №1
+OWR_CraftableDecor.esp	000899	STAT	FULL	Рекламный щит стимулятора #1
+OWR_CraftableDecor.esp	00089A	STAT	FULL	Рекламный щит стимулятора #2
+OWR_CraftableDecor.esp	00089B	STAT	FULL	Рекламный щит Убежища 101 #1
 OWR_CraftableDecor.esp	00089C	STAT	FULL	Рекламный щит GNR Network
 OWR_CraftableDecor.esp	00089D	STAT	FULL	Рекламный щит «Привет из Бостона»
 OWR_CraftableDecor.esp	00089E	STAT	FULL	Рекламный щит «Let's go Pal»
-OWR_CraftableDecor.esp	00089F	STAT	FULL	Рекламный щит Убежища 101 №2
+OWR_CraftableDecor.esp	00089F	STAT	FULL	Рекламный щит Убежища 101 #2
 OWR_CraftableDecor.esp	0008A0	STAT	FULL	Рекламный щит газировки Убежища
 OWR_CraftableDecor.esp	0008A1	STAT	FULL	Рекламный щит Agatha's Song
 OWR_CraftableDecor.esp	0008A2	STAT	FULL	Рекламный щит Cadillac Jack's Radio Shack
 OWR_CraftableDecor.esp	0008A3	STAT	FULL	Рекламный щит Civil Defense Radio
-OWR_CraftableDecor.esp	0008A4	STAT	FULL	Рекламный щит Galaxy News Radio №1
+OWR_CraftableDecor.esp	0008A4	STAT	FULL	Рекламный щит Galaxy News Radio #1
 OWR_CraftableDecor.esp	0008A5	STAT	FULL	Рекламный щит Gopnik Radio
 OWR_CraftableDecor.esp	0008A6	STAT	FULL	Рекламный щит Nightfall
-OWR_CraftableDecor.esp	0008A8	STAT	FULL	Рекламный щит Red Rocket Radio Bop №1
-OWR_CraftableDecor.esp	0008A9	STAT	FULL	Рекламный щит Synthstream FM №1
+OWR_CraftableDecor.esp	0008A8	STAT	FULL	Рекламный щит Red Rocket Radio Bop #1
+OWR_CraftableDecor.esp	0008A9	STAT	FULL	Рекламный щит Synthstream FM #1
 OWR_CraftableDecor.esp	0008AA	STAT	FULL	Рекламный щит The French Connection
-OWR_CraftableDecor.esp	0008AB	STAT	FULL	Рекламный щит Tumbleweed Tunes №1
+OWR_CraftableDecor.esp	0008AB	STAT	FULL	Рекламный щит Tumbleweed Tunes #1
 OWR_CraftableDecor.esp	0008AC	STAT	FULL	Рекламный щит X Minus One
 OWR_CraftableDecor.esp	0008AD	STAT	FULL	Рекламный щит The Zero Hour
 OWR_CraftableDecor.esp	0008AE	MSTT	FULL	Флаг - Abraxo
 OWR_CraftableDecor.esp	0008AF	MSTT	FULL	Флаг - Chryslus
-OWR_CraftableDecor.esp	0008B0	MSTT	FULL	Флаг - Vault-Tec - Better Safe Than Sorry
-OWR_CraftableDecor.esp	0008B1	MSTT	FULL	Флаг - «Ядер-кола» №1
+OWR_CraftableDecor.esp	0008B0	MSTT	FULL	Флаг - «Волт-Тек» - Better Safe Than Sorry
+OWR_CraftableDecor.esp	0008B1	MSTT	FULL	Флаг - «Ядер-кола» #1
 OWR_CraftableDecor.esp	0008B2	MSTT	FULL	Флаг - «Ядер-кола Квантум»
-OWR_CraftableDecor.esp	0008B3	MSTT	FULL	Флаг - Стимулятор №1
-OWR_CraftableDecor.esp	0008B4	MSTT	FULL	Флаг - Стимулятор №2
-OWR_CraftableDecor.esp	0008B5	MSTT	FULL	Флаг - Убежище 101 №1
+OWR_CraftableDecor.esp	0008B3	MSTT	FULL	Флаг - Стимулятор #1
+OWR_CraftableDecor.esp	0008B4	MSTT	FULL	Флаг - Стимулятор #2
+OWR_CraftableDecor.esp	0008B5	MSTT	FULL	Флаг - Убежище 101 #1
 OWR_CraftableDecor.esp	0008B6	MSTT	FULL	Флаг - GNR Network
 OWR_CraftableDecor.esp	0008B7	MSTT	FULL	Флаг - Greetings from Boston
 OWR_CraftableDecor.esp	0008B8	MSTT	FULL	Флаг - Let's go Pal
-OWR_CraftableDecor.esp	0008B9	MSTT	FULL	Флаг - Убежище 101 №2
+OWR_CraftableDecor.esp	0008B9	MSTT	FULL	Флаг - Убежище 101 #2
 OWR_CraftableDecor.esp	0008BA	MSTT	FULL	Флаг - Vault Fizzy Drink
-OWR_CraftableDecor.esp	000949	MSTT	FULL	Флаг - Old World Radio - Boston №1
+OWR_CraftableDecor.esp	000949	MSTT	FULL	Флаг - Old World Radio - Boston #1
 OWR_CraftableDecor.esp	00094A	MSTT	FULL	Флаг - CONELRAD
-OWR_CraftableDecor.esp	00094B	MSTT	FULL	Флаг - Old World Radio - Boston №2
-OWR_CraftableDecor.esp	00094C	MSTT	FULL	Флаг - Old World Radio - Boston №3
-OWR_CraftableDecor.esp	00094D	MSTT	FULL	Флаг - Old World Radio - Boston №4
-OWR_CraftableDecor.esp	00094E	MSTT	FULL	Флаг - Old World Radio - Boston №5
+OWR_CraftableDecor.esp	00094B	MSTT	FULL	Флаг - Old World Radio - Boston #2
+OWR_CraftableDecor.esp	00094C	MSTT	FULL	Флаг - Old World Radio - Boston #3
+OWR_CraftableDecor.esp	00094D	MSTT	FULL	Флаг - Old World Radio - Boston #4
+OWR_CraftableDecor.esp	00094E	MSTT	FULL	Флаг - Old World Radio - Boston #5
 OWR_CraftableDecor.esp	00094F	MSTT	FULL	Флаг - Ruined City
-OWR_CraftableDecor.esp	000950	MSTT	FULL	Флаг - «Ядер-кола» №2
-OWR_CraftableDecor.esp	000951	MSTT	FULL	Флаг - «Ядер-кола» №3
-OWR_CraftableDecor.esp	000952	MSTT	FULL	Флаг - 8-Bit Hits №1
+OWR_CraftableDecor.esp	000950	MSTT	FULL	Флаг - «Ядер-кола» #2
+OWR_CraftableDecor.esp	000951	MSTT	FULL	Флаг - «Ядер-кола» #3
+OWR_CraftableDecor.esp	000952	MSTT	FULL	Флаг - 8-Bit Hits #1
 OWR_CraftableDecor.esp	000953	MSTT	FULL	Флаг - Billy-Bob's Bunker
 OWR_CraftableDecor.esp	000954	MSTT	FULL	Флаг - Radio FNGS
-OWR_CraftableDecor.esp	000955	MSTT	FULL	Флаг - Galaxy News Radio №2
-OWR_CraftableDecor.esp	000956	MSTT	FULL	Флаг - Galaxy News Radio №3
+OWR_CraftableDecor.esp	000955	MSTT	FULL	Флаг - Galaxy News Radio #2
+OWR_CraftableDecor.esp	000956	MSTT	FULL	Флаг - Galaxy News Radio #3
 OWR_CraftableDecor.esp	000957	MSTT	FULL	Флаг - Malt Shop Mayhem
-OWR_CraftableDecor.esp	00095C	MSTT	FULL	Флаг - Nuka World Radio №1
-OWR_CraftableDecor.esp	00095D	MSTT	FULL	Флаг - Nuka World Radio №2
-OWR_CraftableDecor.esp	00095E	MSTT	FULL	Флаг - Old World Tunes №1
-OWR_CraftableDecor.esp	00095F	MSTT	FULL	Флаг - Old World Tunes №2
-OWR_CraftableDecor.esp	000960	MSTT	FULL	Флаг - Pee-Wee's Playlist №1
-OWR_CraftableDecor.esp	000961	MSTT	FULL	Флаг - Pee-Wee's Playlist №2
-OWR_CraftableDecor.esp	000962	MSTT	FULL	Флаг - Red Rocket Radio Bop №2
-OWR_CraftableDecor.esp	000963	MSTT	FULL	Флаг - Synthstream FM №2
-OWR_CraftableDecor.esp	000964	MSTT	FULL	Флаг - Synthstream FM №3
+OWR_CraftableDecor.esp	00095C	MSTT	FULL	Флаг - Nuka World Radio #1
+OWR_CraftableDecor.esp	00095D	MSTT	FULL	Флаг - Nuka World Radio #2
+OWR_CraftableDecor.esp	00095E	MSTT	FULL	Флаг - Old World Tunes #1
+OWR_CraftableDecor.esp	00095F	MSTT	FULL	Флаг - Old World Tunes #2
+OWR_CraftableDecor.esp	000960	MSTT	FULL	Флаг - Pee-Wee's Playlist #1
+OWR_CraftableDecor.esp	000961	MSTT	FULL	Флаг - Pee-Wee's Playlist #2
+OWR_CraftableDecor.esp	000962	MSTT	FULL	Флаг - Red Rocket Radio Bop #2
+OWR_CraftableDecor.esp	000963	MSTT	FULL	Флаг - Synthstream FM #2
+OWR_CraftableDecor.esp	000964	MSTT	FULL	Флаг - Synthstream FM #3
 OWR_CraftableDecor.esp	000965	MSTT	FULL	Флаг - The Sealed Book
-OWR_CraftableDecor.esp	000966	MSTT	FULL	Флаг - Tumbleweed Tunes №2
+OWR_CraftableDecor.esp	000966	MSTT	FULL	Флаг - Tumbleweed Tunes #2
 OWR_CraftableDecor.esp	000967	MSTT	FULL	Флаг - The Weird Circle
-OWR_CraftableDecor.esp	000968	MSTT	FULL	Флаг - West Vault Radio №1
-OWR_CraftableDecor.esp	000969	MSTT	FULL	Флаг - West Vault Radio №2
+OWR_CraftableDecor.esp	000968	MSTT	FULL	Флаг - West Vault Radio #1
+OWR_CraftableDecor.esp	000969	MSTT	FULL	Флаг - West Vault Radio #2
 OWR_CraftableDecor.esp	00096A	MSTT	FULL	Флаг - Walken's Wacky Wasteland
-OWR_CraftableDecor.esp	00096C	STAT	FULL	Плакат Old World Radio - Бостон №01
+OWR_CraftableDecor.esp	00096C	STAT	FULL	Плакат Old World Radio - Бостон #01
 OWR_CraftableDecor.esp	00096D	STAT	FULL	Плакат CONELRAD
 OWR_CraftableDecor.esp	00096E	STAT	FULL	Плакат «Атомная война! Civil Defense Radio»
-OWR_CraftableDecor.esp	00096F	STAT	FULL	Плакат Nightfall №1
-OWR_CraftableDecor.esp	000970	STAT	FULL	Плакат Nightfall №2
+OWR_CraftableDecor.esp	00096F	STAT	FULL	Плакат Nightfall #1
+OWR_CraftableDecor.esp	000970	STAT	FULL	Плакат Nightfall #2
 OWR_CraftableDecor.esp	000971	STAT	FULL	Плакат Malt Shop Mayhem
-OWR_CraftableDecor.esp	000972	STAT	FULL	Плакат Old World Radio - Бостон №02
-OWR_CraftableDecor.esp	000973	STAT	FULL	Плакат Galaxy News Radio №2
-OWR_CraftableDecor.esp	000974	STAT	FULL	Плакат «Ядер-колы» №2
-OWR_CraftableDecor.esp	000975	STAT	FULL	Плакат Tumbleweed Tunes №2
-OWR_CraftableDecor.esp	000976	STAT	FULL	Плакат Galaxy News Radio №3
-OWR_CraftableDecor.esp	000977	STAT	FULL	Плакат Old World Radio - Бостон №03
-OWR_CraftableDecor.esp	000978	STAT	FULL	Плакат Old World Radio - Бостон №04
-OWR_CraftableDecor.esp	000979	STAT	FULL	Плакат Old World Radio - Бостон №05
-OWR_CraftableDecor.esp	00097A	STAT	FULL	Плакат Old World Radio - Бостон №06
+OWR_CraftableDecor.esp	000972	STAT	FULL	Плакат Old World Radio - Бостон #02
+OWR_CraftableDecor.esp	000973	STAT	FULL	Плакат Galaxy News Radio #2
+OWR_CraftableDecor.esp	000974	STAT	FULL	Плакат «Ядер-колы» #2
+OWR_CraftableDecor.esp	000975	STAT	FULL	Плакат Tumbleweed Tunes #2
+OWR_CraftableDecor.esp	000976	STAT	FULL	Плакат Galaxy News Radio #3
+OWR_CraftableDecor.esp	000977	STAT	FULL	Плакат Old World Radio - Бостон #03
+OWR_CraftableDecor.esp	000978	STAT	FULL	Плакат Old World Radio - Бостон #04
+OWR_CraftableDecor.esp	000979	STAT	FULL	Плакат Old World Radio - Бостон #05
+OWR_CraftableDecor.esp	00097A	STAT	FULL	Плакат Old World Radio - Бостон #06
 OWR_CraftableDecor.esp	00097B	STAT	FULL	Плакат Fallout Girl
-OWR_CraftableDecor.esp	00097C	STAT	FULL	Плакат The French Connection №1
-OWR_CraftableDecor.esp	00097D	STAT	FULL	Плакат Radio Tesla №1
-OWR_CraftableDecor.esp	00097E	STAT	FULL	Плакат Radio Tesla №2
-OWR_CraftableDecor.esp	00097F	STAT	FULL	Плакат X Minus One №1
+OWR_CraftableDecor.esp	00097C	STAT	FULL	Плакат The French Connection #1
+OWR_CraftableDecor.esp	00097D	STAT	FULL	Плакат Radio Tesla #1
+OWR_CraftableDecor.esp	00097E	STAT	FULL	Плакат Radio Tesla #2
+OWR_CraftableDecor.esp	00097F	STAT	FULL	Плакат X Minus One #1
 OWR_CraftableDecor.esp	000980	STAT	FULL	Плакат Old World Radio - Boston #07
 OWR_CraftableDecor.esp	000981	STAT	FULL	Плакат X Minus One #2
 OWR_CraftableDecor.esp	000982	STAT	FULL	Плакат Old World Radio - Boston #08
@@ -6061,21 +6061,21 @@ OWR_CraftableDecor.esp	0009AD	STAT	FULL	Рекламный щит West Vault Rad
 OWR_CraftableDecor.esp	0009AE	STAT	FULL	Рекламный щит Walken's Wacky Wasteland
 OWR_CraftableDecor.esp	000A16	STAT	FULL	Плакат Nuka World Radio #1
 OWR_CraftableDecor.esp	000A18	STAT	FULL	Плакат Nuka World Radio #2
-OWR_CraftableDecor.esp	000A1B	MSTT	FULL	Флаг - Old World Radio - Boston №6
-OWR_CraftableDecor.esp	000A1C	MSTT	FULL	Флаг - Old World Radio - Boston №7
-OWR_CraftableDecor.esp	000A1D	MSTT	FULL	Флаг - Old World Radio - Boston №8
+OWR_CraftableDecor.esp	000A1B	MSTT	FULL	Флаг - Old World Radio - Boston #6
+OWR_CraftableDecor.esp	000A1C	MSTT	FULL	Флаг - Old World Radio - Boston #7
+OWR_CraftableDecor.esp	000A1D	MSTT	FULL	Флаг - Old World Radio - Boston #8
 OWR_CraftableDecor.esp	000A1E	MSTT	FULL	Флаг - Red Rocket
-OWR_CraftableDecor.esp	000A64	MSTT	FULL	Флаг - 8-Bit Hits №2
-OWR_CraftableDecor.esp	000A65	MSTT	FULL	Флаг - 8-Bit Hits №3
+OWR_CraftableDecor.esp	000A64	MSTT	FULL	Флаг - 8-Bit Hits #2
+OWR_CraftableDecor.esp	000A65	MSTT	FULL	Флаг - 8-Bit Hits #3
 OWR_CraftableDecor.esp	000A66	MSTT	FULL	Флаг - Chilling Tales for Dark Nights
 OWR_CraftableDecor.esp	000A67	MSTT	FULL	Флаг - MechaBetty
 OWR_CraftableDecor.esp	000A68	MSTT	FULL	Флаг - Pulp-Pourri Theater
-OWR_CraftableDecor.esp	000A69	MSTT	FULL	Флаг - The Twilight Zone №1
-OWR_CraftableDecor.esp	000A6A	MSTT	FULL	Флаг - The Twilight Zone №2
+OWR_CraftableDecor.esp	000A69	MSTT	FULL	Флаг - The Twilight Zone #1
+OWR_CraftableDecor.esp	000A6A	MSTT	FULL	Флаг - The Twilight Zone #2
 OWR_CraftableDecor.esp	000A6B	MSTT	FULL	Флаг - True Vault Escapades
-OWR_CraftableDecor.esp	000A6C	MSTT	FULL	Флаг - We're Alive №1
-OWR_CraftableDecor.esp	000A6D	MSTT	FULL	Флаг - We're Alive №2
-OWR_CraftableDecor.esp	000A6E	MSTT	FULL	Флаг - West Vault Radio №3
+OWR_CraftableDecor.esp	000A6C	MSTT	FULL	Флаг - We're Alive #1
+OWR_CraftableDecor.esp	000A6D	MSTT	FULL	Флаг - We're Alive #2
+OWR_CraftableDecor.esp	000A6E	MSTT	FULL	Флаг - West Vault Radio #3
 OWR_CraftableDecor.esp	000A6F	STAT	FULL	Рекламный щит Old World Radio - Boston #6
 OWR_CraftableDecor.esp	000A70	STAT	FULL	Рекламный щит Old World Radio - Boston #7
 OWR_CraftableDecor.esp	000A71	STAT	FULL	Рекламный щит Old World Radio - Boston #8
@@ -6117,7 +6117,7 @@ OWR_CraftableDecor.esp	000A94	STAT	FULL	Плакат True Vault Escapades #4
 OWR_CraftableDecor.esp	000A95	STAT	FULL	Плакат Братства Стали
 OWR_CraftableDecor.esp	000A96	STAT	FULL	Плакат: коготь смерти и Псина
 OWR_CraftableDecor.esp	000A97	STAT	FULL	Плакат Aqua Purra
-OWR_CraftableDecor.esp	000A98	STAT	FULL	Плакат Vault-Tec - Будь умным! Будь осторожным!
+OWR_CraftableDecor.esp	000A98	STAT	FULL	Плакат «Волт-Тек» - Будь умным! Будь осторожным!
 OWR_CraftableDecor.esp	000A99	STAT	FULL	Плакат «Ядер-колы» #3
 OWR_CraftableDecor.esp	000A9A	STAT	FULL	Плакат «Ядер-колы Квантум» #2
 OWR_CraftableDecor.esp	000A9B	STAT	FULL	Плакат «Ядер-колы» #4
@@ -6126,40 +6126,40 @@ OWR_CraftableDecor.esp	000A9D	STAT	FULL	Плакат «Покажем им на�
 OWR_CraftableDecor.esp	000A9E	STAT	FULL	Плакат 2077
 OWR_CraftableDecor.esp	000A9F	STAT	FULL	Плакат «Винт»
 OWR_CraftableDecor.esp	000AA0	STAT	FULL	Плакат X Minus One #6
-OWR_CraftableDecor.esp	000AED	MSTT	FULL	Флаг - Galina, пин-ап №1
-OWR_CraftableDecor.esp	000AEE	MSTT	FULL	Флаг - Galina, пин-ап №2
-OWR_CraftableDecor.esp	000AEF	MSTT	FULL	Флаг - Galina, пин-ап №3
+OWR_CraftableDecor.esp	000AED	MSTT	FULL	Флаг - Galina, пин-ап #1
+OWR_CraftableDecor.esp	000AEE	MSTT	FULL	Флаг - Galina, пин-ап #2
+OWR_CraftableDecor.esp	000AEF	MSTT	FULL	Флаг - Galina, пин-ап #3
 OWR_CraftableDecor.esp	000AF0	STAT	FULL	Рекламный щит Galina Pin-Up #1
 OWR_CraftableDecor.esp	000AF1	STAT	FULL	Рекламный щит Galina Pin-Up #2
 OWR_CraftableDecor.esp	000AF2	STAT	FULL	Рекламный щит Galina Pin-Up #3
 OWR_CraftableDecor.esp	000AF3	STAT	FULL	Плакат Galina Pin-Up #1
 OWR_CraftableDecor.esp	000AF4	STAT	FULL	Плакат Galina Pin-Up #2
-OWR_CraftableDecor.esp	000AF5	STAT	FULL	Плакат - Galina, пин-ап №3
-OWR_CraftableDecor.esp	000AF6	STAT	FULL	Плакат - Galina, пин-ап №4
-OWR_CraftableDecor.esp	000AF7	STAT	FULL	Плакат - Galina, пин-ап №5
+OWR_CraftableDecor.esp	000AF5	STAT	FULL	Плакат - Galina, пин-ап #3
+OWR_CraftableDecor.esp	000AF6	STAT	FULL	Плакат - Galina, пин-ап #4
+OWR_CraftableDecor.esp	000AF7	STAT	FULL	Плакат - Galina, пин-ап #5
 OWR_CraftableDecor_CW.esp	000801	ACTI	FULL	Плакат (A) - Abraxo
 OWR_CraftableDecor_CW.esp	000803	ACTI	FULL	Плакат (B) - Abraxo
 OWR_CraftableDecor_CW.esp	000874	ACTI	FULL	Плакат (A) - Agatha's Song
 OWR_CraftableDecor_CW.esp	000875	ACTI	FULL	Плакат (B) - Agatha's Song
 OWR_CraftableDecor_CW.esp	000876	ACTI	FULL	Плакат (A) - Cadillac Jack's Radio Shack
-OWR_CraftableDecor_CW.esp	000877	ACTI	FULL	Плакат (A) - Дети Атома №1
+OWR_CraftableDecor_CW.esp	000877	ACTI	FULL	Плакат (A) - Дети Атома #1
 OWR_CraftableDecor_CW.esp	000878	ACTI	FULL	Плакат (B) - Cadillac Jack's Radio Shack
-OWR_CraftableDecor_CW.esp	000879	ACTI	FULL	Плакат (B) - Дети Атома №1
-OWR_CraftableDecor_CW.esp	00087A	ACTI	FULL	Плакат (A) - Дети Атома №2
-OWR_CraftableDecor_CW.esp	00087B	ACTI	FULL	Плакат (A) - «Ядер-кола» №1
+OWR_CraftableDecor_CW.esp	000879	ACTI	FULL	Плакат (B) - Дети Атома #1
+OWR_CraftableDecor_CW.esp	00087A	ACTI	FULL	Плакат (A) - Дети Атома #2
+OWR_CraftableDecor_CW.esp	00087B	ACTI	FULL	Плакат (A) - «Ядер-кола» #1
 OWR_CraftableDecor_CW.esp	00087C	ACTI	FULL	Плакат (A) - Gopnik Radio
 OWR_CraftableDecor_CW.esp	00087D	ACTI	FULL	Плакат (A) - Ментаты
-OWR_CraftableDecor_CW.esp	00087E	ACTI	FULL	Плакат (B) - Дети Атома №2
-OWR_CraftableDecor_CW.esp	00087F	ACTI	FULL	Плакат (B) - «Ядер-кола» №1
+OWR_CraftableDecor_CW.esp	00087E	ACTI	FULL	Плакат (B) - Дети Атома #2
+OWR_CraftableDecor_CW.esp	00087F	ACTI	FULL	Плакат (B) - «Ядер-кола» #1
 OWR_CraftableDecor_CW.esp	000880	ACTI	FULL	Плакат (B) - Gopnik Radio
 OWR_CraftableDecor_CW.esp	000881	ACTI	FULL	Плакат (B) - Ментаты
-OWR_CraftableDecor_CW.esp	000882	ACTI	FULL	Плакат (A) - «Ядер-кола Квантум» №1
-OWR_CraftableDecor_CW.esp	000883	ACTI	FULL	Плакат (A) - Galaxy News Radio №1
+OWR_CraftableDecor_CW.esp	000882	ACTI	FULL	Плакат (A) - «Ядер-кола Квантум» #1
+OWR_CraftableDecor_CW.esp	000883	ACTI	FULL	Плакат (A) - Galaxy News Radio #1
 OWR_CraftableDecor_CW.esp	000884	ACTI	FULL	Плакат (A) - Radiation King
 OWR_CraftableDecor_CW.esp	000885	ACTI	FULL	Плакат (A) - Radio New Vegas
 OWR_CraftableDecor_CW.esp	000886	ACTI	FULL	Плакат (A) - Red Rocket Radio Bop
 OWR_CraftableDecor_CW.esp	000887	ACTI	FULL	Плакат (A) - Стимулятор
-OWR_CraftableDecor_CW.esp	000888	ACTI	FULL	Плакат (A) - Sunset Sarsaparilla №1
+OWR_CraftableDecor_CW.esp	000888	ACTI	FULL	Плакат (A) - Sunset Sarsaparilla #1
 OWR_CraftableDecor_CW.esp	000889	ACTI	FULL	Плакат (A) Sunset Sarsaparilla #2
 OWR_CraftableDecor_CW.esp	00088A	ACTI	FULL	Плакат (B) «Ядер-кола Квантум» #1
 OWR_CraftableDecor_CW.esp	00088B	ACTI	FULL	Плакат (B) Galaxy News Radio #1
@@ -6173,7 +6173,7 @@ OWR_CraftableDecor_CW.esp	000892	ACTI	FULL	Плакат (A) Tales From The Zone
 OWR_CraftableDecor_CW.esp	000893	ACTI	FULL	Плакат (A) Убежище 101
 OWR_CraftableDecor_CW.esp	000894	ACTI	FULL	Плакат (A) Tumbleweed Tunes #1
 OWR_CraftableDecor_CW.esp	000895	ACTI	FULL	Плакат (A) Газировка Убежища
-OWR_CraftableDecor_CW.esp	000896	ACTI	FULL	Плакат (A) Vault-Tec ждёт тебя
+OWR_CraftableDecor_CW.esp	000896	ACTI	FULL	Плакат (A) «Волт-Тек» ждёт тебя
 OWR_CraftableDecor_CW.esp	000897	ACTI	FULL	Плакат (A) Sugar Bombs
 OWR_CraftableDecor_CW.esp	000898	ACTI	FULL	Плакат (A) Old World Radio - Boston #01
 OWR_CraftableDecor_CW.esp	000899	ACTI	FULL	Плакат (A) CONELRAD
@@ -6189,7 +6189,7 @@ OWR_CraftableDecor_CW.esp	0008A2	ACTI	FULL	Плакат (B) Tales From The Zone
 OWR_CraftableDecor_CW.esp	0008A3	ACTI	FULL	Плакат (B) Убежище 101
 OWR_CraftableDecor_CW.esp	0008A4	ACTI	FULL	Плакат (B) Tumbleweed Tunes #1
 OWR_CraftableDecor_CW.esp	0008A5	ACTI	FULL	Плакат (B) Газировка Убежища
-OWR_CraftableDecor_CW.esp	0008A6	ACTI	FULL	Плакат (B) Vault-Tec ждёт тебя
+OWR_CraftableDecor_CW.esp	0008A6	ACTI	FULL	Плакат (B) «Волт-Тек» ждёт тебя
 OWR_CraftableDecor_CW.esp	0008A7	ACTI	FULL	Плакат (B) Sugar Bombs
 OWR_CraftableDecor_CW.esp	0008A8	ACTI	FULL	Плакат (B) Old World Radio - Boston #01
 OWR_CraftableDecor_CW.esp	0008A9	ACTI	FULL	Плакат (B) CONELRAD
@@ -6277,7 +6277,7 @@ OWR_CraftableDecor_CW.esp	0009DA	ACTI	FULL	Плакат (A) True Vault Escapades
 OWR_CraftableDecor_CW.esp	0009DB	ACTI	FULL	Плакат (A) Братство Стали
 OWR_CraftableDecor_CW.esp	0009DC	ACTI	FULL	Плакат (A) Коготь смерти и Псина
 OWR_CraftableDecor_CW.esp	0009DD	ACTI	FULL	Плакат (A) Aqua Purra
-OWR_CraftableDecor_CW.esp	0009DE	ACTI	FULL	Плакат (A) Vault-Tec - Будь умным! Будь осторожным!
+OWR_CraftableDecor_CW.esp	0009DE	ACTI	FULL	Плакат (A) «Волт-Тек» - Будь умным! Будь осторожным!
 OWR_CraftableDecor_CW.esp	0009DF	ACTI	FULL	Плакат (A) «Ядер-кола» #3
 OWR_CraftableDecor_CW.esp	0009E0	ACTI	FULL	Плакат (A) «Ядер-кола Квантум» #2
 OWR_CraftableDecor_CW.esp	0009E1	ACTI	FULL	Плакат (A) «Ядер-кола» #4
@@ -6312,7 +6312,7 @@ OWR_CraftableDecor_CW.esp	0009FD	ACTI	FULL	Плакат (B) True Vault Escapades
 OWR_CraftableDecor_CW.esp	0009FE	ACTI	FULL	Плакат (B) Братство Стали
 OWR_CraftableDecor_CW.esp	0009FF	ACTI	FULL	Плакат (B) Коготь смерти и Псина
 OWR_CraftableDecor_CW.esp	000A00	ACTI	FULL	Плакат (B) Aqua Purra
-OWR_CraftableDecor_CW.esp	000A01	ACTI	FULL	Плакат (B) Vault-Tec - Будь умным! Будь осторожным!
+OWR_CraftableDecor_CW.esp	000A01	ACTI	FULL	Плакат (B) «Волт-Тек» - Будь умным! Будь осторожным!
 OWR_CraftableDecor_CW.esp	000A02	ACTI	FULL	Плакат (B) «Ядер-кола» #3
 OWR_CraftableDecor_CW.esp	000A03	ACTI	FULL	Плакат (B) «Ядер-кола Квантум» #2
 OWR_CraftableDecor_CW.esp	000A04	ACTI	FULL	Плакат (B) «Ядер-кола» #4
@@ -7367,7 +7367,7 @@ SettleObjExpandPack.esp	000B35	STAT	FULL	Вентиляция Убежища
 SettleObjExpandPack.esp	000B56	DOOR	FULL	@game:Fallout4:100841
 SettleObjExpandPack.esp	000B60	STAT	FULL	Пульт управления Убежища
 SettleObjExpandPack.esp	000B64	STAT	FULL	Вывеска с символом Анклава
-SettleObjExpandPack.esp	000B65	STAT	FULL	Вывеска с символом Vault-Tec
+SettleObjExpandPack.esp	000B65	STAT	FULL	Вывеска с символом «Волт-Тек»
 SettleObjExpandPack.esp	000B66	STAT	FULL	Вывеска с символом стрелков
 SettleObjExpandPack.esp	000BF8	STAT	FULL	Пол Института
 SettleObjExpandPack.esp	000BFE	STAT	FULL	Вертолётная площадка
@@ -8661,9 +8661,9 @@ Sidearms of the Wasteland.esp	000698	MISC	FULL	Ресивер Browning
 Sidearms of the Wasteland.esp	000699	MISC	FULL	Простая рукоять m1911
 Sidearms of the Wasteland.esp	00069A	MISC	FULL	Штатный магазин .45 Auto
 Sidearms of the Wasteland.esp	00069B	MISC	FULL	Простая рукоять M9FS
-Sidearms of the Wasteland.esp	00069C	MISC	FULL	Простая рукоять Hi Power
+Sidearms of the Wasteland.esp	00069C	MISC	FULL	Простая рукоять Hi-Power
 Sidearms of the Wasteland.esp	00069D	MISC	FULL	Простой магазин пистолета Operator
-Sidearms of the Wasteland.esp	00069E	MISC	FULL	Штатный магазин Hi Power
+Sidearms of the Wasteland.esp	00069E	MISC	FULL	Штатный магазин Hi-Power
 Sidearms of the Wasteland.esp	0006A8	OMOD	FULL	Механический прицел .45 Auto
 Sidearms of the Wasteland.esp	0006A9	OMOD	FULL	Механический прицел Browning
 Sidearms of the Wasteland.esp	0006AA	OMOD	FULL	Механический прицел M9
@@ -8697,11 +8697,11 @@ Sidearms of the Wasteland.esp	0006DA	OMOD	FULL	Рукоять Hi-Power M&A
 Sidearms of the Wasteland.esp	0006DB	OMOD	FULL	Деревянная рукоять Hi-Power
 Sidearms of the Wasteland.esp	0006DC	OMOD	FULL	Удобная рукоять Hi-Power
 Sidearms of the Wasteland.esp	0006DD	OMOD	FULL	Удобная рукоять M9FS
-Sidearms of the Wasteland.esp	0006DE	MISC	FULL	Деревянная рукоять Hi Power
-Sidearms of the Wasteland.esp	0006DF	MISC	FULL	Рукоять Hi Power Wasted
-Sidearms of the Wasteland.esp	0006E0	MISC	FULL	Рукоять Hi Power M&A
-Sidearms of the Wasteland.esp	0006E1	MISC	FULL	Удобная рукоять Hi Power
-Sidearms of the Wasteland.esp	0006E2	MISC	FULL	Бакелитовая рукоять Hi Power
+Sidearms of the Wasteland.esp	0006DE	MISC	FULL	Деревянная рукоять Hi-Power
+Sidearms of the Wasteland.esp	0006DF	MISC	FULL	Рукоять Hi-Power Wasted
+Sidearms of the Wasteland.esp	0006E0	MISC	FULL	Рукоять Hi-Power M&A
+Sidearms of the Wasteland.esp	0006E1	MISC	FULL	Удобная рукоять Hi-Power
+Sidearms of the Wasteland.esp	0006E2	MISC	FULL	Бакелитовая рукоять Hi-Power
 Sidearms of the Wasteland.esp	0006E3	MISC	FULL	Деревянная рукоять M9FS
 Sidearms of the Wasteland.esp	0006E4	MISC	FULL	Рукоять M9FS Wasted
 Sidearms of the Wasteland.esp	0006E5	MISC	FULL	Рукоять M9FS «Звёзды»
@@ -8718,8 +8718,8 @@ Sidearms of the Wasteland.esp	0006FF	OMOD	FULL	Средний магазин M9F
 Sidearms of the Wasteland.esp	000700	OMOD	FULL	Большой магазин M9FS
 Sidearms of the Wasteland.esp	000701	OMOD	FULL	Средний магазин Hi-Power
 Sidearms of the Wasteland.esp	000702	OMOD	FULL	Большой магазин Hi-Power
-Sidearms of the Wasteland.esp	000703	MISC	FULL	Средний магазин Hi Power
-Sidearms of the Wasteland.esp	000704	MISC	FULL	Большой магазин Hi Power
+Sidearms of the Wasteland.esp	000703	MISC	FULL	Средний магазин Hi-Power
+Sidearms of the Wasteland.esp	000704	MISC	FULL	Большой магазин Hi-Power
 Sidearms of the Wasteland.esp	000705	MISC	FULL	Средний магазин M9FS
 Sidearms of the Wasteland.esp	000706	MISC	FULL	Большой магазин M9FS
 Sidearms of the Wasteland.esp	000707	MISC	FULL	Средний магазин M1911
@@ -8732,14 +8732,14 @@ Sidearms of the Wasteland.esp	000714	OMOD	FULL	Штатный быстрый м�
 Sidearms of the Wasteland.esp	000715	OMOD	FULL	Штатный быстрый магазин Hi-Power
 Sidearms of the Wasteland.esp	000716	MISC	FULL	Штатный быстросменный магазин .45 Auto
 Sidearms of the Wasteland.esp	000717	MISC	FULL	Штатный быстросменный магазин M9
-Sidearms of the Wasteland.esp	000718	MISC	FULL	Штатный быстросменный магазин Hi Power
+Sidearms of the Wasteland.esp	000718	MISC	FULL	Штатный быстросменный магазин Hi-Power
 Sidearms of the Wasteland.esp	00071C	OMOD	FULL	Удобная рукоять .45 Auto
 Sidearms of the Wasteland.esp	00071D	OMOD	FULL	Рукоять .45 Auto с ремешком
 Sidearms of the Wasteland.esp	00071E	OMOD	FULL	Снайперская рукоять M9FS
 Sidearms of the Wasteland.esp	00071F	OMOD	FULL	Рукоять оператора M9FS
 Sidearms of the Wasteland.esp	000720	OMOD	FULL	Рукоять M9FS с ремешком
 Sidearms of the Wasteland.esp	000721	OMOD	FULL	Рукоять Hi-Power с ремешком
-Sidearms of the Wasteland.esp	000722	MISC	FULL	Рукоять Hi Power с ремешком
+Sidearms of the Wasteland.esp	000722	MISC	FULL	Рукоять Hi-Power с ремешком
 Sidearms of the Wasteland.esp	000723	MISC	FULL	Рукоять M9FS с ремешком
 Sidearms of the Wasteland.esp	000724	MISC	FULL	Снайперская рукоять M9FS
 Sidearms of the Wasteland.esp	000725	MISC	FULL	Рукоять M9FS Operator
@@ -8798,7 +8798,7 @@ Sidearms of the Wasteland.esp	00076C	MISC	FULL	Тяжёлый прицел .45 A
 Sidearms of the Wasteland.esp	00076D	MISC	FULL	Светящийся прицел .45 Auto
 Sidearms of the Wasteland.esp	00076E	MISC	FULL	Механический прицел M9
 Sidearms of the Wasteland.esp	00076F	MISC	FULL	Механический прицел 1911
-Sidearms of the Wasteland.esp	00077F	OMOD	FULL	Точный коллиматор Hi Power
+Sidearms of the Wasteland.esp	00077F	OMOD	FULL	Точный коллиматор Hi-Power
 Sidearms of the Wasteland.esp	000780	MISC	FULL	Точечный прицел HiPower с красной точкой
 Sidearms of the Wasteland.esp	000782	OMOD	FULL	Тяжёлый механический прицел HP
 Sidearms of the Wasteland.esp	000783	MISC	FULL	Тяжёлый механический прицел HP
@@ -8829,8 +8829,8 @@ Sidearms of the Wasteland.esp	0007A9	MISC	FULL	Подкалиберный пат
 Sidearms of the Wasteland.esp	0007AC	OMOD	FULL	[Скорострельность] Полностью автоматический
 Sidearms of the Wasteland.esp	0007AD	MISC	FULL	M9, автоматический огонь
 Sidearms of the Wasteland.esp	0007AF	OMOD	FULL	Комплект доработки для слабого освещения
-Sidearms of the Wasteland.esp	0007B0	OMOD	FULL	Ложа Hi Power
-Sidearms of the Wasteland.esp	0007B1	MISC	FULL	Ложа Hi Power
+Sidearms of the Wasteland.esp	0007B0	OMOD	FULL	Ложа Hi-Power
+Sidearms of the Wasteland.esp	0007B1	MISC	FULL	Ложа Hi-Power
 Sidearms of the Wasteland.esp	0007B2	MISC	FULL	Набор доработки для плохого освещения
 Sidearms of the Wasteland.esp	0007B5	OMOD	FULL	Переделка под калибр .44 Mag.
 Sidearms of the Wasteland.esp	0007B6	MISC	FULL	Калибр пистолета .44 Magnum
@@ -8846,34 +8846,34 @@ Sidearms of the Wasteland.esp	0007C3	MISC	FULL	Оптический прицел
 Sidearms of the Wasteland.esp	0007C4	MISC	FULL	Стабилизированный оптический прицел Maelstrom Cyclops x4
 Sidearms of the Wasteland.esp	000800	OMOD	FULL	Ресивер M9FS «Cutlass»
 Sidearms of the Wasteland.esp	000801	OMOD	FULL	Ресивер M9FS «Coyote»
-Sidearms of the Wasteland.esp	000802	OMOD	FULL	Ресивер Hi Power «Two-Tones»
-Sidearms of the Wasteland.esp	000803	OMOD	FULL	Ресивер Hi Power «Greyhound»
+Sidearms of the Wasteland.esp	000802	OMOD	FULL	Ресивер Hi-Power «Two-Tones»
+Sidearms of the Wasteland.esp	000803	OMOD	FULL	Ресивер Hi-Power «Greyhound»
 Sidearms of the Wasteland.esp	000804	MISC	FULL	Ресивер Hi-Power «Greyhound»
 Sidearms of the Wasteland.esp	000805	MISC	FULL	Ресивер Hi-Power «Two-Tones»
 Sidearms of the Wasteland.esp	000806	MISC	FULL	Ресивер M9FS «Trails»
 Sidearms of the Wasteland.esp	000807	MISC	FULL	Ресивер M9FS «Cutlass»
 Sidearms of the Wasteland.esp	00080C	OMOD	FULL	Рукоять M9FS из слоновой кости
-Sidearms of the Wasteland.esp	00080D	OMOD	FULL	Тактическая рукоять M&A для Hi Power
+Sidearms of the Wasteland.esp	00080D	OMOD	FULL	Тактическая рукоять M&A для Hi-Power
 Sidearms of the Wasteland.esp	00080E	MISC	FULL	Тактическая рукоять M&A для Hi-Power
 Sidearms of the Wasteland.esp	00080F	MISC	FULL	Рукоять M9FS из слоновой кости
 Sidearms of the Wasteland.esp	000813	OMOD	FULL	Ресивер M9FS «Two-Tones»
 Sidearms of the Wasteland.esp	000814	MISC	FULL	Ресивер M9FS «Two-Tones»
 Sidearms of the Wasteland.esp	000817	OMOD	FULL	Ресивер M9F-C «Valentine»
 Sidearms of the Wasteland.esp	000818	MISC	FULL	Ресивер M9F-C «Valentine»
-Sidearms of the Wasteland.esp	00081B	OMOD	FULL	Ресивер Hi Power «Renaissance»
-Sidearms of the Wasteland.esp	00081C	OMOD	FULL	Ресивер Hi Power «Dark Age»
-Sidearms of the Wasteland.esp	00081D	OMOD	FULL	Рукоять Hi Power с иконой
-Sidearms of the Wasteland.esp	00081E	OMOD	FULL	Рукоять Hi Power из слоновой кости
+Sidearms of the Wasteland.esp	00081B	OMOD	FULL	Ресивер Hi-Power «Renaissance»
+Sidearms of the Wasteland.esp	00081C	OMOD	FULL	Ресивер Hi-Power «Dark Age»
+Sidearms of the Wasteland.esp	00081D	OMOD	FULL	Рукоять Hi-Power с иконой
+Sidearms of the Wasteland.esp	00081E	OMOD	FULL	Рукоять Hi-Power из слоновой кости
 Sidearms of the Wasteland.esp	00081F	MISC	FULL	Ресивер Hi-Power «Dark Age»
 Sidearms of the Wasteland.esp	000820	MISC	FULL	Ресивер Hi-Power «Renaissance»
 Sidearms of the Wasteland.esp	000821	MISC	FULL	Рукоять Hi-Power с иконой
 Sidearms of the Wasteland.esp	000822	MISC	FULL	Рукоять Hi-Power из слоновой кости
 Sidearms of the Wasteland.esp	000827	OMOD	FULL	[Скорострельность] Самовозвратный спуск
 Sidearms of the Wasteland.esp	000828	MISC	FULL	[Скорострельность] Самовозвратный спуск
-Sidearms of the Wasteland.esp	00082A	OMOD	FULL	Механический прицел Hi Power на планке
+Sidearms of the Wasteland.esp	00082A	OMOD	FULL	Механический прицел Hi-Power на планке
 Sidearms of the Wasteland.esp	00082B	MISC	FULL	Планка с механическим прицелом Hi-Power
-Sidearms of the Wasteland.esp	000841	OMOD	FULL	Ресивер Hi Power «Protektor»
-Sidearms of the Wasteland.esp	000842	OMOD	FULL	Тактическая рукоять Sierpinski для Hi Power
+Sidearms of the Wasteland.esp	000841	OMOD	FULL	Ресивер Hi-Power «Protektor»
+Sidearms of the Wasteland.esp	000842	OMOD	FULL	Тактическая рукоять Sierpinski для Hi-Power
 Sidearms of the Wasteland.esp	000843	MISC	FULL	Ресивер Hi-Power «Protektor»
 Sidearms of the Wasteland.esp	000844	MISC	FULL	Тактическая рукоять Sierpinski для Hi-Power
 Sidearms of the Wasteland.esp	000847	OMOD	FULL	[Скорострельность] Самовозвратный спуск
@@ -10199,7 +10199,7 @@ SS2_XPAC_Chapter3.esm	000801	MISC	FULL	Оборона усадьбы Уорви�
 SS2_XPAC_Chapter3.esm	000802	MISC	FULL	Сильный Суонсон, Gnofusnomuss
 SS2_XPAC_Chapter3.esm	000803	MISC	FULL	План города - L0_0
 SS2_XPAC_Chapter3.esm	000809	MESG	FULL	Оборона Замка
-SS2_XPAC_Chapter3.esm	00080A	MESG	FULL	Оборона усадьбы Уorwick
+SS2_XPAC_Chapter3.esm	00080A	MESG	FULL	Оборона усадьбы Уорвиков
 SS2_XPAC_Chapter3.esm	000F99	CELL	FULL	Убежище поставщика
 SS2_XPAC_Chapter3.esm	000FBA	QUST	FULL	Венчурный капитализм
 SS2_XPAC_Chapter3.esm	000FBB	QUST	FULL	Оборона «Зелёной жемчужины»
@@ -10217,7 +10217,7 @@ SS2_XPAC_Chapter3.esm	00276D	ARMO	FULL	Союз
 SS2_XPAC_Chapter3.esm	002B30	CELL	FULL	@game:Fallout4:146915
 SS2_XPAC_Chapter3.esm	002EF1	ACTI	FULL	Горячий чай
 SS2_XPAC_Chapter3.esm	00304B	CELL	FULL	Пентхаус башни Таможни
-SS2_XPAC_Chapter3.esm	003145	ACTI	FULL	Музыкальный автомат Diamond City Radio
+SS2_XPAC_Chapter3.esm	003145	ACTI	FULL	Музыкальный автомат «Радиостанции Даймонд-сити»
 SS2_XPAC_Chapter3.esm	0031F4	DOOR	FULL	Малые ворота из сетки-рабицы
 SS2_XPAC_Chapter3.esm	0031F5	DOOR	FULL	Малые ворота из сетки-рабицы
 SS2_XPAC_Chapter3.esm	0031F6	DOOR	FULL	@game:Fallout4:34
@@ -10958,11 +10958,11 @@ SS2_XPAC_Chapter3.esm	010583	WEAP	FULL	Военное ведомство - ве�
 SS2_XPAC_Chapter3.esm	010584	ACTI	FULL	Военный отдел - вентиляция
 SS2_XPAC_Chapter3.esm	010585	ACTI	FULL	Военный отдел - вентиляция
 SS2_XPAC_Chapter3.esm	010586	ACTI	FULL	Военный отдел - вентиляция
-SS2_XPAC_Chapter3.esm	01058A	MISC	FULL	Военный отдел - рабочее место для глаз-ботов
+SS2_XPAC_Chapter3.esm	01058A	MISC	FULL	Военный отдел - рабочее место для робоглазов
 SS2_XPAC_Chapter3.esm	01058C	WEAP	FULL	Военное ведомство - нижний уровень
-SS2_XPAC_Chapter3.esm	01058D	ACTI	FULL	Военный отдел - рабочее место для глазбота
-SS2_XPAC_Chapter3.esm	01058E	ACTI	FULL	Военный отдел - рабочее место для глазбота
-SS2_XPAC_Chapter3.esm	01058F	ACTI	FULL	Военный отдел - рабочее место для глазбота
+SS2_XPAC_Chapter3.esm	01058D	ACTI	FULL	Военный отдел - рабочее место для робоглаза
+SS2_XPAC_Chapter3.esm	01058E	ACTI	FULL	Военный отдел - рабочее место для робоглаза
+SS2_XPAC_Chapter3.esm	01058F	ACTI	FULL	Военный отдел - рабочее место для робоглаза
 SS2_XPAC_Chapter3.esm	010692	MISC	FULL	Служебный коридор - украшения Serenity
 SS2_XPAC_Chapter3.esm	010694	WEAP	FULL	Безмятежность - основа
 SS2_XPAC_Chapter3.esm	010695	WEAP	FULL	Безмятежность - декор
@@ -11309,13 +11309,13 @@ SS2_XPAC_Chapter3.esm	013115	ACTI	FULL	Энергоблок ОВКВ : улуч�
 SS2_XPAC_Chapter3.esm	013116	ACTI	FULL	Энергоблок ОВКВ : улучшение 3
 SS2_XPAC_Chapter3.esm	01311A	MISC	FULL	Энергоблок вентиляции: мощность 4
 SS2_XPAC_Chapter3.esm	01311E	WEAP	FULL	hvacpwr - вентилятор 4
-SS2_XPAC_Chapter3.esm	01311F	WEAP	FULL	hvacpwr - вверх 4
+SS2_XPAC_Chapter3.esm	01311F	WEAP	FULL	hvacpwr - улучшение 4
 SS2_XPAC_Chapter3.esm	013120	ACTI	FULL	Энергоблок ОВКВ : улучшение 4
 SS2_XPAC_Chapter3.esm	013121	ACTI	FULL	Энергоблок ОВКВ : улучшение 4
 SS2_XPAC_Chapter3.esm	013122	ACTI	FULL	Энергоблок ОВКВ : улучшение 4
 SS2_XPAC_Chapter3.esm	013126	MISC	FULL	Энергоблок вентиляции: мощность 5
 SS2_XPAC_Chapter3.esm	013128	WEAP	FULL	hvacpwr - вентилятор 5
-SS2_XPAC_Chapter3.esm	013129	WEAP	FULL	hvacpwr - вверх 5
+SS2_XPAC_Chapter3.esm	013129	WEAP	FULL	hvacpwr - улучшение 5
 SS2_XPAC_Chapter3.esm	01312A	ACTI	FULL	Энергоблок ОВКВ : улучшение 5
 SS2_XPAC_Chapter3.esm	01312B	ACTI	FULL	Энергоблок ОВКВ : улучшение 5
 SS2_XPAC_Chapter3.esm	01312C	ACTI	FULL	Энергоблок ОВКВ : улучшение 5
@@ -11535,11 +11535,11 @@ SS2_XPAC_Chapter3.esm	0152E4	NPC_	FULL	@game:Fallout4:79725
 SS2_XPAC_Chapter3.esm	0152E7	OMOD	FULL	@game:Fallout4:87232
 SS2_XPAC_Chapter3.esm	015442	QUST	FULL	Эпилог: Спасибо за воспоминания
 SS2_XPAC_Chapter3.esm	015531	BOOK	FULL	Записка Кассандры
-SS2_XPAC_Chapter3.esm	015539	QUST	FULL	Звонок в Волт-Тек
+SS2_XPAC_Chapter3.esm	015539	QUST	FULL	Звонок в «Волт-Тек»
 SS2_XPAC_Chapter3.esm	015653	ACTI	FULL	Панель ресивера
 SS2_XPAC_Chapter3.esm	015655	NPC_	FULL	Мэдисон
 SS2_XPAC_Chapter3.esm	015656	NPC_	FULL	Неизвестный
-SS2_XPAC_Chapter3.esm	015657	NPC_	FULL	Сотрудник Волт-Тек
+SS2_XPAC_Chapter3.esm	015657	NPC_	FULL	Сотрудник «Волт-Тек»
 SS2_XPAC_Chapter3.esm	015663	TACT	FULL	Радио коммуникационной антенны
 SS2_XPAC_Chapter3.esm	015697	QUST	FULL	Состояние войны
 SS2_XPAC_Chapter3.esm	0156A4	MESG	FULL	Стено
@@ -12003,7 +12003,7 @@ SS2_XPAC_Chapter3.esm	01D4C9	MISC	FULL	Установить улучшение: 
 SS2_XPAC_Chapter3.esm	01D4CA	MISC	FULL	Установить улучшение: производительность насоса очистки сточных вод 2
 SS2_XPAC_Chapter3.esm	01D4CB	MISC	FULL	Установить улучшение: производительность насоса очистки сточных вод 3
 SS2_XPAC_Chapter3.esm	01D4CC	MISC	FULL	Установить улучшение: очистка сточных вод - УФ
-SS2_XPAC_Chapter3.esm	01D4CD	MISC	FULL	Установить улучшение: станция глаз-ботов военного штаба
+SS2_XPAC_Chapter3.esm	01D4CD	MISC	FULL	Установить улучшение: станция робоглазов военного штаба
 SS2_XPAC_Chapter3.esm	01D4CE	MISC	FULL	Установить улучшение: вентиляция военного штаба
 SS2_XPAC_Chapter3.esm	01D4CF	MISC	FULL	Установить улучшение: улучшенные комнаты Сальвадора
 SS2_XPAC_Chapter3.esm	01D4D0	MISC	FULL	Установить улучшение: камеры содержания ангара - второй блок камер
@@ -12867,7 +12867,7 @@ UniqueUniques.esp	001744	OMOD	FULL	Меченый барабанный мага�
 UniqueUniques.esp	001745	OMOD	FULL	Ствол жителя пустоши
 UniqueUniques.esp	001746	OMOD	FULL	Ложа болотника
 UniqueUniques.esp	001747	OMOD	FULL	@game:Fallout4:447
-UniqueUniques.esp	001748	OMOD	FULL	Ложа Vault-Tec
+UniqueUniques.esp	001748	OMOD	FULL	Ложа «Волт-Тек»
 UniqueUniques.esp	001749	OMOD	FULL	Перерабатывающий барабан
 UniqueUniques.esp	00174A	OMOD	FULL	Самодельная ложа
 UniqueUniques.esp	00174B	OMOD	FULL	Экспериментальный передатчик
@@ -12941,7 +12941,7 @@ UniqueUniques.esp	0121DE	MISC	FULL	Меченый барабанный мага�
 UniqueUniques.esp	0121DF	MISC	FULL	Ствол наёмника
 UniqueUniques.esp	0121E0	MISC	FULL	Заряженный кожух
 UniqueUniques.esp	0121E1	MISC	FULL	Верный
-UniqueUniques.esp	0121E2	MISC	FULL	Ложа Vault-Tec
+UniqueUniques.esp	0121E2	MISC	FULL	Ложа «Волт-Тек»
 UniqueUniques.esp	0121E3	MISC	FULL	Детонирующий ствол
 UniqueUniques.esp	0121E4	MISC	FULL	Смертоносное лезвие
 UniqueUniques.esp	0121E5	MISC	FULL	Ложа болотника
@@ -15553,7 +15553,7 @@ YouAndWhatArmy2.esm	0010A7	QUST	FULL	Пустой лагерь
 YouAndWhatArmy2.esm	0010A8	QUST	FULL	Патруль - стоит в лагере
 YouAndWhatArmy2.esm	0010B0	QUST	FULL	Патруль - уходит из лагеря при приближении игрока
 YouAndWhatArmy2.esm	0010B1	QUST	FULL	Патруль - приходит в лагерь вслед за игроком, появляется в точке A
-YouAndWhatArmy2.esm	0010B6	QUST	FULL	Глаз-бот и пёс - стоят в лагере
+YouAndWhatArmy2.esm	0010B6	QUST	FULL	Робоглаз и пёс - стоят в лагере
 YouAndWhatArmy2.esm	0010EF	QUST	FULL	Поселенцы под охраной - стоят в лагере
 YouAndWhatArmy2.esm	001191	QUST	FULL	Охраняемый караван - стоит в лагере
 YouAndWhatArmy2.esm	001223	QUST	FULL	Охраняемый караван - приходит в лагерь вслед за игроком, появляется в точке B
@@ -15587,7 +15587,7 @@ YouAndWhatArmy2.esm	001CF8	QUST	FULL	Бой - патруль против рад
 YouAndWhatArmy2.esm	001CFC	QUST	FULL	Бой - патруль против диких гулей
 YouAndWhatArmy2.esm	001D00	QUST	FULL	Бой - патруль против супермутантов
 YouAndWhatArmy2.esm	001D93	QUST	FULL	Бой - патруль против дворняг
-YouAndWhatArmy2.esm	001D97	QUST	FULL	Бой - патруль против кровososов
+YouAndWhatArmy2.esm	001D97	QUST	FULL	Бой - патруль против гнуса
 YouAndWhatArmy2.esm	001DD6	QUST	FULL	Бой - патруль против стрелков
 YouAndWhatArmy2.esm	001DD7	QUST	FULL	Бой - патруль против рейдеров
 YouAndWhatArmy2.esm	001E2F	QUST	FULL	Поселенцы под охраной - приходят в лагерь вслед за игроком, появляются в точке A

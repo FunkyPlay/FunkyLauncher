@@ -4,7 +4,7 @@
   "modFolder": "FunkyPlay - Русские названия",
   "prefix": "FunkyPlay_RU_Names",
   "gameType": "fallout4",
-  "dicts": [ { "path": "files/fallout4/names-ru.tsv", "sha256": "3a4ac89501706f8d4b43273b062b49a51ffa1f8884cbc716f60a06f367bc9feb" } ],
+  "dicts": [ { "path": "files/fallout4/names-ru.tsv", "sha256": "7a92b8fa039fc6f97c6f6884c43a6c4028cac64a5a3df632a4321bb48a9f9f8d" } ],
   "credits": [
    { "mod": "Amazing FollowerTweaks", "author": "Dheuster", "url": "https://www.nexusmods.com/fallout4/mods/26976" },
    { "mod": "Sidearms of the Wasteland", "author": "Gecko In A Can 77", "url": "https://www.nexusmods.com/fallout4/mods/96613" },
