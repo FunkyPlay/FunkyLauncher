@@ -111,7 +111,8 @@ public static class SupportChat
                 // Wait as long as the server says (Retry-After, else 30 s), show the countdown, send again by itself — twice at most.
                 // Only the per-IP limit ("too many requests") can free up in a minute; the hourly message limit and the
                 // daily file limit don't — those are answered at once, without waiting (Bots, 21.11).
-                if ((int)resp.StatusCode == 429 && busy < 2 && Limit(await ErrorOf(resp, token)) == null)
+                // Since 21.11 13:11 the server sends Retry-After (up to 3600 s): only a short one (≤ 60 s) is waited out here.
+                if ((int)resp.StatusCode == 429 && busy < 2 && Limit(await ErrorOf(resp, token)) == null && WaitOf(resp) <= AutoWait)
                 {
                     busy++;
                     var wait = WaitOf(resp);
@@ -147,7 +148,7 @@ public static class SupportChat
             if (code == 429 && Limit(error) is { } limit) throw new InvalidOperationException(limit);
             // 504/408: the server gave up waiting for a slow upload (Caddy reads a body for 60 s at most)
             throw new InvalidOperationException(code == 413 ? Loc.T("chat.err.big") : code is 504 or 408 ? Loc.T("chat.err.slow")
-                : code == 429 ? Loc.F("chat.err.busy", WaitOf(resp)) : Loc.F("chat.err.send", code));
+                : code == 429 ? Busy(WaitOf(resp)) : Loc.F("chat.err.send", code));
         }
     }
 
@@ -170,12 +171,30 @@ public static class SupportChat
         : error.Contains("message limit", StringComparison.OrdinalIgnoreCase) ? Loc.T("chat.err.hour")
         : null;
 
-    /// <summary>Seconds the server asks to wait after 429: Retry-After (seconds or a date), else 30; 5..120.</summary>
+    /// <summary>The launcher waits by itself only this long; a longer Retry-After is shown to the player instead.</summary>
+    private const int AutoWait = 60;
+
+    /// <summary>"Wait N s" (up to a minute) or "try again in N min".</summary>
+    internal static string Busy(int seconds) =>
+        seconds <= AutoWait ? Loc.F("chat.err.busy", seconds) : Loc.F("chat.err.later", (seconds + 59) / 60);
+
+    /// <summary>
+    /// Seconds the server asks to wait after 429: the Retry-After header (seconds or a date), else "retry_after" in the
+    /// body, else 30; 5..3600.
+    /// </summary>
     internal static int WaitOf(HttpResponseMessage resp)
     {
         var ra = resp.Headers.RetryAfter;
-        double s = ra?.Delta?.TotalSeconds ?? (ra?.Date is { } d ? (d - DateTimeOffset.UtcNow).TotalSeconds : 30);
-        return (int)Math.Clamp(Math.Ceiling(s), 5, 120);
+        double? s = ra?.Delta?.TotalSeconds ?? (ra?.Date is { } d ? (d - DateTimeOffset.UtcNow).TotalSeconds : null);
+        if (s == null)
+            try
+            {
+                resp.Content.LoadIntoBufferAsync().GetAwaiter().GetResult();
+                var root = JsonDocument.Parse(resp.Content.ReadAsStringAsync().GetAwaiter().GetResult()).RootElement;
+                if (root.TryGetProperty("retry_after", out var v) && v.TryGetDouble(out var x)) s = x;
+            }
+            catch { }
+        return (int)Math.Clamp(Math.Ceiling(s ?? 30), 5, 3600);
     }
 
     private const int SmallReport = 2 * 1024 * 1024;

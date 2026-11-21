@@ -627,6 +627,8 @@ public static class Loc
         // 0.1.18 (draft): the server's limit (429) — the launcher waits and sends again by itself
         ["chat.wait"] = ("Сервер просит подождать. Отправлю сам через {0} с, окно не закрывай.", "The server asks to wait. I'll send it by myself in {0} s, keep the window open."),
         ["chat.err.busy"] = ("Сервер сейчас занят. Подожди {0} с и нажми «Отправить» ещё раз.", "The server is busy right now. Wait {0} s and press Send again."),
+        // 0.1.18 (draft, for the Copywriter): the server asks to wait longer than a minute (Retry-After up to an hour)
+        ["chat.err.later"] = ("Сервер просит подождать. Попробуй через {0} мин или напиши боту в Telegram.", "The server asks to wait. Try again in {0} min or message the Telegram bot."),
         ["chat.err.hour"] = ("Из этого лаунчера за час ушло много сообщений — сервер пока не принимает новые. Попробуй через час или напиши боту в Telegram.", "Many messages were sent from this launcher in the last hour — the server won't take more for now. Try in an hour or message the Telegram bot."),
         ["chat.err.files"] = ("За сутки уже отправлено 100 МБ файлов — это предел. Напиши текстом, а файл пришли завтра или боту в Telegram.", "100 MB of files were already sent today — that's the limit. Write it as text and send the file tomorrow or to the Telegram bot."),
         ["chat.telegram"] = ("Удобнее в Telegram? Написать боту @FunkyLauncherBot", "Prefer Telegram? Message @FunkyLauncherBot"),
