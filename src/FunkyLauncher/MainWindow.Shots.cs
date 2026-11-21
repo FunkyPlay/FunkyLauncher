@@ -263,6 +263,7 @@ public partial class MainWindow
                         {
                             if (Core.Addons.Extras(id).FirstOrDefault(x => x.Kind == "heavy").Pack is not { } heavy) continue;
                             Settings.SelectedId = id;
+                            _setup.ResetForModlist(); // the folder box and the checks of this modlist
                             Height = 1240 + dh;
                             ShowSetup();
                             await Task.Delay(3000);
@@ -277,7 +278,7 @@ public partial class MainWindow
                             SaveElement(gr, Path.Combine(dir, $"{lang}-29b-graphics-{id}-8gb.png"));
                         }
                     }
-                    finally { Settings.SelectedId = was; Height = _shotBaseHeight + dh; }
+                    finally { Settings.SelectedId = was; _setup.ResetForModlist(); Height = _shotBaseHeight + dh; }
                 }
                 catch (Exception e) { File.AppendAllText(Path.Combine(dir, "errors.txt"), $"{lang}-toolhelp: {e}\n"); }
                 // 0.1.17: the support chat with the "paste a screenshot / drag a file" hint
