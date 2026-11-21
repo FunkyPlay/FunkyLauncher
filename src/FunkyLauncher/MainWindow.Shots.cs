@@ -222,10 +222,10 @@ public partial class MainWindow
                         {
                             await Task.Delay(3000);
                             var before = NexusStatus.Text;
-                            SaveElement(NexusCard, Path.Combine(dir, $"{lang}-28-nexus-side-before.png"));
+                            SaveInPlace(NexusCard, Path.Combine(dir, $"{lang}-28-nexus-side-before.png"));
                             File.WriteAllText(fake, "test");
                             await Task.Delay(3000);
-                            SaveElement(NexusCard, Path.Combine(dir, $"{lang}-28b-nexus-side-after.png"));
+                            SaveInPlace(NexusCard, Path.Combine(dir, $"{lang}-28b-nexus-side-after.png"));
                             File.AppendAllText(Path.Combine(dir, "nexus-watch.txt"), $"{lang}: before '{before}' -> after '{NexusStatus.Text}' (no click, no window activation)\n");
                         }
                         finally { File.Delete(fake); WabbajackService.TestLoginFile = null; await Task.Delay(2500); }
@@ -369,6 +369,28 @@ public partial class MainWindow
     }
 
     private void Save(string file) => SaveVisual(this, file, _shotScale);
+
+    /// <summary>An element that sits inside the window (not a free one): drawn through a VisualBrush on the page background,
+    /// RenderTargetBitmap of the element itself would draw it at its window offset — an empty picture.</summary>
+    private void SaveInPlace(FrameworkElement el, string file)
+    {
+        const double pad = 12;
+        var dpi = VisualTreeHelper.GetDpi(this);
+        var w = el.ActualWidth + pad * 2; var h = el.ActualHeight + pad * 2;
+        var dv = new DrawingVisual();
+        using (var dc = dv.RenderOpen())
+        {
+            dc.DrawRectangle(Background ?? Brushes.Black, null, new Rect(0, 0, w, h));
+            dc.DrawRectangle(new VisualBrush(el) { Stretch = Stretch.None }, null, new Rect(pad, pad, el.ActualWidth, el.ActualHeight));
+        }
+        var bmp = new RenderTargetBitmap((int)Math.Ceiling(w * dpi.DpiScaleX), (int)Math.Ceiling(h * dpi.DpiScaleY),
+            dpi.PixelsPerInchX, dpi.PixelsPerInchY, PixelFormats.Pbgra32);
+        bmp.Render(dv);
+        var enc = new PngBitmapEncoder();
+        enc.Frames.Add(BitmapFrame.Create(bmp));
+        using var fs = File.Create(file);
+        enc.Save(fs);
+    }
 
     private void SaveElement(FrameworkElement el, string file)
     {
