@@ -91,6 +91,19 @@ internal static class ByteCopy
     }
 
     /// <summary>Rewrites every such value anywhere in the bytes (not only at aligned places). Returns the new bytes and the replaced (offset, old, new).</summary>
+    /// <summary>Sub-records that are plain arrays of FormIDs (every 4 bytes from the start): only there a value can safely be rewritten.</summary>
+    private static readonly HashSet<string> PureRefs = new(StringComparer.Ordinal) { "KWDA", "EFID", "TPLT", "DOFT", "SOFT", "PKID", "ZNAM", "EITM", "INRD" };
+
+    /// <summary>Like Remap, but only at aligned places of plain FormID arrays. Unsafe = a value that looks like a reference sits somewhere else
+    /// (inside a structure we have no schema for): the record cannot be copied safely.</summary>
+    public static (byte[] Data, List<(int At, uint Old, uint New)> Changes, bool Unsafe) RemapSub(RawPlugin w, string type, byte[] data)
+    {
+        var (d, ch) = Remap(w, data);
+        if (ch.Count == 0) return (data, ch, false);
+        if (!PureRefs.Contains(type) || data.Length % 4 != 0 || ch.Any(c => c.At % 4 != 0)) return (data, new(), true);
+        return (d, ch, false);
+    }
+
     public static (byte[] Data, List<(int At, uint Old, uint New)> Changes) Remap(RawPlugin w, byte[] data)
     {
         if (data.Length > 4096) return (data, new()); // big binary blocks (navmesh and the like) hold numbers, not references
@@ -224,6 +237,7 @@ internal static class ByteCopy
         public Dictionary<int, byte[]> Changed = new();
         public byte[] Raw = null!;
         public int Rewritten;
+        public string? Unsafe;
     }
 
     /// <param name="modsLastFirst">plugin file names, the last loaded first (the first one that has the record wins)</param>
@@ -257,7 +271,8 @@ internal static class ByteCopy
             for (var i = 0; i < item.Subs.Count; i++)
             {
                 if (item.Changed.ContainsKey(i)) continue;
-                var (data, ch) = Remap(w, item.Subs[i].Data);
+                var (data, ch, unsafeRef) = RemapSub(w, item.Subs[i].Type, item.Subs[i].Data);
+                if (unsafeRef) { item.Unsafe = item.Subs[i].Type; break; }
                 if (ch.Count > 0)
                 {
                     item.Subs[i] = new RawPlugin.Sub(item.Subs[i].Type, data); item.Rewritten += ch.Count;
@@ -266,6 +281,7 @@ internal static class ByteCopy
                     if (report.RewriteSamples.Count < 80) report.RewriteSamples.Add($"{job.What} in {winner} {item.Subs[i].Type} len {item.Subs[i].Data.Length}: " + string.Join(", ", ch.Take(3).Select(c => $"@{c.At} {c.Old:X8}->{c.New:X8}")));
                 }
             }
+            if (item.Unsafe != null) { report.Skip("winner writes its own records in a form that would change meaning in the patch, and the place cannot be rewritten safely (" + item.Subs.Count + " sub-records, " + item.Unsafe + ")", job.What + " in " + winner); continue; }
             var (hid, hch) = Remap(w, item.Header.AsSpan(12, 4).ToArray());
             if (hch.Count > 0) { hid.CopyTo(item.Header, 12); item.Rewritten++; }
             item.Raw = BuildRecord(item.Header, item.Flags, item.Subs);
@@ -343,7 +359,7 @@ internal static class ByteCopy
                 continue;
             }
             // everything else: the author's bytes, except references to the winner's own records, which must name the same record in the patch
-            var (expected, ch) = Remap(src, a.Subs[i].Data);
+            var (expected, ch, _) = RemapSub(src, a.Subs[i].Type, a.Subs[i].Data);
             if (!b.Subs[i].Data.AsSpan().SequenceEqual(expected)) return $"{a.Subs[i].Type} #{i} differs";
             foreach (var (_, oldv, newv) in ch)
                 if (src.Decode(oldv) is not { } p || dst.Decode(newv) is not { } q || p != q) return $"{a.Subs[i].Type} #{i} reference {oldv:X8} -> {newv:X8} does not name the same record";
