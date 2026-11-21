@@ -482,7 +482,7 @@
   "RED4ext 2380 1.31.1 2026",
   "redscript 1511 0.5.32 2026"
  ],
- "modlistOff": [],
+ "modlistOff": [ "The Gangs of Night City 7233 7.0.1 2026" ],
  "plugins": [],
  "ownFiles": "files/neon-nights/own.zip",
  "ownFolders": [
