@@ -268,7 +268,7 @@ public partial class SetupView : UserControl
         {
             Content = text, Style = (Style)FindResource(selected ? "PrimaryButton" : "SecondaryButton"),
             Height = 32, MinWidth = 86, Padding = new Thickness(12, 0, 12, 0), Margin = new Thickness(2, 0, 2, 0),
-            FontSize = 13, IsEnabled = !_busy,
+            FontSize = 13, FontWeight = FontWeights.SemiBold, IsEnabled = !_busy, // Design 21.11: the selected (pink) one as bold as the other
         };
         b.Click += (_, _) => click();
         return b;
