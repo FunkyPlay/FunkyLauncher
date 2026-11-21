@@ -530,6 +530,11 @@ public static class Loc
         // 0.1.19 (draft, for the Copywriter): the red "game not found" row with its own button
         ["check.game.pick"] = ("Лаунчер не нашёл {0} сам. Нажми «Указать папку игры» и выбери папку, где лежит {0}.", "The launcher couldn't find {0} by itself. Press “Show the game folder” and pick the folder with {0}."),
         ["check.game.pickbtn"] = ("Указать папку игры", "Show the game folder"),
+        ["check.game.copies"] = ("Нашли {0} копии: {1}", "Found {0} copies: {1}"),
+        ["check.game.copies.hint"] = ("Сейчас выбрана {0} (версия {1}). Если играешь в другую — нажми «Выбрать копию».", "Now using {0} (version {1}). If you play another one, press “Pick a copy”."),
+        ["check.game.copies.btn"] = ("Выбрать копию", "Pick a copy"),
+        ["check.game.copies.pick"] = ("Какую копию {0} использовать для сборки?", "Which copy of {0} should the modlist use?"),
+        ["check.game.copies.version"] = ("версия {0}", "version {0}"),
         ["setup.gamefolder.below"] = ("{0} нашёлся в папке {1} — выбрали её.", "{0} was found in {1} — that folder is picked."),
         ["setup.gamefolder.has"] = ("В выбранной папке лежит: {0}", "The picked folder has: {0}"),
         ["setup.gamefolder.empty"] = ("Выбранная папка пустая.", "The picked folder is empty."),

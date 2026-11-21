@@ -190,6 +190,12 @@ public partial class MainWindow
                         gameRow.UpdateLayout();
                         await Task.Delay(300);
                         SaveElement(gameRow, Path.Combine(dir, $"{lang}-23-game-missing.png"));
+                        var copies = new System.Windows.Controls.Border { Background = (Brush)FindResource("Bg"), Padding = new Thickness(20), Width = 820, Child = _setup.ShotCopiesRow(sf) };
+                        copies.Measure(new Size(copies.Width, double.PositiveInfinity));
+                        copies.Arrange(new Rect(copies.DesiredSize));
+                        copies.UpdateLayout();
+                        await Task.Delay(300);
+                        SaveElement(copies, Path.Combine(dir, $"{lang}-23b-game-copies.png"));
                     }
                     // 0.1.19: "back to the previous version" of a modlist updated in place (test versions)
                     {
@@ -260,7 +266,7 @@ public partial class MainWindow
                     var rep = new System.Text.StringBuilder();
                     try
                     {
-                        var bw = new Views.BrowserWindow("https://www.nexusmods.com/") { Owner = this, Left = 0, Top = 0 };
+                        var bw = new Views.BrowserWindow("https://www.nexusmods.com/") { Owner = this, WindowStartupLocation = WindowStartupLocation.Manual, Left = -30000, Top = -30000, ShowActivated = false };
                         bw.Show();
                         await Task.Delay(12000);
                         rep.AppendLine($"browser: failed={bw.WebFailed} source={bw.WebSource}");
@@ -273,7 +279,7 @@ public partial class MainWindow
                         new Random(1).NextBytes(bytes);
                         var item = new Services.ManualItem { ArchiveName = "webtest-mod.7z", Size = bytes.Length, ModName = "Webtest mod", GameDomain = "cyberpunk2077", ModId = 107, FileId = 1 };
                         Views.ManualDownloadWindow.DownloadsForTests = fake;
-                        var mw = new Views.ManualDownloadWindow(new List<Services.ManualItem> { item }, target) { Owner = this, Left = 0, Top = 0 };
+                        var mw = new Views.ManualDownloadWindow(new List<Services.ManualItem> { item }, target) { Owner = this, WindowStartupLocation = WindowStartupLocation.Manual, Left = -30000, Top = -30000, ShowActivated = false };
                         mw.Show();
                         await Task.Delay(8000);
                         rep.AppendLine($"manual: failed={mw.WebFailed}");
@@ -296,6 +302,7 @@ public partial class MainWindow
                         enc.Frames.Add(System.Windows.Media.Imaging.BitmapFrame.Create(bmp));
                         using (var fs = File.Create(big)) enc.Save(fs);
                         var t0 = DateTime.Now;
+                        if (Environment.GetEnvironmentVariable("FUNKYLAUNCHER_WEBTEST_CHAT") != "1") { rep.AppendLine("chat: skipped (the live support queue; FUNKYLAUNCHER_WEBTEST_CHAT=1 to send)"); throw new OperationCanceledException(); }
                         await Services.SupportChat.SendAsync("ТЕСТ чата Pro: большой снимок 4K (проверка сжатия, ответа не нужно)", "test", big, CancellationToken.None);
                         rep.AppendLine($"chat big png {new FileInfo(big).Length / 1048576.0:0.0} MB: sent in {(DateTime.Now - t0).TotalSeconds:0.0} s");
                     }

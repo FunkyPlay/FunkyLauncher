@@ -511,7 +511,7 @@ public partial class SetupView : UserControl
 
     private Border CheckRow(CheckItem c)
     {
-        if (c.Tool != null || c.Admin != null || c.PickGame) return ToolRow(c);
+        if (c.Tool != null || c.Admin != null || c.PickGame || c.Copies != null) return ToolRow(c);
         var error = c.State == CheckState.Error;
         var icon = new Border
         {
@@ -543,12 +543,14 @@ public partial class SetupView : UserControl
     /// <summary>0.1.16 (design): a missing required tool — red frame, red "!", the hint, "How to install" and "Check again".</summary>
     private Border ToolRow(CheckItem c)
     {
-        var red = new SolidColorBrush(Color.FromRgb(0xFF, 0x5A, 0x6A));
+        // "several copies found" is a notice, not a problem: the launcher's cyan instead of red
+        var notice = c.Copies != null;
+        var red = notice ? (Brush)FindResource("Cyan") : new SolidColorBrush(Color.FromRgb(0xFF, 0x5A, 0x6A));
         var icon = new Border
         {
             Width = 28, Height = 28, CornerRadius = new CornerRadius(14), Margin = new Thickness(0, 0, 14, 0), VerticalAlignment = VerticalAlignment.Center,
-            Background = new SolidColorBrush(Color.FromArgb(0x40, 0xFF, 0x5A, 0x6A)),
-            Child = new TextBlock { Text = "!", FontWeight = FontWeights.Bold, Foreground = red, HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center },
+            Background = notice ? new SolidColorBrush(Color.FromArgb(0x29, 0x7A, 0xE8, 0xFF)) : new SolidColorBrush(Color.FromArgb(0x40, 0xFF, 0x5A, 0x6A)),
+            Child = new TextBlock { Text = notice ? "i" : "!", FontWeight = FontWeights.Bold, Foreground = red, HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center },
         };
         var texts = new StackPanel { VerticalAlignment = VerticalAlignment.Center };
         texts.Children.Add(new TextBlock { Text = c.Title, FontWeight = FontWeights.SemiBold, FontSize = 14, Foreground = red });
@@ -563,6 +565,8 @@ public partial class SetupView : UserControl
         var buttons = new StackPanel { Margin = new Thickness(14, 0, 0, 0), VerticalAlignment = VerticalAlignment.Center };
         if (c.PickGame)
             buttons.Children.Add(Small(Loc.T("check.game.pickbtn"), (_, _) => GameFolder_Click(this, new RoutedEventArgs())));
+        else if (c.Copies is { } copies)
+            buttons.Children.Add(Small(Loc.T("check.game.copies.btn"), (_, _) => { if (ChooseCopy(copies)) _ = RunChecksAsync(); }));
         else if (c.Admin is { } flag)
             buttons.Children.Add(Small(Loc.T("admin.flag.fix"), (_, _) =>
             {
@@ -614,9 +618,44 @@ public partial class SetupView : UserControl
         _ = RunChecksAsync();
     }
 
+    /// <summary>Several copies of the game: the player picks one (a button each: folder and version).</summary>
+    private bool ChooseCopy(List<FoundGame> copies)
+    {
+        var win = new Window
+        {
+            Title = Loc.F("check.game.copies", copies.Count, Ml.Game), Owner = _main, WindowStartupLocation = WindowStartupLocation.CenterOwner,
+            SizeToContent = SizeToContent.WidthAndHeight, ResizeMode = ResizeMode.NoResize, ShowInTaskbar = false, MaxWidth = 720,
+            Background = (Brush)FindResource("Bg"), Foreground = (Brush)FindResource("Text"),
+        };
+        var picked = false;
+        var root = new StackPanel { Margin = new Thickness(24, 20, 24, 20) };
+        root.Children.Add(new TextBlock { Text = Loc.F("check.game.copies.pick", Ml.Game), FontSize = 15, FontWeight = FontWeights.Bold, TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 0, 0, 12) });
+        foreach (var g in copies)
+        {
+            var right = LaunchWatcher.SameGameVersion(g.Version, Ml.GameVersion);
+            var b = new Button
+            {
+                Style = (Style)FindResource(right ? "PrimaryButton" : "SecondaryButton"), Margin = new Thickness(0, 0, 0, 8),
+                Padding = new Thickness(14, 8, 14, 8), HorizontalContentAlignment = HorizontalAlignment.Left, Height = double.NaN,
+                Content = new TextBlock { Text = $"{g.Dir}\n{Loc.F("check.game.copies.version", g.Version)}", TextWrapping = TextWrapping.Wrap },
+            };
+            var dir = g.Dir;
+            b.Click += (_, _) => { picked = GameFolders.Pick(Ml, dir); win.Close(); };
+            root.Children.Add(b);
+        }
+        win.Content = root;
+        win.ShowDialog();
+        return picked;
+    }
+
     /// <summary>For --shots: the red "game not found" row (the PC itself may have the game).</summary>
     internal Border ShotGameMissingRow(Modlist ml) =>
         ToolRow(new CheckItem(CheckState.Error, Loc.F("check.game.no", ml.Game), Loc.F("check.game.pick", ml.GameExe), PickGame: true));
+
+    /// <summary>For --shots: "Found 2 copies" with test folders.</summary>
+    internal Border ShotCopiesRow(Modlist ml) =>
+        ToolRow(new CheckItem(CheckState.Warning, Loc.F("check.game.copies", 2, ml.Game), Loc.F("check.game.copies.hint", @"D:\Games\Starfield", ml.GameVersion),
+            Copies: new() { new FoundGame(@"D:\Games\Starfield", ml.GameVersion), new FoundGame(@"E:\Games\Starfield", "1.15.222") }));
 
     private void ApplyFolder(string dir)
     {

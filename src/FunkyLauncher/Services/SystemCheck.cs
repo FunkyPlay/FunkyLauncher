@@ -8,7 +8,9 @@ public enum CheckState { Ok, Warning, Error }
 
 /// <summary>A line of the check list. Tool: a missing required tool (REDmod) — its row gets "How to install" / "Check again".</summary>
 /// PickGame: the game was not found and the player can show its folder — red row with "Show the game folder" (0.1.19).
-public sealed record CheckItem(CheckState State, string Title, string? Hint = null, RequiredTool? Tool = null, AdminFlag.Found? Admin = null, bool PickGame = false);
+/// Copies: several copies of the game were found — "Pick a copy" (0.1.19).
+public sealed record CheckItem(CheckState State, string Title, string? Hint = null, RequiredTool? Tool = null, AdminFlag.Found? Admin = null, bool PickGame = false,
+    List<FoundGame>? Copies = null);
 
 public sealed class GameInfo
 {
@@ -42,22 +44,15 @@ public static class SystemCheck
     /// </summary>
     public static async Task<GameInfo?> FindGameAsync(Modlist ml, CancellationToken token)
     {
+        // the folder the player picked comes first (a second copy elsewhere must not win over the player's choice)
+        if (!string.IsNullOrEmpty(ml.GameExe) && GameFolders.Picked(ml) is { } picked && File.Exists(System.IO.Path.Combine(picked, ml.GameExePath)))
+            return new GameInfo { Version = GameSearch.VersionOf(ml, System.IO.Path.Combine(picked, ml.GameExePath)), Path = System.IO.Path.GetFullPath(picked).TrimEnd('\\') };
         GameInfo? found = null;
         try { found = await FindGameAsync(ml.Game, token); } catch (OperationCanceledException) { throw; } catch { }
         if (found != null || string.IsNullOrEmpty(ml.GameExe)) return found;
-        foreach (var dir in GameFolders.Candidates(ml))
-        {
-            var exe = System.IO.Path.Combine(dir, ml.GameExePath);
-            if (!File.Exists(exe)) continue;
-            var v = System.Diagnostics.FileVersionInfo.GetVersionInfo(exe);
-            var ver = $"{v.FileMajorPart}.{v.FileMinorPart}.{v.FileBuildPart}";
-            // Cyberpunk: the file version is 3.0.x, the game version ("2.5") is the product version
-            if (!LaunchWatcher.SameGameVersion(ver, ml.GameVersion) && v.ProductVersion is { Length: > 0 } pv
-                && LaunchWatcher.SameGameVersion(pv.Trim(), ml.GameVersion))
-                ver = pv.Trim();
-            return new GameInfo { Version = ver, Path = System.IO.Path.GetFullPath(dir).TrimEnd('\\') };
-        }
-        return null;
+        // 0.1.19: the known places and the usual folders on every drive (by the exe and its version, the right version first)
+        var copies = await Task.Run(() => GameSearch.All(ml), token);
+        return copies.FirstOrDefault() is { } g ? new GameInfo { Version = g.Version, Path = g.Dir } : null;
     }
 
     /// <summary>Folders where installs often break.</summary>
@@ -193,6 +188,10 @@ public static class SystemCheck
         else
         {
             items.Add(new CheckItem(CheckState.Ok, Loc.F("check.game.ok", ml.Game), game.Path));
+            // 0.1.19: several copies on this PC and the player has not picked one — say which is used, offer to pick
+            if (GameFolders.Picked(ml) == null && await Task.Run(() => GameSearch.All(ml), token) is { Count: > 1 } copies)
+                items.Add(new CheckItem(CheckState.Warning, Loc.F("check.game.copies", copies.Count, ml.Game), Loc.F("check.game.copies.hint", game.Path, game.Version),
+                    Copies: copies));
             if (!string.IsNullOrEmpty(ml.GameVersion))
                 items.Add(LaunchWatcher.SameGameVersion(game.Version, ml.GameVersion)
                     ? new CheckItem(CheckState.Ok, Loc.F("check.version.ok", game.Version))
