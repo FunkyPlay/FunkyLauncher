@@ -164,6 +164,22 @@ public partial class MainWindow
                         redRow.UpdateLayout();
                         await Task.Delay(300);
                         SaveElement(redRow, Path.Combine(dir, $"{lang}-19b-tool-missing.png"));
+                        // 0.1.18: "Run as administrator" on the game exe (error 740) — the check row and the question before PLAY.
+                        // Test data: a neutral game folder, no store name (rule 20.11)
+                        var exe = Path.Combine(@"D:\Games\Cyberpunk 2077", nn.GameExePath);
+                        var adminRow = new System.Windows.Controls.Border { Background = (Brush)FindResource("Bg"), Padding = new Thickness(20), Width = 820, Child = _setup.ShotAdminRow(exe, nn.GameExe) };
+                        adminRow.Measure(new Size(adminRow.Width, double.PositiveInfinity));
+                        adminRow.Arrange(new Rect(adminRow.DesiredSize));
+                        adminRow.UpdateLayout();
+                        await Task.Delay(300);
+                        SaveElement(adminRow, Path.Combine(dir, $"{lang}-22-admin-row.png"));
+                        var ask = Views.Dialog.ForShots(Core.Loc.F("admin.flag.text", nn.GameExe), Core.Loc.F("admin.flag.title", nn.GameExe),
+                            MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.Yes);
+                        ask.Measure(new Size(ask.Width, double.PositiveInfinity));
+                        ask.Arrange(new Rect(ask.DesiredSize));
+                        ask.UpdateLayout();
+                        await Task.Delay(300);
+                        SaveElement(ask, Path.Combine(dir, $"{lang}-22b-admin-ask.png"));
                     }
                 }
                 catch (Exception e) { File.AppendAllText(Path.Combine(dir, "errors.txt"), $"{lang}-toolhelp: {e}\n"); }

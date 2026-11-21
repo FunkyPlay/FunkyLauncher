@@ -16,6 +16,11 @@ public static class AdminFlag
     private const string Layers = @"Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers";
     private const string Token = "RUNASADMIN";
 
+    // for the test stand: the "all users" part can be pointed at a test key, and the elevated start replaced
+    internal static RegistryHive MachineHive = RegistryHive.LocalMachine;
+    internal static string MachineLayers = Layers;
+    internal static Func<ProcessStartInfo, Process?> StartElevated = Process.Start;
+
     /// <summary>Where the flag sits: the player's own part of the registry and/or the "all users" part.</summary>
     public sealed record Found(string Exe, bool User, bool AllUsers);
 
@@ -27,33 +32,32 @@ public static class AdminFlag
 
     public static Found? Check(string exe)
     {
-        var user = Has(RegistryHive.CurrentUser, RegistryView.Default, exe);
-        var all = Has(RegistryHive.LocalMachine, RegistryView.Registry64, exe) || Has(RegistryHive.LocalMachine, RegistryView.Registry32, exe);
+        var user = Has(RegistryHive.CurrentUser, RegistryView.Default, Layers, exe);
+        var all = Has(MachineHive, RegistryView.Registry64, MachineLayers, exe) || Has(MachineHive, RegistryView.Registry32, MachineLayers, exe);
         return user || all ? new Found(exe, user, all) : null;
     }
 
-    private static bool Has(RegistryHive hive, RegistryView view, string exe) => Value(hive, view, exe) is { } v && Tokens(v).Contains(Token);
+    private static bool Has(RegistryHive hive, RegistryView view, string key, string exe) =>
+        ValueName(hive, view, key, exe) is { } n && Read(hive, view, key, n) is { } v && Tokens(v).Contains(Token);
 
-    /// <summary>The value data for the exe (value names are full paths, any letter case).</summary>
-    private static string? Value(RegistryHive hive, RegistryView view, string exe) => ValueName(hive, view, exe) is { } n ? Read(hive, view, n) : null;
-
-    private static string? ValueName(RegistryHive hive, RegistryView view, string exe)
+    /// <summary>The value for the exe (value names are full paths, any letter case).</summary>
+    private static string? ValueName(RegistryHive hive, RegistryView view, string key, string exe)
     {
         try
         {
             using var root = RegistryKey.OpenBaseKey(hive, view);
-            using var k = root.OpenSubKey(Layers);
+            using var k = root.OpenSubKey(key);
             return k?.GetValueNames().FirstOrDefault(n => string.Equals(Norm(n), Norm(exe), StringComparison.OrdinalIgnoreCase));
         }
         catch { return null; }
     }
 
-    private static string? Read(RegistryHive hive, RegistryView view, string name)
+    private static string? Read(RegistryHive hive, RegistryView view, string key, string name)
     {
         try
         {
             using var root = RegistryKey.OpenBaseKey(hive, view);
-            using var k = root.OpenSubKey(Layers);
+            using var k = root.OpenSubKey(key);
             return k?.GetValue(name) as string;
         }
         catch { return null; }
@@ -78,7 +82,7 @@ public static class AdminFlag
     {
         try
         {
-            if (f.User && ValueName(RegistryHive.CurrentUser, RegistryView.Default, f.Exe) is { } n)
+            if (f.User && ValueName(RegistryHive.CurrentUser, RegistryView.Default, Layers, f.Exe) is { } n)
             {
                 using var k = Registry.CurrentUser.OpenSubKey(Layers, writable: true);
                 if (k?.GetValue(n) is string data)
@@ -93,16 +97,16 @@ public static class AdminFlag
                 var cmds = new List<string>();
                 foreach (var (view, sw) in new[] { (RegistryView.Registry64, "/reg:64"), (RegistryView.Registry32, "/reg:32") })
                 {
-                    if (ValueName(RegistryHive.LocalMachine, view, f.Exe) is not { } name || Read(RegistryHive.LocalMachine, view, name) is not { } data
+                    if (ValueName(MachineHive, view, MachineLayers, f.Exe) is not { } name || Read(MachineHive, view, MachineLayers, name) is not { } data
                         || !Tokens(data).Contains(Token)) continue;
-                    var key = $"\"HKLM\\{Layers}\"";
+                    var key = $"\"{(MachineHive == RegistryHive.LocalMachine ? "HKLM" : "HKCU")}\\{MachineLayers}\"";
                     cmds.Add(Without(data) is { } rest
                         ? $"reg add {key} /v \"{name}\" /t REG_SZ /d \"{rest}\" /f {sw}"
                         : $"reg delete {key} /v \"{name}\" /f {sw}");
                 }
                 if (cmds.Count > 0)
                 {
-                    var p = Process.Start(new ProcessStartInfo("cmd.exe", "/c " + string.Join(" & ", cmds))
+                    var p = StartElevated(new ProcessStartInfo("cmd.exe", "/c " + string.Join(" & ", cmds))
                     { UseShellExecute = true, Verb = "runas", WindowStyle = ProcessWindowStyle.Hidden });
                     p?.WaitForExit(30000);
                 }
@@ -110,8 +114,12 @@ public static class AdminFlag
             }
             return Check(f.Exe) == null ? null : Loc.T("admin.flag.left");
         }
-        catch (System.ComponentModel.Win32Exception) { return Loc.T("admin.flag.uac"); } // "No" in the Windows rights window
-        catch (Exception ex) { AppLog.Write("admin flag: " + ex.Message); return ex.Message; }
+        catch (System.ComponentModel.Win32Exception ex) when (ex.NativeErrorCode == 1223) // "No" in the Windows rights window
+        {
+            AppLog.Write("admin flag: the player said no to the Windows rights window");
+            return Loc.T("admin.flag.uac");
+        }
+        catch (Exception ex) { AppLog.Write("admin flag: " + ex.Message); return Loc.T("admin.flag.left") + " (" + ex.Message.TrimEnd('.') + ")"; }
     }
 
     /// <summary>The steps to do it by hand (shown under the row and in the dialog).</summary>

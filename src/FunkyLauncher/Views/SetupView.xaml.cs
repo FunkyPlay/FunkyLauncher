@@ -538,6 +538,11 @@ public partial class SetupView : UserControl
     internal Border ShotToolRow(RequiredTool tool) =>
         ToolRow(new CheckItem(CheckState.Error, Loc.F("check.tool.no", tool.Name), SystemCheck.ToolHint(tool), tool));
 
+    /// <summary>For --shots: the "Run as administrator" row with test data (the button does nothing here).</summary>
+    internal Border ShotAdminRow(string exe, string gameExe) =>
+        ToolRow(new CheckItem(CheckState.Warning, Loc.F("admin.flag.title", gameExe),
+            Loc.T("admin.flag.hint") + "\n" + AdminFlag.Steps(new AdminFlag.Found(exe, true, false)), Admin: new AdminFlag.Found("", false, false)));
+
     private void Recheck_Click(object sender, RoutedEventArgs e) => _ = RunChecksAsync();
 
     private void GameFolder_Click(object sender, RoutedEventArgs e)
