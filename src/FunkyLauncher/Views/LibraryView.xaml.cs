@@ -386,6 +386,17 @@ public partial class LibraryView : UserControl
         var s = _main.Settings;
         var prev = s.PreviousOf(m);
         if (prev == null) return;
+        if (prev.InPlace)
+        {
+            // 0.1.19: the modlist updated in place — the kept mods and profile come back, nothing is downloaded
+            if (ask && Views.Dialog.Show(_main, Loc.F("lib.rollback.inplace", prev.Version, s.InstalledVersion(m) ?? ""),
+                    Loc.T("lib.rollback.title"), MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes) return;
+            try { ModlistRollback.Swap(s, m); }
+            catch (Exception ex) { PlayMessage.Text = ex.Message; return; }
+            Refresh();
+            PlayMessage.Text = Loc.F("lib.rollback.done", s.InstalledVersion(m) ?? "");
+            return;
+        }
         if (ask && Views.Dialog.Show(_main, Loc.F("lib.rollback.confirm", prev.Version, prev.Dir, s.InstalledVersion(m) ?? ""),
                 Loc.T("lib.rollback.title"), MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes) return;
         s.SwapWithPrevious(m);
@@ -442,6 +453,13 @@ public partial class LibraryView : UserControl
             || Path.GetPathRoot(target)?.TrimEnd('\\') == target) return;
         if (Views.Dialog.Show(_main, Loc.F("lib.deleteold.confirm", prev.Version, prev.Dir), Loc.T("lib.deleteold"),
                 MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No) != MessageBoxResult.Yes) return;
+        if (prev.InPlace)
+        {
+            try { await Task.Run(() => ModlistRollback.Forget(s, m)); PlayMessage.Text = Loc.T("lib.deleted"); }
+            catch (Exception ex) { PlayMessage.Text = Loc.F("lib.delete.error", ex.Message); }
+            Refresh();
+            return;
+        }
         DeleteOldButton.IsEnabled = RollbackButton.IsEnabled = false;
         PlayMessage.Text = Loc.T("lib.deleting");
         var keep = Path.GetFullPath(s.DownloadsDir(m)).TrimEnd('\\');

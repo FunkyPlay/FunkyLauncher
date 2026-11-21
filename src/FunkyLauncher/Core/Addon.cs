@@ -234,6 +234,8 @@ public static class Addons
         try
         {
             ModOrder? o = null;
+            if (Pinned(modlistId, "order") is (true, var pinned))
+                return pinned == null ? null : JsonSerializer.Deserialize<ModOrder>(pinned) is { } po && po.ModlistId == modlistId && po.Modlist.Count > 0 ? po : null;
             var cached = CacheFile(modlistId, "order");
             if (File.Exists(cached))
                 try { o = JsonSerializer.Deserialize<ModOrder>(File.ReadAllText(cached)); } catch { o = null; }
@@ -252,6 +254,40 @@ public static class Addons
     /// <summary>All packs of a modlist that the launcher installs from Nexus: base, HD, Russian, 18+.</summary>
     public static IEnumerable<AddonFile> All(string modlistId) =>
         new[] { Base(modlistId) }.Concat(Extras(modlistId).Select(x => x.Pack)).Concat(new[] { Russian(modlistId), Adult(modlistId) }).Where(a => a != null)!;
+
+    /// <summary>
+    /// 0.1.19: the folder with the lists of the version actually installed when it is not the catalog's one (the player
+    /// went back to the previous version). Set by the app; null = the current lists.
+    /// </summary>
+    public static Func<string, string?>? InstalledListsDir;
+
+    /// <summary>The list as the launcher has it now (downloaded copy, else built in) — kept next to an install.</summary>
+    public static string? RawJson(string modlistId, string kind)
+    {
+        try
+        {
+            var cached = CacheFile(modlistId, kind);
+            if (File.Exists(cached))
+            {
+                var t = File.ReadAllText(cached);
+                using var d = JsonDocument.Parse(t);
+                if (d.RootElement.TryGetProperty("modlistId", out var id) && id.GetString() == modlistId) return t;
+            }
+            var res = System.Windows.Application.GetResourceStream(new Uri($"pack://application:,,,/addons/{modlistId}-{kind}.json"));
+            if (res == null) return null;
+            using var r = new StreamReader(res.Stream);
+            return r.ReadToEnd();
+        }
+        catch { return null; }
+    }
+
+    /// <summary>The installed version's own copy of a list: (true, text or null if that version had no such pack) or (false, _) = not pinned.</summary>
+    private static (bool Pinned, string? Json) Pinned(string modlistId, string kind)
+    {
+        if (InstalledListsDir?.Invoke(modlistId) is not { } dir) return (false, null);
+        var f = Path.Combine(dir, $"{modlistId}-{kind}.json");
+        try { return (true, File.Exists(f) ? File.ReadAllText(f) : null); } catch { return (false, null); }
+    }
 
     private const string OnlineBase = "https://raw.githubusercontent.com/FunkyPlay/FunkyLauncher/main/addons/";
     private static string CacheFile(string modlistId, string kind) =>
@@ -298,7 +334,12 @@ public static class Addons
         {
             AddonFile? a = null;
             var cached = CacheFile(modlistId, kind);
-            if (File.Exists(cached))
+            if (Pinned(modlistId, kind) is (true, var pinned))
+            {
+                if (pinned == null) return null; // the installed version had no such pack
+                a = JsonSerializer.Deserialize<AddonFile>(pinned);
+            }
+            else if (File.Exists(cached))
                 try { a = JsonSerializer.Deserialize<AddonFile>(File.ReadAllText(cached)); } catch { a = null; }
             if (a == null || a.ModlistId != modlistId)
             {

@@ -28,6 +28,8 @@ public partial class MainWindow : Window, IProUi
         if (string.IsNullOrEmpty(Settings.Language)) Settings.Language = Loc.DefaultLang();
         Loc.Set(Settings.Language);
         Catalog.LoadBuiltIn();
+        // 0.1.19: a player back on the previous version keeps using that version's own lists
+        Addons.InstalledListsDir = id => Catalog.Find(id) is { } ml ? Services.ModlistRollback.InstalledLists(Settings, ml) : null;
         Modlist.InstallDirOf = m => Settings.InstallDir(m);
 
         _home = new HomeView(this);

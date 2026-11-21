@@ -191,7 +191,8 @@ public static class AddonService
                 // RAR volumes: only the first part is opened, it reads the rest itself
                 var firsts = names.Select(n => Path.Combine(downloads, n!))
                     .Where(f => !System.Text.RegularExpressions.Regex.IsMatch(f, @"\.part(0*[2-9]|0*\d{2,})\.rar$", System.Text.RegularExpressions.RegexOptions.IgnoreCase)).ToList();
-                if (Directory.Exists(target))
+                var hadMulti = Directory.Exists(target);
+                if (hadMulti)
                 {
                     if (Directory.Exists(oldDir)) Directory.Delete(oldDir, true);
                     Directory.Move(target, oldDir);
@@ -201,7 +202,8 @@ public static class AddonService
                     await UnpackAsync(x, firsts, target, token);
                     done++;
                     Mo2Profile.RememberOurs(s, m, x.ModFolder);
-                    if (Directory.Exists(oldDir)) Directory.Delete(oldDir, true);
+                    // 0.1.19: during a modlist update the old folder is kept for "back to the previous version"
+                    if (hadMulti) ModlistRollback.KeepMod(mods, x.ModFolder, oldDir); else ModlistRollback.AddedMod(mods, x.ModFolder);
                 }
                 catch (OperationCanceledException) { RestoreOld(target, oldDir); throw; }
                 catch (Exception ex) { RestoreOld(target, oldDir); errors.Add(Loc.F("addon.err.unpack", name, ex.Message)); }
@@ -246,7 +248,8 @@ public static class AddonService
 
             progress.Report(Loc.F("addon.unpacking", i + 1, wanted.Count, name));
             // an older file of this mod (modlist update): set it aside, it is removed once the new one is in place
-            if (Directory.Exists(target))
+            var had = Directory.Exists(target);
+            if (had)
             {
                 if (Directory.Exists(oldDir)) Directory.Delete(oldDir, true);
                 Directory.Move(target, oldDir);
@@ -262,7 +265,7 @@ public static class AddonService
                 }
                 done++;
                 Mo2Profile.RememberOurs(s, m, x.ModFolder);
-                if (Directory.Exists(oldDir)) Directory.Delete(oldDir, true);
+                if (had) ModlistRollback.KeepMod(mods, x.ModFolder, oldDir); else ModlistRollback.AddedMod(mods, x.ModFolder);
             }
             catch (OperationCanceledException) { RestoreOld(target, oldDir); throw; }
             catch (Exception ex) { RestoreOld(target, oldDir); errors.Add(Loc.F("addon.err.unpack", name, ex.Message)); }

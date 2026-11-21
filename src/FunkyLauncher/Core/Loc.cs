@@ -374,6 +374,8 @@ public static class Loc
         ["lib.rollback.title"] = ("Сменить версию", "Switch version"),
         ["lib.rollback.confirm"] = ("Переключиться на версию {0}?\n\nПапка: {1}\n\nТекущая версия {2} останется на диске — на неё можно вернуться так же.", "Switch to version {0}?\n\nFolder: {1}\n\nThe current version {2} stays on disk — you can switch back the same way."),
         ["lib.rollback.done"] = ("Готово: теперь играем на версии {0}.", "Done: now playing version {0}."),
+        // 0.1.19 (draft, for the Copywriter): a modlist updated in place goes back to the kept version
+        ["lib.rollback.inplace"] = ("Вернуться к версии {0}?\n\nМоды, которые поменяло обновление, и порядок модов станут как в {0}. Ничего не скачивается.\n\nВерсия {1} останется на диске — на неё можно вернуться той же кнопкой или кнопкой «Обновить».", "Go back to version {0}?\n\nThe mods the update changed and the mod order become as in {0}. Nothing is downloaded.\n\nVersion {1} stays on disk — you can go back to it with the same button or with Update."),
         ["lib.deleteold"] = ("Удалить прошлую версию", "Delete previous version"),
         ["lib.deleteold.confirm"] = ("Удалить прошлую версию {0}?\n\nПапка: {1}\n\nЭто нельзя отменить. Скачанные архивы модов не удаляются.", "Delete previous version {0}?\n\nFolder: {1}\n\nThis cannot be undone. Downloaded mod archives are kept."),
         ["lib.deleting"] = ("Удаляем прошлую версию…", "Deleting the previous version…"),

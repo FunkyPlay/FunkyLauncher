@@ -38,6 +38,7 @@ public static class NexusInstallService
                     var dst = Path.GetFullPath(Path.Combine(installDir, e.FullName));
                     if (!dst.StartsWith(root, StringComparison.OrdinalIgnoreCase)) continue;
                     Directory.CreateDirectory(Path.GetDirectoryName(dst)!);
+                    ModlistRollback.BeforeWrite(installDir, dst); // 0.1.19: an update keeps the old file for going back
                     using (var es = e.Open())
                     using (var fs = File.Create(dst)) es.CopyTo(fs);
                 }
@@ -58,6 +59,7 @@ public static class NexusInstallService
                 using var ms = new MemoryStream();
                 using (var s = res.Stream) s.CopyTo(ms);
                 ms.Position = 0;
+                ModlistRollback.BeforeWrite(installDir, file);
                 OctoDelta.Apply(file, ms, p.Size, p.SourceSha256, p.ResultSha256);
             }
             catch (Exception ex) { errors.Add($"patch {p.ModFolder}/{p.File}: {ex.Message}"); }
@@ -69,8 +71,13 @@ public static class NexusInstallService
     {
         LastManual = new();
         LastErrors = new();
+        var success = false;
         try
         {
+            // 0.1.19: an update in place keeps the old version for "back to the previous version" (before the lists are
+            // read: while it runs, the new lists are used, not the installed version's own copy)
+            if (s.IsInstalled(ml) && s.InstalledVersion(ml) is { Length: > 0 } from && from != ml.Version)
+                await ModlistRollback.BeginAsync(s, ml, from, token);
             var main = Addons.Base(ml.Id) ?? throw new InvalidOperationException(Loc.T("check.list.no"));
             var order = Addons.Order(ml.Id) ?? throw new InvalidOperationException(Loc.T("check.list.no"));
 
@@ -118,12 +125,14 @@ public static class NexusInstallService
 
             if (LastManual.Count > 0) return (InstallOutcome.NeedsManualDownloads, 3, LastManual.Count);
             if (LastErrors.Count > 0) return (InstallOutcome.Failed, LastErrors.Count, 0);
+            success = true;
             return (InstallOutcome.Success, 0, 0);
         }
         catch (OperationCanceledException)
         {
             return (InstallOutcome.Cancelled, -1, 0);
         }
+        finally { ModlistRollback.End(s, ml, success); }
     }
 
     /// <summary>Official MO2 release (catalog "mo2": url + sha256), unpacked into the install folder once.</summary>

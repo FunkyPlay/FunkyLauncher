@@ -7,6 +7,8 @@ public sealed class PreviousInstall
 {
     public string Dir { get; set; } = "";
     public string Version { get; set; } = "";
+    /// <summary>0.1.19: a modlist updated in place keeps its previous version in &lt;install&gt;\_rollback (not a folder of its own).</summary>
+    [System.Text.Json.Serialization.JsonIgnore] public bool InPlace { get; set; }
 }
 
 /// <summary>User settings stored in %LOCALAPPDATA%\FunkyLauncher\settings.json.</summary>
@@ -142,7 +144,7 @@ public sealed class Settings
     public bool FoundUnknown(Modlist m) => HasMo2(InstallDir(m)) && !IsInstalled(m);
 
     /// <summary>Remembers that this folder holds a working modlist of this version.</summary>
-    public void MarkInstalled(Modlist m, string dir, string version)
+    public void MarkInstalled(Modlist m, string dir, string version, bool notify = true)
     {
         var old = InstalledVersions.TryGetValue(m.Id, out var ov) && ov.Length > 0 ? ov : null;
         File.WriteAllText(Path.Combine(dir, MarkerName), JsonSerializer.Serialize(
@@ -150,7 +152,7 @@ public sealed class Settings
             new JsonSerializerOptions { WriteIndented = true }));
         InstalledVersions[m.Id] = version;
         Save();
-        try { Installed?.Invoke(this, m, old, version); } catch { /* a Pro hook never breaks an install */ }
+        if (notify) try { Installed?.Invoke(this, m, old, version); } catch { /* a Pro hook never breaks an install */ }
     }
 
     /// <summary>A modlist was installed or updated: (settings, modlist, old version or null, new version). Funky Pro listens.</summary>
@@ -172,7 +174,11 @@ public sealed class Settings
     }
 
     public PreviousInstall? PreviousOf(Modlist m) =>
-        Previous.TryGetValue(m.Id, out var p) && IsInstalledIn(p.Dir) ? p : null;
+        Previous.TryGetValue(m.Id, out var p) && IsInstalledIn(p.Dir) ? p
+        // 0.1.19: a modlist the launcher installs itself updates in place — its previous version is kept inside the install
+        : Services.Mo2Profile.IsNexusList(m) && IsInstalled(m) && Services.ModlistRollback.Kept(InstallDir(m)) is { } k
+            ? new PreviousInstall { Dir = Path.Combine(InstallDir(m), Services.ModlistRollback.StoreName), Version = k.Version, InPlace = true }
+        : null;
 
     /// <summary>Swaps the current and the previous version (rollback, or back to the newer one).</summary>
     public void SwapWithPrevious(Modlist m)

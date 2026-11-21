@@ -191,6 +191,16 @@ public partial class MainWindow
                         await Task.Delay(300);
                         SaveElement(gameRow, Path.Combine(dir, $"{lang}-23-game-missing.png"));
                     }
+                    // 0.1.19: "back to the previous version" of a modlist updated in place (test versions)
+                    {
+                        var rb = Views.Dialog.ForShots(Core.Loc.F("lib.rollback.inplace", "0.1.4", "0.1.5"), Core.Loc.T("lib.rollback.title"),
+                            MessageBoxButton.YesNo, MessageBoxImage.Question);
+                        rb.Measure(new Size(rb.Width, double.PositiveInfinity));
+                        rb.Arrange(new Rect(rb.DesiredSize));
+                        rb.UpdateLayout();
+                        await Task.Delay(300);
+                        SaveElement(rb, Path.Combine(dir, $"{lang}-24-rollback-ask.png"));
+                    }
                 }
                 catch (Exception e) { File.AppendAllText(Path.Combine(dir, "errors.txt"), $"{lang}-toolhelp: {e}\n"); }
                 // 0.1.17: the support chat with the "paste a screenshot / drag a file" hint
