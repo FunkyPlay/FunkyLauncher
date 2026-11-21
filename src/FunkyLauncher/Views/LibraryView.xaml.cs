@@ -251,6 +251,9 @@ public partial class LibraryView : UserControl
                     Loc.F("check.tool.no", tool.Name), MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No) != MessageBoxResult.Yes)
             { PlayMessage.Text = ""; return; }
 
+            // 1-) 0.1.18: "Run as administrator" on the game exe → MO2 error 740, the game never starts (support #142)
+            if (game != null && !AdminFlagOk(m, game.Path)) { PlayMessage.Text = ""; return; }
+
             // 1a) our fixes made on this PC (broken meshes): also for modlists installed by an older launcher
             await Task.Run(() => { try { Mo2Profile.EnsureFixes(s, m); } catch { } });
 
@@ -328,8 +331,33 @@ public partial class LibraryView : UserControl
         }
     }
 
+    /// <summary>
+    /// The game exe has "Run as administrator": offer to remove the flag. True = go on (no flag, or it was removed);
+    /// false = stop (the player said no, or it is still there — then the manual steps are shown).
+    /// </summary>
+    private bool AdminFlagOk(Modlist m, string gamePath)
+    {
+        if (AdminFlag.Check(m, gamePath) is not { } flag) return true;
+        if (Views.Dialog.Show(_main, Loc.F("admin.flag.text", m.GameExe), Loc.F("admin.flag.title", m.GameExe),
+                MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.Yes) != MessageBoxResult.Yes)
+            return false;
+        if (AdminFlag.Remove(flag) is not { } err) return true;
+        Views.Dialog.Show(_main, err + "\n\n" + AdminFlag.Steps(flag), Loc.F("admin.flag.title", m.GameExe), MessageBoxButton.OK, MessageBoxImage.Warning);
+        return false;
+    }
+
     private async Task HandleProblemAsync(Modlist m, LaunchReport report)
     {
+        // the game never started: the flag may have been set after PLAY's check (or the game was not found then)
+        if (report.Result == LaunchResult.NotStarted)
+        {
+            try
+            {
+                var game = await SystemCheck.FindGameAsync(m, CancellationToken.None);
+                if (game != null && AdminFlag.Check(m, game.Path) != null) { if (AdminFlagOk(m, game.Path)) PlayMessage.Text = Loc.T("admin.flag.done"); return; }
+            }
+            catch { /* fall back to the usual window */ }
+        }
         var win = new LaunchProblemWindow(report, _main.Settings.PreviousOf(m)) { Owner = _main };
         win.ShowDialog();
         switch (win.Choice)

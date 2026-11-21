@@ -473,6 +473,15 @@ public static class Loc
         ["problem.rollback"] = ("Вернуться к версии {0}", "Back to version {0}"),
         ["problem.report"] = ("Собрать отчёт", "Make a report"),
         ["problem.close"] = ("Закрыть", "Close"),
+        // 0.1.18: "Run as administrator" on the game exe → MO2 error 740 (support #142); drafts for the Copywriter
+        ["admin.flag.title"] = ("У {0} стоит «Запускать от имени администратора»", "{0} is set to “Run this program as an administrator”"),
+        ["admin.flag.hint"] = ("С этим флагом Mod Organizer не может запустить игру (ошибка 740). Нажмите «Снять флаг» — лаунчер уберёт только его.", "With this flag Mod Organizer can't start the game (error 740). Press “Remove the flag” — the launcher removes only that."),
+        ["admin.flag.text"] = ("У файла игры {0} включено «Запускать эту программу от имени администратора». С ним Mod Organizer не может запустить игру — Windows отвечает ошибкой 740.\n\nСнять флаг? Лаунчер уберёт только его, больше ничего не меняется. Если Windows спросит разрешение — нажмите «Да».", "The game file {0} is set to “Run this program as an administrator”. With it Mod Organizer can't start the game — Windows answers with error 740.\n\nRemove the flag? The launcher removes only that, nothing else changes. If Windows asks for permission, press “Yes”."),
+        ["admin.flag.fix"] = ("Снять флаг", "Remove the flag"),
+        ["admin.flag.done"] = ("Флаг снят. Можно играть.", "The flag is removed. You can play."),
+        ["admin.flag.left"] = ("Флаг снять не получилось.", "Couldn't remove the flag."),
+        ["admin.flag.uac"] = ("Windows не дала прав — флаг остался.", "Windows didn't give the rights — the flag is still there."),
+        ["admin.flag.steps"] = ("Как снять вручную: откройте папку {1}, правой кнопкой по {0} → «Свойства» → «Совместимость» → снимите галочку «Запускать эту программу от имени администратора». Если она серая — нажмите «Изменить параметры для всех пользователей» и снимите там. Затем «ОК».", "To do it by hand: open the folder {1}, right-click {0} → Properties → Compatibility → untick “Run this program as an administrator”. If it is greyed out, press “Change settings for all users” and untick it there. Then OK."),
         ["lib.installed"] = ("Установлено", "Installed"),
         ["lib.available"] = ("Доступно · {0} ГБ", "Available · {0} GB"),
         ["lib.soon"] = ("Скоро", "Coming soon"),
@@ -615,6 +624,9 @@ public static class Loc
         // 0.1.18 (draft, for the Copywriter): an upload that broke three times; a report sent without a word about the problem
         ["chat.err.net"] = ("Не отправилось: связь оборвалась ({0}). Попробуй ещё раз. Если не выходит — отправь файл боту в Telegram.", "Not sent: the connection broke ({0}). Try again. If it keeps failing, send the file to the Telegram bot."),
         ["chat.err.what"] = ("Напиши в двух словах, что случилось: когда и что ты делал. Без этого по отчёту трудно найти причину.", "Write a few words about what happened: when and what you were doing. Without it the report is hard to read."),
+        // 0.1.18 (draft): the server's limit (429) — the launcher waits and sends again by itself
+        ["chat.wait"] = ("Сервер просит подождать: отправлю сам через {0} с. Окно не закрывай.", "The server asks to wait: I'll send it by myself in {0} s. Keep the window open."),
+        ["chat.err.busy"] = ("Сервер сейчас принимает слишком много сообщений. Подожди {0} с и нажми «Отправить» ещё раз.", "The server is getting too many messages right now. Wait {0} s and press Send again."),
         ["chat.telegram"] = ("Удобнее в Telegram? Написать боту @FunkyLauncherBot", "Prefer Telegram? Message @FunkyLauncherBot"),
         ["comp.voice.link"] = ("Страница авторов", "Authors' page"),
         ["comp.voice.link.hint"] = ("Ставится отдельно со страницы авторов, по их инструкции: включить её в сборку без их разрешения мы не можем.", "Installed separately from the authors' page, following their instructions: we can't include it in the modlist without their permission."),

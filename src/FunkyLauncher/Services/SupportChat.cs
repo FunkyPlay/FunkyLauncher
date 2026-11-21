@@ -67,7 +67,7 @@ public static class SupportChat
     }
 
     /// <summary>Sends one message (optionally with a file: a screenshot or an error report). Throws with a readable text on failure.</summary>
-    public static async Task SendAsync(string text, string label, string? attachPath, CancellationToken token)
+    public static async Task SendAsync(string text, string label, string? attachPath, CancellationToken token, IProgress<string>? waiting = null)
     {
         var me = Me();
         object? file = null;
@@ -99,6 +99,7 @@ public static class SupportChat
         // a file on a slow connection needs more than 30 seconds (0.1.17: 8 MB at 2 Mbit/s is ~45 s)
         using var http = Http(file != null ? 300 : 30);
         HttpResponseMessage? resp = null;
+        var busy = 0;
         for (var attempt = 1; resp == null; attempt++)
         {
             try
@@ -106,6 +107,23 @@ public static class SupportChat
                 using var content = new ByteArrayContent(body);
                 content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json") { CharSet = "utf-8" };
                 resp = await http.PostAsync(Api + "/send", content, token);
+                // 0.1.18: 429 = the server's limit of messages per minute (support #142: "send answered 429").
+                // Wait as long as the server says (Retry-After, else 30 s), show the countdown, send again by itself — twice at most.
+                if ((int)resp.StatusCode == 429 && busy < 2)
+                {
+                    busy++;
+                    var wait = WaitOf(resp);
+                    AppLog.Write($"support chat: send answered 429, waiting {wait} s (try {busy})");
+                    resp.Dispose();
+                    resp = null;
+                    for (var left = wait; left > 0; left--)
+                    {
+                        waiting?.Report(Loc.F("chat.wait", left));
+                        await Task.Delay(1000, token);
+                    }
+                    waiting?.Report(Loc.T("chat.sending"));
+                    attempt--; // a wait is not a broken upload
+                }
             }
             catch (TaskCanceledException) when (!token.IsCancellationRequested)
             {
@@ -124,8 +142,17 @@ public static class SupportChat
             var code = (int)resp.StatusCode;
             AppLog.Write($"support chat: send answered {code} ({body.Length / 1024} KB)");
             // 504/408: the server gave up waiting for a slow upload (Caddy reads a body for 60 s at most)
-            throw new InvalidOperationException(code == 413 ? Loc.T("chat.err.big") : code is 504 or 408 ? Loc.T("chat.err.slow") : Loc.F("chat.err.send", code));
+            throw new InvalidOperationException(code == 413 ? Loc.T("chat.err.big") : code is 504 or 408 ? Loc.T("chat.err.slow")
+                : code == 429 ? Loc.F("chat.err.busy", WaitOf(resp)) : Loc.F("chat.err.send", code));
         }
+    }
+
+    /// <summary>Seconds the server asks to wait after 429: Retry-After (seconds or a date), else 30; 5..120.</summary>
+    internal static int WaitOf(HttpResponseMessage resp)
+    {
+        var ra = resp.Headers.RetryAfter;
+        double s = ra?.Delta?.TotalSeconds ?? (ra?.Date is { } d ? (d - DateTimeOffset.UtcNow).TotalSeconds : 30);
+        return (int)Math.Clamp(Math.Ceiling(s), 5, 120);
     }
 
     private const int SmallReport = 2 * 1024 * 1024;

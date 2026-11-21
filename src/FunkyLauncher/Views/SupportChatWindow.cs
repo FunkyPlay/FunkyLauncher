@@ -219,7 +219,7 @@ public sealed class SupportChatWindow : Window
         _status.Text = Loc.T("chat.sending");
         try
         {
-            await SupportChat.SendAsync(text, _label, _attach, CancellationToken.None);
+            await SupportChat.SendAsync(text, _label, _attach, CancellationToken.None, new Progress<string>(t => _status.Text = t));
             _box.Text = ""; _attach = null; _attachText.Text = "";
             _status.Text = Loc.T("chat.sent");
             await RefreshAsync();
