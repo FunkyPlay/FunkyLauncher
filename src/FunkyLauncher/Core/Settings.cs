@@ -87,6 +87,9 @@ public sealed class Settings
     /// <summary>The player ticked "18+ add-on" before installing: offer it right after the install.</summary>
     public HashSet<string> AdultWanted { get; set; } = new();
 
+    /// <summary>0.1.19: "Install anyway" pressed for missing game files — "modlist|game folder|version", not asked again.</summary>
+    public HashSet<string> GameFilesAccepted { get; set; } = new();
+
     private static string FilePath => Path.Combine(AppConfig.DataDir, "settings.json");
 
     public static Settings Load()

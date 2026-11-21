@@ -529,6 +529,14 @@ public static class Loc
         ["setup.gamefolder.bad"] = ("В этой папке нет {0}. Выбери папку игры, где лежит этот файл.", "There is no {0} in this folder. Pick the game folder that has this file."),
         // 0.1.19 (draft, for the Copywriter): the red "game not found" row with its own button
         ["check.game.pick"] = ("Лаунчер не нашёл {0} сам. Нажми «Указать папку игры» и выбери папку, где лежит {0}.", "The launcher couldn't find {0} by itself. Press “Show the game folder” and pick the folder with {0}."),
+        // 0.1.19: game files check — texts by the Copywriter, approved by the legal chat 21.11
+        ["check.files.ok"] = ("Файлы игры совпадают с версией {0}", "Game files match version {0}"),
+        ["check.files.missing"] = ("Не хватает файлов игры: {0}", "Some game files are missing: {0}"),
+        ["check.files.missing.hint"] = ("Не хватает: {0}. Сборка может не запуститься.", "Missing: {0}. The modlist may not start."),
+        ["files.warn.title"] = ("Файлы игры отличаются", "Game files differ"),
+        ["files.warn.text"] = ("Сборка сделана для {2} версии {0}. У тебя отличаются или не найдены: {1}. Сборка может не запуститься или работать с ошибками.", "The modlist is made for {2} version {0}. These differ or are not found on your PC: {1}. The modlist may not start or may run with errors."),
+        ["files.warn.go"] = ("Всё равно установить", "Install anyway"),
+        ["files.warn.cancel"] = ("Отмена", "Cancel"),
         ["check.game.pickbtn"] = ("Указать папку игры", "Show the game folder"),
         ["check.game.copies"] = ("Нашли {0} копии: {1}", "Found {0} copies: {1}"),
         ["check.game.copies.hint"] = ("Сейчас выбрана {0} (версия {1}). Если играешь в другую — нажми «Выбрать копию».", "Now using {0} (version {1}). If you play another one, press “Pick a copy”."),

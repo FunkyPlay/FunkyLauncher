@@ -818,8 +818,31 @@ public partial class SetupView : UserControl
     }
 
     /// <param name="updateDir">Update: install the new version into this new folder and keep the current one for rollback.</param>
+    /// <summary>
+    /// 0.1.19: key game files missing — "Install anyway" / "Cancel" before installing (always allowed; remembered for
+    /// this game folder and version). Everything is checked on this PC only.
+    /// </summary>
+    private async Task<bool> GameFilesOkAsync()
+    {
+        if (!GameFiles.Has(Ml)) return true;
+        GameInfo? game = null;
+        try { game = await SystemCheck.FindGameAsync(Ml, CancellationToken.None); } catch { }
+        if (game == null) return true; // the install itself says the game is not found
+        var r = await Task.Run(() => GameFiles.Check(Ml, game.Path));
+        var key = $"{Ml.Id}|{game.Path}|{game.Version}";
+        if (r.Missing.Count == 0 || _main.Settings.GameFilesAccepted.Contains(key)) return true;
+        if (Views.Dialog.Show(_main, Loc.F("files.warn.text", Ml.GameVersion, GameFiles.Names(r.Missing), Ml.Game), Loc.T("files.warn.title"),
+                MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No, Loc.T("files.warn.go"), Loc.T("files.warn.cancel")) != MessageBoxResult.Yes)
+            return false;
+        _main.Settings.GameFilesAccepted.Add(key);
+        _main.Settings.Save();
+        AppLog.Write($"game files: install anyway ({GameFiles.Names(r.Missing)} missing)");
+        return true;
+    }
+
     private async Task InstallAsync(string? updateDir = null)
     {
+        if (!await GameFilesOkAsync()) return;
         BeginBusy();
         var firstInstall = !Installed; // an update of an installed modlist is not "the first install"
         try

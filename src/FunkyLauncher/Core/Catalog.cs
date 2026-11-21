@@ -22,6 +22,14 @@ public sealed class RequiredTool
     [JsonPropertyName("hint")] public LocText? Hint { get; set; }
 }
 
+/// <summary>0.1.19: a key file of the game checked before installing — must be there; size / checksums of known copies are optional.</summary>
+public sealed class GameFileRef
+{
+    [JsonPropertyName("path")] public string Path { get; set; } = "";
+    [JsonPropertyName("size")] public long? Size { get; set; }
+    [JsonPropertyName("sha256")] public List<string>? Sha256 { get; set; }
+}
+
 /// <summary>One modlist (project) in the catalog.</summary>
 public sealed class Modlist
 {
@@ -39,6 +47,8 @@ public sealed class Modlist
     [JsonPropertyName("dlcCheckPath")] public string? DlcCheckPath { get; set; }
     /// <summary>0.1.16: free game add-ons / tools the modlist needs in the game folder (e.g. REDmod). Older launchers skip the field.</summary>
     [JsonPropertyName("requiredTools")] public List<RequiredTool>? RequiredTools { get; set; }
+    /// <summary>0.1.19: key game files checked on this PC before installing (missing = a warning and a question). Older launchers skip it.</summary>
+    [JsonPropertyName("gameFiles")] public List<GameFileRef>? GameFiles { get; set; }
 
     [JsonPropertyName("tag")] public LocText Tag { get; set; } = new();
     [JsonPropertyName("description")] public LocText Description { get; set; } = new();

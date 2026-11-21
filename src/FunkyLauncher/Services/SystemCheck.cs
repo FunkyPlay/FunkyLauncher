@@ -203,6 +203,15 @@ public static class SystemCheck
                     ? new CheckItem(CheckState.Ok, Loc.F("check.dlc.ok", dlc))
                     : new CheckItem(CheckState.Error, Loc.F("check.dlc.no", dlc), Loc.T("check.dlc.hint")));
             }
+            // 0.1.19: key game files (only on this PC). Missing — a row; all matched — a green row; a differing build — only the log
+            if (GameFiles.Has(ml))
+            {
+                var gf = await Task.Run(() => GameFiles.Check(ml, game.Path), token);
+                if (gf.Missing.Count > 0)
+                    items.Add(new CheckItem(CheckState.Warning, Loc.F("check.files.missing", GameFiles.Names(gf.Missing)), Loc.F("check.files.missing.hint", GameFiles.Names(gf.Missing))));
+                else if (gf.AllVerified)
+                    items.Add(new CheckItem(CheckState.Ok, Loc.F("check.files.ok", ml.GameVersion)));
+            }
             var missing = MissingTools(ml, game.Path);
             foreach (var t in ml.RequiredTools ?? new())
                 items.Add(missing.Contains(t)

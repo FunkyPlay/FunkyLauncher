@@ -14,7 +14,7 @@ public static class Dialog
 {
     public static MessageBoxResult Show(Window? owner, string text, string title,
         MessageBoxButton buttons = MessageBoxButton.OK, MessageBoxImage icon = MessageBoxImage.None,
-        MessageBoxResult defaultResult = MessageBoxResult.None)
+        MessageBoxResult defaultResult = MessageBoxResult.None, string? yesText = null, string? noText = null)
     {
         var app = Application.Current;
         Brush Res(string key, Brush fallback) => app?.TryFindResource(key) as Brush ?? fallback;
@@ -31,20 +31,21 @@ public static class Dialog
             Foreground = Res("Text", Brushes.White),
         };
         if (app?.TryFindResource("UiFont") is FontFamily font) win.FontFamily = font;
-        win.Content = Body(text, title, buttons, icon, defaultResult, r => { result = r; win.Close(); });
+        win.Content = Body(text, title, buttons, icon, defaultResult, r => { result = r; win.Close(); }, yesText, noText);
         win.KeyDown += (_, e) => { if (e.Key == System.Windows.Input.Key.Escape) win.Close(); };
         win.ShowDialog();
         return result;
     }
 
     /// <summary>For --shots: the dialog's content in a dark frame of the dialog's width, not shown on screen.</summary>
-    internal static Border ForShots(string text, string title, MessageBoxButton buttons, MessageBoxImage icon, MessageBoxResult defaultResult = MessageBoxResult.None)
+    internal static Border ForShots(string text, string title, MessageBoxButton buttons, MessageBoxImage icon, MessageBoxResult defaultResult = MessageBoxResult.None,
+        string? yesText = null, string? noText = null)
     {
         var app = Application.Current;
         var b = new Border
         {
             Width = 620, Background = app?.TryFindResource("Bg") as Brush ?? Brushes.Black,
-            Child = Body(text, title, buttons, icon, defaultResult, _ => { }),
+            Child = Body(text, title, buttons, icon, defaultResult, _ => { }, yesText, noText),
         };
         if (app?.TryFindResource("UiFont") is FontFamily font) TextElement.SetFontFamily(b, font);
         TextElement.SetForeground(b, app?.TryFindResource("Text") as Brush ?? Brushes.White);
@@ -52,7 +53,7 @@ public static class Dialog
     }
 
     private static StackPanel Body(string text, string title, MessageBoxButton buttons, MessageBoxImage icon,
-        MessageBoxResult defaultResult, Action<MessageBoxResult> done)
+        MessageBoxResult defaultResult, Action<MessageBoxResult> done, string? yesText = null, string? noText = null)
     {
         var app = Application.Current;
         Brush Res(string key, Brush fallback) => app?.TryFindResource(key) as Brush ?? fallback;
@@ -97,8 +98,8 @@ public static class Dialog
             case MessageBoxButton.YesNo:
             case MessageBoxButton.YesNoCancel:
                 var yesFirst = defaultResult != MessageBoxResult.No;
-                Add(ru ? "Да" : "Yes", MessageBoxResult.Yes, yesFirst);
-                Add(ru ? "Нет" : "No", MessageBoxResult.No, !yesFirst);
+                Add(yesText ?? (ru ? "Да" : "Yes"), MessageBoxResult.Yes, yesFirst);
+                Add(noText ?? (ru ? "Нет" : "No"), MessageBoxResult.No, !yesFirst);
                 if (buttons == MessageBoxButton.YesNoCancel) Add(ru ? "Отмена" : "Cancel", MessageBoxResult.Cancel, false);
                 break;
             case MessageBoxButton.OKCancel:

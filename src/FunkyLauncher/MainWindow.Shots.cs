@@ -196,6 +196,13 @@ public partial class MainWindow
                         copies.UpdateLayout();
                         await Task.Delay(300);
                         SaveElement(copies, Path.Combine(dir, $"{lang}-23b-game-copies.png"));
+                        var warn = Views.Dialog.ForShots(Core.Loc.F("files.warn.text", sf.GameVersion, "ShatteredSpace.esm", sf.Game), Core.Loc.T("files.warn.title"),
+                            MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No, Core.Loc.T("files.warn.go"), Core.Loc.T("files.warn.cancel"));
+                        warn.Measure(new Size(warn.Width, double.PositiveInfinity));
+                        warn.Arrange(new Rect(warn.DesiredSize));
+                        warn.UpdateLayout();
+                        await Task.Delay(300);
+                        SaveElement(warn, Path.Combine(dir, $"{lang}-26-game-files-ask.png"));
                     }
                     // 0.1.19: "back to the previous version" of a modlist updated in place (test versions)
                     {
