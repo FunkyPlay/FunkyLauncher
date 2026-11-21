@@ -687,12 +687,12 @@ public static class Loc
         ["inst.checkgame"] = ("Проверяем игру…", "Checking the game…"),
         ["nexus.login.opening"] = ("В Wabbajack: Settings → Nexus Mods → Log in. Ждём вход в Nexus… лаунчер заметит его сам.", "In Wabbajack: Settings → Nexus Mods → Log in. Waiting for the Nexus login… the launcher notices it by itself."),
         ["nexus.login.done"] = ("Вход в Nexus выполнен ✓ — Wabbajack можно закрыть и нажать УСТАНОВИТЬ.", "Logged in to Nexus ✓ — you can close Wabbajack and press INSTALL."),
-        // 0.1.19 (draft for the Copywriter): the three-step window before Wabbajack opens for the Nexus login
+        // 0.1.19 (Copywriter 21.11): the three-step window before Wabbajack opens for the Nexus login
         ["nexus.steps.title"] = ("Вход в Nexus — 3 шага", "Nexus login — 3 steps"),
         ["nexus.steps.intro"] = ("Моды скачиваются через твой аккаунт Nexus. Вход делается в Wabbajack — сейчас он откроется.", "Mods are downloaded through your Nexus account. You log in inside Wabbajack — it opens now."),
         ["nexus.steps.1"] = ("В Wabbajack нажми Settings.", "In Wabbajack, click Settings."),
         ["nexus.steps.2"] = ("В строке Nexus Mods нажми Log in.", "On the Nexus Mods line, click Log in."),
-        ["nexus.steps.3"] = ("Откроется браузер: войди в Nexus и подтверди доступ.", "Your browser opens: log in to Nexus and confirm the access."),
+        ["nexus.steps.3"] = ("Откроется браузер: войди в Nexus и подтверди доступ.", "A browser window opens: log in to Nexus and confirm the access."),
         ["nexus.steps.3.button"] = ("Authorise", "Authorise"),
         ["nexus.steps.auto"] = ("Лаунчер сам заметит вход. Потом Wabbajack можно закрыть.", "The launcher notices the login by itself. Then you can close Wabbajack."),
         ["nexus.steps.open"] = ("Открыть Wabbajack", "Open Wabbajack"),
