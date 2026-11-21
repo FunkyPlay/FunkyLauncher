@@ -319,6 +319,13 @@ public partial class SetupView : UserControl
                 TaskContinuationOptions.OnlyOnRanToCompletion);
         }
         var recommendLight = _vramGb is > 0 and <= 8.5; // 8 GB cards report a little over 8
+        // Design mock-up state 1: before the install, with ≤ 8 GB and no choice of the player yet, Lightweight is picked in
+        // advance (an installed modlist never changes by itself)
+        if (recommendLight && full && !(Installed && !Updating) && !s.GraphicsChosen.Contains(Ml.Id))
+        {
+            AddonService.Prefs(s, heavy).On = full = false;
+            s.Save();
+        }
         // Design mock-up 21.11: a row under the language; the selected option's hint; with ≤ 8 GB a cyan line and the
         // "RECOMMENDED" badge on the light option (plus a cyan frame while it is not selected)
         var row = Row(Loc.T("gfx.title"), Loc.T(full ? "gfx.full.hint" : "gfx.light.hint"), out var right);
@@ -335,7 +342,7 @@ public partial class SetupView : UserControl
             holder.Children.Add(new Border
             {
                 Background = (Brush)FindResource("Cyan"), CornerRadius = new CornerRadius(4), Padding = new Thickness(5, 1, 5, 1),
-                HorizontalAlignment = HorizontalAlignment.Right, VerticalAlignment = VerticalAlignment.Top, Margin = new Thickness(0, -9, -4, 0),
+                HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Top, Margin = new Thickness(0, -10, 0, 0),
                 IsHitTestVisible = false,
                 Child = new TextBlock { Text = Loc.T("gfx.badge"), FontSize = 9, FontWeight = FontWeights.Bold, Foreground = (Brush)FindResource("Bg") },
             });
@@ -351,17 +358,22 @@ public partial class SetupView : UserControl
     {
         if (Installed && !Updating && Views.Dialog.Show(_main, full ? Loc.F("gfx.switch.full", gb) : Loc.T("gfx.switch.light"),
                 Loc.T("gfx.title"), MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes) != MessageBoxResult.Yes) return;
+        _main.Settings.GraphicsChosen.Add(Ml.Id); // the player's own choice: no more picking in advance
         await ExtraClickedAsync(heavy, full);
         if (ProgressText.Text == Loc.T("comp.extra.on") || ProgressText.Text == Loc.T("comp.extra.off"))
             ProgressText.Text = Loc.T(full ? "gfx.done.full" : "gfx.done.light");
     }
 
     /// <summary>For --shots: the graphics row with a test pack and a 6 GB card (the light version recommended).</summary>
-    internal Grid ShotGraphicsRow(AddonFile heavy)
+    internal Grid ShotGraphicsRow(AddonFile heavy, double vramGb, bool full)
     {
         _vramAsked = true;
-        _vramGb = 6;
-        return GraphicsRow(heavy);
+        _vramGb = vramGb;
+        var s = _main.Settings;
+        AddonService.Prefs(s, heavy).On = full;
+        var chosen = s.GraphicsChosen.Add(Ml.Id); // the state as drawn, without picking in advance
+        try { return GraphicsRow(heavy); }
+        finally { if (chosen) s.GraphicsChosen.Remove(Ml.Id); }
     }
 
     /// <summary>HD planets: before the install only the wish is kept; installed — download / switch on, or switch off.</summary>
