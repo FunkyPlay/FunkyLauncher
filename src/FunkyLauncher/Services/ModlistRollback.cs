@@ -20,7 +20,7 @@ public static class ModlistRollback
     /// <summary>The lists (main, packs, order) the current install was made from: written after every successful install.</summary>
     public const string ListsName = "_funky-lists";
 
-    private static readonly string[] ListKinds = { "main", "order", "ru", "adult", "hd", "upscaling", "voice" };
+    private static readonly string[] ListKinds = { "main", "order", "ru", "adult", "hd", "upscaling", "voice", "heavy" };
     private static readonly string[] ProfileFiles = { "modlist.txt", "plugins.txt", "loadorder.txt", "lockedorder.txt", "settings.ini" };
 
     /// <summary>The modlist being updated right now (its old state goes into the store); null when none.</summary>

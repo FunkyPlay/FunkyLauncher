@@ -220,7 +220,8 @@ public static class Addons
     public static AddonFile? Hd(string modlistId) => Load(modlistId, "hd");
 
     /// <summary>Optional packs shown as a checkbox each (off by default): Starfield "hd" planets, Fallout 4 "upscaling" (DLSS / FSR).</summary>
-    public static readonly string[] ExtraKinds = { "hd", "upscaling", "voice" };
+    /// 0.1.19 "heavy": the heavy mods of a modlist (HD textures…) — on by default ("default": true); off = the light version.
+    public static readonly string[] ExtraKinds = { "hd", "upscaling", "voice", "heavy" };
 
     public static IEnumerable<(string Kind, AddonFile Pack)> Extras(string modlistId) =>
         ExtraKinds.Select(k => (k, Load(modlistId, k))).Where(x => x.Item2 != null).Select(x => (x.k, x.Item2!));

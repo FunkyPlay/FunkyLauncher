@@ -201,6 +201,19 @@ public partial class MainWindow
                         await Task.Delay(300);
                         SaveElement(rb, Path.Combine(dir, $"{lang}-24-rollback-ask.png"));
                     }
+                    // 0.1.19: "Full graphics / Light" with the recommendation (a test pack of ~6 GB, a 6 GB card)
+                    {
+                        var heavy = new Core.AddonFile { ModlistId = "neon-nights", AddonId = "neon-nights-heavy",
+                            Mods = new() { new Core.AddonMod { ModFolder = "test", Archive = new Core.AddonArchive { Size = 3_000_000_000 } } } };
+                        var panel = new System.Windows.Controls.Border { Background = (Brush)FindResource("Card"), CornerRadius = new CornerRadius(12),
+                            Padding = new Thickness(18), Child = _setup.ShotGraphicsRow(heavy) };
+                        var gr = new System.Windows.Controls.Border { Background = (Brush)FindResource("Bg"), Padding = new Thickness(20), Width = 820, Child = panel };
+                        gr.Measure(new Size(gr.Width, double.PositiveInfinity));
+                        gr.Arrange(new Rect(gr.DesiredSize));
+                        gr.UpdateLayout();
+                        await Task.Delay(300);
+                        SaveElement(gr, Path.Combine(dir, $"{lang}-25-graphics.png"));
+                    }
                 }
                 catch (Exception e) { File.AppendAllText(Path.Combine(dir, "errors.txt"), $"{lang}-toolhelp: {e}\n"); }
                 // 0.1.17: the support chat with the "paste a screenshot / drag a file" hint

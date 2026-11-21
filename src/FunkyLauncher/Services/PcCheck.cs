@@ -38,6 +38,14 @@ public static class PcCheck
 {
     // ---------- reading the PC ----------
 
+    /// <summary>Video memory of the main video card in GB (0 = unknown). For the light version's recommendation.</summary>
+    public static double VramGb()
+    {
+        var h = new HardwareInfo();
+        try { ReadGpu(h); } catch { }
+        return h.VramGb;
+    }
+
     public static HardwareInfo Read(string installDir)
     {
         var h = new HardwareInfo { Windows64 = Environment.Is64BitOperatingSystem, WindowsBuild = Environment.OSVersion.Version.Build };

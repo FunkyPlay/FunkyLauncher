@@ -26,7 +26,11 @@ public static class AddonService
         s.Addons.TryGetValue(a.AddonId, out var p) ? p : s.Addons[a.AddonId] = new AddonPrefs
         {
             // an optional pack marked "default" starts ticked (one-click install); 18+ and language never do
-            On = a.Default == true && Addons.ExtraKinds.Any(k => a.AddonId.EndsWith("-" + k, StringComparison.OrdinalIgnoreCase)),
+            On = a.AddonId.EndsWith("-heavy", StringComparison.OrdinalIgnoreCase)
+                // 0.1.19: the heavy mods are on unless the player picked the light version — an install made before the
+                // pack existed (its mods came with the base) must not lose them by itself
+                ? a.Default != false
+                : a.Default == true && Addons.ExtraKinds.Any(k => a.AddonId.EndsWith("-" + k, StringComparison.OrdinalIgnoreCase)),
         };
 
     /// <summary>Mods of the levels the player chose.</summary>

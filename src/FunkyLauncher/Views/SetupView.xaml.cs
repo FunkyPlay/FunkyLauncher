@@ -215,6 +215,7 @@ public partial class SetupView : UserControl
         foreach (var (kind, pack) in extras)
         {
             CompositionPanel.Children.Add(Separator());
+            if (kind == "heavy") { CompositionPanel.Children.Add(GraphicsRow(pack!)); continue; }
             var on = AddonService.Prefs(s, pack!).On;
             // space on disk: the archive plus what it unpacks to (about the same again), in GB as the cards write it
             var gb = Math.Max(1, (int)Math.Round(pack!.Mods.Sum(x => x.Archive.Size + x.Archives.Sum(p => p.Size)) * 2 / 1e9));
@@ -295,6 +296,56 @@ public partial class SetupView : UserControl
         // installed: the add-on window asks for the age, levels and installs / switches it off
         new AddonWindow(s, Ml, adult) { Owner = _main }.ShowDialog();
         RenderComposition();
+    }
+
+    /// <summary>Video memory, read once in the background (WMI can take a second); null = not known yet.</summary>
+    private static double? _vramGb;
+    private static bool _vramAsked;
+
+    /// <summary>
+    /// 0.1.19 "Full graphics / Light" (Funky 21.11: "a light version — a switch with a recommendation"). Light = the
+    /// modlist's heavy pack is off. With 8 GB of video memory or less the light version is recommended — a line and the
+    /// option marked; the choice stays the player's and nothing is switched by itself.
+    /// </summary>
+    private Grid GraphicsRow(AddonFile heavy)
+    {
+        var s = _main.Settings;
+        var full = AddonService.Prefs(s, heavy).On;
+        var gb = Math.Max(1, (int)Math.Round(heavy.Mods.Sum(x => x.Archive.Size + x.Archives.Sum(p => p.Size)) * 2 / 1e9));
+        if (!_vramAsked)
+        {
+            _vramAsked = true;
+            _ = Task.Run(PcCheck.VramGb).ContinueWith(t => Dispatcher.BeginInvoke(() => { _vramGb = t.Result; RenderComposition(); }),
+                TaskContinuationOptions.OnlyOnRanToCompletion);
+        }
+        var recommendLight = _vramGb is > 0 and <= 8.5; // 8 GB cards report a little over 8
+        var hint = Loc.F("comp.heavy.hint", gb) + (recommendLight ? "\n" + Loc.F("comp.heavy.rec", Math.Round(_vramGb!.Value)) : "");
+        var row = Row(Loc.T("comp.heavy"), hint, out var right);
+        var seg = new StackPanel { Orientation = Orientation.Horizontal, VerticalAlignment = VerticalAlignment.Center };
+        seg.Children.Add(Segment(Loc.T("comp.heavy.full"), full, () => { if (!full) _ = GraphicsPickedAsync(heavy, true, gb); }));
+        var lite = Segment((recommendLight ? "★ " : "") + Loc.T("comp.heavy.lite"), !full, () => { if (full) _ = GraphicsPickedAsync(heavy, false, gb); });
+        if (recommendLight && full) { lite.BorderBrush = (Brush)FindResource("Cyan"); lite.BorderThickness = new Thickness(1.5); }
+        seg.Children.Add(lite);
+        right.Child = new Border { Background = (Brush)FindResource("CardActive"), CornerRadius = new CornerRadius(8), Padding = new Thickness(3), Child = seg };
+        return row;
+    }
+
+    /// <summary>Installed: asks first (light: the heavy mods go off, files stay; full: they come back, downloaded if missing).</summary>
+    private async Task GraphicsPickedAsync(AddonFile heavy, bool full, int gb)
+    {
+        if (Installed && !Updating && Views.Dialog.Show(_main, full ? Loc.F("comp.heavy.ask.full", gb) : Loc.T("comp.heavy.ask.lite"),
+                Loc.T("comp.heavy"), MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes) != MessageBoxResult.Yes) return;
+        await ExtraClickedAsync(heavy, full);
+        if (ProgressText.Text == Loc.T("comp.extra.on") || ProgressText.Text == Loc.T("comp.extra.off"))
+            ProgressText.Text = Loc.T(full ? "comp.heavy.done.full" : "comp.heavy.done.lite");
+    }
+
+    /// <summary>For --shots: the graphics row with a test pack and a 6 GB card (the light version recommended).</summary>
+    internal Grid ShotGraphicsRow(AddonFile heavy)
+    {
+        _vramAsked = true;
+        _vramGb = 6;
+        return GraphicsRow(heavy);
     }
 
     /// <summary>HD planets: before the install only the wish is kept; installed — download / switch on, or switch off.</summary>
