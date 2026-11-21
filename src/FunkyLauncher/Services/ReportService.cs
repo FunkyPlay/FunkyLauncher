@@ -46,6 +46,10 @@ public static class ReportService
             AddNewest(zip, "mo2", Path.Combine(dir, "logs"), "*.log", 5, false);
             AddNewest(zip, "mods-logs", Path.Combine(dir, "overwrite"), "*.log", 30, true);
             AddNewest(zip, "crashes", Path.Combine(dir, "overwrite"), "crash-*.txt", 3, true);
+            // 0.1.20: REDscope crash files (which script ran at the moment of the crash) and its own log
+            var redscope = Path.Combine(dir, "overwrite", "red4ext", "plugins", "REDscope");
+            AddRedscopeCrashes(zip, "redscope/crashes", Path.Combine(redscope, "crashes"));
+            AddNewest(zip, "redscope", redscope, "REDscope-internal.log", 1, false);
             // the Russian names helper: its log (why a build failed) and its report
             foreach (var f in new[] { "funkypatcher-log.txt", "funkypatcher-report.json" })
                 try { if (File.Exists(Path.Combine(dir, f))) Add(zip, "translation", Path.Combine(dir, f)); } catch { }
@@ -98,6 +102,26 @@ public static class ReportService
             .OrderByDescending(f => f.LastWriteTime).Take(count);
         foreach (var f in files)
             Add(zip, folder + "/" + Path.GetRelativePath(dir, f.DirectoryName!).Replace('\\', '/').Replace("./", "").TrimEnd('.'), f.FullName);
+    }
+
+    /// <summary>The 3 newest crashes of REDscope: each crash is a few files with one name and different endings
+    /// (.crash + .crash.json in 3.0, .txt + .txt.json before); big dumps (.zip, .dmp) are left out.</summary>
+    private static void AddRedscopeCrashes(ZipArchive zip, string folder, string dir)
+    {
+        try
+        {
+            if (!Directory.Exists(dir)) return;
+            var files = new DirectoryInfo(dir).EnumerateFiles("*", SearchOption.TopDirectoryOnly)
+                .Where(f => !f.Extension.Equals(".zip", StringComparison.OrdinalIgnoreCase)
+                         && !f.Extension.Equals(".dmp", StringComparison.OrdinalIgnoreCase)
+                         && !f.Name.StartsWith("session", StringComparison.OrdinalIgnoreCase))
+                .ToList();
+            static string Stem(FileInfo f) => f.Name.Split('.')[0];
+            var newest = files.GroupBy(Stem).OrderByDescending(g => g.Max(f => f.LastWriteTime)).Take(3);
+            foreach (var g in newest)
+                foreach (var f in g) Add(zip, folder, f.FullName);
+        }
+        catch { /* crash files are optional in a report */ }
     }
 
     private static void Add(ZipArchive zip, string folder, string file)
