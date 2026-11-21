@@ -473,6 +473,15 @@ public static class Loc
         ["problem.rollback"] = ("Вернуться к версии {0}", "Back to version {0}"),
         ["problem.report"] = ("Собрать отчёт", "Make a report"),
         ["problem.close"] = ("Закрыть", "Close"),
+        // 0.1.18: "Run as administrator" on the game exe → MO2 error 740 (support #142); texts by the Copywriter 21.11
+        ["admin.flag.title"] = ("{0}: права администратора", "{0}: administrator rights"),
+        ["admin.flag.hint"] = ("Из-за этой галочки Mod Organizer не запускает игру (ошибка 740). Нажми «Снять галочку» — уберём только её.", "This tick stops Mod Organizer from starting the game (error 740). Press “Remove the tick” — we remove only that."),
+        ["admin.flag.text"] = ("У файла игры {0} стоит галочка «Запускать эту программу от имени администратора». Из-за неё Mod Organizer не может запустить игру: Windows отвечает ошибкой 740.\n\nСнять галочку? Уберём только её, больше ничего не изменится. Если Windows спросит разрешение, нажми «Да».", "The game file {0} has the “Run this program as an administrator” tick. Because of it Mod Organizer can't start the game: Windows answers with error 740.\n\nRemove the tick? We remove only that, nothing else changes. If Windows asks for permission, press “Yes”."),
+        ["admin.flag.fix"] = ("Снять галочку", "Remove the tick"),
+        ["admin.flag.done"] = ("Галочка снята. Можно играть.", "The tick is removed. You can play."),
+        ["admin.flag.left"] = ("Галочку снять не получилось.", "Couldn't remove the tick."),
+        ["admin.flag.uac"] = ("Windows не дала разрешение — галочка осталась.", "Windows didn't give permission — the tick is still there."),
+        ["admin.flag.steps"] = ("Как снять вручную: открой папку {1}, нажми правой кнопкой на {0} → «Свойства» → «Совместимость» и сними галочку «Запускать эту программу от имени администратора». Если она серая, нажми «Изменить параметры для всех пользователей» и сними её там. Потом «ОК».", "To do it by hand: open the folder {1}, right-click {0} → Properties → Compatibility and untick “Run this program as an administrator”. If it is greyed out, press “Change settings for all users” and untick it there. Then OK."),
         ["lib.installed"] = ("Установлено", "Installed"),
         ["lib.available"] = ("Доступно · {0} ГБ", "Available · {0} GB"),
         ["lib.soon"] = ("Скоро", "Coming soon"),
@@ -612,6 +621,16 @@ public static class Loc
         ["chat.sent"] = ("Отправлено. Ответ появится здесь, окно можно закрыть.", "Sent. The answer will show up here; you can close the window."),
         ["chat.err.send"] = ("Не отправилось ({0}). Проверь интернет и попробуй ещё раз или напиши в Telegram.", "Not sent ({0}). Check the internet and try again, or write in Telegram."),
         ["chat.err.big"] = ("Файл больше 10 МБ — приложи поменьше.", "The file is over 10 MB — attach a smaller one."),
+        // 0.1.18 (draft, for the Copywriter): an upload that broke three times; a report sent without a word about the problem
+        ["chat.err.net"] = ("Не отправилось: связь оборвалась ({0}). Попробуй ещё раз. Если не выходит — отправь файл боту в Telegram.", "Not sent: the connection broke ({0}). Try again. If it keeps failing, send the file to the Telegram bot."),
+        ["chat.err.what"] = ("Напиши в двух словах, что случилось: когда и что ты делал. Без этого по отчёту трудно найти причину.", "Write a few words about what happened: when and what you were doing. Without it the report is hard to read."),
+        // 0.1.18 (draft): the server's limit (429) — the launcher waits and sends again by itself
+        ["chat.wait"] = ("Сервер просит подождать. Отправлю сам через {0} с, окно не закрывай.", "The server asks to wait. I'll send it by myself in {0} s, keep the window open."),
+        ["chat.err.busy"] = ("Сервер сейчас занят. Подожди {0} с и нажми «Отправить» ещё раз.", "The server is busy right now. Wait {0} s and press Send again."),
+        // 0.1.18 (draft, for the Copywriter): the server asks to wait longer than a minute (Retry-After up to an hour)
+        ["chat.err.later"] = ("Сервер просит подождать. Попробуй через {0} мин или напиши боту в Telegram.", "The server asks to wait. Try again in {0} min or message the Telegram bot."),
+        ["chat.err.hour"] = ("Из этого лаунчера за час ушло много сообщений — сервер пока не принимает новые. Попробуй через час или напиши боту в Telegram.", "Many messages were sent from this launcher in the last hour — the server won't take more for now. Try in an hour or message the Telegram bot."),
+        ["chat.err.files"] = ("За сутки уже отправлено 100 МБ файлов — это предел. Напиши текстом, а файл пришли завтра или боту в Telegram.", "100 MB of files were already sent today — that's the limit. Write it as text and send the file tomorrow or to the Telegram bot."),
         ["chat.telegram"] = ("Удобнее в Telegram? Написать боту @FunkyLauncherBot", "Prefer Telegram? Message @FunkyLauncherBot"),
         ["comp.voice.link"] = ("Страница авторов", "Authors' page"),
         ["comp.voice.link.hint"] = ("Ставится отдельно со страницы авторов, по их инструкции: включить её в сборку без их разрешения мы не можем.", "Installed separately from the authors' page, following their instructions: we can't include it in the modlist without their permission."),

@@ -9,8 +9,12 @@ public static class AppConfig
     public const string YouTubeUrl = "https://www.youtube.com/@" + TelegramChannel;
     /// <summary>The English YouTube channel (Funky 20.11): the fallback when no catalog has "youtubeEn".</summary>
     public const string YouTubeEnUrl = "https://www.youtube.com/@FunkyPlayTV_EN";
-    /// <summary>Launcher news: since 2026-11-19 one Telegram channel for everything, @FunkyPlayTV (the old @FunkyLauncher only points to it).</summary>
-    public const string LauncherNewsUrl = TelegramUrl;
+    /// <summary>The English Telegram channel (since 2026-11-20 @FunkyLauncher is English, @FunkyPlayTV Russian).</summary>
+    public const string TelegramEnUrl = "https://t.me/FunkyLauncher";
+    /// <summary>The Telegram channel for the launcher's language: English players → @FunkyLauncher, Russian → @FunkyPlayTV.</summary>
+    public static string Telegram => Loc.Lang == "en" ? TelegramEnUrl : TelegramUrl;
+    /// <summary>Launcher news: the Telegram channel of the player's language.</summary>
+    public static string LauncherNewsUrl => Telegram;
     /// <summary>The support bot (Funky Help sends the RustDesk ID here).</summary>
     public const string SupportBotName = "FunkyLauncherBot";
     /// <summary>Support chat inside the launcher (same queue as the bot). The catalog's "supportApi" overrides it.</summary>

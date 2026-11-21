@@ -7,7 +7,7 @@ namespace FunkyLauncher.Services;
 public enum CheckState { Ok, Warning, Error }
 
 /// <summary>A line of the check list. Tool: a missing required tool (REDmod) — its row gets "How to install" / "Check again".</summary>
-public sealed record CheckItem(CheckState State, string Title, string? Hint = null, RequiredTool? Tool = null);
+public sealed record CheckItem(CheckState State, string Title, string? Hint = null, RequiredTool? Tool = null, AdminFlag.Found? Admin = null);
 
 public sealed class GameInfo
 {
@@ -207,6 +207,11 @@ public static class SystemCheck
                 items.Add(missing.Contains(t)
                     ? new CheckItem(CheckState.Error, Loc.F("check.tool.no", t.Name), ToolHint(t), t)
                     : new CheckItem(CheckState.Ok, Loc.F("check.tool.ok", t.Name)));
+            // 0.1.18: "Run as administrator" on the game exe → MO2 can't start it (error 740). A warning, not an error:
+            // installing works, only PLAY doesn't — and PLAY asks again
+            if (AdminFlag.Check(ml, game.Path) is { } flag)
+                items.Add(new CheckItem(CheckState.Warning, Loc.F("admin.flag.title", ml.GameExe),
+                    Loc.T("admin.flag.hint") + "\n" + AdminFlag.Steps(flag), Admin: flag));
         }
 
         items.Add(IsGameFolder(installDir, ml, game?.Path)

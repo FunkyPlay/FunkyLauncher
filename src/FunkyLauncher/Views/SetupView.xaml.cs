@@ -460,7 +460,7 @@ public partial class SetupView : UserControl
 
     private Border CheckRow(CheckItem c)
     {
-        if (c.Tool != null) return ToolRow(c);
+        if (c.Tool != null || c.Admin != null) return ToolRow(c);
         var error = c.State == CheckState.Error;
         var icon = new Border
         {
@@ -510,7 +510,16 @@ public partial class SetupView : UserControl
             return b;
         }
         var buttons = new StackPanel { Margin = new Thickness(14, 0, 0, 0), VerticalAlignment = VerticalAlignment.Center };
-        buttons.Children.Add(Small(Loc.T("tool.howto"), (_, _) => { if (ToolHelpWindow.Show(_main, c.Tool!, Ml)) _ = RunChecksAsync(); }));
+        if (c.Admin is { } flag)
+            buttons.Children.Add(Small(Loc.T("admin.flag.fix"), (_, _) =>
+            {
+                var err = AdminFlag.Remove(flag);
+                Views.Dialog.Show(_main, err ?? Loc.T("admin.flag.done"), "Funky Launcher", MessageBoxButton.OK,
+                    err == null ? MessageBoxImage.Information : MessageBoxImage.Warning);
+                _ = RunChecksAsync();
+            }));
+        else
+            buttons.Children.Add(Small(Loc.T("tool.howto"), (_, _) => { if (ToolHelpWindow.Show(_main, c.Tool!, Ml)) _ = RunChecksAsync(); }));
         buttons.Children.Add(Small(Loc.T("tool.recheck"), (_, _) => _ = RunChecksAsync()));
         var row = new DockPanel();
         DockPanel.SetDock(icon, Dock.Left);

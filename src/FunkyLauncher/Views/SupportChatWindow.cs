@@ -24,7 +24,9 @@ public sealed class SupportChatWindow : Window
     private readonly Button _send;
     private readonly string _label;
     private string? _attach;
-    private readonly DispatcherTimer _timer = new() { Interval = TimeSpan.FromSeconds(20) };
+    // 0.1.18: every 90 s, not 20 (Bots, 21.11): the server counts these checks in the same per-IP limit as sending
+    // (60 an hour) — with the chat open every 20 s (180 an hour) any message got 429. Support answers within 2 hours.
+    private readonly DispatcherTimer _timer = new() { Interval = TimeSpan.FromSeconds(90) };
 
     /// <summary>Opens (or brings forward) the chat; <paramref name="draft"/> and <paramref name="attach"/> prefill a new message.</summary>
     public static void Open(Window? owner, Settings s, Modlist m, string draft = "", string? attach = null)
@@ -187,20 +189,45 @@ public sealed class SupportChatWindow : Window
         };
     }
 
+    /// <summary>
+    /// False when the player says nothing about the problem: the prefilled template ends with an empty
+    /// "Что случилось:" / "What happened:", or an error report (.zip) is attached with no text at all.
+    /// A screenshot alone is fine: it usually shows the problem itself.
+    /// </summary>
+    internal static bool SaysWhatHappened(string text, string? attach)
+    {
+        foreach (var lang in new[] { "Что случилось:", "What happened:" })
+        {
+            var i = text.LastIndexOf(lang, StringComparison.OrdinalIgnoreCase);
+            if (i >= 0) return text[(i + lang.Length)..].Trim().Length > 0;
+        }
+        var isReport = attach != null && Path.GetExtension(attach).Equals(".zip", StringComparison.OrdinalIgnoreCase);
+        return !isReport || text.Length > 0;
+    }
+
     private async Task SendAsync()
     {
         var text = _box.Text.Trim();
         if (text.Length == 0 && _attach == null) return;
+        // 0.1.18: a report or a "Что случилось:" template with nothing written about the problem is not sent
+        if (!SaysWhatHappened(text, _attach))
+        {
+            _status.Text = Loc.T("chat.err.what");
+            _box.Focus();
+            _box.CaretIndex = _box.Text.Length;
+            return;
+        }
         _send.IsEnabled = false;
+        _timer.Stop(); // no checks while sending (and while waiting out a 429)
         _status.Text = Loc.T("chat.sending");
         try
         {
-            await SupportChat.SendAsync(text, _label, _attach, CancellationToken.None);
+            await SupportChat.SendAsync(text, _label, _attach, CancellationToken.None, new Progress<string>(t => _status.Text = t));
             _box.Text = ""; _attach = null; _attachText.Text = "";
             _status.Text = Loc.T("chat.sent");
             await RefreshAsync();
         }
         catch (Exception ex) { _status.Text = ex is InvalidOperationException ? ex.Message : Loc.F("chat.err.send", ex.Message); }
-        finally { _send.IsEnabled = true; }
+        finally { _send.IsEnabled = true; if (IsVisible) _timer.Start(); } // closed while sending: no more checks
     }
 }
