@@ -690,7 +690,7 @@ public static class Loc
         // 0.1.19 (Copywriter 21.11): the three-step window before Wabbajack opens for the Nexus login
         ["nexus.steps.title"] = ("Вход в Nexus — 3 шага", "Nexus login — 3 steps"),
         ["nexus.steps.intro"] = ("Моды скачиваются через твой аккаунт Nexus. Вход делается в Wabbajack — он откроется по кнопке ниже.", "Mods are downloaded through your Nexus account. You log in inside Wabbajack — it opens with the button below."),
-        ["nexus.steps.1"] = ("В Wabbajack нажми Settings.", "In Wabbajack, click Settings."),
+        ["nexus.steps.1"] = ("В Wabbajack нажми Settings — в меню слева, в самом низу.", "In Wabbajack, click Settings — at the very bottom of the left menu."),
         ["nexus.steps.2"] = ("В строке Nexus Mods нажми Log in.", "On the Nexus Mods line, click Log in."),
         ["nexus.steps.3"] = ("Откроется браузер: войди в Nexus и подтверди доступ.", "A browser window opens: log in to Nexus and confirm the access."),
         ["nexus.steps.3.button"] = ("Authorise", "Authorise"),

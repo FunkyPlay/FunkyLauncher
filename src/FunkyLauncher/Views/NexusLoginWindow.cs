@@ -119,12 +119,17 @@ public static class NexusLoginWindow
         Child = new TextBlock { Text = text, FontSize = size, FontWeight = FontWeights.SemiBold, Foreground = Brushes.White },
     };
 
-    /// <summary>Step 1: "Settings" in Wabbajack, framed.</summary>
+    /// <summary>Step 1: "Settings" at the bottom of the Wabbajack menu, framed.</summary>
     private static UIElement Settings()
     {
-        var t = Target("⚙  Settings", 13.5);
-        t.Margin = new Thickness(14, 0, 0, 0); t.VerticalAlignment = VerticalAlignment.Center;
-        return Frame(t);
+        // Wabbajack 4.3.2.2 (checked 21.11): the left menu Home / Browse lists / Create a list, Settings at its very bottom
+        var menu = new DockPanel { Margin = new Thickness(10, 6, 10, 6), LastChildFill = false };
+        var top = new TextBlock { Text = "Home · Browse lists · Create a list", FontSize = 11, Foreground = Res("Muted", Brushes.Gray) };
+        DockPanel.SetDock(top, Dock.Top);
+        var t = Target("⚙  Settings", 13);
+        DockPanel.SetDock(t, Dock.Bottom);
+        menu.Children.Add(top); menu.Children.Add(t);
+        return Frame(menu);
     }
 
     /// <summary>Step 2: the "Nexus Mods" login line, "Log in" framed.</summary>
