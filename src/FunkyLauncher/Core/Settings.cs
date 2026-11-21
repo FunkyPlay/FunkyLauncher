@@ -90,6 +90,9 @@ public sealed class Settings
     /// <summary>0.1.19: "Install anyway" pressed for missing game files — "modlist|game folder|version", not asked again.</summary>
     public HashSet<string> GameFilesAccepted { get; set; } = new();
 
+    /// <summary>0.1.19: modlists whose graphics version the player picked himself (Lightweight is no longer picked in advance).</summary>
+    public HashSet<string> GraphicsChosen { get; set; } = new();
+
     private static string FilePath => Path.Combine(AppConfig.DataDir, "settings.json");
 
     public static Settings Load()
