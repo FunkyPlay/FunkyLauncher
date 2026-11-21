@@ -1,0 +1,800 @@
+{
+ "schema": 1,
+ "modlistId": "fallout4",
+ "addonId": "fallout4-heavy",
+ "listVersion": "0.1.2",
+ "forMainVersion": "0.1.2",
+ "generated": "2026-11-21",
+ "default": true,
+ "mods": [
+  {
+   "id": "Vivid Fallout - All in One - Textures in HD - ORIGINAL SIZE - LOWER RESOLUTION",
+   "modFolder": "Vivid Fallout - All in One - Textures in HD - ORIGINAL SIZE - LOWER RESOLUTION",
+   "displayName": {
+    "ru": "Vivid Fallout - All in One - Textures in HD - ORIGINAL SIZE - LOWER RESOLUTION",
+    "en": "Vivid Fallout - All in One - Textures in HD - ORIGINAL SIZE - LOWER RESOLUTION"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 25714,
+    "fileId": 392175,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/25714?tab=files&file_id=392175"
+   },
+   "version": "2.2.3",
+   "archive": {
+    "nexusFileName": "xVivid Fallout - All in One - 2k-25714-2-2-3-1775343350.7z",
+    "localFileName": "xVivid Fallout - All in One - 2k-25714-2-2-3-1775343350.7z",
+    "size": 1457334156,
+    "sha256": "84ab57ca89ebdd0f903dad0d52001318cd12e28c7d1ef6912b6c24bbad230c68"
+   },
+   "plugins": [
+    "VividFallout - AiO - 2k.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Real HD Face Textures 2k - Real HD Main File",
+   "modFolder": "Real HD Face Textures 2k - Real HD Main File",
+   "displayName": {
+    "ru": "Real HD Face Textures 2k",
+    "en": "Real HD Face Textures 2k"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 20445,
+    "fileId": 83689,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/20445?tab=files&file_id=83689"
+   },
+   "version": "1.0",
+   "archive": {
+    "nexusFileName": "Real HD Main File-20445-1-0.7z",
+    "localFileName": "Real HD Main File-20445-1-0.7z",
+    "size": 135624642,
+    "sha256": "11232126d1c77c7d2b6006f54f4cd4e692a0df24dce21a3c77a7de91969a35f9"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Real HD Face Textures 2k - Real HD Faces Textures",
+   "modFolder": "Real HD Face Textures 2k - Real HD Faces Textures",
+   "displayName": {
+    "ru": "Real HD Face Textures 2k",
+    "en": "Real HD Face Textures 2k"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 20445,
+    "fileId": 83688,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/20445?tab=files&file_id=83688"
+   },
+   "version": "1.0",
+   "archive": {
+    "nexusFileName": "Real HD Faces Textures-20445-1-0.7z",
+    "localFileName": "Real HD Faces Textures-20445-1-0.7z",
+    "size": 45643951,
+    "sha256": "7328c81f4b1b7e04b4bffbe4de5e56715398aa505849bc7460432fb5133ee06b"
+   },
+   "plugins": [],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "Data/Textures/Actors/character/OldHumanFemale/oldhumanfemalehead_d.dds",
+      "Textures/Actors/character/OldHumanFemale/oldhumanfemalehead_d.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/OldHumanFemale/oldhumanfemalehead_n.dds",
+      "Textures/Actors/character/OldHumanFemale/oldhumanfemalehead_n.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/OldHumanFemale/oldhumanfemalehead_s.dds",
+      "Textures/Actors/character/OldHumanFemale/oldhumanfemalehead_s.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/basehumanfemale/BaseFemaleHead_d.dds",
+      "Textures/Actors/character/basehumanfemale/BaseFemaleHead_d.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/basehumanfemale/BaseFemaleHead_n.dds",
+      "Textures/Actors/character/basehumanfemale/BaseFemaleHead_n.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/basehumanfemale/BaseFemaleHead_s.dds",
+      "Textures/Actors/character/basehumanfemale/BaseFemaleHead_s.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/basehumanfemale/BaseFemaleHead_sk.dds",
+      "Textures/Actors/character/basehumanfemale/BaseFemaleHead_sk.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/basehumanfemale/basefemalehands_sk.dds",
+      "Textures/Actors/character/basehumanfemale/basefemalehands_sk.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/basehumanfemale/femalebody_1_sk.dds",
+      "Textures/Actors/character/basehumanfemale/femalebody_1_sk.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/basehumanfemale/femaleheadweathered1_d.dds",
+      "Textures/Actors/character/basehumanfemale/femaleheadweathered1_d.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/basehumanfemale/femaleheadweathered1_n.dds",
+      "Textures/Actors/character/basehumanfemale/femaleheadweathered1_n.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/basehumanfemale/femaleheadweathered1_s.dds",
+      "Textures/Actors/character/basehumanfemale/femaleheadweathered1_s.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/basehumanmale/basemalehead_d.dds",
+      "Textures/Actors/character/basehumanmale/basemalehead_d.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/basehumanmale/basemalehead_n.dds",
+      "Textures/Actors/character/basehumanmale/basemalehead_n.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/basehumanmale/basemalehead_s.dds",
+      "Textures/Actors/character/basehumanmale/basemalehead_s.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/basehumanmale/youngmalehead_d.dds",
+      "Textures/Actors/character/basehumanmale/youngmalehead_d.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/basehumanmale/youngmalehead_n.dds",
+      "Textures/Actors/character/basehumanmale/youngmalehead_n.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/basehumanmale/youngmalehead_s.dds",
+      "Textures/Actors/character/basehumanmale/youngmalehead_s.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/mayor/mayor_d.dds",
+      "Textures/Actors/character/mayor/mayor_d.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/mayor/mayor_n.dds",
+      "Textures/Actors/character/mayor/mayor_n.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/mayor/mayor_s.dds",
+      "Textures/Actors/character/mayor/mayor_s.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/midagedfemale/midagefemalehead_N.dds",
+      "Textures/Actors/character/midagedfemale/midagefemalehead_N.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/midagedfemale/midagefemalehead_S.dds",
+      "Textures/Actors/character/midagedfemale/midagefemalehead_S.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/midagedfemale/midagefemalehead_d.dds",
+      "Textures/Actors/character/midagedfemale/midagefemalehead_d.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/oldhumanmale/oldhumanmalehead_d.dds",
+      "Textures/Actors/character/oldhumanmale/oldhumanmalehead_d.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/oldhumanmale/oldhumanmalehead_n.dds",
+      "Textures/Actors/character/oldhumanmale/oldhumanmalehead_n.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/oldhumanmale/oldhumanmalehead_s.dds",
+      "Textures/Actors/character/oldhumanmale/oldhumanmalehead_s.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/piper/piperhead_S.dds",
+      "Textures/Actors/character/piper/piperhead_S.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/piper/piperhead_d.dds",
+      "Textures/Actors/character/piper/piperhead_d.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/piper/piperhead_n.dds",
+      "Textures/Actors/character/piper/piperhead_n.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/preston/preston_d.dds",
+      "Textures/Actors/character/preston/preston_d.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/preston/preston_n.dds",
+      "Textures/Actors/character/preston/preston_n.dds"
+     ],
+     [
+      "Data/Textures/Actors/character/preston/preston_s.dds",
+      "Textures/Actors/character/preston/preston_s.dds"
+     ],
+     [
+      "Data/materials/actors/character/basehumanfemale/basehumanfemalehands.bgsm",
+      "materials/actors/character/basehumanfemale/basehumanfemalehands.bgsm"
+     ],
+     [
+      "Data/materials/actors/character/basehumanfemale/basehumanfemalerear.bgsm",
+      "materials/actors/character/basehumanfemale/basehumanfemalerear.bgsm"
+     ],
+     [
+      "Data/materials/actors/character/basehumanfemale/basehumanfemaleskinhead.bgsm",
+      "materials/actors/character/basehumanfemale/basehumanfemaleskinhead.bgsm"
+     ],
+     [
+      "Data/materials/actors/character/basehumanmale/basehumanmaleskinhands.bgsm",
+      "materials/actors/character/basehumanmale/basehumanmaleskinhands.bgsm"
+     ],
+     [
+      "Data/materials/actors/character/basehumanmale/basehumanmaleskinhandsdirty.bgsm",
+      "materials/actors/character/basehumanmale/basehumanmaleskinhandsdirty.bgsm"
+     ],
+     [
+      "Data/materials/actors/character/basehumanmale/basehumanskin.bgsm",
+      "materials/actors/character/basehumanmale/basehumanskin.bgsm"
+     ],
+     [
+      "Data/materials/actors/character/basehumanmale/basehumanskindirty.bgsm",
+      "materials/actors/character/basehumanmale/basehumanskindirty.bgsm"
+     ],
+     [
+      "Data/materials/actors/character/basehumanmale/basehumanskinhead.bgsm",
+      "materials/actors/character/basehumanmale/basehumanskinhead.bgsm"
+     ]
+    ],
+    "fomod": false,
+    "notFromArchive": [
+     "materials/actors/character/basehumanfemale/basehumanfemaleskin.bgsm.mohidden"
+    ]
+   }
+  },
+  {
+   "id": "Wasteland Creatures Redone - Retexture Compilation",
+   "modFolder": "Wasteland Creatures Redone - Retexture Compilation",
+   "displayName": {
+    "ru": "Wasteland Creatures Redone - Retexture Compilation",
+    "en": "Wasteland Creatures Redone - Retexture Compilation"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 7951,
+    "fileId": 56974,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/7951?tab=files&file_id=56974"
+   },
+   "version": "1.1",
+   "archive": {
+    "nexusFileName": "Wasteland Creature Redone-7951-1-1.7z",
+    "localFileName": "Wasteland Creature Redone-7951-1-1.7z",
+    "size": 348389547,
+    "sha256": "a4e8b94fe0f2383a426b5eb9d124343edbfe19b3f9fb1ca93cc8c0f3db1d29ec"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "Wasteland Creatures Redone/Data",
+    "fomod": true,
+    "choices": [
+     "Wasteland Creatures: Bloatflies, Brahmin, Deathclaws, Feral Ghouls, Mirelurks, Mirelurk Hunter, Mirelurk King, Mirelurk Queen, Molerats, Mongrels, Mosquitos, Mutant Hounds, Radroaches, Radscorpions, Radstags, Stingwings, Yao Guai"
+    ]
+   }
+  },
+  {
+   "id": "Savrenx Dogmeat HD V2",
+   "modFolder": "Savrenx Dogmeat HD V2",
+   "displayName": {
+    "ru": "Savrenx Dogmeat HD V2",
+    "en": "Savrenx Dogmeat HD V2"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 68460,
+    "fileId": 266060,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/68460?tab=files&file_id=266060"
+   },
+   "version": "1.00",
+   "archive": {
+    "nexusFileName": "Dogmeat HD V2-68460-1-00-1675382669.7z",
+    "localFileName": "Dogmeat HD V2-68460-1-00-1675382669.7z",
+    "size": 207981543,
+    "sha256": "19c9d4aeb88cd45c6e3ae62097a0f855227a7414b7fce913bc3bd2f1ba2b63d6"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "A Little Bit of Green (Realistic Touch of Green Edit)",
+   "modFolder": "A Little Bit of Green (Realistic Touch of Green Edit)",
+   "displayName": {
+    "ru": "A Little Bit of Green (Realistic Touch of Green Edit)",
+    "en": "A Little Bit of Green (Realistic Touch of Green Edit)"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 1564,
+    "fileId": 6041,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/1564?tab=files&file_id=6041"
+   },
+   "version": "v2.5",
+   "archive": {
+    "nexusFileName": "A Little Bit of Green Version 2.5-1564-v2-5.rar",
+    "localFileName": "A Little Bit of Green Version 2.5-1564-v2-5.rar",
+    "size": 124787109,
+    "sha256": "70702a31d3d27e1ca1cdcc917332f8f5a362036a0eb86db6060b84ecba81f12e"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Enhanced Blood Textures",
+   "modFolder": "Enhanced Blood Textures",
+   "displayName": {
+    "ru": "Enhanced Blood Textures",
+    "en": "Enhanced Blood Textures"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 212,
+    "fileId": 54175,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/212?tab=files&file_id=54175"
+   },
+   "version": "1.01",
+   "archive": {
+    "nexusFileName": "EBT_Basic v101-212-1-01.7z",
+    "localFileName": "EBT_Basic v101-212-1-01.7z",
+    "size": 143296254,
+    "sha256": "148613d3a1482822b888559104f1f51cbeff8004b059b7d1ccd1c4e09b08c902"
+   },
+   "plugins": [
+    "dD-Enhanced Blood Basic.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "1 core/Meshes/Effects/GoreExplosionLimbRed01.nif",
+      "Meshes/Effects/GoreExplosionLimbRed01.nif"
+     ],
+     [
+      "1 core/Meshes/Effects/MPSBloodImpact02.nif",
+      "Meshes/Effects/MPSBloodImpact02.nif"
+     ],
+     [
+      "1 core/Textures/blood/BloodSplatterSynthOil_d.DDS",
+      "Textures/blood/BloodSplatterSynthOil_d.DDS"
+     ],
+     [
+      "1 core/Textures/blood/DecalsBloodSplatter01.DDS",
+      "Textures/blood/DecalsBloodSplatter01.DDS"
+     ],
+     [
+      "1 core/Textures/blood/DecalsBloodSplatter01_n.DDS",
+      "Textures/blood/DecalsBloodSplatter01_n.DDS"
+     ],
+     [
+      "1 core/Textures/blood/DecalsBloodSplatterClear_d.DDS",
+      "Textures/blood/DecalsBloodSplatterClear_d.DDS"
+     ],
+     [
+      "1 core/Textures/blood/DecalsBloodSplatterGreen_d.DDS",
+      "Textures/blood/DecalsBloodSplatterGreen_d.DDS"
+     ],
+     [
+      "1 core/Textures/blood/screenbloodalpha01opt.dds",
+      "Textures/blood/screenbloodalpha01opt.dds"
+     ],
+     [
+      "1 core/Textures/blood/screenbloodcolor01opt.dds",
+      "Textures/blood/screenbloodcolor01opt.dds"
+     ],
+     [
+      "1 core/Textures/decals/BloodDecalHitBlade01_d.DDS",
+      "Textures/decals/BloodDecalHitBlade01_d.DDS"
+     ],
+     [
+      "1 core/Textures/decals/BloodDecalHitBlade01_dGREEN.DDS",
+      "Textures/decals/BloodDecalHitBlade01_dGREEN.DDS"
+     ],
+     [
+      "1 core/Textures/decals/BloodDecalHitBullet.DDS",
+      "Textures/decals/BloodDecalHitBullet.DDS"
+     ],
+     [
+      "1 core/Textures/decals/BloodDecalHitBulletGREEN.DDS",
+      "Textures/decals/BloodDecalHitBulletGREEN.DDS"
+     ],
+     [
+      "1 core/Textures/decals/BloodLasers.DDS",
+      "Textures/decals/BloodLasers.DDS"
+     ],
+     [
+      "1 core/Textures/decals/BloodPlasma.dds",
+      "Textures/decals/BloodPlasma.dds"
+     ],
+     [
+      "1 core/Textures/decals/BloodSmear01_n.DDS",
+      "Textures/decals/BloodSmear01_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/BloodSmear02_n.DDS",
+      "Textures/decals/BloodSmear02_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/BloodSmear03_n.DDS",
+      "Textures/decals/BloodSmear03_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/BloodSmear04_n.DDS",
+      "Textures/decals/BloodSmear04_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/BloodSplatterAlien_atlas_d.DDS",
+      "Textures/decals/BloodSplatterAlien_atlas_d.DDS"
+     ],
+     [
+      "1 core/Textures/decals/BloodSplatterBlend01_d.DDS",
+      "Textures/decals/BloodSplatterBlend01_d.DDS"
+     ],
+     [
+      "1 core/Textures/decals/BloodSplatterGlowing_d.DDS",
+      "Textures/decals/BloodSplatterGlowing_d.DDS"
+     ],
+     [
+      "1 core/Textures/decals/BloodSplatterGrey_d.DDS",
+      "Textures/decals/BloodSplatterGrey_d.DDS"
+     ],
+     [
+      "1 core/Textures/decals/BloodSplatterGrey_s.DDS",
+      "Textures/decals/BloodSplatterGrey_s.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Blood_Smear_DRY_QUAD_n.DDS",
+      "Textures/decals/Blood_Smear_DRY_QUAD_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Blood_Smear_QUAD_n.DDS",
+      "Textures/decals/Blood_Smear_QUAD_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Blood_Splatter_Drip01_n.DDS",
+      "Textures/decals/Blood_Splatter_Drip01_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Blood_Splatter_Drip02_n.DDS",
+      "Textures/decals/Blood_Splatter_Drip02_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Blood_Splatter_Drip03_n.DDS",
+      "Textures/decals/Blood_Splatter_Drip03_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Blood_Splatter_Drip04_n.DDS",
+      "Textures/decals/Blood_Splatter_Drip04_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Blood_Splatter_Drip05_n.DDS",
+      "Textures/decals/Blood_Splatter_Drip05_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Blood_Splatter_Drip06_d.dds",
+      "Textures/decals/Blood_Splatter_Drip06_d.dds"
+     ],
+     [
+      "1 core/Textures/decals/Blood_Splatter_Drip06_n.dds",
+      "Textures/decals/Blood_Splatter_Drip06_n.dds"
+     ],
+     [
+      "1 core/Textures/decals/Blood_Splatter_Drip06_s.dds",
+      "Textures/decals/Blood_Splatter_Drip06_s.dds"
+     ],
+     [
+      "1 core/Textures/decals/Blood_Splatter_Drip07_n.DDS",
+      "Textures/decals/Blood_Splatter_Drip07_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Blood_Splatter_Drip08_n.DDS",
+      "Textures/decals/Blood_Splatter_Drip08_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Blood_Splatter_Drip_DRY_QUAD_n.DDS",
+      "Textures/decals/Blood_Splatter_Drip_DRY_QUAD_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Blood_Splatter_Drip_QUAD_n.DDS",
+      "Textures/decals/Blood_Splatter_Drip_QUAD_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Blood_Splatter_QUAD_n.DDS",
+      "Textures/decals/Blood_Splatter_QUAD_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Blood_Splatter_SUBTEXTURES.dds",
+      "Textures/decals/Blood_Splatter_SUBTEXTURES.dds"
+     ],
+     [
+      "1 core/Textures/decals/Blood_Splatter_SUBTEXTURES_n.dds",
+      "Textures/decals/Blood_Splatter_SUBTEXTURES_n.dds"
+     ],
+     [
+      "1 core/Textures/decals/Blood_Splatter_SUBTEXTURES_s.dds",
+      "Textures/decals/Blood_Splatter_SUBTEXTURES_s.dds"
+     ],
+     [
+      "1 core/Textures/decals/Blood_Splatter_Spray01_n.DDS",
+      "Textures/decals/Blood_Splatter_Spray01_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Blood_Splatter__DRY_QUAD_n.DDS",
+      "Textures/decals/Blood_Splatter__DRY_QUAD_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/DecalBloodBite.dds",
+      "Textures/decals/DecalBloodBite.dds"
+     ],
+     [
+      "1 core/Textures/decals/DecalBloodBiteGREEN.dds",
+      "Textures/decals/DecalBloodBiteGREEN.dds"
+     ],
+     [
+      "1 core/Textures/decals/DecalBloodBlunt.dds",
+      "Textures/decals/DecalBloodBlunt.dds"
+     ],
+     [
+      "1 core/Textures/decals/DecalBloodBluntGREEN.dds",
+      "Textures/decals/DecalBloodBluntGREEN.dds"
+     ],
+     [
+      "1 core/Textures/decals/DecalBloodClaw.dds",
+      "Textures/decals/DecalBloodClaw.dds"
+     ],
+     [
+      "1 core/Textures/decals/DecalBloodClawGREEN.dds",
+      "Textures/decals/DecalBloodClawGREEN.dds"
+     ],
+     [
+      "1 core/Textures/decals/DecalBloodunarmed.dds",
+      "Textures/decals/DecalBloodunarmed.dds"
+     ],
+     [
+      "1 core/Textures/decals/DecalBloodunarmedGREEN.dds",
+      "Textures/decals/DecalBloodunarmedGREEN.dds"
+     ],
+     [
+      "1 core/Textures/decals/Dry_BloodSmear01_n.DDS",
+      "Textures/decals/Dry_BloodSmear01_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Dry_BloodSmear02_n.DDS",
+      "Textures/decals/Dry_BloodSmear02_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Dry_BloodSmear03_n.DDS",
+      "Textures/decals/Dry_BloodSmear03_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Dry_BloodSmear04_n.DDS",
+      "Textures/decals/Dry_BloodSmear04_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Dry_Blood_Splatter_Drip01_n.DDS",
+      "Textures/decals/Dry_Blood_Splatter_Drip01_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Dry_Blood_Splatter_Drip02_n.DDS",
+      "Textures/decals/Dry_Blood_Splatter_Drip02_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Dry_Blood_Splatter_Drip03_n.DDS",
+      "Textures/decals/Dry_Blood_Splatter_Drip03_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Dry_Blood_Splatter_Drip04_n.DDS",
+      "Textures/decals/Dry_Blood_Splatter_Drip04_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Dry_Blood_Splatter_Drip05_n.DDS",
+      "Textures/decals/Dry_Blood_Splatter_Drip05_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Dry_Blood_Splatter_Drip06_n.DDS",
+      "Textures/decals/Dry_Blood_Splatter_Drip06_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Dry_Blood_Splatter_Drip07_n.DDS",
+      "Textures/decals/Dry_Blood_Splatter_Drip07_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Dry_Blood_Splatter_Drip08_n.DDS",
+      "Textures/decals/Dry_Blood_Splatter_Drip08_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/Dry_Blood_Splatter_Spray01_n.DDS",
+      "Textures/decals/Dry_Blood_Splatter_Spray01_n.DDS"
+     ],
+     [
+      "1 core/Textures/decals/bloodlasersGREEN.dds",
+      "Textures/decals/bloodlasersGREEN.dds"
+     ],
+     [
+      "1 core/Textures/effects/BloodMist.DDS",
+      "Textures/effects/BloodMist.DDS"
+     ],
+     [
+      "1 core/Textures/effects/BloodMist02.DDS",
+      "Textures/effects/BloodMist02.DDS"
+     ],
+     [
+      "1 core/Textures/effects/BloodMist03.DDS",
+      "Textures/effects/BloodMist03.DDS"
+     ],
+     [
+      "1 core/Textures/effects/BloodMist04.DDS",
+      "Textures/effects/BloodMist04.DDS"
+     ],
+     [
+      "1 core/Textures/effects/BloodSplatter_atlas_d.DDS",
+      "Textures/effects/BloodSplatter_atlas_d.DDS"
+     ],
+     [
+      "1 core/Textures/effects/FluidSplat02_d.dds",
+      "Textures/effects/FluidSplat02_d.dds"
+     ],
+     [
+      "1 core/Textures/effects/FluidSplat02_n.DDS",
+      "Textures/effects/FluidSplat02_n.DDS"
+     ],
+     [
+      "1 core/Textures/effects/FluidSplatsSmallAtlas_d.DDS",
+      "Textures/effects/FluidSplatsSmallAtlas_d.DDS"
+     ],
+     [
+      "1 core/dD-Enhanced Blood Basic.esp",
+      "dD-Enhanced Blood Basic.esp"
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "Main: Enhanced Blood Textures Main",
+     "Screen Blood: EBT - Default",
+     "Blood Mist -Optional-: -",
+     "Eye Cubemap -Optional-: -",
+     "Dark Outdoor Cubemap -Optional-: -",
+     "Screen Duration -Optional-: -",
+     "Blood Amount and Size -Optional-: -",
+     "Resolution and Color: High, Default Color"
+    ]
+   }
+  },
+  {
+   "id": "Vivid Fallout - LOD and Far Distant Detail - Commonwealth LOD",
+   "modFolder": "Vivid Fallout - LOD and Far Distant Detail - Commonwealth LOD",
+   "displayName": {
+    "ru": "Vivid Fallout - LOD and Far Distant Detail - Commonwealth LOD",
+    "en": "Vivid Fallout - LOD and Far Distant Detail - Commonwealth LOD"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 71745,
+    "fileId": 280889,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/71745?tab=files&file_id=280889"
+   },
+   "version": "1.3",
+   "archive": {
+    "nexusFileName": "Commonwealth LOD - for 2k-71745-1-3-1687115308.7z",
+    "localFileName": "Commonwealth LOD - for 2k-71745-1-3-1687115308.7z",
+    "size": 444517196,
+    "sha256": "f0daead5ad11de6edfab5f45b3a81b20e79799bf207c5209fef26d7aa3d35857"
+   },
+   "plugins": [
+    "Vivid Fallout - LOD.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Vivid Fallout - LOD and Distant Detail - Far Harbor",
+   "modFolder": "Vivid Fallout - LOD and Distant Detail - Far Harbor",
+   "displayName": {
+    "ru": "Vivid Fallout - LOD and Distant Detail - Far Harbor",
+    "en": "Vivid Fallout - LOD and Distant Detail - Far Harbor"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 71976,
+    "fileId": 279709,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/71976?tab=files&file_id=279709"
+   },
+   "version": "1.0",
+   "archive": {
+    "nexusFileName": "Far Harbor LOD - for 2k-71976-1-0-1686182681.7z",
+    "localFileName": "Far Harbor LOD - for 2k-71976-1-0-1686182681.7z",
+    "size": 223902828,
+    "sha256": "4d09a96e179441289f61a723f80467e625d08644f3a3127c094a46eddced8952"
+   },
+   "plugins": [
+    "Vivid Fallout - Far Harbor LOD.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Vivid Fallout - LOD and Far Distant Detail - Nuka World",
+   "modFolder": "Vivid Fallout - LOD and Far Distant Detail - Nuka World",
+   "displayName": {
+    "ru": "Vivid Fallout - LOD and Far Distant Detail - Nuka World",
+    "en": "Vivid Fallout - LOD and Far Distant Detail - Nuka World"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 72024,
+    "fileId": 280904,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/72024?tab=files&file_id=280904"
+   },
+   "version": "1.2",
+   "archive": {
+    "nexusFileName": "Nuka World LOD - for 2k-72024-1-2-1687123683.7z",
+    "localFileName": "Nuka World LOD - for 2k-72024-1-2-1687123683.7z",
+    "size": 99841022,
+    "sha256": "5b78c8117acbb4a9784aa0f44a26a7b2d09f7efbf101d1b84d105935ec7c846c"
+   },
+   "plugins": [
+    "Vivid Fallout - Nuka World LOD.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "The Eyes of Beauty Fallout Edition - Remastered",
+   "modFolder": "The Eyes of Beauty Fallout Edition - Remastered",
+   "displayName": {
+    "ru": "The Eyes of Beauty Fallout Edition - Remastered",
+    "en": "The Eyes of Beauty Fallout Edition - Remastered"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 73874,
+    "fileId": 286972,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/73874?tab=files&file_id=286972"
+   },
+   "version": "1.0",
+   "archive": {
+    "nexusFileName": "TeoB Fallout Remastered - Vanilla eyes replacer 2k-73874-1-0-1692253283.7z",
+    "localFileName": "TeoB Fallout Remastered - Vanilla eyes replacer 2k-73874-1-0-1692253283.7z",
+    "size": 44902254,
+    "sha256": "23347ab24cb743979984a397ee4a184fbeeb4a928136cf46e65c1faa95cc39a6"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "The Eyes of Beauty Fallout Remastered - Vanilla Eyes - 2k",
+    "fomod": false
+   }
+  }
+ ]
+}
