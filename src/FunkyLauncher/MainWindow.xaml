@@ -45,7 +45,7 @@
                     <RadioButton x:Name="LangRu" Content="RU" Style="{StaticResource LangButton}" GroupName="lang" Margin="0,0,3,0" Checked="Lang_Checked"/>
                     <RadioButton x:Name="LangEn" Content="EN" Style="{StaticResource LangButton}" GroupName="lang" Margin="3,0,0,0" Checked="Lang_Checked"/>
                 </UniformGrid>
-                <Border DockPanel.Dock="Bottom" Style="{StaticResource CardBorder}" Padding="14" Cursor="Hand" MouseLeftButtonUp="Nexus_Click">
+                <Border x:Name="NexusCard" DockPanel.Dock="Bottom" Style="{StaticResource CardBorder}" Padding="14" Cursor="Hand" MouseLeftButtonUp="Nexus_Click">
                     <StackPanel>
                         <TextBlock Text="Nexus Mods" FontSize="12" Foreground="{StaticResource Muted}"/>
                         <TextBlock x:Name="NexusStatus" FontSize="13" FontWeight="SemiBold" Margin="0,4,0,0"/>

@@ -31,7 +31,6 @@ public partial class SetupView : UserControl
         InitializeComponent();
         _main = main;
         Loc.Changed += () => { ApplyTexts(); _ = RunChecksAsync(); };
-        _main.Activated += OnMainActivated;
         ResetForModlist();
     }
 
@@ -704,7 +703,12 @@ public partial class SetupView : UserControl
         if (FolderBox.Text.Trim() != _main.Settings.InstallDir(Ml)) ApplyFolder(FolderBox.Text);
     }
 
-    private void Nexus_Click(object sender, RoutedEventArgs e) => StartNexusLogin();
+    private void Nexus_Click(object sender, RoutedEventArgs e)
+    {
+        if (!NexusLoginWindow.Ask(_main)) return;
+        _main.NexusAsked();
+        StartNexusLogin();
+    }
 
     /// <summary>
     /// Nexus login happens in the Wabbajack app. A new player does not have it yet — download it first
@@ -742,44 +746,23 @@ public partial class SetupView : UserControl
         WaitForNexusLogin();
     }
 
-    private System.Windows.Threading.DispatcherTimer? _nexusTimer;
+    private bool _waitingLogin;
 
     /// <summary>
-    /// After "Log in to Nexus" the player logs in inside Wabbajack. Watch for the login file and re-run the
-    /// checks the moment it appears — so INSTALL lights up by itself, no need to close Wabbajack or click anything.
+    /// After "Log in to Nexus" the player logs in inside Wabbajack. The main window watches the login file and calls
+    /// <see cref="NexusChanged"/> the moment it appears — INSTALL lights up by itself, no need to close Wabbajack or click anything.
     /// </summary>
-    private void WaitForNexusLogin()
-    {
-        if (WabbajackService.IsNexusLoggedIn) return;
-        _nexusTimer?.Stop();
-        var started = DateTime.Now;
-        _nexusTimer = new System.Windows.Threading.DispatcherTimer { Interval = TimeSpan.FromSeconds(2) };
-        _nexusTimer.Tick += (_, _) =>
-        {
-            if (WabbajackService.IsNexusLoggedIn)
-            {
-                _nexusTimer!.Stop();
-                ProgressText.Text = Loc.T("nexus.login.done");
-                _main.RefreshNexus();
-                if (!_busy) _ = RunChecksAsync();
-            }
-            else if (DateTime.Now - started > TimeSpan.FromMinutes(20)) _nexusTimer!.Stop();
-        };
-        _nexusTimer.Start();
-    }
+    private void WaitForNexusLogin() => _waitingLogin = !WabbajackService.IsNexusLoggedIn;
 
-    /// <summary>The window got focus again (e.g. after Wabbajack): if the Nexus login appeared meanwhile, re-check.</summary>
-    private void OnMainActivated(object? sender, EventArgs e)
+    /// <summary>The Nexus login appeared or was removed (from any page): re-run the checks.</summary>
+    public void NexusChanged(bool loggedIn)
     {
-        if (!IsVisible || _busy || _checking) return;
-        var shownMissing = _checks.Any(c => c.State == CheckState.Error && c.Title == Loc.T("check.nexus.no"));
-        if (shownMissing && WabbajackService.IsNexusLoggedIn)
+        if (loggedIn && _waitingLogin)
         {
-            _nexusTimer?.Stop();
-            ProgressText.Text = Loc.T("nexus.login.done");
-            _main.RefreshNexus();
-            _ = RunChecksAsync();
+            _waitingLogin = false;
+            if (!_busy) ProgressText.Text = Loc.T("nexus.login.done");
         }
+        if (!_busy) _ = RunChecksAsync();
     }
 
     private void Install_Click(object sender, RoutedEventArgs e)
