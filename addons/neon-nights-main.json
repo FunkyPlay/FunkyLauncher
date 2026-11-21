@@ -2,8 +2,8 @@
  "schema": 1,
  "modlistId": "neon-nights",
  "addonId": "neon-nights-main",
- "listVersion": "0.1.5",
- "forMainVersion": "0.1.5",
+ "listVersion": "0.1.6",
+ "forMainVersion": "0.1.6",
  "generated": "2026-11-19",
  "source": "NeonNights-0.1.4.wabbajack",
  "mods": [
@@ -11547,201 +11547,6 @@
    "displayName": {
     "ru": "Myers",
     "en": "Myers"
-   }
-  },
-  {
-   "id": "Named NPCs AIO 2K",
-   "modFolder": "Named NPCs AIO 2K",
-   "order": 63,
-   "nexus": {
-    "game": "cyberpunk2077",
-    "modId": 14999,
-    "fileId": 79393,
-    "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/14999?tab=files&file_id=79393"
-   },
-   "archive": {
-    "localFileName": "Named NPCs AIO 2K-14999-1-01-1717540265.7z",
-    "size": 1394354069,
-    "sha256": "d3dccd2d861166d258952d91fb1ce4046aed47404fbac811979877ccde196540"
-   },
-   "install": {
-    "type": "files",
-    "map": [
-     [
-      "archive/pc/mod/zz-NPCs-Kerry.archive",
-      "archive/pc/mod/zz-NPCs-Kerry.archive"
-     ],
-     [
-      "archive/pc/mod/zz-NPCs-Mama.archive",
-      "archive/pc/mod/zz-NPCs-Mama.archive"
-     ],
-     [
-      "archive/pc/mod/zz-NPCs-Misty.archive",
-      "archive/pc/mod/zz-NPCs-Misty.archive"
-     ],
-     [
-      "archive/pc/mod/zz-Johnny 2.0.archive",
-      "archive/pc/mod/zz-Johnny 2.0.archive"
-     ],
-     [
-      "archive/pc/mod/zz-NPCs-Nancy.archive",
-      "archive/pc/mod/zz-NPCs-Nancy.archive"
-     ],
-     [
-      "archive/pc/mod/zz-NPC-Panam.archive",
-      "archive/pc/mod/zz-NPC-Panam.archive"
-     ],
-     [
-      "archive/pc/mod/zz-NPCs-Oda.archive",
-      "archive/pc/mod/zz-NPCs-Oda.archive"
-     ],
-     [
-      "archive/pc/mod/zz-NPC-Ripperdoc.archive",
-      "archive/pc/mod/zz-NPC-Ripperdoc.archive"
-     ],
-     [
-      "archive/pc/mod/zz-NPCs-Ozob.archive",
-      "archive/pc/mod/zz-NPCs-Ozob.archive"
-     ],
-     [
-      "archive/pc/mod/zz-NPC-Wakako.archive",
-      "archive/pc/mod/zz-NPC-Wakako.archive"
-     ],
-     [
-      "archive/pc/mod/zz-NPCs-Placide.archive",
-      "archive/pc/mod/zz-NPCs-Placide.archive"
-     ],
-     [
-      "archive/pc/mod/zz-NPCs-8ug8ear.archive",
-      "archive/pc/mod/zz-NPCs-8ug8ear.archive"
-     ],
-     [
-      "archive/pc/mod/zz-NPCs-River.archive",
-      "archive/pc/mod/zz-NPCs-River.archive"
-     ],
-     [
-      "archive/pc/mod/zz-NPCs-Alt.archive",
-      "archive/pc/mod/zz-NPCs-Alt.archive"
-     ],
-     [
-      "archive/pc/mod/zz-NPCs-Rogue.archive",
-      "archive/pc/mod/zz-NPCs-Rogue.archive"
-     ],
-     [
-      "archive/pc/mod/zz-NPCs-Clair.archive",
-      "archive/pc/mod/zz-NPCs-Clair.archive"
-     ],
-     [
-      "archive/pc/mod/zz-NPCs-Royce.archive",
-      "archive/pc/mod/zz-NPCs-Royce.archive"
-     ],
-     [
-      "archive/pc/mod/zz-NPCs-Dakota.archive",
-      "archive/pc/mod/zz-NPCs-Dakota.archive"
-     ],
-     [
-      "archive/pc/mod/zz-NPCs-Saburo.archive",
-      "archive/pc/mod/zz-NPCs-Saburo.archive"
-     ],
-     [
-      "archive/pc/mod/zz-NPCs-Delamain.archive",
-      "archive/pc/mod/zz-NPCs-Delamain.archive"
-     ],
-     [
-      "archive/pc/mod/zz-NPCs-Saul.archive",
-      "archive/pc/mod/zz-NPCs-Saul.archive"
-     ],
-     [
-      "archive/pc/mod/zz-NPCs-Denny.archive",
-      "archive/pc/mod/zz-NPCs-Denny.archive"
-     ],
-     [
-      "archive/pc/mod/zz-NPCs-Sebastian.archive",
-      "archive/pc/mod/zz-NPCs-Sebastian.archive"
-     ],
-     [
-      "archive/pc/mod/zz-NPCs-Dex.archive",
-      "archive/pc/mod/zz-NPCs-Dex.archive"
-     ],
-     [
-      "archive/pc/mod/zz-NPCs-T-Bug.archive",
-      "archive/pc/mod/zz-NPCs-T-Bug.archive"
-     ],
-     [
-      "archive/pc/mod/zz-NPCs-Dino.archive",
-      "archive/pc/mod/zz-NPCs-Dino.archive"
-     ],
-     [
-      "archive/pc/mod/zz-NPCs-Takemura.archive",
-      "archive/pc/mod/zz-NPCs-Takemura.archive"
-     ],
-     [
-      "archive/pc/mod/zz-NPCs-DumDum.archive",
-      "archive/pc/mod/zz-NPCs-DumDum.archive"
-     ],
-     [
-      "archive/pc/mod/zz-NPCs-Thiago.archive",
-      "archive/pc/mod/zz-NPCs-Thiago.archive"
-     ],
-     [
-      "archive/pc/mod/zz-NPCs-ElCoyoteBarman.archive",
-      "archive/pc/mod/zz-NPCs-ElCoyoteBarman.archive"
-     ],
-     [
-      "archive/pc/mod/zz-NPCs-Thompson.archive",
-      "archive/pc/mod/zz-NPCs-Thompson.archive"
-     ],
-     [
-      "archive/pc/mod/zz-NPCs-Evelyn.archive",
-      "archive/pc/mod/zz-NPCs-Evelyn.archive"
-     ],
-     [
-      "archive/pc/mod/zz-NPCs-Us Cracks.archive",
-      "archive/pc/mod/zz-NPCs-Us Cracks.archive"
-     ],
-     [
-      "archive/pc/mod/zz-NPCs-Fingers.archive",
-      "archive/pc/mod/zz-NPCs-Fingers.archive"
-     ],
-     [
-      "archive/pc/mod/zz-NPCs-Weldon.archive",
-      "archive/pc/mod/zz-NPCs-Weldon.archive"
-     ],
-     [
-      "archive/pc/mod/zz-NPCs-Hanako.archive",
-      "archive/pc/mod/zz-NPCs-Hanako.archive"
-     ],
-     [
-      "archive/pc/mod/zz-NPCs-Wilson.archive",
-      "archive/pc/mod/zz-NPCs-Wilson.archive"
-     ],
-     [
-      "archive/pc/mod/zz-NPCS-Jackie.archive",
-      "archive/pc/mod/zz-NPCS-Jackie.archive"
-     ],
-     [
-      "archive/pc/mod/zz-NPCs-Yorinobu.archive",
-      "archive/pc/mod/zz-NPCs-Yorinobu.archive"
-     ],
-     [
-      "archive/pc/mod/zz-NPCs-Josh.archive",
-      "archive/pc/mod/zz-NPCs-Josh.archive"
-     ],
-     [
-      "archive/pc/mod/zz-NPCs-Judy.archive",
-      "archive/pc/mod/zz-NPCs-Judy.archive"
-     ],
-     [
-      "archive/pc/mod/zz-NPCs-Karina.archive",
-      "archive/pc/mod/zz-NPCs-Karina.archive"
-     ]
-    ],
-    "fomod": false,
-    "fileCount": 42
-   },
-   "displayName": {
-    "ru": "Named NPCs AIO 2K",
-    "en": "Named NPCs AIO 2K"
    }
   },
   {
@@ -30153,37 +29958,6 @@
    }
   },
   {
-   "id": "Cyberpunk 2077 HD Reworked Project Balanced",
-   "modFolder": "Cyberpunk 2077 HD Reworked Project Balanced",
-   "order": 232,
-   "nexus": {
-    "game": "cyberpunk2077",
-    "modId": 7652,
-    "fileId": 52301,
-    "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/7652?tab=files&file_id=52301"
-   },
-   "archive": {
-    "localFileName": "Cyberpunk 2077 HD Reworked Project Balanced-7652-2-0-1696952040.zip",
-    "size": 696056651,
-    "sha256": "3569925c14b5ae9dad937673b0af995f7e63e8d2ad3b999aa0b8f7c740998e08"
-   },
-   "install": {
-    "type": "files",
-    "map": [
-     [
-      "archive/pc/mod/HD Reworked Project.archive",
-      "archive/pc/mod/HD Reworked Project.archive"
-     ]
-    ],
-    "fomod": false,
-    "fileCount": 1
-   },
-   "displayName": {
-    "ru": "Cyberpunk 2077 HD Reworked Project Balanced",
-    "en": "Cyberpunk 2077 HD Reworked Project Balanced"
-   }
-  },
-  {
    "id": "ef_dependencies_v",
    "modFolder": "ef_dependencies_v",
    "order": 233,
@@ -30766,77 +30540,6 @@
    }
   },
   {
-   "id": "Egghanced Blood Fx v2 - BALANCED",
-   "modFolder": "Egghanced Blood Fx v2 - BALANCED",
-   "order": 246,
-   "nexus": {
-    "game": "cyberpunk2077",
-    "modId": 11834,
-    "fileId": 70297,
-    "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/11834?tab=files&file_id=70297"
-   },
-   "archive": {
-    "localFileName": "Egghanced Blood Fx v2 - BALANCED-11834-v1-0-0-0-1709270069.rar",
-    "size": 108521592,
-    "sha256": "def5bda55b9304544fe0afa4fc7a2267d78c23a82cb17d7068b19519d8115824"
-   },
-   "install": {
-    "type": "files",
-    "map": [
-     [
-      "bin/x64/plugins/cyber_engine_tweaks/mods/##EgghancedBloodFx/##EgghancedBloodFx.log",
-      "bin/x64/plugins/cyber_engine_tweaks/mods/##EgghancedBloodFx/##EgghancedBloodFx.log"
-     ],
-     [
-      "bin/x64/plugins/cyber_engine_tweaks/mods/##EgghancedBloodFx/db.sqlite3",
-      "bin/x64/plugins/cyber_engine_tweaks/mods/##EgghancedBloodFx/db.sqlite3"
-     ],
-     [
-      "bin/x64/plugins/cyber_engine_tweaks/mods/##EgghancedBloodFx/init.lua",
-      "bin/x64/plugins/cyber_engine_tweaks/mods/##EgghancedBloodFx/init.lua"
-     ],
-     [
-      "archive/pc/mod/aa_EgghancedBloodPuddles.archive",
-      "archive/pc/mod/aa_EgghancedBloodPuddles.archive"
-     ],
-     [
-      "archive/pc/mod/aa_EgghancedGore.archive",
-      "archive/pc/mod/aa_EgghancedGore.archive"
-     ],
-     [
-      "archive/pc/mod/EgghancedBloodFx.archive",
-      "archive/pc/mod/EgghancedBloodFx.archive"
-     ],
-     [
-      "r6/tweaks/EgghancedBloodFx/MeleeMaterialFx_CyberwareFlesh.yaml",
-      "r6/tweaks/EgghancedBloodFx/MeleeMaterialFx_CyberwareFlesh.yaml"
-     ],
-     [
-      "r6/tweaks/EgghancedBloodFx/WeaponMaterialFx_CyberwareFlesh.yaml",
-      "r6/tweaks/EgghancedBloodFx/WeaponMaterialFx_CyberwareFlesh.yaml"
-     ],
-     [
-      "r6/tweaks/EgghancedBloodFx/zArmor_Impact.yaml",
-      "r6/tweaks/EgghancedBloodFx/zArmor_Impact.yaml"
-     ],
-     [
-      "r6/tweaks/EgghancedBloodFx/_MeleeMaterialFx_Flesh.yaml",
-      "r6/tweaks/EgghancedBloodFx/_MeleeMaterialFx_Flesh.yaml"
-     ],
-     [
-      "r6/tweaks/EgghancedBloodFx/_WeaponMaterialFx_Flesh.yaml",
-      "r6/tweaks/EgghancedBloodFx/_WeaponMaterialFx_Flesh.yaml"
-     ]
-    ],
-    "fomod": false,
-    "fileCount": 11
-   },
-   "displayName": {
-    "ru": "Egghanced Blood Fx v2 - BALANCED",
-    "en": "Egghanced Blood Fx v2 - BALANCED"
-   }
-  },
-  {
    "id": "Hair Profiles CCXL 1.02",
    "modFolder": "Hair Profiles CCXL 1.02",
    "order": 247,
@@ -31410,37 +31113,6 @@
    "displayName": {
     "ru": "Rogue",
     "en": "Rogue"
-   }
-  },
-  {
-   "id": "Rainmap_DistantShadows",
-   "modFolder": "Rainmap_DistantShadows",
-   "order": 263,
-   "nexus": {
-    "game": "cyberpunk2077",
-    "modId": 8610,
-    "fileId": 158351,
-    "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/8610?tab=files&file_id=158351"
-   },
-   "archive": {
-    "localFileName": "Rainmap_DistantShadows 8610 0.2 2026-08-29T22-19Z ujWojT3N6.rar",
-    "size": 427,
-    "sha256": "6026fdaf6cdf7aca3c68629210f1cf9a4e597c20dfe959f16ef045d31067f93e"
-   },
-   "install": {
-    "type": "files",
-    "map": [
-     [
-      "engine/config/platform/pc/RainMap_DistantShadows.ini",
-      "engine/config/platform/pc/RainMap_DistantShadows.ini"
-     ]
-    ],
-    "fomod": false,
-    "fileCount": 1
-   },
-   "displayName": {
-    "ru": "Rainmap_DistantShadows",
-    "en": "Rainmap_DistantShadows"
    }
   },
   {
@@ -35587,37 +35259,6 @@
    "displayName": {
     "ru": "CallList-VehicleDetailsOverlay-CET",
     "en": "CallList-VehicleDetailsOverlay-CET"
-   }
-  },
-  {
-   "id": "Improved Distant Shadows 20623 0.4 2026",
-   "modFolder": "Improved Distant Shadows 20623 0.4 2026",
-   "order": 367,
-   "nexus": {
-    "game": "cyberpunk2077",
-    "modId": 20623,
-    "fileId": 165839,
-    "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/20623?tab=files&file_id=165839"
-   },
-   "archive": {
-    "localFileName": "Improved Distant Shadows 20623 0.4 2026-10-13T17-56Z KRvfRxmpg.zip",
-    "size": 2771399291,
-    "sha256": "9064cef42d21652d22d3e9571cdce112b5467b88a81146b0a8add8c3256022b5"
-   },
-   "install": {
-    "type": "files",
-    "map": [
-     [
-      "archive/pc/mod/ImprovedDistantShadows.archive",
-      "archive/pc/mod/ImprovedDistantShadows.archive"
-     ]
-    ],
-    "fomod": false,
-    "fileCount": 1
-   },
-   "displayName": {
-    "ru": "Improved Distant Shadows 20623 0.4 2026",
-    "en": "Improved Distant Shadows 20623 0.4 2026"
    }
   },
   {
