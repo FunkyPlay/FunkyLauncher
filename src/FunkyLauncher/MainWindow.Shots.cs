@@ -254,6 +254,30 @@ public partial class MainWindow
                         await Task.Delay(300);
                         SaveElement(gr, Path.Combine(dir, $"{lang}-{nm}.png"));
                     }
+                    // 0.1.21: the same switch for Atomic Nights (fallout4) and Nova Nights (starfield) with their real heavy packs —
+                    // the setup page as is, then the row with an 8 GB card (the light version recommended)
+                    var was = Settings.SelectedId;
+                    try
+                    {
+                        foreach (var id in new[] { "fallout4", "starfield" })
+                        {
+                            if (Core.Addons.Extras(id).FirstOrDefault(x => x.Kind == "heavy").Pack is not { } heavy) continue;
+                            Settings.SelectedId = id;
+                            Height = 1240 + dh;
+                            ShowSetup();
+                            await Task.Delay(3000);
+                            Save(Path.Combine(dir, $"{lang}-29-setup-{id}.png"));
+                            var panel = new System.Windows.Controls.Border { Background = (Brush)FindResource("Card"), CornerRadius = new CornerRadius(12),
+                                Padding = new Thickness(18), Child = _setup.ShotGraphicsRow(heavy, 8.0, true) };
+                            var gr = new System.Windows.Controls.Border { Background = (Brush)FindResource("Bg"), Padding = new Thickness(20), Width = 820, Child = panel };
+                            gr.Measure(new Size(gr.Width, double.PositiveInfinity));
+                            gr.Arrange(new Rect(gr.DesiredSize));
+                            gr.UpdateLayout();
+                            await Task.Delay(300);
+                            SaveElement(gr, Path.Combine(dir, $"{lang}-29b-graphics-{id}-8gb.png"));
+                        }
+                    }
+                    finally { Settings.SelectedId = was; Height = _shotBaseHeight + dh; }
                 }
                 catch (Exception e) { File.AppendAllText(Path.Combine(dir, "errors.txt"), $"{lang}-toolhelp: {e}\n"); }
                 // 0.1.17: the support chat with the "paste a screenshot / drag a file" hint
