@@ -319,25 +319,41 @@ public partial class SetupView : UserControl
                 TaskContinuationOptions.OnlyOnRanToCompletion);
         }
         var recommendLight = _vramGb is > 0 and <= 8.5; // 8 GB cards report a little over 8
-        var hint = Loc.F("comp.heavy.hint", gb) + (recommendLight ? "\n" + Loc.F("comp.heavy.rec", Math.Round(_vramGb!.Value)) : "");
-        var row = Row(Loc.T("comp.heavy"), hint, out var right);
+        // Design mock-up 21.11: a row under the language; the selected option's hint; with ≤ 8 GB a cyan line and the
+        // "RECOMMENDED" badge on the light option (plus a cyan frame while it is not selected)
+        var row = Row(Loc.T("gfx.title"), Loc.T(full ? "gfx.full.hint" : "gfx.light.hint"), out var right);
+        if (recommendLight && row.Children[0] is StackPanel left)
+            left.Children.Add(new TextBlock { Text = Loc.F("gfx.recommend", Math.Round(_vramGb!.Value)), FontSize = 12, Foreground = (Brush)FindResource("Cyan"), TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 4, 0, 0) });
         var seg = new StackPanel { Orientation = Orientation.Horizontal, VerticalAlignment = VerticalAlignment.Center };
-        seg.Children.Add(Segment(Loc.T("comp.heavy.full"), full, () => { if (!full) _ = GraphicsPickedAsync(heavy, true, gb); }));
-        var lite = Segment((recommendLight ? "★ " : "") + Loc.T("comp.heavy.lite"), !full, () => { if (full) _ = GraphicsPickedAsync(heavy, false, gb); });
+        seg.Children.Add(Segment(Loc.T("gfx.full"), full, () => { if (!full) _ = GraphicsPickedAsync(heavy, true, gb); }));
+        var lite = Segment(Loc.T("gfx.light"), !full, () => { if (full) _ = GraphicsPickedAsync(heavy, false, gb); });
         if (recommendLight && full) { lite.BorderBrush = (Brush)FindResource("Cyan"); lite.BorderThickness = new Thickness(1.5); }
-        seg.Children.Add(lite);
-        right.Child = new Border { Background = (Brush)FindResource("CardActive"), CornerRadius = new CornerRadius(8), Padding = new Thickness(3), Child = seg };
+        if (recommendLight)
+        {
+            var holder = new Grid();
+            holder.Children.Add(lite);
+            holder.Children.Add(new Border
+            {
+                Background = (Brush)FindResource("Cyan"), CornerRadius = new CornerRadius(4), Padding = new Thickness(5, 1, 5, 1),
+                HorizontalAlignment = HorizontalAlignment.Right, VerticalAlignment = VerticalAlignment.Top, Margin = new Thickness(0, -9, -4, 0),
+                IsHitTestVisible = false,
+                Child = new TextBlock { Text = Loc.T("gfx.badge"), FontSize = 9, FontWeight = FontWeights.Bold, Foreground = (Brush)FindResource("Bg") },
+            });
+            seg.Children.Add(holder);
+        }
+        else seg.Children.Add(lite);
+        right.Child = new Border { Background = (Brush)FindResource("CardActive"), CornerRadius = new CornerRadius(8), Padding = new Thickness(3, 10, 3, 3), Child = seg };
         return row;
     }
 
     /// <summary>Installed: asks first (light: the heavy mods go off, files stay; full: they come back, downloaded if missing).</summary>
     private async Task GraphicsPickedAsync(AddonFile heavy, bool full, int gb)
     {
-        if (Installed && !Updating && Views.Dialog.Show(_main, full ? Loc.F("comp.heavy.ask.full", gb) : Loc.T("comp.heavy.ask.lite"),
-                Loc.T("comp.heavy"), MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes) != MessageBoxResult.Yes) return;
+        if (Installed && !Updating && Views.Dialog.Show(_main, full ? Loc.F("gfx.switch.full", gb) : Loc.T("gfx.switch.light"),
+                Loc.T("gfx.title"), MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes) != MessageBoxResult.Yes) return;
         await ExtraClickedAsync(heavy, full);
         if (ProgressText.Text == Loc.T("comp.extra.on") || ProgressText.Text == Loc.T("comp.extra.off"))
-            ProgressText.Text = Loc.T(full ? "comp.heavy.done.full" : "comp.heavy.done.lite");
+            ProgressText.Text = Loc.T(full ? "gfx.done.full" : "gfx.done.light");
     }
 
     /// <summary>For --shots: the graphics row with a test pack and a 6 GB card (the light version recommended).</summary>
