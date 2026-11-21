@@ -46,6 +46,11 @@ public partial class MainWindow : Window, IProUi
         Page.Content = _home;
         _ = RefreshCatalogAsync();
         Activated += (_, _) => RefreshNexus(); // e.g. after logging in through Wabbajack
+        // 0.1.19: the Nexus login (Wabbajack writes its file) is noticed by itself, whatever button started it and
+        // even while the launcher window stays in the background — a File.Exists every 2 s costs nothing
+        _nexusWatch = new System.Windows.Threading.DispatcherTimer { Interval = TimeSpan.FromSeconds(2) };
+        _nexusWatch.Tick += (_, _) => WatchNexus();
+        _nexusWatch.Start();
         RestoreWindow();
         Closing += (_, e) =>
         {
@@ -212,6 +217,27 @@ public partial class MainWindow : Window, IProUi
     private void SupportSide_Click(object sender, RoutedEventArgs e) =>
         PlayService.OpenSupportChat("", Settings, Selected);
 
+    private readonly System.Windows.Threading.DispatcherTimer _nexusWatch;
+    private bool? _nexusSeen;
+    private bool _nexusAsked; // the three-step window was shown: a toast when the login arrives
+
+    internal void NexusAsked() => _nexusAsked = true;
+
+    /// <summary>The login file appeared or disappeared: the side panel, the library and the install checks follow.</summary>
+    private void WatchNexus()
+    {
+        var ok = WabbajackService.IsNexusLoggedIn;
+        if (_nexusSeen == ok) return;
+        var first = _nexusSeen == null;
+        _nexusSeen = ok;
+        if (first) return; // the state at start is drawn by ApplyTexts
+        RefreshNexus();
+        if (Page.Content == _library) _library.Refresh();
+        _setup.NexusChanged(ok);
+        // the player is probably still in Wabbajack or the browser: tell them there, on top of everything
+        if (ok && _nexusAsked) { _nexusAsked = false; Views.ScreenToast.Message(Loc.T("nexus.toast.done"), Loc.T("nexus.toast.done.text")); }
+    }
+
     public void RefreshNexus()
     {
         SupportSideButton.Content = "💬 " + Loc.T("start.support.write");
@@ -241,8 +267,8 @@ public partial class MainWindow : Window, IProUi
         }
         else
         {
-            if (Views.Dialog.Show(this, Loc.T("nexus.login.info"), Loc.T("nexus.login"),
-                    MessageBoxButton.OKCancel, MessageBoxImage.Information) != MessageBoxResult.OK) return;
+            if (!Views.NexusLoginWindow.Ask(this)) return;
+            _nexusAsked = true;
             if (WabbajackService.FindGui() == null)
             {
                 // a new player: Wabbajack is downloaded first, with progress on the install page

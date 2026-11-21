@@ -12,7 +12,10 @@ public static class WabbajackService
 {
     private static string ManagedRoot => Path.Combine(AppConfig.DataDir, "Wabbajack");
 
-    public static string NexusLoginFile =>
+    /// <summary>--shots only: a throwaway login file, to show the side panel noticing a login.</summary>
+    internal static string? TestLoginFile;
+
+    public static string NexusLoginFile => TestLoginFile ??
         Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Wabbajack", "encrypted", "nexus-oauth-info");
 
     public static bool IsNexusLoggedIn => File.Exists(NexusLoginFile);

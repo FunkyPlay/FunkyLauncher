@@ -1,4 +1,4 @@
-// Funky Launcher — Copyright (C) 2026 Funky. Licensed under GPL-3.0-or-later.
+﻿// Funky Launcher — Copyright (C) 2026 Funky. Licensed under GPL-3.0-or-later.
 using System.IO;
 using System.Windows;
 using System.Windows.Media;
@@ -203,6 +203,32 @@ public partial class MainWindow
                         warn.UpdateLayout();
                         await Task.Delay(300);
                         SaveElement(warn, Path.Combine(dir, $"{lang}-26-game-files-ask.png"));
+                    }
+                    // 0.1.19: the three-step Nexus login window (before Wabbajack opens)
+                    {
+                        var nx = Views.NexusLoginWindow.ForShots();
+                        nx.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
+                        nx.Arrange(new Rect(nx.DesiredSize));
+                        nx.UpdateLayout();
+                        await Task.Delay(300);
+                        SaveElement(nx, Path.Combine(dir, $"{lang}-27-nexus-login-steps.png"));
+                    }
+                    // 0.1.19: the side panel notices a Nexus login by itself (a throwaway login file, the real one is not touched)
+                    {
+                        var fake = Path.Combine(dir, "nexus-login-test");
+                        File.Delete(fake);
+                        WabbajackService.TestLoginFile = fake;
+                        try
+                        {
+                            await Task.Delay(3000);
+                            var before = NexusStatus.Text;
+                            SaveElement(NexusCard, Path.Combine(dir, $"{lang}-28-nexus-side-before.png"));
+                            File.WriteAllText(fake, "test");
+                            await Task.Delay(3000);
+                            SaveElement(NexusCard, Path.Combine(dir, $"{lang}-28b-nexus-side-after.png"));
+                            File.AppendAllText(Path.Combine(dir, "nexus-watch.txt"), $"{lang}: before '{before}' -> after '{NexusStatus.Text}' (no click, no window activation)\n");
+                        }
+                        finally { File.Delete(fake); WabbajackService.TestLoginFile = null; await Task.Delay(2500); }
                     }
                     // 0.1.19: "back to the previous version" of a modlist updated in place (test versions)
                     {
