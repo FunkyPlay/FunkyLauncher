@@ -34,6 +34,38 @@ public static partial class GameFolders
         return true;
     }
 
+    /// <summary>The folder with the game exe one or two levels below <paramref name="dir"/> (the player picked "D:\Games"). Null if none or several.</summary>
+    public static string? FindBelow(Modlist ml, string dir)
+    {
+        if (string.IsNullOrEmpty(ml.GameExe)) return null;
+        var found = new List<string>();
+        try
+        {
+            foreach (var a in Directory.EnumerateDirectories(dir))
+            {
+                if (File.Exists(Path.Combine(a, ml.GameExePath))) found.Add(a);
+                else
+                    try { foreach (var b in Directory.EnumerateDirectories(a)) if (File.Exists(Path.Combine(b, ml.GameExePath))) found.Add(b); }
+                    catch { /* no access — skip */ }
+                if (found.Count > 1) return null;
+            }
+        }
+        catch { return null; }
+        return found.Count == 1 ? found[0] : null;
+    }
+
+    /// <summary>Two new lines and "In this folder: a, b, c…" — what the player actually picked (up to 8 names); "" if unreadable.</summary>
+    public static string Contents(string dir)
+    {
+        try
+        {
+            var names = Directory.EnumerateFileSystemEntries(dir).Select(Path.GetFileName).Take(9).ToList();
+            if (names.Count == 0) return Environment.NewLine + Environment.NewLine + Loc.T("setup.gamefolder.empty");
+            return Environment.NewLine + Environment.NewLine + Loc.F("setup.gamefolder.has", string.Join(", ", names.Take(8)) + (names.Count > 8 ? "…" : ""));
+        }
+        catch { return ""; }
+    }
+
     public static IEnumerable<string> Candidates(Modlist ml)
     {
         if (Picked(ml) is { } p) yield return p;

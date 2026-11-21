@@ -525,7 +525,12 @@ public static class Loc
         ["setup.gamefolder"] = ("Папка игры…", "Game folder…"),
         ["setup.gamefolder.title"] = ("Где установлена {0}? Выбери папку, в которой лежит {1}", "Where is {0} installed? Pick the folder with {1}"),
         ["setup.gamefolder.bad"] = ("В этой папке нет {0}. Выбери папку игры, где лежит этот файл.", "There is no {0} in this folder. Pick the game folder that has this file."),
-        ["check.game.pick"] = ("Нажми «Папка игры…» и покажи, где она установлена", "Click \"Game folder…\" and show where it is installed"),
+        // 0.1.19 (draft, for the Copywriter): the red "game not found" row with its own button
+        ["check.game.pick"] = ("Лаунчер не нашёл {0} сам. Нажми «Указать папку игры» и выбери папку, где лежит {0}.", "The launcher couldn't find {0} by itself. Press “Show the game folder” and pick the folder with {0}."),
+        ["check.game.pickbtn"] = ("Указать папку игры", "Show the game folder"),
+        ["setup.gamefolder.below"] = ("{0} нашёлся в папке {1} — выбрали её.", "{0} was found in {1} — that folder is picked."),
+        ["setup.gamefolder.has"] = ("В выбранной папке лежит: {0}", "The picked folder has: {0}"),
+        ["setup.gamefolder.empty"] = ("Выбранная папка пустая.", "The picked folder is empty."),
         ["check.list.ok"] = ("Файлов в списке сборки: {0}", "Files in the modlist: {0}"),
         ["check.list.no"] = ("Список модов сборки не найден", "Modlist mod list not found"),
         ["inst.mo2.download"] = ("Скачиваем Mod Organizer 2… {0}%", "Downloading Mod Organizer 2… {0}%"),

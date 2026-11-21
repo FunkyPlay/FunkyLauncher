@@ -181,6 +181,16 @@ public partial class MainWindow
                         await Task.Delay(300);
                         SaveElement(ask, Path.Combine(dir, $"{lang}-22b-admin-ask.png"));
                     }
+                    // 0.1.19: the red "game not found" row with "Show the game folder" (a Nexus-list modlist: Starfield)
+                    if (Core.Catalog.Find("starfield") is { } sf)
+                    {
+                        var gameRow = new System.Windows.Controls.Border { Background = (Brush)FindResource("Bg"), Padding = new Thickness(20), Width = 820, Child = _setup.ShotGameMissingRow(sf) };
+                        gameRow.Measure(new Size(gameRow.Width, double.PositiveInfinity));
+                        gameRow.Arrange(new Rect(gameRow.DesiredSize));
+                        gameRow.UpdateLayout();
+                        await Task.Delay(300);
+                        SaveElement(gameRow, Path.Combine(dir, $"{lang}-23-game-missing.png"));
+                    }
                 }
                 catch (Exception e) { File.AppendAllText(Path.Combine(dir, "errors.txt"), $"{lang}-toolhelp: {e}\n"); }
                 // 0.1.17: the support chat with the "paste a screenshot / drag a file" hint

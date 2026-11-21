@@ -7,7 +7,8 @@ namespace FunkyLauncher.Services;
 public enum CheckState { Ok, Warning, Error }
 
 /// <summary>A line of the check list. Tool: a missing required tool (REDmod) — its row gets "How to install" / "Check again".</summary>
-public sealed record CheckItem(CheckState State, string Title, string? Hint = null, RequiredTool? Tool = null, AdminFlag.Found? Admin = null);
+/// PickGame: the game was not found and the player can show its folder — red row with "Show the game folder" (0.1.19).
+public sealed record CheckItem(CheckState State, string Title, string? Hint = null, RequiredTool? Tool = null, AdminFlag.Found? Admin = null, bool PickGame = false);
 
 public sealed class GameInfo
 {
@@ -176,8 +177,9 @@ public static class SystemCheck
 
         if (game == null && nexusList)
         {
-            // the launcher looks for the game itself; if it can't, the player shows the folder ("Game folder…")
-            items.Add(new CheckItem(CheckState.Error, Loc.F("check.game.no", ml.Game), Loc.T("check.game.pick")));
+            // the launcher looks for the game itself; if it can't, the player shows the folder. 0.1.19: a red row with its own
+            // button, first in the list (players didn't see the small "Game folder…" button, 21.11)
+            items.Insert(0, new CheckItem(CheckState.Error, Loc.F("check.game.no", ml.Game), Loc.F("check.game.pick", ml.GameExe), PickGame: true));
         }
         else if (game == null && wjVer == null)
         {

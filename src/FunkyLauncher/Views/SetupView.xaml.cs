@@ -460,7 +460,7 @@ public partial class SetupView : UserControl
 
     private Border CheckRow(CheckItem c)
     {
-        if (c.Tool != null || c.Admin != null) return ToolRow(c);
+        if (c.Tool != null || c.Admin != null || c.PickGame) return ToolRow(c);
         var error = c.State == CheckState.Error;
         var icon = new Border
         {
@@ -510,7 +510,9 @@ public partial class SetupView : UserControl
             return b;
         }
         var buttons = new StackPanel { Margin = new Thickness(14, 0, 0, 0), VerticalAlignment = VerticalAlignment.Center };
-        if (c.Admin is { } flag)
+        if (c.PickGame)
+            buttons.Children.Add(Small(Loc.T("check.game.pickbtn"), (_, _) => GameFolder_Click(this, new RoutedEventArgs())));
+        else if (c.Admin is { } flag)
             buttons.Children.Add(Small(Loc.T("admin.flag.fix"), (_, _) =>
             {
                 var err = AdminFlag.Remove(flag);
@@ -550,9 +552,20 @@ public partial class SetupView : UserControl
         var dlg = new OpenFolderDialog { Title = Loc.F("setup.gamefolder.title", Ml.Game, Ml.GameExe) };
         if (dlg.ShowDialog() != true) return;
         if (!GameFolders.Pick(Ml, dlg.FolderName))
-            Views.Dialog.Show(_main, Loc.F("setup.gamefolder.bad", Ml.GameExe), "Funky Launcher", MessageBoxButton.OK, MessageBoxImage.Warning);
+        {
+            // 0.1.19: the exe one or two folders deeper (a library folder, "Games") — take that folder by itself
+            if (GameFolders.FindBelow(Ml, dlg.FolderName) is { } below && GameFolders.Pick(Ml, below))
+                Views.Dialog.Show(_main, Loc.F("setup.gamefolder.below", Ml.GameExe, below), "Funky Launcher", MessageBoxButton.OK, MessageBoxImage.Information);
+            else
+                Views.Dialog.Show(_main, Loc.F("setup.gamefolder.bad", Ml.GameExe) + GameFolders.Contents(dlg.FolderName), Loc.F("check.game.no", Ml.Game),
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+        }
         _ = RunChecksAsync();
     }
+
+    /// <summary>For --shots: the red "game not found" row (the PC itself may have the game).</summary>
+    internal Border ShotGameMissingRow(Modlist ml) =>
+        ToolRow(new CheckItem(CheckState.Error, Loc.F("check.game.no", ml.Game), Loc.F("check.game.pick", ml.GameExe), PickGame: true));
 
     private void ApplyFolder(string dir)
     {
