@@ -61,6 +61,7 @@ Nothing in this list is sent by the launcher, except what is described in “Fun
 you decide whether to send it to support.
 The report may also include whether the launcher runs as administrator, the WebView2 version and the end of launcher.log
 (it can contain folder paths and the Windows user name). It stays on your Desktop; you decide whether to send it.
+Since 0.1.20 the report may also include REDscope crash files of the game (the 3 newest crashes and REDscope's own log). They can contain folder paths, the Windows user name and small pieces of the game's memory at the moment of the crash. Large memory dumps (.zip, .dmp) are not included. The report is sent only if you send it yourself.
 
 ---
 
@@ -91,6 +92,7 @@ Funky Pro: облачный бэкап только кладёт архивы в
 Dropbox, Google Drive); сам лаунчер ничего не выгружает. Ключ Pro при активации проверяется без интернета.
 Отчёт об ошибке сохраняется на рабочий стол и никуда сам не отправляется.
 В отчёт также попадают: запущен ли лаунчер от администратора, версия WebView2 и конец launcher.log (в нём могут быть пути к папкам и имя пользователя Windows). Он лежит на рабочем столе, отправлять ли его — решаешь ты.
+С версии 0.1.20 в отчёт также попадают файлы вылетов REDscope (3 последних вылета и журнал REDscope). В них могут быть пути к папкам, имя пользователя Windows и небольшие фрагменты памяти игры в момент вылета. Большие снимки памяти (.zip, .dmp) не берутся. Отчёт уходит, только если ты сам его отправил.
 Лаунчер может искать в папке «Загрузки» только файл, который вы сами скачали для установки мода (по имени и размеру), и копирует его к себе; ничего не отправляется.
 
 **Чат поддержки.** Когда вы пишете в поддержку из лаунчера, мы получаем текст сообщения, скриншот или отчёт (если вы сами его приложите), случайный номер установки, название сборки и версию лаунчера. Мы используем их только чтобы ответить вам. Данные хранятся на нашем сервере в Германии (Hetzner): скриншоты — 90 дней, остальное — 12 месяцев после последнего обращения. Третьим лицам мы их не передаём. Удалить данные можно кнопкой «Удалить мои данные» в чате или письмом на privacy@funkylauncher.com: ответим не позднее чем через 10 рабочих дней. Контролёр данных — индивидуальный предприниматель Funky (Грузия).
