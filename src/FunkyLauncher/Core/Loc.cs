@@ -627,6 +627,8 @@ public static class Loc
         // 0.1.18 (draft): the server's limit (429) — the launcher waits and sends again by itself
         ["chat.wait"] = ("Сервер просит подождать: отправлю сам через {0} с. Окно не закрывай.", "The server asks to wait: I'll send it by myself in {0} s. Keep the window open."),
         ["chat.err.busy"] = ("Сервер сейчас принимает слишком много сообщений. Подожди {0} с и нажми «Отправить» ещё раз.", "The server is getting too many messages right now. Wait {0} s and press Send again."),
+        ["chat.err.hour"] = ("Из этого лаунчера за час ушло много сообщений — сервер пока не принимает новые. Попробуй через час или напиши боту в Telegram.", "Many messages were sent from this launcher in the last hour — the server won't take more for now. Try in an hour or message the Telegram bot."),
+        ["chat.err.files"] = ("За сутки уже отправлено 100 МБ файлов — это предел. Напиши текстом, а файл пришли завтра или боту в Telegram.", "100 MB of files were already sent today — that's the limit. Write it as text and send the file tomorrow or to the Telegram bot."),
         ["chat.telegram"] = ("Удобнее в Telegram? Написать боту @FunkyLauncherBot", "Prefer Telegram? Message @FunkyLauncherBot"),
         ["comp.voice.link"] = ("Страница авторов", "Authors' page"),
         ["comp.voice.link.hint"] = ("Ставится отдельно со страницы авторов, по их инструкции: включить её в сборку без их разрешения мы не можем.", "Installed separately from the authors' page, following their instructions: we can't include it in the modlist without their permission."),

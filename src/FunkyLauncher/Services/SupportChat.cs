@@ -109,11 +109,13 @@ public static class SupportChat
                 resp = await http.PostAsync(Api + "/send", content, token);
                 // 0.1.18: 429 = the server's limit of messages per minute (support #142: "send answered 429").
                 // Wait as long as the server says (Retry-After, else 30 s), show the countdown, send again by itself — twice at most.
-                if ((int)resp.StatusCode == 429 && busy < 2)
+                // Only the per-IP limit ("too many requests") can free up in a minute; the hourly message limit and the
+                // daily file limit don't — those are answered at once, without waiting (Bots, 21.11).
+                if ((int)resp.StatusCode == 429 && busy < 2 && Limit(await ErrorOf(resp, token)) == null)
                 {
                     busy++;
                     var wait = WaitOf(resp);
-                    AppLog.Write($"support chat: send answered 429, waiting {wait} s (try {busy})");
+                    AppLog.Write($"support chat: send answered 429 ({await ErrorOf(resp, token)}), waiting {wait} s (try {busy})");
                     resp.Dispose();
                     resp = null;
                     for (var left = wait; left > 0; left--)
@@ -140,12 +142,33 @@ public static class SupportChat
         if (!resp.IsSuccessStatusCode)
         {
             var code = (int)resp.StatusCode;
-            AppLog.Write($"support chat: send answered {code} ({body.Length / 1024} KB)");
+            var error = await ErrorOf(resp, token);
+            AppLog.Write($"support chat: send answered {code} ({body.Length / 1024} KB){(error != null ? ": " + error : "")}");
+            if (code == 429 && Limit(error) is { } limit) throw new InvalidOperationException(limit);
             // 504/408: the server gave up waiting for a slow upload (Caddy reads a body for 60 s at most)
             throw new InvalidOperationException(code == 413 ? Loc.T("chat.err.big") : code is 504 or 408 ? Loc.T("chat.err.slow")
                 : code == 429 ? Loc.F("chat.err.busy", WaitOf(resp)) : Loc.F("chat.err.send", code));
         }
     }
+
+    /// <summary>The server's "error" text ({"ok":false,"error":"..."}); null if there is none. Read once, kept.</summary>
+    private static async Task<string?> ErrorOf(HttpResponseMessage resp, CancellationToken token)
+    {
+        try
+        {
+            await resp.Content.LoadIntoBufferAsync();
+            var s = await resp.Content.ReadAsStringAsync(token);
+            return JsonDocument.Parse(s).RootElement.TryGetProperty("error", out var e) ? e.GetString() : null;
+        }
+        catch { return null; }
+    }
+
+    /// <summary>A limit that waiting a minute won't lift → the player's text; null for the per-IP limit or anything else.</summary>
+    internal static string? Limit(string? error) =>
+        error == null ? null
+        : error.Contains("daily file limit", StringComparison.OrdinalIgnoreCase) ? Loc.T("chat.err.files")
+        : error.Contains("message limit", StringComparison.OrdinalIgnoreCase) ? Loc.T("chat.err.hour")
+        : null;
 
     /// <summary>Seconds the server asks to wait after 429: Retry-After (seconds or a date), else 30; 5..120.</summary>
     internal static int WaitOf(HttpResponseMessage resp)

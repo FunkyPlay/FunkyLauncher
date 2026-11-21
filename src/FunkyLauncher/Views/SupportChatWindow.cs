@@ -24,7 +24,9 @@ public sealed class SupportChatWindow : Window
     private readonly Button _send;
     private readonly string _label;
     private string? _attach;
-    private readonly DispatcherTimer _timer = new() { Interval = TimeSpan.FromSeconds(20) };
+    // 0.1.18: every 90 s, not 20 (Bots, 21.11): the server counts these checks in the same per-IP limit as sending
+    // (60 an hour) — with the chat open every 20 s (180 an hour) any message got 429. Support answers within 2 hours.
+    private readonly DispatcherTimer _timer = new() { Interval = TimeSpan.FromSeconds(90) };
 
     /// <summary>Opens (or brings forward) the chat; <paramref name="draft"/> and <paramref name="attach"/> prefill a new message.</summary>
     public static void Open(Window? owner, Settings s, Modlist m, string draft = "", string? attach = null)
@@ -216,6 +218,7 @@ public sealed class SupportChatWindow : Window
             return;
         }
         _send.IsEnabled = false;
+        _timer.Stop(); // no checks while sending (and while waiting out a 429)
         _status.Text = Loc.T("chat.sending");
         try
         {
@@ -225,6 +228,6 @@ public sealed class SupportChatWindow : Window
             await RefreshAsync();
         }
         catch (Exception ex) { _status.Text = ex is InvalidOperationException ? ex.Message : Loc.F("chat.err.send", ex.Message); }
-        finally { _send.IsEnabled = true; }
+        finally { _send.IsEnabled = true; if (IsVisible) _timer.Start(); } // closed while sending: no more checks
     }
 }
