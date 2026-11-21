@@ -329,7 +329,10 @@ public static class SupportChat
     {
         var game = m.Game.Split(' ', StringSplitOptions.RemoveEmptyEntries).FirstOrDefault()?.ToLowerInvariant() ?? "game";
         var installed = s.IsInstalled(m) ? s.InstalledVersion(m) ?? m.Version : "—";
-        var lang = Addons.Russian(m.Id) != null ? (AddonService.Prefs(s, Addons.Russian(m.Id)!).On ? " RU" : " EN") : "";
+        // 0.1.19: before the install the Russian pack is not on yet — the language the player picked for the modlist counts
+        // (21.11: a Russian player got "EN" in the label and the helper answered in English)
+        var lang = !s.IsInstalled(m) ? " " + s.LangOf(m.Id).ToUpperInvariant()
+            : Addons.Russian(m.Id) != null ? (AddonService.Prefs(s, Addons.Russian(m.Id)!).On ? " RU" : " EN") : "";
         return $"#{game} · {m.Title} {installed}{lang} · Funky Launcher {AppConfig.Version}";
     }
 }

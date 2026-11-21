@@ -32,7 +32,8 @@ public static class FlawReport
     public static string Variant(Settings s, Modlist m)
     {
         var v = "";
-        if (Addons.Russian(m.Id) is { } ru) v = AddonService.Prefs(s, ru).On ? "RU" : "EN";
+        if (!s.IsInstalled(m)) v = s.LangOf(m.Id).ToUpperInvariant(); // 0.1.19: before the install — the picked language
+        else if (Addons.Russian(m.Id) is { } ru) v = AddonService.Prefs(s, ru).On ? "RU" : "EN";
         if (Addons.Adult(m.Id) is { } ad && AddonService.Prefs(s, ad).On) v = (v + " 18+").Trim();
         return v;
     }
