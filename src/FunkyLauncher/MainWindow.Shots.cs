@@ -176,6 +176,16 @@ public partial class MainWindow
                                 await Task.Delay(300);
                                 SaveElement(oholder, Path.Combine(dir, $"{lang}-30-mods-window-{other}.png"));
                             }
+                        // 0.1.22: the disk space estimate of every modlist (install / update), for checking the numbers
+                        if (lang == "ru")
+                        {
+                            var lines = new List<string>();
+                            foreach (var dm in Core.Catalog.Items)
+                                foreach (var upd in new[] { false, true })
+                                    lines.Add($"{dm.Id} update={upd}: " + string.Join(", ", Services.DiskSpace.Needs(Settings, dm, update: upd)
+                                        .Select(x => $"{x.Key} {x.Value / (1L << 30)} GB")) + $" | short: {Services.DiskSpace.Describe(Services.DiskSpace.Check(Settings, dm, update: upd))}");
+                            File.WriteAllLines(Path.Combine(dir, "disk-space.txt"), lines);
+                        }
                         // the red check row as the player without REDmod sees it (test data: this PC may have REDmod)
                         var redRow = new System.Windows.Controls.Border { Background = (Brush)FindResource("Bg"), Padding = new Thickness(20), Width = 820, Child = _setup.ShotToolRow(tool) };
                         redRow.Measure(new Size(redRow.Width, double.PositiveInfinity));

@@ -501,6 +501,7 @@ public partial class SetupView : UserControl
             RenderComposition();
             return;
         }
+        if (want && !DiskSpace.Confirm(_main, s, Ml, new[] { hd })) { RenderComposition(); return; }
         BeginBusy();
         try
         {
@@ -548,6 +549,7 @@ public partial class SetupView : UserControl
         var ru = ForThisVersion(Addons.Russian(Ml.Id));
         if (ru == null || _pendingLang == null) return;
         var lang = _pendingLang;
+        if (lang == "ru" && !DiskSpace.Confirm(_main, _main.Settings, Ml, new[] { ru })) return;
         BeginBusy();
         try
         {
@@ -969,6 +971,7 @@ public partial class SetupView : UserControl
     private async Task InstallAsync(string? updateDir = null)
     {
         if (!await GameFilesOkAsync()) return;
+        if (!DiskSpace.Confirm(_main, _main.Settings, Ml, update: Installed)) return;
         BeginBusy();
         var firstInstall = !Installed; // an update of an installed modlist is not "the first install"
         try

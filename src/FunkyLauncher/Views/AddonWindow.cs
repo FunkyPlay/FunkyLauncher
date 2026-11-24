@@ -139,6 +139,7 @@ public sealed class AddonWindow : Window
     private async Task InstallAsync(bool level2, TextBlock message)
     {
         if (!_s.IsInstalled(_m)) { message.Text = Loc.T("addon.err.notinstalled"); return; }
+        if (!DiskSpace.Confirm(this, _s, _m, new[] { _a })) return;
         SetBusy(true);
         try
         {
