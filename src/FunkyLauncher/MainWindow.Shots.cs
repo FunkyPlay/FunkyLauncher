@@ -157,6 +157,14 @@ public partial class MainWindow
                         holder.UpdateLayout();
                         await Task.Delay(300);
                         SaveElement(holder, Path.Combine(dir, $"{lang}-19-tool-help.png"));
+                        // 0.1.22: "Mods of the modlist" (Neon Nights, the real base list)
+                        var (mb, mbg, mw, mh) = Views.ModsWindow.ForShots(Settings, nn);
+                        var mholder = new System.Windows.Controls.Border { Background = mbg, Child = mb, Width = mw - 16, Height = mh - 40 };
+                        mholder.Measure(new Size(mholder.Width, mholder.Height));
+                        mholder.Arrange(new Rect(mholder.DesiredSize));
+                        mholder.UpdateLayout();
+                        await Task.Delay(300);
+                        SaveElement(mholder, Path.Combine(dir, $"{lang}-30-mods-window.png"));
                         // the red check row as the player without REDmod sees it (test data: this PC may have REDmod)
                         var redRow = new System.Windows.Controls.Border { Background = (Brush)FindResource("Bg"), Padding = new Thickness(20), Width = 820, Child = _setup.ShotToolRow(tool) };
                         redRow.Measure(new Size(redRow.Width, double.PositiveInfinity));

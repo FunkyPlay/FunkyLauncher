@@ -229,6 +229,22 @@ public partial class SetupView : UserControl
             CompositionPanel.Children.Add(row);
         }
 
+        // 0.1.22 (Funky 24.11): single mods on/off without MO2 — once the modlist is on disk
+        if (installed && Mo2Profile.IsNexusList(Ml) && Addons.Order(Ml.Id) != null)
+        {
+            CompositionPanel.Children.Add(Separator());
+            var changed = ModChoices.Of(s, Ml).Count;
+            var row = Row(Loc.T("mods.row"), changed > 0 ? Loc.F("mods.row.hint.changed", changed) : Loc.T("mods.row.hint"), out var right);
+            var open = new Button
+            {
+                Content = Loc.T("mods.open"), Style = (Style)FindResource("SecondaryButton"),
+                Height = 34, Padding = new Thickness(14, 0, 14, 0), FontSize = 13, IsEnabled = !_busy,
+            };
+            open.Click += (_, _) => { if (ModsWindow.Show(_main, s, Ml)) RenderComposition(); };
+            right.Child = open;
+            CompositionPanel.Children.Add(row);
+        }
+
         var pending = installed && ru != null && _pendingLang != null && _pendingLang != AppliedLang(ru);
         ApplyButton.Content = Loc.T("comp.apply");
         ApplyButton.Visibility = pending ? Visibility.Visible : Visibility.Collapsed;

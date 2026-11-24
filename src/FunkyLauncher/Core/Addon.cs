@@ -124,6 +124,8 @@ public sealed class ModOrder
     [JsonPropertyName("nifFixes")] public List<NifFix> NifFixes { get; set; } = new();
     /// <summary>Mod folders that stay switched off in the profile (as in the modlist author's profile).</summary>
     [JsonPropertyName("modlistOff")] public List<string> ModlistOff { get; set; } = new();
+    /// <summary>0.1.22: mod folders the rest of the modlist stands on — the player cannot switch them off in the launcher.</summary>
+    [JsonPropertyName("core")] public List<string> Core { get; set; } = new();
     /// <summary>Our own files (a zip built into the launcher, paths relative to the install folder): profile files, own mods.</summary>
     [JsonPropertyName("ownFiles")] public string OwnFiles { get; set; } = "";
     /// <summary>Mod folders made only of our own files (switched on like the base mods).</summary>

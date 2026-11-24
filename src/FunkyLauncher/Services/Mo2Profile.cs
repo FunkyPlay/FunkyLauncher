@@ -116,6 +116,10 @@ public static partial class Mo2Profile
             RememberOurs(s, m, tr.ModFolder);
         }
 
+        // ---- 0.1.22: the player's own choices for single mods of the base win over the modlist's defaults
+        foreach (var (folder, on) in ModChoices.Of(s, m))
+            if (inOrder.Contains(folder) && !ModChoices.IsCore(order, folder)) wanted[folder] = on;
+
         // ---- modlist.txt (top = highest priority)
         var listPath = Path.Combine(profile, "modlist.txt");
         var old = File.Exists(listPath) ? File.ReadAllLines(listPath) : Array.Empty<string>();
