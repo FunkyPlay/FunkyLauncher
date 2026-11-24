@@ -13925,6 +13925,66 @@
     "en": "FunkyPlay - Mod Armor Distribution Fix"
    },
    "embedded": "files/starfield/FunkyPlay - Mod Armor Distribution Fix.esm"
+  },
+  {
+   "id": "SavrenX Hair - SavrenX Hair 1K",
+   "modFolder": "SavrenX Hair - SavrenX Hair 1K",
+   "nexus": {
+    "game": "starfield",
+    "modId": 3890,
+    "fileId": 11714,
+    "filePage": "https://www.nexusmods.com/starfield/mods/3890?tab=files&file_id=11714"
+   },
+   "version": "1.00",
+   "adultOnNexus": false,
+   "archive": {
+    "nexusFileName": "SavrenX Hair 1K ( Vanilla )-3890-1-00-1695620300.7z",
+    "size": 69622046,
+    "sha256": "d29e6032a5f3b9861e3a3c55cb73c51c1642f192ccafb3c7fab4052f72e82d7e",
+    "localFileName": "SavrenX Hair 1K ( Vanilla )-3890-1-00-1695620300.7z"
+   },
+   "plugins": [],
+   "ru": "noText",
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false,
+    "fileCount": 185
+   },
+   "displayName": {
+    "ru": "SavrenX Hair - SavrenX Hair 1K",
+    "en": "SavrenX Hair - SavrenX Hair 1K"
+   }
+  },
+  {
+   "id": "Dreaming Star - Main Menu - DreamingStarMainMenu",
+   "modFolder": "Dreaming Star - Main Menu - DreamingStarMainMenu",
+   "nexus": {
+    "game": "starfield",
+    "modId": 616,
+    "fileId": 2089,
+    "filePage": "https://www.nexusmods.com/starfield/mods/616?tab=files&file_id=2089"
+   },
+   "version": "1.0",
+   "adultOnNexus": false,
+   "archive": {
+    "nexusFileName": "DreamingStarMainMenu.zip-616-1-1693977752.zip",
+    "size": 147944334,
+    "sha256": "f7828cc9f1b6c4815dd87691edd7accec6f07e88676972a7fb0e44579205a5ac",
+    "localFileName": "DreamingStarMainMenu.zip-616-1-1693977752.zip"
+   },
+   "plugins": [],
+   "ru": "noText",
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "displayName": {
+    "ru": "Dreaming Star - Main Menu - DreamingStarMainMenu",
+    "en": "Dreaming Star - Main Menu - DreamingStarMainMenu"
+   }
   }
  ]
 }
