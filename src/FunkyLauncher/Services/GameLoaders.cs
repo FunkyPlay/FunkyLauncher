@@ -173,7 +173,9 @@ public static class GameLoaders
         if (!ml.Game.Contains("cyberpunk", StringComparison.OrdinalIgnoreCase) && ml.Id != "neon-nights") return found;
         var ours = new HashSet<string>(ml.GameLoaders.Select(l => Norm(l.Path))
             .Concat(ml.GameCleanup.Select(c => Norm(c.Path))), StringComparer.OrdinalIgnoreCase);
-        bool Skip(string rel) => ours.Contains(rel) || rel.EndsWith(".log", StringComparison.OrdinalIgnoreCase);
+        // the game itself puts an empty mods\.stub (seen on a clean install, support 24.11): not a player's mod
+        bool Skip(string rel) => ours.Contains(rel) || rel.EndsWith(".log", StringComparison.OrdinalIgnoreCase)
+            || System.IO.Path.GetFileName(rel).Equals(".stub", StringComparison.OrdinalIgnoreCase);
         void Scan(string relDir, string pattern, bool folders)
         {
             try
