@@ -1,4 +1,4 @@
-// Funky Launcher — Copyright (C) 2026 Funky. Licensed under GPL-3.0-or-later.
+﻿// Funky Launcher — Copyright (C) 2026 Funky. Licensed under GPL-3.0-or-later.
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -240,6 +240,7 @@ public partial class ManualDownloadWindow : Window
         var pct = _items.Count == 0 ? 100 : done * 100 / _items.Count;
         Percent.Text = pct + "%";
         Fill.Width = ((FrameworkElement)Fill.Parent).ActualWidth * pct / 100.0;
+        if (Fill.Background is not LinearGradientBrush { IsFrozen: true }) { var g = new LinearGradientBrush(ThemeColors.Pink, ThemeColors.Cyan, 0); g.Freeze(); Fill.Background = g; }
     }
 
     private void RenderQueue()

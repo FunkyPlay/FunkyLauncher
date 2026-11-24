@@ -106,6 +106,26 @@ public partial class MainWindow
                     catch (Exception e) { File.AppendAllText(Path.Combine(dir, "errors.txt"), $"{lang}-{name}: {e}\n"); }
                 }
                 Height = _shotBaseHeight + dh;
+                // 0.1.22: the home page in the Funky Pro themes (accent colours as Looks.cs sets them), then back
+                if (lang == "ru")
+                {
+                    var res = Application.Current.Resources;
+                    var keep = new[] { "Pink", "PinkSoft", "Cyan" }.ToDictionary(k => k, k => res[k]);
+                    foreach (var (tname, pink, soft, cyan) in new[] { ("sunset", "#FF8A3C", "#40210E", "#FFD166"), ("wasteland", "#E8C547", "#3A300F", "#7CE38B"), ("ocean", "#3C9DFF", "#10294A", "#5FF0D0") })
+                        try
+                        {
+                            res["Pink"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString(pink));
+                            res["PinkSoft"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString(soft));
+                            res["Cyan"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString(cyan));
+                            NavHome.IsChecked = true;
+                            _home.Refresh();
+                            await Task.Delay(1500);
+                            Save(Path.Combine(dir, $"theme-{tname}-home.png"));
+                        }
+                        catch (Exception e) { File.AppendAllText(Path.Combine(dir, "errors.txt"), $"theme {tname}: {e}\n"); }
+                    foreach (var (k, v) in keep) res[k] = v;
+                    _home.Refresh();
+                }
                 // the "new version" window, with a sample release (what players will see at the next update)
                 try
                 {

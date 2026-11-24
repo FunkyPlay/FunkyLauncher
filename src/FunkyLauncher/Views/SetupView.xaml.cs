@@ -1,4 +1,4 @@
-// Funky Launcher — Copyright (C) 2026 Funky. Licensed under GPL-3.0-or-later.
+﻿// Funky Launcher — Copyright (C) 2026 Funky. Licensed under GPL-3.0-or-later.
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -909,6 +909,7 @@ public partial class SetupView : UserControl
         ProgressPanel.Visibility = Visibility.Visible;
         ProgressPercent.Text = "";
         ProgressFill.Width = 0;
+        ProgressFill.Background = new LinearGradientBrush(ThemeColors.Pink, ThemeColors.Cyan, 0); // 0.1.22: the theme colours
         ApplyMode();
     }
 

@@ -1,4 +1,4 @@
-<UserControl x:Class="FunkyLauncher.Views.HomeView"
+﻿<UserControl x:Class="FunkyLauncher.Views.HomeView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ScrollViewer VerticalScrollBarVisibility="Auto">
@@ -40,7 +40,7 @@
                             <ColumnDefinition Width="10"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Border CornerRadius="10" Background="#C02A1426" BorderBrush="#66FF3FD2" BorderThickness="1" Padding="12,7">
+                        <Border x:Name="PremiumBox" CornerRadius="10" Background="#C02A1426" BorderBrush="#66FF3FD2" BorderThickness="1" Padding="12,7">
                             <TextBlock x:Name="PremiumText" FontSize="12.5" Foreground="#FFC6EE" TextWrapping="Wrap"/>
                         </Border>
                         <Border Grid.Column="2" CornerRadius="10" Background="#C00F2A33" BorderBrush="#667AE8FF" BorderThickness="1" Padding="12,7">

@@ -1,4 +1,4 @@
-// Funky Launcher — Copyright (C) 2026 Funky. Licensed under GPL-3.0-or-later.
+﻿// Funky Launcher — Copyright (C) 2026 Funky. Licensed under GPL-3.0-or-later.
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
@@ -24,7 +24,8 @@ public partial class HomeView : UserControl
         _heroDefault ??= Hero.Background;
         if (_heroVideo != null) { _heroVideo.Stop(); HeroGrid.Children.Remove(_heroVideo); _heroVideo = null; }
         Hero.Background = _heroDefault;
-        if (file == null || !File.Exists(file)) return;
+        _heroTinted = false;
+        if (file == null || !File.Exists(file)) { ApplyThemeColors(); return; }
         var ext = Path.GetExtension(file).ToLowerInvariant();
         if (ext is ".mp4" or ".wmv" or ".mov" or ".avi")
         {
@@ -91,6 +92,7 @@ public partial class HomeView : UserControl
 
     public void Refresh()
     {
+        ApplyThemeColors();
         BrandTag.Text = Loc.T("start.brand");
         StartTitle.Text = Loc.T("start.title");
         RenderTiles();
@@ -185,10 +187,42 @@ public partial class HomeView : UserControl
     private void RenderTiles()
     {
         Tiles.Children.Clear();
-        Tiles.Children.Add(Tile("🎮", "tile.mods", "#FF3FD2", () => _main.ShowLibrary()));
-        Tiles.Children.Add(Tile("🧰", "tile.soft", "#7AE8FF", () => _main.ShowSoft()));
-        Tiles.Children.Add(Tile("▶", "tile.video", "#B9A2F2", () => PlayService.OpenUrl(Catalog.YouTube)));
+        // 0.1.22: the icon frames follow the theme (accent, second colour, a mix of both); Neon keeps its own three
+        var own = ThemeColors.IsDefault;
+        string Hex(Color c) => $"#{c.R:X2}{c.G:X2}{c.B:X2}";
+        Tiles.Children.Add(Tile("🎮", "tile.mods", Hex(ThemeColors.Pink), () => _main.ShowLibrary()));
+        Tiles.Children.Add(Tile("🧰", "tile.soft", Hex(ThemeColors.Cyan), () => _main.ShowSoft()));
+        Tiles.Children.Add(Tile("▶", "tile.video", own ? "#B9A2F2" : Hex(ThemeColors.Mix(ThemeColors.Pink, ThemeColors.Cyan, 0.5)), () => PlayService.OpenUrl(Catalog.YouTube)));
     }
+
+    /// <summary>
+    /// 0.1.22 (Design 24.11): the tag line, the Premium box, the update bar and the stripes of the header picture follow
+    /// the Funky Pro theme colour. With the launcher's own look nothing changes.
+    /// </summary>
+    private void ApplyThemeColors()
+    {
+        var pink = ThemeColors.Pink;
+        var own = ThemeColors.IsDefault;
+        BrandTag.Foreground = ThemeColors.Brush(own ? Color.FromRgb(0xFF, 0x7A, 0xD9) : ThemeColors.Mix(pink, Colors.White, 0.25));
+        PremiumBox.BorderBrush = ThemeColors.Brush(ThemeColors.WithAlpha(pink, 0x66));
+        PremiumBox.Background = ThemeColors.Brush(own ? Color.FromArgb(0xC0, 0x2A, 0x14, 0x26) : ThemeColors.WithAlpha(ThemeColors.Mix(pink, Color.FromRgb(0x0F, 0x0F, 0x14), 0.85), 0xC0));
+        PremiumText.Foreground = ThemeColors.Brush(own ? Color.FromRgb(0xFF, 0xC6, 0xEE) : ThemeColors.Mix(pink, Colors.White, 0.75));
+        UpdateBar.BorderBrush = ThemeColors.Brush(pink);
+        if (_heroVideo == null && Hero.Background is ImageBrush ib && (_heroDefault == null || ReferenceEquals(Hero.Background, _heroDefault) || _heroTinted))
+        {
+            _heroDefault ??= Hero.Background;
+            if (own) { Hero.Background = _heroDefault; _heroTinted = false; }
+            else if (((ImageBrush)_heroDefault).ImageSource is System.Windows.Media.Imaging.BitmapSource src)
+                try
+                {
+                    Hero.Background = new ImageBrush(ThemeColors.Tint(src, pink)) { Stretch = ib.Stretch, AlignmentY = ib.AlignmentY };
+                    _heroTinted = true;
+                }
+                catch (Exception ex) { AppLog.Write("hero tint: " + ex.Message); }
+        }
+    }
+
+    private bool _heroTinted;
 
     private Border Tile(string icon, string key, string color, Action open)
     {
@@ -248,7 +282,7 @@ public partial class HomeView : UserControl
     {
         var panel = new StackPanel();
         if (date != null)
-            panel.Children.Add(new TextBlock { Text = date.Value.ToLocalTime().ToString("dd.MM.yyyy"), FontSize = 12, FontWeight = FontWeights.SemiBold, Foreground = new SolidColorBrush(Color.FromRgb(0xFF, 0x7A, 0xD9)), Margin = new Thickness(0, 0, 0, 6) });
+            panel.Children.Add(new TextBlock { Text = date.Value.ToLocalTime().ToString("dd.MM.yyyy"), FontSize = 12, FontWeight = FontWeights.SemiBold, Foreground = ThemeColors.Brush(ThemeColors.IsDefault ? Color.FromRgb(0xFF, 0x7A, 0xD9) : ThemeColors.Mix(ThemeColors.Pink, Colors.White, 0.25)), Margin = new Thickness(0, 0, 0, 6) });
         panel.Children.Add(new TextBlock { Text = text, FontSize = 13, LineHeight = 19, TextWrapping = TextWrapping.Wrap, TextTrimming = TextTrimming.WordEllipsis, Foreground = new SolidColorBrush(Color.FromRgb(0xE2, 0xE2, 0xEA)) });
         var card = new Border { Style = (Style)FindResource("CardBorder"), Margin = new Thickness(0, 0, 14, 0), Child = panel };
         if (url != null)
