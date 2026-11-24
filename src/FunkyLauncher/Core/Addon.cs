@@ -354,9 +354,14 @@ public static class Addons
     /// <summary>"hidden": true in the about file — the mod is not listed in the window (it still stays in the modlist).</summary>
     public const string HiddenMark = "\u0000hidden";
 
-    public static IReadOnlyDictionary<string, string> About(string modlistId)
+    public static IReadOnlyDictionary<string, string> About(string modlistId) => About(modlistId, out _);
+
+    /// <param name="nexusIds">"nexusModId" in the about file: the mod's own Nexus page when the list's top-level id
+    /// is wrong (mods made of several archives — the list took another archive's id, chat Cyberpunk 25.11).</param>
+    public static IReadOnlyDictionary<string, string> About(string modlistId, out Dictionary<string, long> nexusIds)
     {
         var res = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        nexusIds = new Dictionary<string, long>(StringComparer.OrdinalIgnoreCase);
         try
         {
             string? json = null;
@@ -372,6 +377,8 @@ public static class Addons
             using var d = JsonDocument.Parse(json);
             if (!d.RootElement.TryGetProperty("mods", out var mods)) return res;
             var lang = Loc.Lang == "ru" ? "ru" : "en";
+            foreach (var p in mods.EnumerateObject())
+                if (p.Value.TryGetProperty("nexusModId", out var nid) && nid.TryGetInt64(out var id) && id > 0) nexusIds[p.Name] = id;
             foreach (var p in mods.EnumerateObject())
                 if (p.Value.TryGetProperty("hidden", out var h) && h.ValueKind == JsonValueKind.True) res[p.Name] = HiddenMark;
                 else if (p.Value.TryGetProperty(lang, out var t) && t.GetString() is { Length: > 0 } s) res[p.Name] = s;

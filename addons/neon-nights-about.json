@@ -638,7 +638,8 @@
   },
   "Kiroshi Night Vision Mod 2.1 8326 2.1 2026": {
    "ru": "Ночное зрение для глаз Kiroshi",
-   "en": "Night vision for Kiroshi eyes"
+   "en": "Night vision for Kiroshi eyes",
+   "nexusModId": 8326
   },
   "KRNLNIK Dodge Charger R T": {
    "ru": "Dodge Charger R/T 1969",
@@ -693,8 +694,8 @@
    "en": "Lizzy Wizzy hairstyle for female V"
   },
   "Load Begone 8144 3.4.0 2026": {
-   "ru": "Пропуск заставок и быстрая загрузка последнего сохранения",
-   "en": "Skip intro videos, auto-load the last save"
+   "ru": "Пропуск заставок и экранов «Нажмите, чтобы продолжить»",
+   "en": "Skips intro screens and \"press to continue\" prompts"
   },
   "Lob with Bangs": {
    "ru": "Каре с чёлкой для женской Ви",
@@ -778,7 +779,8 @@
   },
   "Mod Settings v0.2.30 for 2.50 4885 0.2.30 2026": {
    "ru": "Меню настроек для модов",
-   "en": "Settings menu for mods"
+   "en": "Settings menu for mods",
+   "nexusModId": 4885
   },
   "More Head and Body Meshes": {
    "ru": "Нужен модам на тела и головы",
@@ -814,11 +816,13 @@
   },
   "Native Settings UI 1.97 3518 1.97 2026": {
    "ru": "Меню настроек модов в игре",
-   "en": "In-game settings menu for mods"
+   "en": "In-game settings menu for mods",
+   "nexusModId": 3518
   },
   "Native Settings UI Side Menu Add-on 16218 1.6.0 2026": {
    "ru": "Боковое меню для настроек модов",
-   "en": "Side menu for mod settings"
+   "en": "Side menu for mod settings",
+   "nexusModId": 16218
   },
   "NCI Badlands and Pacifica 15138 2.0.2 2026": {
    "ru": "Выпивка с партнёром в Пустошах и Пасифике",
@@ -1174,7 +1178,8 @@
   },
   "RedFileSystem 13378 0.16.0 2026": {
    "ru": "Нужен другим модам для работы с файлами",
-   "en": "File plugin other mods need"
+   "en": "File plugin other mods need",
+   "nexusModId": 13378
   },
   "RedFunctions 32312 0.16.0 2026": {
    "ru": "Нужен другим модам: дополнительные функции",
@@ -1245,8 +1250,9 @@
    "en": "Restores fire rate with the Sandevistan"
   },
   "Say Something Damn It 22228 1.18.1 2026": {
-   "ru": "Больше реплик в игре",
-   "en": "More voice lines in game"
+   "ru": "Ви благодарит торговцев и прощается с персонажами",
+   "en": "V thanks vendors and says goodbye to characters",
+   "nexusModId": 22228
   },
   "SCPIT_compatible": {
    "ru": "Настройки движка и система дыхания",
@@ -1322,7 +1328,8 @@
   },
   "Streaming Bug Workaround": {
    "ru": "Обход ошибки подгрузки мира",
-   "en": "Workaround for a world streaming bug"
+   "en": "Workaround for a world streaming bug",
+   "nexusModId": 22857
   },
   "Street outfit Vol 1": {
    "ru": "Уличный наряд для женской Ви, 11 цветов",

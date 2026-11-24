@@ -40,7 +40,7 @@ public static class ModChoices
         var choices = Of(s, m);
         var off = new HashSet<string>(order.ModlistOff, StringComparer.OrdinalIgnoreCase);
         var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-        var about = Addons.About(m.Id);
+        var about = Addons.About(m.Id, out var nexusIds);
         foreach (var x in main.Mods)
         {
             if (x.ModFolder.Length == 0 || !seen.Add(x.ModFolder)) continue;
@@ -53,7 +53,8 @@ public static class ModChoices
             list.Add(new Item(x.ModFolder, name.Length > 0 ? name : x.ModFolder, def, on, core, x.Plugins.Count > 0)
             {
                 About = about.TryGetValue(x.ModFolder, out var a) ? a : "",
-                Url = x.Nexus is { ModId: > 0, Game.Length: > 0 } n ? $"https://www.nexusmods.com/{n.Game}/mods/{n.ModId}" : "",
+                Url = x.Nexus is { ModId: > 0, Game.Length: > 0 } n
+                    ? $"https://www.nexusmods.com/{n.Game}/mods/{(nexusIds.TryGetValue(x.ModFolder, out var fixedId) ? fixedId : n.ModId)}" : "",
             });
         }
         return list.OrderBy(i => i.Name, StringComparer.CurrentCultureIgnoreCase).ToList();
