@@ -211,10 +211,13 @@ public partial class SetupView : UserControl
             }
         }
 
+        var highPack = extras.FirstOrDefault(x => x.Kind == "high").Pack;
+        var heavyPack = extras.FirstOrDefault(x => x.Kind == "heavy").Pack;
         foreach (var (kind, pack) in extras)
         {
+            if (kind == "high" && heavyPack != null) continue; // drawn together with heavy as Standard / High / Ultra
             CompositionPanel.Children.Add(Separator());
-            if (kind == "heavy") { CompositionPanel.Children.Add(GraphicsRow(pack!)); continue; }
+            if (kind == "heavy") { CompositionPanel.Children.Add(highPack != null ? GraphicsRow3(pack!, highPack) : GraphicsRow(pack!)); continue; }
             var on = AddonService.Prefs(s, pack!).On;
             // space on disk: the archive plus what it unpacks to (about the same again), in GB as the cards write it
             var gb = Math.Max(1, (int)Math.Round(pack!.Mods.Sum(x => x.Archive.Size + x.Archives.Sum(p => p.Size)) * 2 / 1e9));
@@ -368,6 +371,58 @@ public partial class SetupView : UserControl
         await ExtraClickedAsync(heavy, full);
         if (ProgressText.Text == Loc.T("comp.extra.on") || ProgressText.Text == Loc.T("comp.extra.off"))
             ProgressText.Text = Loc.T(full ? "gfx.done.full" : "gfx.done.light");
+    }
+
+    /// <summary>
+    /// 0.1.21 (Funky 24.11 via the Cyberpunk chat): three versions — Standard / High / Ultra, Ultra by default.
+    /// Ultra = heavy and high on; High = heavy off, high on; Standard = both off. With little video memory a version is
+    /// recommended (≤ 6.5 GB Standard, ≤ 8.5 GB High; thresholds to be confirmed by the game chats' measurements).
+    /// </summary>
+    private Grid GraphicsRow3(AddonFile heavy, AddonFile high)
+    {
+        var s = _main.Settings;
+        var level = AddonService.Prefs(s, heavy).On ? 2 : AddonService.Prefs(s, high).On ? 1 : 0;
+        if (!_vramAsked)
+        {
+            _vramAsked = true;
+            _ = Task.Run(PcCheck.VramGb).ContinueWith(t => Dispatcher.BeginInvoke(() => { _vramGb = t.Result; RenderComposition(); }),
+                TaskContinuationOptions.OnlyOnRanToCompletion);
+        }
+        int? recommend = _vramGb is > 0 and <= 6.5 ? 0 : _vramGb is > 0 and <= 8.5 ? 1 : null;
+        if (recommend is { } r && level > r && !(Installed && !Updating) && !s.GraphicsChosen.Contains(Ml.Id))
+        {
+            AddonService.Prefs(s, heavy).On = r >= 2;
+            AddonService.Prefs(s, high).On = r >= 1;
+            s.Save();
+            level = r;
+        }
+        string[] keys = { "gfx3.standard", "gfx3.high", "gfx3.ultra" };
+        var row = Row(Loc.T("gfx.title"), Loc.T(keys[level] + ".hint"), out var right);
+        if (recommend != null && row.Children[0] is StackPanel left)
+            left.Children.Add(new TextBlock { Text = Loc.F("gfx3.recommend", Math.Round(_vramGb!.Value), Loc.T(keys[recommend.Value])), FontSize = 12, Foreground = (Brush)FindResource("Cyan"), TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 4, 0, 0) });
+        var seg = new StackPanel { Orientation = Orientation.Horizontal, VerticalAlignment = VerticalAlignment.Center };
+        for (var i = 0; i < 3; i++)
+        {
+            var target = i;
+            var b = Segment(Loc.T(keys[i]), level == i, () => { if (level != target) _ = GraphicsPicked3Async(heavy, high, target, keys[target]); });
+            if (recommend == i && level != i) { b.BorderBrush = (Brush)FindResource("Cyan"); b.BorderThickness = new Thickness(1.5); }
+            seg.Children.Add(b);
+        }
+        right.Child = new Border { Background = (Brush)FindResource("CardActive"), CornerRadius = new CornerRadius(8), Padding = new Thickness(3, 10, 3, 3), Child = seg };
+        return row;
+    }
+
+    private async Task GraphicsPicked3Async(AddonFile heavy, AddonFile high, int level, string key)
+    {
+        if (Installed && !Updating && Views.Dialog.Show(_main, Loc.F("gfx3.switch", Loc.T(key)),
+                Loc.T("gfx.title"), MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes) != MessageBoxResult.Yes) return;
+        _main.Settings.GraphicsChosen.Add(Ml.Id);
+        // turn off first (nothing to download), then on
+        if (level < 2 && AddonService.Prefs(_main.Settings, heavy).On) await ExtraClickedAsync(heavy, false);
+        if (level < 1 && AddonService.Prefs(_main.Settings, high).On) await ExtraClickedAsync(high, false);
+        if (level >= 1 && !AddonService.Prefs(_main.Settings, high).On) await ExtraClickedAsync(high, true);
+        if (level >= 2 && !AddonService.Prefs(_main.Settings, heavy).On) await ExtraClickedAsync(heavy, true);
+        ProgressText.Text = Loc.F("gfx3.done", Loc.T(key));
     }
 
     /// <summary>For --shots: the graphics row with a test pack and a 6 GB card (the light version recommended).</summary>

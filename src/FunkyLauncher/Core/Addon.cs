@@ -221,7 +221,8 @@ public static class Addons
 
     /// <summary>Optional packs shown as a checkbox each (off by default): Starfield "hd" planets, Fallout 4 "upscaling" (DLSS / FSR).</summary>
     /// 0.1.19 "heavy": the heavy mods of a modlist (HD textures…) — on by default ("default": true); off = the light version.
-    public static readonly string[] ExtraKinds = { "hd", "upscaling", "voice", "heavy" };
+    // "high" (0.1.21): mods of the High and Ultra versions, off in Standard; "heavy" = mods of Ultra only
+    public static readonly string[] ExtraKinds = { "hd", "upscaling", "voice", "heavy", "high" };
 
     public static IEnumerable<(string Kind, AddonFile Pack)> Extras(string modlistId) =>
         ExtraKinds.Select(k => (k, Load(modlistId, k))).Where(x => x.Item2 != null).Select(x => (x.k, x.Item2!));
