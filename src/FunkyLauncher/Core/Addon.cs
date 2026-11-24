@@ -20,6 +20,8 @@ public sealed class AddonFile
     [JsonPropertyName("forMainVersion")] public string ForMainVersion { get; set; } = "";
     /// <summary>Optional packs (HD, upscaling): ticked by default for a new install. Never used for 18+.</summary>
     [JsonPropertyName("default")] public bool? Default { get; set; }
+    /// <summary>0.1.22 (Neon 0.1.8): part of the pack is translated by AI (with the authors' permission) — the launcher says so.</summary>
+    [JsonPropertyName("aiTranslated")] public bool AiTranslated { get; set; }
     /// <summary>INI values set in this pack's mod files while the pack is on (e.g. frame generation off by default).</summary>
     [JsonPropertyName("filePatches")] public List<FilePatch> FilePatches { get; set; } = new();
     [JsonPropertyName("mods")] public List<AddonMod> Mods { get; set; } = new();
