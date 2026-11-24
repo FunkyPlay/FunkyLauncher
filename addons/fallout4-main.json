@@ -2246,64 +2246,6 @@
    }
   },
   {
-   "id": "NPCs Travel",
-   "modFolder": "NPCs Travel",
-   "displayName": {
-    "ru": "NPCs Travel",
-    "en": "NPCs Travel"
-   },
-   "nexus": {
-    "game": "fallout4",
-    "modId": 16987,
-    "fileId": 405964,
-    "filePage": "https://www.nexusmods.com/fallout4/mods/16987?tab=files&file_id=405964"
-   },
-   "version": "3.0.1",
-   "archive": {
-    "nexusFileName": "a5/f6/ea/a5f6eafc-e5d4-48ce-8d24-2513ebc68828",
-    "localFileName": "a5/f6/ea/a5f6eafc-e5d4-48ce-8d24-2513ebc68828",
-    "size": 1154603,
-    "sha256": "b6447f581b7d7416f2de064d1d11cdc838e1900ce8c443f24daad411189d1f62"
-   },
-   "plugins": [
-    "FO4 NPCs Travel.esp"
-   ],
-   "install": {
-    "type": "copyAll",
-    "from": "",
-    "fomod": false
-   }
-  },
-  {
-   "id": "Player Comments and Head Tracking",
-   "modFolder": "Player Comments and Head Tracking",
-   "displayName": {
-    "ru": "Player Comments and Head Tracking",
-    "en": "Player Comments and Head Tracking"
-   },
-   "nexus": {
-    "game": "fallout4",
-    "modId": 22166,
-    "fileId": 287454,
-    "filePage": "https://www.nexusmods.com/fallout4/mods/22166?tab=files&file_id=287454"
-   },
-   "version": "2.65",
-   "archive": {
-    "nexusFileName": "Player Comments and Head Tracking-22166-2-65-1692573004.rar",
-    "localFileName": "Player Comments and Head Tracking-22166-2-65-1692573004.rar",
-    "size": 3954083,
-    "sha256": "18b5fa8dcc502694940dbb329033d77aece3e85f1361dbb2c37db5dffe36522c"
-   },
-   "plugins": [
-    "PlayerComments.esp"
-   ],
-   "install": {
-    "type": "copyAll",
-    "from": "",
-    "fomod": false
-   }
-  },
-  {
    "id": "Durable Vertibirds",
    "modFolder": "Durable Vertibirds",
    "displayName": {
@@ -2362,35 +2304,6 @@
    "install": {
     "type": "copyAll",
     "from": "data",
-    "fomod": false
-   }
-  },
-  {
-   "id": "Realistic Ragdoll Force",
-   "modFolder": "Realistic Ragdoll Force",
-   "displayName": {
-    "ru": "Realistic Ragdoll Force",
-    "en": "Realistic Ragdoll Force"
-   },
-   "nexus": {
-    "game": "fallout4",
-    "modId": 5149,
-    "fileId": 16801,
-    "filePage": "https://www.nexusmods.com/fallout4/mods/5149?tab=files&file_id=16801"
-   },
-   "version": "1.1",
-   "archive": {
-    "nexusFileName": "Realistic-5149-1-0.zip",
-    "localFileName": "Realistic-5149-1-0.zip",
-    "size": 1130,
-    "sha256": "bbf24bf72728d4b005c58be99baf17a5201f05c2cd66f98e042e00788569ac97"
-   },
-   "plugins": [
-    "dD-Realistic Ragdoll Force.esp"
-   ],
-   "install": {
-    "type": "copyAll",
-    "from": "real",
     "fomod": false
    }
   },
@@ -3936,35 +3849,6 @@
    }
   },
   {
-   "id": "You And What Army 2",
-   "modFolder": "You And What Army 2",
-   "displayName": {
-    "ru": "You And What Army 2",
-    "en": "You And What Army 2"
-   },
-   "nexus": {
-    "game": "fallout4",
-    "modId": 78925,
-    "fileId": 366655,
-    "filePage": "https://www.nexusmods.com/fallout4/mods/78925?tab=files&file_id=366655"
-   },
-   "version": "1.08",
-   "archive": {
-    "nexusFileName": "You And What Army 2-78925-1-08-1757025667.zip",
-    "localFileName": "You And What Army 2-78925-1-08-1757025667.zip",
-    "size": 2026219,
-    "sha256": "a872908858abd24db24c64c3c22497525ba48c315ee990789d2dcd42f680c7f5"
-   },
-   "plugins": [
-    "YouAndWhatArmy2.esm"
-   ],
-   "install": {
-    "type": "copyAll",
-    "from": "",
-    "fomod": false
-   }
-  },
-  {
    "id": "Heather Casdin - A Unique Companion Experience by llamaRCA",
    "modFolder": "Heather Casdin - A Unique Companion Experience by llamaRCA",
    "displayName": {
@@ -4263,35 +4147,6 @@
     "choices": [
      "Main: Everything"
     ]
-   }
-  },
-  {
-   "id": "NPCs Use Items",
-   "modFolder": "NPCs Use Items",
-   "displayName": {
-    "ru": "NPCs Use Items",
-    "en": "NPCs Use Items"
-   },
-   "nexus": {
-    "game": "fallout4",
-    "modId": 73717,
-    "fileId": 288795,
-    "filePage": "https://www.nexusmods.com/fallout4/mods/73717?tab=files&file_id=288795"
-   },
-   "version": "1.2.1",
-   "archive": {
-    "nexusFileName": "NPCs Use Items-73717-1-2-1-1693743625.zip",
-    "localFileName": "NPCs Use Items-73717-1-2-1-1693743625.zip",
-    "size": 9167,
-    "sha256": "9eaecba5f1eb6adccad39c1177d955731b3ec2c5757e08230f784294f92f209f"
-   },
-   "plugins": [
-    "NPCs Use Items.esp"
-   ],
-   "install": {
-    "type": "copyAll",
-    "from": "",
-    "fomod": false
    }
   },
   {
@@ -5199,104 +5054,6 @@
    }
   },
   {
-   "id": "Random Encounter Framework",
-   "modFolder": "Random Encounter Framework",
-   "displayName": {
-    "ru": "Random Encounter Framework",
-    "en": "Random Encounter Framework"
-   },
-   "nexus": {
-    "game": "fallout4",
-    "modId": 60074,
-    "fileId": 377734,
-    "filePage": "https://www.nexusmods.com/fallout4/mods/60074?tab=files&file_id=377734"
-   },
-   "version": "1.02",
-   "archive": {
-    "nexusFileName": "Random Encounter Framework-60074-1-02-1766005303.zip",
-    "localFileName": "Random Encounter Framework-60074-1-02-1766005303.zip",
-    "size": 4608,
-    "sha256": "1fafaf14dcadf769ab152a3c7a9961f7e201c57ff78db5175cfcb7422df96ff8"
-   },
-   "plugins": [
-    "REFramework.esm"
-   ],
-   "install": {
-    "type": "copyAll",
-    "from": "",
-    "fomod": false
-   }
-  },
-  {
-   "id": "Commonwealth Encounter Pack",
-   "modFolder": "Commonwealth Encounter Pack",
-   "displayName": {
-    "ru": "Commonwealth Encounter Pack",
-    "en": "Commonwealth Encounter Pack"
-   },
-   "nexus": {
-    "game": "fallout4",
-    "modId": 77948,
-    "fileId": 405588,
-    "filePage": "https://www.nexusmods.com/fallout4/mods/77948?tab=files&file_id=405588"
-   },
-   "version": "1.03",
-   "archive": {
-    "nexusFileName": "8b/b2/06/8bb2065e-fe98-4fdf-b872-1e9ed371f187",
-    "localFileName": "8b/b2/06/8bb2065e-fe98-4fdf-b872-1e9ed371f187",
-    "size": 9662939,
-    "sha256": "00efeef6b49501643fffe2959c8d023b740ade35998feb2cd7b4836d0834c28e"
-   },
-   "plugins": [
-    "CommonwealthEncounterPack.esp"
-   ],
-   "install": {
-    "type": "copyAll",
-    "from": "",
-    "fomod": false
-   }
-  },
-  {
-   "id": "Random Encounter Framework Patch Hub",
-   "modFolder": "Random Encounter Framework Patch Hub",
-   "displayName": {
-    "ru": "Random Encounter Framework Patch Hub",
-    "en": "Random Encounter Framework Patch Hub"
-   },
-   "nexus": {
-    "game": "fallout4",
-    "modId": 67757,
-    "fileId": 407478,
-    "filePage": "https://www.nexusmods.com/fallout4/mods/67757?tab=files&file_id=407478"
-   },
-   "version": "1.06",
-   "archive": {
-    "nexusFileName": "89/c9/c2/89c9c290-0c43-4182-a6a8-c2ffcc9c8f8e",
-    "localFileName": "89/c9/c2/89c9c290-0c43-4182-a6a8-c2ffcc9c8f8e",
-    "size": 33932,
-    "sha256": "3892b048e95fa086df2839b030632ff8971432c94df6552165eefbec0a5f3009"
-   },
-   "plugins": [
-    "REPatch_AmericaRising2LegacyOfTheEnclave.esp"
-   ],
-   "install": {
-    "type": "files",
-    "map": [
-     [
-      "00 - Automated Patches/REPatch_AmericaRising2LegacyOfTheEnclave.esp",
-      "REPatch_AmericaRising2LegacyOfTheEnclave.esp"
-     ]
-    ],
-    "fomod": true,
-    "choices": [
-     "Select Your Patches: America Rising 2 - Legacy of the Enclave",
-     "Commonwealth Hit Squads and Gunner Hit Squads: No Patch",
-     "Less Vertibird Encounters: No Patch",
-     "March of The Enclave - Enclave Remnants: No Patch"
-    ]
-   }
-  },
-  {
    "id": "Caves Of The Commonwealth",
    "modFolder": "Caves Of The Commonwealth",
    "displayName": {
@@ -5540,35 +5297,6 @@
    },
    "plugins": [
     "Eli_Rockin Red Rocket.esp"
-   ],
-   "install": {
-    "type": "copyAll",
-    "from": "",
-    "fomod": false
-   }
-  },
-  {
-   "id": "Take Cover",
-   "modFolder": "Take Cover",
-   "displayName": {
-    "ru": "Take Cover",
-    "en": "Take Cover"
-   },
-   "nexus": {
-    "game": "fallout4",
-    "modId": 10875,
-    "fileId": 62501,
-    "filePage": "https://www.nexusmods.com/fallout4/mods/10875?tab=files&file_id=62501"
-   },
-   "version": "1.3.beta",
-   "archive": {
-    "nexusFileName": "Take Cover 1.3 BETA-10875-1-3-beta.zip",
-    "localFileName": "Take Cover 1.3 BETA-10875-1-3-beta.zip",
-    "size": 17720,
-    "sha256": "85b7ea202ed21b9ef4f3460c7f21a62bfc56b55cd881ca203a8f1688a1347625"
-   },
-   "plugins": [
-    "TakeCover.esp"
    ],
    "install": {
     "type": "copyAll",
@@ -5899,35 +5627,6 @@
     "sha256": "f3269535ec0e8b28923a24679231a7beeac67744d1b628964fa7bbf425f26646"
    },
    "plugins": [],
-   "install": {
-    "type": "copyAll",
-    "from": "",
-    "fomod": false
-   }
-  },
-  {
-   "id": "Reinforcements and Retribution",
-   "modFolder": "Reinforcements and Retribution",
-   "displayName": {
-    "ru": "Reinforcements and Retribution",
-    "en": "Reinforcements and Retribution"
-   },
-   "nexus": {
-    "game": "fallout4",
-    "modId": 98034,
-    "fileId": 412560,
-    "filePage": "https://www.nexusmods.com/fallout4/mods/98034?tab=files&file_id=412560"
-   },
-   "version": "1.01",
-   "archive": {
-    "nexusFileName": "89/2b/68/892b6884-9a18-4b35-bcd8-e84230fe192e",
-    "localFileName": "89/2b/68/892b6884-9a18-4b35-bcd8-e84230fe192e",
-    "size": 85672,
-    "sha256": "d237495ac191afdc09f124baef147a20b90a24ffce9ff29b2554489ef586344f"
-   },
-   "plugins": [
-    "ReinforcementsAndRetribution.esp"
-   ],
    "install": {
     "type": "copyAll",
     "from": "",

@@ -642,7 +642,8 @@
     "type": "copyAll",
     "from": "",
     "fomod": false
-   }
+   },
+   "onlyWith": "high"
   },
   {
    "id": "RU - Backpacks of the Commonwealth - 2.1.3 RU",
@@ -1163,7 +1164,8 @@
     "type": "copyAll",
     "from": "",
     "fomod": false
-   }
+   },
+   "onlyWith": "high"
   },
   {
    "id": "RU - Heather Casdin - A Unique Companion by llamaRCA - RU",
@@ -1907,7 +1909,8 @@
     "type": "copyAll",
     "from": "Commonwealth Encounter Pack - RU",
     "fomod": false
-   }
+   },
+   "onlyWith": "high"
   },
   {
    "id": "RU - Subway Runner - Revival - RU",
