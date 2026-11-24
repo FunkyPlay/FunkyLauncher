@@ -5989,6 +5989,35 @@
     "from": "",
     "fomod": false
    }
+  },
+  {
+   "id": "Modern Military Pack",
+   "modFolder": "Modern Military Pack",
+   "displayName": {
+    "ru": "Modern Military Pack",
+    "en": "Modern Military Pack"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 79956,
+    "fileId": 318083,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/79956?tab=files&file_id=318083"
+   },
+   "version": "2.0",
+   "archive": {
+    "nexusFileName": "Modern Military Pack 2k-79956-2-0-1716310849.zip",
+    "localFileName": "Modern Military Pack 2k-79956-2-0-1716310849.zip",
+    "size": 538931616,
+    "sha256": "e1fc650eaed8d37cfdfb61968fecc44eaacc65ceb9e2e0e6536fea746a126088"
+   },
+   "plugins": [
+    "Modern Military Pack.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "Modern Military Pack 2k",
+    "fomod": false
+   }
   }
  ]
 }

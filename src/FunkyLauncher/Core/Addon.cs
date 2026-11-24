@@ -290,7 +290,11 @@ public static class Addons
         try { return (true, File.Exists(f) ? File.ReadAllText(f) : null); } catch { return (false, null); }
     }
 
-    private const string OnlineBase = "https://raw.githubusercontent.com/FunkyPlay/FunkyLauncher/main/addons/";
+    /// <summary>FUNKYLAUNCHER_ADDONS_BRANCH (developer tests only): read the packs from a test branch instead of main.</summary>
+    private static string OnlineBase =>
+        "https://raw.githubusercontent.com/FunkyPlay/FunkyLauncher/"
+        + (Environment.GetEnvironmentVariable("FUNKYLAUNCHER_ADDONS_BRANCH") is { Length: > 0 } b && b.All(c => char.IsLetterOrDigit(c) || c is '-' or '_' or '.') ? b : "main")
+        + "/addons/";
     private static string CacheFile(string modlistId, string kind) =>
         Path.Combine(AppConfig.DataDir, "addons", $"{modlistId}-{kind}.json");
 
