@@ -40,8 +40,9 @@ public partial class LibraryView : UserControl
         Banner.Background = img != null
             ? new ImageBrush(img) { Stretch = Stretch.UniformToFill, AlignmentY = AlignmentY.Center }
             : new LinearGradientBrush(Color.FromRgb(0x24, 0x18, 0x2C), Color.FromRgb(0x12, 0x12, 0x1A), 60);
-        TitleText.Text = m.Title;
-        TagText.Text = m.Tag.ToString();
+        // Funky 24.11: the game name is big, our modlist name small (players look for the game first)
+        TitleText.Text = GameName(m).ToUpperInvariant();
+        TagText.Text = SmallLine(m);
         Description.Text = m.Description.ToString();
         var details = m.Details?.ToString() ?? "";
         MoreLink.Text = Loc.T("lib.more");
@@ -174,6 +175,25 @@ public partial class LibraryView : UserControl
         StatusList.Children.Add(box);
     }
 
+    /// <summary>Game name as players know it: the part of the tag before " · " ("Cyberpunk 2077"), else the catalog game.</summary>
+    private static string GameName(Modlist m)
+    {
+        var t = m.Tag.ToString();
+        var i = t.IndexOf(" · ", StringComparison.Ordinal);
+        return i > 0 ? t[..i] : m.Game;
+    }
+
+    /// <summary>Small line under the game: our modlist name + the rest of the tag ("Neon Nights · 2.5 + Phantom Liberty").</summary>
+    private static string SmallLine(Modlist m)
+    {
+        var title = m.Title.Length > 0 && m.Title == m.Title.ToUpperInvariant()
+            ? string.Join(' ', m.Title.ToLowerInvariant().Split(' ').Select(w => w.Length > 0 ? char.ToUpperInvariant(w[0]) + w[1..] : w))
+            : m.Title;
+        var t = m.Tag.ToString();
+        var i = t.IndexOf(" · ", StringComparison.Ordinal);
+        return i > 0 ? title + " · " + t[(i + 3)..] : title;
+    }
+
     private Border Card(Modlist m)
     {
         var installed = m.IsReleased && _main.Settings.IsInstalled(m);
@@ -198,8 +218,9 @@ public partial class LibraryView : UserControl
             Background = (Brush)bc.ConvertFrom(chipBg)!,
             Child = new TextBlock { Text = chipText, FontSize = 11, FontWeight = FontWeights.SemiBold, Foreground = (Brush)bc.ConvertFrom(chipFg)! },
         });
-        info.Children.Add(new TextBlock { Text = m.Title, FontFamily = (FontFamily)FindResource("TitleFont"), FontSize = m.Title.Length > 14 ? 14 : 18, Margin = new Thickness(0, 6, 0, 0), TextWrapping = TextWrapping.NoWrap, TextTrimming = TextTrimming.CharacterEllipsis });
-        info.Children.Add(new TextBlock { Text = m.Tag.ToString(), FontSize = 11.5, Foreground = (Brush)FindResource("Muted"), TextTrimming = TextTrimming.CharacterEllipsis });
+        var game = GameName(m).ToUpperInvariant();
+        info.Children.Add(new TextBlock { Text = game, FontFamily = (FontFamily)FindResource("TitleFont"), FontSize = game.Length > 16 ? 16 : 19, Margin = new Thickness(0, 6, 0, 1), TextWrapping = TextWrapping.Wrap });
+        info.Children.Add(new TextBlock { Text = SmallLine(m), FontSize = 11.5, Foreground = (Brush)FindResource("Muted"), TextTrimming = TextTrimming.CharacterEllipsis });
         grid.Children.Add(info);
 
         var card = new Border
