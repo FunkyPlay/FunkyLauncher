@@ -101,7 +101,7 @@ public partial class HomeView : UserControl
         NewsTitle.Text = Loc.T("home.news");
         AllNews.Text = Loc.T("home.news.all");
         WhatsNewTitle.Text = Loc.F("start.whatsnew", AppConfig.Version);
-        WhatsNewText.Text = Loc.T("start.whatsnew.items");
+        RenderWhatsNew();
         SupportTitle.Text = Loc.T("start.support");
         SupportText.Text = Loc.T("start.support.text");
         SupportButton.Content = Loc.T("start.support.write");
@@ -287,4 +287,43 @@ public partial class HomeView : UserControl
     private void TikTok_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(Catalog.Social.TikTok);
     private void GitHub_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(AppConfig.GitHubUrl);
     private void AllNews_Click(object sender, System.Windows.Input.MouseButtonEventArgs e) => PlayService.OpenUrl(AppConfig.Telegram);
+
+    private static bool? _whatsNewFresh;
+
+    /// <summary>Funky 24.11: "What's new" stands out — a pink frame and a "NEW" badge the first time this launcher version
+    /// is opened; each line's lead-in up to the colon in bold; the modlist line (Neon Nights 0.1.x…) apart with its own mark.</summary>
+    private void RenderWhatsNew()
+    {
+        var s = _main.Settings;
+        if (_whatsNewFresh == null)
+        {
+            _whatsNewFresh = _main.ShotsMode || s.WhatsNewSeen != AppConfig.Version;
+            if (!_main.ShotsMode && s.WhatsNewSeen != AppConfig.Version) { s.WhatsNewSeen = AppConfig.Version; s.Save(); }
+        }
+        var fresh = _whatsNewFresh == true;
+        WhatsNewBadge.Visibility = fresh ? Visibility.Visible : Visibility.Collapsed;
+        WhatsNewBadgeText.Text = Loc.T("start.whatsnew.badge");
+        if (fresh) { WhatsNewCard.BorderBrush = (Brush)FindResource("Pink"); WhatsNewCard.BorderThickness = new Thickness(2); }
+        else { WhatsNewCard.ClearValue(Border.BorderBrushProperty); WhatsNewCard.ClearValue(Border.BorderThicknessProperty); }
+
+        WhatsNewText.Inlines.Clear();
+        var lines = Loc.T("start.whatsnew.items").Split('\n', StringSplitOptions.RemoveEmptyEntries);
+        var first = true;
+        foreach (var raw in lines)
+        {
+            var line = raw.TrimStart('•', ' ');
+            var modlist = line.Contains(" Nights ", StringComparison.Ordinal) && line.IndexOf(" Nights ", StringComparison.Ordinal) < 8;
+            if (!first) WhatsNewText.Inlines.Add(new System.Windows.Documents.LineBreak());
+            if (modlist && !first) WhatsNewText.Inlines.Add(new System.Windows.Documents.LineBreak());
+            first = false;
+            WhatsNewText.Inlines.Add(new System.Windows.Documents.Run(modlist ? "🎮 " : "• ") { Foreground = (Brush)FindResource(modlist ? "Cyan" : "Pink") });
+            var colon = line.IndexOf(':');
+            if (colon > 0 && colon < 40)
+            {
+                WhatsNewText.Inlines.Add(new System.Windows.Documents.Run(line[..(colon + 1)]) { FontWeight = FontWeights.Bold, Foreground = Brushes.White });
+                WhatsNewText.Inlines.Add(new System.Windows.Documents.Run(line[(colon + 1)..]));
+            }
+            else WhatsNewText.Inlines.Add(new System.Windows.Documents.Run(line));
+        }
+    }
 }

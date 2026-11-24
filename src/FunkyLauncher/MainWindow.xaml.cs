@@ -214,6 +214,11 @@ public partial class MainWindow : Window, IProUi
         RefreshNexus();
     }
 
+    private void SiteSide_Click(object sender, RoutedEventArgs e)
+    {
+        try { Services.PlayService.OpenUrl(SiteLinks.Home); } catch { }
+    }
+
     private void SupportSide_Click(object sender, RoutedEventArgs e) =>
         PlayService.OpenSupportChat("", Settings, Selected);
 
@@ -241,6 +246,8 @@ public partial class MainWindow : Window, IProUi
     public void RefreshNexus()
     {
         SupportSideButton.Content = "💬 " + Loc.T("start.support.write");
+        SiteSideButton.Content = "🌐 funkylauncher.com";
+        SiteSideButton.ToolTip = Loc.T("site.tip");
         var ok = WabbajackService.IsNexusLoggedIn;
         NexusStatus.Text = "● " + Loc.T(ok ? "check.nexus.ok" : "check.nexus.no");
         NexusStatus.Foreground = (Brush)FindResource(ok ? "Cyan" : "Pink");

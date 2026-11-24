@@ -84,8 +84,11 @@
             <Grid x:Name="SidePanel" Grid.Column="2" VerticalAlignment="Top">
                 <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
                 <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition x:Name="SideCol2" Width="0"/></Grid.ColumnDefinitions>
-                <Border Style="{StaticResource CardBorder}" Padding="18,12">
+                <Border x:Name="WhatsNewCard" Style="{StaticResource CardBorder}" Padding="18,12">
                     <StackPanel>
+                        <Border x:Name="WhatsNewBadge" HorizontalAlignment="Left" CornerRadius="8" Padding="8,2" Margin="0,0,0,6" Background="{DynamicResource Pink}" Visibility="Collapsed">
+                            <TextBlock x:Name="WhatsNewBadgeText" FontSize="11" FontWeight="Bold" Foreground="#0F0F14"/>
+                        </Border>
                         <TextBlock x:Name="WhatsNewTitle" FontSize="15" FontWeight="Bold" Margin="0,0,0,8"/>
                         <TextBlock x:Name="WhatsNewText" FontSize="12.5" LineHeight="19" Foreground="#C9C9D6" TextWrapping="Wrap"/>
                     </StackPanel>

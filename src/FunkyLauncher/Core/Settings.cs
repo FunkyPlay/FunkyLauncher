@@ -16,6 +16,8 @@ public sealed class Settings
 {
     public string Language { get; set; } = "";
     public string SelectedId { get; set; } = "neon-nights";
+    /// <summary>The launcher version whose "What's new" the player has already seen (its card is highlighted until then).</summary>
+    public string WhatsNewSeen { get; set; } = "";
 
     /// <summary>Save backups: one before every PLAY; where backups live ("" = %LOCALAPPDATA%\FunkyLauncher\Backups).</summary>
     public bool AutoBackup { get; set; } = true;

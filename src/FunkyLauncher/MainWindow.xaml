@@ -54,6 +54,8 @@
                 </Border>
                 <!-- always in sight: the support chat inside the launcher -->
                 <Button x:Name="SupportSideButton" DockPanel.Dock="Bottom" Style="{StaticResource SecondaryButton}" Height="40" FontSize="12.5" Padding="6,0,6,0" Margin="0,0,0,10" Click="SupportSide_Click"/>
+                <!-- Funky 24.11: our site always in sight -->
+                <Button x:Name="SiteSideButton" DockPanel.Dock="Bottom" Style="{StaticResource SecondaryButton}" Height="40" FontSize="12.5" Padding="6,0,6,0" Margin="0,0,0,8" Click="SiteSide_Click"/>
             </DockPanel>
         </Border>
 

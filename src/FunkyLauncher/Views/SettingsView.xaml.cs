@@ -38,6 +38,14 @@ public partial class SettingsView : UserControl
         var ver = Assembly.GetExecutingAssembly().GetName().Version?.ToString(3) ?? "0.1.0";
         AboutText.Text = Loc.F("settings.about.text", ver, Catalog.Source);
         AboutNotice.Text = Loc.T("settings.about.notice");
+        AboutLinks.Inlines.Clear();
+        foreach (var (text, url) in new[] { ("🌐 " + Loc.T("site.name"), SiteLinks.Home), ("✈ Telegram", SiteLinks.Telegram), ("▶ YouTube", SiteLinks.YouTube) })
+        {
+            if (AboutLinks.Inlines.Count > 0) AboutLinks.Inlines.Add(new System.Windows.Documents.Run("     "));
+            var link = new System.Windows.Documents.Hyperlink(new System.Windows.Documents.Run(text)) { Foreground = (System.Windows.Media.Brush)FindResource("Cyan"), TextDecorations = null };
+            link.Click += (_, _) => { try { Services.PlayService.OpenUrl(url); } catch { } };
+            AboutLinks.Inlines.Add(link);
+        }
     }
 
     // ---------- Funky Pro key ----------

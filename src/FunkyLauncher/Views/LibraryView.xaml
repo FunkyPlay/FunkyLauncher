@@ -35,6 +35,7 @@
                                 <TextBlock x:Name="LessLink" DockPanel.Dock="Right" FontSize="13" Foreground="{DynamicResource Cyan}" Cursor="Hand" MouseLeftButtonUp="Details_Toggle"/>
                                 <TextBlock x:Name="DetailsTitle" FontFamily="{StaticResource TitleFont}" FontSize="24"/>
                             </DockPanel>
+                            <TextBlock x:Name="DetailsSite" DockPanel.Dock="Bottom" FontSize="13.5" FontWeight="SemiBold" Foreground="{DynamicResource Cyan}" Cursor="Hand" Margin="0,12,0,0" HorizontalAlignment="Left" MouseLeftButtonUp="DetailsSite_Click"/>
                             <ScrollViewer VerticalScrollBarVisibility="Auto">
                                 <TextBlock x:Name="DetailsText" FontSize="13.5" LineHeight="21" Foreground="#D6D6E2" TextWrapping="Wrap"/>
                             </ScrollViewer>

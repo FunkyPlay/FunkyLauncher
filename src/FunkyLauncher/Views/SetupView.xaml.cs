@@ -246,8 +246,25 @@ public partial class SetupView : UserControl
         return a.ForMainVersion.Length == 0 || a.ForMainVersion == v ? a : null;
     }
 
-    private Grid Row(string title, string hint, out Border right)
+    private Grid Row(string title, string hint, out Border right) => Row(title, hint, out right, false);
+
+    /// <summary>stacked: the buttons go under the text on the full width (Funky 24.11: three buttons squeezed the text into a column).</summary>
+    private Grid Row(string title, string hint, out Border right, bool stacked)
     {
+        if (stacked)
+        {
+            var sg = new Grid { Margin = new Thickness(0, 4, 0, 4) };
+            sg.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+            sg.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+            var top = new StackPanel();
+            top.Children.Add(new TextBlock { Text = title, FontSize = 14, FontWeight = FontWeights.Bold, TextWrapping = TextWrapping.Wrap });
+            top.Children.Add(new TextBlock { Text = hint, FontSize = 12, Foreground = (Brush)FindResource("Muted"), TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 3, 0, 0) });
+            sg.Children.Add(top);
+            right = new Border { HorizontalAlignment = HorizontalAlignment.Left, Margin = new Thickness(0, 10, 0, 0) };
+            Grid.SetRow(right, 1);
+            sg.Children.Add(right);
+            return sg;
+        }
         var g = new Grid { Margin = new Thickness(0, 4, 0, 4) };
         g.ColumnDefinitions.Add(new ColumnDefinition());
         g.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
@@ -399,7 +416,7 @@ public partial class SetupView : UserControl
             level = r;
         }
         string[] keys = { "gfx3.standard", "gfx3.high", "gfx3.ultra" };
-        var row = Row(Loc.T("gfx3.title"), Loc.T("gfx3.load") + " " + Loc.T(keys[level] + ".hint"), out var right);
+        var row = Row(Loc.T("gfx3.title"), Loc.T("gfx3.load") + " " + Loc.T(keys[level] + ".hint"), out var right, stacked: true);
         if (recommend != null && row.Children[0] is StackPanel left)
             left.Children.Add(new TextBlock { Text = Loc.F("gfx3.recommend", reason, Loc.T(keys[recommend.Value])), FontSize = 12, Foreground = (Brush)FindResource("Cyan"), TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 4, 0, 0) });
         var seg = new StackPanel { Orientation = Orientation.Horizontal, VerticalAlignment = VerticalAlignment.Center };

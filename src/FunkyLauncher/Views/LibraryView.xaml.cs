@@ -50,6 +50,10 @@ public partial class LibraryView : UserControl
         LessLink.Text = Loc.T("lib.less");
         DetailsTitle.Text = m.Title;
         DetailsText.Text = details;
+        var page = SiteLinks.Modlist(m.Title);
+        DetailsSite.Text = page != null ? "🌐 " + Loc.T("site.modlist") + " ↗" : "";
+        DetailsSite.Visibility = page != null ? Visibility.Visible : Visibility.Collapsed;
+        DetailsSite.Tag = page;
         DetailsPanel.Visibility = Visibility.Collapsed;
         var req = m.Requirements?.ToString() ?? "";
         ReqPanel.Visibility = req.Length > 0 ? Visibility.Visible : Visibility.Collapsed;
@@ -68,6 +72,7 @@ public partial class LibraryView : UserControl
         var update = s.NeedsUpdate(m);
         SetupButton.Content = update ? Loc.F("lib.update", m.Version) : Loc.T("lib.setup");
         SetupButton.IsEnabled = m.IsReleased;
+        PlaceSetupButton(update);
         if (installed) Sub.Text = Loc.F("home.sub.installed", m.Author, s.InstalledVersion(m) ?? m.Version, s.InstallDir(m));
 
         CleanGameButton.Content = Loc.T("loaders.clean");
@@ -173,6 +178,34 @@ public partial class LibraryView : UserControl
             RefreshSelected();
         };
         StatusList.Children.Add(box);
+    }
+
+    /// <summary>Funky 24.11: a new modlist version → "Update to X" is pink and the first of the buttons;
+    /// otherwise "Setup and check" stays a plain button at the bottom.</summary>
+    private void DetailsSite_Click(object sender, MouseButtonEventArgs e)
+    {
+        if (DetailsSite.Tag is string url) try { PlayService.OpenUrl(url); } catch { }
+    }
+
+    private void PlaceSetupButton(bool update)
+    {
+        if (SetupButton.Parent is not DockPanel dock) return;
+        dock.Children.Remove(SetupButton);
+        if (update)
+        {
+            dock.Children.Insert(dock.Children.IndexOf(RollbackButton) + 1, SetupButton);
+            SetupButton.Style = (Style)FindResource("PrimaryButton");
+            SetupButton.FontSize = 15;
+            SetupButton.Margin = new Thickness(0, 0, 0, 8);
+        }
+        else
+        {
+            dock.Children.Insert(0, SetupButton);
+            SetupButton.Style = (Style)FindResource("SecondaryButton");
+            SetupButton.ClearValue(Control.FontSizeProperty);
+            SetupButton.Margin = new Thickness(0);
+        }
+        SetupButton.Height = 42;
     }
 
     /// <summary>Game name as players know it: the part of the tag before " · " ("Cyberpunk 2077"), else the catalog game.</summary>
