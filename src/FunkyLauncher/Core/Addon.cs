@@ -330,10 +330,61 @@ public static class Addons
                 }
                 catch { /* offline, 404 (no such pack) — keep what we have */ }
             }
+        // 0.1.22: the descriptions of the mods ("Mods of the modlist" window)
+        foreach (var id in modlistIds)
+            try
+            {
+                var json = await http.GetStringAsync(OnlineBase + Uri.EscapeDataString($"{id}-about.json"), token);
+                if (!IsAbout(json, id)) continue;
+                var file = CacheFile(id, "about");
+                Directory.CreateDirectory(Path.GetDirectoryName(file)!);
+                await File.WriteAllTextAsync(file, json, token);
+            }
+            catch { }
         // the dictionaries of the Russian item names (a changed one reaches players without a new launcher)
         foreach (var id in modlistIds)
             try { if (Order(id)?.Translation is { } t) await Services.TranslationService.RefreshDictsAsync(http, OnlineBase, t, token); }
             catch { }
+    }
+
+    /// <summary>
+    /// 0.1.22 (Funky 25.11): our own one-line description of each mod of the base, RU and EN, by mod folder.
+    /// File addons/{id}-about.json — downloaded with the packs, so a new description needs no new launcher.
+    /// </summary>
+    public static IReadOnlyDictionary<string, string> About(string modlistId)
+    {
+        var res = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        try
+        {
+            string? json = null;
+            var cached = CacheFile(modlistId, "about");
+            if (File.Exists(cached)) try { json = File.ReadAllText(cached); } catch { }
+            if (json == null || !IsAbout(json, modlistId))
+            {
+                var r = System.Windows.Application.GetResourceStream(new Uri($"pack://application:,,,/addons/{modlistId}-about.json"));
+                if (r == null) return res;
+                using var sr = new StreamReader(r.Stream);
+                json = sr.ReadToEnd();
+            }
+            using var d = JsonDocument.Parse(json);
+            if (!d.RootElement.TryGetProperty("mods", out var mods)) return res;
+            var lang = Loc.Lang == "ru" ? "ru" : "en";
+            foreach (var p in mods.EnumerateObject())
+                if (p.Value.TryGetProperty(lang, out var t) && t.GetString() is { Length: > 0 } s) res[p.Name] = s;
+        }
+        catch { }
+        return res;
+    }
+
+    private static bool IsAbout(string json, string modlistId)
+    {
+        try
+        {
+            using var d = JsonDocument.Parse(json);
+            return d.RootElement.TryGetProperty("modlistId", out var id) && id.GetString() == modlistId
+                && d.RootElement.TryGetProperty("mods", out var m) && m.ValueKind == JsonValueKind.Object;
+        }
+        catch { return false; }
     }
 
     private static AddonFile? Load(string modlistId, string kind)

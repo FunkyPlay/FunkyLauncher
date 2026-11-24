@@ -106,7 +106,8 @@ public sealed class ModsWindow : Window
         var q = _search.Text.Trim();
         foreach (var i in _items)
         {
-            if (q.Length > 0 && !i.Name.Contains(q, StringComparison.CurrentCultureIgnoreCase) && !i.Folder.Contains(q, StringComparison.OrdinalIgnoreCase)) continue;
+            if (q.Length > 0 && !i.Name.Contains(q, StringComparison.CurrentCultureIgnoreCase) && !i.Folder.Contains(q, StringComparison.OrdinalIgnoreCase)
+                && !i.About.Contains(q, StringComparison.CurrentCultureIgnoreCase)) continue;
             var on = _on[i.Folder];
             var changed = !i.Core && on != i.DefaultOn;
             var row = new DockPanel { Margin = new Thickness(8, 4, 8, 4) };
@@ -117,8 +118,19 @@ public sealed class ModsWindow : Window
             row.Children.Add(box);
             var text = new StackPanel { VerticalAlignment = VerticalAlignment.Center };
             text.Children.Add(new TextBlock { Text = i.Name, FontSize = 14, TextTrimming = TextTrimming.CharacterEllipsis, Foreground = changed ? R("Cyan") : on ? Brushes.White : R("Muted") });
+            if (i.About.Length > 0)
+                text.Children.Add(new TextBlock { Text = i.About, FontSize = 12.5, Foreground = R("Muted"), TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 1, 0, 0) });
             var note = i.Core ? "🔒 " + Loc.T("mods.core") : !i.DefaultOn ? Loc.T("mods.offbydefault") : changed ? Loc.T("mods.changed") : "";
-            if (note.Length > 0) text.Children.Add(new TextBlock { Text = note, FontSize = 11.5, Foreground = R("Muted"), Margin = new Thickness(0, 1, 0, 0) });
+            var line = new WrapPanel { Margin = new Thickness(0, 1, 0, 0) };
+            if (note.Length > 0) line.Children.Add(new TextBlock { Text = note + (i.Url.Length > 0 ? "  ·  " : ""), FontSize = 11.5, Foreground = R("Muted") });
+            if (i.Url.Length > 0)
+            {
+                var url = i.Url;
+                var link = new TextBlock { Text = Loc.T("mods.page"), FontSize = 11.5, Foreground = R("Cyan"), Cursor = System.Windows.Input.Cursors.Hand, TextDecorations = TextDecorations.Underline, ToolTip = url };
+                link.MouseLeftButtonUp += (_, _) => PlayService.OpenUrl(url);
+                line.Children.Add(link);
+            }
+            if (line.Children.Count > 0) text.Children.Add(line);
             row.Children.Add(text);
             _list.Children.Add(row);
         }

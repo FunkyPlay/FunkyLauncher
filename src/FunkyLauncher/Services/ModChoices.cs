@@ -11,7 +11,13 @@ namespace FunkyLauncher.Services;
 /// </summary>
 public static class ModChoices
 {
-    public sealed record Item(string Folder, string Name, bool DefaultOn, bool On, bool Core, bool HasPlugin);
+    public sealed record Item(string Folder, string Name, bool DefaultOn, bool On, bool Core, bool HasPlugin)
+    {
+        /// <summary>Our one-line description (RU or EN by the launcher language), empty if none yet.</summary>
+        public string About { get; init; } = "";
+        /// <summary>The mod's page on Nexus, empty if unknown.</summary>
+        public string Url { get; init; } = "";
+    }
 
     /// <summary>Frameworks the other mods stand on, when the order file has no "core" list (game chats can override).</summary>
     private static readonly Regex KnownCore = new(
@@ -34,6 +40,7 @@ public static class ModChoices
         var choices = Of(s, m);
         var off = new HashSet<string>(order.ModlistOff, StringComparer.OrdinalIgnoreCase);
         var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        var about = Addons.About(m.Id);
         foreach (var x in main.Mods)
         {
             if (x.ModFolder.Length == 0 || !seen.Add(x.ModFolder)) continue;
@@ -42,7 +49,11 @@ public static class ModChoices
             var on = core ? true : choices.TryGetValue(x.ModFolder, out var c) ? c : def;
             // "Alex Romanced 30777 2.0.1 2026" → "Alex Romanced": the Nexus id, version and year are noise for the player
             var name = NexusTail.Replace(x.DisplayName.ToString(), "").Trim();
-            list.Add(new Item(x.ModFolder, name.Length > 0 ? name : x.ModFolder, def, on, core, x.Plugins.Count > 0));
+            list.Add(new Item(x.ModFolder, name.Length > 0 ? name : x.ModFolder, def, on, core, x.Plugins.Count > 0)
+            {
+                About = about.TryGetValue(x.ModFolder, out var a) ? a : "",
+                Url = x.Nexus is { ModId: > 0, Game.Length: > 0 } n ? $"https://www.nexusmods.com/{n.Game}/mods/{n.ModId}" : "",
+            });
         }
         return list.OrderBy(i => i.Name, StringComparer.CurrentCultureIgnoreCase).ToList();
     }
