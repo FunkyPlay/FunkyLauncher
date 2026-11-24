@@ -59,6 +59,8 @@ public sealed class Settings
     public bool UpdateCatalog { get; set; } = true;
     /// <summary>The privacy notice was shown on the first start.</summary>
     public bool PrivacyNoticeShown { get; set; }
+    /// <summary>0.1.21: the list of the player's own mods in the game folder last shown (per modlist id); shown again only when it changes.</summary>
+    public Dictionary<string, string> ForeignModsSeen { get; set; } = new();
     /// <summary>The one-time "follow us" window after the first modlist install was shown.</summary>
     public bool SubscribeShown { get; set; }
 

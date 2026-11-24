@@ -278,6 +278,25 @@ public partial class LibraryView : UserControl
                 CleanGameButton.Visibility = GameLoaders.Placed(m) ? Visibility.Visible : Visibility.Collapsed;
             }
 
+            // 1c) 0.1.21: mods put into the game folder by hand load together with the modlist (support #176).
+            // Only a warning, shown again only when the list changes; the launcher touches nothing there.
+            if (game != null)
+            {
+                var foreign = await Task.Run(() => GameLoaders.ForeignMods(m, game.Path));
+                var seen = string.Join("|", foreign);
+                s.ForeignModsSeen.TryGetValue(m.Id, out var last);
+                if (foreign.Count > 0 && seen != last)
+                {
+                    var shown = string.Join("\n", foreign.Take(12).Select(x => "• " + x)) + (foreign.Count > 12 ? "\n• …" : "");
+                    var go = Views.Dialog.Show(_main, Loc.F("foreign.text", game.Path, shown), m.Title,
+                        MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.Yes) == MessageBoxResult.Yes;
+                    s.ForeignModsSeen[m.Id] = seen;
+                    s.Save();
+                    if (!go) { PlayMessage.Text = ""; return; }
+                }
+                else if (foreign.Count == 0 && last != null) { s.ForeignModsSeen.Remove(m.Id); s.Save(); }
+            }
+
             // 2) save backup (never blocks the game: a failed backup is only reported)
             string? backupNote = null;
             if (s.AutoBackup && BackupService.Supported(m) && !BackupService.GameRunning(m))

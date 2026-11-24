@@ -163,6 +163,56 @@ public static class GameLoaders
     public static bool Placed(Modlist ml) => Load(ml).Files.Count > 0;
 
     /// <summary>
+    /// 0.1.21: mods the player put into the game folder by hand. They load together with the modlist and often
+    /// break it (support #176: an old ACU plugin stopped the game at start). Cyberpunk 2077 only, for now; the
+    /// launcher only warns, it never moves or deletes them. Paths from the Cyberpunk chat (24.11).
+    /// </summary>
+    public static List<string> ForeignMods(Modlist ml, string gamePath)
+    {
+        var found = new List<string>();
+        if (!ml.Game.Contains("cyberpunk", StringComparison.OrdinalIgnoreCase) && ml.Id != "neon-nights") return found;
+        var ours = new HashSet<string>(ml.GameLoaders.Select(l => Norm(l.Path))
+            .Concat(ml.GameCleanup.Select(c => Norm(c.Path))), StringComparer.OrdinalIgnoreCase);
+        bool Skip(string rel) => ours.Contains(rel) || rel.EndsWith(".log", StringComparison.OrdinalIgnoreCase);
+        void Scan(string relDir, string pattern, bool folders)
+        {
+            try
+            {
+                var dir = System.IO.Path.Combine(gamePath, Norm(relDir));
+                if (!Directory.Exists(dir)) return;
+                foreach (var f in Directory.EnumerateFiles(dir, pattern))
+                {
+                    var rel = System.IO.Path.GetRelativePath(gamePath, f);
+                    if (!Skip(rel)) found.Add(rel);
+                }
+                if (!folders) return;
+                foreach (var d in Directory.EnumerateDirectories(dir))
+                {
+                    var rel = System.IO.Path.GetRelativePath(gamePath, d);
+                    if (!Skip(rel) && Directory.EnumerateFiles(d, "*", SearchOption.AllDirectories)
+                            .Any(x => !x.EndsWith(".log", StringComparison.OrdinalIgnoreCase)))
+                        found.Add(rel + System.IO.Path.DirectorySeparatorChar);
+                }
+            }
+            catch { /* an unreadable folder is not worth stopping PLAY */ }
+        }
+        Scan(@"bin\x64\plugins\cyber_engine_tweaks\mods", "*", true);
+        Scan(@"red4ext\plugins", "*", true);
+        Scan(@"archive\pc\mod", "*", true);
+        Scan("mods", "*", true);
+        Scan(@"r6\scripts", "*", true);
+        Scan(@"r6\tweaks", "*", true);
+        Scan(@"r6\input", "*.xml", false);
+        Scan(@"bin\x64", "*.asi", false);
+        foreach (var dll in new[] { "dinput8.dll", "d3d11.dll", "dxgi.dll" })
+        {
+            var rel = System.IO.Path.Combine("bin", "x64", dll);
+            if (File.Exists(System.IO.Path.Combine(gamePath, rel)) && !Skip(rel)) found.Add(rel);
+        }
+        return found;
+    }
+
+    /// <summary>
     /// Takes our loaders out of the game folder (only files that are still exactly ours), puts the player's
     /// replaced files back, and removes what those mods created next to them (logs, settings).
     /// Returns files that were left because the player changed them.
