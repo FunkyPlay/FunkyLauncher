@@ -32,7 +32,12 @@ public static class AppConfig
     /// Online catalog of modlists (raw catalog.json on GitHub). If it can't be loaded,
     /// the cached or built-in copy is used.
     /// </summary>
-    public const string CatalogUrl = "https://raw.githubusercontent.com/FunkyPlay/FunkyLauncher/main/catalog2.json";
+    /// <summary>The catalog from main; FUNKYLAUNCHER_ADDONS_BRANCH (developer tests only) reads it from the test branch too,
+    /// so a modlist update (e.g. Neon 0.1.7) can be tested before main changes.</summary>
+    public static string CatalogUrl =>
+        "https://raw.githubusercontent.com/FunkyPlay/FunkyLauncher/"
+        + (Environment.GetEnvironmentVariable("FUNKYLAUNCHER_ADDONS_BRANCH") is { Length: > 0 } b && b.All(c => char.IsLetterOrDigit(c) || c is '-' or '_' or '.') ? b : "main")
+        + "/catalog2.json";
 
     /// <summary>Official Wabbajack releases (we download it, never repackage it).</summary>
     public const string WabbajackReleasesApi = "https://api.github.com/repos/wabbajack-tools/wabbajack/releases/latest";

@@ -2,9 +2,9 @@
  "schema": 1,
  "modlistId": "neon-nights",
  "addonId": "neon-nights-heavy",
- "listVersion": "0.1.6",
- "forMainVersion": "0.1.6",
- "generated": "2026-11-21",
+ "listVersion": "0.1.7",
+ "forMainVersion": "0.1.7",
+ "generated": "2026-11-24",
  "default": true,
  "mods": [
   {
