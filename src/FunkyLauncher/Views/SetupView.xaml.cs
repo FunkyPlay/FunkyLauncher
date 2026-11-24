@@ -382,13 +382,15 @@ public partial class SetupView : UserControl
     {
         var s = _main.Settings;
         var level = AddonService.Prefs(s, heavy).On ? 2 : AddonService.Prefs(s, high).On ? 1 : 0;
-        if (!_vramAsked)
+        if (!_hwAsked)
         {
-            _vramAsked = true;
-            _ = Task.Run(PcCheck.VramGb).ContinueWith(t => Dispatcher.BeginInvoke(() => { _vramGb = t.Result; RenderComposition(); }),
+            _hwAsked = true;
+            var dir = s.InstallDir(Ml);
+            _ = Task.Run(() => PcCheck.Read(dir)).ContinueWith(t => Dispatcher.BeginInvoke(() => { _hw = t.Result; RenderComposition(); }),
                 TaskContinuationOptions.OnlyOnRanToCompletion);
         }
-        int? recommend = _vramGb is > 0 and <= 6.5 ? 0 : _vramGb is > 0 and <= 8.5 ? 1 : null;
+        // Funky 24.11: not by the video card alone — the weakest part of the PC decides (video memory, RAM, processor, HDD)
+        var (recommend, reason) = Recommend(_hw);
         if (recommend is { } r && level > r && !(Installed && !Updating) && !s.GraphicsChosen.Contains(Ml.Id))
         {
             AddonService.Prefs(s, heavy).On = r >= 2;
@@ -397,9 +399,9 @@ public partial class SetupView : UserControl
             level = r;
         }
         string[] keys = { "gfx3.standard", "gfx3.high", "gfx3.ultra" };
-        var row = Row(Loc.T("gfx.title"), Loc.T(keys[level] + ".hint"), out var right);
+        var row = Row(Loc.T("gfx3.title"), Loc.T("gfx3.load") + " " + Loc.T(keys[level] + ".hint"), out var right);
         if (recommend != null && row.Children[0] is StackPanel left)
-            left.Children.Add(new TextBlock { Text = Loc.F("gfx3.recommend", Math.Round(_vramGb!.Value), Loc.T(keys[recommend.Value])), FontSize = 12, Foreground = (Brush)FindResource("Cyan"), TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 4, 0, 0) });
+            left.Children.Add(new TextBlock { Text = Loc.F("gfx3.recommend", reason, Loc.T(keys[recommend.Value])), FontSize = 12, Foreground = (Brush)FindResource("Cyan"), TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 4, 0, 0) });
         var seg = new StackPanel { Orientation = Orientation.Horizontal, VerticalAlignment = VerticalAlignment.Center };
         for (var i = 0; i < 3; i++)
         {
@@ -410,6 +412,24 @@ public partial class SetupView : UserControl
         }
         right.Child = new Border { Background = (Brush)FindResource("CardActive"), CornerRadius = new CornerRadius(8), Padding = new Thickness(3, 10, 3, 3), Child = seg };
         return row;
+    }
+
+    private static HardwareInfo? _hw;
+    private static bool _hwAsked;
+
+    /// <summary>The suggested version (0 Standard, 1 High; null = Ultra is fine) and the weakest part that decided it.
+    /// Thresholds are a first guess, to be tuned by the game chats' measurements.</summary>
+    private static (int? Level, string Reason) Recommend(HardwareInfo? h)
+    {
+        if (h == null) return (null, "");
+        var parts = new List<(int Level, string Why)>();
+        if (h.VramGb > 0) parts.Add((h.VramGb <= 6.5 ? 0 : h.VramGb <= 8.5 ? 1 : 2, Loc.F("gfx3.why.vram", Math.Round(h.VramGb))));
+        if (h.RamGb > 0) parts.Add((h.RamGb < 12 ? 0 : h.RamGb < 24 ? 1 : 2, Loc.F("gfx3.why.ram", Math.Round(h.RamGb))));
+        if (h.Threads > 0) parts.Add((h.Threads < 8 ? 0 : h.Threads < 12 ? 1 : 2, Loc.F("gfx3.why.cpu", h.Threads)));
+        if (h.Ssd == false) parts.Add((1, Loc.T("gfx3.why.hdd")));
+        if (parts.Count == 0) return (null, "");
+        var worst = parts.OrderBy(p => p.Level).First();
+        return worst.Level >= 2 ? (null, "") : (worst.Level, worst.Why);
     }
 
     private async Task GraphicsPicked3Async(AddonFile heavy, AddonFile high, int level, string key)
