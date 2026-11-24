@@ -429,6 +429,7 @@ public static class Loc
         ["addon.mod.off"] = ("скачан, выключен", "downloaded, off"),
         ["addon.mod.new"] = ("будет скачан", "will be downloaded"),
         ["addon.install"] = ("Установить и включить", "Install and enable"),
+        ["adult.off.saves"] = ("Выключить «18+»?\n\nСохранения, начатые с «18+», без него могут показать персонажа без головы или лица. На начатой игре лучше не выключать — или начни новую игру.\n\nВсё равно выключить?", "Turn off 18+?\n\nSaves started with 18+ may show the character without a head or face without it. Better not to turn it off on a started game — or start a new game.\n\nTurn it off anyway?"),
         ["addon.disable"] = ("Выключить дополнение", "Turn the add-on off"),
         ["addon.close"] = ("Закрыть", "Close"),
         ["addon.hint.premium"] = ("С Nexus Premium всё скачается само. С бесплатным аккаунтом откроется окно, где у каждого мода нужно нажать «Slow download».", "With Nexus Premium everything downloads by itself. With a free account a window opens where you click “Slow download” for each mod."),

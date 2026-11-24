@@ -292,6 +292,13 @@ public partial class SetupView : UserControl
             RenderComposition();
             return;
         }
+        // 0.1.21: switching 18+ off on a started game — saves made with it may lose the character's head (Fallout 4 chat, 24.11)
+        if (!want && AddonService.Prefs(s, adult).On
+            && Views.Dialog.Show(_main, Loc.T("adult.off.saves"), Ml.Title, MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No) != MessageBoxResult.Yes)
+        {
+            RenderComposition();
+            return;
+        }
         // installed: the add-on window asks for the age, levels and installs / switches it off
         new AddonWindow(s, Ml, adult) { Owner = _main }.ShowDialog();
         RenderComposition();
