@@ -127,6 +127,17 @@ public static class SupportChat
                     waiting?.Report(Loc.T("chat.sending"));
                     attempt--; // a wait is not a broken upload
                 }
+                // 0.1.21: 504/408 = the server gave up reading a file upload after 60 s (support #195, 24.11: 531 KB,
+                // twice, the same on another player's 300 KB). The upload stalls on the way (often an antivirus that
+                // checks HTTPS uploads), a second try usually goes through: send again, twice at most, like a broken upload.
+                else if (file != null && (int)resp.StatusCode is 504 or 408 && attempt < 3)
+                {
+                    AppLog.Write($"support chat: send attempt {attempt} answered {(int)resp.StatusCode} ({body.Length / 1024} KB), sending again");
+                    resp.Dispose();
+                    resp = null;
+                    waiting?.Report(Loc.T("chat.sending"));
+                    await Task.Delay(attempt * 3000, token);
+                }
             }
             catch (TaskCanceledException) when (!token.IsCancellationRequested)
             {

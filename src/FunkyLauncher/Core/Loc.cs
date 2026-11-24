@@ -782,7 +782,7 @@ public static class Loc
         ["check.webview.ok"] = ("Встроенный браузер готов (WebView2 {0})", "Built-in browser ready (WebView2 {0})"),
         ["check.webview.no"] = ("Нет встроенного браузера WebView2", "The WebView2 built-in browser is missing"),
         ["check.webview.hint"] = ("Он нужен, чтобы скачивать моды с бесплатным аккаунтом Nexus. Поставь его бесплатно с сайта Microsoft: go.microsoft.com/fwlink/p/?LinkId=2124703", "It's needed to download mods with a free Nexus account. Install it for free from Microsoft: go.microsoft.com/fwlink/p/?LinkId=2124703"),
-        ["chat.err.slow"] = ("Файл не успел отправиться — интернет медленный. Попробуй ещё раз или приложи файл поменьше.", "The file didn't finish sending — the internet is slow. Try again or attach a smaller file."),
+        ["chat.err.slow"] = ("Файл не дошёл до сервера: связь оборвалась или антивирус задержал отправку. Попробуй ещё раз через минуту или отправь файл в Telegram-боте @FunkyLauncherBot.", "The file didn't reach the server: the connection broke or an antivirus held the upload. Try again in a minute or send the file to the Telegram bot @FunkyLauncherBot."),
         ["chat.err.file"] = ("Не получилось открыть файл: {0}", "Couldn't open the file: {0}"),
         ["chat.paste"] = ("Снимок можно вставить: Ctrl+V", "You can paste a screenshot: Ctrl+V"),
         ["chat.drop"] = ("Или перетащи файл в это окно.", "Or drag a file into this window."),
