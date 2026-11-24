@@ -412,7 +412,7 @@ public static class Loc
         ["comp.title"] = ("СОСТАВ СБОРКИ", "MODLIST CONTENTS"),
         ["comp.lang"] = ("Язык сборки", "Modlist language"),
         ["comp.lang.ru"] = ("Русская", "Russian"),
-        ["comp.lang.ai"] = ("Часть переводов сделана с помощью ИИ, с разрешения авторов модов.", "Some translations are AI-assisted, with the mod authors' permission."),
+        ["comp.lang.ai"] = ("Часть переводов сделана с помощью ИИ.", "Some translations are AI-assisted."),
         ["comp.lang.en"] = ("Английская", "English"),
         ["comp.lang.hint"] = ("Для русской версии поверх сборки ставятся переводы модов. Язык можно сменить потом, без переустановки. Язык самой игры — в настройках игры.", "The Russian version adds mod translations on top of the modlist. You can switch the language later without reinstalling. The game's own language is set in the game settings."),
         ["comp.lang.hint.installed"] = ("Смена языка занимает пару минут. Сборка не переустанавливается.", "Switching the language takes a couple of minutes. The modlist is not reinstalled."),

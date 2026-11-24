@@ -111,7 +111,7 @@ public partial class MainWindow
                 {
                     var res = Application.Current.Resources;
                     var keep = new[] { "Pink", "PinkSoft", "Cyan" }.ToDictionary(k => k, k => res[k]);
-                    foreach (var (tname, pink, soft, cyan) in new[] { ("sunset", "#FF8A3C", "#40210E", "#FFD166"), ("wasteland", "#E8C547", "#3A300F", "#7CE38B"), ("ocean", "#3C9DFF", "#10294A", "#5FF0D0") })
+                    foreach (var (tname, pink, soft, cyan) in new[] { ("sunset", "#FF8A3C", "#40210E", "#FFD166"), ("wasteland", "#E8C547", "#3A300F", "#7CE38B"), ("ocean", "#3C9DFF", "#10294A", "#5FF0D0"), ("ruby", "#FF3B5C", "#3F0F1A", "#FFC857"), ("cosmos", "#8B7BFF", "#221C4A", "#7AE8FF") })
                         try
                         {
                             res["Pink"] = new SolidColorBrush((Color)ColorConverter.ConvertFromString(pink));

@@ -208,6 +208,11 @@ public partial class HomeView : UserControl
         PremiumBox.Background = ThemeColors.Brush(own ? Color.FromArgb(0xC0, 0x2A, 0x14, 0x26) : ThemeColors.WithAlpha(ThemeColors.Mix(pink, Color.FromRgb(0x0F, 0x0F, 0x14), 0.85), 0xC0));
         PremiumText.Foreground = ThemeColors.Brush(own ? Color.FromRgb(0xFF, 0xC6, 0xEE) : ThemeColors.Mix(pink, Colors.White, 0.75));
         UpdateBar.BorderBrush = ThemeColors.Brush(pink);
+        // "Without Premium" box: the theme's second colour (Design 25.11)
+        var cyan = ThemeColors.Cyan;
+        FreeBox.BorderBrush = ThemeColors.Brush(ThemeColors.WithAlpha(cyan, 0x66));
+        FreeBox.Background = ThemeColors.Brush(own ? Color.FromArgb(0xC0, 0x0F, 0x2A, 0x33) : ThemeColors.WithAlpha(ThemeColors.Mix(cyan, Color.FromRgb(0x0F, 0x0F, 0x14), 0.85), 0xC0));
+        FreeText.Foreground = ThemeColors.Brush(own ? Color.FromRgb(0xC6, 0xF7, 0xFF) : ThemeColors.Mix(cyan, Colors.White, 0.75));
         if (_heroVideo == null && Hero.Background is ImageBrush ib && (_heroDefault == null || ReferenceEquals(Hero.Background, _heroDefault) || _heroTinted))
         {
             _heroDefault ??= Hero.Background;

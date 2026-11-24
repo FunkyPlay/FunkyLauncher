@@ -250,7 +250,7 @@ public partial class MainWindow : Window, IProUi
         SiteSideButton.ToolTip = Loc.T("site.tip");
         var ok = WabbajackService.IsNexusLoggedIn;
         NexusStatus.Text = "● " + Loc.T(ok ? "check.nexus.ok" : "check.nexus.no");
-        NexusStatus.Foreground = (Brush)FindResource(ok ? "Cyan" : "Pink");
+        NexusStatus.SetResourceReference(System.Windows.Controls.TextBlock.ForegroundProperty, ok ? "Cyan" : "Pink"); // 0.1.22: follows a theme switched later
         NexusAction.Text = Loc.T(ok ? "nexus.logout" : "nexus.login");
     }
 
