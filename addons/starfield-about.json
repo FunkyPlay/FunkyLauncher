@@ -153,8 +153,8 @@
    "en": "Furnished Core residence in Akila City"
   },
   "Outland - Frontier Ready": {
-   "ru": "Магазин Outland стал снаряжением для экспедиций",
-   "en": "Outland becomes an expedition outfitter"
+   "ru": "Магазин Outland в Новой Атлантиде — бутик снаряжения для экспедиций",
+   "en": "Outland in New Atlantis becomes an expedition gear boutique"
   },
   "Permanent POIs - Rogue Science": {
    "ru": "16 постоянных мест, 5 видов оружия, новые враги",
@@ -489,8 +489,8 @@
    "en": "New neuroamps"
   },
   "Perk Up - Quality of Life Skills Improved - Perk Up - QoL Skills - No Challenges": {
-   "ru": "Навыки без испытаний",
-   "en": "Skills without challenges"
+   "ru": "Больше кислорода и переносимого веса, навыки без испытаний",
+   "en": "More O2 and carry weight, skills without challenges"
   },
   "Perk Up - Quality of Life Skills Improved - Perk Up - Rested XP Bonus (x10)": {
    "ru": "Больше опыта после отдыха",
@@ -637,8 +637,8 @@
    "en": "Restores the NASA logo in the cockpit"
   },
   "Flashy(JoeR) - These Are The Voyages": {
-   "ru": "Исправляет ошибку с кораблём «Созвездие»",
-   "en": "Fixes the ECS Constant bug"
+   "ru": "Исправляет ошибку с кораблём «Констант» (ECS Constant)",
+   "en": "Fixes the ECS Constant ship bug"
   },
   "Tell Me Your Name - SFSE": {
    "ru": "Можно спросить имя у члена экипажа",
@@ -1229,8 +1229,8 @@
    "en": "Neutral NPCs don't turn hostile over stray hits"
   },
   "Stay in Your Space": {
-   "ru": "Корабли чужой фракции не нападают из-за штрафа",
-   "en": "No attacks from the other faction's ships over a bounty"
+   "ru": "Корабли ОК не нападают за штраф ОК в космосе Фристар, и наоборот",
+   "en": "UC ships won't attack over a UC bounty in Freestar space, and vice versa"
   },
   "Supply Mission Fix - EAASupplyMissionFix": {
    "ru": "Исправления заданий на поставки",
@@ -1481,8 +1481,8 @@
    "en": "Planet takeoffs without a loading screen"
   },
   "Cleanfield - Keep Starfield Logo": {
-   "ru": "Без заставок при запуске",
-   "en": "No intro videos at startup"
+   "ru": "Без лишних заставок при запуске, логотип Starfield остаётся",
+   "en": "Skips startup videos, keeps the Starfield logo"
   },
   "Better Boarding Encounters (BBE)": {
    "ru": "Неожиданные абордажи при стыковке",
