@@ -2714,53 +2714,6 @@
    ]
   },
   {
-   "id": "responsive_npcs",
-   "modFolder": "responsive_npcs",
-   "order": 306,
-   "nexus": {
-    "game": "cyberpunk2077",
-    "modId": 14800,
-    "fileId": 123696,
-    "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/14800?tab=files&file_id=123696"
-   },
-   "archive": {
-    "localFileName": "responsive_npcs_v0.26-14800-0-26-1759666139.zip",
-    "size": 36448,
-    "sha256": "e16ea202db99c215f9cdae5713789328b8a2ec902e25d462023c82654d2fb4cb"
-   },
-   "install": {
-    "type": "files",
-    "map": [
-     [
-      "archive/pc/mod/responsive_npcs.archive",
-      "archive/pc/mod/responsive_npcs.archive"
-     ],
-     [
-      "archive/pc/mod/responsive_npcs.archive.xl",
-      "archive/pc/mod/responsive_npcs.archive.xl"
-     ],
-     [
-      "r6/scripts/responsive_npcs/PlayerPuppetOverrides.reds",
-      "r6/scripts/responsive_npcs/PlayerPuppetOverrides.reds"
-     ],
-     [
-      "r6/scripts/responsive_npcs/ReactionComponentOverrides.reds",
-      "r6/scripts/responsive_npcs/ReactionComponentOverrides.reds"
-     ],
-     [
-      "r6/scripts/responsive_npcs/ResponsiveNPCsModSettings.reds",
-      "r6/scripts/responsive_npcs/ResponsiveNPCsModSettings.reds"
-     ]
-    ],
-    "fomod": false,
-    "fileCount": 5
-   },
-   "displayName": {
-    "ru": "responsive_npcs",
-    "en": "responsive_npcs"
-   }
-  },
-  {
    "id": "DynamicNPCItems",
    "modFolder": "DynamicNPCItems",
    "order": 119,

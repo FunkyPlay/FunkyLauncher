@@ -488,7 +488,8 @@
  "modlistOff": [
   "The Gangs of Night City 7233 7.0.1 2026",
   "Cyberscript 6475 5.1.4 2026",
-  "CyberScript Core Animation Archive 7691 1.4 2026"
+  "CyberScript Core Animation Archive 7691 1.4 2026",
+  "responsive_npcs"
  ],
  "plugins": [],
  "ownFiles": "files/neon-nights/own.zip",

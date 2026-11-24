@@ -85751,9 +85751,56 @@
    }
   },
   {
+   "id": "responsive_npcs",
+   "modFolder": "responsive_npcs",
+   "order": 301,
+   "nexus": {
+    "game": "cyberpunk2077",
+    "modId": 14800,
+    "fileId": 123696,
+    "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/14800?tab=files&file_id=123696"
+   },
+   "archive": {
+    "localFileName": "responsive_npcs_v0.26-14800-0-26-1759666139.zip",
+    "size": 36448,
+    "sha256": "e16ea202db99c215f9cdae5713789328b8a2ec902e25d462023c82654d2fb4cb"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "archive/pc/mod/responsive_npcs.archive",
+      "archive/pc/mod/responsive_npcs.archive"
+     ],
+     [
+      "archive/pc/mod/responsive_npcs.archive.xl",
+      "archive/pc/mod/responsive_npcs.archive.xl"
+     ],
+     [
+      "r6/scripts/responsive_npcs/PlayerPuppetOverrides.reds",
+      "r6/scripts/responsive_npcs/PlayerPuppetOverrides.reds"
+     ],
+     [
+      "r6/scripts/responsive_npcs/ReactionComponentOverrides.reds",
+      "r6/scripts/responsive_npcs/ReactionComponentOverrides.reds"
+     ],
+     [
+      "r6/scripts/responsive_npcs/ResponsiveNPCsModSettings.reds",
+      "r6/scripts/responsive_npcs/ResponsiveNPCsModSettings.reds"
+     ]
+    ],
+    "fomod": false,
+    "fileCount": 5
+   },
+   "displayName": {
+    "ru": "responsive_npcs",
+    "en": "responsive_npcs"
+   }
+  },
+  {
    "id": "ResponsiveV",
    "modFolder": "ResponsiveV",
-   "order": 301,
+   "order": 302,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 22694,
@@ -85812,7 +85859,7 @@
   {
    "id": "Rev's Poses - Covergirl Pack",
    "modFolder": "Rev's Poses - Covergirl Pack",
-   "order": 302,
+   "order": 303,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 12548,
@@ -85851,7 +85898,7 @@
   {
    "id": "Rev's Poses - Pictures of You",
    "modFolder": "Rev's Poses - Pictures of You",
-   "order": 303,
+   "order": 304,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 11028,
@@ -85890,7 +85937,7 @@
   {
    "id": "RIOT penthouse with garage 27515 2.1 2026",
    "modFolder": "RIOT penthouse with garage 27515 2.1 2026",
-   "order": 304,
+   "order": 305,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 27515,
@@ -85937,7 +85984,7 @@
   {
    "id": "River Romanced Enhanced 4870 2.7.1 2026",
    "modFolder": "River Romanced Enhanced 4870 2.7.1 2026",
-   "order": 305,
+   "order": 306,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 4870,
@@ -85976,7 +86023,7 @@
   {
    "id": "Rogue",
    "modFolder": "Rogue",
-   "order": 306,
+   "order": 307,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 19191,
@@ -86011,7 +86058,7 @@
   {
    "id": "Romance Hangouts Enhanced",
    "modFolder": "Romance Hangouts Enhanced",
-   "order": 307,
+   "order": 308,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 11590,
@@ -86046,7 +86093,7 @@
   {
    "id": "Running Man 26611 1.2.2 2026",
    "modFolder": "Running Man 26611 1.2.2 2026",
-   "order": 308,
+   "order": 309,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 26611,
@@ -86105,7 +86152,7 @@
   {
    "id": "Sandevistan Fire Rate Restored 25489 1.2 2026",
    "modFolder": "Sandevistan Fire Rate Restored 25489 1.2 2026",
-   "order": 309,
+   "order": 310,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 25489,
@@ -86144,7 +86191,7 @@
   {
    "id": "Say Something Damn It 22228 1.18.1 2026",
    "modFolder": "Say Something Damn It 22228 1.18.1 2026",
-   "order": 310,
+   "order": 311,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 5202,
@@ -86298,7 +86345,7 @@
   {
    "id": "SCPIT_compatible",
    "modFolder": "SCPIT_compatible",
-   "order": 311,
+   "order": 312,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 21313,
@@ -86333,7 +86380,7 @@
   {
    "id": "SFXToggle-V1.4 20421 1.4 2026",
    "modFolder": "SFXToggle-V1.4 20421 1.4 2026",
-   "order": 312,
+   "order": 313,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 20421,
@@ -86372,7 +86419,7 @@
   {
    "id": "Short Choppy",
    "modFolder": "Short Choppy",
-   "order": 313,
+   "order": 314,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 19191,
@@ -86430,7 +86477,7 @@
   {
    "id": "Silent Silencers and Throwing Knives 4070 1.6.3 2026",
    "modFolder": "Silent Silencers and Throwing Knives 4070 1.6.3 2026",
-   "order": 314,
+   "order": 315,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 4070,
@@ -86512,7 +86559,7 @@
   {
    "id": "Simple Flashlight 2913 2.6 2026",
    "modFolder": "Simple Flashlight 2913 2.6 2026",
-   "order": 315,
+   "order": 316,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 2913,
@@ -86608,7 +86655,7 @@
   {
    "id": "SkillTrainers V-1-0-7.zip",
    "modFolder": "SkillTrainers V-1-0-7.zip",
-   "order": 316,
+   "order": 317,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 12689,
@@ -86707,7 +86754,7 @@
   {
    "id": "SmootherDodgeAndDash",
    "modFolder": "SmootherDodgeAndDash",
-   "order": 317,
+   "order": 318,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 9331,
@@ -86738,7 +86785,7 @@
   {
    "id": "Songbird",
    "modFolder": "Songbird",
-   "order": 318,
+   "order": 319,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 19191,
@@ -86773,7 +86820,7 @@
   {
    "id": "Songbird Messy",
    "modFolder": "Songbird Messy",
-   "order": 319,
+   "order": 320,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 19191,
@@ -86808,7 +86855,7 @@
   {
    "id": "Songbird Tucked",
    "modFolder": "Songbird Tucked",
-   "order": 320,
+   "order": 321,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 19191,
@@ -86866,7 +86913,7 @@
   {
    "id": "Sonora Apex 25999 1.0.4 2026",
    "modFolder": "Sonora Apex 25999 1.0.4 2026",
-   "order": 321,
+   "order": 322,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 25999,
@@ -87149,7 +87196,7 @@
   {
    "id": "Spark Hair",
    "modFolder": "Spark Hair",
-   "order": 322,
+   "order": 323,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 21766,
@@ -87184,7 +87231,7 @@
   {
    "id": "Speedometer Fixes",
    "modFolder": "Speedometer Fixes",
-   "order": 323,
+   "order": 324,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 9713,
@@ -87219,7 +87266,7 @@
   {
    "id": "SPIDER'S LOOOONG HAIR",
    "modFolder": "SPIDER'S LOOOONG HAIR",
-   "order": 324,
+   "order": 325,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 6072,
@@ -87254,7 +87301,7 @@
   {
    "id": "Stash Search",
    "modFolder": "Stash Search",
-   "order": 325,
+   "order": 326,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 14264,
@@ -87285,7 +87332,7 @@
   {
    "id": "Stella",
    "modFolder": "Stella",
-   "order": 326,
+   "order": 327,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 19191,
@@ -87320,7 +87367,7 @@
   {
    "id": "Stellar Hair",
    "modFolder": "Stellar Hair",
-   "order": 327,
+   "order": 328,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 21766,
@@ -87355,7 +87402,7 @@
   {
    "id": "Steward Dress - Archive XL",
    "modFolder": "Steward Dress - Archive XL",
-   "order": 328,
+   "order": 329,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 6238,
@@ -87394,7 +87441,7 @@
   {
    "id": "Streaming Bug Workaround",
    "modFolder": "Streaming Bug Workaround",
-   "order": 329,
+   "order": 330,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 21912,
@@ -87466,7 +87513,7 @@
   {
    "id": "Street outfit Vol 1",
    "modFolder": "Street outfit Vol 1",
-   "order": 330,
+   "order": 331,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 15216,
@@ -87509,7 +87556,7 @@
   {
    "id": "Taxi Work in Night City 15624 0.4.7-hotfix 2026",
    "modFolder": "Taxi Work in Night City 15624 0.4.7-hotfix 2026",
-   "order": 331,
+   "order": 332,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 15624,
@@ -87600,7 +87647,7 @@
   {
    "id": "Teko Font and Menus Recolor",
    "modFolder": "Teko Font and Menus Recolor",
-   "order": 332,
+   "order": 333,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 15307,
@@ -87631,7 +87678,7 @@
   {
    "id": "The Gangs of Night City 7233 7.0.1 2026",
    "modFolder": "The Gangs of Night City 7233 7.0.1 2026",
-   "order": 333,
+   "order": 334,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 7233,
@@ -92531,7 +92578,7 @@
   {
    "id": "THE GLEN PROJECT - Garage Addon 20191 1.46 2026",
    "modFolder": "THE GLEN PROJECT - Garage Addon 20191 1.46 2026",
-   "order": 334,
+   "order": 335,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 20191,
@@ -92570,7 +92617,7 @@
   {
    "id": "THE GLEN PROJECT 20191 1.46 2026",
    "modFolder": "THE GLEN PROJECT 20191 1.46 2026",
-   "order": 335,
+   "order": 336,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 20191,
@@ -92613,7 +92660,7 @@
   {
    "id": "Tony Casual Store (Virtual Atelier) V4.4 19563 4.4 2026",
    "modFolder": "Tony Casual Store (Virtual Atelier) V4.4 19563 4.4 2026",
-   "order": 336,
+   "order": 337,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 19563,
@@ -92648,7 +92695,7 @@
   {
    "id": "Tucked Back Long",
    "modFolder": "Tucked Back Long",
-   "order": 337,
+   "order": 338,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 19191,
@@ -92706,7 +92753,7 @@
   {
    "id": "TweakXL 4197 1.12.2 2026",
    "modFolder": "TweakXL 4197 1.12.2 2026",
-   "order": 338,
+   "order": 339,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 4197,
@@ -92784,7 +92831,7 @@
   {
    "id": "Two Buns",
    "modFolder": "Two Buns",
-   "order": 339,
+   "order": 340,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 19191,
@@ -92819,7 +92866,7 @@
   {
    "id": "Unique Eyes - Core",
    "modFolder": "Unique Eyes - Core",
-   "order": 340,
+   "order": 341,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 1937,
@@ -92858,7 +92905,7 @@
   {
    "id": "Unlock Me The Mods 2.01",
    "modFolder": "Unlock Me The Mods 2.01",
-   "order": 341,
+   "order": 342,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 9349,
@@ -92901,7 +92948,7 @@
   {
    "id": "Unzipped Tactical Suit - Archive XL",
    "modFolder": "Unzipped Tactical Suit - Archive XL",
-   "order": 342,
+   "order": 343,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 5776,
@@ -92940,7 +92987,7 @@
   {
    "id": "V's Loooong Hair",
    "modFolder": "V's Loooong Hair",
-   "order": 343,
+   "order": 344,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 6072,
@@ -92975,7 +93022,7 @@
   {
    "id": "Valentine Hair - PHYSCIS ENABLED",
    "modFolder": "Valentine Hair - PHYSCIS ENABLED",
-   "order": 344,
+   "order": 345,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 6072,
@@ -93010,7 +93057,7 @@
   {
    "id": "Valeria Hair - PHYSCIS ENABLED",
    "modFolder": "Valeria Hair - PHYSCIS ENABLED",
-   "order": 345,
+   "order": 346,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 6072,
@@ -93045,7 +93092,7 @@
   {
    "id": "Veegee Cyber Mask Pt2",
    "modFolder": "Veegee Cyber Mask Pt2",
-   "order": 346,
+   "order": 347,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 16127,
@@ -93088,7 +93135,7 @@
   {
    "id": "Veegee JK Suit",
    "modFolder": "Veegee JK Suit",
-   "order": 347,
+   "order": 348,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 20186,
@@ -93131,7 +93178,7 @@
   {
    "id": "Veegee Rings - MALE Only",
    "modFolder": "Veegee Rings - MALE Only",
-   "order": 348,
+   "order": 349,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 8668,
@@ -93174,7 +93221,7 @@
   {
    "id": "Veegee Shoes pack RB - FEM V",
    "modFolder": "Veegee Shoes pack RB - FEM V",
-   "order": 349,
+   "order": 350,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 12712,
@@ -93217,7 +93264,7 @@
   {
    "id": "Veegee Shop",
    "modFolder": "Veegee Shop",
-   "order": 350,
+   "order": 351,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 8183,
@@ -93252,7 +93299,7 @@
   {
    "id": "Veegee Shop 2",
    "modFolder": "Veegee Shop 2",
-   "order": 351,
+   "order": 352,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 13870,
@@ -93287,7 +93334,7 @@
   {
    "id": "Veegee X Efgrank Cyborg Skull Mask",
    "modFolder": "Veegee X Efgrank Cyborg Skull Mask",
-   "order": 352,
+   "order": 353,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 15980,
@@ -93330,7 +93377,7 @@
   {
    "id": "Vehicle Lights 5082 2.8 2026",
    "modFolder": "Vehicle Lights 5082 2.8 2026",
-   "order": 353,
+   "order": 354,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 5082,
@@ -93361,7 +93408,7 @@
   {
    "id": "Vehicle Summon Tweaks - Dismiss",
    "modFolder": "Vehicle Summon Tweaks - Dismiss",
-   "order": 354,
+   "order": 355,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 4658,
@@ -93404,7 +93451,7 @@
   {
    "id": "Vendor Search",
    "modFolder": "Vendor Search",
-   "order": 355,
+   "order": 356,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 26188,
@@ -93435,7 +93482,7 @@
   {
    "id": "VendorsXL",
    "modFolder": "VendorsXL",
-   "order": 356,
+   "order": 357,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 19679,
@@ -93478,7 +93525,7 @@
   {
    "id": "VermillionForest X Veegee TECHWEAR SET - DA",
    "modFolder": "VermillionForest X Veegee TECHWEAR SET - DA",
-   "order": 357,
+   "order": 358,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 15532,
@@ -93521,7 +93568,7 @@
   {
    "id": "Versalife X Veegee Daisho Set - Both V",
    "modFolder": "Versalife X Veegee Daisho Set - Both V",
-   "order": 358,
+   "order": 359,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 15774,
@@ -93564,7 +93611,7 @@
   {
    "id": "Villa V - Main File for 2.5 36764 1.3 2026",
    "modFolder": "Villa V - Main File for 2.5 36764 1.3 2026",
-   "order": 359,
+   "order": 360,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 36764,
@@ -93635,7 +93682,7 @@
   {
    "id": "Virtual Atelier 2987 1.6.4 2026",
    "modFolder": "Virtual Atelier 2987 1.6.4 2026",
-   "order": 360,
+   "order": 361,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 2987,
@@ -93862,7 +93909,7 @@
   {
    "id": "Virtual Car Dealer 4454 2.3.0 2026",
    "modFolder": "Virtual Car Dealer 4454 2.3.0 2026",
-   "order": 361,
+   "order": 362,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 4454,
@@ -93981,7 +94028,7 @@
   {
    "id": "Visual Holsters 21936 1.4 2026",
    "modFolder": "Visual Holsters 21936 1.4 2026",
-   "order": 362,
+   "order": 363,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 21936,
@@ -94064,7 +94111,7 @@
   {
    "id": "VSS-Vintorez-Black-Wolf 34518 1.0.4 2026",
    "modFolder": "VSS-Vintorez-Black-Wolf 34518 1.0.4 2026",
-   "order": 363,
+   "order": 364,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 34518,
@@ -94119,7 +94166,7 @@
   {
    "id": "VTK Vanilla HD - Head",
    "modFolder": "VTK Vanilla HD - Head",
-   "order": 364,
+   "order": 365,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 7054,
@@ -94158,7 +94205,7 @@
   {
    "id": "Wash Props 420 Smoking",
    "modFolder": "Wash Props 420 Smoking",
-   "order": 365,
+   "order": 366,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 27622,
@@ -94201,7 +94248,7 @@
   {
    "id": "Who Was That Again",
    "modFolder": "Who Was That Again",
-   "order": 366,
+   "order": 367,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 18885,
@@ -94236,7 +94283,7 @@
   {
    "id": "Windswept - V hair blowing while driving bikes",
    "modFolder": "Windswept - V hair blowing while driving bikes",
-   "order": 367,
+   "order": 368,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 9060,
@@ -94267,7 +94314,7 @@
   {
    "id": "WINGDEER_Manavortex Hair",
    "modFolder": "WINGDEER_Manavortex Hair",
-   "order": 368,
+   "order": 369,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 6072,
@@ -94302,7 +94349,7 @@
   {
    "id": "Wolverine Claws - FEMALE Version 34078 4 2026",
    "modFolder": "Wolverine Claws - FEMALE Version 34078 4 2026",
-   "order": 369,
+   "order": 370,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 34078,
@@ -94349,7 +94396,7 @@
   {
    "id": "Zenitex Assault Helmet",
    "modFolder": "Zenitex Assault Helmet",
-   "order": 370,
+   "order": 371,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 30320,
@@ -94392,7 +94439,7 @@
   {
    "id": "Zenitex Assault Vest",
    "modFolder": "Zenitex Assault Vest",
-   "order": 371,
+   "order": 372,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 26025,
@@ -94435,7 +94482,7 @@
   {
    "id": "Zenitex Caiman Ballistic Helmet",
    "modFolder": "Zenitex Caiman Ballistic Helmet",
-   "order": 372,
+   "order": 373,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 30124,
@@ -94478,7 +94525,7 @@
   {
    "id": "Zenitex Combat Gloves",
    "modFolder": "Zenitex Combat Gloves",
-   "order": 373,
+   "order": 374,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 19432,
@@ -94521,7 +94568,7 @@
   {
    "id": "Zenitex Combat Goggles",
    "modFolder": "Zenitex Combat Goggles",
-   "order": 374,
+   "order": 375,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 17049,
@@ -94564,7 +94611,7 @@
   {
    "id": "Zenitex Combat Jacket",
    "modFolder": "Zenitex Combat Jacket",
-   "order": 375,
+   "order": 376,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 19119,
@@ -94607,7 +94654,7 @@
   {
    "id": "Zenitex Combat Pants",
    "modFolder": "Zenitex Combat Pants",
-   "order": 376,
+   "order": 377,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 20479,
@@ -94650,7 +94697,7 @@
   {
    "id": "Zenitex Core Dependency",
    "modFolder": "Zenitex Core Dependency",
-   "order": 377,
+   "order": 378,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 16356,
@@ -94689,7 +94736,7 @@
   {
    "id": "Zenitex Core Dependency - Black Decals",
    "modFolder": "Zenitex Core Dependency - Black Decals",
-   "order": 378,
+   "order": 379,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 16356,
@@ -94720,7 +94767,7 @@
   {
    "id": "Zenitex Core Dependency - Coyote Set",
    "modFolder": "Zenitex Core Dependency - Coyote Set",
-   "order": 379,
+   "order": 380,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 16356,
@@ -94751,7 +94798,7 @@
   {
    "id": "Zenitex Core Dependency - Verdant Set",
    "modFolder": "Zenitex Core Dependency - Verdant Set",
-   "order": 380,
+   "order": 381,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 16356,
@@ -94782,7 +94829,7 @@
   {
    "id": "Zenitex Covert Leggings",
    "modFolder": "Zenitex Covert Leggings",
-   "order": 381,
+   "order": 382,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 24373,
@@ -94825,7 +94872,7 @@
   {
    "id": "Zenitex FM12 Respirator",
    "modFolder": "Zenitex FM12 Respirator",
-   "order": 382,
+   "order": 383,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 27908,
@@ -94868,7 +94915,7 @@
   {
    "id": "Zenitex Military Backpack",
    "modFolder": "Zenitex Military Backpack",
-   "order": 383,
+   "order": 384,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 18152,
@@ -94911,7 +94958,7 @@
   {
    "id": "Zenitex Panam Pants",
    "modFolder": "Zenitex Panam Pants",
-   "order": 384,
+   "order": 385,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 10842,
@@ -94954,7 +95001,7 @@
   {
    "id": "Zenitex Sleeveless Turtleneck",
    "modFolder": "Zenitex Sleeveless Turtleneck",
-   "order": 385,
+   "order": 386,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 22082,
@@ -94997,7 +95044,7 @@
   {
    "id": "Zenitex Stealthsuit",
    "modFolder": "Zenitex Stealthsuit",
-   "order": 386,
+   "order": 387,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 16172,
@@ -95040,7 +95087,7 @@
   {
    "id": "Zenitex Tactical Harness",
    "modFolder": "Zenitex Tactical Harness",
-   "order": 387,
+   "order": 388,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 9774,
@@ -95083,7 +95130,7 @@
   {
    "id": "Zenitex Underwear",
    "modFolder": "Zenitex Underwear",
-   "order": 388,
+   "order": 389,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 20394,
@@ -95126,7 +95173,7 @@
   {
    "id": "Zenitex Virtual Atelier",
    "modFolder": "Zenitex Virtual Atelier",
-   "order": 389,
+   "order": 390,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 10090,
@@ -95161,7 +95208,7 @@
   {
    "id": "ZKV_StealthFinishers",
    "modFolder": "ZKV_StealthFinishers",
-   "order": 390,
+   "order": 391,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 9360,
@@ -95204,7 +95251,7 @@
   {
    "id": "Zwei Custom PMU Pose Packs Core",
    "modFolder": "Zwei Custom PMU Pose Packs Core",
-   "order": 391,
+   "order": 392,
    "nexus": {
     "game": "cyberpunk2077",
     "modId": 7165,
