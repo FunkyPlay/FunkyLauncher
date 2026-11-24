@@ -44,6 +44,7 @@ public static class ModChoices
         foreach (var x in main.Mods)
         {
             if (x.ModFolder.Length == 0 || !seen.Add(x.ModFolder)) continue;
+            if (about.TryGetValue(x.ModFolder, out var ab) && ab == Addons.HiddenMark) continue;
             var def = !off.Contains(x.ModFolder);
             var core = IsCore(order, x.ModFolder);
             var on = core ? true : choices.TryGetValue(x.ModFolder, out var c) ? c : def;

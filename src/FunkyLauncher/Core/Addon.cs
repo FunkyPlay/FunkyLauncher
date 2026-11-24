@@ -351,6 +351,9 @@ public static class Addons
     /// 0.1.22 (Funky 25.11): our own one-line description of each mod of the base, RU and EN, by mod folder.
     /// File addons/{id}-about.json — downloaded with the packs, so a new description needs no new launcher.
     /// </summary>
+    /// <summary>"hidden": true in the about file — the mod is not listed in the window (it still stays in the modlist).</summary>
+    public const string HiddenMark = "\u0000hidden";
+
     public static IReadOnlyDictionary<string, string> About(string modlistId)
     {
         var res = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
@@ -370,7 +373,8 @@ public static class Addons
             if (!d.RootElement.TryGetProperty("mods", out var mods)) return res;
             var lang = Loc.Lang == "ru" ? "ru" : "en";
             foreach (var p in mods.EnumerateObject())
-                if (p.Value.TryGetProperty(lang, out var t) && t.GetString() is { Length: > 0 } s) res[p.Name] = s;
+                if (p.Value.TryGetProperty("hidden", out var h) && h.ValueKind == JsonValueKind.True) res[p.Name] = HiddenMark;
+                else if (p.Value.TryGetProperty(lang, out var t) && t.GetString() is { Length: > 0 } s) res[p.Name] = s;
         }
         catch { }
         return res;

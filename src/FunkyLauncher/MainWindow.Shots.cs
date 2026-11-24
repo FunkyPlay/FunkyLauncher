@@ -165,6 +165,17 @@ public partial class MainWindow
                         mholder.UpdateLayout();
                         await Task.Delay(300);
                         SaveElement(mholder, Path.Combine(dir, $"{lang}-30-mods-window.png"));
+                        foreach (var other in new[] { "starfield", "fallout4" })
+                            if (Core.Catalog.Find(other) is { } om && Services.ModChoices.Items(Settings, om).Count > 0)
+                            {
+                                var (ob, obg, ow, oh) = Views.ModsWindow.ForShots(Settings, om);
+                                var oholder = new System.Windows.Controls.Border { Background = obg, Child = ob, Width = ow - 16, Height = oh - 40 };
+                                oholder.Measure(new Size(oholder.Width, oholder.Height));
+                                oholder.Arrange(new Rect(oholder.DesiredSize));
+                                oholder.UpdateLayout();
+                                await Task.Delay(300);
+                                SaveElement(oholder, Path.Combine(dir, $"{lang}-30-mods-window-{other}.png"));
+                            }
                         // the red check row as the player without REDmod sees it (test data: this PC may have REDmod)
                         var redRow = new System.Windows.Controls.Border { Background = (Brush)FindResource("Bg"), Padding = new Thickness(20), Width = 820, Child = _setup.ShotToolRow(tool) };
                         redRow.Measure(new Size(redRow.Width, double.PositiveInfinity));

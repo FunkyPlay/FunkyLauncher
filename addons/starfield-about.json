@@ -1,0 +1,1604 @@
+{
+ "schema": 1,
+ "modlistId": "starfield",
+ "kind": "about",
+ "generated": "2026-11-25",
+ "mods": {
+  "NeonExpansion": {
+   "ru": "Неон стал больше: 36 новых магазинов и улицы",
+   "en": "A bigger Neon: 36 new shops and streets"
+  },
+  "New Atlantis Awaits": {
+   "ru": "Обновлённая Новая Атлантида",
+   "en": "New Atlantis overhaul"
+  },
+  "Dream Home - Overhaul - Dream Home - Furnished (Interior Cell Edits only)": {
+   "ru": "Дом мечты с мебелью",
+   "en": "Furnished Dream Home"
+  },
+  "Dream Home - Overhaul - Dream Home Overhaul - Main": {
+   "ru": "Обновлённый Дом мечты на Несои",
+   "en": "Dream Home overhaul on Nesoi"
+  },
+  "POI Variations - No More Duplicates - poi_variations_shuffle": {
+   "ru": "Одинаковые места на планетах больше не повторяются",
+   "en": "Points of interest no longer repeat exactly"
+  },
+  "New Homestead - New Dawn": {
+   "ru": "Обновлённый Нью-Хомстед на Титане",
+   "en": "New Homestead overhaul on Titan"
+  },
+  "Stroud Premium Edition": {
+   "ru": "Около 150 новых модулей для корабля",
+   "en": "About 150 new ship habs"
+  },
+  "New Atlantis - Viewport Hotel - New Atlantis Hotel Viewport": {
+   "ru": "Бар «Иллюминатор» становится отелем",
+   "en": "The Viewport bar becomes a hotel"
+  },
+  "Patch - SPE x Viewport Hotel - Patch SBExVH": {
+   "ru": "Совместимость отеля «Иллюминатор» с SPE",
+   "en": "Viewport Hotel patch for SPE"
+  },
+  "Paradiso Evolved": {
+   "ru": "Парадизо больше и красивее",
+   "en": "A bigger, better Paradiso"
+  },
+  "The Den Astrodynamics - vcDenAstrodynamics.esm - No Loot - Default": {
+   "ru": "Верфь и дом игрока The Den",
+   "en": "The Den shipyard and player home"
+  },
+  "The Gang's All Here - Multiple Companions and Crew - The Gang's All Here": {
+   "ru": "Несколько спутников одновременно",
+   "en": "Multiple companions at once"
+  },
+  "NPC Routines Expanded - Robot Vendors": {
+   "ru": "У жителей городов свой распорядок дня",
+   "en": "City NPCs follow daily routines"
+  },
+  "Var'uun'kai - Dazra - Furnished Player Home": {
+   "ru": "Обставленный дом в Дазре",
+   "en": "Furnished house in Dazra"
+  },
+  "Mercury Penthouse - Redone": {
+   "ru": "Пентхаус в башне «Меркурий» с новым дизайном",
+   "en": "Redesigned Mercury Tower penthouse"
+  },
+  "Dynamic Prison - Jail System - Dynamic Prisons": {
+   "ru": "Настоящие тюрьмы: сидишь срок, а не телепорт",
+   "en": "Real jails: serve time instead of a teleport"
+  },
+  "The Lodge Improved": {
+   "ru": "Ложа уютнее, у Коры своя комната",
+   "en": "A cosier Lodge, Cora gets her own room"
+  },
+  "Slightly Better Laredo Firearms": {
+   "ru": "Магазин Laredo Firearms в Акила-Сити красивее",
+   "en": "Nicer Laredo Firearms in Akila City"
+  },
+  "CJ's Store Improved - CJ'S Store Improved": {
+   "ru": "Обновлённый магазин CJ в Новой Атлантиде",
+   "en": "CJ's Store overhaul in New Atlantis"
+  },
+  "Nightlife VS Corpo Life - Astral Lounge and Trade Tower - Nightlife VS Corpo Life": {
+   "ru": "Обновлённые «Астрал Лаунж» и Торговая башня",
+   "en": "Astral Lounge and Trade Tower revamp"
+  },
+  "The Pumpkin Protocol": {
+   "ru": "Новое задание в подозрительной лаборатории",
+   "en": "A new quest in a suspicious facility"
+  },
+  "Neon - Sky Suite Expanded and Furnished - Sky Suite Furnished and Expanded": {
+   "ru": "Расширенный и обставленный номер Sky Suite в Неоне",
+   "en": "Expanded, furnished Sky Suite in Neon"
+  },
+  "UC Distribution Center - On Duty": {
+   "ru": "Склад ОК в Новой Атлантиде с персоналом",
+   "en": "A staffed UC Distribution Center"
+  },
+  "Better Living - Outpost Decor - Better_Living": {
+   "ru": "700+ предметов для аванпостов и домов",
+   "en": "700+ decor objects for outposts and homes"
+  },
+  "Eit Clothiers Plus - Clothes jackets belts gloves glasses necklace - ZBB - Eit Clothiers (ZBB)": {
+   "ru": "Новая одежда: куртки, ремни, очки, перчатки",
+   "en": "New clothes: jackets, belts, glasses, gloves"
+  },
+  "Eit Clothiers Plus - Legendary Mod Patch - Eit Clothiers Legendary Patch (Vanilla and VBB)": {
+   "ru": "Легендарные свойства для одежды Eit Clothiers",
+   "en": "Legendary mods for Eit Clothiers clothes"
+  },
+  "Grounded Enemies (Ai - No Sponges - Height Variations) - Grounded Enemies": {
+   "ru": "Враги умнее, без губок для пуль, разного роста",
+   "en": "Smarter enemies, no bullet sponges, varied heights"
+  },
+  "Grounded Enemies (Ai - No Sponges - Height Variations) - Grounded Enemies SS DLC": {
+   "ru": "Умные враги для Shattered Space",
+   "en": "Smarter enemies for Shattered Space"
+  },
+  "Grounded Enemies (Ai - No Sponges - Height Variations) - Grounded Enemies TA DLC": {
+   "ru": "Умные враги для Terran Armada",
+   "en": "Smarter enemies for Terran Armada"
+  },
+  "PoI Faction Diversity": {
+   "ru": "Больше разных фракций на планетах",
+   "en": "More factions at points of interest"
+  },
+  "Gluttony - Food and Drink Overhaul - Gluttony": {
+   "ru": "Еда и напитки дают долгие бонусы",
+   "en": "Food and drinks give longer buffs"
+  },
+  "Anchorpoint Expanded": {
+   "ru": "Станция Анкорпойнт стала полезнее",
+   "en": "A more useful Anchorpoint station"
+  },
+  "Slightly Better Ryujin Tower Lobby": {
+   "ru": "Холл башни «Рюдзин» красивее",
+   "en": "A nicer Ryujin Tower lobby"
+  },
+  "Slightly Better UC Security Office": {
+   "ru": "Офис охраны ОК обжитее",
+   "en": "A lived-in UC Security Office"
+  },
+  "Eli's Akila Stretch Home Overhaul - Eli's Akila Home 1.2.0": {
+   "ru": "Обставленная квартира в Акила-Сити",
+   "en": "Furnished apartment in Akila City"
+  },
+  "Rabbit's REAL LIGHTS New Atlantis - RRLNA - Rabbit's Real Lights New Atlantis": {
+   "ru": "Новое освещение Новой Атлантиды",
+   "en": "New lighting for New Atlantis"
+  },
+  "Akila - The Core Expanded and Furnished - The Core Expanded and Furnished": {
+   "ru": "Обставленное жильё в центре Акила-Сити",
+   "en": "Furnished Core residence in Akila City"
+  },
+  "Outland - Frontier Ready": {
+   "ru": "Магазин Outland стал снаряжением для экспедиций",
+   "en": "Outland becomes an expedition outfitter"
+  },
+  "Permanent POIs - Rogue Science": {
+   "ru": "16 постоянных мест, 5 видов оружия, новые враги",
+   "en": "16 permanent locations, 5 weapons, new enemies"
+  },
+  "Useful Brigs": {
+   "ru": "Корабельная тюрьма работает",
+   "en": "Ship brigs actually work"
+  },
+  "Place Doors Yourself": {
+   "ru": "Двери на корабле ставишь сам",
+   "en": "Place ship doors yourself"
+  },
+  "Patch - SPE x Place Doors Yourself - Patch SBExPDY": {
+   "ru": "Совместимость дверей с лестницами SPE",
+   "en": "Door patch for SPE stairs"
+  },
+  "Real Jobs - Cydonia Mining Company - Real Jobs   Cydonia Mines": {
+   "ru": "Работа на шахте Сидонии за зарплату",
+   "en": "Work shifts at the Cydonia mines"
+  },
+  "Echoes of Cydonia": {
+   "ru": "Сидония обжитее: мусор и предметы",
+   "en": "A more lived-in Cydonia"
+  },
+  "Hopetown - New Dawn": {
+   "ru": "Обновлённый Хоуптаун с жителями",
+   "en": "Hopetown overhaul with more people"
+  },
+  "Legacy's End - Wild Card": {
+   "ru": "Наследие Крикса: можно оставить себе",
+   "en": "Keep Kryx's legacy for yourself"
+  },
+  "Gagarin - New Dawn": {
+   "ru": "Обновлённый Гагарин",
+   "en": "Gagarin overhaul"
+  },
+  "UC Vanguard - Expanded Presence": {
+   "ru": "Больше бойцов «Авангарда» ОК в городах",
+   "en": "More UC Vanguard NPCs around the cities"
+  },
+  "Refined Reliant Medical": {
+   "ru": "Больница Reliant Medical красивее",
+   "en": "A nicer Reliant Medical"
+  },
+  "Milkdrinker's Lightweight Melee Overhaul": {
+   "ru": "Ближний бой: своя дальность и скорость у оружия",
+   "en": "Melee rebalance: range and speed per weapon"
+  },
+  "Balanced Ballistics": {
+   "ru": "Баланс урона и отдачи огнестрела и лазеров",
+   "en": "Damage and recoil rebalance for guns and lasers"
+  },
+  "Northern Lights - Aurora Borealis - Northern Lights": {
+   "ru": "Северное сияние на ледяных планетах",
+   "en": "Aurora borealis on frozen planets"
+  },
+  "Remove Spacer spacesuits in breathable conditions - No Suit Spacer": {
+   "ru": "Спейсеры без скафандров, где можно дышать",
+   "en": "Spacers drop their suits where air is breathable"
+  },
+  "Spacers EIT Z Distributed - Spacers EIT Z Distributed (SM)": {
+   "ru": "Спейсеры носят одежду EIT Z",
+   "en": "Spacers wear EIT Z outfits"
+  },
+  "Rabbit's Real Lights Dazra - RRLD- Rabbit's Real Lights Dazra": {
+   "ru": "Новое освещение Дазры, 400+ источников",
+   "en": "New Dazra lighting, 400+ light sources"
+  },
+  "Better Living - Shattered Space DLC Edition - Better_Living_II": {
+   "ru": "Предметы для домов из Shattered Space",
+   "en": "Decor from Shattered Space for homes"
+  },
+  "Gallion - Immersive Finance - Gallion": {
+   "ru": "Банк: можно хранить деньги",
+   "en": "A bank to keep your credits"
+  },
+  "Perk Up - Legendary Drip - Legendary Drip": {
+   "ru": "Редкость одежды влияет на свойства",
+   "en": "Clothing rarity scaling"
+  },
+  "Starfield Disciples Overhaul": {
+   "ru": "Новый вид одежды и оружия банды «Ученики»",
+   "en": "New look for the Disciples gang"
+  },
+  "KZ Meridian Transit Regalia": {
+   "ru": "Скафандры в стиле «Созвездия»",
+   "en": "Constellation-style spacesuits"
+  },
+  "Real Jobs - TerraBrew - Real Jobs   TerraBrew": {
+   "ru": "Работа бариста в TerraBrew",
+   "en": "Work as a TerraBrew barista"
+  },
+  "Outpost Botanics and Utilities": {
+   "ru": "Растения и детали для жилья",
+   "en": "Plants and details for homes"
+  },
+  "Dark Universe - Takeover - Dark Universe Takeover": {
+   "ru": "50 новых военных баз спейсеров",
+   "en": "50 new Spacer military bases"
+  },
+  "Royal Weathers  - An Immersive Starfield Climate Overhaul - Royal Weathers - Climate and Proc Gen Improvements": {
+   "ru": "Новая погода и климат планет",
+   "en": "New weather and planet climates"
+  },
+  "Jaeger-45": {
+   "ru": "Пистолет-пулемёт Jaeger-45",
+   "en": "Jaeger-45 SMG"
+  },
+  "Starfield Hair and Beards": {
+   "ru": "Новые причёски и бороды",
+   "en": "New hairstyles and beards"
+  },
+  "Estelle Vincent Companion - Conditional Romance - Wild Card Ending": {
+   "ru": "Эстель Винсент становится спутником",
+   "en": "Estelle Vincent becomes a companion"
+  },
+  "Dave's Astral Lounge Enhanced - DALE - Dave's Astral Lounge Enhanced": {
+   "ru": "Новое освещение в «Астрал Лаунж»",
+   "en": "New lighting in the Astral Lounge"
+  },
+  "Batten's Shipwrecks (POIs) - Batten's Wrecks": {
+   "ru": "22 места крушения кораблей",
+   "en": "22 shipwreck locations"
+  },
+  "POI - Abandoned UC Radar Station": {
+   "ru": "Заброшенная радарная станция ОК",
+   "en": "Abandoned UC radar station"
+  },
+  "KZ Tachyonic Core Arsenal": {
+   "ru": "Скафандры, одежда и оружие",
+   "en": "Spacesuits, outfits and weapons"
+  },
+  "THE TERMINUS - THE TERMINUS 1.63": {
+   "ru": "Меч Звёздного, новое место и сложный босс",
+   "en": "Starborn sword, a new location and a hard boss"
+  },
+  "Take Your Time - Quests Don't Autostart - Take Your Time": {
+   "ru": "Задания не начинаются сами",
+   "en": "Quests don't start on their own"
+  },
+  "Alternate Paradiso Solution - Eat The Rich - Alternate Paradiso Solution": {
+   "ru": "Новая концовка задания в Парадизо",
+   "en": "A new ending for the Paradiso quest"
+  },
+  "Nem's Deco Pack": {
+   "ru": "397 предметов декора для аванпостов",
+   "en": "397 decor items for outposts"
+  },
+  "Earth Dome Home": {
+   "ru": "Дом под куполом на Земле",
+   "en": "A domed home on Earth"
+  },
+  "Lunokhod-1 Landmark": {
+   "ru": "Луноход-1 на Луне",
+   "en": "Lunokhod-1 on the Moon"
+  },
+  "Dark Universe - Retrograde": {
+   "ru": "150 космических станций с заданиями",
+   "en": "150 space station dungeons"
+  },
+  "Leveled Mission Board Rewards": {
+   "ru": "Награды досок заданий растут с уровнем",
+   "en": "Mission board rewards scale with level"
+  },
+  "Dark Universe Retrograde Improved Rewards - Retrograde Improved Rewards": {
+   "ru": "Больше наград за станции Retrograde",
+   "en": "Better rewards for Retrograde"
+  },
+  "Encounters- a GRiNDTerra Mod - GRiNDTerraProcGenEncounters": {
+   "ru": "Случайные встречи с NPC на планетах",
+   "en": "Random NPC encounters on planets"
+  },
+  "Human Activity on Earth - Man-made Points of Interest - Human Activity on Earth": {
+   "ru": "Следы людей на Земле",
+   "en": "Man-made locations on Earth"
+  },
+  "New Landmark Quests - Cut Content Restored - New Landmark Quests": {
+   "ru": "Пизанская башня и другие вырезанные места",
+   "en": "Leaning Tower of Pisa and other cut landmarks"
+  },
+  "Real Earth Atmosphere With Tutorial - Real Earth Atmosphere": {
+   "ru": "Реалистичная атмосфера Земли",
+   "en": "Realistic Earth atmosphere"
+  },
+  "Real Water HD": {
+   "ru": "Вода в HD",
+   "en": "HD water"
+  },
+  "Vanilla Biomes Enhanced- A GRiNDTerra Mod - GRiNDTerraVBO": {
+   "ru": "Природа планет красивее",
+   "en": "Better-looking planet biomes"
+  },
+  "Royal Weathers - Va'Ruun'kai - Royal Weathers - Va'ruun'kai": {
+   "ru": "Новые погода и природа на Ва'руун'кай",
+   "en": "New weather and biomes on Va'ruun'kai"
+  },
+  "Winds of Akila - Winds Of Akila": {
+   "ru": "Акила-Сити живее: ветер и атмосфера",
+   "en": "A more atmospheric Akila City"
+  },
+  "Ship Vendor Framework (SVF) - Ship Vendor Framework": {
+   "ru": "Нужен модам, которые продают корабли",
+   "en": "Lets mods sell ships without conflicts"
+  },
+  "Hopetech Ship Hab Expansion (HSHE) - Hopetech Ship Hab Expansion": {
+   "ru": "Многопалубные модули Hopetech",
+   "en": "Multi-deck Hopetech habs"
+  },
+  "Graf's Habs - Nova Galactic 1x1s": {
+   "ru": "19 уютных модулей Nova",
+   "en": "19 cosy Nova habs"
+  },
+  "Antares Renewal - Reforged Prototype Modules - Antares Renewal": {
+   "ru": "Обновлённые модули Antares для кораблей",
+   "en": "Reworked Antares ship modules"
+  },
+  "Starfield Fleet Expansion": {
+   "ru": "Много новых кораблей у торговцев и в космосе",
+   "en": "Many new ships at vendors and in space"
+  },
+  "Taliohs Hair Collection - Hair Collection": {
+   "ru": "Длинные и пышные причёски",
+   "en": "Long, full hairstyles"
+  },
+  "Taliohs Hair Booster Pack - Hair Booster Pack": {
+   "ru": "Ещё набор причёсок",
+   "en": "More hairstyles"
+  },
+  "Starfarer's Makeup": {
+   "ru": "Румяна, подводка, тату и помада",
+   "en": "Blush, eyeliner, tattoos and lipstick"
+  },
+  "Hair Overhaul - New Colors - Hair Overhaul - New Colors - Optimal": {
+   "ru": "34 новых цвета волос",
+   "en": "34 new hair colours"
+  },
+  "Sarah Morgan Redux": {
+   "ru": "Новая внешность Сары Морган",
+   "en": "A refreshed look for Sarah Morgan"
+  },
+  "Andreja Redux": {
+   "ru": "Новая внешность Андреи",
+   "en": "A refreshed look for Andreja"
+  },
+  "Autumn MacMillan Redux": {
+   "ru": "Новая внешность Отэма Макмиллана",
+   "en": "A refreshed look for Autumn MacMillan"
+  },
+  "Various Crew - Various Crew Extended": {
+   "ru": "500 лиц у экипажа вместо 32",
+   "en": "500 crew faces instead of 32"
+  },
+  "KZ Techno-Corporate Repository": {
+   "ru": "Скафандры и одежда в стиле «Рюдзин»",
+   "en": "Ryujin-style spacesuits and outfits"
+  },
+  "KZ Clothes and Spacesuit NPC distribution - KZ Techno-Corporate Repository Distributor": {
+   "ru": "NPC носят одежду «Рюдзин»",
+   "en": "NPCs wear the Ryujin outfits"
+  },
+  "KZ Clothes and Spacesuit NPC distribution - KZ United Colonies Depository Distributor": {
+   "ru": "NPC носят одежду ОК",
+   "en": "NPCs wear the UC outfits"
+  },
+  "KZ Clothes and Spacesuit NPC distribution - KZ Venatorial Frontiers Armory Distributor": {
+   "ru": "NPC носят одежду Фристар и рейнджеров",
+   "en": "NPCs wear the Freestar and Ranger outfits"
+  },
+  "KZ United Colonies Depository": {
+   "ru": "Скафандры и одежда в стиле ОК",
+   "en": "UC-style spacesuits and outfits"
+  },
+  "KZ Venatorial Frontiers Armory": {
+   "ru": "Скафандры Фристар, рейнджеров и охотников",
+   "en": "Freestar, Ranger and bounty hunter suits"
+  },
+  "Varuun X - Clothing Jackets hoods Masks Belts Gloves Gear ZBB - Varuun X (ZBB)": {
+   "ru": "Одежда в стиле Ва'руун",
+   "en": "Va'ruun-style clothing"
+  },
+  "Crimson X - Clothing Jackets Glasses Masks Belts Gloves Gear - ZBB - CrimsonX (ZBB)": {
+   "ru": "Одежда в стиле Багрового флота",
+   "en": "Crimson Fleet-style clothing"
+  },
+  "Varuun Cyber Runner - Varuun Cyber Runner (ZBB)": {
+   "ru": "Наряд бегуна Ва'руун",
+   "en": "Va'ruun runner outfit"
+  },
+  "Infiltrator 2 - Spacesuit Outfit and Weapon - Infiltrator 2 (VBB)": {
+   "ru": "Скафандр, наряд и оружие Infiltrator",
+   "en": "Infiltrator spacesuit, outfit and weapon"
+  },
+  "Ecliptic Mercenary (Replacer or Standalone) - Ecliptic Merc (Replacer)": {
+   "ru": "Новый вид скафандра Эклиптики",
+   "en": "New look for the Ecliptic spacesuit"
+  },
+  "Crimson X Distributed - Crimson X Distributed (SM)": {
+   "ru": "Пираты носят одежду Crimson X",
+   "en": "Pirates wear Crimson X outfits"
+  },
+  "Mantis - Vigilante 2": {
+   "ru": "Новый скафандр Богомола и оружие",
+   "en": "New Mantis spacesuit and weapons"
+  },
+  "Nomad Spacesuit - Weapon -  Player Home - Nomad Spacesuit": {
+   "ru": "Скафандр, оружие и дом Кочевника",
+   "en": "Nomad spacesuit, weapons and home"
+  },
+  "Midnight Shroud - Stealth and Style": {
+   "ru": "Тёмный стильный наряд",
+   "en": "A sleek dark outfit"
+  },
+  "theenco's Glasses Updated - Theenco'S Glasses Color Ver": {
+   "ru": "Цветные очки",
+   "en": "Coloured glasses"
+  },
+  "theenco's Glasses Updated - Theenco's Glasses Rework Requirement": {
+   "ru": "Нужен модам с очками",
+   "en": "Needed by the glasses mod"
+  },
+  "Royal Starborn - Leveled Starborn Bosses With More Magic - Royal Starborn NPCs": {
+   "ru": "Звёздные враги сильнее и с новыми силами",
+   "en": "Stronger Starborn enemies with more powers"
+  },
+  "Melee Madness": {
+   "ru": "50+ видов оружия ближнего боя",
+   "en": "50+ new melee weapons"
+  },
+  "Starfield Neuroamps": {
+   "ru": "Новые нейроусилители",
+   "en": "New neuroamps"
+  },
+  "Perk Up - Quality of Life Skills Improved - Perk Up - QoL Skills - No Challenges": {
+   "ru": "Навыки без испытаний",
+   "en": "Skills without challenges"
+  },
+  "Perk Up - Quality of Life Skills Improved - Perk Up - Rested XP Bonus (x10)": {
+   "ru": "Больше опыта после отдыха",
+   "en": "More XP after resting"
+  },
+  "Simple Ship Crew Command Skill": {
+   "ru": "Больше экипажа с навыком командования",
+   "en": "More crew with the Ship Command skill"
+  },
+  "CASSILIAs POWER FIST - Cassilias Power Fist 1.2": {
+   "ru": "Силовой кулак: новый тип оружия",
+   "en": "Power fist: a new weapon type"
+  },
+  "CPF-MANTIS BLADE - CPF MANTIS BLADE 1.1": {
+   "ru": "Силовой кулак — клинки Богомола",
+   "en": "Mantis blade power fist"
+  },
+  "CPF-RYUJIN DEATH CLAW - CPF RYUJIN DEATH CLAW": {
+   "ru": "Силовой кулак — когти «Рюдзин»",
+   "en": "Ryujin claw power fist"
+  },
+  "CPF-STARBORN POWER FIST UNITY - CPF STARBORN POWER FIST": {
+   "ru": "Силовой кулак Звёздного",
+   "en": "Starborn power fist"
+  },
+  "T77 7.77mm Pistol 2277 - weap_T77Pistol": {
+   "ru": "Пистолет T77",
+   "en": "T77 pistol"
+  },
+  "50 GS - 50GS - MEF - Small Master": {
+   "ru": "Пистолет Desert Eagle",
+   "en": "Desert Eagle pistol"
+  },
+  "Kriss Vector Gen 2 - Kriss Vector Gen 2 - MEF - Small Master": {
+   "ru": "Пистолет-пулемёт Kriss Vector",
+   "en": "Kriss Vector SMG"
+  },
+  "Hi-Point JXP 10mm - Hi-Point JXP 10mm - MEF - Small Master": {
+   "ru": "Пистолет Hi-Point",
+   "en": "Hi-Point pistol"
+  },
+  "Malorian Arms 3516 - Cyberpunk 2077 Port - Malorian Arms 3516 v2.0.1": {
+   "ru": "Пистолет Джонни Сильверхенда",
+   "en": "Johnny Silverhand's pistol"
+  },
+  "ARX-15 - ARX-15 (Vanilla Version)": {
+   "ru": "Футуристичная винтовка ARX-15",
+   "en": "Futuristic ARX-15 rifle"
+  },
+  "SN6 - Advanced Warfare - SN6AdvancedWarfare": {
+   "ru": "Винтовка SN6",
+   "en": "SN6 rifle"
+  },
+  "Royal Space Magic - Starborn Powers Overhaul - Royal Space Magic": {
+   "ru": "Силы Звёздного стали полезнее",
+   "en": "More useful Starborn powers"
+  },
+  "Chameleon Improved - CI - Chameleon Improved": {
+   "ru": "В невидимости видно, куда идёшь",
+   "en": "See where you go while invisible"
+  },
+  "Allied Armaments PDW-27 Redux - AA PDW27 Redux": {
+   "ru": "Обновлённый пистолет-пулемёт PDW-27",
+   "en": "Reworked PDW-27"
+  },
+  "Xeno's Malorian Arms 3516 Free Lanes Patch - Xeno's Malorian Arms FL Compatibility Patch": {
+   "ru": "Совместимость пистолета Malorian с Free Lanes",
+   "en": "Malorian pistol patch for Free Lanes"
+  },
+  "Titanfall 2 Weapon Pack": {
+   "ru": "6 видов оружия из Titanfall 2",
+   "en": "6 weapons from Titanfall 2"
+  },
+  "Elysium 2154 - AKM - elysiumAKM": {
+   "ru": "Автомат АКМ из фильма «Элизиум»",
+   "en": "AKM rifle from the film Elysium"
+  },
+  "The Sword - theSword": {
+   "ru": "Старинный меч",
+   "en": "An ancient sword"
+  },
+  "Outpost Showers": {
+   "ru": "Душ для аванпостов",
+   "en": "Showers for outposts"
+  },
+  "Outpost Toilets": {
+   "ru": "Туалеты для аванпостов",
+   "en": "Toilets for outposts"
+  },
+  "Outpost Habs Expanded": {
+   "ru": "48 новых модулей для аванпостов",
+   "en": "48 more outpost habs"
+  },
+  "Outpost Trader": {
+   "ru": "Киоски торговли на аванпостах",
+   "en": "Trade kiosks at your outposts"
+  },
+  "Lived-In Outposts": {
+   "ru": "Полки и столы с вещами для жилого вида",
+   "en": "Shelves and tables with clutter for a lived-in look"
+  },
+  "Hjalmere's Aquariums": {
+   "ru": "Аквариумы с рыбками для корабля и дома",
+   "en": "Aquariums with fish for your ship and home"
+  },
+  "Outpost Shipbuilder Unlocked": {
+   "ru": "Все детали кораблей доступны на аванпосте",
+   "en": "All ship parts available at your outpost"
+  },
+  "Royal Terror - Better Faster Stronger Terrormorphs - Royal Terror - Terrormorphs Redone": {
+   "ru": "Терроморфы сильнее и быстрее",
+   "en": "Stronger, faster Terrormorphs"
+  },
+  "Improved Combat AI": {
+   "ru": "Враги в бою не стоят на месте",
+   "en": "Enemies stay active in combat"
+  },
+  "Scared of Shootings - NPCs react to shootings": {
+   "ru": "Прохожие пугаются стрельбы",
+   "en": "NPCs react to gunfire"
+  },
+  "Enhanced Blood Textures Starfield - Enhanced Blood Textures Starfield For Mod Manager": {
+   "ru": "Новые текстуры крови",
+   "en": "New blood textures"
+  },
+  "Accurate Aiming": {
+   "ru": "Меньше разброс при прицеливании",
+   "en": "Less bullet spread while aiming"
+  },
+  "Leave No Witnesses": {
+   "ru": "Нет свидетелей — нет штрафа",
+   "en": "No witnesses, no bounty"
+  },
+  "Hank Runs to the Equipment Instead of Walking - Cydonia Miners Quest - Hank Jogs": {
+   "ru": "Хэнк в Сидонии бежит, а не плетётся",
+   "en": "Hank jogs instead of walking in Cydonia"
+  },
+  "No XP Kill Steal Fix": {
+   "ru": "Опыт за убийство не уходит спутникам",
+   "en": "Companions no longer steal your kill XP"
+  },
+  "Missing Nasa Decal Fix - Mising Nasa Logo Fix": {
+   "ru": "Возвращает логотип NASA в кабину",
+   "en": "Restores the NASA logo in the cockpit"
+  },
+  "Flashy(JoeR) - These Are The Voyages": {
+   "ru": "Исправляет ошибку с кораблём «Созвездие»",
+   "en": "Fixes the ECS Constant bug"
+  },
+  "Tell Me Your Name - SFSE": {
+   "ru": "Можно спросить имя у члена экипажа",
+   "en": "Ask your crew members' names"
+  },
+  "Remove Crimson Fleet spacesuits in breathable conditions - NoSuitCrimsonFIX": {
+   "ru": "Пираты без скафандров, где можно дышать",
+   "en": "Crimson Fleet drop their suits where air is breathable"
+  },
+  "Gun Kata - A Pistol Certification Rework - Gun Kata": {
+   "ru": "Пистолеты: новый стиль ближнего боя",
+   "en": "Pistol perk rework for close combat"
+  },
+  "Shotgunner's Momentum - A Shotgun Cert Rework - Shotgunner's Momentum": {
+   "ru": "Дробовики: новый стиль игры",
+   "en": "Shotgun perk rework"
+  },
+  "Richer Merchants": {
+   "ru": "У торговцев больше денег и товаров",
+   "en": "Merchants have more credits and goods"
+  },
+  "Mech Enemies - Mech": {
+   "ru": "Большие мехи-враги",
+   "en": "Large mech enemies"
+  },
+  "Security Checkpoints Dialog Fixes": {
+   "ru": "Исправляет диалоги на постах охраны",
+   "en": "Fixes security checkpoint dialogue"
+  },
+  "Siren Of The Stars FPS Fix - SirenOfTheStarsFPSFix": {
+   "ru": "Нет просадок FPS на лайнере «Сирена звёзд»",
+   "en": "No FPS drops on the Siren of the Stars"
+  },
+  "Immersive Landing Ramps": {
+   "ru": "Трап корабля открываешь сам",
+   "en": "Control your ship's landing ramp"
+  },
+  "Stealth Overhaul": {
+   "ru": "Новая скрытность и обнаружение",
+   "en": "Stealth and detection overhaul"
+  },
+  "Muria Mended": {
+   "ru": "Мурия получает навыки и остаётся с тобой",
+   "en": "Muria gets real skills and stays"
+  },
+  "Muria The Hex - A Visual Replacer - Muria Visual Replacer": {
+   "ru": "Новая мрачная внешность Мурии",
+   "en": "A gloomier look for Muria"
+  },
+  "Marika The Deputy - A Visual Replacer - Marika Replacer": {
+   "ru": "Новая внешность Марики",
+   "en": "A new look for Marika"
+  },
+  "Sam The Cowboy - A Visual Replacer - Sam Visual Replacer": {
+   "ru": "Новая внешность Сэма Коу",
+   "en": "A refreshed look for Sam Coe"
+  },
+  "HopeTech Hammer V Land Vehicle - Hammer V Update 104": {
+   "ru": "Наземная машина HopeTech Hammer V",
+   "en": "HopeTech Hammer V land vehicle"
+  },
+  "Bedlam - Dungeon Randomizer - Bedlam": {
+   "ru": "Враги в подземельях расставлены случайно",
+   "en": "Randomised enemies in dungeons"
+  },
+  "Variable Contraband Prices - Contraband More Valuable in Locations with Scans - Variable Contraband Prices": {
+   "ru": "Контрабанда дороже там, где сканируют",
+   "en": "Contraband pays more where ships are scanned"
+  },
+  "Better Piracy - GalBank Ships Have More Loot": {
+   "ru": "На кораблях GalBank больше добычи",
+   "en": "GalBank ships carry more loot"
+  },
+  "Wicked Workshop- Outpost Projeckt 2 - Wicked Workshop- Outpost Projeckt 2 v2.0.2": {
+   "ru": "37 новых модулей для аванпостов",
+   "en": "37 new outpost modules"
+  },
+  "Simple Immersive Music Players": {
+   "ru": "Музыкальные проигрыватели для дома",
+   "en": "Music players for your home"
+  },
+  "Xeno Master - Xeno Master - 1.2.77 Release": {
+   "ru": "Можно приручить инопланетных существ",
+   "en": "Tame alien creatures"
+  },
+  "Better Explosives - An Explosive Overhaul - Better Explosives": {
+   "ru": "Обновлённая взрывчатка",
+   "en": "Explosives overhaul"
+  },
+  "All Vehicles Have Storage": {
+   "ru": "Багажник у всех машин",
+   "en": "Storage in every vehicle"
+  },
+  "AkiRacer - Akiracer": {
+   "ru": "Байк в стиле киберпанк с ракетами",
+   "en": "A cyberpunk bike with a missile launcher"
+  },
+  "Enhanced Surrender - Enhanced Surrender V1.2": {
+   "ru": "Сдаться охране можно чаще",
+   "en": "Surrender to guards in more situations"
+  },
+  "Moo Rage in Space(Actor Push)(Move)(Get out of the Way) - Moo rage in Space": {
+   "ru": "Можно оттолкнуть NPC с пути",
+   "en": "Push NPCs out of your way"
+  },
+  "Environmental Resistances Overhaul - Environmental Resistances Overhaul - Default": {
+   "ru": "Исправляет защиту от среды",
+   "en": "Fixes environmental resistances"
+  },
+  "Sir Livingstone's Revolver - SLR": {
+   "ru": "Пистолет Ливингстона стал старинным револьвером",
+   "en": "Sir Livingstone's pistol becomes an antique revolver"
+  },
+  "Gallion x Refined Reliant Medical Patch - GallionxRefinedRM": {
+   "ru": "Совместимость банка с больницей Reliant",
+   "en": "Bank patch for Refined Reliant Medical"
+  },
+  "Terran Armada Quest Bug Fixes": {
+   "ru": "Исправления заданий Terran Armada",
+   "en": "Terran Armada quest fixes"
+  },
+  "More Power Assist Spacesuit Colors - More Power Assist Spacesuit Colors - V1": {
+   "ru": "8 новых цветов скафандра",
+   "en": "8 more spacesuit colours"
+  },
+  "Delta Reforged - Delta Reforged v2.0.0": {
+   "ru": "Можно менять вид машины Дельта",
+   "en": "Change Delta's look anytime"
+  },
+  "Rebalanced SN6 (510deshawn) - Rebalance 510deshawn Sn6": {
+   "ru": "Баланс винтовки SN6",
+   "en": "SN6 rifle rebalance"
+  },
+  "Old Earth Rearmed": {
+   "ru": "Исправления оружия Старой Земли",
+   "en": "Fixes for Old Earth weapons"
+  },
+  "Flashy(JoeR) - Sometimes They Leave - Sometimes They Leave": {
+   "ru": "Закрывает пробел в сюжете",
+   "en": "Closes a story gap"
+  },
+  "Piloting for M-Class Ships": {
+   "ru": "Пилотирование кораблей класса M",
+   "en": "Pilot class M ships"
+  },
+  "El Jefe Space Combat AI": {
+   "ru": "Умнее враги в космических боях",
+   "en": "Smarter enemies in space combat"
+  },
+  "Orbital Defense - Capital Ships (Optimized) - Orbital Defense - Capital Ships": {
+   "ru": "Большие корабли ОК и Фристар на орбите",
+   "en": "UC and Freestar capital ships in orbit"
+  },
+  "NPC Sync Walk Speed - NPC Sync Walk Speed (.esm)": {
+   "ru": "Ты ходишь с той же скоростью, что и NPC",
+   "en": "Walk at the same speed as NPCs"
+  },
+  "Alternate Supernova Explosion Visual - Alternate Supernova Explosion": {
+   "ru": "Новый вид взрыва сверхновой",
+   "en": "New supernova explosion look"
+  },
+  "Decal Fix - DecalFix-PackagedVersion-esm": {
+   "ru": "Узоры на поверхностях отображаются правильно",
+   "en": "Surface patterns display correctly"
+  },
+  "Aurie's Temple Quest Fixes (Power From Beyond) - Temple Quest Fixes": {
+   "ru": "Исправления задания в храме",
+   "en": "Temple quest fixes"
+  },
+  "Evasive Stealth Drive Fix - Evasive Stealth Drive fix": {
+   "ru": "Нет вылетов от стелс-двигателя на больших кораблях",
+   "en": "No stealth drive crashes on big ships"
+  },
+  "Dead Body Collision": {
+   "ru": "Тела сдвигаются, если на них наступить",
+   "en": "Bodies move when you walk into them"
+  },
+  "Fly Closer To Planets in Cruise Mode - Fly Closer to Planets in Cruise Mode": {
+   "ru": "Можно подлетать ближе к планетам",
+   "en": "Fly closer to planets in cruise mode"
+  },
+  "Simple Immersive Looting": {
+   "ru": "Можно снять одежду с тел",
+   "en": "Strip gear from bodies"
+  },
+  "Patch - SPE x Useful brigs - Patch SPE x usefull Brigs": {
+   "ru": "Совместимость тюрем с SPE",
+   "en": "Brig patch for SPE"
+  },
+  "Fair Ship Registration Fee": {
+   "ru": "Регистрация корабля дешевле",
+   "en": "Cheaper ship registration"
+  },
+  "Bedlam Patches - Bedlam Clutter Patch": {
+   "ru": "Исправления для Bedlam",
+   "en": "Patches for Bedlam"
+  },
+  "Quick Lowered Weapons": {
+   "ru": "Оружие быстрее опускается после прицеливания",
+   "en": "Weapon lowers quickly after aiming"
+  },
+  "Quick Lowered Weapons - Quick Lowered Weapons - First Person": {
+   "ru": "Быстрое опускание оружия от первого лица",
+   "en": "Quick lowered weapons in first person"
+  },
+  "Better Ship Camera - Better Ship Camera 2": {
+   "ru": "Удобная камера корабля",
+   "en": "Better ship camera zoom"
+  },
+  "Patch - SPE x Immersive Landing Ramps - Patch SPE ILR": {
+   "ru": "Совместимость трапов с SPE",
+   "en": "Landing ramp patch for SPE"
+  },
+  "Instant Scan": {
+   "ru": "Изучение флоры и фауны с одного скана",
+   "en": "Flora and fauna surveys in one scan"
+  },
+  "Starborn Unity - StarbornUnity - Default furniture marker": {
+   "ru": "Твоя копия в Единстве носит броню Звёздного",
+   "en": "Your Unity self wears Starborn armour"
+  },
+  "Show Date When Waking Up": {
+   "ru": "Дата при пробуждении",
+   "en": "Shows the date when you wake up"
+  },
+  "Realistic Sun Disk Size": {
+   "ru": "Солнце в небе реалистичного размера",
+   "en": "Realistic sun size in the sky"
+  },
+  "Galactic Mesh Fixes": {
+   "ru": "Исправления моделей по всей галактике",
+   "en": "Mesh fixes across the galaxy"
+  },
+  "Configurable Spacesuit Auto-Hide - Configurable Suit Auto-Hide": {
+   "ru": "Настройка, когда прятать скафандр",
+   "en": "Choose when your spacesuit is hidden"
+  },
+  "Subtle Flashlight - Subtle Flashlight - Blue (With Specular)": {
+   "ru": "Мягкий фонарик с широким светом",
+   "en": "A softer, wider flashlight"
+  },
+  "Baka Console EditorIDs": {
+   "ru": "Удобные команды в консоли",
+   "en": "Easier console commands"
+  },
+  "Baka Disable My Games Folder": {
+   "ru": "Не нужна папка «Мои игры»",
+   "en": "No My Games folder needed"
+  },
+  "Baka Quick Full Saves": {
+   "ru": "Быстрое сохранение как обычное",
+   "en": "Quick saves become full saves"
+  },
+  "Baka Quit Game Fix": {
+   "ru": "Исправляет выход из игры",
+   "en": "Fixes quitting the game"
+  },
+  "Console Command Runner Updated - Console Command Runner": {
+   "ru": "Запуск своих команд консоли автоматически",
+   "en": "Runs your console commands automatically"
+  },
+  "Less Creepy Crowd NPCs - Reduced Staring and Headtracking - Less Creepy Crowd NPCs": {
+   "ru": "Прохожие не пялятся на тебя",
+   "en": "NPCs no longer stare at you"
+  },
+  "Immersive Driving - SFSE": {
+   "ru": "Удобства в машине: вид тела, обзор, прицел",
+   "en": "Driving extras: visible body, smart aim, view"
+  },
+  "No Vehicle Weapon Aim Oxygen Penalty - SFSE": {
+   "ru": "Нет расхода кислорода при стрельбе из машины",
+   "en": "No oxygen drain when aiming vehicle weapons"
+  },
+  "Disable star glow SFSE - RemoveStarGlow 1.01": {
+   "ru": "Убирает яркое свечение вокруг звёзд",
+   "en": "Removes the bright glow around stars"
+  },
+  "CharGenMenu - CharGen v1-1-0-23": {
+   "ru": "Удобный редактор персонажа",
+   "en": "A better character creator"
+  },
+  "Sprint Stuttering Fix": {
+   "ru": "Нет рывков камеры при беге",
+   "en": "No stutter when sprinting"
+  },
+  "Starfield Engine Fixes - SFSE - Starfield Engine Fixes - Game version 1.16.244": {
+   "ru": "Исправления движка игры",
+   "en": "Game engine fixes"
+  },
+  "Disk Cache Enabler for SFSE Updated - Disk Cache Enabler": {
+   "ru": "Ускоряет загрузку с диска",
+   "en": "Faster loading from disk"
+  },
+  "Better Smart Aiming SFSE - Third Person Scope and Aim Fixes - BetterSmartAiming": {
+   "ru": "Прицеливание от третьего лица точнее",
+   "en": "Better third-person aiming"
+  },
+  "Trainwreck - A Crash Logger - trainwreck": {
+   "ru": "Записывает причину вылета для разбора",
+   "en": "Records crash details for diagnosis"
+  },
+  "No Weapon Power or Count Limits - Weapon-Power-Mod-SFSE": {
+   "ru": "Нет ограничений на мощность и число оружия на корабле",
+   "en": "No ship weapon power or count limits"
+  },
+  "Starfield Script Extender (SFSE) - SFSE": {
+   "ru": "Расширение скриптов, нужно другим модам",
+   "en": "Script extender other mods need"
+  },
+  "Address Library for SFSE Plugins - All in one - v22 (1.16.244.0) SFSE Address Library": {
+   "ru": "Нужен модам-плагинам SFSE",
+   "en": "Needed by SFSE plugin mods"
+  },
+  "Places Of Intrigue- GRiNDTerra POI - GrindTerralocations": {
+   "ru": "Новые места и подземелья",
+   "en": "New locations and dungeons"
+  },
+  "Dark Universe - Outlaws 01 - Dark Universe Outlaws 01": {
+   "ru": "100 цепочек заданий охоты за головами",
+   "en": "100 bounty hunting quest chains"
+  },
+  "More Lore - Legacy of the Mantis": {
+   "ru": "20+ новых записей об истории Богомола",
+   "en": "20+ new lore slates about the Mantis"
+  },
+  "HtH - Hunting the Hunters - HtH - Hunting the Hunters (BSA version)": {
+   "ru": "Наёмники охотятся на тебя: новое задание",
+   "en": "Mercenaries hunt you down: a new quest"
+  },
+  "Revelation - Main Quest Overhaul - Revelation": {
+   "ru": "Основной сюжет без лишних храмов",
+   "en": "Main quest overhaul with fewer temples"
+  },
+  "Permanent POIs - Evil Beyond": {
+   "ru": "30 опасных мест, пришельцы, боссы",
+   "en": "30 hostile locations, aliens and bosses"
+  },
+  "Permanent POIs - Darkness Beckons": {
+   "ru": "35 мест, 4 босса, новое оружие",
+   "en": "35 locations, 4 bosses, new weapons"
+  },
+  "Permanent POIs - Silent Echoes": {
+   "ru": "Побочные задания к постоянным местам",
+   "en": "Side quests for the permanent locations"
+  },
+  "Desolation - POI Overhaul - Desolation": {
+   "ru": "Места на планетах подобраны реалистичнее",
+   "en": "More realistic choice of planet locations"
+  },
+  "Star Parcel Courier Missions - Ouc Starparcelcourier": {
+   "ru": "Задания курьера",
+   "en": "Courier jobs"
+  },
+  "Shadow Freight - Smuggling Contracts - Shadow Freight - Smuggling Contracts v2.0.3": {
+   "ru": "Контракты контрабандистов",
+   "en": "Smuggling contracts"
+  },
+  "Audrey - Starborn Companion": {
+   "ru": "Новая спутница Одри в Ложе, 2000+ реплик",
+   "en": "Audrey, a new companion at the Lodge, 2,000+ lines"
+  },
+  "Upgraded Companions": {
+   "ru": "Улучшенные диалоги спутников и исправления",
+   "en": "Better companion dialogue and fixes"
+  },
+  "Visible Companion Affinity - Visible Companion Affinity v1.5": {
+   "ru": "Видно, как спутник к тебе относится",
+   "en": "See your companion's affinity"
+  },
+  "Fortuna Ship Habs - Fortuna Ship Hab": {
+   "ru": "Модули с корабля «Фортуна»",
+   "en": "Habs from the Fortuna"
+  },
+  "Community Spaceship Expansion": {
+   "ru": "46 новых кораблей в мире",
+   "en": "46 new ships in the world"
+  },
+  "Matilija's Aerospace - Matilija Aerospace V9.52": {
+   "ru": "Новый производитель кораблей",
+   "en": "A new ship manufacturer"
+  },
+  "Tiger Shipyards Overhaul - TIG_ShipyardsOverhaul": {
+   "ru": "Новые модули верфи Tiger",
+   "en": "New Tiger Shipyards modules"
+  },
+  "Owl Tech Lets Work Habs - OwlTech_Lets_Work_Habs": {
+   "ru": "Рабочие модули Owl Tech",
+   "en": "Owl Tech work habs"
+  },
+  "Owl Tech Ship Living - OwlTech_Ship_Living": {
+   "ru": "Жилые модули Owl Tech",
+   "en": "Owl Tech living habs"
+  },
+  "Immersive Cargo Halls": {
+   "ru": "Грузовой отсек показывает, сколько груза",
+   "en": "Cargo halls show how full your ship is"
+  },
+  "Old World 50 Cal Barrett M82 M95 (Standalone and Replacer) - 50CalSniper-Standalone": {
+   "ru": "Снайперская винтовка Barrett .50",
+   "en": "Barrett .50 sniper rifle"
+  },
+  "Project Warfare - Hardened Edition - Project Warfare 1.16": {
+   "ru": "Набор современного оружия",
+   "en": "A pack of modern weapons"
+  },
+  "M4A1 - Assault Rifle - M4A1 AssaultRifle": {
+   "ru": "Автомат M4A1",
+   "en": "M4A1 assault rifle"
+  },
+  "G36C Redux - G36C Redux 1.01": {
+   "ru": "Автомат G36C",
+   "en": "G36C rifle"
+  },
+  "KBAR-32 (AA BAR-32)": {
+   "ru": "Автомат KBAR-32",
+   "en": "KBAR-32 rifle"
+  },
+  "PDSW 528 - PDSW 528 - MEF - Small Master": {
+   "ru": "Пистолет-пулемёт PDSW 528",
+   "en": "PDSW 528 SMG"
+  },
+  "Rampart-17 - Rampart-17 (Free Lanes Update)": {
+   "ru": "Пистолет-пулемёт Rampart-17",
+   "en": "Rampart-17 SMG"
+  },
+  "Glock 19 - Glock 19 - MEF - Small Master": {
+   "ru": "Пистолет Glock 19",
+   "en": "Glock 19 pistol"
+  },
+  "Arasaka Shingen (Homing bullets) - Shingen": {
+   "ru": "Пистолет-пулемёт «Сингэн» с самонаводящимися пулями",
+   "en": "Shingen SMG with homing bullets"
+  },
+  "Kang Tao G58 Dian - Dian": {
+   "ru": "Пистолет-пулемёт Kang Tao «Дянь»",
+   "en": "Kang Tao Dian SMG"
+  },
+  "Lexington - Lex": {
+   "ru": "Пистолет «Лексингтон»",
+   "en": "Lexington pistol"
+  },
+  "Allied Assault Rifle AA-15 - AA-15 Release 103": {
+   "ru": "Автомат AA-15",
+   "en": "AA-15 assault rifle"
+  },
+  "Laredo M2 .45acp Pistol - Pistol_Laredo_M2": {
+   "ru": "Пистолет Laredo M2",
+   "en": "Laredo M2 pistol"
+  },
+  "Xeno Master - DLC Support Addon - DLC Support addon for Xeno Master - v1.2": {
+   "ru": "Приручение существ из дополнений",
+   "en": "Tame creatures from the DLCs"
+  },
+  "Ammo HUD": {
+   "ru": "Значки оружия и патронов на экране",
+   "en": "Weapon and ammo icons on the HUD"
+  },
+  "Plugins.txt Enabler - SFPTE-1_3 (SFSE-1_12_30)": {
+   "ru": "Нужен для загрузки модов",
+   "en": "Needed to load mods"
+  },
+  "Munitions Expansion Framework": {
+   "ru": "Новые виды патронов",
+   "en": "New ammo types"
+  },
+  "Pekoe Brows - Pekoe Brows 2K": {
+   "ru": "Брови в высоком разрешении",
+   "en": "High-resolution eyebrows"
+  },
+  "Pekoe Eyes and Lashes - Pekoe Eyes (2K-1K)": {
+   "ru": "Новые глаза и ресницы",
+   "en": "New eyes and lashes"
+  },
+  "Ammo Framework - Ammo Framework 1.05": {
+   "ru": "Нужен модам с новыми патронами",
+   "en": "Ammo framework other mods need"
+  },
+  "Dream home Basement - Dreamhousebasement Furnished ESM": {
+   "ru": "Подвал в Доме мечты",
+   "en": "A basement for the Dream Home"
+  },
+  "Shades Immersive Looting (strip and loot equipped armor) - Shade's Immersive Looting": {
+   "ru": "Можно снять броню с врагов",
+   "en": "Strip armour from enemies"
+  },
+  "Hair Overhaul - Hair Retexture - Hair Overhaul - Optim Edition": {
+   "ru": "Волосы и бороды в высоком качестве",
+   "en": "High-quality hair and beards"
+  },
+  "Starborn Looting - StarbornLooting": {
+   "ru": "С Звёздных врагов можно собрать добычу",
+   "en": "Loot Starborn enemies"
+  },
+  "Cassiopeia Papyrus Extender": {
+   "ru": "Расширение скриптов, нужно другим модам",
+   "en": "Script extension other mods need"
+  },
+  "powerofthree's Tweaks SFSE": {
+   "ru": "Исправления и мелкие улучшения",
+   "en": "Fixes and small tweaks"
+  },
+  "New Workbenches Essential Framework NWEF - NWEF 6": {
+   "ru": "Нужен модам с новыми верстаками",
+   "en": "Lets mods add workbenches"
+  },
+  "STARQUEEN 5 (SFW, публичная)": {
+   "ru": "Новые текстуры кожи для женских персонажей",
+   "en": "New skin textures for female characters"
+  },
+  "ZBB - ZoNEs Beautiful Body - ZBB": {
+   "ru": "Новая фигура для женских персонажей",
+   "en": "A new body shape for female characters"
+  },
+  "StarUI Inventory": {
+   "ru": "Удобный инвентарь для ПК",
+   "en": "A better PC inventory"
+  },
+  "StarUI HUD": {
+   "ru": "Настраиваемый интерфейс на экране",
+   "en": "A configurable HUD"
+  },
+  "StarUI Workbench": {
+   "ru": "Удобные верстаки",
+   "en": "Better workbench menus"
+  },
+  "Undelayed Menus - Undelayed Menu - Latest Version": {
+   "ru": "Меню открываются без задержки",
+   "en": "Menus open without delay"
+  },
+  "Compact Crew Menu": {
+   "ru": "Компактное меню экипажа",
+   "en": "A compact crew menu"
+  },
+  "Compact Crafting UI - Compact Crafting Menu": {
+   "ru": "Компактное меню крафта",
+   "en": "A compact crafting menu"
+  },
+  "Enhanced Player Healthbar - Enhanced Player Healthbar - WYOR": {
+   "ru": "Полоса здоровья меняет цвет",
+   "en": "Health bar changes colour as you get hurt"
+  },
+  "Ship HUD Tweaks": {
+   "ru": "Удобный интерфейс корабля",
+   "en": "Ship HUD tweaks"
+  },
+  "Ship HUD Tweaks - Ship HUD Tweaks - INI": {
+   "ru": "Настройки интерфейса корабля",
+   "en": "Ship HUD tweak settings"
+  },
+  "Show XP on Loading Screens": {
+   "ru": "Опыт на экране загрузки",
+   "en": "XP shown on loading screens"
+  },
+  "See Distances in Light Years": {
+   "ru": "Расстояния в световых годах",
+   "en": "Distances in light years"
+  },
+  "Slightly Better Map Icons - XVII": {
+   "ru": "Значки на карте понятнее",
+   "en": "Clearer map icons"
+  },
+  "Data Menu Tweaks": {
+   "ru": "Меню данных без мерцания, быстрее",
+   "en": "Data menu without flicker, faster"
+  },
+  "Baka Achievement Enabler (SFSE) - Baka Achievement Enabler": {
+   "ru": "Достижения работают с модами",
+   "en": "Achievements stay enabled with mods"
+  },
+  "SKK Fast Start New Game (Starfield) - SKKFastStartNewGame_017": {
+   "ru": "Можно пропустить обучение в начале",
+   "en": "Skip the opening tutorial"
+  },
+  "Sit To Add Ship to Fleet - Sit to Add Ship to Fleet": {
+   "ru": "Захваченный корабль добавляется в флот, если сесть за штурвал",
+   "en": "Sit in the pilot seat to add a captured ship to your fleet"
+  },
+  "Improved Follower Behavior": {
+   "ru": "Спутники ведут себя умнее",
+   "en": "Smarter follower behaviour"
+  },
+  "No Angry Companions": {
+   "ru": "Спутники не злятся на случайный выстрел",
+   "en": "Companions don't get angry at stray shots"
+  },
+  "Simple Offence Suppression SFSE - Simple Offence Suppression": {
+   "ru": "Мирные не нападают из-за случайного попадания",
+   "en": "Neutral NPCs don't turn hostile over stray hits"
+  },
+  "Stay in Your Space": {
+   "ru": "Корабли чужой фракции не нападают из-за штрафа",
+   "en": "No attacks from the other faction's ships over a bounty"
+  },
+  "Supply Mission Fix - EAASupplyMissionFix": {
+   "ru": "Исправления заданий на поставки",
+   "en": "Supply mission fixes"
+  },
+  "Unusual SOS Fix - Quest Completed - Unusual SOS Fix - Starfield Completed": {
+   "ru": "Задание «Странный сигнал SOS» можно завершить",
+   "en": "Unusual SOS quest can be completed"
+  },
+  "Temple Map Marker Fix": {
+   "ru": "Метки храмов не пропадают",
+   "en": "Temple map markers stay on the map"
+  },
+  "Player Eyes Stuck at the Dialogue Target Bug Fix - SFSE - Player Dialogue Target Eye Bug Fix": {
+   "ru": "Взгляд не застревает после диалога",
+   "en": "Eyes no longer stuck after dialogue"
+  },
+  "Smart Inventory": {
+   "ru": "Инвентарь разбирается сам",
+   "en": "Automatic inventory management"
+  },
+  "Breathe Without Backpacks": {
+   "ru": "Можно дышать без рюкзака",
+   "en": "Breathe without a backpack"
+  },
+  "Legendary Module Recycler - dmLegendaryRecycler_v212": {
+   "ru": "Легендарные модули можно снять с вещей",
+   "en": "Remove legendary modules from items"
+  },
+  "Better NPCs": {
+   "ru": "NPC ведут себя живее",
+   "en": "Livelier NPCs"
+  },
+  "Non-Lethal Framework": {
+   "ru": "Можно побеждать без убийства",
+   "en": "Non-lethal takedowns"
+  },
+  "Realistic Ragdolls and Force - Main Download": {
+   "ru": "Реалистичная физика тел",
+   "en": "Realistic ragdoll physics"
+  },
+  "Immersive Planet Density": {
+   "ru": "Плотность объектов на планетах реалистичнее",
+   "en": "More immersive planet density"
+  },
+  "Avontech Suit Power Cores": {
+   "ru": "26 новых мест и ядра для скафандров",
+   "en": "26 new locations and suit power cores"
+  },
+  "Seeking out Stores - Navigate Using City Info Kiosks - Seeking out Stores": {
+   "ru": "Терминалы в городах показывают путь к магазинам",
+   "en": "City kiosks guide you to stores"
+  },
+  "The Vault - The Vault - Main 1.2.3": {
+   "ru": "Хранилище для ценных вещей",
+   "en": "A vault for your valuables"
+  },
+  "Akila Nomad Cave": {
+   "ru": "Дом-пещера на Акиле",
+   "en": "A cave home on Akila"
+  },
+  "Clean Reflex Sight Lenses": {
+   "ru": "Чистые коллиматорные прицелы",
+   "en": "Clean reflex sights"
+  },
+  "Luxor's Green Grass": {
+   "ru": "Зелёная трава в лесах",
+   "en": "Greener grass in forests"
+  },
+  "No Engine Power Limits - Engine-Power-Mod-SFSE": {
+   "ru": "Нет предела мощности двигателей",
+   "en": "No engine power limit"
+  },
+  "No Reactor Limit - Reactor-Count-Mod-SFSE": {
+   "ru": "Можно ставить несколько реакторов",
+   "en": "Multiple reactors allowed"
+  },
+  "No Shield Limit - Shield-Count-Mod-SFSE": {
+   "ru": "Можно ставить несколько щитов",
+   "en": "Multiple shields allowed"
+  },
+  "No Minimum Landing Gear - LandingGear-Count-Mod-SFSE": {
+   "ru": "Меньше обязательных шасси",
+   "en": "Fewer landing gears required"
+  },
+  "No Reactor Class Requirement - Reactor-Class-Mod-SFSE": {
+   "ru": "Реактор любого класса",
+   "en": "Any reactor class allowed"
+  },
+  "Avontech Shipyards - AvontechShipyards": {
+   "ru": "Около 300 новых деталей кораблей",
+   "en": "About 300 new ship parts"
+  },
+  "More Crew Slots": {
+   "ru": "Больше мест для экипажа",
+   "en": "More crew slots"
+  },
+  "Flight Displays Retextures - Cockpit Screens All": {
+   "ru": "Новые экраны в кабине корабля",
+   "en": "New cockpit screens"
+  },
+  "Destiny 2 - armor pack - Destiny 2 Armor": {
+   "ru": "Броня из Destiny 2",
+   "en": "Armour from Destiny 2"
+  },
+  "Pariah - Armor Mash-Up - ExileAI - Pariah": {
+   "ru": "Новый скафандр Багрового флота",
+   "en": "A new Crimson Fleet spacesuit"
+  },
+  "Elite Sniper Outfit": {
+   "ru": "Наряд снайпера",
+   "en": "Elite sniper outfit"
+  },
+  "A Standalone Scarf For Any Spacesuit - Standalone Spacesuit Scarf": {
+   "ru": "Шарф на любой скафандр",
+   "en": "A scarf for any spacesuit"
+  },
+  "kine's Armada Skin Pack Repository - kine's Apollo Skin Pack": {
+   "ru": "Расцветки скафандров Apollo",
+   "en": "Apollo spacesuit skins"
+  },
+  "kine's Armada Skin Pack Repository - kine's Armada Skin Pack": {
+   "ru": "Расцветки скафандров Armada",
+   "en": "Armada spacesuit skins"
+  },
+  "kine's Armada Skin Pack Repository - kine's Heavy Miner Skin Pack   V1.000": {
+   "ru": "Расцветки скафандров шахтёра",
+   "en": "Heavy miner spacesuit skins"
+  },
+  "kine's Armada Skin Pack Repository - kine's Hyperpadded Skin Pack": {
+   "ru": "Расцветки скафандров Hyperpadded",
+   "en": "Hyperpadded spacesuit skins"
+  },
+  "kine's Armada Skin Pack Repository - kine's Luxurious Spacesuit Skin Pack  - v1.000": {
+   "ru": "Расцветки дорогих скафандров",
+   "en": "Luxurious spacesuit skins"
+  },
+  "kine's Armada Skin Pack Repository - kine's Power Assist Skin Pack": {
+   "ru": "Расцветки скафандров Power Assist",
+   "en": "Power Assist spacesuit skins"
+  },
+  "kine's Armada Skin Pack Repository - kine's Ryujin Stealth Skin Pack": {
+   "ru": "Расцветки скафандров «Рюдзин»",
+   "en": "Ryujin stealth spacesuit skins"
+  },
+  "kine's Armada Skin Pack Repository - kine's Scavenger Skin Pack - v1.000": {
+   "ru": "Расцветки скафандров мусорщика",
+   "en": "Scavenger spacesuit skins"
+  },
+  "kine's Armada Skin Pack Repository - kine's Tactical Agility Skin Pack": {
+   "ru": "Расцветки тактических скафандров",
+   "en": "Tactical agility spacesuit skins"
+  },
+  "More Hair Colors": {
+   "ru": "5 новых цветов волос",
+   "en": "5 new hair colours"
+  },
+  "CINE FIDELITY LUTS - CINE FIDELITY 2.1": {
+   "ru": "Кинематографичные цветовые фильтры",
+   "en": "Cinematic colour filters"
+  },
+  "StarUI Ship Builder": {
+   "ru": "Удобный редактор кораблей",
+   "en": "A better ship builder"
+  },
+  "StarUI Outpost": {
+   "ru": "Удобное меню аванпостов",
+   "en": "A better outpost menu"
+  },
+  "IconSortingTags - Starfield Edition - IconSortingTags (En-De-Es-Fr-It-Pl-Ptbr)": {
+   "ru": "Значки перед предметами для сортировки",
+   "en": "Sorting icons in front of items"
+  },
+  "TN's Class M (and Starborn Guardian) Ship Building - TN's Class M Ship Building": {
+   "ru": "Строительство кораблей класса M",
+   "en": "Build class M ships"
+  },
+  "No Grav Drive Weight Limit - GravDrive-Weight-Mod-SFSE": {
+   "ru": "Нет предела веса для гравидвигателя",
+   "en": "No grav drive weight limit"
+  },
+  "No Build Below Bay or Invalid Docker Position or Misaligned Landing Gear Errors - Build-Below-Bay-Mod-SFSE": {
+   "ru": "Меньше ошибок при постройке корабля",
+   "en": "Fewer ship builder errors"
+  },
+  "No Unattached Module Error - Allow-Unattached-Modules-Mod-SFSE": {
+   "ru": "Можно ставить неприкреплённые модули",
+   "en": "Unattached modules allowed"
+  },
+  "No Cockpit Limit - Cockpit-Count-Mod-SFSE": {
+   "ru": "Несколько кабин на корабле",
+   "en": "Multiple cockpits allowed"
+  },
+  "Keelo's Sleek Ship HUD - Keelo'S Sleek Ship HUD - ALL 60 Fps": {
+   "ru": "Чистый интерфейс корабля",
+   "en": "A clean ship HUD"
+  },
+  "Ship Crew Assignments": {
+   "ru": "Членам экипажа можно дать работу на корабле",
+   "en": "Give crew members jobs on your ship"
+  },
+  "Starborn Temple Overhaul - Temple Guardian Miniboss - Starborn Temple Guardian": {
+   "ru": "Страж храма — мини-босс",
+   "en": "A temple guardian miniboss"
+  },
+  "ZoNE79 Clothing Pack - ZoNE79 ClothingPack - Standalone (ZBB)": {
+   "ru": "Сборник одежды ZoNE79",
+   "en": "ZoNE79 clothing pack"
+  },
+  "ZoNE79 Spacesuit Pack - ZBB - ZoNE79 SpacesuitPack - Standalone ZBB": {
+   "ru": "Сборник скафандров ZoNE79",
+   "en": "ZoNE79 spacesuit pack"
+  },
+  "Varuun Spacesuit Remade - Varuun Spacesuit Remade (Red)": {
+   "ru": "Обновлённый скафандр Ва'руун",
+   "en": "Remade Va'ruun spacesuit"
+  },
+  "Red Dog's Spacer AI Upgrade - RD_Spacer_AI_Overhaul": {
+   "ru": "Спейсеры воюют как неопытные колонисты",
+   "en": "Spacers fight like untrained colonists"
+  },
+  "Red Dog's Crimson Fleet AI Upgrade - RD_Pirate_AI_Overhaul": {
+   "ru": "Багровый флот воюет умнее",
+   "en": "Smarter Crimson Fleet in combat"
+  },
+  "Red Dog's Ecliptic AI Upgrade - RD_Ecliptic_AI_Overhaul": {
+   "ru": "Наёмники Эклиптики воюют как профи",
+   "en": "Ecliptic mercs fight like professionals"
+  },
+  "Red Dog's Va'ruun Zealot AI Upgrade - RD_Varuun_AI_Overhaul": {
+   "ru": "Фанатики Ва'руун воюют по-своему",
+   "en": "Va'ruun zealots get their own tactics"
+  },
+  "Red Dog's Va'ruun Zealot AI Upgrade - RD_Varuun_SS_AI_Overhaul": {
+   "ru": "Фанатики Ва'руун в Shattered Space",
+   "en": "Va'ruun zealots in Shattered Space"
+  },
+  "Red Dog's Starborn AI Upgrade - RD_Starborn_AI_Overhaul": {
+   "ru": "Звёздные враги опаснее",
+   "en": "Tougher Starborn enemies"
+  },
+  "True Seamless Grav Jumps SFSE - Seamless Grav Jumps": {
+   "ru": "Гравиперелёт без экрана загрузки",
+   "en": "Grav jumps without a loading screen"
+  },
+  "Seamless Planet Takeoffs SFSE - SeamlessPlanetTakeoff": {
+   "ru": "Взлёт с планеты без экрана загрузки",
+   "en": "Planet takeoffs without a loading screen"
+  },
+  "Cleanfield - Keep Starfield Logo": {
+   "ru": "Без заставок при запуске",
+   "en": "No intro videos at startup"
+  },
+  "Better Boarding Encounters (BBE)": {
+   "ru": "Неожиданные абордажи при стыковке",
+   "en": "Surprise boardings when docking"
+  },
+  "Enemies Boarding My Ship": {
+   "ru": "Враги идут на абордаж твоего корабля",
+   "en": "Enemies try to board your ship"
+  },
+  "Easy Digipick - Easy Digipick": {
+   "ru": "Взлом замков проще",
+   "en": "An easier digipick minigame"
+  },
+  "Easy Speech - Easy Speech": {
+   "ru": "Убеждение проще",
+   "en": "A rebalanced persuasion minigame"
+  },
+  "Atmospheric Audio - AtmosphericAudio": {
+   "ru": "Звук в вакууме и атмосфере реалистичнее",
+   "en": "More realistic audio in vacuum and air"
+  },
+  "Crowd Citizens Tweaks": {
+   "ru": "Толпа в городах разнообразнее",
+   "en": "More varied city crowds"
+  },
+  "Crowd Outfit Variety - Paradiso": {
+   "ru": "Гости Парадизо одеты по-разному",
+   "en": "Varied outfits for Paradiso guests"
+  },
+  "Starborn NPC Suit Variety": {
+   "ru": "Звёздные враги в разной броне",
+   "en": "Varied Starborn armour"
+  },
+  "Groundpounders Uniform Fix": {
+   "ru": "Ополченцы Фристар в правильной форме",
+   "en": "Freestar Militia get proper uniforms"
+  },
+  "Partisans - The First Overhaul (Archived)": {
+   "ru": "3 новых наряда для фракции «Первая кавалерия»",
+   "en": "3 new outfits for the First Cavalry"
+  },
+  "Banshee": {
+   "ru": "Скафандр, шлем и рюкзак Banshee",
+   "en": "Banshee spacesuit, helmet and pack"
+  },
+  "Exile": {
+   "ru": "Скафандр, шлем и рюкзак Exile",
+   "en": "Exile spacesuit, helmet and pack"
+  },
+  "Mark M": {
+   "ru": "Скафандр, шлем и рюкзак Mark M",
+   "en": "Mark M spacesuit, helmet and pack"
+  },
+  "Pathfinder Armor": {
+   "ru": "Броня Pathfinder",
+   "en": "Pathfinder armour"
+  },
+  "Starfield Extended - Craftable Quality": {
+   "ru": "Качество оружия и скафандров можно улучшить",
+   "en": "Craft quality upgrades for weapons and suits"
+  },
+  "Starfield Extended - Craftable Quality - Shattered Space Patch": {
+   "ru": "Улучшение качества для Shattered Space",
+   "en": "Craftable quality for Shattered Space"
+  },
+  "Starfield Extended - Craftable Quality - Terran Armada Patch": {
+   "ru": "Улучшение качества для Terran Armada",
+   "en": "Craftable quality for Terran Armada"
+  },
+  "Starfield Extended - Craftable Quality Extended": {
+   "ru": "Больше уровней качества",
+   "en": "More quality tiers"
+  },
+  "Starfield Extended - Craftable Quality Extended - Terran Armada Patch": {
+   "ru": "Больше уровней качества для Terran Armada",
+   "en": "More quality tiers for Terran Armada"
+  },
+  "Starfield Extended - Craftable Quality Extended - Shattered Space Patch": {
+   "ru": "Больше уровней качества для Shattered Space",
+   "en": "More quality tiers for Shattered Space"
+  },
+  "Pathfinder - Starfield Extended Patch": {
+   "ru": "Совместимость брони Pathfinder",
+   "en": "Pathfinder armour patch"
+  },
+  "Pathfinder Armor Patch 1.13.61": {
+   "ru": "Исправление брони Pathfinder для новой версии игры",
+   "en": "Pathfinder armour fix for the new game version"
+  },
+  "Mark M Patch 1.11.36": {
+   "ru": "Исправление скафандра Mark M",
+   "en": "Mark M spacesuit fix"
+  },
+  "Banshee Patch 1.11.36": {
+   "ru": "Исправление скафандра Banshee",
+   "en": "Banshee spacesuit fix"
+  },
+  "Exile Patch 1.11.36": {
+   "ru": "Исправление скафандра Exile",
+   "en": "Exile spacesuit fix"
+  },
+  "Starfield Extended - Mod Armor Distribution": {
+   "ru": "Новая броня из модов у NPC",
+   "en": "NPCs wear armour from mods"
+  },
+  "FunkyPlay - Mod Armor Distribution Fix": {
+   "ru": "Наше исправление: броня из модов у NPC",
+   "en": "Our fix for armour from mods on NPCs"
+  },
+  "SavrenX Hair - SavrenX Hair 1K": {
+   "ru": "Причёски SavrenX",
+   "en": "SavrenX hairstyles"
+  },
+  "Dreaming Star - Main Menu - DreamingStarMainMenu": {
+   "ru": "Новое главное меню, музыка и экраны загрузки",
+   "en": "New main menu, music and loading screens"
+  }
+ }
+}
