@@ -1,4 +1,4 @@
-// Funky Launcher — Copyright (C) 2026 Funky. Licensed under GPL-3.0-or-later.
+﻿// Funky Launcher — Copyright (C) 2026 Funky. Licensed under GPL-3.0-or-later.
 using System.IO.Compression;
 using System.Text;
 using FunkyLauncher.Core;
@@ -50,6 +50,8 @@ public static class ReportService
             var redscope = Path.Combine(dir, "overwrite", "red4ext", "plugins", "REDscope");
             AddRedscopeCrashes(zip, "redscope/crashes", Path.Combine(redscope, "crashes"));
             AddNewest(zip, "redscope", redscope, "REDscope-internal.log", 1, false);
+            // 0.1.23 (Neon 0.1.8, chat Cyberpunk): Advanced Crash Reporter — its newest reports (MO2 writes them into overwrite)
+            AddNewest(zip, "acr", Path.Combine(dir, "overwrite", "bin", "x64", "plugins", "AdvancedCrashReporter", "reports"), "*", 3, true);
             // the Russian names helper: its log (why a build failed) and its report
             foreach (var f in new[] { "funkypatcher-log.txt", "funkypatcher-report.json" })
                 try { if (File.Exists(Path.Combine(dir, f))) Add(zip, "translation", Path.Combine(dir, f)); } catch { }
@@ -58,6 +60,7 @@ public static class ReportService
             {
                 AddNewest(zip, "game-cet", Path.Combine(game.Path, "bin", "x64", "plugins", "cyber_engine_tweaks"), "*.log", 10, false);
                 AddNewest(zip, "game-red4ext", Path.Combine(game.Path, "red4ext", "logs"), "*.log", 5, false);
+                AddNewest(zip, "game-acr", Path.Combine(game.Path, "bin", "x64", "plugins", "AdvancedCrashReporter", "reports"), "*", 3, true);
             }
         }, token);
         return target;
