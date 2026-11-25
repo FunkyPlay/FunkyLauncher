@@ -358,7 +358,7 @@ public static class AddonService
     }
 
     /// <summary>wabbajack-cli download-url: the Nexus file through the player's Wabbajack login (works for Premium).</summary>
-    private static async Task<bool> DownloadAsync(AddonMod x, string archive, CancellationToken token)
+    internal static async Task<bool> DownloadAsync(AddonMod x, string archive, CancellationToken token)
     {
         var tmp = archive + ".addon-part";
         try
@@ -545,7 +545,7 @@ public static class AddonService
             File.AppendAllText(RecordFile!, $"{a.AddonId}\t{x.Id}\t{x.Nexus.ModId}\t{x.Nexus.FileId}\t{new FileInfo(archive).Length}\t{hash}\t{archive}\r\n");
     }
 
-    private static async Task<string> Sha256Async(string file, CancellationToken token)
+    internal static async Task<string> Sha256Async(string file, CancellationToken token)
     {
         await using var f = File.OpenRead(file);
         return Convert.ToHexString(await SHA256.HashDataAsync(f, token)).ToLowerInvariant();

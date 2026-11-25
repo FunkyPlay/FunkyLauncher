@@ -21,6 +21,33 @@ public static class TestInstall
             try { await Archives.ExtractAsync(args[2], args[3], CancellationToken.None); return 0; }
             catch (Exception ex) { File.WriteAllText(args[3].TrimEnd('\\') + ".error.txt", ex.ToString()); return 1; }
         }
+        // "--test-install --gta <game folder copy> <downloads> <0|1|2>": install GTA V mods like the INSTALL button; "--gta-restore <game>"
+        if (args.Length >= 5 && args[1] == "--gta")
+        {
+            var glog = Path.GetFullPath(args[2]).TrimEnd(Path.DirectorySeparatorChar) + ".gta.log";
+            try
+            {
+                var plan = GtaInstallService.MakePlan(args[2], args[3], int.Parse(args[4])) ?? throw new InvalidOperationException("no packs");
+                var lines = new List<string> { $"nve: {plan.Nve}, install {plan.Install.Count}" };
+                lines.AddRange(plan.Manual.Select(x => $"manual: {x.Mod.Id} done={x.Done} required={x.Required}"));
+                if (plan.Blocking.Any()) { lines.Add("BLOCKED"); File.WriteAllLines(glog, lines); return 2; }
+                var r = await GtaInstallService.InstallAsync(args[2], args[3], plan, new Progress<string>(t => File.AppendAllText(glog + ".progress", t + Environment.NewLine)), CancellationToken.None);
+                lines.Add($"installed {r.Installed}, manual {r.NeedManual.Count}, errors {r.Errors.Count}, skipped {r.Skipped.Count}");
+                lines.AddRange(r.NeedManual.Select(m => "need manual: " + m.ModName));
+                lines.AddRange(r.Errors.Select(e => "error: " + e));
+                lines.AddRange(r.Skipped.Select(e => "skipped: " + e));
+                File.WriteAllLines(glog, lines);
+                return r.Errors.Count == 0 ? 0 : 1;
+            }
+            catch (Exception ex) { File.WriteAllText(glog, ex.ToString()); return 1; }
+        }
+        if (args.Length >= 3 && args[1] == "--gta-restore")
+        {
+            var (rm, rs, errs) = GtaInstallService.Restore(args[2]);
+            File.WriteAllLines(Path.GetFullPath(args[2]).TrimEnd(Path.DirectorySeparatorChar) + ".restore.log",
+                new[] { $"removed {rm}, restored {rs}" }.Concat(errs));
+            return errs.Count == 0 ? 0 : 1;
+        }
         // "--test-install --authorize-url <wabbajack logs folder> <out file>": the Nexus login link the launcher would offer
         if (args.Length >= 4 && args[1] == "--authorize-url")
         {

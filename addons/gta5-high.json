@@ -1,0 +1,352 @@
+{
+ "schema": 1,
+ "modlistId": "gta5",
+ "addonId": "gta5-high",
+ "listVersion": "0.1.0",
+ "forMainVersion": "0.1.0",
+ "generated": "2026-11-25",
+ "default": true,
+ "requires": "nve",
+ "mods": [
+  {
+   "id": "NaturalVision Enhanced",
+   "displayName": "NaturalVision Enhanced",
+   "nexus": {},
+   "archive": {
+    "localFileName": ""
+   },
+   "install": {
+    "type": "manual",
+    "page": "https://www.razedmods.com/gtavenhanced",
+    "check": [
+     "NVE.asi",
+     "onigiri.asi",
+     "onigiri/dlcpacks/NVE_update"
+    ],
+    "note": {
+     "ru": "Скачайте NaturalVision Enhanced на сайте автора (вход через Discord) и установите по его инструкции. Лаунчер проверит файлы.",
+     "en": "Download NaturalVision Enhanced from the author's site (Discord login) and install it per the author's guide. The launcher checks the files."
+    }
+   },
+   "required": true,
+   "provides": "nve",
+   "order": 1,
+   "modFolder": "NaturalVision Enhanced"
+  },
+  {
+   "id": "Addon Carpack V1 NVE",
+   "displayName": "Addon Carpack V1 NVE",
+   "nexus": {
+    "game": "gta5enhanced",
+    "modId": 100,
+    "fileId": 261,
+    "filePage": "https://www.nexusmods.com/gta5enhanced/mods/100?tab=files&file_id=261"
+   },
+   "archive": {
+    "localFileName": "Addon Carpack For Natural Vision Enhanced v0.3-100-0-3-1753768305.zip",
+    "size": 1599784292,
+    "sha256": "d4d54e322b9f5b831eff5818bfd5f8be0f162b9f449b00df3e3829e138c553ae"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "For Natural Vision Enhanced 0.3 [addon]/onigiri/dlcpacks/xcarpack_01/dlc.rpf",
+      "{dlcpacks}/xcarpack_01/dlc.rpf"
+     ]
+    ]
+   },
+   "order": 2,
+   "modFolder": "Addon Carpack V1 NVE"
+  },
+  {
+   "id": "Addon Carpack V2 NVE",
+   "displayName": "Addon Carpack V2 NVE",
+   "nexus": {
+    "game": "gta5enhanced",
+    "modId": 173,
+    "fileId": 516,
+    "filePage": "https://www.nexusmods.com/gta5enhanced/mods/173?tab=files&file_id=516"
+   },
+   "archive": {
+    "localFileName": "Addon Carpack V2 For Natural Vision Enhanced 0.2-173-0-2-1765217283.zip",
+    "size": 6650499459,
+    "sha256": "b87a7d08b7b951a89ba6398767e4f05220759ad3569f8e061fa3700d6575020f"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "onigiri/dlcpacks/xcarpack_02a/dlc.rpf",
+      "{dlcpacks}/xcarpack_02a/dlc.rpf"
+     ],
+     [
+      "onigiri/dlcpacks/xcarpack_02b/dlc.rpf",
+      "{dlcpacks}/xcarpack_02b/dlc.rpf"
+     ]
+    ]
+   },
+   "order": 3,
+   "modFolder": "Addon Carpack V2 NVE"
+  },
+  {
+   "id": "Malone's Car Add-on Pack",
+   "displayName": "Malone's Car Add-on Pack",
+   "nexus": {
+    "game": "gta5enhanced",
+    "modId": 117,
+    "fileId": 268,
+    "filePage": "https://www.nexusmods.com/gta5enhanced/mods/117?tab=files&file_id=268"
+   },
+   "archive": {
+    "localFileName": "Malone's Enhanced Car Add-on Pack (NVE Compatible)-117-1-2-1754336428.zip",
+    "size": 2176468099,
+    "sha256": "9e4c2d42b715cc9e99c5cdaf04aff25374b0c1d2d7e90b98fd516844889168b2"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "Malone's Enhanced Addon Car Pack (NVE Compatible) v1.2/2010 Audi A8 4.2 FSI/a8fsi/dlc.rpf",
+      "{dlcpacks}/a8fsi/dlc.rpf"
+     ],
+     [
+      "Malone's Enhanced Addon Car Pack (NVE Compatible) v1.2/2016 Dodge Ram Limited/dl2016/dlc.rpf",
+      "{dlcpacks}/dl2016/dlc.rpf"
+     ],
+     [
+      "Malone's Enhanced Addon Car Pack (NVE Compatible) v1.2/2016 Honda NSX/NC1/dlc.rpf",
+      "{dlcpacks}/NC1/dlc.rpf"
+     ],
+     [
+      "Malone's Enhanced Addon Car Pack (NVE Compatible) v1.2/2017 Mercedes AMG C63 S/c63w205/dlc.rpf",
+      "{dlcpacks}/c63w205/dlc.rpf"
+     ],
+     [
+      "Malone's Enhanced Addon Car Pack (NVE Compatible) v1.2/2018 Maybach S650 AB/19S650/dlc.rpf",
+      "{dlcpacks}/19S650/dlc.rpf"
+     ],
+     [
+      "Malone's Enhanced Addon Car Pack (NVE Compatible) v1.2/Alfa Romeo Giulietta Quadrifoglio Verde/argiu/dlc.rpf",
+      "{dlcpacks}/argiu/dlc.rpf"
+     ],
+     [
+      "Malone's Enhanced Addon Car Pack (NVE Compatible) v1.2/Aston Martin DBS Superleggera/rmodmartin/dlc.rpf",
+      "{dlcpacks}/rmodmartin/dlc.rpf"
+     ],
+     [
+      "Malone's Enhanced Addon Car Pack (NVE Compatible) v1.2/Audi RS3 Sportback 2022/tw_ar3sb/dlc.rpf",
+      "{dlcpacks}/tw_ar3sb/dlc.rpf"
+     ],
+     [
+      "Malone's Enhanced Addon Car Pack (NVE Compatible) v1.2/Audi RS6 Avant 2020/rs6avant2020/dlc.rpf",
+      "{dlcpacks}/rs6avant2020/dlc.rpf"
+     ],
+     [
+      "Malone's Enhanced Addon Car Pack (NVE Compatible) v1.2/BMW 330i G20 2020/gxg20/dlc.rpf",
+      "{dlcpacks}/gxg20/dlc.rpf"
+     ],
+     [
+      "Malone's Enhanced Addon Car Pack (NVE Compatible) v1.2/BMW S1000 RR 2014/bmws/dlc.rpf",
+      "{dlcpacks}/bmws/dlc.rpf"
+     ],
+     [
+      "Malone's Enhanced Addon Car Pack (NVE Compatible) v1.2/Bugatti La Voiture Noire/rmodbugatti/dlc.rpf",
+      "{dlcpacks}/rmodbugatti/dlc.rpf"
+     ],
+     [
+      "Malone's Enhanced Addon Car Pack (NVE Compatible) v1.2/Cadillac Escalade V 2024/GwopEscaladeV/dlc.rpf",
+      "{dlcpacks}/GwopEscaladeV/dlc.rpf"
+     ],
+     [
+      "Malone's Enhanced Addon Car Pack (NVE Compatible) v1.2/Chevrolet Camaro SS 2016 v2.0/dycess/dlc.rpf",
+      "{dlcpacks}/dycess/dlc.rpf"
+     ],
+     [
+      "Malone's Enhanced Addon Car Pack (NVE Compatible) v1.2/Chevrolet Caprice/caprice/dlc.rpf",
+      "{dlcpacks}/caprice/dlc.rpf"
+     ],
+     [
+      "Malone's Enhanced Addon Car Pack (NVE Compatible) v1.2/Ferrari 12Cilindri 2024/12cilindri/dlc.rpf",
+      "{dlcpacks}/12cilindri/dlc.rpf"
+     ],
+     [
+      "Malone's Enhanced Addon Car Pack (NVE Compatible) v1.2/Ferrari Portofino 2018/fpino/dlc.rpf",
+      "{dlcpacks}/fpino/dlc.rpf"
+     ],
+     [
+      "Malone's Enhanced Addon Car Pack (NVE Compatible) v1.2/Ford GT 2017/GT17/dlc.rpf",
+      "{dlcpacks}/GT17/dlc.rpf"
+     ],
+     [
+      "Malone's Enhanced Addon Car Pack (NVE Compatible) v1.2/Honda HR-V 2024/hrv2024/dlc.rpf",
+      "{dlcpacks}/hrv2024/dlc.rpf"
+     ],
+     [
+      "Malone's Enhanced Addon Car Pack (NVE Compatible) v1.2/Jeep SRT-8 2015/srt8/dlc.rpf",
+      "{dlcpacks}/srt8/dlc.rpf"
+     ],
+     [
+      "Malone's Enhanced Addon Car Pack (NVE Compatible) v1.2/Kawasaki Ninja H2 & H2R/nh2r/dlc.rpf",
+      "{dlcpacks}/nh2r/dlc.rpf"
+     ],
+     [
+      "Malone's Enhanced Addon Car Pack (NVE Compatible) v1.2/Kawasaki Ninja ZX10 R/zx10/dlc.rpf",
+      "{dlcpacks}/zx10/dlc.rpf"
+     ],
+     [
+      "Malone's Enhanced Addon Car Pack (NVE Compatible) v1.2/Kawasaki ZX10R 2016/zx10r/dlc.rpf",
+      "{dlcpacks}/zx10r/dlc.rpf"
+     ],
+     [
+      "Malone's Enhanced Addon Car Pack (NVE Compatible) v1.2/Kia Stinger 2022/22stinger/dlc.rpf",
+      "{dlcpacks}/22stinger/dlc.rpf"
+     ],
+     [
+      "Malone's Enhanced Addon Car Pack (NVE Compatible) v1.2/Koenigsegg Jesko 2020/rmodjesko/dlc.rpf",
+      "{dlcpacks}/rmodjesko/dlc.rpf"
+     ],
+     [
+      "Malone's Enhanced Addon Car Pack (NVE Compatible) v1.2/Lamborghini Terzo Millennio/terzo/dlc.rpf",
+      "{dlcpacks}/terzo/dlc.rpf"
+     ],
+     [
+      "Malone's Enhanced Addon Car Pack (NVE Compatible) v1.2/McLaren W1 2025/mw1/dlc.rpf",
+      "{dlcpacks}/mw1/dlc.rpf"
+     ],
+     [
+      "Malone's Enhanced Addon Car Pack (NVE Compatible) v1.2/Mercedes-Benz G-Class 2019/gclas9/dlc.rpf",
+      "{dlcpacks}/gclas9/dlc.rpf"
+     ],
+     [
+      "Malone's Enhanced Addon Car Pack (NVE Compatible) v1.2/Mercedes-Benz S63 Cab 2018/mb18/dlc.rpf",
+      "{dlcpacks}/mb18/dlc.rpf"
+     ],
+     [
+      "Malone's Enhanced Addon Car Pack (NVE Compatible) v1.2/Nissan Altima 3.5SE/nisaltima/dlc.rpf",
+      "{dlcpacks}/nisaltima/dlc.rpf"
+     ],
+     [
+      "Malone's Enhanced Addon Car Pack (NVE Compatible) v1.2/Rimac Nevera 2021/rimac/dlc.rpf",
+      "{dlcpacks}/rimac/dlc.rpf"
+     ],
+     [
+      "Malone's Enhanced Addon Car Pack (NVE Compatible) v1.2/Suzuki Swift 2023/swift23bcm/dlc.rpf",
+      "{dlcpacks}/swift23bcm/dlc.rpf"
+     ],
+     [
+      "Malone's Enhanced Addon Car Pack (NVE Compatible) v1.2/Suzuki Swift 2023/swift23bcm/dlctext.meta",
+      "{dlcpacks}/swift23bcm/dlctext.meta"
+     ],
+     [
+      "Malone's Enhanced Addon Car Pack (NVE Compatible) v1.2/Tesla Model 3 2018/tmodel/dlc.rpf",
+      "{dlcpacks}/tmodel/dlc.rpf"
+     ],
+     [
+      "Malone's Enhanced Addon Car Pack (NVE Compatible) v1.2/Tesla Roadster 2020/tr22/dlc.rpf",
+      "{dlcpacks}/tr22/dlc.rpf"
+     ],
+     [
+      "Malone's Enhanced Addon Car Pack (NVE Compatible) v1.2/Toyota Corolla Cross 2020/corollacross20/dlc.rpf",
+      "{dlcpacks}/corollacross20/dlc.rpf"
+     ],
+     [
+      "Malone's Enhanced Addon Car Pack (NVE Compatible) v1.2/Toyota RAV4 AWD Limited Hybrid 2024/sec_rav424/dlc.rpf",
+      "{dlcpacks}/sec_rav424/dlc.rpf"
+     ],
+     [
+      "Malone's Enhanced Addon Car Pack (NVE Compatible) v1.2/Volkswagen Golf R 2022/vwgolf8r/dlc.rpf",
+      "{dlcpacks}/vwgolf8r/dlc.rpf"
+     ],
+     [
+      "Malone's Enhanced Addon Car Pack (NVE Compatible) v1.2/Yamaha R1 2014/r1/dlc.rpf",
+      "{dlcpacks}/r1/dlc.rpf"
+     ]
+    ]
+   },
+   "note": "divo, senna, m840trsenna, mrx811 skipped: same cars in Addon Carpack V2",
+   "order": 4,
+   "modFolder": "Malone's Car Add-on Pack"
+  },
+  {
+   "id": "Real California Architecture",
+   "displayName": "Real California Architecture",
+   "nexus": {
+    "game": "gta5enhanced",
+    "modId": 341,
+    "fileId": 584,
+    "filePage": "https://www.nexusmods.com/gta5enhanced/mods/341?tab=files&file_id=584"
+   },
+   "archive": {
+    "localFileName": "Real California Architecture For Enhanced-341-0-4-9-1767827711.rar",
+    "size": 268723728,
+    "sha256": "cdb6018c0484d74b0eadd1324a9658690acc95920737274c08446eb327b3b896"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "rca/dlc.rpf",
+      "{dlcpacks}/rca/dlc.rpf"
+     ]
+    ]
+   },
+   "order": 5,
+   "modFolder": "Real California Architecture"
+  },
+  {
+   "id": "Real Petrol",
+   "displayName": "Real Petrol",
+   "nexus": {
+    "game": "gta5enhanced",
+    "modId": 395,
+    "fileId": 655,
+    "filePage": "https://www.nexusmods.com/gta5enhanced/mods/395?tab=files&file_id=655"
+   },
+   "archive": {
+    "localFileName": "Real Petrol-395-1-0-1769647607.7z",
+    "size": 1211447068,
+    "sha256": "904bb9d9131034c9e2d6f8206d6dc6c23cfc520c3e03322a28d728700e716c9d"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "realpetrol/dlc.rpf",
+      "{dlcpacks}/realpetrol/dlc.rpf"
+     ]
+    ]
+   },
+   "note": "real fuel brands: unofficial-modlist note in texts",
+   "order": 6,
+   "modFolder": "Real Petrol"
+  },
+  {
+   "id": "Real LA Peds Overhaul (pack only)",
+   "displayName": "Real LA Peds Overhaul (pack only)",
+   "nexus": {
+    "game": "gta5enhanced",
+    "modId": 58,
+    "fileId": 196,
+    "filePage": "https://www.nexusmods.com/gta5enhanced/mods/58?tab=files&file_id=196"
+   },
+   "archive": {
+    "localFileName": "Real LA Peds Overhaul 1.7-58-1-7-1751111297.zip",
+    "size": 1882597714,
+    "sha256": "49ea43e29e7a294014c0732a0c9166ed06cadc9641af899cebfed3495b4d0273"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "Real_LA_Peds_Overhaul 1.7/onigiri/dlcpacks/Real_LA_Peds_Overhaul/dlc.rpf",
+      "{dlcpacks}/Real_LA_Peds_Overhaul/dlc.rpf"
+     ]
+    ]
+   },
+   "note": "only the dlc pack: its popcycle/popgroups/modelsets would overwrite Dispatch V; keep NVE_patches on",
+   "order": 7,
+   "modFolder": "Real LA Peds Overhaul (pack only)"
+  }
+ ]
+}

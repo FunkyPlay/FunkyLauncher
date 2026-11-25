@@ -1,0 +1,2205 @@
+{
+ "schema": 1,
+ "modlistId": "gta5",
+ "addonId": "gta5-main",
+ "listVersion": "0.1.0",
+ "forMainVersion": "0.1.0",
+ "generated": "2026-11-25",
+ "game": "GTA V Enhanced",
+ "gameVersion": "1.0.1158.16",
+ "tokens": {
+  "nve": {
+   "{common}": "onigiri/common",
+   "{platform}": "onigiri/platform",
+   "{dlc_patch}": "onigiri/dlc_patch",
+   "{dlcpacks}": "mods/update/x64/dlcpacks",
+   "{ov_common}": "mods/update/update.rpf/common",
+   "{ov_platform}": "mods/update/update.rpf/x64"
+  },
+  "std": {
+   "{common}": "mods/update/update.rpf/common",
+   "{platform}": "mods/update/update.rpf/x64",
+   "{dlc_patch}": "mods/update/update.rpf/dlc_patch",
+   "{dlcpacks}": "mods/update/x64/dlcpacks",
+   "{ov_common}": "mods/update/update.rpf/common",
+   "{ov_platform}": "mods/update/update.rpf/x64"
+  }
+ },
+ "nveFiles": "never edited or replaced (Legal 25.11): no dlclist/gameconfig edits, packs via Simple Mods Loader",
+ "merge": [
+  {
+   "id": "vehicles-merge",
+   "script": "merge_drivev.py",
+   "inputs": {
+    "drivev": "Drive V archive: Drive V Main/onigiri/common/data",
+    "dispatch": "Dispatch archive: 0.Main/onigiri/common/data",
+    "deformation": "{merge}/deformation/handling.meta"
+   },
+   "outputs": [
+    "{common}/data/handling.meta",
+    "{common}/data/levels/gta5/vehicles.meta",
+    "{common}/data/ai/vehiclemodelsets.meta"
+   ],
+   "legal": "Юридические 24.11: собирать только у игрока, результат не раздавать",
+   "enabled": false,
+   "hold": {
+    "status": "linkOnly",
+    "reason": "author letter sent 24.11, waiting for reply; reminder not before 2026-12-08"
+   }
+  },
+  {
+   "id": "gameconfig",
+   "script": "merge_gameconfig.py",
+   "when": "nve",
+   "inputs": {
+    "base": "NVE onigiri/common/data/gameconfig.xml (READ ONLY)",
+    "other": "Dispatch 3.gameconfigs/High/gameconfig.xml"
+   },
+   "outputs": [
+    "{ov_common}/data/gameconfig.xml"
+   ],
+   "enabled": false,
+   "hold": {
+    "status": "needsTest",
+    "reason": "priority Simple Mods Loader overlay vs onigiri not tested"
+   },
+   "legal": "Юридические 25.11: файл NVE не менять, своё сведение — отдельным файлом рядом"
+  },
+  {
+   "id": "gameconfig-std",
+   "when": "std",
+   "copy": "Dispatch 3.gameconfigs/High/gameconfig.xml -> {common}/data/gameconfig.xml"
+  }
+ ],
+ "mods": [
+  {
+   "id": "Script Hook V",
+   "displayName": "Script Hook V",
+   "nexus": {},
+   "archive": {
+    "localFileName": ""
+   },
+   "install": {
+    "type": "manual",
+    "page": "http://www.dev-c.com/gtav/scripthookv/",
+    "check": [
+     "ScriptHookV.dll",
+     "xinput1_4.dll"
+    ],
+    "note": {
+     "ru": "Скачайте Script Hook V с сайта автора и положите ScriptHookV.dll и xinput1_4.dll (из папки bin) в папку игры.",
+     "en": "Download Script Hook V from the author's site and put ScriptHookV.dll and xinput1_4.dll (bin folder) into the game folder."
+    }
+   },
+   "required": true,
+   "order": 1,
+   "modFolder": "Script Hook V"
+  },
+  {
+   "id": "TweaksV",
+   "displayName": "TweaksV",
+   "nexus": {
+    "game": "gta5enhanced",
+    "modId": 1807,
+    "fileId": 3571,
+    "filePage": "https://www.nexusmods.com/gta5enhanced/mods/1807?tab=files&file_id=3571"
+   },
+   "archive": {
+    "localFileName": "TweaksV 2.9.1 1807 2.9.1 2026-11-12T23-27Z qtze12GNz.zip",
+    "size": 794079,
+    "sha256": "9a95fe7cf8b8453be3797361f931a89e965991b0948539006bfc91410d8b25b4"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "TweaksV/TweaksV.asi",
+      "{gameRoot}/TweaksV.asi"
+     ],
+     [
+      "TweaksV/TweaksV.ini",
+      "{gameRoot}/TweaksV.ini"
+     ]
+    ]
+   },
+   "iniSet": {
+    "TweaksV.ini": {
+     "RAGEOPENV": {
+      "ENABLED": "0"
+     },
+     "STRAIGHTTOSTORYMODE": {
+      "ENABLED": "{nve?0:1}"
+     }
+    }
+   },
+   "order": 2,
+   "modFolder": "TweaksV"
+  },
+  {
+   "id": "ScriptHookVDotNet Enhanced",
+   "displayName": "ScriptHookVDotNet Enhanced",
+   "nexus": {},
+   "download": {
+    "url": "https://github.com/Chiheb-Bacha/ScriptHookVDotNetEnhanced/releases/download/v1.1.0.6/ScriptHookVDotNetEnhanced-v1.1.0.6.zip",
+    "license": "zlib"
+   },
+   "archive": {
+    "localFileName": "ScriptHookVDotNetEnhanced-v1.1.0.6.zip",
+    "size": 2716327,
+    "sha256": "f10da8819fa6814fb0a04553567d2516934eac96b16af06ad8f315f0da00473a"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "MinHook.x64.dll",
+      "{gameRoot}/MinHook.x64.dll"
+     ],
+     [
+      "ScriptHookVDotNet.asi",
+      "{gameRoot}/ScriptHookVDotNet.asi"
+     ],
+     [
+      "ScriptHookVDotNet.ini",
+      "{gameRoot}/ScriptHookVDotNet.ini"
+     ],
+     [
+      "ScriptHookVDotNet2.dll",
+      "{gameRoot}/ScriptHookVDotNet2.dll"
+     ],
+     [
+      "ScriptHookVDotNet3.dll",
+      "{gameRoot}/ScriptHookVDotNet3.dll"
+     ]
+    ]
+   },
+   "iniSet": {
+    "ScriptHookVDotNet.ini": {
+     "": {
+      "ConsoleKeyBinding": "End"
+     }
+    }
+   },
+   "order": 3,
+   "modFolder": "ScriptHookVDotNet Enhanced"
+  },
+  {
+   "id": "LemonUI",
+   "displayName": "LemonUI",
+   "nexus": {},
+   "download": {
+    "url": "https://github.com/LemonUIbyLemon/LemonUI/releases/download/v2.2/LemonUI.zip",
+    "license": "MIT"
+   },
+   "archive": {
+    "localFileName": "LemonUI-v2.2.zip",
+    "size": 1403792,
+    "sha256": "ef95724eaa3389f02d44a4c87bd9b21e4626ebf34201167b0abeba84ef810ed6"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "SHVDN3/LemonUI.SHVDN3.dll",
+      "{gameRoot}/scripts/LemonUI.SHVDN3.dll"
+     ]
+    ]
+   },
+   "order": 4,
+   "modFolder": "LemonUI"
+  },
+  {
+   "id": "Simple Mods Loader",
+   "displayName": "Simple Mods Loader",
+   "nexus": {
+    "game": "gta5enhanced",
+    "modId": 1115,
+    "fileId": 2043,
+    "filePage": "https://www.nexusmods.com/gta5enhanced/mods/1115?tab=files&file_id=2043"
+   },
+   "archive": {
+    "localFileName": "Simple Mods Loader 1.5 (By NativeCoder) 1115 1.5 2026-07-06T02-40Z U67Y5OvU0.zip",
+    "size": 4499364,
+    "sha256": "d22b55f231903f8931bb307d4290a7d42eaf08d22ed3689637c6cbfd7518f418"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "DSOUND.dll",
+      "{gameRoot}/DSOUND.dll"
+     ]
+    ]
+   },
+   "note": "all tiers since 25.11: adds dlc packs from mods/update/x64/dlcpacks itself, so NVE dlclist is never edited (Legal 25.11)",
+   "order": 5,
+   "modFolder": "Simple Mods Loader"
+  },
+  {
+   "id": "Ped Damage Overhaul V",
+   "displayName": "Ped Damage Overhaul V",
+   "nexus": {
+    "game": "gta5enhanced",
+    "modId": 69,
+    "fileId": 197,
+    "filePage": "https://www.nexusmods.com/gta5enhanced/mods/69?tab=files&file_id=197"
+   },
+   "archive": {
+    "localFileName": "Ped Damage Overhaul V-69-1-3-1751115113.zip",
+    "size": 149667,
+    "sha256": "951895683f776fd8b086369957fafe3b6bfabf9ebf48b4e21081e62f3b1d4b10"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "PedDamageOverhaulV.asi",
+      "{gameRoot}/PedDamageOverhaulV.asi"
+     ],
+     [
+      "PedDamageOverhaulV.ini",
+      "{gameRoot}/PedDamageOverhaulV.ini"
+     ]
+    ]
+   },
+   "order": 6,
+   "modFolder": "Ped Damage Overhaul V"
+  },
+  {
+   "id": "Combat Tweaks Evolved",
+   "displayName": "Combat Tweaks Evolved",
+   "nexus": {
+    "game": "gta5enhanced",
+    "modId": 1339,
+    "fileId": 2932,
+    "filePage": "https://www.nexusmods.com/gta5enhanced/mods/1339?tab=files&file_id=2932"
+   },
+   "archive": {
+    "localFileName": "GTAV Combat Tweaks Evolved - Enhanced 1339 1.2 2026-09-27T06-25Z YpbownO5c.zip",
+    "size": 141978,
+    "sha256": "a668960dac7af358e761c6cbe53170616447d6157a79df3024086099ef5b2ee6"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "Release/combat_tweaks.asi",
+      "{gameRoot}/combat_tweaks.asi"
+     ],
+     [
+      "Release/combat_tweaks.ini",
+      "{gameRoot}/combat_tweaks.ini"
+     ]
+    ]
+   },
+   "order": 7,
+   "modFolder": "Combat Tweaks Evolved"
+  },
+  {
+   "id": "Toggle Suppressor FX",
+   "displayName": "Toggle Suppressor FX",
+   "nexus": {
+    "game": "gta5enhanced",
+    "modId": 274,
+    "fileId": 3281,
+    "filePage": "https://www.nexusmods.com/gta5enhanced/mods/274?tab=files&file_id=3281"
+   },
+   "archive": {
+    "localFileName": "ToggleSuppressorFX V1.3.1 274 1.3.1 2026-10-18T10-59Z U67Y5Omqo.rar",
+    "size": 14825,
+    "sha256": "f0c9543efc7b89564c731ff1a557dfd88d3e9e68dc6c5f8c51dfafda7b9acd16"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "scripts/ToggleSuppressorFX.dll",
+      "{gameRoot}/scripts/ToggleSuppressorFX.dll"
+     ],
+     [
+      "scripts/ToggleSuppressorFX.ini",
+      "{gameRoot}/scripts/ToggleSuppressorFX.ini"
+     ]
+    ]
+   },
+   "order": 8,
+   "modFolder": "Toggle Suppressor FX"
+  },
+  {
+   "id": "Realistic Guns Sounds",
+   "displayName": "Realistic Guns Sounds",
+   "nexus": {
+    "game": "gta5enhanced",
+    "modId": 152,
+    "fileId": 293,
+    "filePage": "https://www.nexusmods.com/gta5enhanced/mods/152?tab=files&file_id=293"
+   },
+   "archive": {
+    "localFileName": "Realistic Guns Sounds-152-4-1-1-1755564305.rar",
+    "size": 97867306,
+    "sha256": "4bbefdd2b6b075d7b75115b675b9f93cf9363fe3f22c963757dffbf9ae80b5d9"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "Realistic Guns Sounds/RESIDENT.rpf",
+      "{gameRoot}/mods/x64/audio/sfx/RESIDENT.rpf"
+     ],
+     [
+      "Realistic Guns Sounds/WEAPONS_PLAYER.rpf",
+      "{gameRoot}/mods/x64/audio/sfx/WEAPONS_PLAYER.rpf"
+     ]
+    ]
+   },
+   "order": 9,
+   "modFolder": "Realistic Guns Sounds"
+  },
+  {
+   "id": "Sound Pack for GTA V Enhanced",
+   "displayName": "Sound Pack for GTA V Enhanced",
+   "nexus": {
+    "game": "gta5enhanced",
+    "modId": 63,
+    "fileId": 816,
+    "filePage": "https://www.nexusmods.com/gta5enhanced/mods/63?tab=files&file_id=816"
+   },
+   "archive": {
+    "localFileName": "Sound Pack for GTA V Enhanced 6.0-63-6-0-1772910362.zip",
+    "size": 1603310687,
+    "sha256": "d22f25ba496bc745bd37aa2e7a5e7d9d4592e9efe82e3bc8ca98c81b329602be"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "Sound Pack for GTA V Enhanced 6.0/Put in GTA 5 main folder/mods/x64/audio/sfx/PAIN.rpf",
+      "{gameRoot}/mods/x64/audio/sfx/PAIN.rpf"
+     ],
+     [
+      "Sound Pack for GTA V Enhanced 6.0/Put in GTA 5 main folder/mods/x64/audio/sfx/SCRIPT.rpf",
+      "{gameRoot}/mods/x64/audio/sfx/SCRIPT.rpf"
+     ],
+     [
+      "Sound Pack for GTA V Enhanced 6.0/Put in GTA 5 main folder/mods/x64/audio/sfx/STREAMED_AMBIENCE.rpf",
+      "{gameRoot}/mods/x64/audio/sfx/STREAMED_AMBIENCE.rpf"
+     ],
+     [
+      "Sound Pack for GTA V Enhanced 6.0/Put in GTA 5 main folder/mods/x64/audio/sfx/STREAMED_VEHICLES.rpf",
+      "{gameRoot}/mods/x64/audio/sfx/STREAMED_VEHICLES.rpf"
+     ],
+     [
+      "Sound Pack for GTA V Enhanced 6.0/Put in GTA 5 main folder/mods/x64/audio/sfx/STREAMED_VEHICLES_GRANULAR.rpf",
+      "{gameRoot}/mods/x64/audio/sfx/STREAMED_VEHICLES_GRANULAR.rpf"
+     ],
+     [
+      "Sound Pack for GTA V Enhanced 6.0/Put in GTA 5 main folder/mods/x64/audio/sfx/STREAMED_VEHICLES_GRANULAR_NPC.rpf",
+      "{gameRoot}/mods/x64/audio/sfx/STREAMED_VEHICLES_GRANULAR_NPC.rpf"
+     ],
+     [
+      "Sound Pack for GTA V Enhanced 6.0/Put in GTA 5 main folder/mods/x64/audio/sfx/STREAMED_VEHICLES_LOW_LATENCY.rpf",
+      "{gameRoot}/mods/x64/audio/sfx/STREAMED_VEHICLES_LOW_LATENCY.rpf"
+     ],
+     [
+      "Sound Pack for GTA V Enhanced 6.0/Put in GTA 5 main folder/mods/x64/audio/sfx/STREAMS.rpf",
+      "{gameRoot}/mods/x64/audio/sfx/STREAMS.rpf"
+     ],
+     [
+      "Sound Pack for GTA V Enhanced 6.0/Put in GTA 5 main folder/mods/x64/audio/sfx/S_FULL_SER.rpf",
+      "{gameRoot}/mods/x64/audio/sfx/S_FULL_SER.rpf"
+     ],
+     [
+      "Sound Pack for GTA V Enhanced 6.0/Put in GTA 5 main folder/mods/x64/audio/sfx/S_MISC.rpf",
+      "{gameRoot}/mods/x64/audio/sfx/S_MISC.rpf"
+     ]
+    ]
+   },
+   "note": "RESIDENT/WEAPONS_PLAYER taken from Realistic Guns Sounds",
+   "order": 10,
+   "modFolder": "Sound Pack for GTA V Enhanced"
+  },
+  {
+   "id": "STEAVN Blinkers",
+   "displayName": "STEAVN Blinkers",
+   "nexus": {
+    "game": "gta5enhanced",
+    "modId": 1651,
+    "fileId": 3136,
+    "filePage": "https://www.nexusmods.com/gta5enhanced/mods/1651?tab=files&file_id=3136"
+   },
+   "archive": {
+    "localFileName": "STEAVN Blinkers V1.1.0 1651 1.1.0 2026-10-08T12-48Z 4xjMy9Azz.zip",
+    "size": 9551,
+    "sha256": "a04ac61d09e557f972d3b16a5aba2c0dfb53a634029db893cfd3d0d227ca7b8f"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "scripts/STEAVNBlinkers.3.cs",
+      "{gameRoot}/scripts/STEAVNBlinkers.3.cs"
+     ],
+     [
+      "scripts/STEAVNBlinkers.ini",
+      "{gameRoot}/scripts/STEAVNBlinkers.ini"
+     ]
+    ]
+   },
+   "order": 11,
+   "modFolder": "STEAVN Blinkers"
+  },
+  {
+   "id": "Stop Reversing While Braking",
+   "displayName": "Stop Reversing While Braking",
+   "nexus": {
+    "game": "gta5enhanced",
+    "modId": 232,
+    "fileId": 410,
+    "filePage": "https://www.nexusmods.com/gta5enhanced/mods/232?tab=files&file_id=410"
+   },
+   "archive": {
+    "localFileName": "Stop Reversing While Braking V1.6-232-1-6-1759608827.zip",
+    "size": 2657,
+    "sha256": "15bef3d4a62f169e490072516156eb7828c703f491bd12d4138523c1b05374eb"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "SRWB.ini",
+      "{gameRoot}/scripts/SRWB.ini"
+     ],
+     [
+      "Stop Reversing While Braking.dll",
+      "{gameRoot}/scripts/Stop Reversing While Braking.dll"
+     ]
+    ]
+   },
+   "order": 12,
+   "modFolder": "Stop Reversing While Braking"
+  },
+  {
+   "id": "Rampage Trainer",
+   "displayName": "Rampage Trainer",
+   "nexus": {
+    "game": "gta5enhanced",
+    "modId": 90,
+    "fileId": 2091,
+    "filePage": "https://www.nexusmods.com/gta5enhanced/mods/90?tab=files&file_id=2091"
+   },
+   "archive": {
+    "localFileName": "Rampage 90 1.5 2026-07-15T09-20Z LgdEQJxk6.zip",
+    "size": 6710513,
+    "sha256": "3c44e148cad302a349547d923bfb7e968a2807d81c5f069c05a5d65f5c077231"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "Rampage_Enhanced_1.0.1158.13/Rampage.asi",
+      "{gameRoot}/Rampage.asi"
+     ],
+     [
+      "Rampage_Enhanced_1.0.1158.13/RampageFiles/Favourite Vehicles/VehicleData.json",
+      "{gameRoot}/RampageFiles/Favourite Vehicles/VehicleData.json"
+     ],
+     [
+      "Rampage_Enhanced_1.0.1158.13/RampageFiles/Hotkeys.json",
+      "{gameRoot}/RampageFiles/Hotkeys.json"
+     ],
+     [
+      "Rampage_Enhanced_1.0.1158.13/RampageFiles/IPLS/ExampleSet.xml",
+      "{gameRoot}/RampageFiles/IPLS/ExampleSet.xml"
+     ],
+     [
+      "Rampage_Enhanced_1.0.1158.13/RampageFiles/Language/Example.xml",
+      "{gameRoot}/RampageFiles/Language/Example.xml"
+     ],
+     [
+      "Rampage_Enhanced_1.0.1158.13/RampageFiles/Lists/AddonVehicles.txt",
+      "{gameRoot}/RampageFiles/Lists/AddonVehicles.txt"
+     ],
+     [
+      "Rampage_Enhanced_1.0.1158.13/RampageFiles/Lists/ClothingDb.xml",
+      "{gameRoot}/RampageFiles/Lists/ClothingDb.xml"
+     ],
+     [
+      "Rampage_Enhanced_1.0.1158.13/RampageFiles/Lists/ClothingPropsDb.xml",
+      "{gameRoot}/RampageFiles/Lists/ClothingPropsDb.xml"
+     ],
+     [
+      "Rampage_Enhanced_1.0.1158.13/RampageFiles/Lists/IPLList.xml",
+      "{gameRoot}/RampageFiles/Lists/IPLList.xml"
+     ],
+     [
+      "Rampage_Enhanced_1.0.1158.13/RampageFiles/Lists/ObjectList.txt",
+      "{gameRoot}/RampageFiles/Lists/ObjectList.txt"
+     ],
+     [
+      "Rampage_Enhanced_1.0.1158.13/RampageFiles/Lists/PedAnimList.txt",
+      "{gameRoot}/RampageFiles/Lists/PedAnimList.txt"
+     ],
+     [
+      "Rampage_Enhanced_1.0.1158.13/RampageFiles/Lists/Scenarios.txt",
+      "{gameRoot}/RampageFiles/Lists/Scenarios.txt"
+     ],
+     [
+      "Rampage_Enhanced_1.0.1158.13/RampageFiles/Lists/VehicleEmblemData.xml",
+      "{gameRoot}/RampageFiles/Lists/VehicleEmblemData.xml"
+     ],
+     [
+      "Rampage_Enhanced_1.0.1158.13/RampageFiles/Plugins/fmod.dll",
+      "{gameRoot}/RampageFiles/Plugins/fmod.dll"
+     ],
+     [
+      "Rampage_Enhanced_1.0.1158.13/RampageFiles/Plugins/fmodstudio.dll",
+      "{gameRoot}/RampageFiles/Plugins/fmodstudio.dll"
+     ],
+     [
+      "Rampage_Enhanced_1.0.1158.13/RampageFiles/Settings.json",
+      "{gameRoot}/RampageFiles/Settings.json"
+     ],
+     [
+      "Rampage_Enhanced_1.0.1158.13/RampageFiles/Textures/Animated.ytd",
+      "{gameRoot}/RampageFiles/Textures/Animated.ytd"
+     ],
+     [
+      "Rampage_Enhanced_1.0.1158.13/RampageFiles/Textures/Textures.ytd",
+      "{gameRoot}/RampageFiles/Textures/Textures.ytd"
+     ],
+     [
+      "Rampage_Enhanced_1.0.1158.13/RampageFiles/Themes/Interaction.json",
+      "{gameRoot}/RampageFiles/Themes/Interaction.json"
+     ],
+     [
+      "Rampage_Enhanced_1.0.1158.13/RampageFiles/Themes/Purple.json",
+      "{gameRoot}/RampageFiles/Themes/Purple.json"
+     ]
+    ]
+   },
+   "jsonSet": {
+    "RampageFiles/Hotkeys.json": {
+     "Hotkeys.Teleport Key": 119,
+     "Hotkeys.Teleport Key Info": "F8"
+    }
+   },
+   "order": 13,
+   "modFolder": "Rampage Trainer"
+  },
+  {
+   "id": "GTA 5 HUD Toggle",
+   "displayName": "GTA 5 HUD Toggle",
+   "nexus": {
+    "game": "gta5enhanced",
+    "modId": 103,
+    "fileId": 220,
+    "filePage": "https://www.nexusmods.com/gta5enhanced/mods/103?tab=files&file_id=220"
+   },
+   "archive": {
+    "localFileName": "updated toggle hud-103-2-1751830069.zip",
+    "size": 568,
+    "sha256": "b58257c5b042d0dde13b8b51f360339ee757197429e9c063f1715cbe902d2b9a"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "ToggleHUD.cs",
+      "{gameRoot}/scripts/ToggleHUD.cs"
+     ]
+    ]
+   },
+   "order": 14,
+   "modFolder": "GTA 5 HUD Toggle"
+  },
+  {
+   "id": "Army Chaos",
+   "displayName": "Army Chaos",
+   "nexus": {
+    "game": "gta5enhanced",
+    "modId": 224,
+    "fileId": 469,
+    "filePage": "https://www.nexusmods.com/gta5enhanced/mods/224?tab=files&file_id=469"
+   },
+   "archive": {
+    "localFileName": "ArmyChaos2-224-2-0-1762128105.zip",
+    "size": 39422,
+    "sha256": "6e4ccc0755e4fb402bfb58303b303bbc00dd7d928e707fb94158e0366f1af2b8"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "ArmyChaos2/ArmyChaosASI.asi",
+      "{gameRoot}/ArmyChaosASI.asi"
+     ],
+     [
+      "ArmyChaos2/ArmyChaosASI.ini",
+      "{gameRoot}/ArmyChaosASI.ini"
+     ]
+    ]
+   },
+   "iniSet": {
+    "ArmyChaosASI.ini": {
+     "General": {
+      "Hotkey": "118"
+     }
+    }
+   },
+   "order": 15,
+   "modFolder": "Army Chaos"
+  },
+  {
+   "id": "Persistence Pro",
+   "displayName": "Persistence Pro",
+   "nexus": {
+    "game": "gta5enhanced",
+    "modId": 913,
+    "fileId": 3384,
+    "filePage": "https://www.nexusmods.com/gta5enhanced/mods/913?tab=files&file_id=3384"
+   },
+   "archive": {
+    "localFileName": "PersistencePro 913 1.8.0 2026-10-27T17-53Z 4xjMy9AYY.zip",
+    "size": 558913,
+    "sha256": "b112de6607c2742bef8c5bdc667d57a47230f2107a6ba37fdba000f0dfb8a151"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "PersistencePro.dll",
+      "{gameRoot}/scripts/PersistencePro.dll"
+     ]
+    ]
+   },
+   "order": 16,
+   "modFolder": "Persistence Pro"
+  },
+  {
+   "id": "RumblePlus",
+   "displayName": "RumblePlus",
+   "nexus": {
+    "game": "gta5enhanced",
+    "modId": 235,
+    "fileId": 423,
+    "filePage": "https://www.nexusmods.com/gta5enhanced/mods/235?tab=files&file_id=423"
+   },
+   "archive": {
+    "localFileName": "RumblePlus-235-1-0-1760312952.zip",
+    "size": 11867,
+    "sha256": "75211dabf2bea6b875b3215eff1cffd67577555f23babbfd3ba39411f3afcfb5"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "Rumble+/scripts/Rumble+.dll",
+      "{gameRoot}/scripts/Rumble+.dll"
+     ]
+    ]
+   },
+   "order": 17,
+   "modFolder": "RumblePlus"
+  },
+  {
+   "id": "Dispatch V FEAR Edition",
+   "displayName": "Dispatch V FEAR Edition",
+   "nexus": {},
+   "archive": {
+    "localFileName": ""
+   },
+   "install": {
+    "type": "manual",
+    "page": "https://www.nexusmods.com/gta5enhanced/mods/48",
+    "check": [
+     "{downloads}/*Dispatch V FEAR Edition*.rar"
+    ],
+    "note": {
+     "ru": "Скачайте Dispatch V FEAR Edition 2.0 по ссылке со страницы автора (Nexus → зеркало gta5-mods) и укажите файл лаунчеру.",
+     "en": "Download Dispatch V FEAR Edition 2.0 from the author's page (Nexus -> gta5-mods mirror) and point the launcher to the file."
+    }
+   },
+   "userArchive": {
+    "expect": "Dispatch V FEAR Edition v2.0",
+    "sha256": "b36e01dc6f1e8390d47f664bedb8ec8b64bd64a7856401b8cde27599b63334df"
+   },
+   "mapAfterPick": [
+    [
+     "0.Main/onigiri/common/data/ai/ambientpedmodelsets.meta",
+     "{common}/data/ai/ambientpedmodelsets.meta"
+    ],
+    [
+     "0.Main/onigiri/common/data/ai/combatbehaviour.meta",
+     "{common}/data/ai/combatbehaviour.meta"
+    ],
+    [
+     "0.Main/onigiri/common/data/ai/crimeinformation.meta",
+     "{common}/data/ai/crimeinformation.meta"
+    ],
+    [
+     "0.Main/onigiri/common/data/dispatch.meta",
+     "{common}/data/dispatch.meta"
+    ],
+    [
+     "0.Main/onigiri/common/data/levels/gta5/popcycle.dat",
+     "{common}/data/levels/gta5/popcycle.dat"
+    ],
+    [
+     "0.Main/onigiri/common/data/pickups.meta",
+     "{common}/data/pickups.meta"
+    ],
+    [
+     "0.Main/onigiri/dlcpacks/addon_B/dlc.rpf",
+     "{dlcpacks}/addon_B/dlc.rpf"
+    ],
+    [
+     "0.Main/onigiri/platform/data/tune/combattasks.ymt",
+     "{platform}/data/tune/combattasks.ymt"
+    ],
+    [
+     "0.Main/onigiri/platform/levels/gta5/popgroups.ymt",
+     "{platform}/levels/gta5/popgroups.ymt"
+    ],
+    [
+     "0.Main/onigiri/platform/data/carvariations.ymt",
+     "{platform}/data/carvariations.ymt"
+    ],
+    [
+     "0.Main/onigiri/common/data/levels/gta5/vehicles.meta",
+     "{common}/data/levels/gta5/vehicles.meta"
+    ],
+    [
+     "0.Main/onigiri/common/data/ai/vehiclemodelsets.meta",
+     "{common}/data/ai/vehiclemodelsets.meta"
+    ],
+    [
+     "0.Main/onigiri/platform/data/carcols.ymt",
+     "{ov_platform}/data/carcols.ymt"
+    ]
+   ],
+   "legal": "автор FEAR2105 разрешил 25.11 (через Юридических): сводим у игрока, результат не раздаём, автор и ссылка указаны; файл игрок качает сам (gta5-mods)",
+   "mapNote": "last 2 entries only while vehicles-merge is on hold (Drive V); when Drive V is allowed, drop them and use vehicles-merge",
+   "order": 18,
+   "modFolder": "Dispatch V FEAR Edition"
+  },
+  {
+   "id": "Drive V",
+   "displayName": "Drive V",
+   "nexus": {
+    "game": "gta5enhanced",
+    "modId": 1093,
+    "fileId": 3061,
+    "filePage": "https://www.nexusmods.com/gta5enhanced/mods/1093?tab=files&file_id=3061"
+   },
+   "archive": {
+    "localFileName": "DriveV 7.5.1 GTA V Enhanced NVE 1093 7.5.1 2026-10-02T19-18Z DwRrugWLu.rar",
+    "size": 762156,
+    "sha256": "243764a43d81d0da47508d57be56998ed233e8f6492ef05bada2c1b74cfc126a"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/common/data/materials/materials.dat",
+      "{common}/data/materials/materials.dat"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mp2023_01/common/data/carvariations.meta",
+      "{dlc_patch}/mp2023_01/common/data/carvariations.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mp2023_01/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mp2023_01/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mp2023_02/common/data/carvariations.meta",
+      "{dlc_patch}/mp2023_02/common/data/carvariations.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mp2023_02/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mp2023_02/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mp2024_01/common/data/carvariations.meta",
+      "{dlc_patch}/mp2024_01/common/data/carvariations.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mp2024_01/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mp2024_01/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mp2024_02/common/data/carvariations.meta",
+      "{dlc_patch}/mp2024_02/common/data/carvariations.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mp2024_02/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mp2024_02/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mp2025_01/common/data/carvariations.meta",
+      "{dlc_patch}/mp2025_01/common/data/carvariations.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mp2025_01/common/data/handling.meta",
+      "{dlc_patch}/mp2025_01/common/data/handling.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mp2025_01/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mp2025_01/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mp2025_02/common/data/carvariations.meta",
+      "{dlc_patch}/mp2025_02/common/data/carvariations.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mp2025_02/common/data/handling.meta",
+      "{dlc_patch}/mp2025_02/common/data/handling.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mp2025_02/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mp2025_02/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mp2026_01/common/data/carvariations.meta",
+      "{dlc_patch}/mp2026_01/common/data/carvariations.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mp2026_01/common/data/handling.meta",
+      "{dlc_patch}/mp2026_01/common/data/handling.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mp2026_01/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mp2026_01/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpapartment/common/data/carvariations.meta",
+      "{dlc_patch}/mpapartment/common/data/carvariations.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpapartment/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mpapartment/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpassault/common/data/carvariations.meta",
+      "{dlc_patch}/mpassault/common/data/carvariations.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpassault/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mpassault/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpbattle/common/data/carvariations.meta",
+      "{dlc_patch}/mpbattle/common/data/carvariations.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpbattle/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mpbattle/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpbeach/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mpbeach/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpbiker/common/data/carvariations.meta",
+      "{dlc_patch}/mpbiker/common/data/carvariations.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpbiker/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mpbiker/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpbusiness/common/data/carvariations.meta",
+      "{dlc_patch}/mpbusiness/common/data/carvariations.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpbusiness/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mpbusiness/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpbusiness2/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mpbusiness2/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpchristmas2/common/data/carvariations.meta",
+      "{dlc_patch}/mpchristmas2/common/data/carvariations.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpchristmas2/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mpchristmas2/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpchristmas2017/common/data/carvariations.meta",
+      "{dlc_patch}/mpchristmas2017/common/data/carvariations.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpchristmas2017/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mpchristmas2017/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpchristmas2018/common/data/carvariations.meta",
+      "{dlc_patch}/mpchristmas2018/common/data/carvariations.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpchristmas2018/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mpchristmas2018/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpchristmas3/common/data/carcols.meta",
+      "{dlc_patch}/mpchristmas3/common/data/carcols.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpchristmas3/common/data/carvariations.meta",
+      "{dlc_patch}/mpchristmas3/common/data/carvariations.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpchristmas3/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mpchristmas3/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpexecutive/common/data/carvariations.meta",
+      "{dlc_patch}/mpexecutive/common/data/carvariations.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpexecutive/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mpexecutive/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpg9ec/common/data/carvariations.meta",
+      "{dlc_patch}/mpg9ec/common/data/carvariations.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpg9ec/common/data/handling.meta",
+      "{dlc_patch}/mpg9ec/common/data/handling.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpg9ec/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mpg9ec/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpgunrunning/common/data/carvariations.meta",
+      "{dlc_patch}/mpgunrunning/common/data/carvariations.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpgunrunning/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mpgunrunning/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mphalloween/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mphalloween/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpheist/common/data/carvariations.meta",
+      "{dlc_patch}/mpheist/common/data/carvariations.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpheist/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mpheist/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpheist3/common/data/carcols.meta",
+      "{dlc_patch}/mpheist3/common/data/carcols.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpheist3/common/data/carvariations.meta",
+      "{dlc_patch}/mpheist3/common/data/carvariations.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpheist3/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mpheist3/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpheist4/common/data/carvariations.meta",
+      "{dlc_patch}/mpheist4/common/data/carvariations.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpheist4/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mpheist4/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mphipster/common/data/carvariations.meta",
+      "{dlc_patch}/mphipster/common/data/carvariations.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mphipster/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mphipster/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpimportexport/common/data/carvariations.meta",
+      "{dlc_patch}/mpimportexport/common/data/carvariations.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpimportexport/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mpimportexport/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpindependence/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mpindependence/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpjanuary2016/common/data/carvariations.meta",
+      "{dlc_patch}/mpjanuary2016/common/data/carvariations.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpjanuary2016/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mpjanuary2016/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mplowrider/common/data/carvariations.meta",
+      "{dlc_patch}/mplowrider/common/data/carvariations.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mplowrider/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mplowrider/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mplowrider2/common/data/carvariations.meta",
+      "{dlc_patch}/mplowrider2/common/data/carvariations.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mplowrider2/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mplowrider2/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mplts/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mplts/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpluxe/common/data/carvariations.meta",
+      "{dlc_patch}/mpluxe/common/data/carvariations.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpluxe/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mpluxe/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpluxe2/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mpluxe2/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mppilot/common/data/carvariations.meta",
+      "{dlc_patch}/mppilot/common/data/carvariations.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mppilot/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mppilot/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpsecurity/common/data/carvariations.meta",
+      "{dlc_patch}/mpsecurity/common/data/carvariations.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpsecurity/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mpsecurity/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpsmuggler/common/data/carvariations.meta",
+      "{dlc_patch}/mpsmuggler/common/data/carvariations.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpsmuggler/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mpsmuggler/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpspecialraces/common/data/carvariations.meta",
+      "{dlc_patch}/mpspecialraces/common/data/carvariations.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpspecialraces/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mpspecialraces/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpstunt/common/data/carvariations.meta",
+      "{dlc_patch}/mpstunt/common/data/carvariations.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpstunt/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mpstunt/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpsum/common/data/carcols.meta",
+      "{dlc_patch}/mpsum/common/data/carcols.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpsum/common/data/carvariations.meta",
+      "{dlc_patch}/mpsum/common/data/carvariations.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpsum/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mpsum/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpsum2/common/data/carcols.meta",
+      "{dlc_patch}/mpsum2/common/data/carcols.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpsum2/common/data/carvariations.meta",
+      "{dlc_patch}/mpsum2/common/data/carvariations.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpsum2/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mpsum2/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mptuner/common/data/carcols.meta",
+      "{dlc_patch}/mptuner/common/data/carcols.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mptuner/common/data/carvariations.meta",
+      "{dlc_patch}/mptuner/common/data/carvariations.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mptuner/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mptuner/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpvalentines/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mpvalentines/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpvalentines2/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mpvalentines2/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpvinewood/common/data/carvariations.meta",
+      "{dlc_patch}/mpvinewood/common/data/carvariations.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpvinewood/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mpvinewood/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpxmas_604490/common/data/carvariations.meta",
+      "{dlc_patch}/mpxmas_604490/common/data/carvariations.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/mpxmas_604490/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/mpxmas_604490/common/data/levels/gta5/vehicles.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/spupgrade/common/data/carvariations.meta",
+      "{dlc_patch}/spupgrade/common/data/carvariations.meta"
+     ],
+     [
+      "DriveV  7.5  GTA V Enhanced NVE/Drive V Main/onigiri/dlc_patch/spupgrade/common/data/levels/gta5/vehicles.meta",
+      "{dlc_patch}/spupgrade/common/data/levels/gta5/vehicles.meta"
+     ]
+    ]
+   },
+   "hold": {
+    "status": "linkOnly",
+    "reason": "author letter sent 24.11, waiting for reply; reminder not before 2026-12-08"
+   },
+   "order": 19,
+   "modFolder": "Drive V"
+  },
+  {
+   "id": "Better Vehicle Deformation",
+   "displayName": "Better Vehicle Deformation",
+   "nexus": {
+    "game": "gta5enhanced",
+    "modId": 41,
+    "fileId": 136,
+    "filePage": "https://www.nexusmods.com/gta5enhanced/mods/41?tab=files&file_id=136"
+   },
+   "archive": {
+    "localFileName": "Realistic Deformation for NVE v3 FINAL-41-3-1749756922.rar",
+    "size": 99369,
+    "sha256": "5f8a33a8f7cdb59b13cbe03b249098db7e69f20bb67d6a906eb75514bb288f84"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "handling.meta",
+      "{merge}/deformation/handling.meta"
+     ]
+    ]
+   },
+   "hold": {
+    "status": "linkOnly",
+    "reason": "author letter sent 24.11, waiting for reply; reminder not before 2026-12-08"
+   },
+   "order": 20,
+   "modFolder": "Better Vehicle Deformation"
+  },
+  {
+   "id": "E.R.O (standard)",
+   "displayName": "E.R.O (standard)",
+   "nexus": {
+    "game": "gta5enhanced",
+    "modId": 150,
+    "fileId": 288,
+    "filePage": "https://www.nexusmods.com/gta5enhanced/mods/150?tab=files&file_id=288"
+   },
+   "archive": {
+    "localFileName": "E.R.O 1.9.4 by JohnDiscord Enhanced-150-1-0-1755019291.rar",
+    "size": 15350,
+    "sha256": "3e51db5cce47d7792099f82edc1c4d385e21d904ceefee393f3833a034746ace"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "E.R.O 1.9.4 by JohnDiscord Enhanced/physicstasks.ymt",
+      "{platform}/data/tune/physicstasks.ymt"
+     ]
+    ]
+   },
+   "when": "std",
+   "order": 21,
+   "modFolder": "E.R.O (standard)"
+  },
+  {
+   "id": "E.R.O (NVE)",
+   "displayName": "E.R.O (NVE)",
+   "nexus": {
+    "game": "gta5enhanced",
+    "modId": 150,
+    "fileId": 292,
+    "filePage": "https://www.nexusmods.com/gta5enhanced/mods/150?tab=files&file_id=292"
+   },
+   "archive": {
+    "localFileName": "Euphoria Ragdoll Overhaul - E.R.O NVE-150-1-2-1755354589.rar",
+    "size": 16302,
+    "sha256": "96bc1c10dde6ede653f766378f8e1ea4ddf155fc7555f168453fe79edf0be556"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "E.R.O 1.9.4 by JohnDiscord Natural Vision Enhanced/E.R.O 1.9.4 by JohnDiscord Natural Vision Enhanced/onigiri/platform/data/tune/physicstasks.ymt",
+      "{platform}/data/tune/physicstasks.ymt"
+     ]
+    ]
+   },
+   "when": "nve",
+   "order": 22,
+   "modFolder": "E.R.O (NVE)"
+  },
+  {
+   "id": "Better Fist Fighting",
+   "displayName": "Better Fist Fighting",
+   "nexus": {
+    "game": "gta5enhanced",
+    "modId": 36,
+    "fileId": 57,
+    "filePage": "https://www.nexusmods.com/gta5enhanced/mods/36?tab=files&file_id=57"
+   },
+   "archive": {
+    "localFileName": "Better Fist Fighting-36-1-1748117059.rar",
+    "size": 1230,
+    "sha256": "74a6cac8a74e90c98da998e2b06c398694e927c872965cec5e586b11830541ee"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "onigiri/common/data/action/damages.meta",
+      "{common}/data/action/damages.meta"
+     ]
+    ]
+   },
+   "order": 23,
+   "modFolder": "Better Fist Fighting"
+  },
+  {
+   "id": "Benny's Motor Works Revamped",
+   "displayName": "Benny's Motor Works Revamped",
+   "nexus": {
+    "game": "gta5enhanced",
+    "modId": 1337,
+    "fileId": 3558,
+    "filePage": "https://www.nexusmods.com/gta5enhanced/mods/1337?tab=files&file_id=3558"
+   },
+   "archive": {
+    "localFileName": "BennysMotorWorksRevamped 1337 1.3.3 2026-11-11T22-11Z mY5ODsZKh.zip",
+    "size": 1668039,
+    "sha256": "099419534f70c40798c7355b0060e037a8b7df41f0583109551124cf7bbaed78"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "scripts/BennysMotorworksRevamped.dll",
+      "{gameRoot}/scripts/BennysMotorworksRevamped.dll"
+     ],
+     [
+      "scripts/BennysMotorworksRevamped.ini",
+      "{gameRoot}/scripts/BennysMotorworksRevamped.ini"
+     ],
+     [
+      "bennys_sp.oiv",
+      "{nested}/bennys_sp.oiv"
+     ]
+    ]
+   },
+   "nested": {
+    "bennys_sp.oiv": [
+     [
+      "content/bennys_sp/dlc.rpf",
+      "{dlcpacks}/bennys_sp/dlc.rpf"
+     ]
+    ]
+   },
+   "order": 24,
+   "modFolder": "Benny's Motor Works Revamped"
+  },
+  {
+   "id": "LSPatrol",
+   "displayName": "LSPatrol",
+   "nexus": {},
+   "archive": {
+    "localFileName": ""
+   },
+   "install": {
+    "type": "manual",
+    "page": "https://www.nexusmods.com/gta5enhanced/mods/1421",
+    "check": [
+     "LSPatrol.asi"
+    ],
+    "note": {
+     "ru": "Необязательно. Ставится вручную со страницы автора.",
+     "en": "Optional. Install manually from the author's page."
+    }
+   },
+   "default": false,
+   "legal": "Юридические 24.11: только ссылкой, без автоустановки",
+   "order": 25,
+   "modFolder": "LSPatrol"
+  },
+  {
+   "id": "Fumes",
+   "displayName": "Fumes",
+   "nexus": {
+    "game": "gta5enhanced",
+    "modId": 1355,
+    "fileId": 2801,
+    "filePage": "https://www.nexusmods.com/gta5enhanced/mods/1355?tab=files&file_id=2801"
+   },
+   "archive": {
+    "localFileName": "Fumes 1.0.4 1355 1.0.4 2026-09-18T08-33Z eWILXx20G.zip",
+    "size": 485315,
+    "sha256": "bf645249fceaf49dda2d837e288a0f62f74c20eac5b8b3b3eb30f4ad73f418e3"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "scripts/Fumes.dll",
+      "{gameRoot}/scripts/Fumes.dll"
+     ],
+     [
+      "scripts/Fumes.ini",
+      "{gameRoot}/scripts/Fumes.ini"
+     ],
+     [
+      "scripts/Fumes/models.json",
+      "{gameRoot}/scripts/Fumes/models.json"
+     ],
+     [
+      "scripts/Fumes/stations.json",
+      "{gameRoot}/scripts/Fumes/stations.json"
+     ],
+     [
+      "scripts/Fumes/icons/drop.png",
+      "{gameRoot}/scripts/Fumes/icons/drop.png"
+     ],
+     [
+      "scripts/Fumes/icons/fuel_bar.png",
+      "{gameRoot}/scripts/Fumes/icons/fuel_bar.png"
+     ],
+     [
+      "scripts/Fumes/icons/fuel.png",
+      "{gameRoot}/scripts/Fumes/icons/fuel.png"
+     ],
+     [
+      "scripts/Fumes/icons/icon_hose.png",
+      "{gameRoot}/scripts/Fumes/icons/icon_hose.png"
+     ],
+     [
+      "scripts/Fumes/icons/icon_hud.png",
+      "{gameRoot}/scripts/Fumes/icons/icon_hud.png"
+     ],
+     [
+      "scripts/Fumes/icons/icon_station.png",
+      "{gameRoot}/scripts/Fumes/icons/icon_station.png"
+     ],
+     [
+      "scripts/Fumes/icons/label_fuel.png",
+      "{gameRoot}/scripts/Fumes/icons/label_fuel.png"
+     ],
+     [
+      "scripts/Fumes/icons/logo.png",
+      "{gameRoot}/scripts/Fumes/icons/logo.png"
+     ],
+     [
+      "scripts/Fumes/icons/seal-face.png",
+      "{gameRoot}/scripts/Fumes/icons/seal-face.png"
+     ],
+     [
+      "scripts/Fumes/icons/seal-ring.png",
+      "{gameRoot}/scripts/Fumes/icons/seal-ring.png"
+     ],
+     [
+      "scripts/Fumes/icons/seal.png",
+      "{gameRoot}/scripts/Fumes/icons/seal.png"
+     ],
+     [
+      "scripts/Fumes/lang/de.json",
+      "{gameRoot}/scripts/Fumes/lang/de.json"
+     ],
+     [
+      "scripts/Fumes/lang/en-US.json",
+      "{gameRoot}/scripts/Fumes/lang/en-US.json"
+     ],
+     [
+      "scripts/Fumes/lang/es.json",
+      "{gameRoot}/scripts/Fumes/lang/es.json"
+     ],
+     [
+      "scripts/Fumes/lang/fr.json",
+      "{gameRoot}/scripts/Fumes/lang/fr.json"
+     ],
+     [
+      "scripts/Fumes/lang/hi.json",
+      "{gameRoot}/scripts/Fumes/lang/hi.json"
+     ],
+     [
+      "scripts/Fumes/lang/pl.json",
+      "{gameRoot}/scripts/Fumes/lang/pl.json"
+     ],
+     [
+      "scripts/Fumes/lang/pt-BR.json",
+      "{gameRoot}/scripts/Fumes/lang/pt-BR.json"
+     ],
+     [
+      "scripts/Fumes/lang/ru.json",
+      "{gameRoot}/scripts/Fumes/lang/ru.json"
+     ],
+     [
+      "scripts/Fumes/lang/zh-CN.json",
+      "{gameRoot}/scripts/Fumes/lang/zh-CN.json"
+     ]
+    ]
+   },
+   "note": "fuel; menu Shift+F, refuel E at the pump; MIT",
+   "order": 26,
+   "modFolder": "Fumes"
+  },
+  {
+   "id": "BusinessV Enhanced",
+   "displayName": "BusinessV Enhanced",
+   "nexus": {
+    "game": "gta5enhanced",
+    "modId": 1314,
+    "fileId": 2375,
+    "filePage": "https://www.nexusmods.com/gta5enhanced/mods/1314?tab=files&file_id=2375"
+   },
+   "archive": {
+    "localFileName": "BusinessV Enhanced V2.1 1314 2.1 2026-08-22T14-14Z 5bawRrDej.zip",
+    "size": 66831,
+    "sha256": "34df50c1d65208e7b6985883cb17fb9794b8fdad0b2bdf356d94e1ee87ed0e6a"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "BusinessV-Enhanced-v2.1/scripts/BusinessV/businesses.json",
+      "{gameRoot}/scripts/BusinessV/businesses.json"
+     ],
+     [
+      "BusinessV-Enhanced-v2.1/scripts/BusinessV/BusinessV.dll",
+      "{gameRoot}/scripts/BusinessV/BusinessV.dll"
+     ],
+     [
+      "BusinessV-Enhanced-v2.1/scripts/BusinessV/BusinessV.settings.json",
+      "{gameRoot}/scripts/BusinessV/BusinessV.settings.json"
+     ]
+    ]
+   },
+   "order": 27,
+   "modFolder": "BusinessV Enhanced"
+  },
+  {
+   "id": "GTA SPA II",
+   "displayName": "GTA SPA II",
+   "nexus": {
+    "game": "gta5enhanced",
+    "modId": 1632,
+    "fileId": 3556,
+    "filePage": "https://www.nexusmods.com/gta5enhanced/mods/1632?tab=files&file_id=3556"
+   },
+   "archive": {
+    "localFileName": "GTA SPA2 For Enhanced V.4.1fixed 1632 4.1fixed 2026-11-11T14-54Z 3yc67YUzy.7z",
+    "size": 1827370,
+    "sha256": "44795f39479b1a727c16e58421cbecf7c116bb03753a359ff156a1c917bfd164"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "scripts/SPA II/NightClubMusic/put mp3 music here.txt",
+      "{gameRoot}/scripts/SPA II/NightClubMusic/put mp3 music here.txt"
+     ],
+     [
+      "scripts/SPA II/Sounds/Assistant/README_VOICE.txt",
+      "{gameRoot}/scripts/SPA II/Sounds/Assistant/README_VOICE.txt"
+     ],
+     [
+      "scripts/SPA II/VehicleCatalog.tsv",
+      "{gameRoot}/scripts/SPA II/VehicleCatalog.tsv"
+     ],
+     [
+      "scripts/SPA II/Sounds/mechanic_cant_get_your_ride.wav",
+      "{gameRoot}/scripts/SPA II/Sounds/mechanic_cant_get_your_ride.wav"
+     ],
+     [
+      "scripts/SPA II/Sounds/mechanic_get_back_to_work_then.wav",
+      "{gameRoot}/scripts/SPA II/Sounds/mechanic_get_back_to_work_then.wav"
+     ],
+     [
+      "scripts/SPA II/Sounds/mechanic_get_there_as_soon_as_i_can.wav",
+      "{gameRoot}/scripts/SPA II/Sounds/mechanic_get_there_as_soon_as_i_can.wav"
+     ],
+     [
+      "scripts/SPA II/Sounds/mechanic_on_the_clock_some_wheels.wav",
+      "{gameRoot}/scripts/SPA II/Sounds/mechanic_on_the_clock_some_wheels.wav"
+     ],
+     [
+      "scripts/SPA II/Sounds/mechanic_u_need_something_huh.wav",
+      "{gameRoot}/scripts/SPA II/Sounds/mechanic_u_need_something_huh.wav"
+     ],
+     [
+      "scripts/iFruitAddon2.dll",
+      "{gameRoot}/scripts/iFruitAddon2.dll"
+     ],
+     [
+      "scripts/INMNativeUI.dll",
+      "{gameRoot}/scripts/INMNativeUI.dll"
+     ],
+     [
+      "scripts/Metadata.dll",
+      "{gameRoot}/scripts/Metadata.dll"
+     ],
+     [
+      "scripts/SPA II/SPAII_Setting.exe",
+      "{gameRoot}/scripts/SPA II/SPAII_Setting.exe"
+     ],
+     [
+      "scripts/SPAII.dll",
+      "{gameRoot}/scripts/SPAII.dll"
+     ]
+    ]
+   },
+   "note": "blips toggle F10; based on GPL-3 code",
+   "order": 28,
+   "modFolder": "GTA SPA II"
+  },
+  {
+   "id": "Simple Taxi Missions",
+   "displayName": "Simple Taxi Missions",
+   "nexus": {
+    "game": "gta5enhanced",
+    "modId": 29,
+    "fileId": 41,
+    "filePage": "https://www.nexusmods.com/gta5enhanced/mods/29?tab=files&file_id=41"
+   },
+   "archive": {
+    "localFileName": "Simple Taxi Missions-29-0-1-1747524696.zip",
+    "size": 209599,
+    "sha256": "05ba7be1c43d62d160e1b6a3e3063b8a43604d7a17f2d01097c89f4b1b153c7a"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "SimpleTaxiMissions.asi",
+      "{gameRoot}/SimpleTaxiMissions.asi"
+     ]
+    ]
+   },
+   "order": 29,
+   "modFolder": "Simple Taxi Missions"
+  },
+  {
+   "id": "Recruit Pedestrians",
+   "displayName": "Recruit Pedestrians",
+   "nexus": {
+    "game": "gta5enhanced",
+    "modId": 39,
+    "fileId": 64,
+    "filePage": "https://www.nexusmods.com/gta5enhanced/mods/39?tab=files&file_id=64"
+   },
+   "archive": {
+    "localFileName": "Recruit Pedestrians 1.2 (By NativeCoder)-39-1-2-1748278388.zip",
+    "size": 87175,
+    "sha256": "1e59c91ace1a1cf4345c9e13fefe55eb5e26f7488fe91894da9b599b62f70146"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "recruit.ini",
+      "{gameRoot}/recruit.ini"
+     ],
+     [
+      "recruit.asi",
+      "{gameRoot}/recruit.asi"
+     ]
+    ]
+   },
+   "order": 30,
+   "modFolder": "Recruit Pedestrians"
+  },
+  {
+   "id": "Collectibles on Map and Radar",
+   "displayName": "Collectibles on Map and Radar",
+   "nexus": {
+    "game": "gta5enhanced",
+    "modId": 1099,
+    "fileId": 3275,
+    "filePage": "https://www.nexusmods.com/gta5enhanced/mods/1099?tab=files&file_id=3275"
+   },
+   "archive": {
+    "localFileName": "Collectibles on Map and Radar 1099 1.1 2026-10-18T01-18Z 60vpboYtz.zip",
+    "size": 108387,
+    "sha256": "1b2afb26e11bc5dd6450ffec27b76a15e5f712230f13937510cf6e2ea54fbd1c"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "CollectiblesOnMap.asi",
+      "{gameRoot}/CollectiblesOnMap.asi"
+     ],
+     [
+      "CollectiblesOnMap.ini",
+      "{gameRoot}/CollectiblesOnMap.ini"
+     ]
+    ]
+   },
+   "iniSet": {
+    "CollectiblesOnMap.ini": {
+     "Keybinds": {
+      "ToggleKey": "120"
+     }
+    }
+   },
+   "note": "F11 -> F9 (F11 = FrameView)",
+   "order": 31,
+   "modFolder": "Collectibles on Map and Radar"
+  },
+  {
+   "id": "Swap Main Ride",
+   "displayName": "Swap Main Ride",
+   "nexus": {
+    "game": "gta5enhanced",
+    "modId": 157,
+    "fileId": 3211,
+    "filePage": "https://www.nexusmods.com/gta5enhanced/mods/157?tab=files&file_id=3211"
+   },
+   "archive": {
+    "localFileName": "Swap Main Ride 157 2.1 2026-10-13T01-16Z KXJj8yi0S.zip",
+    "size": 346189,
+    "sha256": "4c664b7100c2df0e5f3b0c932dc2292a5b3be66abcf8e73ad48a744cb66da6c4"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "SwapMainRide.asi",
+      "{gameRoot}/SwapMainRide.asi"
+     ]
+    ]
+   },
+   "order": 32,
+   "modFolder": "Swap Main Ride"
+  },
+  {
+   "id": "Swap Main Ride .ini",
+   "displayName": "Swap Main Ride .ini",
+   "nexus": {
+    "game": "gta5enhanced",
+    "modId": 157,
+    "fileId": 299,
+    "filePage": "https://www.nexusmods.com/gta5enhanced/mods/157?tab=files&file_id=299"
+   },
+   "archive": {
+    "localFileName": "Swap Main Ride .ini-157-1-0-1756383559.zip",
+    "size": 746,
+    "sha256": "d6beea7818214af368a0219d5817d0f9f59bd7980e2e96ecce3742ec73faffa5"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "SwapMainRide.ini",
+      "{gameRoot}/SwapMainRide.ini"
+     ]
+    ]
+   },
+   "iniSet": {
+    "SwapMainRide.ini": {
+     "Settings": {
+      "OPEN_MENU_KEY": "117"
+     }
+    }
+   },
+   "note": "F7 -> F6 (F7 = Army Chaos)",
+   "order": 33,
+   "modFolder": "Swap Main Ride .ini"
+  },
+  {
+   "id": "Urban Car Pack",
+   "displayName": "Urban Car Pack",
+   "nexus": {},
+   "archive": {
+    "localFileName": ""
+   },
+   "install": {
+    "type": "manual",
+    "page": "https://www.nexusmods.com/gta5enhanced/mods/560",
+    "check": [
+     "{dlcpacks}/19dbs/dlc.rpf"
+    ],
+    "note": {
+     "ru": "Необязательно, ставится вручную: 140+ машин, 3,65 ГБ, файлы у автора на облаках (ссылки на странице Nexus). Неофициальная сборка, названия машин принадлежат владельцам.",
+     "en": "Optional, manual install: 140+ cars, 3.65 GB, files on the author's cloud links (Nexus page). Unofficial modlist, car names belong to their owners."
+    }
+   },
+   "default": false,
+   "legal": "Юридические 25.11: только ссылкой, не по умолчанию",
+   "order": 34,
+   "modFolder": "Urban Car Pack"
+  },
+  {
+   "id": "Satellite Map",
+   "displayName": "Satellite Map",
+   "nexus": {
+    "game": "gta5enhanced",
+    "modId": 801,
+    "fileId": 1420,
+    "filePage": "https://www.nexusmods.com/gta5enhanced/mods/801?tab=files&file_id=1420"
+   },
+   "archive": {
+    "localFileName": "Satellite Map GTA V Legacy l Enhanced-801-1-0-1776552868.rar",
+    "size": 247027219,
+    "sha256": "762a3deecef7b825cb07935d2ad82571b1bb84db609ee27411b51c8175f81d02"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "Mapa Satelite GTA V Legacy & Enhanced/Mapa Satelite GTA V Legacy & Enhanced/Enhanced/Satelit Map Enhanced.oiv",
+      "{nested}/satellite.oiv"
+     ]
+    ]
+   },
+   "when": "std",
+   "nested": {
+    "satellite.oiv": [
+     [
+      "content/minimap.ymt",
+      "{gameRoot}/mods/x64a.rpf/data/tune/minimap.ymt"
+     ],
+     [
+      "content/mapzoomdata.meta",
+      "{gameRoot}/mods/common.rpf/data/ui/mapzoomdata.meta"
+     ],
+     [
+      "content/b/minimap_0_0.ytd",
+      "{gameRoot}/mods/x64b.rpf/data/cdimages/scaleform_generic.rpf/minimap_0_0.ytd"
+     ],
+     [
+      "content/b/minimap_0_1.ytd",
+      "{gameRoot}/mods/x64b.rpf/data/cdimages/scaleform_generic.rpf/minimap_0_1.ytd"
+     ],
+     [
+      "content/b/minimap_1_0.ytd",
+      "{gameRoot}/mods/x64b.rpf/data/cdimages/scaleform_generic.rpf/minimap_1_0.ytd"
+     ],
+     [
+      "content/b/minimap_1_1.ytd",
+      "{gameRoot}/mods/x64b.rpf/data/cdimages/scaleform_generic.rpf/minimap_1_1.ytd"
+     ],
+     [
+      "content/b/minimap_2_0.ytd",
+      "{gameRoot}/mods/x64b.rpf/data/cdimages/scaleform_generic.rpf/minimap_2_0.ytd"
+     ],
+     [
+      "content/b/minimap_2_1.ytd",
+      "{gameRoot}/mods/x64b.rpf/data/cdimages/scaleform_generic.rpf/minimap_2_1.ytd"
+     ],
+     [
+      "content/b/minimap_lod_128.ytd",
+      "{gameRoot}/mods/x64b.rpf/data/cdimages/scaleform_generic.rpf/minimap_lod_128.ytd"
+     ],
+     [
+      "content/b/minimap_sea_0_0.ytd",
+      "{gameRoot}/mods/x64b.rpf/data/cdimages/scaleform_generic.rpf/minimap_sea_0_0.ytd"
+     ],
+     [
+      "content/b/minimap_sea_0_1.ytd",
+      "{gameRoot}/mods/x64b.rpf/data/cdimages/scaleform_generic.rpf/minimap_sea_0_1.ytd"
+     ],
+     [
+      "content/b/minimap_sea_1_0.ytd",
+      "{gameRoot}/mods/x64b.rpf/data/cdimages/scaleform_generic.rpf/minimap_sea_1_0.ytd"
+     ],
+     [
+      "content/b/minimap_sea_1_1.ytd",
+      "{gameRoot}/mods/x64b.rpf/data/cdimages/scaleform_generic.rpf/minimap_sea_1_1.ytd"
+     ],
+     [
+      "content/b/minimap_sea_2_0.ytd",
+      "{gameRoot}/mods/x64b.rpf/data/cdimages/scaleform_generic.rpf/minimap_sea_2_0.ytd"
+     ],
+     [
+      "content/b/minimap_sea_2_1.ytd",
+      "{gameRoot}/mods/x64b.rpf/data/cdimages/scaleform_generic.rpf/minimap_sea_2_1.ytd"
+     ],
+     [
+      "content/e/minimap_0_2.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_0_2.ydd"
+     ],
+     [
+      "content/e/minimap_0_3.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_0_3.ydd"
+     ],
+     [
+      "content/e/minimap_0_4.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_0_4.ydd"
+     ],
+     [
+      "content/e/minimap_0_5.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_0_5.ydd"
+     ],
+     [
+      "content/e/minimap_0_6.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_0_6.ydd"
+     ],
+     [
+      "content/e/minimap_1_1.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_1_1.ydd"
+     ],
+     [
+      "content/e/minimap_1_2.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_1_2.ydd"
+     ],
+     [
+      "content/e/minimap_1_3.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_1_3.ydd"
+     ],
+     [
+      "content/e/minimap_1_4.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_1_4.ydd"
+     ],
+     [
+      "content/e/minimap_1_5.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_1_5.ydd"
+     ],
+     [
+      "content/e/minimap_1_6.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_1_6.ydd"
+     ],
+     [
+      "content/e/minimap_1_7.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_1_7.ydd"
+     ],
+     [
+      "content/e/minimap_1_8.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_1_8.ydd"
+     ],
+     [
+      "content/e/minimap_2_0.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_2_0.ydd"
+     ],
+     [
+      "content/e/minimap_2_1.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_2_1.ydd"
+     ],
+     [
+      "content/e/minimap_2_2.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_2_2.ydd"
+     ],
+     [
+      "content/e/minimap_2_3.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_2_3.ydd"
+     ],
+     [
+      "content/e/minimap_2_4.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_2_4.ydd"
+     ],
+     [
+      "content/e/minimap_2_5.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_2_5.ydd"
+     ],
+     [
+      "content/e/minimap_2_6.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_2_6.ydd"
+     ],
+     [
+      "content/e/minimap_2_7.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_2_7.ydd"
+     ],
+     [
+      "content/e/minimap_2_8.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_2_8.ydd"
+     ],
+     [
+      "content/e/minimap_3_0.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_3_0.ydd"
+     ],
+     [
+      "content/e/minimap_3_1.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_3_1.ydd"
+     ],
+     [
+      "content/e/minimap_3_2.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_3_2.ydd"
+     ],
+     [
+      "content/e/minimap_3_3.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_3_3.ydd"
+     ],
+     [
+      "content/e/minimap_3_4.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_3_4.ydd"
+     ],
+     [
+      "content/e/minimap_3_5.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_3_5.ydd"
+     ],
+     [
+      "content/e/minimap_3_6.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_3_6.ydd"
+     ],
+     [
+      "content/e/minimap_3_7.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_3_7.ydd"
+     ],
+     [
+      "content/e/minimap_3_8.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_3_8.ydd"
+     ],
+     [
+      "content/e/minimap_4_0.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_4_0.ydd"
+     ],
+     [
+      "content/e/minimap_4_1.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_4_1.ydd"
+     ],
+     [
+      "content/e/minimap_4_2.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_4_2.ydd"
+     ],
+     [
+      "content/e/minimap_4_3.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_4_3.ydd"
+     ],
+     [
+      "content/e/minimap_4_4.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_4_4.ydd"
+     ],
+     [
+      "content/e/minimap_4_5.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_4_5.ydd"
+     ],
+     [
+      "content/e/minimap_4_6.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_4_6.ydd"
+     ],
+     [
+      "content/e/minimap_4_7.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_4_7.ydd"
+     ],
+     [
+      "content/e/minimap_4_8.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_4_8.ydd"
+     ],
+     [
+      "content/e/minimap_5_0.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_5_0.ydd"
+     ],
+     [
+      "content/e/minimap_5_1.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_5_1.ydd"
+     ],
+     [
+      "content/e/minimap_5_2.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_5_2.ydd"
+     ],
+     [
+      "content/e/minimap_5_3.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_5_3.ydd"
+     ],
+     [
+      "content/e/minimap_5_4.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_5_4.ydd"
+     ],
+     [
+      "content/e/minimap_5_5.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_5_5.ydd"
+     ],
+     [
+      "content/e/minimap_5_6.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_5_6.ydd"
+     ],
+     [
+      "content/e/minimap_5_7.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_5_7.ydd"
+     ],
+     [
+      "content/e/minimap_5_8.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_5_8.ydd"
+     ],
+     [
+      "content/e/minimap_6_0.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_6_0.ydd"
+     ],
+     [
+      "content/e/minimap_6_1.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_6_1.ydd"
+     ],
+     [
+      "content/e/minimap_6_2.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_6_2.ydd"
+     ],
+     [
+      "content/e/minimap_6_3.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_6_3.ydd"
+     ],
+     [
+      "content/e/minimap_6_4.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_6_4.ydd"
+     ],
+     [
+      "content/e/minimap_6_5.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_6_5.ydd"
+     ],
+     [
+      "content/e/minimap_6_6.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_6_6.ydd"
+     ],
+     [
+      "content/e/minimap_6_7.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_6_7.ydd"
+     ],
+     [
+      "content/e/minimap_6_8.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_6_8.ydd"
+     ],
+     [
+      "content/e/minimap_7_0.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_7_0.ydd"
+     ],
+     [
+      "content/e/minimap_7_1.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_7_1.ydd"
+     ],
+     [
+      "content/e/minimap_7_2.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_7_2.ydd"
+     ],
+     [
+      "content/e/minimap_7_3.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_7_3.ydd"
+     ],
+     [
+      "content/e/minimap_7_4.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_7_4.ydd"
+     ],
+     [
+      "content/e/minimap_7_5.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_7_5.ydd"
+     ],
+     [
+      "content/e/minimap_7_6.ydd",
+      "{gameRoot}/mods/x64e.rpf/levels/gta5/minimap.rpf/minimap_7_6.ydd"
+     ],
+     [
+      "content/update/minimap_0_0.ytd",
+      "{gameRoot}/mods/update/update.rpf/x64/data/cdimages/scaleform_generic.rpf/minimap_0_0.ytd"
+     ],
+     [
+      "content/update/minimap_0_1.ytd",
+      "{gameRoot}/mods/update/update.rpf/x64/data/cdimages/scaleform_generic.rpf/minimap_0_1.ytd"
+     ],
+     [
+      "content/update/minimap_1_0.ytd",
+      "{gameRoot}/mods/update/update.rpf/x64/data/cdimages/scaleform_generic.rpf/minimap_1_0.ytd"
+     ],
+     [
+      "content/update/minimap_1_1.ytd",
+      "{gameRoot}/mods/update/update.rpf/x64/data/cdimages/scaleform_generic.rpf/minimap_1_1.ytd"
+     ],
+     [
+      "content/update/minimap_2_0.ytd",
+      "{gameRoot}/mods/update/update.rpf/x64/data/cdimages/scaleform_generic.rpf/minimap_2_0.ytd"
+     ],
+     [
+      "content/update/minimap_2_1.ytd",
+      "{gameRoot}/mods/update/update.rpf/x64/data/cdimages/scaleform_generic.rpf/minimap_2_1.ytd"
+     ],
+     [
+      "content/update/minimap_lod_128.ytd",
+      "{gameRoot}/mods/update/update.rpf/x64/data/cdimages/scaleform_generic.rpf/minimap_lod_128.ytd"
+     ],
+     [
+      "content/update/minimap_sea_0_0.ytd",
+      "{gameRoot}/mods/update/update.rpf/x64/data/cdimages/scaleform_generic.rpf/minimap_sea_0_0.ytd"
+     ],
+     [
+      "content/update/minimap_sea_0_1.ytd",
+      "{gameRoot}/mods/update/update.rpf/x64/data/cdimages/scaleform_generic.rpf/minimap_sea_0_1.ytd"
+     ],
+     [
+      "content/update/minimap_sea_1_0.ytd",
+      "{gameRoot}/mods/update/update.rpf/x64/data/cdimages/scaleform_generic.rpf/minimap_sea_1_0.ytd"
+     ],
+     [
+      "content/update/minimap_sea_1_1.ytd",
+      "{gameRoot}/mods/update/update.rpf/x64/data/cdimages/scaleform_generic.rpf/minimap_sea_1_1.ytd"
+     ],
+     [
+      "content/update/minimap_sea_2_0.ytd",
+      "{gameRoot}/mods/update/update.rpf/x64/data/cdimages/scaleform_generic.rpf/minimap_sea_2_0.ytd"
+     ],
+     [
+      "content/update/minimap_sea_2_1.ytd",
+      "{gameRoot}/mods/update/update.rpf/x64/data/cdimages/scaleform_generic.rpf/minimap_sea_2_1.ytd"
+     ],
+     [
+      "content/cayo perico/int3232302352.gfx",
+      "{gameRoot}/mods/update/update.rpf/x64/patch/data/cdimages/scaleform_minimap.rpf/int3232302352.gfx"
+     ]
+    ]
+   },
+   "legal": "Юридические 25.11: ставим как Neon; OpenIV/OpenRPF не нужны — файлы читает Simple Mods Loader",
+   "order": 35,
+   "modFolder": "Satellite Map"
+  },
+  {
+   "id": "Police Pack",
+   "displayName": "Police Pack",
+   "nexus": {},
+   "archive": {
+    "localFileName": ""
+   },
+   "install": {
+    "type": "manual",
+    "page": "https://www.nexusmods.com/gta5enhanced/mods/398",
+    "check": [],
+    "note": {
+     "ru": "Необязательно, ставится вручную по инструкции автора (lspfr): новые полицейские машины. Нужен CodeWalker или OpenIV.",
+     "en": "Optional, manual install per the author's guide (lspfr): new police cars. Needs CodeWalker or OpenIV."
+    }
+   },
+   "default": false,
+   "legal": "Юридические 25.11: только ссылкой; автосборка пака (build_police_pack.py) — после ответа автора lspfr",
+   "order": 36,
+   "modFolder": "Police Pack"
+  }
+ ]
+}

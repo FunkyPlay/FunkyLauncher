@@ -1,0 +1,723 @@
+{
+ "schema": 1,
+ "modlistId": "gta5",
+ "addonId": "gta5-heavy",
+ "listVersion": "0.1.0",
+ "forMainVersion": "0.1.0",
+ "generated": "2026-11-25",
+ "default": true,
+ "requires": "gta5-high",
+ "mods": [
+  {
+   "id": "Real vehicles (NVE_vehicles)",
+   "displayName": "Real vehicles (NVE_vehicles)",
+   "nexus": {},
+   "archive": {
+    "localFileName": ""
+   },
+   "install": {
+    "type": "manual",
+    "page": "https://www.nexusmods.com/gta5enhanced/mods/320",
+    "check": [],
+    "note": {
+     "ru": "Необязательно, ставится вручную по инструкции автора: заменяет пакет машин NaturalVision Enhanced (сначала сделайте копию onigiri/dlcpacks/NVE_vehicles). Реальные машины в трафике. Неофициальная сборка, названия машин принадлежат владельцам.",
+     "en": "Optional, manual install per the author's guide: replaces the NaturalVision Enhanced vehicle pack (back up onigiri/dlcpacks/NVE_vehicles first). Real cars in traffic. Unofficial modlist, car names belong to their owners."
+    }
+   },
+   "default": false,
+   "legal": "Юридические 25.11: замену файлов NVE лаунчер не делает, игрок сам",
+   "order": 1,
+   "modFolder": "Real vehicles (NVE_vehicles)"
+  },
+  {
+   "id": "RL ENHANCED preset",
+   "displayName": "RL ENHANCED preset",
+   "nexus": {
+    "game": "gta5enhanced",
+    "modId": 327,
+    "fileId": 3620,
+    "filePage": "https://www.nexusmods.com/gta5enhanced/mods/327?tab=files&file_id=3620"
+   },
+   "archive": {
+    "localFileName": "RL ENHANCED 327 2.0 2026-11-16T10-53Z mY5ODsZ5B.zip",
+    "size": 23272,
+    "sha256": "bcf14efa2c9471363d11c21d93a44224f715a9c864295b049e1979740140fdcc"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "RL ENHANCED - Light.ini",
+      "{gameRoot}/RL ENHANCED - Light.ini"
+     ],
+     [
+      "RL ENHANCED.ini",
+      "{gameRoot}/RL ENHANCED.ini"
+     ]
+    ]
+   },
+   "order": 2,
+   "modFolder": "RL ENHANCED preset"
+  },
+  {
+   "id": "ReShade Standard effects",
+   "displayName": "ReShade Standard effects",
+   "nexus": {},
+   "download": {
+    "url": "https://github.com/crosire/reshade-shaders/archive/slim.zip",
+    "license": "see repository"
+   },
+   "archive": {
+    "localFileName": "slim.zip",
+    "size": 56723,
+    "sha256": "0726711922a9a22267721618b47e18229929a74aa1039762ed5fd43e43193939"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "reshade-shaders-slim/Shaders/Blending.fxh",
+      "{gameRoot}/reshade-shaders/Shaders/Blending.fxh"
+     ],
+     [
+      "reshade-shaders-slim/Shaders/Daltonize.fx",
+      "{gameRoot}/reshade-shaders/Shaders/Daltonize.fx"
+     ],
+     [
+      "reshade-shaders-slim/Shaders/Deband.fx",
+      "{gameRoot}/reshade-shaders/Shaders/Deband.fx"
+     ],
+     [
+      "reshade-shaders-slim/Shaders/DisplayDepth.fx",
+      "{gameRoot}/reshade-shaders/Shaders/DisplayDepth.fx"
+     ],
+     [
+      "reshade-shaders-slim/Shaders/DisplayDepth_L10N.fxh",
+      "{gameRoot}/reshade-shaders/Shaders/DisplayDepth_L10N.fxh"
+     ],
+     [
+      "reshade-shaders-slim/Shaders/DrawText.fxh",
+      "{gameRoot}/reshade-shaders/Shaders/DrawText.fxh"
+     ],
+     [
+      "reshade-shaders-slim/Shaders/LUT.fx",
+      "{gameRoot}/reshade-shaders/Shaders/LUT.fx"
+     ],
+     [
+      "reshade-shaders-slim/Shaders/Macros.fxh",
+      "{gameRoot}/reshade-shaders/Shaders/Macros.fxh"
+     ],
+     [
+      "reshade-shaders-slim/Shaders/ReShade.fxh",
+      "{gameRoot}/reshade-shaders/Shaders/ReShade.fxh"
+     ],
+     [
+      "reshade-shaders-slim/Shaders/ReShadeUI.fxh",
+      "{gameRoot}/reshade-shaders/Shaders/ReShadeUI.fxh"
+     ],
+     [
+      "reshade-shaders-slim/Shaders/TriDither.fxh",
+      "{gameRoot}/reshade-shaders/Shaders/TriDither.fxh"
+     ],
+     [
+      "reshade-shaders-slim/Shaders/UIMask.fx",
+      "{gameRoot}/reshade-shaders/Shaders/UIMask.fx"
+     ],
+     [
+      "reshade-shaders-slim/Textures/FontAtlas.png",
+      "{gameRoot}/reshade-shaders/Textures/FontAtlas.png"
+     ],
+     [
+      "reshade-shaders-slim/Textures/lut.png",
+      "{gameRoot}/reshade-shaders/Textures/lut.png"
+     ]
+    ]
+   },
+   "noOverwrite": true,
+   "note": "branch archive: sha256 changes when the repo updates; pin a commit before release",
+   "order": 3,
+   "modFolder": "ReShade Standard effects"
+  },
+  {
+   "id": "SweetFX",
+   "displayName": "SweetFX",
+   "nexus": {},
+   "download": {
+    "url": "https://github.com/CeeJayDK/SweetFX/archive/master.zip",
+    "license": "see repository"
+   },
+   "archive": {
+    "localFileName": "sweetfx.zip",
+    "size": 121252,
+    "sha256": "001fc959d7ce13adf5ce981aaad81b40dbf4616f531d41013053d16c8c88d74c"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "SweetFX-master/Shaders/SweetFX/ASCII.fx",
+      "{gameRoot}/reshade-shaders/Shaders/SweetFX/ASCII.fx"
+     ],
+     [
+      "SweetFX-master/Shaders/SweetFX/Border.fx",
+      "{gameRoot}/reshade-shaders/Shaders/SweetFX/Border.fx"
+     ],
+     [
+      "SweetFX-master/Shaders/SweetFX/CAS.fx",
+      "{gameRoot}/reshade-shaders/Shaders/SweetFX/CAS.fx"
+     ],
+     [
+      "SweetFX-master/Shaders/SweetFX/CRT.fx",
+      "{gameRoot}/reshade-shaders/Shaders/SweetFX/CRT.fx"
+     ],
+     [
+      "SweetFX-master/Shaders/SweetFX/Cartoon.fx",
+      "{gameRoot}/reshade-shaders/Shaders/SweetFX/Cartoon.fx"
+     ],
+     [
+      "SweetFX-master/Shaders/SweetFX/ChromaticAberration.fx",
+      "{gameRoot}/reshade-shaders/Shaders/SweetFX/ChromaticAberration.fx"
+     ],
+     [
+      "SweetFX-master/Shaders/SweetFX/ColorMatrix.fx",
+      "{gameRoot}/reshade-shaders/Shaders/SweetFX/ColorMatrix.fx"
+     ],
+     [
+      "SweetFX-master/Shaders/SweetFX/Compare.fx",
+      "{gameRoot}/reshade-shaders/Shaders/SweetFX/Compare.fx"
+     ],
+     [
+      "SweetFX-master/Shaders/SweetFX/Curves.fx",
+      "{gameRoot}/reshade-shaders/Shaders/SweetFX/Curves.fx"
+     ],
+     [
+      "SweetFX-master/Shaders/SweetFX/DPX.fx",
+      "{gameRoot}/reshade-shaders/Shaders/SweetFX/DPX.fx"
+     ],
+     [
+      "SweetFX-master/Shaders/SweetFX/FXAA.fx",
+      "{gameRoot}/reshade-shaders/Shaders/SweetFX/FXAA.fx"
+     ],
+     [
+      "SweetFX-master/Shaders/SweetFX/FXAA.fxh",
+      "{gameRoot}/reshade-shaders/Shaders/SweetFX/FXAA.fxh"
+     ],
+     [
+      "SweetFX-master/Shaders/SweetFX/FakeHDR.fx",
+      "{gameRoot}/reshade-shaders/Shaders/SweetFX/FakeHDR.fx"
+     ],
+     [
+      "SweetFX-master/Shaders/SweetFX/FilmGrain.fx",
+      "{gameRoot}/reshade-shaders/Shaders/SweetFX/FilmGrain.fx"
+     ],
+     [
+      "SweetFX-master/Shaders/SweetFX/Layer.fx",
+      "{gameRoot}/reshade-shaders/Shaders/SweetFX/Layer.fx"
+     ],
+     [
+      "SweetFX-master/Shaders/SweetFX/Levels.fx",
+      "{gameRoot}/reshade-shaders/Shaders/SweetFX/Levels.fx"
+     ],
+     [
+      "SweetFX-master/Shaders/SweetFX/LiftGammaGain.fx",
+      "{gameRoot}/reshade-shaders/Shaders/SweetFX/LiftGammaGain.fx"
+     ],
+     [
+      "SweetFX-master/Shaders/SweetFX/LumaSharpen.fx",
+      "{gameRoot}/reshade-shaders/Shaders/SweetFX/LumaSharpen.fx"
+     ],
+     [
+      "SweetFX-master/Shaders/SweetFX/Monochrome.fx",
+      "{gameRoot}/reshade-shaders/Shaders/SweetFX/Monochrome.fx"
+     ],
+     [
+      "SweetFX-master/Shaders/SweetFX/Nostalgia.fx",
+      "{gameRoot}/reshade-shaders/Shaders/SweetFX/Nostalgia.fx"
+     ],
+     [
+      "SweetFX-master/Shaders/SweetFX/SMAA.fx",
+      "{gameRoot}/reshade-shaders/Shaders/SweetFX/SMAA.fx"
+     ],
+     [
+      "SweetFX-master/Shaders/SweetFX/SMAA.fxh",
+      "{gameRoot}/reshade-shaders/Shaders/SweetFX/SMAA.fxh"
+     ],
+     [
+      "SweetFX-master/Shaders/SweetFX/Sepia.fx",
+      "{gameRoot}/reshade-shaders/Shaders/SweetFX/Sepia.fx"
+     ],
+     [
+      "SweetFX-master/Shaders/SweetFX/Splitscreen.fx",
+      "{gameRoot}/reshade-shaders/Shaders/SweetFX/Splitscreen.fx"
+     ],
+     [
+      "SweetFX-master/Shaders/SweetFX/Technicolor.fx",
+      "{gameRoot}/reshade-shaders/Shaders/SweetFX/Technicolor.fx"
+     ],
+     [
+      "SweetFX-master/Shaders/SweetFX/Technicolor2.fx",
+      "{gameRoot}/reshade-shaders/Shaders/SweetFX/Technicolor2.fx"
+     ],
+     [
+      "SweetFX-master/Shaders/SweetFX/Template.fx",
+      "{gameRoot}/reshade-shaders/Shaders/SweetFX/Template.fx"
+     ],
+     [
+      "SweetFX-master/Shaders/SweetFX/Tonemap.fx",
+      "{gameRoot}/reshade-shaders/Shaders/SweetFX/Tonemap.fx"
+     ],
+     [
+      "SweetFX-master/Shaders/SweetFX/Vibrance.fx",
+      "{gameRoot}/reshade-shaders/Shaders/SweetFX/Vibrance.fx"
+     ],
+     [
+      "SweetFX-master/Shaders/SweetFX/Vignette.fx",
+      "{gameRoot}/reshade-shaders/Shaders/SweetFX/Vignette.fx"
+     ],
+     [
+      "SweetFX-master/Textures/SweetFX/AreaTex.png",
+      "{gameRoot}/reshade-shaders/Textures/SweetFX/AreaTex.png"
+     ],
+     [
+      "SweetFX-master/Textures/SweetFX/Layer.png",
+      "{gameRoot}/reshade-shaders/Textures/SweetFX/Layer.png"
+     ],
+     [
+      "SweetFX-master/Textures/SweetFX/SearchTex.png",
+      "{gameRoot}/reshade-shaders/Textures/SweetFX/SearchTex.png"
+     ]
+    ]
+   },
+   "noOverwrite": true,
+   "note": "branch archive: sha256 changes when the repo updates; pin a commit before release",
+   "order": 4,
+   "modFolder": "SweetFX"
+  },
+  {
+   "id": "ReShade Legacy effects",
+   "displayName": "ReShade Legacy effects",
+   "nexus": {},
+   "download": {
+    "url": "https://github.com/crosire/reshade-shaders/archive/legacy.zip",
+    "license": "see repository"
+   },
+   "archive": {
+    "localFileName": "legacy.zip",
+    "size": 8532847,
+    "sha256": "f9be70d5948d54d7bf837159f30470318d05ca7906a38559126a52209cbb181c"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "reshade-shaders-legacy/Shaders/AdaptiveSharpen.fx",
+      "{gameRoot}/reshade-shaders/Shaders/AdaptiveSharpen.fx"
+     ],
+     [
+      "reshade-shaders-legacy/Shaders/AmbientLight.fx",
+      "{gameRoot}/reshade-shaders/Shaders/AmbientLight.fx"
+     ],
+     [
+      "reshade-shaders-legacy/Shaders/Bloom.fx",
+      "{gameRoot}/reshade-shaders/Shaders/Bloom.fx"
+     ],
+     [
+      "reshade-shaders-legacy/Shaders/Colourfulness.fx",
+      "{gameRoot}/reshade-shaders/Shaders/Colourfulness.fx"
+     ],
+     [
+      "reshade-shaders-legacy/Shaders/DOF.fx",
+      "{gameRoot}/reshade-shaders/Shaders/DOF.fx"
+     ],
+     [
+      "reshade-shaders-legacy/Shaders/Denoise.fx",
+      "{gameRoot}/reshade-shaders/Shaders/Denoise.fx"
+     ],
+     [
+      "reshade-shaders-legacy/Shaders/FakeMotionBlur.fx",
+      "{gameRoot}/reshade-shaders/Shaders/FakeMotionBlur.fx"
+     ],
+     [
+      "reshade-shaders-legacy/Shaders/FilmGrain2.fx",
+      "{gameRoot}/reshade-shaders/Shaders/FilmGrain2.fx"
+     ],
+     [
+      "reshade-shaders-legacy/Shaders/FilmicPass.fx",
+      "{gameRoot}/reshade-shaders/Shaders/FilmicPass.fx"
+     ],
+     [
+      "reshade-shaders-legacy/Shaders/FineSharp.fx",
+      "{gameRoot}/reshade-shaders/Shaders/FineSharp.fx"
+     ],
+     [
+      "reshade-shaders-legacy/Shaders/GaussianBlur.fx",
+      "{gameRoot}/reshade-shaders/Shaders/GaussianBlur.fx"
+     ],
+     [
+      "reshade-shaders-legacy/Shaders/Glitch.fx",
+      "{gameRoot}/reshade-shaders/Shaders/Glitch.fx"
+     ],
+     [
+      "reshade-shaders-legacy/Shaders/HQ4X.fx",
+      "{gameRoot}/reshade-shaders/Shaders/HQ4X.fx"
+     ],
+     [
+      "reshade-shaders-legacy/Shaders/HSLShift.fx",
+      "{gameRoot}/reshade-shaders/Shaders/HSLShift.fx"
+     ],
+     [
+      "reshade-shaders-legacy/Shaders/HighPassSharpen.fx",
+      "{gameRoot}/reshade-shaders/Shaders/HighPassSharpen.fx"
+     ],
+     [
+      "reshade-shaders-legacy/Shaders/LevelsPlus.fx",
+      "{gameRoot}/reshade-shaders/Shaders/LevelsPlus.fx"
+     ],
+     [
+      "reshade-shaders-legacy/Shaders/LightDoF.fx",
+      "{gameRoot}/reshade-shaders/Shaders/LightDoF.fx"
+     ],
+     [
+      "reshade-shaders-legacy/Shaders/MagicBloom.fx",
+      "{gameRoot}/reshade-shaders/Shaders/MagicBloom.fx"
+     ],
+     [
+      "reshade-shaders-legacy/Shaders/NightVision.fx",
+      "{gameRoot}/reshade-shaders/Shaders/NightVision.fx"
+     ],
+     [
+      "reshade-shaders-legacy/Shaders/ReflectiveBumpMapping.fx",
+      "{gameRoot}/reshade-shaders/Shaders/ReflectiveBumpMapping.fx"
+     ],
+     [
+      "reshade-shaders-legacy/Textures/Dirt.png",
+      "{gameRoot}/reshade-shaders/Textures/Dirt.png"
+     ],
+     [
+      "reshade-shaders-legacy/Textures/DirtA.png",
+      "{gameRoot}/reshade-shaders/Textures/DirtA.png"
+     ],
+     [
+      "reshade-shaders-legacy/Textures/DirtOVB.png",
+      "{gameRoot}/reshade-shaders/Textures/DirtOVB.png"
+     ],
+     [
+      "reshade-shaders-legacy/Textures/DirtOVR.png",
+      "{gameRoot}/reshade-shaders/Textures/DirtOVR.png"
+     ],
+     [
+      "reshade-shaders-legacy/Textures/LensDB.png",
+      "{gameRoot}/reshade-shaders/Textures/LensDB.png"
+     ],
+     [
+      "reshade-shaders-legacy/Textures/LensDB2.png",
+      "{gameRoot}/reshade-shaders/Textures/LensDB2.png"
+     ],
+     [
+      "reshade-shaders-legacy/Textures/LensDOV.png",
+      "{gameRoot}/reshade-shaders/Textures/LensDOV.png"
+     ],
+     [
+      "reshade-shaders-legacy/Textures/LensDUV.png",
+      "{gameRoot}/reshade-shaders/Textures/LensDUV.png"
+     ],
+     [
+      "reshade-shaders-legacy/Textures/LensSprite.png",
+      "{gameRoot}/reshade-shaders/Textures/LensSprite.png"
+     ],
+     [
+      "reshade-shaders-legacy/Textures/MagicBloom_Dirt.png",
+      "{gameRoot}/reshade-shaders/Textures/MagicBloom_Dirt.png"
+     ],
+     [
+      "reshade-shaders-legacy/Textures/Stage.png",
+      "{gameRoot}/reshade-shaders/Textures/Stage.png"
+     ],
+     [
+      "reshade-shaders-legacy/Textures/ssdonoise.png",
+      "{gameRoot}/reshade-shaders/Textures/ssdonoise.png"
+     ]
+    ]
+   },
+   "noOverwrite": true,
+   "note": "branch archive: sha256 changes when the repo updates; pin a commit before release",
+   "order": 5,
+   "modFolder": "ReShade Legacy effects"
+  },
+  {
+   "id": "prod80 effects",
+   "displayName": "prod80 effects",
+   "nexus": {},
+   "download": {
+    "url": "https://github.com/prod80/prod80-ReShade-Repository/archive/master.zip",
+    "license": "see repository"
+   },
+   "archive": {
+    "localFileName": "prod80.zip",
+    "size": 19800266,
+    "sha256": "a411ce4af27e2205175b7c4b3099579f8769a8921de7961d7d5d571e7e890120"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "prod80-ReShade-Repository-master/Shaders/PD80_00_Base_Effects.fxh",
+      "{gameRoot}/reshade-shaders/Shaders/PD80_00_Base_Effects.fxh"
+     ],
+     [
+      "prod80-ReShade-Repository-master/Shaders/PD80_00_Blend_Modes.fxh",
+      "{gameRoot}/reshade-shaders/Shaders/PD80_00_Blend_Modes.fxh"
+     ],
+     [
+      "prod80-ReShade-Repository-master/Shaders/PD80_00_Color_Spaces.fxh",
+      "{gameRoot}/reshade-shaders/Shaders/PD80_00_Color_Spaces.fxh"
+     ],
+     [
+      "prod80-ReShade-Repository-master/Shaders/PD80_00_Noise_Samplers.fxh",
+      "{gameRoot}/reshade-shaders/Shaders/PD80_00_Noise_Samplers.fxh"
+     ],
+     [
+      "prod80-ReShade-Repository-master/Shaders/PD80_01A_RT_Correct_Contrast.fx",
+      "{gameRoot}/reshade-shaders/Shaders/PD80_01A_RT_Correct_Contrast.fx"
+     ],
+     [
+      "prod80-ReShade-Repository-master/Shaders/PD80_01B_RT_Correct_Color.fx",
+      "{gameRoot}/reshade-shaders/Shaders/PD80_01B_RT_Correct_Color.fx"
+     ],
+     [
+      "prod80-ReShade-Repository-master/Shaders/PD80_01_Color_Gamut.fx",
+      "{gameRoot}/reshade-shaders/Shaders/PD80_01_Color_Gamut.fx"
+     ],
+     [
+      "prod80-ReShade-Repository-master/Shaders/PD80_02_Bloom.fx",
+      "{gameRoot}/reshade-shaders/Shaders/PD80_02_Bloom.fx"
+     ],
+     [
+      "prod80-ReShade-Repository-master/Shaders/PD80_02_Bonus_LUT_pack.fx",
+      "{gameRoot}/reshade-shaders/Shaders/PD80_02_Bonus_LUT_pack.fx"
+     ],
+     [
+      "prod80-ReShade-Repository-master/Shaders/PD80_02_Cinetools_LUT.fx",
+      "{gameRoot}/reshade-shaders/Shaders/PD80_02_Cinetools_LUT.fx"
+     ],
+     [
+      "prod80-ReShade-Repository-master/Shaders/PD80_02_LUT_Creator.fx",
+      "{gameRoot}/reshade-shaders/Shaders/PD80_02_LUT_Creator.fx"
+     ],
+     [
+      "prod80-ReShade-Repository-master/Shaders/PD80_03_Color_Space_Curves.fx",
+      "{gameRoot}/reshade-shaders/Shaders/PD80_03_Color_Space_Curves.fx"
+     ],
+     [
+      "prod80-ReShade-Repository-master/Shaders/PD80_03_Curved_Levels.fx",
+      "{gameRoot}/reshade-shaders/Shaders/PD80_03_Curved_Levels.fx"
+     ],
+     [
+      "prod80-ReShade-Repository-master/Shaders/PD80_03_Filmic_Adaptation.fx",
+      "{gameRoot}/reshade-shaders/Shaders/PD80_03_Filmic_Adaptation.fx"
+     ],
+     [
+      "prod80-ReShade-Repository-master/Shaders/PD80_03_Levels.fx",
+      "{gameRoot}/reshade-shaders/Shaders/PD80_03_Levels.fx"
+     ],
+     [
+      "prod80-ReShade-Repository-master/Shaders/PD80_03_Shadows_Midtones_Highlights.fx",
+      "{gameRoot}/reshade-shaders/Shaders/PD80_03_Shadows_Midtones_Highlights.fx"
+     ],
+     [
+      "prod80-ReShade-Repository-master/Shaders/PD80_04_BlacknWhite.fx",
+      "{gameRoot}/reshade-shaders/Shaders/PD80_04_BlacknWhite.fx"
+     ],
+     [
+      "prod80-ReShade-Repository-master/Shaders/PD80_04_Color_Balance.fx",
+      "{gameRoot}/reshade-shaders/Shaders/PD80_04_Color_Balance.fx"
+     ],
+     [
+      "prod80-ReShade-Repository-master/Shaders/PD80_04_Color_Gradients.fx",
+      "{gameRoot}/reshade-shaders/Shaders/PD80_04_Color_Gradients.fx"
+     ],
+     [
+      "prod80-ReShade-Repository-master/Shaders/PD80_04_Color_Isolation.fx",
+      "{gameRoot}/reshade-shaders/Shaders/PD80_04_Color_Isolation.fx"
+     ],
+     [
+      "prod80-ReShade-Repository-master/Shaders/PD80_04_Color_Temperature.fx",
+      "{gameRoot}/reshade-shaders/Shaders/PD80_04_Color_Temperature.fx"
+     ],
+     [
+      "prod80-ReShade-Repository-master/Shaders/PD80_04_Contrast_Brightness_Saturation.fx",
+      "{gameRoot}/reshade-shaders/Shaders/PD80_04_Contrast_Brightness_Saturation.fx"
+     ],
+     [
+      "prod80-ReShade-Repository-master/Shaders/PD80_04_Magical_Rectangle.fx",
+      "{gameRoot}/reshade-shaders/Shaders/PD80_04_Magical_Rectangle.fx"
+     ],
+     [
+      "prod80-ReShade-Repository-master/Shaders/PD80_04_Saturation_Limit.fx",
+      "{gameRoot}/reshade-shaders/Shaders/PD80_04_Saturation_Limit.fx"
+     ],
+     [
+      "prod80-ReShade-Repository-master/Shaders/PD80_04_Selective_Color.fx",
+      "{gameRoot}/reshade-shaders/Shaders/PD80_04_Selective_Color.fx"
+     ],
+     [
+      "prod80-ReShade-Repository-master/Shaders/PD80_04_Selective_Color_v2.fx",
+      "{gameRoot}/reshade-shaders/Shaders/PD80_04_Selective_Color_v2.fx"
+     ],
+     [
+      "prod80-ReShade-Repository-master/Shaders/PD80_04_Technicolor.fx",
+      "{gameRoot}/reshade-shaders/Shaders/PD80_04_Technicolor.fx"
+     ],
+     [
+      "prod80-ReShade-Repository-master/Shaders/PD80_05_Sharpening.fx",
+      "{gameRoot}/reshade-shaders/Shaders/PD80_05_Sharpening.fx"
+     ],
+     [
+      "prod80-ReShade-Repository-master/Shaders/PD80_06_Chromatic_Aberration.fx",
+      "{gameRoot}/reshade-shaders/Shaders/PD80_06_Chromatic_Aberration.fx"
+     ],
+     [
+      "prod80-ReShade-Repository-master/Shaders/PD80_06_Depth_Slicer.fx",
+      "{gameRoot}/reshade-shaders/Shaders/PD80_06_Depth_Slicer.fx"
+     ],
+     [
+      "prod80-ReShade-Repository-master/Shaders/PD80_06_Film_Grain.fx",
+      "{gameRoot}/reshade-shaders/Shaders/PD80_06_Film_Grain.fx"
+     ],
+     [
+      "prod80-ReShade-Repository-master/Shaders/PD80_06_Luma_Fade.fx",
+      "{gameRoot}/reshade-shaders/Shaders/PD80_06_Luma_Fade.fx"
+     ],
+     [
+      "prod80-ReShade-Repository-master/Shaders/PD80_06_Posterize_Pixelate.fx",
+      "{gameRoot}/reshade-shaders/Shaders/PD80_06_Posterize_Pixelate.fx"
+     ],
+     [
+      "prod80-ReShade-Repository-master/Shaders/PD80_LUT_v2.fxh",
+      "{gameRoot}/reshade-shaders/Shaders/PD80_LUT_v2.fxh"
+     ],
+     [
+      "prod80-ReShade-Repository-master/Textures/pd80_bluenoise.png",
+      "{gameRoot}/reshade-shaders/Textures/pd80_bluenoise.png"
+     ],
+     [
+      "prod80-ReShade-Repository-master/Textures/pd80_bluenoise_rgba.png",
+      "{gameRoot}/reshade-shaders/Textures/pd80_bluenoise_rgba.png"
+     ],
+     [
+      "prod80-ReShade-Repository-master/Textures/pd80_cinelut.png",
+      "{gameRoot}/reshade-shaders/Textures/pd80_cinelut.png"
+     ],
+     [
+      "prod80-ReShade-Repository-master/Textures/pd80_clean_lut.png",
+      "{gameRoot}/reshade-shaders/Textures/pd80_clean_lut.png"
+     ],
+     [
+      "prod80-ReShade-Repository-master/Textures/pd80_example-lut.png",
+      "{gameRoot}/reshade-shaders/Textures/pd80_example-lut.png"
+     ],
+     [
+      "prod80-ReShade-Repository-master/Textures/pd80_gaussnoise.png",
+      "{gameRoot}/reshade-shaders/Textures/pd80_gaussnoise.png"
+     ],
+     [
+      "prod80-ReShade-Repository-master/Textures/pd80_neutral-lut.png",
+      "{gameRoot}/reshade-shaders/Textures/pd80_neutral-lut.png"
+     ],
+     [
+      "prod80-ReShade-Repository-master/Textures/pd80_permtexture.png",
+      "{gameRoot}/reshade-shaders/Textures/pd80_permtexture.png"
+     ]
+    ]
+   },
+   "noOverwrite": true,
+   "note": "branch archive: sha256 changes when the repo updates; pin a commit before release",
+   "order": 6,
+   "modFolder": "prod80 effects"
+  },
+  {
+   "id": "qUINT",
+   "displayName": "qUINT",
+   "nexus": {},
+   "download": {
+    "url": "https://github.com/martymcmodding/qUINT/archive/master.zip",
+    "license": "see repository"
+   },
+   "archive": {
+    "localFileName": "quint.zip",
+    "size": 37699,
+    "sha256": "02ad59c10985d6deb0a113010c74d2c9ec086f55c5477f4bd7684d2e2f4752be"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "qUINT-master/Shaders/qUINT_bloom.fx",
+      "{gameRoot}/reshade-shaders/Shaders/qUINT_bloom.fx"
+     ],
+     [
+      "qUINT-master/Shaders/qUINT_common.fxh",
+      "{gameRoot}/reshade-shaders/Shaders/qUINT_common.fxh"
+     ],
+     [
+      "qUINT-master/Shaders/qUINT_deband.fx",
+      "{gameRoot}/reshade-shaders/Shaders/qUINT_deband.fx"
+     ],
+     [
+      "qUINT-master/Shaders/qUINT_dof.fx",
+      "{gameRoot}/reshade-shaders/Shaders/qUINT_dof.fx"
+     ],
+     [
+      "qUINT-master/Shaders/qUINT_lightroom.fx",
+      "{gameRoot}/reshade-shaders/Shaders/qUINT_lightroom.fx"
+     ],
+     [
+      "qUINT-master/Shaders/qUINT_mxao.fx",
+      "{gameRoot}/reshade-shaders/Shaders/qUINT_mxao.fx"
+     ],
+     [
+      "qUINT-master/Shaders/qUINT_sharp.fx",
+      "{gameRoot}/reshade-shaders/Shaders/qUINT_sharp.fx"
+     ],
+     [
+      "qUINT-master/Shaders/qUINT_ssr.fx",
+      "{gameRoot}/reshade-shaders/Shaders/qUINT_ssr.fx"
+     ]
+    ]
+   },
+   "noOverwrite": true,
+   "note": "branch archive: sha256 changes when the repo updates; pin a commit before release",
+   "order": 7,
+   "modFolder": "qUINT"
+  },
+  {
+   "id": "Clarity + PPFX Bloom",
+   "displayName": "Clarity + PPFX Bloom",
+   "nexus": {},
+   "download": {
+    "urls": [
+     "https://raw.githubusercontent.com/crosire/reshade-shaders/08f5feb98dee8cc352cf404938edb73094ffdc36~1/Shaders/Clarity.fx",
+     "https://raw.githubusercontent.com/crosire/reshade-shaders/08f5feb98dee8cc352cf404938edb73094ffdc36~1/Shaders/PPFX_Bloom.fx"
+    ]
+   },
+   "archive": {
+    "localFileName": ""
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "Clarity.fx",
+      "{gameRoot}/reshade-shaders/Shaders/Clarity.fx"
+     ],
+     [
+      "PPFX_Bloom.fx",
+      "{gameRoot}/reshade-shaders/Shaders/PPFX_Bloom.fx"
+     ]
+    ]
+   },
+   "order": 8,
+   "modFolder": "Clarity + PPFX Bloom"
+  }
+ ]
+}
