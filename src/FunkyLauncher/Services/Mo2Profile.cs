@@ -26,21 +26,25 @@ public static partial class Mo2Profile
         var map = new Dictionary<string, bool>(StringComparer.OrdinalIgnoreCase);
         var replaced = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         var mainId = Addons.Base(m.Id)?.AddonId;
+        // is a pack on: the player's choice, but in a public version profile High / Ultra go by the version
+        bool PackOn(AddonFile a)
+        {
+            if (tier is { } t && a.AddonId.EndsWith("-high", StringComparison.OrdinalIgnoreCase)) return t >= 1;
+            if (tier is { } t2 && a.AddonId.EndsWith("-heavy", StringComparison.OrdinalIgnoreCase)) return t2 >= 2;
+            return AddonService.Prefs(s, a).On;
+        }
         foreach (var a in Addons.All(m.Id))
         {
             var isMain = a.AddonId == mainId;
             var p = AddonService.Prefs(s, a);
-            var on = isMain || p.On;
-            // a public version profile: High / Ultra packs by the version, whatever the player picked
-            if (tier is { } t && a.AddonId.EndsWith("-high", StringComparison.OrdinalIgnoreCase)) on = t >= 1;
-            if (tier is { } t2 && a.AddonId.EndsWith("-heavy", StringComparison.OrdinalIgnoreCase)) on = t2 >= 2;
+            var on = isMain || PackOn(a);
             var wanted = on ? AddonService.Wanted(a, p.Level2).Select(x => x.Id).ToHashSet() : new HashSet<string>();
             foreach (var x in a.Mods)
             {
                 var w = isMain || wanted.Contains(x.Id);
                 // e.g. the translation of an 18+ mod: on only while that pack is on too
                 if (w && !string.IsNullOrEmpty(x.OnlyWith))
-                    w = Addons.OfKind(m.Id, x.OnlyWith) is { } other && AddonService.Prefs(s, other).On;
+                    w = Addons.OfKind(m.Id, x.OnlyWith) is { } other && PackOn(other);
                 map[x.ModFolder] = map.TryGetValue(x.ModFolder, out var prev) ? prev || w : w;
                 if (w) foreach (var r in x.Replaces) replaced.Add(r);
             }
