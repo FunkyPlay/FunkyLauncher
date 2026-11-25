@@ -334,13 +334,22 @@ public static class GtaInstallService
                             log.Put(f, Path.Combine(dst, Path.GetRelativePath(src, f)), x.NoOverwrite);
                     else errors.Add(Loc.F("addon.err.unpack", name, "missing " + pair[0]));
                 }
-                ApplySettings(x, plan, game);
+                ApplySettings(x, plan, game, log);
                 if (x.UserArchive != null) dispatchDir = tmp; else if (looseDir == null) TryDeleteDir(tmp);
                 done++;
             }
             catch (OperationCanceledException) { log.Save(); throw; }
             catch (Exception ex) { errors.Add(Loc.F("addon.err.unpack", name, ex.Message)); }
             // after every mod: a crash or a closed launcher halfway must still leave every file we wrote on the list
+            finally { log.Save(); }
+        }
+
+        // settings of a file the player installs himself (NaturalVision's ReShade.ini: menu key F3, GTA chat 26.11):
+        // applied when his step is done, the file itself is kept in the backup so "Restore" puts it back
+        foreach (var step in plan.Manual.Where(m => m.Done && m.Mod.UserArchive == null && (m.Mod.IniSet.Count > 0 || m.Mod.JsonSet.Count > 0)))
+        {
+            try { ApplySettings(step.Mod, plan, game, log); }
+            catch (Exception ex) { errors.Add(Loc.F("addon.err.unpack", string.IsNullOrEmpty(step.Mod.DisplayName) ? step.Mod.Id : step.Mod.DisplayName, ex.Message)); }
             finally { log.Save(); }
         }
 
@@ -407,7 +416,7 @@ public static class GtaInstallService
 
     private static readonly Regex NveCond = new(@"\{nve\?([^:}]*):([^}]*)\}", RegexOptions.CultureInvariant);
 
-    private static void ApplySettings(Mod x, Plan plan, string game)
+    private static void ApplySettings(Mod x, Plan plan, string game, InstallLog log)
     {
         foreach (var (rel, sections) in x.IniSet)
         {
@@ -417,6 +426,8 @@ public static class GtaInstallService
             foreach (var (section, keys) in sections)
                 foreach (var (key, raw) in keys)
                     SetIni(lines, section, key, NveCond.Replace(raw, m => plan.Nve ? m.Groups[1].Value : m.Groups[2].Value));
+            log.Edit(file);
+            File.Delete(file);                                        // written anew: never into a hard-linked original
             File.WriteAllLines(file, lines);
         }
         foreach (var (rel, values) in x.JsonSet)
@@ -432,7 +443,10 @@ public static class GtaInstallService
                 var obj = dot < 0 ? root : root[path[..dot]];
                 if (obj is JsonObject o) o[dot < 0 ? path : path[(dot + 1)..]] = JsonNode.Parse(value.GetRawText());
             }
-            File.WriteAllText(file, root.ToJsonString(new JsonSerializerOptions { WriteIndented = true }));
+            var text = root.ToJsonString(new JsonSerializerOptions { WriteIndented = true });
+            log.Edit(file);
+            File.Delete(file);
+            File.WriteAllText(file, text);
         }
     }
 
@@ -687,6 +701,23 @@ public static class GtaInstallService
         }
 
         private readonly HashSet<string> _written = new(StringComparer.OrdinalIgnoreCase);
+
+        /// <summary>Before we change a file in place: one that is not ours (the player's / NVE's) goes to the backup first.</summary>
+        public void Edit(string file)
+        {
+            var root = Path.GetFullPath(_game).TrimEnd('\\') + "\\";
+            var full = Path.GetFullPath(file);
+            if (!full.StartsWith(root, StringComparison.OrdinalIgnoreCase)) throw new InvalidOperationException("outside the game folder: " + file);
+            var rel = full[root.Length..];
+            var line = "+ " + rel;
+            if (!_known.Contains(line) && File.Exists(full))
+            {
+                var bak = Path.Combine(BackupDir(_game), rel);
+                if (!File.Exists(bak)) { Directory.CreateDirectory(Path.GetDirectoryName(bak)!); File.Copy(full, bak); }
+            }
+            _written.Add(line);
+            if (_known.Add(line)) _lines.Add(line);
+        }
 
         /// <summary>
         /// After a complete install: files of ours from an earlier install that this version no longer has (another
