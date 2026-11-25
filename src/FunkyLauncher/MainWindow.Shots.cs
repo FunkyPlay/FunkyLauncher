@@ -62,6 +62,17 @@ public partial class MainWindow
             dw = Width - root0.ActualWidth; dh = Height - root0.ActualHeight;
             Width = 1280 + dw;
         }
+        if (Environment.GetEnvironmentVariable("FUNKYLAUNCHER_SHOTS_GUIDE") == "1")
+        {
+            try { await GuideShotsAsync(dir, dh); }
+            finally
+            {
+                Core.Loc.Set(startLang);
+                _exiting = true;
+                Application.Current.Shutdown();
+            }
+            return;
+        }
         try
         {
             foreach (var lang in new[] { "ru", "en" })
@@ -440,6 +451,110 @@ public partial class MainWindow
             _exiting = true;
             Application.Current.Shutdown();
         }
+    }
+
+    /// <summary>
+    /// FUNKYLAUNCHER_SHOTS_GUIDE=1 (with an empty FUNKYLAUNCHER_DATA): only the pictures of the install guide video
+    /// (Design 25.11) — what a new player sees: the privacy notice, Neon Nights not installed, the setup page with
+    /// Standard / High / Ultra and the PC hint, the download window, the window after a failed start.
+    /// </summary>
+    private async Task GuideShotsAsync(string dir, double dh)
+    {
+        void Err(string what, Exception e) => File.AppendAllText(Path.Combine(dir, "errors.txt"), $"{what}: {e}\n");
+        var nn = Core.Catalog.Find("neon-nights");
+        if (nn != null && Settings.IsInstalled(nn)) Settings.InstallDirs[nn.Id] = @"C:\Games\NeonNights-guide-shots"; // a folder that does not exist
+        Settings.SelectedId = "neon-nights";
+        // a PC a bit weaker than the test laptop: 8 GB of video memory → "we recommend High"
+        Views.SetupView.ShotHardware(new HardwareInfo { Gpu = "NVIDIA GeForce RTX 4060", VramGb = 8, RamGb = 16, Threads = 16, Cores = 8, Ssd = true });
+        foreach (var lang in new[] { "ru", "en" })
+        {
+            Core.Loc.Set(lang);
+            (lang == "en" ? LangEn : LangRu).IsChecked = true;
+            try
+            {
+                var pv = Views.Dialog.ForShots(Core.Loc.T("privacy.notice"), Core.Loc.T("settings.privacy"), MessageBoxButton.OK, MessageBoxImage.Information);
+                pv.Measure(new Size(pv.Width, double.PositiveInfinity)); pv.Arrange(new Rect(pv.DesiredSize)); pv.UpdateLayout();
+                await Task.Delay(300);
+                SaveElement(pv, Path.Combine(dir, $"{lang}-g1-privacy.png"));
+            }
+            catch (Exception e) { Err($"{lang}-privacy", e); }
+            foreach (var (name, show, height) in new (string, Action, double)[]
+            {
+                ("g2-home", () => NavHome.IsChecked = true, 800),
+                ("g2b-library", () => { NavHome.IsChecked = true; NavLibrary.IsChecked = true; }, 800),
+                ("g3-setup", () => { _setup.ResetForModlist(); ShowSetup(); }, 800),
+                ("g3b-setup-full", () => ShowSetup(), 1240),
+            })
+                try
+                {
+                    Height = (height == 800 ? _shotBaseHeight : height) + dh;
+                    show();
+                    await Task.Delay(3500);
+                    Save(Path.Combine(dir, $"{lang}-{name}.png"));
+                }
+                catch (Exception e) { Err($"{lang}-{name}", e); }
+            Height = _shotBaseHeight + dh;
+            // the download window (free Nexus account): the queue and the step text; the Nexus page itself is the player's own
+            try
+            {
+                var items = new List<ManualItem>
+                {
+                    // the real first files of the Neon Nights list
+                    new() { ModName = "Cyber Engine Tweaks", GameDomain = "cyberpunk2077", ModId = 107, FileId = 168615, Size = 34_868_963, ArchiveName = "CET-107.zip" },
+                    new() { ModName = "ArchiveXL", GameDomain = "cyberpunk2077", ModId = 4198, FileId = 177875, Size = 1_077_330, ArchiveName = "ArchiveXL-4198-177875.zip" },
+                    new() { ModName = "TweakXL", GameDomain = "cyberpunk2077", ModId = 4197, FileId = 177876, Size = 1_069_269, ArchiveName = "TweakXL-4197-177876.zip" },
+                    new() { ModName = "Codeware", GameDomain = "cyberpunk2077", ModId = 7780, FileId = 177877, Size = 2_877_016, ArchiveName = "Codeware-7780-177877.zip" },
+                };
+                var dl = Path.Combine(dir, "_downloads");
+                Directory.CreateDirectory(dl);
+                var w = new Views.ManualDownloadWindow(items, dl)
+                {
+                    WindowStartupLocation = WindowStartupLocation.Manual, Left = -30000, Top = -30000, ShowInTaskbar = false, ShowActivated = false,
+                };
+                w.Show();
+                await Task.Delay(6000);
+                await SaveWindowBody(w, Path.Combine(dir, $"{lang}-g4-download.png"));
+                w.Close();
+            }
+            catch (Exception e) { Err($"{lang}-download", e); }
+            // after a failed start: REPAIR and "Back to version …"
+            try
+            {
+                var p = new Views.LaunchProblemWindow(new LaunchReport(LaunchResult.Crashed, TimeSpan.FromMinutes(3), null), new Core.PreviousInstall { Version = "0.1.7" })
+                {
+                    WindowStartupLocation = WindowStartupLocation.Manual, Left = -30000, Top = -30000, ShowInTaskbar = false, ShowActivated = false,
+                };
+                p.Show();
+                await Task.Delay(1500);
+                await SaveWindowBody(p, Path.Combine(dir, $"{lang}-g5-problem.png"));
+                p.Close();
+                var q = new Views.LaunchProblemWindow(new LaunchReport(LaunchResult.NotStarted, TimeSpan.Zero, null), new Core.PreviousInstall { Version = "0.1.7" })
+                {
+                    WindowStartupLocation = WindowStartupLocation.Manual, Left = -30000, Top = -30000, ShowInTaskbar = false, ShowActivated = false,
+                };
+                q.Show();
+                await Task.Delay(1500);
+                await SaveWindowBody(q, Path.Combine(dir, $"{lang}-g5b-problem-notstarted.png"));
+                q.Close();
+            }
+            catch (Exception e) { Err($"{lang}-problem", e); }
+        }
+    }
+
+    /// <summary>A shown off-screen window: its content moved into a free element of the window's size, then drawn
+    /// (drawing the window itself off-screen cut its right side).</summary>
+    private async Task SaveWindowBody(Window w, string file)
+    {
+        if (w.Content is not FrameworkElement body) return;
+        double width = double.IsNaN(w.Width) ? Math.Max(body.ActualWidth, 600) : w.Width;
+        w.Content = null;
+        var holder = new System.Windows.Controls.Border { Background = w.Background ?? (Brush)FindResource("Bg"), Child = body, Width = width };
+        if (!double.IsNaN(w.Height) && w.SizeToContent == SizeToContent.Manual) holder.Height = w.Height;
+        holder.Measure(new Size(holder.Width, double.IsNaN(holder.Height) ? double.PositiveInfinity : holder.Height));
+        holder.Arrange(new Rect(holder.DesiredSize));
+        holder.UpdateLayout();
+        await Task.Delay(300);
+        SaveElement(holder, file);
     }
 
     private void Save(string file) => SaveVisual(this, file, _shotScale);

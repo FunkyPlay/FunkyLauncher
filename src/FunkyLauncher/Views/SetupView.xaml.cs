@@ -478,6 +478,9 @@ public partial class SetupView : UserControl
         ProgressText.Text = Loc.F("gfx3.done", Loc.T(key));
     }
 
+    /// <summary>For --shots (the install guide video): a sample PC for the Standard / High / Ultra hint.</summary>
+    internal static void ShotHardware(HardwareInfo h) { _hw = h; _hwAsked = true; }
+
     /// <summary>For --shots: the graphics row with a test pack and a 6 GB card (the light version recommended).</summary>
     internal Grid ShotGraphicsRow(AddonFile heavy, double vramGb, bool full)
     {
