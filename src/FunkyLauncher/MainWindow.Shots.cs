@@ -538,6 +538,20 @@ public partial class MainWindow
                 q.Close();
             }
             catch (Exception e) { Err($"{lang}-problem", e); }
+            // "Mods of the modlist" of Nova Nights and Atomic Nights (the news picture: not all about Cyberpunk)
+            foreach (var other in new[] { "starfield", "fallout4" })
+                try
+                {
+                    if (Core.Catalog.Find(other) is not { } om || Services.ModChoices.Items(Settings, om).Count == 0) continue;
+                    var (ob, obg, ow, oh) = Views.ModsWindow.ForShots(Settings, om);
+                    var oholder = new System.Windows.Controls.Border { Background = obg, Child = ob, Width = ow - 16, Height = oh - 40 };
+                    oholder.Measure(new Size(oholder.Width, oholder.Height));
+                    oholder.Arrange(new Rect(oholder.DesiredSize));
+                    oholder.UpdateLayout();
+                    await Task.Delay(300);
+                    SaveElement(oholder, Path.Combine(dir, $"{lang}-g6-mods-window-{other}.png"));
+                }
+                catch (Exception e) { Err($"{lang}-mods-{other}", e); }
         }
     }
 
