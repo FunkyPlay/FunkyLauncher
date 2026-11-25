@@ -161,6 +161,10 @@ public sealed class GtaWindow : Window
             foreach (var st in plan.Manual)
                 steps.Children.Add(Step(st.Mod.DisplayName.Length > 0 ? st.Mod.DisplayName : st.Mod.Id, st.Mod.Install.Note.ToString(),
                     st.Done, st.Required, st.Mod.Install.Page, null));
+        // Standard without NVE: its step is still shown — it is what opens High and Ultra
+        if (!nve && Level == 0 && GtaInstallService.LoadPack("high")?.Mods.FirstOrDefault(x => x.Provides == "nve") is { } nveMod)
+            steps.Children.Add(Step(nveMod.DisplayName.Length > 0 ? nveMod.DisplayName : nveMod.Id, nveMod.Install.Note.ToString(),
+                false, false, nveMod.Install.Page, null));
         // Dispatch V: the file the player downloads himself and points the launcher to
         if (plan?.Install.FirstOrDefault(x => x.UserArchive != null) is { } dispatch)
         {
