@@ -1,4 +1,4 @@
-// Funky Launcher — Copyright (C) 2026 Funky. Licensed under GPL-3.0-or-later.
+// Funky Launcher — Copyright (C) 2026 Funky. Licensed under GPL-3.0-only (Mutagen, GameFinder, NexusMods.Paths are GPL-3.0-only).
 using System.Text;
 
 namespace FunkyPatcher;

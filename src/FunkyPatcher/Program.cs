@@ -1,4 +1,4 @@
-// Funky Launcher — Copyright (C) 2026 Funky. Licensed under GPL-3.0-or-later.
+// Funky Launcher — Copyright (C) 2026 Funky. Licensed under GPL-3.0-only (Mutagen, GameFinder, NexusMods.Paths are GPL-3.0-only).
 // FunkyPatcher: builds, on the player's own PC, small override plugins that give Russian names to records of the
 // installed mods. Input: a dictionary "owner plugin + FormID + field -> Russian text" (no text of the mods themselves).
 // The winning record of the player's load order is copied into the patch and only its name is changed.
