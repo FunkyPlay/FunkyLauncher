@@ -1,4 +1,4 @@
-// Funky Launcher — Copyright (C) 2026 Funky. Licensed under GPL-3.0-or-later.
+﻿// Funky Launcher — Copyright (C) 2026 Funky. Licensed under GPL-3.0-or-later.
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
@@ -38,6 +38,7 @@ public partial class SettingsView : UserControl
         var ver = Assembly.GetExecutingAssembly().GetName().Version?.ToString(3) ?? "0.1.0";
         AboutText.Text = Loc.F("settings.about.text", ver, Catalog.Source);
         AboutNotice.Text = Loc.T("settings.about.notice");
+        AboutThirdParty.Text = Loc.T("settings.about.thirdparty");
         AboutLinks.Inlines.Clear();
         foreach (var (text, url) in new[] { ("🌐 " + Loc.T("site.name"), SiteLinks.Home), ("✈ Telegram", SiteLinks.Telegram), ("▶ YouTube", SiteLinks.YouTube) })
         {
