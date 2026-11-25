@@ -81,11 +81,22 @@ public static partial class Mo2Profile
                     made.Add(x.ModFolder);
                 }
         if (order.NifFixes.Count > 0) made.AddRange(NifFixer.Apply(Path.Combine(s.InstallDir(m), "mods"), order.NifFixes));
-        if (made.Count == 0) return;
         var listPath = Path.Combine(ProfileDir(s, m), "modlist.txt");
         if (!File.Exists(listPath)) return;
         var lines = File.ReadAllLines(listPath).ToList();
         var changed = false;
+        // 0.1.22: an older version of a mod the update replaced (same name and Nexus id, another version) stays on
+        // above the new one after an in-place update (0.1.2–0.1.6 → 0.1.7: Much Better Contracts 2.4 over 2.4.6 broke
+        // the scripts, chat Cyberpunk 25.11) — switch it off; its files stay
+        var olds = OldVersions(order);
+        for (var i = 0; i < lines.Count; i++)
+            if (lines[i].StartsWith('+') && olds(lines[i][1..]))
+            {
+                AppLog.Write("old mod version switched off: " + lines[i][1..]);
+                lines[i] = "-" + lines[i][1..];
+                changed = true;
+            }
+        if (made.Count == 0) { if (changed) File.WriteAllLines(listPath, lines); return; }
         foreach (var f in made)
         {
             if (lines.Any(l => l.Equals("+" + f, StringComparison.OrdinalIgnoreCase))) continue;
@@ -97,6 +108,24 @@ public static partial class Mo2Profile
             changed = true;
         }
         if (changed) File.WriteAllLines(listPath, lines);
+    }
+
+    private static readonly System.Text.RegularExpressions.Regex VersionTail =
+        new(@"^(.+?)\s+(\d{2,6})\s+v?[\w.\-]+\s+20\d\d$", System.Text.RegularExpressions.RegexOptions.CultureInvariant);
+
+    /// <summary>
+    /// A folder that is not in the modlist, while the modlist has a folder of the same mod name and Nexus id with another
+    /// version ("Much Better Contracts 35142 2.4 2026" next to "… 2.4.6 2026"). One id with several different names is
+    /// normal (add-ons, patches) and is not touched.
+    /// </summary>
+    public static Func<string, bool> OldVersions(ModOrder order)
+    {
+        var inOrder = new HashSet<string>(order.Modlist, StringComparer.OrdinalIgnoreCase);
+        var keys = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        foreach (var f in order.Modlist)
+            if (VersionTail.Match(f) is { Success: true } mm) keys.Add(mm.Groups[1].Value.Trim() + "|" + mm.Groups[2].Value);
+        return folder => !inOrder.Contains(folder) && VersionTail.Match(folder) is { Success: true } mm
+                         && keys.Contains(mm.Groups[1].Value.Trim() + "|" + mm.Groups[2].Value);
     }
 
     public static void Write(Settings s, Modlist m, ModOrder order)
@@ -136,14 +165,16 @@ public static partial class Mo2Profile
         var old = File.Exists(listPath) ? File.ReadAllLines(listPath) : Array.Empty<string>();
         var lines = new List<string> { Header };
         var ours = Ours(s, m);
+        var olds = OldVersions(order);
         foreach (var l in old)
         {
             // the player's own mods and MO2's own lines ("*Unmanaged: …") stay as they were, on top;
-            // a mod we installed that a newer list dropped is switched off (its files stay)
+            // a mod we installed that a newer list dropped is switched off (its files stay), and so is an older
+            // version of a mod the list now has in another version (0.1.22)
             if (l.Length < 2 || l.StartsWith('#')) continue;
             var name = l[1..];
             if (inOrder.Contains(name) || wanted.ContainsKey(name)) continue;
-            lines.Add(ours.Contains(name) && l[0] == '+' ? "-" + name : l);
+            lines.Add((ours.Contains(name) || olds(name)) && l[0] == '+' ? "-" + name : l);
         }
         // pack mods the order file forgot: on top too, so they win (and show up in a report)
         foreach (var (folder, w) in wanted)
