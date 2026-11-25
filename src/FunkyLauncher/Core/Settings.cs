@@ -83,6 +83,8 @@ public sealed class Settings
 
     /// <summary>Add-ons (e.g. the 18+ add-on) per add-on id: on/off, level 2, when the age was confirmed. Stays on this PC.</summary>
     public Dictionary<string, AddonPrefs> Addons { get; set; } = new();
+    /// <summary>0.1.23 (the author's PC): also keep MO2 profiles "Public - Standard / High / Ultra" next to the main one.</summary>
+    public bool TierProfiles { get; set; }
 
     /// <summary>Language of each modlist ("ru" / "en") the player chose on the install page. Default: the launcher language.</summary>
     public Dictionary<string, string> ModlistLang { get; set; } = new();

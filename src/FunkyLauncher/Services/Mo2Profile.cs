@@ -1,4 +1,4 @@
-// Funky Launcher — Copyright (C) 2026 Funky. Licensed under GPL-3.0-or-later.
+﻿// Funky Launcher — Copyright (C) 2026 Funky. Licensed under GPL-3.0-or-later.
 using System.Text;
 using System.Text.RegularExpressions;
 using FunkyLauncher.Core;
@@ -21,7 +21,7 @@ public static partial class Mo2Profile
     public static bool IsNexusList(Modlist m) => m.Installer == "nexus" || m.InstallerNext == "nexus";
 
     /// <summary>Folder → wanted (true) / known but not wanted (false), for every mod of every pack.</summary>
-    private static Dictionary<string, bool> Wanted(Settings s, Modlist m)
+    private static Dictionary<string, bool> Wanted(Settings s, Modlist m, int? tier = null)
     {
         var map = new Dictionary<string, bool>(StringComparer.OrdinalIgnoreCase);
         var replaced = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
@@ -31,6 +31,9 @@ public static partial class Mo2Profile
             var isMain = a.AddonId == mainId;
             var p = AddonService.Prefs(s, a);
             var on = isMain || p.On;
+            // a public version profile: High / Ultra packs by the version, whatever the player picked
+            if (tier is { } t && a.AddonId.EndsWith("-high", StringComparison.OrdinalIgnoreCase)) on = t >= 1;
+            if (tier is { } t2 && a.AddonId.EndsWith("-heavy", StringComparison.OrdinalIgnoreCase)) on = t2 >= 2;
             var wanted = on ? AddonService.Wanted(a, p.Level2).Select(x => x.Id).ToHashSet() : new HashSet<string>();
             foreach (var x in a.Mods)
             {
@@ -135,12 +138,37 @@ public static partial class Mo2Profile
                          && keys.Contains(mm.Groups[1].Value.Trim() + "|" + mm.Groups[2].Value);
     }
 
+    /// <summary>MO2 profiles of the three public versions (Funky 25.11: one MO2 per game, switch by profile).</summary>
+    public static readonly string[] TierProfileNames = { "Public - Standard", "Public - High", "Public - Ultra" };
+
     public static void Write(Settings s, Modlist m, ModOrder order)
     {
-        var profile = ProfileDir(s, m);
+        Write(s, m, order, ProfileDir(s, m), null);
+        // 0.1.23: with "TierProfiles" on (the author's own PC) the three public versions are kept as profiles of their own,
+        // each exactly as in the modlist (no single-mod choices); the author's personal profile is never touched
+        if (!s.TierProfiles || !Addons.Extras(m.Id).Any(x => x.Kind == "heavy")) return;
+        var main = ProfileDir(s, m);
+        for (var t = 0; t < 3; t++)
+            try
+            {
+                var dir = Path.Combine(s.InstallDir(m), "profiles", TierProfileNames[t]);
+                if (!Directory.Exists(dir))
+                {
+                    // the profile's INIs and settings from the main profile; saves stay its own
+                    Directory.CreateDirectory(dir);
+                    foreach (var f in Directory.EnumerateFiles(main))
+                        File.Copy(f, Path.Combine(dir, Path.GetFileName(f)), true);
+                }
+                Write(s, m, order, dir, t);
+            }
+            catch (Exception ex) { AppLog.Write($"tier profile {TierProfileNames[t]}: {ex.Message}"); }
+    }
+
+    private static void Write(Settings s, Modlist m, ModOrder order, string profile, int? tier)
+    {
         Directory.CreateDirectory(profile);
         var modsDir = Path.Combine(s.InstallDir(m), "mods");
-        var wanted = Wanted(s, m);
+        var wanted = Wanted(s, m, tier);
         var inOrder = new HashSet<string>(order.Modlist, StringComparer.OrdinalIgnoreCase);
         bool OnDisk(string folder) => Directory.Exists(Path.Combine(modsDir, folder));
 
@@ -164,8 +192,9 @@ public static partial class Mo2Profile
         }
 
         // ---- 0.1.22: the player's own choices for single mods of the base win over the modlist's defaults
-        foreach (var (folder, on) in ModChoices.Of(s, m))
-            if (inOrder.Contains(folder) && !ModChoices.IsCore(order, folder)) wanted[folder] = on;
+        if (tier == null)
+            foreach (var (folder, on) in ModChoices.Of(s, m))
+                if (inOrder.Contains(folder) && !ModChoices.IsCore(order, folder)) wanted[folder] = on;
 
         // ---- modlist.txt (top = highest priority)
         var listPath = Path.Combine(profile, "modlist.txt");
