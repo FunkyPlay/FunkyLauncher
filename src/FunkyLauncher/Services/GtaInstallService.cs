@@ -305,6 +305,8 @@ public static class GtaInstallService
             }
             catch (OperationCanceledException) { log.Save(); throw; }
             catch (Exception ex) { errors.Add(Loc.F("addon.err.unpack", name, ex.Message)); }
+            // after every mod: a crash or a closed launcher halfway must still leave every file we wrote on the list
+            finally { log.Save(); }
         }
 
         // simple merges: a file of the player's Dispatch V copy laid down as is ("gameconfig-std")
@@ -464,7 +466,7 @@ public static class GtaInstallService
             foreach (var f in Directory.EnumerateFiles(backup, "*", SearchOption.AllDirectories))
             {
                 var dst = Path.Combine(game, Path.GetRelativePath(backup, f));
-                try { Directory.CreateDirectory(Path.GetDirectoryName(dst)!); File.Copy(f, dst, true); restored++; }
+                try { Directory.CreateDirectory(Path.GetDirectoryName(dst)!); if (File.Exists(dst)) File.Delete(dst); File.Copy(f, dst); restored++; }
                 catch (Exception ex) { errors.Add(dst + ": " + ex.Message); }
             }
         // lines we appended to the game's own text files (args.txt)
@@ -478,7 +480,8 @@ public static class GtaInstallService
                 {
                     if (!File.Exists(f)) continue;
                     var keep = File.ReadAllLines(f).Where(l => l.Trim() != parts[1]).ToList();
-                    if (keep.Count == 0) File.Delete(f); else File.WriteAllLines(f, keep);
+                    File.Delete(f);                                   // written anew: never into a hard-linked original
+                    if (keep.Count > 0) File.WriteAllLines(f, keep);
                 }
                 catch (Exception ex) { errors.Add(parts[0] + ": " + ex.Message); }
             }
@@ -540,7 +543,9 @@ public static class GtaInstallService
                 }
             }
             Directory.CreateDirectory(Path.GetDirectoryName(dst)!);
-            File.Copy(src, dst, true);
+            // delete first, never write into the old file: a hard link (a test copy of the game) must not change its original
+            if (File.Exists(dst)) File.Delete(dst);
+            File.Copy(src, dst);
             _written.Add(line);
             if (_known.Add(line)) _lines.Add(line);
         }
@@ -567,7 +572,7 @@ public static class GtaInstallService
                 var bak = Path.Combine(BackupDir(_game), rel);
                 try
                 {
-                    if (File.Exists(bak)) { File.Copy(bak, f, true); File.Delete(bak); }
+                    if (File.Exists(bak)) { if (File.Exists(f)) File.Delete(f); File.Move(bak, f); }
                     else if (File.Exists(f)) File.Delete(f);
                     removed++;
                 }
@@ -585,7 +590,9 @@ public static class GtaInstallService
             var rel = Path.GetFullPath(file)[root.Length..];
             if (File.Exists(file) && File.ReadAllLines(file).Any(l => l.Trim() == text)) return;
             var old = File.Exists(file) ? File.ReadAllText(file) : "";
-            File.AppendAllText(file, (old.Length > 0 && !old.EndsWith('\n') ? Environment.NewLine : "") + text + Environment.NewLine);
+            // written anew, never appended: a hard-linked args.txt must not change its original
+            if (File.Exists(file)) File.Delete(file);
+            File.WriteAllText(file, old + (old.Length > 0 && !old.EndsWith('\n') ? Environment.NewLine : "") + text + Environment.NewLine);
             var line = $"a {rel}\t{text}";
             if (_known.Add(line)) _lines.Add(line);
         }

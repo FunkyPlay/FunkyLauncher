@@ -31,7 +31,7 @@ public static class TestInstall
                 var lines = new List<string> { $"nve: {plan.Nve}, install {plan.Install.Count}" };
                 lines.AddRange(plan.Manual.Select(x => $"manual: {x.Mod.Id} done={x.Done} required={x.Required}"));
                 if (plan.Blocking.Any()) { lines.Add("BLOCKED"); File.WriteAllLines(glog, lines); return 2; }
-                var r = await GtaInstallService.InstallAsync(args[2], args[3], plan, new Progress<string>(t => File.AppendAllText(glog + ".progress", t + Environment.NewLine)), CancellationToken.None);
+                var r = await GtaInstallService.InstallAsync(args[2], args[3], plan, new Progress<string>(t => { lock (glog) File.AppendAllText(glog + ".progress", t + Environment.NewLine); }), CancellationToken.None);
                 lines.Add($"installed {r.Installed}, manual {r.NeedManual.Count}, errors {r.Errors.Count}, skipped {r.Skipped.Count}");
                 lines.AddRange(r.NeedManual.Select(m => "need manual: " + m.ModName));
                 lines.AddRange(r.Errors.Select(e => "error: " + e));
