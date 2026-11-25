@@ -84,11 +84,12 @@
     "page": "http://www.dev-c.com/gtav/scripthookv/",
     "check": [
      "ScriptHookV.dll",
-     "xinput1_4.dll"
+     "xinput1_4.dll",
+     "args.txt"
     ],
     "note": {
-     "ru": "Скачайте Script Hook V с сайта автора и положите ScriptHookV.dll и xinput1_4.dll (из папки bin) в папку игры.",
-     "en": "Download Script Hook V from the author's site and put ScriptHookV.dll and xinput1_4.dll (bin folder) into the game folder."
+     "ru": "Скачайте Script Hook V с сайта автора и скопируйте в папку игры всё содержимое папки bin (по инструкции автора, вместе с args.txt — он отключает BattlEye в сюжете).",
+     "en": "Download Script Hook V from the author's site and copy everything from its bin folder into the game folder (author's guide; args.txt turns BattlEye off for story mode)."
     }
    },
    "required": true,
