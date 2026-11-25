@@ -159,8 +159,24 @@ public sealed class GtaWindow : Window
         var steps = Card(Loc.T("gta.steps.title"));
         if (plan != null)
             foreach (var st in plan.Manual)
-                steps.Children.Add(Step(st.Mod.DisplayName.Length > 0 ? st.Mod.DisplayName : st.Mod.Id, st.Mod.Install.Note.ToString(),
-                    st.Done, st.Required, st.Mod.Install.Page, null));
+            {
+                // Script Hook V: its archive is already downloaded → one click puts it into the game folder
+                Action? fromArchive = null;
+                string? label = null;
+                var note = st.Mod.Install.Note.ToString();
+                if (!st.Done && st.Mod.Id.StartsWith("Script Hook V", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (GtaInstallService.FindScriptHookArchive(downloads) is { } zip)
+                    {
+                        note = Loc.F("gta.shv.found", Path.GetFileName(zip));
+                        fromArchive = () => PutScriptHook(zip);
+                        label = Loc.T("gta.shv.put");
+                    }
+                    else fromArchive = () => PickScriptHook();
+                }
+                steps.Children.Add(Step(st.Mod.DisplayName.Length > 0 ? st.Mod.DisplayName : st.Mod.Id, note,
+                    st.Done, st.Required, st.Mod.Install.Page, fromArchive, label));
+            }
         // Standard without NVE: its step is still shown — it is what opens High and Ultra
         if (!nve && Level == 0 && GtaInstallService.LoadPack("high")?.Mods.FirstOrDefault(x => x.Provides == "nve") is { } nveMod)
             steps.Children.Add(Step(nveMod.DisplayName.Length > 0 ? nveMod.DisplayName : nveMod.Id, nveMod.Install.Note.ToString(),
@@ -172,7 +188,8 @@ public sealed class GtaWindow : Window
             steps.Children.Add(Step(dispatch.DisplayName.Length > 0 ? dispatch.DisplayName : dispatch.Id, dispatch.Install.Note.ToString(),
                 have, false, dispatch.Install.Page, () => PickDispatch(downloads)));
         }
-        _body.Children.Add(Wrap(steps));
+        // the player's own steps go right under the game folder: they decide whether INSTALL opens
+        _body.Children.Insert(1, Wrap(steps));
 
         var blocked = plan == null || plan.Blocking.Any();
         _status.Text = installed ? Loc.T("gta.status.installed") : blocked ? Loc.T("gta.status.blocked") : Loc.T("gta.status.ready");
@@ -205,7 +222,7 @@ public sealed class GtaWindow : Window
         Text = text, FontSize = 12.5, Foreground = color ?? R("Muted"), TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 6, 0, 0),
     };
 
-    private FrameworkElement Step(string name, string note, bool done, bool required, string page, Action? pickFile)
+    private FrameworkElement Step(string name, string note, bool done, bool required, string page, Action? pickFile, string? pickLabel = null)
     {
         var box = new DockPanel { Margin = new Thickness(0, 6, 0, 6) };
         var actions = new StackPanel { Orientation = Orientation.Horizontal, VerticalAlignment = VerticalAlignment.Top };
@@ -217,7 +234,7 @@ public sealed class GtaWindow : Window
         }
         if (pickFile != null)
         {
-            var pick = new Button { Content = Loc.T("gta.step.pick"), Style = St("SecondaryButton"), Height = 32, Padding = new Thickness(12, 0, 12, 0), Margin = new Thickness(8, 0, 0, 0) };
+            var pick = new Button { Content = pickLabel ?? Loc.T("gta.step.pick"), Style = St("SecondaryButton"), Height = 32, Padding = new Thickness(12, 0, 12, 0), Margin = new Thickness(8, 0, 0, 0) };
             pick.Click += (_, _) => pickFile();
             actions.Children.Add(pick);
         }
@@ -250,6 +267,20 @@ public sealed class GtaWindow : Window
         _s.InstallDirs[GtaInstallService.GameKey] = _game;
         _s.Save();
         Render();
+    }
+
+    private void PutScriptHook(string zip)
+    {
+        if (_game == null) return;
+        try { GtaInstallService.InstallScriptHook(_game, zip); }
+        catch (Exception ex) { Dialog.Show(this, Loc.F("inst.failed", ex.Message), Title); }
+        Render();
+    }
+
+    private void PickScriptHook()
+    {
+        var dlg = new Microsoft.Win32.OpenFileDialog { Filter = "Script Hook V (ScriptHookV_*.zip)|ScriptHookV_*.zip;*.zip", Title = Loc.T("gta.step.pick") };
+        if (dlg.ShowDialog(this) == true) PutScriptHook(dlg.FileName);
     }
 
     private static string? DispatchFile(GtaInstallService.Plan plan, string downloads)

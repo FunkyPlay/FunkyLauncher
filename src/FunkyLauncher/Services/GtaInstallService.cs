@@ -445,6 +445,49 @@ public static class GtaInstallService
         else { lines.Add($"[{section}]"); lines.Add($"{key}={value}"); }
     }
 
+    // ---------------------------------------------------------------- Script Hook V from the player's own archive
+
+    /// <summary>
+    /// Script Hook V: the player downloads it from the author's site (no redistribution); the launcher only finds that
+    /// archive (ScriptHookV_*.zip in the modlist's downloads or the player's Downloads) and copies its bin folder.
+    /// </summary>
+    public static string? FindScriptHookArchive(string downloads)
+    {
+        foreach (var dir in new[] { downloads, Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads") })
+            try
+            {
+                if (!Directory.Exists(dir)) continue;
+                var f = Directory.EnumerateFiles(dir, "ScriptHookV_*.zip").OrderByDescending(File.GetLastWriteTimeUtc).FirstOrDefault();
+                if (f != null) return f;
+            }
+            catch { }
+        return null;
+    }
+
+    /// <summary>Copies the bin folder of a Script Hook V zip into the game folder (on the file journal, so Restore removes it).</summary>
+    public static int InstallScriptHook(string game, string zip)
+    {
+        Directory.CreateDirectory(OursDir(game));
+        var log = new InstallLog(game);
+        var n = 0;
+        using (var z = ZipFile.OpenRead(zip))
+            foreach (var e in z.Entries)
+            {
+                var name = e.FullName.Replace('\\', '/');
+                var i = name.IndexOf("bin/", StringComparison.OrdinalIgnoreCase);
+                if (i < 0 || name.EndsWith('/')) continue;
+                var rel = name[(i + 4)..];
+                if (rel.Length == 0 || rel.Contains('/')) continue;                  // only the files right in bin
+                var tmp = Path.Combine(Path.GetTempPath(), "fl-shv-" + Guid.NewGuid().ToString("N"));
+                e.ExtractToFile(tmp);
+                try { log.Put(tmp, Path.Combine(game, rel), false); n++; }
+                finally { try { File.Delete(tmp); } catch { } }
+            }
+        log.Save();
+        AppLog.Write($"gta: Script Hook V from {Path.GetFileName(zip)}, {n} files");
+        return n;
+    }
+
     // ---------------------------------------------------------------- restore
 
     /// <summary>"Restore clean game": removes every file we laid down and puts back what we replaced.</summary>
