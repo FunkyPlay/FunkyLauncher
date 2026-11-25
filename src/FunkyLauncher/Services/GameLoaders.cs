@@ -206,7 +206,9 @@ public static class GameLoaders
         Scan(@"r6\tweaks", "*", true);
         Scan(@"r6\input", "*.xml", false);
         Scan(@"bin\x64", "*.asi", false);
-        foreach (var dll in new[] { "dinput8.dll", "d3d11.dll", "dxgi.dll" })
+        // proxy DLLs other loaders use; 0.1.23 (support 9000000000031): a stray CET version.dll in CrashReporter stopped
+        // the game at start (error 126). Ours (CET's own bin\x64\version.dll) are skipped by the gameLoaders list.
+        foreach (var dll in new[] { "dinput8.dll", "d3d11.dll", "dxgi.dll", "version.dll", "winmm.dll", @"CrashReporter\version.dll" })
         {
             var rel = System.IO.Path.Combine("bin", "x64", dll);
             if (File.Exists(System.IO.Path.Combine(gamePath, rel)) && !Skip(rel)) found.Add(rel);

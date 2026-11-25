@@ -339,6 +339,10 @@ public partial class LibraryView : UserControl
                 var foreign = await Task.Run(() => GameLoaders.ForeignMods(m, game.Path));
                 var seen = string.Join("|", foreign);
                 s.ForeignModsSeen.TryGetValue(m.Id, out var last);
+                // 0.1.23: always in the log (support could not tell whether the player had seen the warning)
+                if (foreign.Count > 0)
+                    AppLog.Write($"foreign mods in the game folder ({foreign.Count}, warning {(seen != last ? "shown" : "already seen")}): "
+                                 + string.Join("; ", foreign.Take(30)));
                 if (foreign.Count > 0 && seen != last)
                 {
                     var shown = string.Join("\n", foreign.Take(12).Select(x => "• " + x)) + (foreign.Count > 12 ? "\n• …" : "");
