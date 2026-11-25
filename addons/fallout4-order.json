@@ -467,6 +467,7 @@
   "bInvalidateOlderFiles=1",
   "sResourceDataDirsFinal=",
   "[General]",
+  "sLanguage={lang}",
   "sLocalSavePath=__MO_Saves\\",
   "bUseMyGamesDirectory=1"
  ],
