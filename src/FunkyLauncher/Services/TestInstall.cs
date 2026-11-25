@@ -1,4 +1,4 @@
-// Funky Launcher — Copyright (C) 2026 Funky. Licensed under GPL-3.0-or-later.
+﻿// Funky Launcher — Copyright (C) 2026 Funky. Licensed under GPL-3.0-or-later.
 using FunkyLauncher.Core;
 
 namespace FunkyLauncher.Services;
@@ -20,6 +20,12 @@ public static class TestInstall
         {
             try { await Archives.ExtractAsync(args[2], args[3], CancellationToken.None); return 0; }
             catch (Exception ex) { File.WriteAllText(args[3].TrimEnd('\\') + ".error.txt", ex.ToString()); return 1; }
+        }
+        // "--test-install --authorize-url <wabbajack logs folder> <out file>": the Nexus login link the launcher would offer
+        if (args.Length >= 4 && args[1] == "--authorize-url")
+        {
+            File.WriteAllText(args[3], PlayService.AuthorizeUrl(args[2], DateTime.MinValue.AddDays(1)) ?? "none");
+            return 0;
         }
         // "--test-install --own-folder <modlistId> <folder> <mod folder>": lay down one of our own mod folders from the launcher's files
         if (args.Length >= 5 && args[1] == "--own-folder")

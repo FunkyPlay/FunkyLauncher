@@ -731,6 +731,12 @@ public static class Loc
         ["check.game.later.hint"] = ("Лаунчер сначала скачает Wabbajack, затем проверит игру, её версию и дополнение — и только потом начнёт ставить моды.", "The launcher downloads Wabbajack first, then checks the game, its version and the expansion — and only then starts installing mods."),
         ["inst.checkgame"] = ("Проверяем игру…", "Checking the game…"),
         ["nexus.login.opening"] = ("В Wabbajack: Settings → Nexus Mods → Log in. Ждём вход в Nexus… лаунчер заметит его сам.", "In Wabbajack: Settings → Nexus Mods → Log in. Waiting for the Nexus login… the launcher notices it by itself."),
+        // 0.1.23 (support #183, #224): Wabbajack did not open the browser for the Nexus login — open its login page ourselves
+        ["nexus.manual.title"] = ("Вход в Nexus не открылся?", "Nexus login didn't open?"),
+        ["nexus.manual.text"] = ("Если после «Log in» в Wabbajack браузер так и не открылся, нажмите «Открыть вход»: страница входа Nexus откроется в вашем браузере. Войдите и вернитесь — Wabbajack при этом должен оставаться открытым.\n\nЕсли браузер уже открыт и вы входите — просто закройте это окно.", "If the browser didn't open after “Log in” in Wabbajack, press “Open login”: the Nexus login page opens in your browser. Log in and come back — keep Wabbajack open meanwhile.\n\nIf the browser is already open and you are logging in, just close this window."),
+        ["nexus.manual.open"] = ("Открыть вход", "Open login"),
+        ["nexus.manual.close"] = ("Закрыть", "Close"),
+        ["nexus.manual.copied"] = ("Не удалось открыть браузер. Ссылка на вход скопирована — вставьте её в адресную строку любого браузера (Ctrl+V) и войдите.", "Couldn't open the browser. The login link is copied — paste it into the address bar of any browser (Ctrl+V) and log in."),
         ["nexus.login.done"] = ("Вход в Nexus выполнен ✓ — Wabbajack можно закрыть и нажать УСТАНОВИТЬ.", "Logged in to Nexus ✓ — you can close Wabbajack and press INSTALL."),
         // 0.1.19 (Copywriter 21.11): the three-step window before Wabbajack opens for the Nexus login
         ["nexus.steps.title"] = ("Вход в Nexus — 3 шага", "Nexus login — 3 steps"),

@@ -59,6 +59,78 @@ public static class PlayService
     /// </summary>
     public static bool OpenWabbajackGui()
     {
+        var ok = OpenWabbajackGuiCore();
+        if (ok && WabbajackService.FindGui() is { } g && !WabbajackService.IsNexusLoggedIn) WatchManualLogin(g);
+        return ok;
+    }
+
+    private static System.Windows.Threading.DispatcherTimer? _loginWatch;
+
+    /// <summary>
+    /// 0.1.23 (support #183, #224): on some PCs Wabbajack's "Log in" opens no browser and shows no error. Wabbajack writes
+    /// the login page into its log ("Authorize URL: …") and waits for the answer on 127.0.0.1 — so if no login arrives
+    /// 40 s after that line, the player is offered to open the same page from the launcher (or gets it copied).
+    /// </summary>
+    private static void WatchManualLogin(string gui)
+    {
+        _loginWatch?.Stop();
+        var started = DateTime.Now;
+        var logs = Path.Combine(Path.GetDirectoryName(gui)!, "logs");
+        string? url = null;
+        DateTime? seen = null;
+        var t = new System.Windows.Threading.DispatcherTimer { Interval = TimeSpan.FromSeconds(3) };
+        t.Tick += (_, _) =>
+        {
+            if (WabbajackService.IsNexusLoggedIn || DateTime.Now - started > TimeSpan.FromMinutes(10)) { t.Stop(); return; }
+            url ??= AuthorizeUrl(logs, started);
+            if (url == null) return;
+            seen ??= DateTime.Now;
+            if (DateTime.Now - seen < TimeSpan.FromSeconds(40)) return;
+            t.Stop();
+            Log("nexus login: no login 40 s after the authorize url, offering it");
+            var owner = System.Windows.Application.Current?.MainWindow;
+            if (Views.Dialog.Show(owner, Loc.T("nexus.manual.text"), Loc.T("nexus.manual.title"),
+                    System.Windows.MessageBoxButton.YesNo, System.Windows.MessageBoxImage.Information, System.Windows.MessageBoxResult.Yes,
+                    Loc.T("nexus.manual.open"), Loc.T("nexus.manual.close")) != System.Windows.MessageBoxResult.Yes) return;
+            try { System.Windows.Clipboard.SetText(url); } catch { }
+            try { OpenUrl(url); Log("nexus login: login page opened by the launcher"); }
+            catch (Exception ex)
+            {
+                Log("nexus login: browser failed: " + ex.Message);
+                Views.Dialog.Show(owner, Loc.T("nexus.manual.copied"), Loc.T("nexus.manual.title"));
+            }
+        };
+        _loginWatch = t;
+        t.Start();
+    }
+
+    /// <summary>The newest "Authorize URL: https://users.nexusmods.com/oauth/authorize…" in a Wabbajack log written since <paramref name="since"/>.</summary>
+    internal static string? AuthorizeUrl(string logsDir, DateTime since)
+    {
+        try
+        {
+            if (!Directory.Exists(logsDir)) return null;
+            var file = new DirectoryInfo(logsDir).GetFiles("*.log")
+                .Where(f => f.LastWriteTime >= since.AddSeconds(-5)).OrderByDescending(f => f.LastWriteTime).FirstOrDefault();
+            if (file == null) return null;
+            using var fs = new FileStream(file.FullName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite | FileShare.Delete);
+            using var sr = new StreamReader(fs);
+            string? found = null;
+            const string mark = "Authorize URL: ";
+            for (var line = sr.ReadLine(); line != null; line = sr.ReadLine())
+            {
+                var i = line.IndexOf(mark, StringComparison.Ordinal);
+                if (i < 0) continue;
+                var u = line[(i + mark.Length)..].Trim();
+                if (u.StartsWith("https://users.nexusmods.com/oauth/authorize", StringComparison.OrdinalIgnoreCase)) found = u;
+            }
+            return found;
+        }
+        catch { return null; }
+    }
+
+    private static bool OpenWabbajackGuiCore()
+    {
         var gui = WabbajackService.FindGui();
         if (gui == null) return false;
         var dir = Path.GetDirectoryName(gui)!;
