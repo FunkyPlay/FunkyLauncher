@@ -2,6 +2,7 @@
  "schema": 1,
  "modlistId": "neon-nights",
  "packId": "neon-nights-ru",
+ "aiTranslated": true,
  "listVersion": "0.1.7",
  "forMainVersion": "0.1.7",
  "draft": true,
