@@ -134,7 +134,10 @@ public static class AddonService
             var target = Path.Combine(mods, x.ModFolder);
             if (x.Install.Type == "bundled")
             {
-                // nothing to download: the folder is laid down with the modlist's own files; the profile switches it on
+                // nothing to download: the folder is laid down with the modlist's own files; the profile switches it on.
+                // 0.1.22: a Wabbajack modlist never got it from the modlist itself — take it from the launcher's own files
+                if (Addons.Order(m.Id) is { } ord)
+                    NexusInstallService.ExtractOwnFolder(s.InstallDir(m), ord, x.ModFolder, errors);
                 done++;
                 if (Directory.Exists(target)) Mo2Profile.RememberOurs(s, m, x.ModFolder);
                 continue;

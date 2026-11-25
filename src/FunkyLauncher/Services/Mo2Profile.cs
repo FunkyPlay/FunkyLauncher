@@ -68,8 +68,19 @@ public static partial class Mo2Profile
     /// </summary>
     public static void EnsureFixes(Settings s, Modlist m)
     {
-        if (Addons.Order(m.Id) is not { NifFixes.Count: > 0 } order) return;
-        var made = NifFixer.Apply(Path.Combine(s.InstallDir(m), "mods"), order.NifFixes);
+        if (Addons.Order(m.Id) is not { } order) return;
+        var made = new List<string>();
+        // 0.1.22: the Russian pack is on, but its own folders never came (Neon Nights - RU Names, since 0.1.4: the folder
+        // was in no .wabbajack) — lay them down from the launcher's files and switch them on
+        if (Addons.Russian(m.Id) is { } ru && AddonService.Prefs(s, ru).On)
+            foreach (var x in ru.Mods.Where(x => x.Install.Type == "bundled" && x.ModFolder.Length > 0))
+                if (!Directory.Exists(Path.Combine(s.InstallDir(m), "mods", x.ModFolder))
+                    && NexusInstallService.ExtractOwnFolder(s.InstallDir(m), order, x.ModFolder, new List<string>()))
+                {
+                    AppLog.Write("own folder laid down: " + x.ModFolder);
+                    made.Add(x.ModFolder);
+                }
+        if (order.NifFixes.Count > 0) made.AddRange(NifFixer.Apply(Path.Combine(s.InstallDir(m), "mods"), order.NifFixes));
         if (made.Count == 0) return;
         var listPath = Path.Combine(ProfileDir(s, m), "modlist.txt");
         if (!File.Exists(listPath)) return;

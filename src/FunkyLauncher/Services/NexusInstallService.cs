@@ -20,6 +20,37 @@ public static class NexusInstallService
     public static List<string> LastErrors { get; private set; } = new();
 
     /// <summary>
+    /// 0.1.22: one of our own mod folders ("bundled" in a pack) laid down from the launcher's own files, also for modlists
+    /// Wabbajack installs (Neon Nights - RU Names stayed an empty switch since 0.1.4: the folder was in no .wabbajack,
+    /// chat Cyberpunk 25.11). Always rewritten — small, and a new launcher brings a newer copy. False = not in our files.
+    /// </summary>
+    public static bool ExtractOwnFolder(string installDir, ModOrder order, string folder, List<string> errors)
+    {
+        if (order.OwnFiles.Length == 0 || folder.Length == 0) return false;
+        try
+        {
+            var res = System.Windows.Application.GetResourceStream(new Uri("pack://application:,,,/addons/" + order.OwnFiles.Replace('\\', '/')));
+            if (res == null) return false;
+            var root = Path.GetFullPath(installDir).TrimEnd('\\') + "\\";
+            var prefix = "mods/" + folder + "/";
+            var any = false;
+            using var zip = new System.IO.Compression.ZipArchive(res.Stream);
+            foreach (var e in zip.Entries)
+            {
+                if (e.FullName.EndsWith('/') || !e.FullName.Replace('\\', '/').StartsWith(prefix, StringComparison.OrdinalIgnoreCase)) continue;
+                var dst = Path.GetFullPath(Path.Combine(installDir, e.FullName));
+                if (!dst.StartsWith(root, StringComparison.OrdinalIgnoreCase)) continue;
+                Directory.CreateDirectory(Path.GetDirectoryName(dst)!);
+                using (var es = e.Open())
+                using (var fs = File.Create(dst)) es.CopyTo(fs);
+                any = true;
+            }
+            return any;
+        }
+        catch (Exception ex) { errors.Add($"own folder {folder}: {ex.Message}"); return false; }
+    }
+
+    /// <summary>
     /// Our own files (profile files, own mod folders), the MO2 separators and the deltas a modlist applies to a few mod
     /// files (Neon Nights: what Wabbajack used to do). Safe to repeat: a delta changes only the exact original it was made for.
     /// </summary>

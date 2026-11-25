@@ -21,6 +21,14 @@ public static class TestInstall
             try { await Archives.ExtractAsync(args[2], args[3], CancellationToken.None); return 0; }
             catch (Exception ex) { File.WriteAllText(args[3].TrimEnd('\\') + ".error.txt", ex.ToString()); return 1; }
         }
+        // "--test-install --own-folder <modlistId> <folder> <mod folder>": lay down one of our own mod folders from the launcher's files
+        if (args.Length >= 5 && args[1] == "--own-folder")
+        {
+            var errs = new List<string>();
+            var ok = Addons.Order(args[2]) is { } o && NexusInstallService.ExtractOwnFolder(args[3], o, args[4], errs);
+            if (errs.Count > 0) File.WriteAllText(args[3].TrimEnd('\\') + ".error.txt", string.Join("\n", errs));
+            return ok ? 0 : 1;
+        }
         // "--test-install --profile <modlistId> <install folder>": write the MO2 profile (and our fixes) like after an install
         // "--test-install --ensure <modlistId> <install folder>": what PLAY does for a modlist installed by an older launcher
         if (args.Length >= 4 && args[1] == "--ensure")
