@@ -1,4 +1,4 @@
-// Funky Launcher — Copyright (C) 2026 Funky. Licensed under GPL-3.0-or-later.
+﻿// Funky Launcher — Copyright (C) 2026 Funky. Licensed under GPL-3.0-or-later.
 using System.IO;
 using System.IO.Compression;
 using System.Net.Http;
@@ -317,7 +317,10 @@ public static class GtaInstallService
         // BattlEye blocks script mods in story mode: start without it (args.txt is read by the game itself)
         log.AppendLine(Path.Combine(game, "args.txt"), "-nobattleye");
         log.Save();
-        AppLog.Write($"gta install: {done}/{plan.Install.Count}, manual {manual.Count}, errors {errors.Count}, skipped {skipped.Count}");
+        // only a complete install may clean up what the previous version had (a half one would lose files still to come)
+        var pruned = errors.Count == 0 && manual.Count == 0 && skipped.Count == 0 ? log.Prune() : 0;
+        if (pruned > 0) RemoveEmptyDirs(game);
+        AppLog.Write($"gta install: {done}/{plan.Install.Count}, manual {manual.Count}, errors {errors.Count}, skipped {skipped.Count}, old files removed {pruned}");
         return new Result(done, manual, errors, skipped);
     }
 
@@ -533,7 +536,42 @@ public static class GtaInstallService
             }
             Directory.CreateDirectory(Path.GetDirectoryName(dst)!);
             File.Copy(src, dst, true);
+            _written.Add(line);
             if (_known.Add(line)) _lines.Add(line);
+        }
+
+        private readonly HashSet<string> _written = new(StringComparer.OrdinalIgnoreCase);
+
+        /// <summary>
+        /// After a complete install: files of ours from an earlier install that this version no longer has (another
+        /// version picked, NVE added or removed — SML is DSOUND.dll without NVE and SimpleModsLoader.asi with it, GTA
+        /// chat 25.11) are removed, and a game file they had replaced comes back from the backup.
+        /// </summary>
+        public int Prune()
+        {
+            Save();
+            var list = InstalledList(_game);
+            if (!File.Exists(list)) return 0;
+            var keep = new List<string>();
+            var removed = 0;
+            foreach (var line in File.ReadAllLines(list).Distinct(StringComparer.OrdinalIgnoreCase))
+            {
+                if (!line.StartsWith("+ ") || _written.Contains(line)) { keep.Add(line); continue; }
+                var rel = line[2..];
+                var f = Path.Combine(_game, rel);
+                var bak = Path.Combine(BackupDir(_game), rel);
+                try
+                {
+                    if (File.Exists(bak)) { File.Copy(bak, f, true); File.Delete(bak); }
+                    else if (File.Exists(f)) File.Delete(f);
+                    removed++;
+                }
+                catch (Exception ex) { AppLog.Write($"gta prune {rel}: {ex.Message}"); keep.Add(line); }
+            }
+            File.WriteAllLines(list, keep);
+            _known.Clear();
+            foreach (var l in keep) _known.Add(l);
+            return removed;
         }
 
         public void AppendLine(string file, string text)

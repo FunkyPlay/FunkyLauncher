@@ -231,9 +231,38 @@
      ]
     ]
    },
-   "note": "all tiers since 25.11: adds dlc packs from mods/update/x64/dlcpacks itself, so NVE dlclist is never edited (Legal 25.11)",
+   "when": "std",
+   "note": "adds dlc packs from mods/update/x64/dlcpacks itself, so NVE dlclist is never edited (Legal 25.11)",
    "order": 5,
    "modFolder": "Simple Mods Loader"
+  },
+  {
+   "id": "Simple Mods Loader (as ASI, with NVE)",
+   "displayName": "Simple Mods Loader (as ASI, with NVE)",
+   "nexus": {
+    "game": "gta5enhanced",
+    "modId": 1115,
+    "fileId": 2043,
+    "filePage": "https://www.nexusmods.com/gta5enhanced/mods/1115?tab=files&file_id=2043"
+   },
+   "archive": {
+    "localFileName": "Simple Mods Loader 1.5 (By NativeCoder) 1115 1.5 2026-07-06T02-40Z U67Y5OvU0.zip",
+    "size": 4499364,
+    "sha256": "d22b55f231903f8931bb307d4290a7d42eaf08d22ed3689637c6cbfd7518f418"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "DSOUND.dll",
+      "{gameRoot}/SimpleModsLoader.asi"
+     ]
+    ]
+   },
+   "when": "nve",
+   "note": "NVE refuses to start with dsound.dll in the game folder -> same file installed as SimpleModsLoader.asi (Funky test 25.11: packs, Bennys, police OK)",
+   "order": 6,
+   "modFolder": "Simple Mods Loader (as ASI, with NVE)"
   },
   {
    "id": "Ped Damage Overhaul V",
@@ -262,7 +291,7 @@
      ]
     ]
    },
-   "order": 6,
+   "order": 7,
    "modFolder": "Ped Damage Overhaul V"
   },
   {
@@ -292,7 +321,7 @@
      ]
     ]
    },
-   "order": 7,
+   "order": 8,
    "modFolder": "Combat Tweaks Evolved"
   },
   {
@@ -322,7 +351,7 @@
      ]
     ]
    },
-   "order": 8,
+   "order": 9,
    "modFolder": "Toggle Suppressor FX"
   },
   {
@@ -352,7 +381,7 @@
      ]
     ]
    },
-   "order": 9,
+   "order": 10,
    "modFolder": "Realistic Guns Sounds"
   },
   {
@@ -415,7 +444,7 @@
     ]
    },
    "note": "RESIDENT/WEAPONS_PLAYER taken from Realistic Guns Sounds",
-   "order": 10,
+   "order": 11,
    "modFolder": "Sound Pack for GTA V Enhanced"
   },
   {
@@ -445,7 +474,7 @@
      ]
     ]
    },
-   "order": 11,
+   "order": 12,
    "modFolder": "STEAVN Blinkers"
   },
   {
@@ -475,7 +504,7 @@
      ]
     ]
    },
-   "order": 12,
+   "order": 13,
    "modFolder": "Stop Reversing While Braking"
   },
   {
@@ -583,7 +612,7 @@
      "Hotkeys.Teleport Key Info": "F8"
     }
    },
-   "order": 13,
+   "order": 14,
    "modFolder": "Rampage Trainer"
   },
   {
@@ -609,7 +638,7 @@
      ]
     ]
    },
-   "order": 14,
+   "order": 15,
    "modFolder": "GTA 5 HUD Toggle"
   },
   {
@@ -646,7 +675,7 @@
      }
     }
    },
-   "order": 15,
+   "order": 16,
    "modFolder": "Army Chaos"
   },
   {
@@ -672,7 +701,7 @@
      ]
     ]
    },
-   "order": 16,
+   "order": 17,
    "modFolder": "Persistence Pro"
   },
   {
@@ -698,7 +727,7 @@
      ]
     ]
    },
-   "order": 17,
+   "order": 18,
    "modFolder": "RumblePlus"
   },
   {
@@ -779,7 +808,7 @@
    ],
    "legal": "автор FEAR2105 разрешил 25.11 (через Юридических): сводим у игрока, результат не раздаём, автор и ссылка указаны; файл игрок качает сам (gta5-mods)",
    "mapNote": "last 2 entries only while vehicles-merge is on hold (Drive V); when Drive V is allowed, drop them and use vehicles-merge",
-   "order": 18,
+   "order": 19,
    "modFolder": "Dispatch V FEAR Edition"
   },
   {
@@ -1189,7 +1218,7 @@
     "status": "linkOnly",
     "reason": "author letter sent 24.11, waiting for reply; reminder not before 2026-12-08"
    },
-   "order": 19,
+   "order": 20,
    "modFolder": "Drive V"
   },
   {
@@ -1219,7 +1248,7 @@
     "status": "linkOnly",
     "reason": "author letter sent 24.11, waiting for reply; reminder not before 2026-12-08"
    },
-   "order": 20,
+   "order": 21,
    "modFolder": "Better Vehicle Deformation"
   },
   {
@@ -1246,7 +1275,7 @@
     ]
    },
    "when": "std",
-   "order": 21,
+   "order": 22,
    "modFolder": "E.R.O (standard)"
   },
   {
@@ -1273,7 +1302,7 @@
     ]
    },
    "when": "nve",
-   "order": 22,
+   "order": 23,
    "modFolder": "E.R.O (NVE)"
   },
   {
@@ -1299,7 +1328,7 @@
      ]
     ]
    },
-   "order": 23,
+   "order": 24,
    "modFolder": "Better Fist Fighting"
   },
   {
@@ -1341,7 +1370,7 @@
      ]
     ]
    },
-   "order": 24,
+   "order": 25,
    "modFolder": "Benny's Motor Works Revamped"
   },
   {
@@ -1364,7 +1393,7 @@
    },
    "default": false,
    "legal": "Юридические 24.11: только ссылкой, без автоустановки",
-   "order": 25,
+   "order": 26,
    "modFolder": "LSPatrol"
   },
   {
@@ -1483,7 +1512,7 @@
     ]
    },
    "note": "fuel; menu Shift+F, refuel E at the pump; MIT",
-   "order": 26,
+   "order": 27,
    "modFolder": "Fumes"
   },
   {
@@ -1517,7 +1546,7 @@
      ]
     ]
    },
-   "order": 27,
+   "order": 28,
    "modFolder": "BusinessV Enhanced"
   },
   {
@@ -1592,7 +1621,7 @@
     ]
    },
    "note": "blips toggle F10; based on GPL-3 code",
-   "order": 28,
+   "order": 29,
    "modFolder": "GTA SPA II"
   },
   {
@@ -1618,7 +1647,7 @@
      ]
     ]
    },
-   "order": 29,
+   "order": 30,
    "modFolder": "Simple Taxi Missions"
   },
   {
@@ -1648,7 +1677,7 @@
      ]
     ]
    },
-   "order": 30,
+   "order": 31,
    "modFolder": "Recruit Pedestrians"
   },
   {
@@ -1686,7 +1715,7 @@
     }
    },
    "note": "F11 -> F9 (F11 = FrameView)",
-   "order": 31,
+   "order": 32,
    "modFolder": "Collectibles on Map and Radar"
   },
   {
@@ -1712,7 +1741,7 @@
      ]
     ]
    },
-   "order": 32,
+   "order": 33,
    "modFolder": "Swap Main Ride"
   },
   {
@@ -1746,7 +1775,7 @@
     }
    },
    "note": "F7 -> F6 (F7 = Army Chaos)",
-   "order": 33,
+   "order": 34,
    "modFolder": "Swap Main Ride .ini"
   },
   {
@@ -1769,7 +1798,7 @@
    },
    "default": false,
    "legal": "Юридические 25.11: только ссылкой, не по умолчанию",
-   "order": 34,
+   "order": 35,
    "modFolder": "Urban Car Pack"
   },
   {
@@ -2177,7 +2206,7 @@
     ]
    },
    "legal": "Юридические 25.11: ставим как Neon; OpenIV/OpenRPF не нужны — файлы читает Simple Mods Loader",
-   "order": 35,
+   "order": 36,
    "modFolder": "Satellite Map"
   },
   {
@@ -2198,7 +2227,7 @@
    },
    "default": false,
    "legal": "Юридические 25.11: только ссылкой; автосборка пака (build_police_pack.py) — после ответа автора lspfr",
-   "order": 36,
+   "order": 37,
    "modFolder": "Police Pack"
   }
  ]
