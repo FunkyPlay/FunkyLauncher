@@ -145,12 +145,16 @@ public static partial class Mo2Profile
     /// <summary>MO2 profiles of the three public versions (Funky 25.11: one MO2 per game, switch by profile).</summary>
     public static readonly string[] TierProfileNames = { "Public - Standard", "Public - High", "Public - Ultra" };
 
+    /// <summary>The setting, or a file "tier-profiles.on" in the launcher's data folder (survives older launchers saving the settings).</summary>
+    public static bool TierProfilesOn(Settings s) =>
+        s.TierProfiles || File.Exists(Path.Combine(AppConfig.DataDir, "tier-profiles.on"));
+
     public static void Write(Settings s, Modlist m, ModOrder order)
     {
         Write(s, m, order, ProfileDir(s, m), null);
         // 0.1.23: with "TierProfiles" on (the author's own PC) the three public versions are kept as profiles of their own,
         // each exactly as in the modlist (no single-mod choices); the author's personal profile is never touched
-        if (!s.TierProfiles || !Addons.Extras(m.Id).Any(x => x.Kind == "heavy")) return;
+        if (!TierProfilesOn(s) || !Addons.Extras(m.Id).Any(x => x.Kind == "heavy")) return;
         var main = ProfileDir(s, m);
         for (var t = 0; t < 3; t++)
             try
