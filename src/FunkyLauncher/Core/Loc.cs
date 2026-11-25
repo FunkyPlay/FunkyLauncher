@@ -766,6 +766,8 @@ public static class Loc
         ["check.disk.hint"] = ("Освободите место или выберите другую папку ниже.", "Free some space or choose another folder below."),
         ["check.folder.bad"] = ("Эта папка не подходит", "This folder is not suitable"),
         ["check.folder.hint"] = ("Не ставьте сборку в Program Files, на Рабочий стол, в OneDrive или в папку игры. Лучше короткий путь, например C:\\Games\\NeonNights.", "Do not install into Program Files, Desktop, OneDrive or the game folder. Use a short path like C:\\Games\\NeonNights."),
+        ["check.folder.chars"] = ("В пути к сборке есть русские буквы или пробелы", "The modlist path has non-Latin letters or spaces"),
+        ["check.folder.chars.hint"] = ("С такими путями MO2 и некоторые моды могут зависать или не запускаться. Лучше выберите папку латиницей без пробелов, например {0} (кнопка «Изменить…»).", "MO2 and some mods may hang or fail to start with such paths. Better pick a folder in Latin letters without spaces, e.g. {0} (the “Change…” button)."),
         ["check.folder.ok"] = ("Папка подходит", "Folder is fine"),
         ["check.folder.game"] = ("Это папка игры — сюда сборку ставить нельзя", "This is the game folder — the modlist can't go here"),
         ["check.folder.game.hint"] = ("Установка может перезаписать или удалить файлы {0}. Нажмите «Изменить…» справа и выберите отдельную пустую папку, например {1}.", "Installing here could overwrite or delete {0} files. Press \"Change…\" on the right and pick a separate empty folder, e.g. {1}."),

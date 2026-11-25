@@ -1,4 +1,4 @@
-// Funky Launcher — Copyright (C) 2026 Funky. Licensed under GPL-3.0-or-later.
+﻿// Funky Launcher — Copyright (C) 2026 Funky. Licensed under GPL-3.0-or-later.
 using System.Text.RegularExpressions;
 using FunkyLauncher.Core;
 
@@ -42,6 +42,18 @@ public static class SystemCheck
     /// Starfield copy outside Steam) the folder the player picked, the Steam libraries and the catalog's folder hints.
     /// The version is the game exe's file version.
     /// </summary>
+    /// <summary>Only Latin letters, digits and simple signs, no spaces (the drive part "C:\\" aside).</summary>
+    public static bool IsPlainPath(string dir) =>
+        dir.All(c => c < 128 && c != ' ');
+
+    /// <summary>The same drive, the modlist's default folder name: "G:\NeonNights".</summary>
+    private static string PlainSuggestion(string dir, Modlist ml)
+    {
+        var root = System.IO.Path.GetPathRoot(dir) is { Length: > 0 } r ? r : "C:\\";
+        var name = System.IO.Path.GetFileName(ml.DefaultInstallDir.TrimEnd(System.IO.Path.DirectorySeparatorChar));
+        return System.IO.Path.Combine(root, name.Length > 0 ? name : "FunkyPlay");
+    }
+
     public static async Task<GameInfo?> FindGameAsync(Modlist ml, CancellationToken token)
     {
         // the folder the player picked comes first (a second copy elsewhere must not win over the player's choice)
@@ -229,6 +241,11 @@ public static class SystemCheck
             : IsBadFolder(installDir, game?.Path)
             ? new CheckItem(CheckState.Error, Loc.T("check.folder.bad"), Loc.T("check.folder.hint"))
             : new CheckItem(CheckState.Ok, Loc.T("check.folder.ok"), installDir));
+        // 0.1.23 (support #249, chat Cyberpunk, Funky yes): MO2 and some mod tools trip over non-Latin letters and spaces
+        // in the modlist path — a warning with a plain path to use instead (install is not blocked)
+        if (!IsGameFolder(installDir, ml, game?.Path) && !IsPlainPath(installDir))
+            items.Add(new CheckItem(CheckState.Warning, Loc.T("check.folder.chars"),
+                Loc.F("check.folder.chars.hint", PlainSuggestion(installDir, ml))));
 
         var (free, drive) = FreeSpace(installDir);
         var gb = free / (1024 * 1024 * 1024);
