@@ -613,6 +613,13 @@
       "author": "Funky",
       "version": "",
       "status": "soon",
+      "readyFrom": "0.1.23",
+      "installer": "gta",
+      "gameExe": "GTA5_Enhanced.exe",
+      "gameVersion": "1.0.1158.16",
+      "steamAppId": "3240220",
+      "gameFolderHints": ["C:\\Program Files\\Rockstar Games\\Grand Theft Auto V Enhanced", "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Grand Theft Auto V Enhanced", "C:\\Games\\Grand Theft Auto V Enhanced"],
+      "defaultInstallDir": "C:\\Games\\FunkyPlay-GTA5",
       "game": "Grand Theft Auto V Enhanced",
       "tag": {
         "ru": "Grand Theft Auto V Enhanced · в работе",

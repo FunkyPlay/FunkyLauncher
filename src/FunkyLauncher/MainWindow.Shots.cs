@@ -538,6 +538,19 @@ public partial class MainWindow
                 q.Close();
             }
             catch (Exception e) { Err($"{lang}-problem", e); }
+            // 0.1.23: the GTA V page (FUNKYLAUNCHER_SHOTS_GTA = a game folder, e.g. a test copy)
+            if (Environment.GetEnvironmentVariable("FUNKYLAUNCHER_SHOTS_GTA") is { Length: > 0 } gtaDir && Core.Catalog.Find("gta5") is { } gm)
+                try
+                {
+                    var (gb, gbg, gw, gh) = Views.GtaWindow.ForShots(Settings, gm, gtaDir);
+                    var gholder = new System.Windows.Controls.Border { Background = gbg, Child = gb, Width = gw - 16, Height = gh - 40 };
+                    gholder.Measure(new Size(gholder.Width, gholder.Height));
+                    gholder.Arrange(new Rect(gholder.DesiredSize));
+                    gholder.UpdateLayout();
+                    await Task.Delay(300);
+                    SaveElement(gholder, Path.Combine(dir, $"{lang}-g7-gta-window.png"));
+                }
+                catch (Exception e) { Err($"{lang}-gta", e); }
             // "Mods of the modlist" of Nova Nights and Atomic Nights (the news picture: not all about Cyberpunk)
             foreach (var other in new[] { "starfield", "fallout4" })
                 try

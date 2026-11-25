@@ -1,4 +1,4 @@
-// Funky Launcher — Copyright (C) 2026 Funky. Licensed under GPL-3.0-or-later.
+﻿// Funky Launcher — Copyright (C) 2026 Funky. Licensed under GPL-3.0-or-later.
 using System.Text.Json;
 
 namespace FunkyLauncher.Core;
@@ -147,7 +147,8 @@ public sealed class Settings
     /// <summary>Installed = Mod Organizer is there AND the launcher put it there (marker file).</summary>
     public static bool IsInstalledIn(string dir) => HasMo2(dir) && File.Exists(Path.Combine(dir, MarkerName));
 
-    public bool IsInstalled(Modlist m) => IsInstalledIn(InstallDir(m));
+    public bool IsInstalled(Modlist m) =>
+        m.Installer == "gta" ? Services.GtaInstallService.IsInstalled(this) : IsInstalledIn(InstallDir(m));
 
     /// <summary>
     /// A modlist folder the launcher did not install (left from an old launcher version or copied by hand):

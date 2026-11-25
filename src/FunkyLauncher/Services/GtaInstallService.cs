@@ -22,6 +22,11 @@ public static class GtaInstallService
 {
     public const string ModlistId = "gta5";
     public const string GameExe = "GTA5_Enhanced.exe";
+    /// <summary>Settings.InstallDirs key of the game folder (the modlist's own install folder keeps the downloads).</summary>
+    public const string GameKey = "gta5-game";
+
+    /// <summary>Installed into the game folder the player picked (Settings.IsInstalled for this modlist).</summary>
+    public static bool IsInstalled(Settings s) => s.InstallDirs.TryGetValue(GameKey, out var g) && !string.IsNullOrEmpty(g) && IsInstalled(g);
 
     // ---------------------------------------------------------------- data
 

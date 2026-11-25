@@ -653,6 +653,7 @@ public partial class MainWindow : Window, IProUi
     /// <summary>Install / verify page of the selected modlist (opened from the library).</summary>
     public void ShowSetup(bool startVerify = false)
     {
+        if (Selected.Installer == "gta") { Views.GtaWindow.Show(this, Settings, Selected); _library.Refresh(); return; }
         if (NavLibrary.IsChecked != true) NavLibrary.IsChecked = true;
         Page.Content = _setup;
         if (startVerify) _setup.StartRepair(); else _setup.OnShown();

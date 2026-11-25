@@ -1,4 +1,4 @@
-// Funky Launcher — Copyright (C) 2026 Funky. Licensed under GPL-3.0-or-later.
+﻿// Funky Launcher — Copyright (C) 2026 Funky. Licensed under GPL-3.0-or-later.
 using System.Net.Http;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -146,7 +146,11 @@ public sealed class Modlist
     /// <summary>The install folder of a modlist on this PC (set once by the main window from the settings).</summary>
     public static Func<Modlist, string?>? InstallDirOf { get; set; }
 
-    public bool IsReleased => Status == "released";
+    public bool IsReleased => Status == "released" || (ReadyFrom.Length > 0 && System.Version.TryParse(ReadyFrom, out var v)
+        && System.Version.TryParse(AppConfig.Version.Split('+')[0], out var me) && me >= v);
+
+    /// <summary>0.1.23: a modlist still "soon" for older launchers, released from this launcher version on (GTA V: its own installer).</summary>
+    [JsonPropertyName("readyFrom")] public string ReadyFrom { get; set; } = "";
     public long RequiredFreeBytes => (SizeGb + 5L) * 1024 * 1024 * 1024;
 }
 

@@ -1,4 +1,4 @@
-// Funky Launcher — Copyright (C) 2026 Funky. Licensed under GPL-3.0-or-later.
+﻿// Funky Launcher — Copyright (C) 2026 Funky. Licensed under GPL-3.0-or-later.
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -284,6 +284,8 @@ public partial class LibraryView : UserControl
         var m = _main.Selected;
         var s = _main.Settings;
         var profile = _playProfile ?? ProModules.PlayProfile(m); _playProfile = null; // Funky Pro: the player's own profile
+        // 0.1.23: GTA V has no MO2 — its own page installs, plays and restores
+        if (m.Installer == "gta") { Views.GtaWindow.Show(_main, s, m); Refresh(); return; }
         if (!s.IsInstalled(m)) { _main.ShowSetup(); return; }
         if (_watching) return;
         MainButton.IsEnabled = false;
