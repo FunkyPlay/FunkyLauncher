@@ -74,12 +74,19 @@ public static partial class Mo2Profile
         // was in no .wabbajack) — lay them down from the launcher's files and switch them on
         if (Addons.Russian(m.Id) is { } ru && AddonService.Prefs(s, ru).On)
             foreach (var x in ru.Mods.Where(x => x.Install.Type == "bundled" && x.ModFolder.Length > 0))
-                if (!Directory.Exists(Path.Combine(s.InstallDir(m), "mods", x.ModFolder))
+            {
+                var dir = Path.Combine(s.InstallDir(m), "mods", x.ModFolder);
+                // 0.1.23: also when a newer launcher brings a newer copy (Neon 0.1.8 names: +Okrasha's descriptions)
+                var stale = Directory.Exists(dir) && NexusInstallService.OwnFolderDiffers(s.InstallDir(m), order, x.ModFolder);
+                if (stale && NexusInstallService.ExtractOwnFolder(s.InstallDir(m), order, x.ModFolder, new List<string>()))
+                    AppLog.Write("own folder updated: " + x.ModFolder);
+                if (!Directory.Exists(dir)
                     && NexusInstallService.ExtractOwnFolder(s.InstallDir(m), order, x.ModFolder, new List<string>()))
                 {
                     AppLog.Write("own folder laid down: " + x.ModFolder);
                     made.Add(x.ModFolder);
                 }
+            }
         if (order.NifFixes.Count > 0) made.AddRange(NifFixer.Apply(Path.Combine(s.InstallDir(m), "mods"), order.NifFixes));
         var listPath = Path.Combine(ProfileDir(s, m), "modlist.txt");
         if (!File.Exists(listPath)) return;

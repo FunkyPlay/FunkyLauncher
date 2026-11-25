@@ -24,6 +24,32 @@ public static class NexusInstallService
     /// Wabbajack installs (Neon Nights - RU Names stayed an empty switch since 0.1.4: the folder was in no .wabbajack,
     /// chat Cyberpunk 25.11). Always rewritten — small, and a new launcher brings a newer copy. False = not in our files.
     /// </summary>
+    /// <summary>A file of our own mod folder on disk is missing or differs from the launcher's copy (byte by byte; the files are small).</summary>
+    public static bool OwnFolderDiffers(string installDir, ModOrder order, string folder)
+    {
+        if (order.OwnFiles.Length == 0 || folder.Length == 0) return false;
+        try
+        {
+            var res = System.Windows.Application.GetResourceStream(new Uri("pack://application:,,,/addons/" + order.OwnFiles.Replace('\\', '/')));
+            if (res == null) return false;
+            var prefix = "mods/" + folder + "/";
+            using var zip = new System.IO.Compression.ZipArchive(res.Stream);
+            foreach (var e in zip.Entries)
+            {
+                if (e.FullName.EndsWith('/') || !e.FullName.Replace('\\', '/').StartsWith(prefix, StringComparison.OrdinalIgnoreCase)) continue;
+                if (e.Name.Equals("meta.ini", StringComparison.OrdinalIgnoreCase)) continue; // MO2 rewrites it
+                var f = Path.Combine(installDir, e.FullName.Replace('/', '\\'));
+                if (!File.Exists(f) || new FileInfo(f).Length != e.Length) return true;
+                using var es = e.Open();
+                using var ms = new MemoryStream();
+                es.CopyTo(ms);
+                if (!ms.ToArray().AsSpan().SequenceEqual(File.ReadAllBytes(f))) return true;
+            }
+            return false;
+        }
+        catch { return false; }
+    }
+
     public static bool ExtractOwnFolder(string installDir, ModOrder order, string folder, List<string> errors)
     {
         if (order.OwnFiles.Length == 0 || folder.Length == 0) return false;
