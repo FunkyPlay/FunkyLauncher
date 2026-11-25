@@ -369,6 +369,7 @@
    "en": "19 cosy Nova habs"
   },
   "Antares Renewal - Reforged Prototype Modules - Antares Renewal": {
+   "hidden": true,
    "ru": "Обновлённые модули Antares для кораблей",
    "en": "Reworked Antares ship modules"
   },
@@ -1585,10 +1586,12 @@
    "en": "Exile spacesuit fix"
   },
   "Starfield Extended - Mod Armor Distribution": {
+   "hidden": true,
    "ru": "Новая броня из модов у NPC",
    "en": "NPCs wear armour from mods"
   },
   "FunkyPlay - Mod Armor Distribution Fix": {
+   "hidden": true,
    "ru": "Наше исправление: броня из модов у NPC",
    "en": "Our fix for armour from mods on NPCs"
   },
