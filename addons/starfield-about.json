@@ -1602,6 +1602,26 @@
   "Dreaming Star - Main Menu - DreamingStarMainMenu": {
    "ru": "Новое главное меню, музыка и экраны загрузки",
    "en": "New main menu, music and loading screens"
+  },
+  "BA2 Limit Fix": {
+   "ru": "Снимает лимит игры в 256 архивов BA2 — меньше вылетов на большой сборке",
+   "en": "Lifts the 256 BA2 archive limit — fewer crashes in a big modlist"
+  },
+  "Pointer Handle Limit Fix": {
+   "ru": "Поднимает внутренний лимит объектов игры — меньше вылетов и пропавших вещей",
+   "en": "Raises the game's object handle limit — fewer crashes and missing objects"
+  },
+  "Menu Lag Fix": {
+   "ru": "Игра не тормозит после открытия меню",
+   "en": "No lag after opening and closing menus"
+  },
+  "Cruise Navigation Panel": {
+   "ru": "Панель всех планет системы в полёте и автопилот к выбранной",
+   "en": "A panel with every body in the system while cruising, with autopilot"
+  },
+  "Starmap Cruise": {
+   "ru": "Круиз к цели прямо со звёздной карты",
+   "en": "Cruise to a target straight from the starmap"
   }
  }
 }

@@ -4,6 +4,11 @@
  "note": "modlist — сверху вниз = от высшего приоритета к низшему, как modlist.txt MO2 (первая строка побеждает в конфликтах файлов). Имена = modFolder из JSON. Не входят: SFSE (gameRoot), Night Vision и Rabbit's INI TWEAKS (skip). STARQUEEN 5 — одна папка: SFW из main, при 18+ переустановка NSFW (variantOverrides в starfield-18.json).",
  "modlist": [
   "RU озвучка - NGC404",
+  "BA2 Limit Fix",
+  "Pointer Handle Limit Fix",
+  "Menu Lag Fix",
+  "Cruise Navigation Panel",
+  "Starmap Cruise",
   "Pathfinder - Starfield Extended Patch",
   "Starfield Extended - Craftable Quality Extended - Shattered Space Patch",
   "Starfield Extended - Craftable Quality Extended - Terran Armada Patch",
