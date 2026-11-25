@@ -696,8 +696,8 @@
    "nexus": {},
    "download": {
     "urls": [
-     "https://raw.githubusercontent.com/crosire/reshade-shaders/08f5feb98dee8cc352cf404938edb73094ffdc36~1/Shaders/Clarity.fx",
-     "https://raw.githubusercontent.com/crosire/reshade-shaders/08f5feb98dee8cc352cf404938edb73094ffdc36~1/Shaders/PPFX_Bloom.fx"
+     "https://raw.githubusercontent.com/crosire/reshade-shaders/a2314cbf9a6c96de4d434b2f9ab8fa9265b8e575/Shaders/Clarity.fx",
+     "https://raw.githubusercontent.com/crosire/reshade-shaders/a2314cbf9a6c96de4d434b2f9ab8fa9265b8e575/Shaders/PPFX_Bloom.fx"
     ]
    },
    "archive": {

@@ -522,6 +522,9 @@ public static class GtaInstallService
             if (File.Exists(dst))
             {
                 if (noOverwrite && !ours) return;                     // the player's / NVE's own file stays
+                // NaturalVision's own files are never replaced (Legal 25.11): a file of ours that meets one there stops
+                if (!ours && rel.StartsWith("onigiri\\", StringComparison.OrdinalIgnoreCase))
+                    throw new InvalidOperationException(Loc.F("gta.err.nvefile", rel));
                 if (!ours)
                 {
                     var bak = Path.Combine(BackupDir(_game), rel);
