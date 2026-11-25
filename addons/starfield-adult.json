@@ -196,26 +196,26 @@
     "fomod": true,
     "choices": [
      "Intro [SelectAll]: Core Files",
-     "Texture Styles [SelectExactlyOne]: SFW - Vanilla +",
+     "Texture Styles [SelectExactlyOne]: NSFW - Nude Bare",
      "Complete [SelectAll]: Use with CRT"
     ],
     "overrides": {
      "Texture Styles": [
-      "SFW - Vanilla +"
+      "NSFW - Nude Bare"
      ]
     },
     "map": [
-     [
-      "FA - STARQUEEN 5.1 - Starfield Female Skin/Nevernude +",
-      ""
-     ],
      [
       "FA - STARQUEEN 5.1 - Starfield Female Skin/Shared All",
       ""
      ],
      [
-      "FA - STARQUEEN 5.1 - Starfield Female Skin/Shared Nude/Textures/actors/human/naked_body/nakedbodyf_mask.dds",
-      "Textures/actors/human/naked_body/nakedbodyf_mask.dds"
+      "FA - STARQUEEN 5.1 - Starfield Female Skin/Nude/Bare",
+      ""
+     ],
+     [
+      "FA - STARQUEEN 5.1 - Starfield Female Skin/Shared Nude",
+      ""
      ]
     ]
    },
