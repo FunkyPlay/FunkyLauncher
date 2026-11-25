@@ -167,6 +167,16 @@ public static class GtaInstallService
         {
             if (x.OnHold) continue;                                    // waiting for the author's answer (Drive V, Deformation)
             if (x.When == "nve" && !nve || x.When == "std" && nve) continue;
+            // a file the player downloads himself (Script Hook V, Dispatch V): installed from his archive when it is found;
+            // a required one without its archive (and not in the game yet) blocks INSTALL like any manual step
+            if (x.IsManual && x.UserArchive != null)
+            {
+                var inGame = x.Install.Check.Count > 0 && x.Install.Check.Where(c => !c.Contains("{downloads}"))
+                    .All(c => CheckOne(c, main, game, downloads, nve)) && x.Install.Check.Any(c => !c.Contains("{downloads}"));
+                if (FindUserArchive(x, main, game, downloads, nve) != null) { plan.Install.Add(x); continue; }
+                plan.Manual.Add(new ManualStep(x, inGame, x.Required));
+                continue;
+            }
             if (x.IsManual && x.UserArchive == null)
             {
                 var done = x.Install.Check.Count > 0 && x.Install.Check.All(c => CheckOne(c, main, game, downloads, nve));
@@ -178,6 +188,33 @@ public static class GtaInstallService
         }
         plan.Merges.AddRange(main.Merge.Where(mg => !string.IsNullOrEmpty(mg.Copy) && (mg.When == null || (mg.When == "nve") == nve)));
         return plan;
+    }
+
+    /// <summary>
+    /// The player's own archive of a mod: a "{downloads}/…" pattern from its check list (Dispatch V), or a file named as
+    /// "userArchive.expect" in the modlist's downloads or the player's Downloads folder (Script Hook V).
+    /// </summary>
+    public static string? FindUserArchive(Mod x, Pack main, string game, string downloads, bool nve)
+    {
+        if (x.UserArchive == null) return null;
+        try
+        {
+            foreach (var c in x.Install.Check.Where(c => c.Contains("{downloads}")))
+            {
+                var p = Expand(c, main, game, downloads, nve);
+                var dir = Path.GetDirectoryName(p)!;
+                if (Directory.Exists(dir) && Directory.EnumerateFiles(dir, Path.GetFileName(p)).FirstOrDefault() is { } f) return f;
+            }
+            var expect = x.UserArchive.Expect;
+            if (expect.Length > 0 && expect.IndexOfAny(Path.GetInvalidFileNameChars()) < 0)
+                foreach (var dir in new[] { downloads, Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads") })
+                {
+                    var f = Path.Combine(dir, expect);
+                    if (File.Exists(f)) return f;
+                }
+        }
+        catch { }
+        return null;
     }
 
     private static bool CheckOne(string check, Pack main, string game, string downloads, bool nve)
@@ -238,9 +275,7 @@ public static class GtaInstallService
                 else if (x.UserArchive != null)
                 {
                     // a file the player downloads himself (Dispatch V: its mirror page must not be scraped, Legal 24.11)
-                    var pattern = x.Install.Check.FirstOrDefault() is { } c ? Expand(c, plan.Main, game, downloads, plan.Nve) : null;
-                    var found = pattern == null ? null : Directory.Exists(Path.GetDirectoryName(pattern)!)
-                        ? Directory.EnumerateFiles(Path.GetDirectoryName(pattern)!, Path.GetFileName(pattern)).FirstOrDefault() : null;
+                    var found = FindUserArchive(x, plan.Main, game, downloads, plan.Nve);
                     if (found == null) { skipped.Add(name); continue; }
                     progress.Report(Loc.F("addon.checking", i + 1, plan.Install.Count, name));
                     if (!string.Equals(await AddonService.Sha256Async(found, token), x.UserArchive.Sha256, StringComparison.OrdinalIgnoreCase))
@@ -631,7 +666,9 @@ public static class GtaInstallService
         {
             var root = Path.GetFullPath(_game).TrimEnd('\\') + "\\";
             var rel = Path.GetFullPath(file)[root.Length..];
-            if (File.Exists(file) && File.ReadAllLines(file).Any(l => l.Trim() == text)) return;
+            // already there as a word of any line ("-nobattleye -noBE" from Script Hook V's own args.txt counts)
+            if (File.Exists(file) && File.ReadAllLines(file).Any(l => l.Split(' ', StringSplitOptions.RemoveEmptyEntries)
+                    .Contains(text, StringComparer.OrdinalIgnoreCase))) return;
             var old = File.Exists(file) ? File.ReadAllText(file) : "";
             // written anew, never appended: a hard-linked args.txt must not change its original
             if (File.Exists(file)) File.Delete(file);

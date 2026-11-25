@@ -871,6 +871,7 @@ public static class Loc
         ["gta.step.pick"] = ("Указать файл…", "Choose file…"),
         ["gta.shv.found"] = ("Архив уже скачан: {0}. Нажмите «Поставить» — лаунчер скопирует папку bin в игру сам.", "The archive is already downloaded: {0}. Press “Install” — the launcher copies its bin folder into the game."),
         ["gta.shv.put"] = ("Поставить", "Install"),
+        ["gta.userarchive.found"] = ("Архив найден — лаунчер поставит его вместе со сборкой.", "Archive found — the launcher installs it with the modlist."),
         ["gta.step.optional"] = ("(необязательно)", "(optional)"),
         ["gta.status.installed"] = ("Сборка установлена. Можно играть.", "The modlist is installed. Ready to play."),
         ["gta.status.blocked"] = ("Сначала поставьте то, что отмечено розовым, — без этого сборка не заработает.", "First install what is marked pink — the modlist won't work without it."),

@@ -158,36 +158,24 @@ public sealed class GtaWindow : Window
         var plan = GtaInstallService.MakePlan(_game, downloads, Level);
         var steps = Card(Loc.T("gta.steps.title"));
         if (plan != null)
+        {
+            // files the player downloads himself (Script Hook V, Dispatch V): found → installed with everything else
+            foreach (var x in plan.Install.Where(x => x.UserArchive != null))
+                steps.Children.Add(Step(x.DisplayName.Length > 0 ? x.DisplayName : x.Id, Loc.T("gta.userarchive.found"),
+                    true, x.Required, x.Install.Page, null));
             foreach (var st in plan.Manual)
             {
-                // Script Hook V: its archive is already downloaded → one click puts it into the game folder
-                Action? fromArchive = null;
-                string? label = null;
-                var note = st.Mod.Install.Note.ToString();
-                if (!st.Done && st.Mod.Id.StartsWith("Script Hook V", StringComparison.OrdinalIgnoreCase))
-                {
-                    if (GtaInstallService.FindScriptHookArchive(downloads) is { } zip)
-                    {
-                        note = Loc.F("gta.shv.found", Path.GetFileName(zip));
-                        fromArchive = () => PutScriptHook(zip);
-                        label = Loc.T("gta.shv.put");
-                    }
-                    else fromArchive = () => PickScriptHook();
-                }
-                steps.Children.Add(Step(st.Mod.DisplayName.Length > 0 ? st.Mod.DisplayName : st.Mod.Id, note,
-                    st.Done, st.Required, st.Mod.Install.Page, fromArchive, label));
+                // not found yet: the author's page and "Choose file…" (the launcher keeps a copy in the downloads folder)
+                var mod = st.Mod;
+                Action? pickArchive = !st.Done && mod.UserArchive != null ? () => PickUserArchive(mod, downloads) : null;
+                steps.Children.Add(Step(mod.DisplayName.Length > 0 ? mod.DisplayName : mod.Id, mod.Install.Note.ToString(),
+                    st.Done, st.Required, mod.Install.Page, pickArchive));
             }
+        }
         // Standard without NVE: its step is still shown — it is what opens High and Ultra
         if (!nve && Level == 0 && GtaInstallService.LoadPack("high")?.Mods.FirstOrDefault(x => x.Provides == "nve") is { } nveMod)
             steps.Children.Add(Step(nveMod.DisplayName.Length > 0 ? nveMod.DisplayName : nveMod.Id, nveMod.Install.Note.ToString(),
                 false, false, nveMod.Install.Page, null));
-        // Dispatch V: the file the player downloads himself and points the launcher to
-        if (plan?.Install.FirstOrDefault(x => x.UserArchive != null) is { } dispatch)
-        {
-            var have = DispatchFile(plan, downloads) != null;
-            steps.Children.Add(Step(dispatch.DisplayName.Length > 0 ? dispatch.DisplayName : dispatch.Id, dispatch.Install.Note.ToString(),
-                have, false, dispatch.Install.Page, () => PickDispatch(downloads)));
-        }
         // the player's own steps go right under the game folder: they decide whether INSTALL opens
         _body.Children.Insert(1, Wrap(steps));
 
@@ -266,6 +254,26 @@ public sealed class GtaWindow : Window
         _game = dlg.FolderName;
         _s.InstallDirs[GtaInstallService.GameKey] = _game;
         _s.Save();
+        Render();
+    }
+
+    /// <summary>The player points to his own archive of a mod: a copy goes to the downloads folder under the name the list expects.</summary>
+    private void PickUserArchive(GtaInstallService.Mod x, string downloads)
+    {
+        var dlg = new Microsoft.Win32.OpenFileDialog { Filter = "*.zip;*.rar;*.7z|*.zip;*.rar;*.7z", Title = Loc.T("gta.step.pick") };
+        if (dlg.ShowDialog(this) != true) return;
+        try
+        {
+            Directory.CreateDirectory(downloads);
+            var expect = x.UserArchive!.Expect;
+            var name = expect.Length > 0 && expect.IndexOfAny(Path.GetInvalidFileNameChars()) < 0 && Path.HasExtension(expect)
+                ? expect : Path.GetFileName(dlg.FileName);
+            // Dispatch V's check pattern wants its name in the file
+            if (!Path.HasExtension(expect) && !name.Contains(expect.Split(' ')[0], StringComparison.OrdinalIgnoreCase))
+                name = expect + Path.GetExtension(dlg.FileName);
+            File.Copy(dlg.FileName, Path.Combine(downloads, name), true);
+        }
+        catch (Exception ex) { Dialog.Show(this, ex.Message, Title); }
         Render();
     }
 
@@ -366,7 +374,8 @@ public sealed class GtaWindow : Window
         try
         {
             // the game's own launcher (Rockstar / Steam) starts it; args.txt carries -nobattleye
-            var exe = Path.Combine(_game, GtaInstallService.GameExe);
+            // the Rockstar / Steam start file: GTA5_Enhanced.exe alone says "start GTA V with the Rockstar Games Launcher"
+            var exe = File.Exists(Path.Combine(_game, "PlayGTAV.exe")) ? Path.Combine(_game, "PlayGTAV.exe") : Path.Combine(_game, GtaInstallService.GameExe);
             Process.Start(new ProcessStartInfo(exe) { WorkingDirectory = _game, UseShellExecute = true });
             AppLog.Write("gta play: " + exe);
             Close();

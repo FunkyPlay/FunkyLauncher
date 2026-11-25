@@ -4,7 +4,7 @@
  "addonId": "gta5-main",
  "listVersion": "0.1.0",
  "forMainVersion": "0.1.0",
- "generated": "2026-11-25",
+ "generated": "2026-11-26",
  "game": "GTA V Enhanced",
  "gameVersion": "1.0.1158.16",
  "tokens": {
@@ -93,6 +93,32 @@
     }
    },
    "required": true,
+   "userArchive": {
+    "expect": "ScriptHookV_3889.0_1158.13.zip",
+    "sha256": "b64c97c3353906f14621e7e9511e4aec2a7d436ecc21ed124d3816585e2e6188"
+   },
+   "mapAfterPick": [
+    [
+     "bin/ScriptHookV.dll",
+     "{gameRoot}/ScriptHookV.dll"
+    ],
+    [
+     "bin/xinput1_4.dll",
+     "{gameRoot}/xinput1_4.dll"
+    ],
+    [
+     "bin/dinput8.dll",
+     "{gameRoot}/dinput8.dll"
+    ],
+    [
+     "bin/NativeTrainer.asi",
+     "{gameRoot}/NativeTrainer.asi"
+    ],
+    [
+     "bin/args.txt",
+     "{gameRoot}/args.txt"
+    ]
+   ],
    "order": 1,
    "modFolder": "Script Hook V"
   },
