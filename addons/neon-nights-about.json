@@ -1581,6 +1581,14 @@
   "Zwei Custom PMU Pose Packs Core": {
    "ru": "Основа для наборов поз Zwei",
    "en": "Core for Zwei pose packs"
+  },
+  "Curbside 35922 1.0.1 2026": {
+   "ru": "Вызванная машина подъезжает прямо к вам и едет следом",
+   "en": "Your summoned car pulls up right next to you and follows"
+  },
+  "Advanced Crash Reporter 34403 1.6 2026": {
+   "ru": "После вылета показывает, какой мод его вызвал",
+   "en": "After a crash, shows which mod caused it"
   }
  }
 }
