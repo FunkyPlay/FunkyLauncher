@@ -139,8 +139,9 @@ public static partial class Mo2Profile
         var keys = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         foreach (var f in order.Modlist)
             if (VersionTail.Match(f) is { Success: true } mm) keys.Add(mm.Groups[1].Value.Trim() + "|" + mm.Groups[2].Value);
-        return folder => !inOrder.Contains(folder) && VersionTail.Match(folder) is { Success: true } mm
-                         && keys.Contains(mm.Groups[1].Value.Trim() + "|" + mm.Groups[2].Value);
+        var dropped = new HashSet<string>(order.Dropped, StringComparer.OrdinalIgnoreCase);
+        return folder => !inOrder.Contains(folder) && (dropped.Contains(folder) || VersionTail.Match(folder) is { Success: true } mm
+                         && keys.Contains(mm.Groups[1].Value.Trim() + "|" + mm.Groups[2].Value));
     }
 
     /// <summary>MO2 profiles of the three public versions (Funky 25.11: one MO2 per game, switch by profile).</summary>

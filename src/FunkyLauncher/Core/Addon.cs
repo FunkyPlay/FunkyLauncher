@@ -126,6 +126,9 @@ public sealed class ModOrder
     [JsonPropertyName("nifFixes")] public List<NifFix> NifFixes { get; set; } = new();
     /// <summary>Mod folders that stay switched off in the profile (as in the modlist author's profile).</summary>
     [JsonPropertyName("modlistOff")] public List<string> ModlistOff { get; set; } = new();
+    /// <summary>0.1.23: mod folders an earlier version of the modlist had and this one dropped — switched off where they are
+    /// still on after an update (Neon 0.1.7: Immersive Third Person next to Cyber Sight). Their files stay.</summary>
+    [JsonPropertyName("dropped")] public List<string> Dropped { get; set; } = new();
     /// <summary>0.1.22: mod folders the rest of the modlist stands on — the player cannot switch them off in the launcher.</summary>
     [JsonPropertyName("core")] public List<string> Core { get; set; } = new();
     /// <summary>Our own files (a zip built into the launcher, paths relative to the install folder): profile files, own mods.</summary>
