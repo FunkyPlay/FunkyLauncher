@@ -4,16 +4,53 @@
   "modFolder": "FunkyPlay - Русские названия",
   "prefix": "FunkyPlay_RU_Names",
   "gameType": "fallout4",
-  "dicts": [ { "path": "files/fallout4/names-ru.tsv", "sha256": "7a92b8fa039fc6f97c6f6884c43a6c4028cac64a5a3df632a4321bb48a9f9f8d" } ],
+  "dicts": [
+   {
+    "path": "files/fallout4/names-ru.tsv",
+    "sha256": "7a92b8fa039fc6f97c6f6884c43a6c4028cac64a5a3df632a4321bb48a9f9f8d"
+   }
+  ],
   "credits": [
-   { "mod": "Amazing FollowerTweaks", "author": "Dheuster", "url": "https://www.nexusmods.com/fallout4/mods/26976" },
-   { "mod": "Sidearms of the Wasteland", "author": "Gecko In A Can 77", "url": "https://www.nexusmods.com/fallout4/mods/96613" },
-   { "mod": "Boon Island - Isles Of New England", "author": "Tenhats и Shreddah4", "url": "https://www.nexusmods.com/fallout4/mods/84449" },
-   { "mod": "Misery Island - Isles Of New England", "author": "Tenhats и Shreddah4", "url": "https://www.nexusmods.com/fallout4/mods/87983" },
-   { "mod": "Caves Of The Commonwealth", "author": "shreddah4", "url": "https://www.nexusmods.com/fallout4/mods/75647" },
-   { "mod": "Eli's Armour Compendium", "author": "Elianora", "url": "https://www.nexusmods.com/fallout4/mods/22431" },
-   { "mod": "West Tek Tactical Optics", "author": "fadingsignal", "url": "https://www.nexusmods.com/fallout4/mods/12220" },
-   { "mod": "K-9 Harness", "author": "fadingsignal", "url": "https://www.nexusmods.com/fallout4/mods/17686" }
+   {
+    "mod": "Amazing FollowerTweaks",
+    "author": "Dheuster",
+    "url": "https://www.nexusmods.com/fallout4/mods/26976"
+   },
+   {
+    "mod": "Sidearms of the Wasteland",
+    "author": "Gecko In A Can 77",
+    "url": "https://www.nexusmods.com/fallout4/mods/96613"
+   },
+   {
+    "mod": "Boon Island - Isles Of New England",
+    "author": "Tenhats и Shreddah4",
+    "url": "https://www.nexusmods.com/fallout4/mods/84449"
+   },
+   {
+    "mod": "Misery Island - Isles Of New England",
+    "author": "Tenhats и Shreddah4",
+    "url": "https://www.nexusmods.com/fallout4/mods/87983"
+   },
+   {
+    "mod": "Caves Of The Commonwealth",
+    "author": "shreddah4",
+    "url": "https://www.nexusmods.com/fallout4/mods/75647"
+   },
+   {
+    "mod": "Eli's Armour Compendium",
+    "author": "Elianora",
+    "url": "https://www.nexusmods.com/fallout4/mods/22431"
+   },
+   {
+    "mod": "West Tek Tactical Optics",
+    "author": "fadingsignal",
+    "url": "https://www.nexusmods.com/fallout4/mods/12220"
+   },
+   {
+    "mod": "K-9 Harness",
+    "author": "fadingsignal",
+    "url": "https://www.nexusmods.com/fallout4/mods/17686"
+   }
   ]
  },
  "generated": "2026-11-17",
@@ -105,11 +142,20 @@
   "BodySlide and Outfit Studio",
   "Caliente's Beautiful Bodies Enhancer -CBBE-",
   "Full Body First Person - F4SE",
+  "CSEP Presents - Detour - New Town and Quest Mod",
+  "Sons of Steel - Brotherhood Infantry Armor",
   "Ranger Power Armor",
   "Reinforcements and Retribution",
   "Mod Configuration Menu - RD",
   "Visible Favorites - F4SE",
   "Terrain Freckles Be Gone",
+  "Weapon Subgraph Accelerator - F4SE",
+  "Lighting Fixes",
+  "Draw Calls Reducer - FPS Boost",
+  "Dynamic Grass",
+  "Acoustic Occlusion - F4SE",
+  "Workshop and Settlement Fixes",
+  "Black Landscape Fix - F4SE",
   "Faster Cell Lookup",
   "Stuck LOD Fix - F4SE",
   "Rain Bug Fix - F4SE",
@@ -456,6 +502,8 @@
   "AA FusionCityRising.esp",
   "Modern Military Pack.esp",
   "VtawWardrobe9.esp",
+  "CSEPDetour.esp",
+  "BrotherhoodInfantryArmor.esp",
   "prp.esp",
   "Flutter Flicker Fixer For Foliage.esp",
   "InteriorsEnhanced_AIO_PRP_Patch.esp",

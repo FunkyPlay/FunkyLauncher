@@ -5717,6 +5717,271 @@
     "from": "Modern Military Pack 2k",
     "fomod": false
    }
+  },
+  {
+   "id": "Weapon Subgraph Accelerator - F4SE",
+   "modFolder": "Weapon Subgraph Accelerator - F4SE",
+   "displayName": {
+    "ru": "Weapon Subgraph Accelerator - F4SE",
+    "en": "Weapon Subgraph Accelerator - F4SE"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 107797,
+    "fileId": 412207,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/107797?tab=files&file_id=412207"
+   },
+   "version": "1.2.4",
+   "archive": {
+    "nexusFileName": "cb/3a/08/cb3a08e5-594c-42b6-8d4b-8b5c7454d83f",
+    "localFileName": "cb/3a/08/cb3a08e5-594c-42b6-8d4b-8b5c7454d83f",
+    "size": 351711,
+    "sha256": "70c24e5e1fb35f7e16e63dfb46e60177430db5548bb264b98f9acf8aff13f129"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Lighting Fixes",
+   "modFolder": "Lighting Fixes",
+   "displayName": {
+    "ru": "Lighting Fixes",
+    "en": "Lighting Fixes"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 108580,
+    "fileId": 409856,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/108580?tab=files&file_id=409856"
+   },
+   "version": "1.0.0",
+   "archive": {
+    "nexusFileName": "1b/2e/bb/1b2ebbb1-a292-403a-9074-0ab4ea9a0828",
+    "localFileName": "1b/2e/bb/1b2ebbb1-a292-403a-9074-0ab4ea9a0828",
+    "size": 366390,
+    "sha256": "79b5d9159c3042594b2d3f85e218852a45d779cd7afed20ba0e1ce295271a7ac"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Draw Calls Reducer - FPS Boost",
+   "modFolder": "Draw Calls Reducer - FPS Boost",
+   "displayName": {
+    "ru": "Draw Calls Reducer - FPS Boost",
+    "en": "Draw Calls Reducer - FPS Boost"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 110754,
+    "fileId": 422370,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/110754?tab=files&file_id=422370"
+   },
+   "version": "1.0.8.4",
+   "archive": {
+    "nexusFileName": "74/22/61/74226190-098e-4e59-808c-a923bd755600",
+    "localFileName": "74/22/61/74226190-098e-4e59-808c-a923bd755600",
+    "size": 550273,
+    "sha256": "3056009b0c393bd79f0985606546f14e90246afc469740dfafc3050ebb243597"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Dynamic Grass",
+   "modFolder": "Dynamic Grass",
+   "displayName": {
+    "ru": "Dynamic Grass",
+    "en": "Dynamic Grass"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 108480,
+    "fileId": 413066,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/108480?tab=files&file_id=413066"
+   },
+   "version": "2.0.2",
+   "archive": {
+    "nexusFileName": "9d/6d/18/9d6d189a-abe1-4ea3-8a65-0e4d21e96c6d",
+    "localFileName": "9d/6d/18/9d6d189a-abe1-4ea3-8a65-0e4d21e96c6d",
+    "size": 401022,
+    "sha256": "d17023f30032b3cd5966136eb04eb96a68c59dbf3c0d62a8851bea2e4aef88a1"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Acoustic Occlusion - F4SE",
+   "modFolder": "Acoustic Occlusion - F4SE",
+   "displayName": {
+    "ru": "Acoustic Occlusion - F4SE",
+    "en": "Acoustic Occlusion - F4SE"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 107184,
+    "fileId": 416824,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/107184?tab=files&file_id=416824"
+   },
+   "version": "2.0.0",
+   "archive": {
+    "nexusFileName": "f2/0a/16/f20a167f-0a30-4fc5-a77e-4e6f2bce8209",
+    "localFileName": "f2/0a/16/f20a167f-0a30-4fc5-a77e-4e6f2bce8209",
+    "size": 482367,
+    "sha256": "7afa22ac00aa15e8afa94bb05dc4ddeae020df827deeea1194813ecf54f8d074"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Workshop and Settlement Fixes",
+   "modFolder": "Workshop and Settlement Fixes",
+   "displayName": {
+    "ru": "Workshop and Settlement Fixes",
+    "en": "Workshop and Settlement Fixes"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 108866,
+    "fileId": 413074,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/108866?tab=files&file_id=413074"
+   },
+   "version": "1.1.0",
+   "archive": {
+    "nexusFileName": "8b/7d/f7/8b7df7bb-5af4-4047-8ae9-555b4f57f3c3",
+    "localFileName": "8b/7d/f7/8b7df7bb-5af4-4047-8ae9-555b4f57f3c3",
+    "size": 429996,
+    "sha256": "0c982c639ca421092c2db65370fccf8643a26783cf76962d376e99ddf9a65d2a"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Black Landscape Fix - F4SE",
+   "modFolder": "Black Landscape Fix - F4SE",
+   "displayName": {
+    "ru": "Black Landscape Fix - F4SE",
+    "en": "Black Landscape Fix - F4SE"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 108574,
+    "fileId": 409796,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/108574?tab=files&file_id=409796"
+   },
+   "version": "1.0.1",
+   "archive": {
+    "nexusFileName": "a9/bb/e4/a9bbe419-30be-4166-a3b4-ff3746510cb9",
+    "localFileName": "a9/bb/e4/a9bbe419-30be-4166-a3b4-ff3746510cb9",
+    "size": 341827,
+    "sha256": "8d491feffe937229fc92b05431224c9b2a49fa6c4191f0488e10619deb7170c0"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "CSEP Presents - Detour - New Town and Quest Mod",
+   "modFolder": "CSEP Presents - Detour - New Town and Quest Mod",
+   "displayName": {
+    "ru": "CSEP Presents - Detour - New Town and Quest Mod",
+    "en": "CSEP Presents - Detour - New Town and Quest Mod"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 109732,
+    "fileId": 419578,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/109732?tab=files&file_id=419578"
+   },
+   "version": "1.1.2",
+   "archive": {
+    "nexusFileName": "12/a3/2f/12a32fd0-c1bc-4c29-a76b-de1b7c672233",
+    "localFileName": "12/a3/2f/12a32fd0-c1bc-4c29-a76b-de1b7c672233",
+    "size": 191157891,
+    "sha256": "1d451409d4503d168cba771f3271cf08547f3d44140a1b88fa2f9be58485e3c5"
+   },
+   "plugins": [
+    "CSEPDetour.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "plugins/BaseMod/CSEPDetour.esp",
+      "CSEPDetour.esp"
+     ],
+     [
+      "plugins/BaseMod/CSEPDetour - Main.ba2",
+      "CSEPDetour - Main.ba2"
+     ],
+     [
+      "plugins/BaseMod/CSEPDetour - Textures.ba2",
+      "CSEPDetour - Textures.ba2"
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "Base Mod: Base Mod"
+    ]
+   },
+   "onlyWithout": "ru"
+  },
+  {
+   "id": "Sons of Steel - Brotherhood Infantry Armor",
+   "modFolder": "Sons of Steel - Brotherhood Infantry Armor",
+   "displayName": {
+    "ru": "Sons of Steel - Brotherhood Infantry Armor",
+    "en": "Sons of Steel - Brotherhood Infantry Armor"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 107610,
+    "fileId": 415166,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/107610?tab=files&file_id=415166"
+   },
+   "version": "1.8",
+   "archive": {
+    "nexusFileName": "64/1e/1e/641e1e54-7587-472e-8da2-004b40a13684",
+    "localFileName": "64/1e/1e/641e1e54-7587-472e-8da2-004b40a13684",
+    "size": 286306624,
+    "sha256": "f5efea7f9925f222110ba43cb4ea52a511918b5462b2f76815d39a92675cc303"
+   },
+   "plugins": [
+    "BrotherhoodInfantryArmor.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   },
+   "onlyWithout": "ru"
   }
  ]
 }

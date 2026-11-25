@@ -678,6 +678,42 @@
   },
   "Diamond City Expansion": {
    "hidden": true
+  },
+  "Weapon Subgraph Accelerator - F4SE": {
+   "ru": "Нет рывков при смене оружия, загрузки быстрее",
+   "en": "No stutter when switching weapons, faster loading"
+  },
+  "Lighting Fixes": {
+   "ru": "Исправляет ошибки освещения, например у стекла",
+   "en": "Fixes lighting bugs, such as on glass"
+  },
+  "Draw Calls Reducer - FPS Boost": {
+   "ru": "Больше FPS: тени и объекты рисуются экономнее",
+   "en": "More FPS: shadows and objects are drawn more efficiently"
+  },
+  "Dynamic Grass": {
+   "ru": "Трава не растёт сквозь полы и постройки",
+   "en": "Grass no longer grows through floors and buildings"
+  },
+  "Acoustic Occlusion - F4SE": {
+   "ru": "Стены и двери глушат звук",
+   "en": "Walls and doors muffle sound"
+  },
+  "Workshop and Settlement Fixes": {
+   "ru": "Исправления строительства и жизни поселений",
+   "en": "Fixes for building and settlement life"
+  },
+  "Black Landscape Fix - F4SE": {
+   "ru": "Земля больше не бывает чёрной",
+   "en": "No more black ground textures"
+  },
+  "CSEP Presents - Detour - New Town and Quest Mod": {
+   "ru": "Новый город с жителями, заданиями и торговцами (только английская версия)",
+   "en": "A new town with characters, quests and vendors"
+  },
+  "Sons of Steel - Brotherhood Infantry Armor": {
+   "ru": "Новая броня пехоты Братства Стали (только английская версия)",
+   "en": "New Brotherhood of Steel infantry armour"
   }
  }
 }
