@@ -356,14 +356,36 @@ public static class Addons
     /// <summary>"hidden": true in the about file — the mod is not listed in the window (it still stays in the modlist).</summary>
     public const string HiddenMark = "\u0000hidden";
 
-    public static IReadOnlyDictionary<string, string> About(string modlistId) => About(modlistId, out _);
+    public static IReadOnlyDictionary<string, string> About(string modlistId) => About(modlistId, out _, out _);
+
+    public static IReadOnlyDictionary<string, string> About(string modlistId, out Dictionary<string, long> nexusIds) =>
+        About(modlistId, out nexusIds, out _);
+
+    /// <summary>"required": true in the about file — the player cannot switch the mod off (an author's condition:
+    /// sabbath7991 allowed our translation only while his mods are mandatory, Legal 25.11).</summary>
+    public static HashSet<string> Required(string modlistId)
+    {
+        // asked once per mod while the window or the profile is built: read the file once per its version
+        DateTime stamp;
+        try { var f = CacheFile(modlistId, "about"); stamp = File.Exists(f) ? File.GetLastWriteTimeUtc(f) : DateTime.MinValue; } catch { stamp = DateTime.MinValue; }
+        lock (_required)
+        {
+            if (_required.TryGetValue(modlistId, out var c) && c.Stamp == stamp) return c.Set;
+            About(modlistId, out _, out var r);
+            _required[modlistId] = (stamp, r);
+            return r;
+        }
+    }
+
+    private static readonly Dictionary<string, (DateTime Stamp, HashSet<string> Set)> _required = new(StringComparer.OrdinalIgnoreCase);
 
     /// <param name="nexusIds">"nexusModId" in the about file: the mod's own Nexus page when the list's top-level id
     /// is wrong (mods made of several archives — the list took another archive's id, chat Cyberpunk 25.11).</param>
-    public static IReadOnlyDictionary<string, string> About(string modlistId, out Dictionary<string, long> nexusIds)
+    public static IReadOnlyDictionary<string, string> About(string modlistId, out Dictionary<string, long> nexusIds, out HashSet<string> required)
     {
         var res = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
         nexusIds = new Dictionary<string, long>(StringComparer.OrdinalIgnoreCase);
+        required = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         try
         {
             string? json = null;
@@ -380,7 +402,10 @@ public static class Addons
             if (!d.RootElement.TryGetProperty("mods", out var mods)) return res;
             var lang = Loc.Lang == "ru" ? "ru" : "en";
             foreach (var p in mods.EnumerateObject())
+            {
                 if (p.Value.TryGetProperty("nexusModId", out var nid) && nid.TryGetInt64(out var id) && id > 0) nexusIds[p.Name] = id;
+                if (p.Value.TryGetProperty("required", out var rq) && rq.ValueKind == JsonValueKind.True) required.Add(p.Name);
+            }
             foreach (var p in mods.EnumerateObject())
                 if (p.Value.TryGetProperty("hidden", out var h) && h.ValueKind == JsonValueKind.True) res[p.Name] = HiddenMark;
                 else if (p.Value.TryGetProperty(lang, out var t) && t.GetString() is { Length: > 0 } s) res[p.Name] = s;

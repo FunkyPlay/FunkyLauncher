@@ -28,7 +28,8 @@ public static class ModChoices
     private static readonly Regex NexusTail = new(@"\s+\d{2,6}\s+v?[\w.\-]+\s+20\d\d$", RegexOptions.CultureInvariant);
 
     public static bool IsCore(ModOrder order, string folder) =>
-        order.Core.Count > 0 ? order.Core.Contains(folder, StringComparer.OrdinalIgnoreCase) : KnownCore.IsMatch(folder);
+        (order.Core.Count > 0 ? order.Core.Contains(folder, StringComparer.OrdinalIgnoreCase) : KnownCore.IsMatch(folder))
+        || Addons.Required(order.ModlistId).Contains(folder);
 
     public static IReadOnlyDictionary<string, bool> Of(Settings s, Modlist m) =>
         s.ModChoices.TryGetValue(m.Id, out var c) ? c : new Dictionary<string, bool>();

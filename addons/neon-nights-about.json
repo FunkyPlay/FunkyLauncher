@@ -33,6 +33,7 @@
    "en": "Romance Alex at The Moth during Birds with Broken Wings"
   },
   "All Guns": {
+   "required": true,
    "ru": "30 видов оружия в стиле Call of Duty",
    "en": "30 Call of Duty style guns"
   },
@@ -993,6 +994,7 @@
    "en": "Use several pose and animation packs at once"
   },
   "Nokota Stingray - Dark Steel": {
+   "required": true,
    "ru": "Машина Nokota Stingray",
    "en": "Nokota Stingray car"
   },
@@ -1085,6 +1087,7 @@
    "en": "200+ more characters in photo mode"
   },
   "Pistol Pack": {
+   "required": true,
    "ru": "12 новых пистолетов",
    "en": "12 new pistols"
   },
