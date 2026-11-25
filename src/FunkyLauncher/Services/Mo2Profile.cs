@@ -45,6 +45,9 @@ public static partial class Mo2Profile
                 // e.g. the translation of an 18+ mod: on only while that pack is on too
                 if (w && !string.IsNullOrEmpty(x.OnlyWith))
                     w = Addons.OfKind(m.Id, x.OnlyWith) is { } other && PackOn(other);
+                // 0.1.23 (Fallout 4 chat): e.g. a mod without a Russian translation — only in the English version
+                if (w && !string.IsNullOrEmpty(x.OnlyWithout))
+                    w = !(Addons.OfKind(m.Id, x.OnlyWithout) is { } other2 && PackOn(other2));
                 map[x.ModFolder] = map.TryGetValue(x.ModFolder, out var prev) ? prev || w : w;
                 if (w) foreach (var r in x.Replaces) replaced.Add(r);
             }

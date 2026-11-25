@@ -47,6 +47,8 @@ public sealed class AddonMod
     [JsonPropertyName("replaces")] public List<string> Replaces { get; set; } = new();
     /// <summary>Only together with that pack (e.g. "adult": a translation of an 18+ mod); installed with its own pack, switched on only then.</summary>
     [JsonPropertyName("onlyWith")] public string? OnlyWith { get; set; }
+    /// <summary>0.1.23: only while that pack is OFF (e.g. "ru": a mod with no Russian translation, English version only).</summary>
+    [JsonPropertyName("onlyWithout")] public string? OnlyWithout { get; set; }
     /// <summary>A file not on Nexus: the page where the player presses the site's download button (the launcher installs the file).</summary>
     [JsonPropertyName("url")] public string? Url { get; set; }
     /// <summary>Our own small file (a FunkyPlay compatibility patch) built into the launcher: "files/starfield/X.esm".</summary>
