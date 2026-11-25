@@ -534,7 +534,7 @@ public static class GtaInstallService
         if (File.Exists(list))
             foreach (var line in File.ReadAllLines(list).Distinct(StringComparer.OrdinalIgnoreCase))
             {
-                var rel = line.StartsWith("+ ") ? line[2..] : line.StartsWith("a ") ? null : line;
+                var rel = line.StartsWith("+ ") ? line[2..] : line.StartsWith("a ") || line.StartsWith("x ") ? null : line;
                 if (rel == null || rel.Length == 0) continue;
                 var f = Path.Combine(game, rel);
                 try { if (File.Exists(f)) { File.Delete(f); removed++; } } catch (Exception ex) { errors.Add(rel + ": " + ex.Message); }
@@ -563,13 +563,67 @@ public static class GtaInstallService
                 }
                 catch (Exception ex) { errors.Add(parts[0] + ": " + ex.Message); }
             }
+        var moved = MoveLeftovers(game, list, errors);
         if (errors.Count == 0)
         {
             RemoveEmptyDirs(game);
             TryDeleteDir(OursDir(game));
         }
-        AppLog.Write($"gta restore: removed {removed}, restored {restored}, errors {errors.Count}");
+        AppLog.Write($"gta restore: removed {removed}, restored {restored}, leftovers moved {moved}, errors {errors.Count}");
         return (removed, restored, errors);
+    }
+
+    /// <summary>Folders the mods create while the game runs (GTA chat 26.11): SML's copies in .tmp, saves and ini of scripts.</summary>
+    private static readonly string[] LeftoverDirs = { ".tmp", "scripts" };
+    /// <summary>Files the mods write into the game folder while the game runs (logs, ReShade's second ini).</summary>
+    private static readonly string[] LeftoverFiles =
+    {
+        "DSOUND.log", "ScriptHookV.log", "ScriptHookVDotNet.log", "SHVDN.log", "TweaksV.log", "asiloader.log",
+        "iFruitAddon2.log", "SPA II.log", "SPA II.txt", "SimpleTaxiMission.log", "ReShade2.ini",
+    };
+
+    /// <summary>
+    /// "Restore clean game" also takes away what the mods created while the game ran. Nothing is deleted: it is
+    /// moved to &lt;launcher data&gt;\gta-leftovers\&lt;time&gt; (the player's saves of script mods stay there). A folder that
+    /// was in the game folder before our first install ("x name" in the journal) stays.
+    /// </summary>
+    private static int MoveLeftovers(string game, string list, List<string> errors)
+    {
+        var before = File.Exists(list)
+            ? new HashSet<string>(File.ReadAllLines(list).Where(l => l.StartsWith("x ")).Select(l => l[2..]), StringComparer.OrdinalIgnoreCase)
+            : new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        var to = Path.Combine(AppConfig.DataDir, "gta-leftovers", DateTime.Now.ToString("yyyyMMdd-HHmmss"));
+        var moved = 0;
+        void Move(string rel, bool dir)
+        {
+            var src = Path.Combine(game, rel);
+            if (dir ? !Directory.Exists(src) : !File.Exists(src)) return;
+            var dst = Path.Combine(to, rel);
+            try
+            {
+                if (dir) MoveDir(src, dst);
+                else { Directory.CreateDirectory(Path.GetDirectoryName(dst)!); File.Copy(src, dst, true); File.Delete(src); }
+                moved++;
+            }
+            catch (Exception ex) { errors.Add(rel + ": " + ex.Message); }
+        }
+        foreach (var d in LeftoverDirs) if (!before.Contains(d)) Move(d, true);
+        foreach (var f in LeftoverFiles) Move(f, false);
+        if (moved > 0) AppLog.Write($"gta restore: {moved} leftovers moved to {to}");
+        return moved;
+    }
+
+    /// <summary>Copies a folder over and removes the source (the launcher data may be on another disk than the game).</summary>
+    private static void MoveDir(string src, string dst)
+    {
+        foreach (var f in Directory.EnumerateFiles(src, "*", SearchOption.AllDirectories))
+        {
+            var t = Path.Combine(dst, Path.GetRelativePath(src, f));
+            Directory.CreateDirectory(Path.GetDirectoryName(t)!);
+            File.Copy(f, t, true);
+        }
+        Directory.CreateDirectory(dst);
+        Directory.Delete(src, true);
     }
 
     private static void RemoveEmptyDirs(string game)
@@ -599,6 +653,10 @@ public static class GtaInstallService
             _known = File.Exists(InstalledList(game))
                 ? new HashSet<string>(File.ReadAllLines(InstalledList(game)), StringComparer.OrdinalIgnoreCase)
                 : new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            // first install into this folder: note the mod folders the player already had ("Restore" leaves them)
+            if (_known.Count == 0)
+                foreach (var d in LeftoverDirs)
+                    if (Directory.Exists(Path.Combine(game, d))) { _known.Add("x " + d); _lines.Add("x " + d); }
         }
 
         public void Put(string src, string dst, bool noOverwrite)
