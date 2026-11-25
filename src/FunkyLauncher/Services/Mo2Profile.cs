@@ -95,6 +95,7 @@ public static partial class Mo2Profile
                 }
             }
         if (order.NifFixes.Count > 0) made.AddRange(NifFixer.Apply(Path.Combine(s.InstallDir(m), "mods"), order.NifFixes));
+        try { if (Directory.Exists(ProfileDir(s, m))) ProfileInis(m, ProfileDir(s, m)); } catch { } // 0.1.23: #253, also before PLAY
         var listPath = Path.Combine(ProfileDir(s, m), "modlist.txt");
         if (!File.Exists(listPath)) return;
         var lines = File.ReadAllLines(listPath).ToList();
@@ -292,14 +293,24 @@ public static partial class Mo2Profile
         }
 
         // ---- the other profile INIs MO2 expects (otherwise it warns on every start)
+        ProfileInis(m, profile);
+    }
+
+    /// <summary>The profile INIs MO2 expects: from Documents\My Games when the game wrote them, never over an INI with content.</summary>
+    public static void ProfileInis(Modlist m, string profile)
+    {
         foreach (var ini in m.Mo2ProfileInis)
         {
             var dst = Path.Combine(profile, ini);
-            if (File.Exists(dst) || ini.Equals(m.Mo2IniName, StringComparison.OrdinalIgnoreCase)) continue;
+            if (ini.Equals(m.Mo2IniName, StringComparison.OrdinalIgnoreCase)) continue;
             var mine = m.MyGamesFolder.Length == 0 ? null : Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "My Games", m.MyGamesFolder, ini);
-            if (mine != null && File.Exists(mine)) File.Copy(mine, dst);
-            else File.WriteAllText(dst, "");
+            // 0.1.23 (support #253, Fallout 4 chat): a game never started before the install left an empty INI here —
+            // small window, English; once the game has written its own, take it (an INI with content is kept as it is)
+            var empty = File.Exists(dst) && new FileInfo(dst).Length == 0;
+            if (File.Exists(dst) && !empty) continue;
+            if (mine != null && File.Exists(mine) && new FileInfo(mine).Length > 0) File.Copy(mine, dst, true);
+            else if (!File.Exists(dst)) File.WriteAllText(dst, "");
         }
     }
 
