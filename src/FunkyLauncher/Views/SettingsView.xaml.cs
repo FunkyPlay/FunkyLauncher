@@ -47,6 +47,11 @@ public partial class SettingsView : UserControl
             link.Click += (_, _) => { try { Services.PlayService.OpenUrl(url); } catch { } };
             AboutLinks.Inlines.Add(link);
         }
+        // 0.1.23: full license texts and the source of this version (Legal 25.11)
+        AboutLinks.Inlines.Add(new System.Windows.Documents.Run("     "));
+        var lic = new System.Windows.Documents.Hyperlink(new System.Windows.Documents.Run("📄 " + Loc.T("lic.title"))) { Foreground = (System.Windows.Media.Brush)FindResource("Cyan"), TextDecorations = null };
+        lic.Click += (_, _) => LicensesWindow.Open(Window.GetWindow(this));
+        AboutLinks.Inlines.Add(lic);
     }
 
     // ---------- Funky Pro key ----------

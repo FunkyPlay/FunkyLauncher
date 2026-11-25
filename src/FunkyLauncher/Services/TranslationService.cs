@@ -63,8 +63,9 @@ public static class TranslationService
             if (Directory.Exists(building)) Directory.Delete(building, true);
             Directory.CreateDirectory(building);
             token.ThrowIfCancellationRequested();
-            var opts = new FunkyPatcher.Program.PatcherOptions(installDir, m.Mo2Profile, game, dictFiles, building, spec.GameType, spec.Prefix, ReportFile(s, m));
-            var r = await Task.Run(() => FunkyPatcher.Program.Build(opts, t => Log(s, m, "  " + t)), token);
+            // a separate process (GPL Mutagen stays out of the launcher's process, Legal 25.11)
+            var r = await PatcherTool.BuildAsync(installDir, m.Mo2Profile, game, dictFiles, building, spec.GameType, spec.Prefix,
+                ReportFile(s, m), t => Log(s, m, "  " + t), token);
             if (!r.Ok) throw new InvalidOperationException(r.Error ?? "the helper failed");
 
             Directory.CreateDirectory(target);

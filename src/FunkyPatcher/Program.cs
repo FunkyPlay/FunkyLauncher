@@ -73,12 +73,13 @@ public static class Program
         var mo2 = Arg("--mo2"); var profile = Arg("--profile"); var outDir = Arg("--out");
         var game = Arg("--game"); var prefix = Arg("--name") ?? "FunkyPlay_RU_Names";
         var gameType = (Arg("--game-type") ?? "starfield").ToLowerInvariant();
+        var reportPath = Arg("--report");
         if (mo2 == null || profile == null || dicts.Count == 0 || outDir == null || game == null)
         {
-            Console.Error.WriteLine("FunkyPatcher --mo2 <MO2 folder> --profile <MO2 profile> --game <game folder> --dict <dictionary.tsv> [--dict <another.tsv>] --out <output mod folder> [--name <plugin name prefix>] [--game-type starfield|fallout4]");
+            Console.Error.WriteLine("FunkyPatcher --mo2 <MO2 folder> --profile <MO2 profile> --game <game folder> --dict <dictionary.tsv> [--dict <another.tsv>] --out <output mod folder> [--name <plugin name prefix>] [--game-type starfield|fallout4] [--report <report.json>]");
             return 2;
         }
-        var r = Build(new PatcherOptions(mo2, profile, game, dicts, outDir, gameType, prefix), Console.WriteLine);
+        var r = Build(new PatcherOptions(mo2, profile, game, dicts, outDir, gameType, prefix, reportPath), Console.WriteLine);
         Console.WriteLine($"ok={r.Ok} made={r.Made} skipped={r.Skipped} patches={r.Patches}");
         if (r.Error != null) Console.Error.WriteLine(r.Error);
         return r.Ok ? 0 : 1;

@@ -88,4 +88,4 @@ Funky Launcher — независимая неофициальная прогр�
 
 ## License
 
-GPL-3.0-or-later — see [LICENSE](LICENSE). The names “Funky Launcher”, “FunkyPlay” and “Neon Nights” are not covered by the license.
+GPL-3.0-or-later — see [LICENSE](LICENSE), with an additional permission under section 7 for the Funky Pro module ([licenses/ADDITIONAL-PERMISSION.txt](licenses/ADDITIONAL-PERMISSION.txt)). Third-party components: [licenses/THIRD-PARTY-NOTICES.txt](licenses/THIRD-PARTY-NOTICES.txt). FunkyPatcher (src/FunkyPatcher, uses Mutagen) is a separate GPL-3.0 program run as its own process. The names “Funky Launcher”, “FunkyPlay” and “Neon Nights” are not covered by the license.

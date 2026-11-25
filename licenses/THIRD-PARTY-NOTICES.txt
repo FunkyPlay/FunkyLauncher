@@ -1,0 +1,70 @@
+Funky Launcher — third-party components
+=======================================
+
+Funky Launcher: Copyright (C) 2026 Funky (FunkyPlay). GPL-3.0-or-later with an additional permission
+(GPL-3.0.txt, ADDITIONAL-PERMISSION.txt). Source code: https://github.com/FunkyPlay/FunkyLauncher
+(every release has a tag v<version> with the source of that exact version).
+
+Part 1. Inside FunkyLauncher.exe
+--------------------------------
+
+.NET runtime, WPF and Windows Forms 10.0 — Copyright (c) .NET Foundation and Contributors. MIT license (text below).
+  https://github.com/dotnet/runtime  https://github.com/dotnet/wpf  https://github.com/dotnet/winforms
+  Third-party notices of .NET: dotnet-THIRD-PARTY-NOTICES.txt
+
+System.Management 11.0.0, System.CodeDom 11.0.0 — © Microsoft Corporation. MIT license (text below).
+  https://github.com/dotnet/runtime
+
+SharpCompress 0.50.9 — Copyright (c) 2025 Adam Hathcock. MIT license (text below).
+  https://github.com/adamhathcock/sharpcompress
+
+Microsoft.Web.WebView2 1.0.4314.35 — Copyright (C) Microsoft Corporation. BSD-style license: WebView2-LICENSE.txt,
+  notices: WebView2-NOTICE.txt. The WebView2 runtime itself is part of Windows / Microsoft Edge and is not
+  shipped with the launcher.
+
+MIT License (for the components above marked "MIT", with their own copyright line):
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+  documentation files (the "Software"), to deal in the Software without restriction, including without
+  limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the
+  Software, and to permit persons to whom the Software is furnished to do so, subject to the following
+  conditions:
+
+  The above copyright notice and this permission notice shall be included in all copies or substantial
+  portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+  TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+  THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+  CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+  DEALINGS IN THE SOFTWARE.
+
+Part 2. FunkyPatcher.exe (a separate program)
+---------------------------------------------
+
+FunkyPatcher builds the Russian item-name patches on the player's PC (Starfield, Fallout 4). It is downloaded
+from the launcher's GitHub release of the same version and runs as a separate process.
+License: GPL-3.0 (GPL-3.0.txt). Source: https://github.com/FunkyPlay/FunkyLauncher/tree/main/src/FunkyPatcher
+Its components: FunkyPatcher-NOTICES.txt
+
+Part 3. Programs the launcher downloads and starts (not part of the launcher)
+------------------------------------------------------------------------------
+
+They are downloaded from their official addresses, checked by SHA-256 and started as separate programs,
+without changes.
+
+Mod Organizer 2 2.5.2 — GPL-3.0. Source: https://github.com/ModOrganizer2/modorganizer
+Wabbajack — GPL-3.0. Source: https://github.com/wabbajack-tools/wabbajack
+7-Zip (7zr.exe) — Copyright (C) Igor Pavlov. GNU LGPL (+ unRAR restriction). https://www.7-zip.org  Source: https://www.7-zip.org/download.html
+mpv (build by shinchiro) — GPL-2.0-or-later / LGPL-2.1-or-later. Source: https://github.com/mpv-player/mpv
+  build: https://github.com/shinchiro/mpv-winbuild-cmake
+FFmpeg — GPL / LGPL depending on the build. Source: https://ffmpeg.org/download.html
+RustDesk 1.5.3 (button "Funky Help") — AGPL-3.0. Source: https://github.com/rustdesk/rustdesk
+
+Part 4. Games and mods
+----------------------
+
+The games belong to their publishers. The launcher does not ship game files.
+Every mod belongs to its author. Mods are downloaded by the player from their pages on Nexus Mods (or the
+author's own page) under the author's terms; every mod of a modlist with a link to its page (author, license,
+permissions) is in the launcher's window "Mods of <modlist>". Our own small patches are made by FunkyPlay or, for item names, built on the player's PC.

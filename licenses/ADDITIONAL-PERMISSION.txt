@@ -1,0 +1,20 @@
+Funky Launcher — additional permission under GNU GPL version 3, section 7
+
+Copyright (C) 2026 Funky (FunkyPlay).
+
+Funky Launcher is free software: you can redistribute it and/or modify it under the terms of the GNU General
+Public License as published by the Free Software Foundation, either version 3 of the License, or (at your
+option) any later version (see GPL-3.0.txt).
+
+Additional permission under GNU GPL version 3, section 7:
+you may combine this program with a separate proprietary module that is loaded through the IProModule
+interface, and convey the combination, without providing the source of that module, provided the module
+contains no code of this program and no third-party GPL code. This permission covers only code whose
+copyright holder is FunkyPlay.
+
+Notes:
+- FunkyPatcher (src/FunkyPatcher, uses Mutagen under GPL-3.0) is a separate program. The launcher runs it as a
+  separate process and talks to it only through command-line arguments and a JSON report file. This
+  permission does not apply to FunkyPatcher or to any third-party code.
+- Contributions from other authors are accepted only with a transfer of rights (CLA/DCO), so that this
+  permission stays valid for the whole launcher code.

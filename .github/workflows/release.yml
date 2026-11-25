@@ -28,9 +28,20 @@ jobs:
           -p:EnableCompressionInSingleFile=true -p:ContinuousIntegrationBuild=true
           -o out
 
+      # 0.1.23: FunkyPatcher (Mutagen, GPL-3.0) is its own program; the launcher downloads it from this release
+      - name: Build single-file FunkyPatcher (a separate program)
+        run: >
+          dotnet publish src/FunkyPatcher -c Release -r win-x64 --self-contained true
+          -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true
+          -p:EnableCompressionInSingleFile=true -p:ContinuousIntegrationBuild=true
+          -o patcher
+
       - name: SHA-256 of the exe
         shell: pwsh
-        run: (Get-FileHash out/FunkyLauncher.exe -Algorithm SHA256).Hash | Tee-Object out/FunkyLauncher.exe.sha256
+        run: |
+          (Get-FileHash out/FunkyLauncher.exe -Algorithm SHA256).Hash | Tee-Object out/FunkyLauncher.exe.sha256
+          Copy-Item patcher/FunkyPatcher.exe out/FunkyPatcher.exe
+          (Get-FileHash out/FunkyPatcher.exe -Algorithm SHA256).Hash | Tee-Object out/FunkyPatcher.exe.sha256
 
       - uses: actions/upload-artifact@v4
         with:
@@ -38,6 +49,8 @@ jobs:
           path: |
             out/FunkyLauncher.exe
             out/FunkyLauncher.exe.sha256
+            out/FunkyPatcher.exe
+            out/FunkyPatcher.exe.sha256
 
       - name: Draft release with the exe
         if: startsWith(github.ref, 'refs/tags/')
@@ -50,4 +63,4 @@ jobs:
           if ($LASTEXITCODE -ne 0) {
             gh release create $tag --draft --title "Funky Launcher $($tag.TrimStart('v'))" --notes "Built by GitHub Actions from tag $tag."
           }
-          gh release upload $tag out/FunkyLauncher.exe out/FunkyLauncher.exe.sha256 --clobber
+          gh release upload $tag out/FunkyLauncher.exe out/FunkyLauncher.exe.sha256 out/FunkyPatcher.exe out/FunkyPatcher.exe.sha256 --clobber

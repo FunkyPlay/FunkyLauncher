@@ -78,6 +78,22 @@ public static class TestInstall
             }
             catch (Exception ex) { File.WriteAllText(Path.GetFullPath(args[3]).TrimEnd('\\') + ".ensure.error.txt", ex.ToString()); return 1; }
         }
+        // "--test-install --patcher <MO2 folder> <profile> <game folder> <dictionary> <out folder> <starfield|fallout4>":
+        // FunkyPatcher as a separate process, like the translation does (result in <out>.patcher.log; the install is only read)
+        if (args.Length >= 8 && args[1] == "--patcher")
+        {
+            var plog = new List<string>();
+            try
+            {
+                var pr = await PatcherTool.BuildAsync(args[2], args[3], args[4], new[] { args[5] }, args[6], args[7], "FunkyPlay_RU_Names",
+                    Path.Combine(args[6], "report.json"), plog.Add, CancellationToken.None);
+                plog.Add($"ok={pr.Ok} made={pr.Made} skipped={pr.Skipped} patches={pr.Patches} error={pr.Error}");
+                File.WriteAllLines(args[6].TrimEnd('\\') + ".patcher.log", plog);
+                return pr.Ok ? 0 : 1;
+            }
+            catch (Exception ex) { File.WriteAllLines(args[6].TrimEnd('\\') + ".patcher.log", plog.Append(ex.ToString())); return 1; }
+        }
+
         // "--test-install --translate <modlistId> <install folder> [en]": build the Russian item names for an installed modlist
         // (the Russian pack is counted as on unless "en"); result and reason go to <folder>.translate.log
         if (args.Length >= 4 && args[1] == "--translate")

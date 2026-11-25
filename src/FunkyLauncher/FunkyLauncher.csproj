@@ -29,15 +29,14 @@
     <Resource Include="Assets\wallpaper.jpg" />
     <!-- catalog2.json since 0.1.7 (Neon Nights 0.1.1 needs the language packs); catalog.json stays for older launchers -->
     <Resource Include="..\..\catalog2.json" Link="catalog.json" />
+    <!-- 0.1.23: full license texts for the "Licenses" window (Legal 25.11) -->
+    <Resource Include="..\..\licenses\*.txt" Link="licenses\%(Filename)%(Extension)" />
     <Resource Include="..\..\addons\*.json" Link="addons\%(Filename)%(Extension)" />
     <!-- our own small patches (FunkyPlay compatibility plugins), installed from the exe -->
     <Resource Include="..\..\addons\files\**\*" Link="addons\files\%(RecursiveDir)%(Filename)%(Extension)" />
   </ItemGroup>
 
-  <ItemGroup>
-    <!-- the helper that gives Russian names to the items of the installed mods (builds small patch plugins on the player's PC) -->
-    <ProjectReference Include="..\FunkyPatcher\FunkyPatcher.csproj" />
-  </ItemGroup>
+  <!-- 0.1.23: FunkyPatcher (Mutagen, GPL) is no longer a reference: it is its own exe, run as a separate process (PatcherTool) -->
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.4314.35" />

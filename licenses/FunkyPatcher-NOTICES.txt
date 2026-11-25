@@ -1,0 +1,35 @@
+FunkyPatcher — components
+=========================
+
+FunkyPatcher: Copyright (C) 2026 Funky (FunkyPlay). GPL-3.0 (GPL-3.0.txt).
+Source: https://github.com/FunkyPlay/FunkyLauncher/tree/main/src/FunkyPatcher (tag v<version> for each release).
+It is a separate program: the launcher starts it as its own process. The additional permission of the launcher
+(ADDITIONAL-PERMISSION.txt) does not apply to FunkyPatcher.
+
+GPL-3.0 (GPL-3.0.txt):
+  Mutagen.Bethesda.Core / Kernel / Starfield / Fallout4 0.55.0-alpha.113 — Mutagen-Modding (Noggog and contributors).
+    https://github.com/Mutagen-Modding/Mutagen
+  GameFinder 4.9.0 (Common, RegistryUtils, Wine, StoreHandlers Steam / GOG / Xbox) — erri120. https://github.com/erri120/GameFinder
+  NexusMods.Paths 0.19.1 — Nexus Mods. https://github.com/Nexus-Mods/NexusMods.Paths
+  Reloaded.Memory 9.4.2 — Reloaded-Project (GPL-3.0, some parts under their own terms, see the project).
+    https://github.com/Reloaded-Project/Reloaded.Memory
+
+License as given in the project's repository (the package does not name it):
+  Loqui 3.7.0 — Noggog. https://github.com/Noggog/Loqui
+  Noggog.CSharpExt 4.3.0 — Noggog. https://github.com/Noggog/CSharpExt
+  TransparentValueObjects.Abstractions 1.1.0 — erri120. https://github.com/erri120/TransparentValueObjects
+
+MIT (MIT text: THIRD-PARTY-NOTICES.txt, Part 1):
+  .NET runtime 10.0 — .NET Foundation and Contributors. https://github.com/dotnet/runtime
+  Microsoft.Extensions.DependencyInjection.Abstractions, Microsoft.Extensions.Logging.Abstractions 9.0.4 — © Microsoft Corporation.
+  System.Reactive 6.1.0 — Copyright (c) .NET Foundation and Contributors. https://github.com/dotnet/reactive
+  DynamicData 9.4.31 — Copyright (c) Roland Pheasant 2011-2026. https://github.com/reactiveui/DynamicData
+  FluentResults 3.15.2 — Copyright 2022 (c) Michael Altmann. https://github.com/altmann/FluentResults
+  K4os.Compression.LZ4 / LZ4.Streams 1.3.8, K4os.Hash.xxHash 1.0.8 — Milosz Krajewski. https://github.com/MiloszKrajewski
+  OneOf 3.0.271 — Harry McIntyre. https://github.com/mcintyre321/OneOf
+  SharpZipLib 1.4.2 — Copyright © 2000-2022 SharpZipLib Contributors. https://github.com/icsharpcode/SharpZipLib
+  StrongInject 1.4.4 — Yair Halberstadt. https://github.com/YairHalberstadt/stronginject
+  System.IO.Abstractions, TestableIO.System.IO.Abstractions(.Wrappers) 22.1.1 — Copyright © Tatham Oddie & friends 2010-2026.
+    https://github.com/TestableIO/System.IO.Abstractions
+  Testably.Abstractions.FileSystem.Interface 10.1.0 — Copyright (c) 2024-2026 Testably. https://github.com/Testably/Testably.Abstractions
+  ValveKeyValue 0.13.1.398 — Copyright © ValveKeyValue Contributors. https://github.com/ValveResourceFormat/ValveKeyValue

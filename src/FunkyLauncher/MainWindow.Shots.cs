@@ -551,6 +551,18 @@ public partial class MainWindow
                     SaveElement(gholder, Path.Combine(dir, $"{lang}-g7-gta-window.png"));
                 }
                 catch (Exception e) { Err($"{lang}-gta", e); }
+            // 0.1.23: the "Licenses" window
+            try
+            {
+                var (lb, lbg, lw, lh) = Views.LicensesWindow.ForShots();
+                var lholder = new System.Windows.Controls.Border { Background = lbg, Child = lb, Width = lw - 16, Height = lh - 40 };
+                lholder.Measure(new Size(lholder.Width, lholder.Height));
+                lholder.Arrange(new Rect(lholder.DesiredSize));
+                lholder.UpdateLayout();
+                await Task.Delay(300);
+                SaveElement(lholder, Path.Combine(dir, $"{lang}-g8-licenses.png"));
+            }
+            catch (Exception e) { Err($"{lang}-licenses", e); }
             // "Mods of the modlist" of Nova Nights and Atomic Nights (the news picture: not all about Cyberpunk)
             foreach (var other in new[] { "starfield", "fallout4" })
                 try
