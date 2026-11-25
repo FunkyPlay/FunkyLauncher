@@ -47,7 +47,7 @@ public static class SystemCheck
         dir.All(c => c < 128 && c != ' ');
 
     /// <summary>The same drive, the modlist's default folder name: "G:\NeonNights".</summary>
-    private static string PlainSuggestion(string dir, Modlist ml)
+    public static string PlainSuggestion(string dir, Modlist ml)
     {
         var root = System.IO.Path.GetPathRoot(dir) is { Length: > 0 } r ? r : "C:\\";
         var name = System.IO.Path.GetFileName(ml.DefaultInstallDir.TrimEnd(System.IO.Path.DirectorySeparatorChar));

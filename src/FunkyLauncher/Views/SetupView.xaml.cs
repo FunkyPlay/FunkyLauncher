@@ -975,6 +975,18 @@ public partial class SetupView : UserControl
     private async Task InstallAsync(string? updateDir = null)
     {
         if (!await GameFilesOkAsync()) return;
+        // 0.1.23 (Funky 26.11): a simple path for everyone — non-Latin letters or spaces in the modlist folder break MO2
+        // on some PCs, so a first install offers the same drive with a plain folder name (one click)
+        if (!Installed && !SystemCheck.IsPlainPath(_main.Settings.InstallDir(Ml)))
+        {
+            var plain = SystemCheck.PlainSuggestion(_main.Settings.InstallDir(Ml), Ml);
+            if (Dialog.Show(_main, Loc.F("plainpath.text", _main.Settings.InstallDir(Ml), plain), Loc.T("check.folder.chars"),
+                    MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes, Loc.T("plainpath.yes"), Loc.T("plainpath.no")) == MessageBoxResult.Yes)
+            {
+                _main.Settings.SetInstallDir(Ml, plain);
+                FolderBox.Text = plain;
+            }
+        }
         if (!DiskSpace.Confirm(_main, _main.Settings, Ml, update: Installed)) return;
         BeginBusy();
         var firstInstall = !Installed; // an update of an installed modlist is not "the first install"
