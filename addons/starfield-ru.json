@@ -1314,6 +1314,411 @@
     "ru": "ZoNE79 Clothing Pack - Russian Translation",
     "en": "ZoNE79 Clothing Pack - Russian Translation"
    }
+  },
+  {
+   "id": "Ammo Framework - RU",
+   "modFolder": "Ammo Framework - RU",
+   "nexus": {
+    "game": "starfield",
+    "modId": 15144,
+    "fileId": 57620
+   },
+   "version": "1.05",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "Ammo Framework - RU-15144-1-05-1761067102.7z",
+    "size": 1337,
+    "sha256": "c534e12ffcbff1b796e89d912e51c1b4588b074f6e18a64ccdbc8e217d7b1e0e",
+    "localFileName": "Ammo Framework - RU-15144-1-05-1761067102.7z"
+   },
+   "translates": [
+    {
+     "modId": 12296,
+     "name": "Ammo Framework"
+    }
+   ],
+   "author": "MrDmitrij",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "AmmoFramework.esm"
+   ],
+   "displayName": {
+    "ru": "Ammo Framework - RU",
+    "en": "Ammo Framework - RU"
+   }
+  },
+  {
+   "id": "Paradiso Evolved - RU",
+   "modFolder": "Paradiso Evolved - RU",
+   "nexus": {
+    "game": "starfield",
+    "modId": 15696,
+    "fileId": 68365
+   },
+   "version": "1.1.2",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "d5/4e/d3/d54ed347-2777-4527-a97b-f1ec948ff5a7",
+    "size": 7437100,
+    "sha256": "ee6e619fd96434acc4fdadb4a06c10e241f9cf8ade6301678345d32b2866bd6c",
+    "localFileName": "Paradiso Evolved - RU 15696 1.1.2 2026-06-21T14-09Z LsN5BvvhH.zip"
+   },
+   "translates": [
+    {
+     "modId": 14026,
+     "name": "Paradiso Evolved"
+    }
+   ],
+   "author": "MrDmitrij",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "ParadisoEvolved.esm"
+   ],
+   "displayName": {
+    "ru": "Paradiso Evolved - RU",
+    "en": "Paradiso Evolved - RU"
+   }
+  },
+  {
+   "id": "Royal Weathers - Climate and Proc Gen - RU",
+   "modFolder": "Royal Weathers - Climate and Proc Gen - RU",
+   "nexus": {
+    "game": "starfield",
+    "modId": 14891,
+    "fileId": 68403
+   },
+   "version": "1.6",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "53/b9/96/53b99651-aba3-4642-a9a6-e63c5347baa2",
+    "size": 14008,
+    "sha256": "3ef1e8cf6aa502059d04a7fb2df3bb3073874c54a5fc53fbf43fbf5124fc8499",
+    "localFileName": "Royal Weathers - Climate and Proc Gen - RU 14891 1.6 2026-06-22T21-08Z kRcAwxxjh.zip"
+   },
+   "translates": [
+    {
+     "modId": 7946,
+     "name": "Royal Weathers - An Immersive Starfield Climate Overhaul"
+    }
+   ],
+   "author": "MrDmitrij",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "RoyalWeathers.esm"
+   ],
+   "displayName": {
+    "ru": "Royal Weathers - Climate and Proc Gen - RU",
+    "en": "Royal Weathers - Climate and Proc Gen - RU"
+   }
+  },
+  {
+   "id": "Royal Weathers - Va'Ruun'kai - RU",
+   "modFolder": "Royal Weathers - Va'Ruun'kai - RU",
+   "nexus": {
+    "game": "starfield",
+    "modId": 14891,
+    "fileId": 56698
+   },
+   "version": "1.2",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "Royal Weathers - Va'Ruun'kai - RU-14891-1-2-1757871131.7z",
+    "size": 3703,
+    "sha256": "d8c71d4972dede2be369e55b9bde8e0b7e186060910d55fa0a80543ef265e759",
+    "localFileName": "Royal Weathers - Va'Ruun'kai - RU-14891-1-2-1757871131.7z"
+   },
+   "translates": [
+    {
+     "modId": 11835,
+     "name": "Royal Weathers - Va'Ruun'kai"
+    }
+   ],
+   "author": "MrDmitrij",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "RoyalWeathersVaRuunkai2.esm"
+   ],
+   "displayName": {
+    "ru": "Royal Weathers - Va'Ruun'kai - RU",
+    "en": "Royal Weathers - Va'Ruun'kai - RU"
+   }
+  },
+  {
+   "id": "Supply Mission Fix - RU",
+   "modFolder": "Supply Mission Fix - RU",
+   "nexus": {
+    "game": "starfield",
+    "modId": 17512,
+    "fileId": 68353
+   },
+   "version": "1.5a",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "8c/c1/b8/8cc1b828-e1f4-4f66-bdbe-8928f4fe2932",
+    "size": 441980,
+    "sha256": "a7ba412e92a3d3986176909d423f5fae4a7fb27f9be81bcb4915e82947f11356",
+    "localFileName": "Supply Mission Fix RU 17512 1.5a 2026-06-21T09-19Z QgYRFiifQ.zip"
+   },
+   "translates": [
+    {
+     "modId": 13456,
+     "name": "Supply Mission Fix"
+    }
+   ],
+   "author": "MrDmitrij",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "EAASupplyMissionFix.esm"
+   ],
+   "displayName": {
+    "ru": "Supply Mission Fix - RU",
+    "en": "Supply Mission Fix - RU"
+   }
+  },
+  {
+   "id": "Better Living I - Outpost Stuff - RU v2.2",
+   "modFolder": "Better Living I - Outpost Stuff - RU v2.2",
+   "nexus": {
+    "game": "starfield",
+    "modId": 12016,
+    "fileId": 46712
+   },
+   "version": "2.2",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "Edit Better Living I - RU v2.2-12016-2-2-1730308487.7z",
+    "size": 390400,
+    "sha256": "22c29aee2c69cedc03340ccc7c6fe4b199bbda23e534d876e5d8ef461bb27f9d",
+    "localFileName": "Edit Better Living I - RU v2.2-12016-2-2-1730308487.7z"
+   },
+   "translates": [
+    {
+     "modId": 10290,
+     "name": "Better Living - Outpost Decor"
+    }
+   ],
+   "author": "dagnir77",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "Better_Living.esm"
+   ],
+   "displayName": {
+    "ru": "Better Living I - Outpost Stuff - RU v2.2",
+    "en": "Better Living I - Outpost Stuff - RU v2.2"
+   }
+  },
+  {
+   "id": "Enemies Boarding My Ship (RUS)",
+   "modFolder": "Enemies Boarding My Ship (RUS)",
+   "nexus": {
+    "game": "starfield",
+    "modId": 14056,
+    "fileId": 68911
+   },
+   "version": "V1.61",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "36/9c/56/369c5697-b0d2-44c9-8e81-3089ea858dea",
+    "size": 1837,
+    "sha256": "9b012e720be87a721a2ebe526add9a2731297c4d6764c0dac50a97cc85f97d20",
+    "localFileName": "Enemies Boarding My Ship RUS 14056 V1.61 2026-07-04T11-16Z QgYRFiiQX.7z"
+   },
+   "translates": [
+    {
+     "modId": 13999,
+     "name": "Enemies Boarding My Ship"
+    }
+   ],
+   "author": "Krasgerts",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "Encounters_Boarding_MyShip.esm"
+   ],
+   "displayName": {
+    "ru": "Enemies Boarding My Ship (RUS)",
+    "en": "Enemies Boarding My Ship (RUS)"
+   }
+  },
+  {
+   "id": "Stroud Premium Edition (RUS)",
+   "modFolder": "Stroud Premium Edition (RUS)",
+   "nexus": {
+    "game": "starfield",
+    "modId": 17915,
+    "fileId": 70712
+   },
+   "version": "2.7.0",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "43/85/e4/4385e4be-e748-4cde-a673-9eb569e73e7e",
+    "size": 19330,
+    "sha256": "cca67baab8555a8e81d0e48c14c2ba4e5ea42e81056b60339af48541bee3d11b",
+    "localFileName": "Stroud Premium Edition RUS 17915 2.7.0 2026-08-22T05-19Z 4Cgtq5Q98.7z"
+   },
+   "translates": [
+    {
+     "modId": 12330,
+     "name": "Stroud Premium Edition"
+    }
+   ],
+   "author": "Krasgerts",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 3
+   },
+   "plugins": [],
+   "displayName": {
+    "ru": "Stroud Premium Edition (RUS)",
+    "en": "Stroud Premium Edition (RUS)"
+   }
+  },
+  {
+   "id": "Immersive Landing Ramps - Russian Translation",
+   "modFolder": "Immersive Landing Ramps - Russian Translation",
+   "nexus": {
+    "game": "starfield",
+    "modId": 11723,
+    "fileId": 62468
+   },
+   "version": "3.1.0",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "Immersive Landing Ramps - Russian Translation-11723-3-1-0-1775940029.zip",
+    "size": 81680,
+    "sha256": "513a7eee7c264e4e167cd5cc3f249da3b44e6621487116bcae68b4986afff94e",
+    "localFileName": "Immersive Landing Ramps - Russian Translation-11723-3-1-0-1775940029.zip"
+   },
+   "translates": [
+    {
+     "modId": 8093,
+     "name": "Immersive Landing Ramps"
+    }
+   ],
+   "author": "Death3IHOH",
+   "install": {
+    "type": "copyAll",
+    "from": "data",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "SP2_ImmersiveLandingRamps.esm"
+   ],
+   "displayName": {
+    "ru": "Immersive Landing Ramps - Russian Translation",
+    "en": "Immersive Landing Ramps - Russian Translation"
+   }
+  },
+  {
+   "id": "Owl Tech Ship Living - RU translation",
+   "modFolder": "Owl Tech Ship Living - RU translation",
+   "nexus": {
+    "game": "starfield",
+    "modId": 16693,
+    "fileId": 63668
+   },
+   "version": "2.3",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "Owl Tech Ship Living - RU Translation-16693-2-3-1776712232.zip",
+    "size": 1189147,
+    "sha256": "fd3a5957029236e5e74a1aa5d5e7acf21982b8d84b70c960553bc0098f554dcf",
+    "localFileName": "Owl Tech Ship Living - RU Translation-16693-2-3-1776712232.zip"
+   },
+   "translates": [
+    {
+     "modId": 12431,
+     "name": "Owl Tech Ship Living"
+    }
+   ],
+   "author": "MosherH",
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "OwlTech_Habs_Ship_Living.esm"
+   ],
+   "displayName": {
+    "ru": "Owl Tech Ship Living - RU translation",
+    "en": "Owl Tech Ship Living - RU translation"
+   }
+  },
+  {
+   "id": "Wicked Outpost Projeckt 2 v2.0.2 RU",
+   "modFolder": "Wicked Outpost Projeckt 2 v2.0.2 RU",
+   "nexus": {
+    "game": "starfield",
+    "modId": 18148,
+    "fileId": 71312
+   },
+   "version": "1",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "71/83/ed/7183eddd-440a-41a4-b92f-71aa93f11c3a",
+    "size": 556968,
+    "sha256": "61c2c53ebf2b9da479f0cb8ed99bd7749b7f2a1861055fa8114a6fcf883e269e",
+    "localFileName": "Wicked Outpost Projeckt 2 V2.0.2 RU 18148 1 2026-09-05T13-06Z PEOuI3W0X.7z"
+   },
+   "translates": [
+    {
+     "modId": 12456,
+     "name": "Wicked Workshop - Outpost Projeckt 2"
+    }
+   ],
+   "author": "ziv07",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "Wicked Outpost Projeckt 2.esm"
+   ],
+   "displayName": {
+    "ru": "Wicked Outpost Projeckt 2 v2.0.2 RU",
+    "en": "Wicked Outpost Projeckt 2 v2.0.2 RU"
+   }
   }
  ]
 }

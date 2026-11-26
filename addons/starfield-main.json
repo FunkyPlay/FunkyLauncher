@@ -324,7 +324,7 @@
    "plugins": [
     "ParadisoEvolved.esm"
    ],
-   "ru": "noTranslation",
+   "ru": "translated",
    "install": {
     "type": "copyAll",
     "from": "",
@@ -786,7 +786,7 @@
    "plugins": [
     "Better_Living.esm"
    ],
-   "ru": "noTranslation",
+   "ru": "translated",
    "install": {
     "type": "copyAll",
     "from": "",
@@ -2123,7 +2123,7 @@
    "plugins": [
     "RoyalWeathers.esm"
    ],
-   "ru": "noTranslation",
+   "ru": "translated",
    "install": {
     "type": "copyAll",
     "from": "",
@@ -2882,7 +2882,7 @@
    "plugins": [
     "RoyalWeathersVaRuunkai2.esm"
    ],
-   "ru": "noTranslation",
+   "ru": "translated",
    "install": {
     "type": "copyAll",
     "from": "",
@@ -6159,7 +6159,7 @@
    "plugins": [
     "Wicked Outpost Projeckt 2.esm"
    ],
-   "ru": "noTranslation",
+   "ru": "translated",
    "install": {
     "type": "copyAll",
     "from": "",
@@ -8779,7 +8779,7 @@
    "plugins": [
     "OwlTech_Habs_Ship_Living.esm"
    ],
-   "ru": "noText",
+   "ru": "translated",
    "install": {
     "type": "copyAll",
     "from": "",
@@ -9554,7 +9554,7 @@
    "plugins": [
     "AmmoFramework.esm"
    ],
-   "ru": "noText",
+   "ru": "translated",
    "install": {
     "type": "copyAll",
     "from": "",
@@ -10789,7 +10789,7 @@
    "plugins": [
     "EAASupplyMissionFix.esm"
    ],
-   "ru": "noText",
+   "ru": "translated",
    "install": {
     "type": "copyAll",
     "from": "",
@@ -13083,7 +13083,7 @@
    "plugins": [
     "Encounters_Boarding_MyShip.esm"
    ],
-   "ru": "noTranslation",
+   "ru": "translated",
    "install": {
     "type": "copyAll",
     "from": "",
