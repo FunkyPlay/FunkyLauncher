@@ -603,6 +603,7 @@ public static class Loc
         ["gfx3.why.vram"] = ("видеопамять {0} ГБ", "{0} GB of video memory"),
         ["gfx3.why.ram"] = ("оперативная память {0} ГБ", "{0} GB of RAM"),
         ["gfx3.why.cpu"] = ("процессор на {0} потоков", "a {0}-thread processor"),
+        ["gfx3.why.both"] = ("оперативная память {0} ГБ и видеопамять {1} ГБ", "{0} GB of RAM and {1} GB of video memory"),
         ["gfx3.why.hdd"] = ("сборка на обычном жёстком диске (не SSD)", "the modlist is on a hard disk (not an SSD)"),
         ["gfx3.switch"] = ("Перейти на версию «{0}»? Моды, которых в ней нет, выключатся, файлы останутся на диске; недостающие докачаются.", "Switch to the {0} version? Mods it doesn't have will be turned off, their files stay on the disk; missing ones will be downloaded."),
         ["gfx3.done"] = ("Готово: версия «{0}»", "Done: {0} version"),

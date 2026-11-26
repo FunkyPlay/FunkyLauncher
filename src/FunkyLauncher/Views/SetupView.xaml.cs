@@ -460,6 +460,10 @@ public partial class SetupView : UserControl
         if (h.RamGb > 0) parts.Add((h.RamGb < 12 ? 0 : h.RamGb < 24 ? 1 : 2, Loc.F("gfx3.why.ram", Math.Round(h.RamGb))));
         if (h.Threads > 0) parts.Add((h.Threads < 8 ? 0 : h.Threads < 12 ? 1 : 2, Loc.F("gfx3.why.cpu", h.Threads)));
         if (h.Ssd == false) parts.Add((1, Loc.T("gfx3.why.hdd")));
+        // 0.1.9 (support 025, 26.11): 16 GB of RAM together with an 8 GB card ran out of memory on the full modlist
+        // (under 1.2 GB of RAM free, video memory full) — each alone says High, both at once: Standard
+        if (h.RamGb is > 0 and < 24 && h.VramGb is > 0 and <= 8.5)
+            parts.Add((0, Loc.F("gfx3.why.both", Math.Round(h.RamGb), Math.Round(h.VramGb))));
         if (parts.Count == 0) return (null, "");
         var worst = parts.OrderBy(p => p.Level).First();
         return worst.Level >= 2 ? (null, "") : (worst.Level, worst.Why);
