@@ -386,11 +386,18 @@ public static class Addons
 
     /// <param name="nexusIds">"nexusModId" in the about file: the mod's own Nexus page when the list's top-level id
     /// is wrong (mods made of several archives — the list took another archive's id, chat Cyberpunk 25.11).</param>
-    public static IReadOnlyDictionary<string, string> About(string modlistId, out Dictionary<string, long> nexusIds, out HashSet<string> required)
+    public static IReadOnlyDictionary<string, string> About(string modlistId, out Dictionary<string, long> nexusIds, out HashSet<string> required) =>
+        About(modlistId, out nexusIds, out required, out _);
+
+    /// <param name="authors">0.1.24 (Legal 26.11): "author" in the about file — the mod's author on Nexus
+    /// (src/tools/mod_authors.py), shown in the "Mods of the modlist" window.</param>
+    public static IReadOnlyDictionary<string, string> About(string modlistId, out Dictionary<string, long> nexusIds, out HashSet<string> required,
+        out Dictionary<string, string> authors)
     {
         var res = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
         nexusIds = new Dictionary<string, long>(StringComparer.OrdinalIgnoreCase);
         required = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        authors = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
         try
         {
             string? json = null;
@@ -410,6 +417,7 @@ public static class Addons
             {
                 if (p.Value.TryGetProperty("nexusModId", out var nid) && nid.TryGetInt64(out var id) && id > 0) nexusIds[p.Name] = id;
                 if (p.Value.TryGetProperty("required", out var rq) && rq.ValueKind == JsonValueKind.True) required.Add(p.Name);
+                if (p.Value.TryGetProperty("author", out var au) && au.ValueKind == JsonValueKind.String && au.GetString() is { Length: > 0 } who) authors[p.Name] = who;
             }
             foreach (var p in mods.EnumerateObject())
                 if (p.Value.TryGetProperty("hidden", out var h) && h.ValueKind == JsonValueKind.True) res[p.Name] = HiddenMark;

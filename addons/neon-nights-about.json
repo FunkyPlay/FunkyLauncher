@@ -6,1589 +6,1983 @@
  "mods": {
   "(AMM) SOLO": {
    "ru": "27 поз для женской Ви в фоторежиме и AMM",
-   "en": "27 poses for female V in photo mode and AMM"
+   "en": "27 poses for female V in photo mode and AMM",
+   "author": "rysyu"
   },
   "105.1 SyberLilly FM": {
    "ru": "Новая радиостанция с каверами и демо",
-   "en": "A new radio station with covers and demos"
+   "en": "A new radio station with covers and demos",
+   "author": "chroniclerealm"
   },
   "808.9 Afterworks Radio": {
    "ru": "Радиостанция: хард-техно, эсид, шранц",
-   "en": "Radio station: hard techno, acid, schranz"
+   "en": "Radio station: hard techno, acid, schranz",
+   "author": "FKNPLEB"
   },
   "8ug Suit - Archive XL": {
    "ru": "Костюм нетраннера 8ug в 10 расцветках",
-   "en": "8ug netrunner suit in 10 colours"
+   "en": "8ug netrunner suit in 10 colours",
+   "author": "Hyst"
   },
   "afterlife unit a - apartment 28425 2 2026": {
    "ru": "Квартира над баром «Посмертие»",
-   "en": "An apartment above the Afterlife bar"
+   "en": "An apartment above the Afterlife bar",
+   "author": "thumbsuckerr"
   },
   "AldecaldosHighStakes": {
    "ru": "Новое задание: засада на конвой «Арасаки» с Альдекальдо",
-   "en": "New gig: ambush an Arasaka convoy with the Aldecaldos"
+   "en": "New gig: ambush an Arasaka convoy with the Aldecaldos",
+   "author": "Sunlive"
   },
   "Alex Romanced 30777 2.0.1 2026": {
    "ru": "Роман с Алекс из «Мотылька» в задании «Птицы с подрезанными крыльями»",
-   "en": "Romance Alex at The Moth during Birds with Broken Wings"
+   "en": "Romance Alex at The Moth during Birds with Broken Wings",
+   "author": "deceptious"
   },
   "All Guns": {
    "required": true,
    "ru": "30 видов оружия в стиле Call of Duty",
-   "en": "30 Call of Duty style guns"
+   "en": "30 Call of Duty style guns",
+   "author": "sabbath7991"
   },
   "All in One": {
    "ru": "21 новая причёска для женской Ви",
-   "en": "21 new hairstyles for female V"
+   "en": "21 new hairstyles for female V",
+   "author": "beanie"
   },
   "All Vehicles Can Steer": {
    "ru": "Все машины поворачивают с реалистичным радиусом",
-   "en": "Every vehicle turns with a realistic radius"
+   "en": "Every vehicle turns with a realistic radius",
+   "author": "Seijax"
   },
   "ALL_in_one_clothes_for_fem_V_pack_1": {
    "ru": "Набор одежды для женской Ви (часть 1)",
-   "en": "Clothing pack for female V (part 1)"
+   "en": "Clothing pack for female V (part 1)",
+   "author": "NolaDreamer"
   },
   "Always First Equip 2557 2.2.1 2026": {
    "ru": "Анимация осмотра оружия при каждом взятии в руки",
-   "en": "Weapon inspect animation every time you draw a weapon"
+   "en": "Weapon inspect animation every time you draw a weapon",
+   "author": "DJ_Kovrik"
   },
   "ANGEL Body - Full Vanilla Refit": {
    "ru": "Обычная и DLC-одежда подогнана под тело ANGEL",
-   "en": "Vanilla and DLC clothes refitted for the ANGEL body"
+   "en": "Vanilla and DLC clothes refitted for the ANGEL body",
+   "author": "xBaebsae"
   },
   "Angy Pose Packs - Cute and Sexy": {
    "ru": "56 милых и откровенных поз для фоторежима",
-   "en": "56 cute and sexy poses for photo mode"
+   "en": "56 cute and sexy poses for photo mode",
+   "author": "xBaebsae"
   },
   "Apartments Enhanced - H10 addon 19521 2.04 2026": {
    "ru": "Обновлённая квартира в мегаздании H10",
-   "en": "Overhauled apartment in Megabuilding H10"
+   "en": "Overhauled apartment in Megabuilding H10",
+   "author": "Ak3nax"
   },
   "Apartments Enhanced - Japantown addon 19521 2.04 2026": {
    "ru": "Обновлённая квартира в Джапантауне",
-   "en": "Overhauled Japantown apartment"
+   "en": "Overhauled Japantown apartment",
+   "author": "Ak3nax"
   },
   "Apartments Enhanced - Smartframe pack 19521 1.07 2026": {
    "ru": "Наборы «умных» картин для квартир",
-   "en": "Smart frame pack for the apartments"
+   "en": "Smart frame pack for the apartments",
+   "author": "Ak3nax"
   },
   "Apartments Enhanced CORE - Install first 19521 2.04 2026": {
    "ru": "Основа обновлённых квартир",
-   "en": "Core of the apartment overhaul"
+   "en": "Core of the apartment overhaul",
+   "author": "Ak3nax"
   },
   "Apartments Enhanced Corpo Plaza Addon 19521 2.04 2026": {
    "ru": "Обновлённая квартира в Корпо-Плазе",
-   "en": "Overhauled Corpo Plaza apartment"
+   "en": "Overhauled Corpo Plaza apartment",
+   "author": "Ak3nax"
   },
   "Appearance Menu Mod 790 2.17.0 2026": {
    "ru": "AMM: фоторежим, спутники, смена внешности, обустройство дома",
-   "en": "AMM: photo mode, companions, appearances, home decor"
+   "en": "AMM: photo mode, companions, appearances, home decor",
+   "author": "MaximiliumM"
   },
   "Appearance Runtime Plugin 35126 1.9.0 2026": {
    "ru": "Нужен AMM для смены внешности персонажей в игре",
-   "en": "Lets AMM change characters' looks in game"
+   "en": "Lets AMM change characters' looks in game",
+   "author": "MaximiliumM"
   },
   "ArchiveXL 1.28.8 + FunkyPlay crash fix": {
    "ru": "Загрузчик модов-архивов, с нашим исправлением вылета",
-   "en": "Archive mod loader, with our crash fix"
+   "en": "Archive mod loader, with our crash fix",
+   "author": "psiberx"
   },
   "ArchiveXL 4198 1.28.8 2026": {
    "ru": "Загрузчик модов-архивов",
-   "en": "Archive mod loader"
+   "en": "Archive mod loader",
+   "author": "psiberx"
   },
   "Asterina Hair - PHYSCIS ENABLED": {
    "ru": "Причёска Asterina с физикой волос",
-   "en": "Asterina hairstyle with hair physics"
+   "en": "Asterina hairstyle with hair physics",
+   "author": "wingdeer"
   },
   "AtomiicXHyst Summer Laces Bikini": {
    "ru": "Кружевной купальник, 18 вариантов",
-   "en": "Lace bikini, 18 variants"
+   "en": "Lace bikini, 18 variants",
+   "author": "LxRHyst"
   },
   "Audioware 12001 1.11.0 2026": {
    "ru": "Свои звуки в игре без REDmod",
-   "en": "Custom sounds in game without REDmod"
+   "en": "Custom sounds in game without REDmod",
+   "author": "Roms1383"
   },
   "Auto Drive Enhanced 23157 0.0.0.22 2026": {
    "ru": "Улучшенный автопилот машины",
-   "en": "Improved car autopilot"
+   "en": "Improved car autopilot",
+   "author": "nobo"
   },
   "Autoloot 5202 3.14.0 2026": {
    "ru": "Автоматический сбор добычи",
-   "en": "Loots items automatically"
+   "en": "Loots items automatically",
+   "author": "keanuWheeze and anygoodname"
   },
   "Avamicrodetails": {
    "ru": "Новые оттенки кожи для женской Ви и NPC",
-   "en": "New skin complexions for female V and NPCs"
+   "en": "New skin complexions for female V and NPCs",
+   "author": "Avallonkao"
   },
   "Backpack Search": {
    "ru": "Поиск в тайнике и рюкзаке",
-   "en": "Search in the stash and backpack"
+   "en": "Search in the stash and backpack",
+   "author": "DJ_Kovrik"
   },
   "BDF_DRe_ArchV4_Mirrors": {
    "ru": "Семейство мотоциклов Arch V4, 52 модели",
-   "en": "Arch V4 bike family, 52 bikes"
+   "en": "Arch V4 bike family, 52 bikes",
+   "author": "DennisReactive"
   },
   "Better Loot Markers 3486 1.4.1 2026": {
    "ru": "Значки на контейнерах показывают, что внутри",
-   "en": "Container markers show what loot is inside"
+   "en": "Container markers show what loot is inside",
+   "author": "rodikh"
   },
   "Big Bun": {
    "ru": "Причёска Big Bun для женской Ви",
-   "en": "Big Bun hairstyle for female V"
+   "en": "Big Bun hairstyle for female V",
+   "author": "beanie"
   },
   "Blur Begone - Optical Camo": {
    "ru": "Оптический камуфляж без размытия",
-   "en": "Optical camo without blur"
+   "en": "Optical camo without blur",
+   "author": "CyanideX"
   },
   "Blur Begone 8105 2.6.0 2026": {
    "ru": "Прозрачные стёкла и материалы без размытия",
-   "en": "Clear glass and materials without blur"
+   "en": "Clear glass and materials without blur",
+   "author": "CyanideX"
   },
   "Bmw M1000RR": {
    "ru": "Мотоцикл BMW M1000RR",
-   "en": "BMW M1000RR motorbike"
+   "en": "BMW M1000RR motorbike",
+   "author": "aalexbug"
   },
   "BMW M5 Competition F90 V1.101 37119 3 2026": {
    "ru": "BMW M5 Competition F90 с открывающимися дверями",
-   "en": "BMW M5 Competition F90 with opening doors"
+   "en": "BMW M5 Competition F90 with opening doors",
+   "author": "Kingospawno"
   },
   "Braided Bob": {
    "ru": "Причёска Braided Bob для женской Ви",
-   "en": "Braided Bob hairstyle for female V"
+   "en": "Braided Bob hairstyle for female V",
+   "author": "beanie"
   },
   "Brainfunk radio": {
    "ru": "Радиостанция драм-н-бейса, 23 трека",
-   "en": "Drum and bass radio station, 23 tracks"
+   "en": "Drum and bass radio station, 23 tracks",
+   "author": "bovineblitz"
   },
   "BrowserExtensionFramework": {
    "ru": "Добавляет новые сайты в браузер игры",
-   "en": "Adds new sites to the in-game browser"
+   "en": "Adds new sites to the in-game browser",
+   "author": "r457 and gh057"
   },
   "Buttslinger Quickmelee": {
    "ru": "Удар прикладом оглушает врага для захвата и добивания",
-   "en": "Gun melee stuns enemies for grabs and finishers"
+   "en": "Gun melee stuns enemies for grabs and finishers",
+   "author": "Seijax"
   },
   "Californication": {
    "ru": "Новое задание с Джуди",
-   "en": "New quest with Judy"
+   "en": "New quest with Judy",
+   "author": "Deceptious"
   },
   "CallList-VehicleDetailsOverlay-CET": {
    "ru": "Характеристики машины в списке вызова транспорта",
-   "en": "Vehicle stats in the vehicle call list"
+   "en": "Vehicle stats in the vehicle call list",
+   "author": "TheArtificialEnhancer"
   },
   "Casual Style Outfit Pt20 - Main": {
    "ru": "Повседневный наряд для женской Ви (ч. 20)",
-   "en": "Casual outfit for female V (pt. 20)"
+   "en": "Casual outfit for female V (pt. 20)",
+   "author": "Veegee"
   },
   "Casual Style Outfit Pt28": {
    "ru": "Повседневный наряд для женской Ви (ч. 28)",
-   "en": "Casual outfit for female V (pt. 28)"
+   "en": "Casual outfit for female V (pt. 28)",
+   "author": "Veegee"
   },
   "Casual Style Outfit Pt4 - Vanilla Arms": {
    "ru": "Повседневный наряд для женской Ви (ч. 4)",
-   "en": "Casual outfit for female V (pt. 4)"
+   "en": "Casual outfit for female V (pt. 4)",
+   "author": "Veegee"
   },
   "CC Cyberpunk. High-Tech - Eyes pack. FIX": {
    "ru": "Киберимпланты глаз в редакторе персонажа",
-   "en": "Cyber eye implants in the character creator"
+   "en": "Cyber eye implants in the character creator",
+   "author": "BenedictClarkson"
   },
   "CC Fix - Remake": {
    "ru": "Исправляет макияж глаз и губ в редакторе",
-   "en": "Fixes eye and lip makeup in the character creator"
+   "en": "Fixes eye and lip makeup in the character creator",
+   "author": "NoraLee and Samuel4El"
   },
   "CCXL Sub Hair Pack - AllInOne": {
    "ru": "Новые причёски в редакторе для женской Ви",
-   "en": "New hairstyles in the creator for female V"
+   "en": "New hairstyles in the creator for female V",
+   "author": "Subleader"
   },
   "Celeb Dress XL": {
    "ru": "Платье Celeb для женской Ви",
-   "en": "Celeb dress for female V"
+   "en": "Celeb dress for female V",
+   "author": "Hyst"
   },
   "Chic Dress - Archive XL": {
    "ru": "Платье Chic для женской Ви",
-   "en": "Chic dress for female V"
+   "en": "Chic dress for female V",
+   "author": "Hyst"
   },
   "Choom Memory Booster 31975 0.05.0 2026": {
    "ru": "Чистит память CET, меньше вылетов в большой сборке",
-   "en": "Cleans CET memory, fewer crashes in big modlists"
+   "en": "Cleans CET memory, fewer crashes in big modlists",
+   "author": "SIIIN3YUM1"
   },
   "ChopDocsSupplier 36733 2.1.0 2026": {
    "ru": "Поставки тел риперам: новая подработка",
-   "en": "Supply bodies to ripperdocs: a new side job"
+   "en": "Supply bodies to ripperdocs: a new side job",
+   "author": "CozyDive"
   },
   "ChunLi Hairs - PHYSCIS ENABLED": {
    "ru": "Причёска Чунь Ли с физикой волос",
-   "en": "Chun-Li hairstyle with hair physics"
+   "en": "Chun-Li hairstyle with hair physics",
+   "author": "wingdeer"
   },
   "Claire": {
    "ru": "Причёска Claire для женской Ви",
-   "en": "Claire hairstyle for female V"
+   "en": "Claire hairstyle for female V",
+   "author": "beanie"
   },
   "Claudette": {
    "ru": "Причёска Claudette для женской Ви",
-   "en": "Claudette hairstyle for female V"
+   "en": "Claudette hairstyle for female V",
+   "author": "beanie"
   },
   "Clear Windows - Little Smearing 13497 2.5 2026": {
    "ru": "Чистые стёкла с лёгкими разводами",
-   "en": "Clean windows with slight smearing"
+   "en": "Clean windows with slight smearing",
+   "author": "DBK"
   },
   "Clothing Brands Virtual Ateliers 22968 1.1.0 2026": {
    "ru": "Магазины брендов одежды в сети",
-   "en": "Clothing brand stores on the Net"
+   "en": "Clothing brand stores on the Net",
+   "author": "Anthanael"
   },
   "Codeware 7780 1.21.4 2026": {
    "ru": "Расширения скриптов, нужны другим модам",
-   "en": "Script extensions other mods need"
+   "en": "Script extensions other mods need",
+   "author": "psiberx"
   },
   "Commissioner Hair - PHYSCIS ENABLED": {
    "ru": "Причёска Commissioner с физикой волос",
-   "en": "Commissioner hairstyle with hair physics"
+   "en": "Commissioner hairstyle with hair physics",
+   "author": "wingdeer"
   },
   "Computer Anywhere": {
    "ru": "Компьютер с доступом к сети где угодно",
-   "en": "A computer with Net access anywhere"
+   "en": "A computer with Net access anywhere",
+   "author": "Deceptious"
   },
   "Conflict Begone": {
    "ru": "Проверка конфликтов между модами-архивами",
-   "en": "Checks conflicts between archive mods"
+   "en": "Checks conflicts between archive mods",
+   "author": "CyanideX"
   },
   "Cosplay Bright Eyes CCXL by protossvoid": {
    "ru": "39 ярких цветов глаз в редакторе",
-   "en": "39 bright eye colours in the creator"
+   "en": "39 bright eye colours in the creator",
+   "author": "protossvoid"
   },
   "Crazy Alice (ANGEL)": {
    "ru": "Наряд и нож Безумной Алисы",
-   "en": "Crazy Alice outfit and knife"
+   "en": "Crazy Alice outfit and knife",
+   "author": "Tonydiz"
   },
   "Custom Perk Framework 26771 2.14 2026": {
    "ru": "Общее меню для дополнительных веток навыков",
-   "en": "One menu for extra perk trees"
+   "en": "One menu for extra perk trees",
+   "author": "0nlyQ"
   },
   "Cyber Engine Tweaks 107 1.38.1 2026": {
    "ru": "Основа для модов и мелкие исправления игры",
-   "en": "Mod framework and game quality-of-life fixes"
+   "en": "Mod framework and game quality-of-life fixes",
+   "author": "yamashi"
   },
   "Cyber Sight 38193 0.3.7 2026": {
    "ru": "Бой и стрельба от третьего лица",
-   "en": "Third-person combat and gunplay"
+   "en": "Third-person combat and gunplay",
+   "author": "Kocoala"
   },
   "Cyberscript 6475 5.1.4 2026": {
    "ru": "Основа для модов с новыми заданиями и диалогами",
-   "en": "Framework for quest and dialogue mods"
+   "en": "Framework for quest and dialogue mods",
+   "author": "RedRock Studio"
   },
   "CyberScript Core Animation Archive 7691 1.4 2026": {
    "ru": "Более 16 000 анимаций для CyberScript",
-   "en": "16,000+ animations for CyberScript"
+   "en": "16,000+ animations for CyberScript",
+   "author": "donk7413"
   },
   "Cyberware-EX 9429 1.7.0 2026": {
    "ru": "Больше слотов: кибердека, Сандевистан и Берсерк вместе",
-   "en": "More slots: cyberdeck, Sandevistan and Berserk together"
+   "en": "More slots: cyberdeck, Sandevistan and Berserk together",
+   "author": "psiberx"
   },
   "CyberwareEx-ExtendedMode": {
    "ru": "Расширенный режим Cyberware-EX",
-   "en": "Cyberware-EX extended mode"
+   "en": "Cyberware-EX extended mode",
+   "author": "psiberx"
   },
   "Dani Hair - PHYSCIS ENABLED": {
    "ru": "Причёска Dani с физикой волос",
-   "en": "Dani hairstyle with hair physics"
+   "en": "Dani hairstyle with hair physics",
+   "author": "wingdeer"
   },
   "Dash Fix 16272 1.0.1 2026": {
    "ru": "Рывок в бою без телепортов по карте",
-   "en": "Combat dash without map teleports"
+   "en": "Combat dash without map teleports",
+   "author": "Seijax"
   },
   "Dave x Veegee Assassin Outfit Pt2_Solo Arms": {
    "ru": "Наряд ассасина для женской Ви",
-   "en": "Assassin outfit for female V"
+   "en": "Assassin outfit for female V",
+   "author": "Veegee"
   },
   "Dave X Veegee Casual Style Full Outfit Pt2": {
    "ru": "Повседневный наряд Dave x Veegee для женской Ви",
-   "en": "Dave x Veegee casual outfit for female V"
+   "en": "Dave x Veegee casual outfit for female V",
+   "author": "Veegee"
   },
   "DEADLINK_ATELIER STORE V12 27589 12 2026": {
    "ru": "Магазин одежды DEADLINK в сети",
-   "en": "DEADLINK clothing store on the Net"
+   "en": "DEADLINK clothing store on the Net",
+   "author": "Peachu"
   },
   "DEADLINK_Baddie Set AXL 34562 1 2026": {
    "ru": "Набор одежды Baddie для женской Ви",
-   "en": "Baddie outfit set for female V"
+   "en": "Baddie outfit set for female V",
+   "author": "PeachuHime"
   },
   "DEADLINK_Sold Out Set AXL": {
    "ru": "Топ и шорты Sold Out для женской Ви",
-   "en": "Sold Out top and shorts for female V"
+   "en": "Sold Out top and shorts for female V",
+   "author": "Peachu"
   },
   "Decals Flickering Fix 16579 0.3 2026": {
    "ru": "Убирает мерцание надписей и наклеек",
-   "en": "Fixes flickering decals"
+   "en": "Fixes flickering decals",
+   "author": "sosuinepsixuyu"
   },
   "Deceptious Bug Fixes 18318 1.4.3 2026": {
    "ru": "Сборник исправлений ошибок игры",
-   "en": "A collection of game bug fixes"
+   "en": "A collection of game bug fixes",
+   "author": "Deceptious"
   },
   "Deceptious Quest Core 7831 3.3.3 2026": {
    "ru": "Основа для модов с заданиями",
-   "en": "Framework for quest mods"
+   "en": "Framework for quest mods",
+   "author": "Deceptious"
   },
   "Devel Sixteen ver. A": {
    "ru": "Суперкар Devel Sixteen",
-   "en": "Devel Sixteen supercar"
+   "en": "Devel Sixteen supercar",
+   "author": "Morpheus"
   },
   "DigitalVixenCore 28390 4.9.13 2026": {
    "ru": "Основа для модов DigitalVixen",
-   "en": "Core for DigitalVixen mods"
+   "en": "Core for DigitalVixen mods",
+   "author": "DigitalVixen"
   },
   "Dirt Begone - 1.3.0d - DLSS": {
    "ru": "Чистые зеркала, отражения в полном разрешении DLSS",
-   "en": "Clean mirrors, full-res DLSS reflections"
+   "en": "Clean mirrors, full-res DLSS reflections",
+   "author": "CyanideX"
   },
   "Diviner Drugs radio": {
    "ru": "Радиостанция драм-н-бейса, 50+ треков",
-   "en": "Drum and bass radio station, 50+ tracks"
+   "en": "Drum and bass radio station, 50+ tracks",
+   "author": "bovineblitz"
   },
   "DMC_BTF_MainFile": {
    "ru": "DeLorean из «Назад в будущее»",
-   "en": "Back to the Future DeLorean"
+   "en": "Back to the Future DeLorean",
+   "author": "SDH0"
   },
   "Dodging Fix": {
    "ru": "Враги уклоняются правильно",
-   "en": "Fixes enemy dodging"
+   "en": "Fixes enemy dodging",
+   "author": "sosuinepsixuyu"
   },
   "Dog Town Visuals Nulled": {
    "ru": "Исправляет освещение Догтауна для модов света",
-   "en": "Fixes Dogtown lighting for lighting mods"
+   "en": "Fixes Dogtown lighting for lighting mods",
+   "author": "nullsilv and NeHooYeY and robber804"
   },
   "Dusty CammyOutfitS": {
    "ru": "Наряд Кэмми для женской Ви",
-   "en": "Cammy outfit for female V"
+   "en": "Cammy outfit for female V",
+   "author": "Dusty2077"
   },
   "Dusty UltimateHaileySuit": {
    "ru": "Костюм Хейли для женской Ви",
-   "en": "Hailey suit for female V"
+   "en": "Hailey suit for female V",
+   "author": "Dusty2077"
   },
   "Dusty Virtual Atelier 14797 75 2026": {
    "ru": "Магазин одежды Dusty в сети",
-   "en": "Dusty clothing store on the Net"
+   "en": "Dusty clothing store on the Net",
+   "author": "Dusty2077"
   },
   "Dusty_HarrisOutfit": {
    "ru": "Наряд Харрис для женской Ви",
-   "en": "Harris outfit for female V"
+   "en": "Harris outfit for female V",
+   "author": "Dusty2077"
   },
   "Dynamic License Plates": {
    "ru": "30+ своих номерных знаков на машинах",
-   "en": "30+ custom licence plates on cars"
+   "en": "30+ custom licence plates on cars",
+   "author": "keen"
   },
   "ef - Barghest Stash": {
    "ru": "Тайник с оружием «Баргеста» в Догтауне",
-   "en": "Hidden Barghest weapon stash in Dogtown"
+   "en": "Hidden Barghest weapon stash in Dogtown",
+   "author": "Eva_Fan"
   },
   "ef_Coronado_Safehouse 32504 1.2 2026": {
    "ru": "Убежище в Ранчо-Коронадо",
-   "en": "A safehouse in Rancho Coronado"
+   "en": "A safehouse in Rancho Coronado",
+   "author": "Eva_Fan"
   },
   "ef_dependencies_v": {
    "ru": "Мебель и предметы для других модов",
-   "en": "Furniture and props other mods need"
+   "en": "Furniture and props other mods need",
+   "author": "eva_fan"
   },
   "EKT_Preem_hair_Wingdeer_hair_Patch": {
    "ru": "Улучшенные причёски WINGDEER (Preem hair)",
-   "en": "Preem hair edits for WINGDEER hairstyles"
+   "en": "Preem hair edits for WINGDEER hairstyles",
+   "author": "EKT"
   },
   "EKT_Preem_hair_Wingdeer_hair_Patch_2": {
    "ru": "Улучшенные причёски WINGDEER, часть 2",
-   "en": "Preem hair edits for WINGDEER hairstyles, part 2"
+   "en": "Preem hair edits for WINGDEER hairstyles, part 2",
+   "author": "EKT"
   },
   "Emo Wolfcut - CCXL": {
    "ru": "Причёски «волчий хвост» в редакторе",
-   "en": "Wolfcut hairstyles in the creator"
+   "en": "Wolfcut hairstyles in the creator",
+   "author": "nutboy"
   },
   "Empty Store Checker 35634 2.0.0 2026": {
    "ru": "Показывает, какого мода не хватает пустому магазину",
-   "en": "Shows which mod an empty store is missing"
+   "en": "Shows which mod an empty store is missing",
+   "author": "ICarteiroCosmico"
   },
   "Enable_Advert_Animations": {
    "ru": "Рекламные экраны в городе снова анимированы",
-   "en": "Animated ads play everywhere in the city"
+   "en": "Animated ads play everywhere in the city",
+   "author": "EmreHQ"
   },
   "Enhanced Craft 4378 4.2.0 2026": {
    "ru": "При создании оружия можно выбрать раскраску и имя",
-   "en": "Choose a skin and name when crafting weapons"
+   "en": "Choose a skin and name when crafting weapons",
+   "author": "DJ_Kovrik"
   },
   "Enhanced Cyberware Capacity": {
    "ru": "Снимает предел ёмкости киберимплантов",
-   "en": "Removes the cyberware capacity cap"
+   "en": "Removes the cyberware capacity cap",
+   "author": "dnbnhlp"
   },
   "Equipment-EX 6945 1.3.1 2026": {
    "ru": "Трансмог и сохранение нарядов",
-   "en": "Transmog and outfit manager"
+   "en": "Transmog and outfit manager",
+   "author": "psiberx and DJ_Kovrik"
   },
   "ESDE 33925 4.4.0 2026": {
    "ru": "Рывок и Сандевистан со звуком, как в «Бегущих по краю»",
-   "en": "Edgerunners-style dash and Sandevistan with sound"
+   "en": "Edgerunners-style dash and Sandevistan with sound",
+   "author": "Farik2307"
   },
   "Everyday Outfit": {
    "ru": "Повседневный наряд для женской Ви",
-   "en": "Everyday outfit for female V"
+   "en": "Everyday outfit for female V",
+   "author": "Tonydiz"
   },
   "Expanded Dual Wielding - IFP patch 35626 1 2026": {
    "ru": "Совместимость двух пистолетов в руках с IFP",
-   "en": "Dual wielding patch for IFP"
+   "en": "Dual wielding patch for IFP",
+   "author": "JericoHellden"
   },
   "Expanded Dual Wielding 35626 3.8 2026": {
    "ru": "Оружие в обеих руках, много сочетаний",
-   "en": "Dual wield many weapon combinations"
+   "en": "Dual wield many weapon combinations",
+   "author": "JericoHellden"
   },
   "Eyes LOD Fix - No more disappearing eyes": {
    "ru": "Глаза больше не пропадают при отдалении камеры",
-   "en": "Eyes no longer vanish when the camera is far away"
+   "en": "Eyes no longer vanish when the camera is far away",
+   "author": "JohnsonsStuff"
   },
   "Farmer's Market Outfit - Core": {
    "ru": "Летний наряд с сумкой и очками для обеих Ви",
-   "en": "Summer outfit with bag and glasses for both Vs"
+   "en": "Summer outfit with bag and glasses for both Vs",
+   "author": "beanie"
   },
   "Fighting Gangs Allowed - Reasonable Police": {
    "ru": "Полиция не нападает, когда ты бьёшь банды",
-   "en": "Police stay calm while you fight gangs"
+   "en": "Police stay calm while you fight gangs",
+   "author": "Valour549"
   },
   "Ford Mustang GT Fastback 2p2": {
    "ru": "Ford Mustang 1968 со скрытыми пулемётами",
-   "en": "1968 Ford Mustang with hidden machine guns"
+   "en": "1968 Ford Mustang with hidden machine guns",
+   "author": "cornmilf"
   },
   "Frame Generation Crash Guard 36360 1.05 2026": {
    "ru": "Нет вылетов при загрузке с генерацией кадров",
-   "en": "No load crashes with frame generation"
+   "en": "No load crashes with frame generation",
+   "author": "sholto24"
   },
   "FrameFlow CPU V": {
    "ru": "Снижает нагрузку на процессор, меньше просадок FPS",
-   "en": "Lighter CPU load, fewer FPS drops"
+   "en": "Lighter CPU load, fewer FPS drops",
+   "author": "DShadow"
   },
   "French Glam Atelier Store": {
    "ru": "Магазин коллекции French в сети",
-   "en": "French collection store on the Net"
+   "en": "French collection store on the Net",
+   "author": "Hyst"
   },
   "French Lingerie - Vol. 2 - XL": {
    "ru": "Комплект белья French, часть 2",
-   "en": "French lingerie set, vol. 2"
+   "en": "French lingerie set, vol. 2",
+   "author": "Hyst"
   },
   "French Lingerie XL": {
    "ru": "Комплект белья French из отдельных частей",
-   "en": "Modular French lingerie set"
+   "en": "Modular French lingerie set",
+   "author": "Hyst"
   },
   "Fresh Start 18223 1.6.1 2026": {
    "ru": "Новое начало игры: Ви — бывший корпорат и кочевник",
-   "en": "New lifepath intro: V is ex-corpo and ex-nomad"
+   "en": "New lifepath intro: V is ex-corpo and ex-nomad",
+   "author": "Deceptious"
   },
   "Gambling Props": {
    "ru": "Фишки и карты для покера в AMM",
-   "en": "Poker chips and playing cards for AMM"
+   "en": "Poker chips and playing cards for AMM",
+   "author": "Boe6"
   },
   "Glam Blowout": {
    "ru": "Причёска Glam Blowout для женской Ви",
-   "en": "Glam Blowout hairstyle for female V"
+   "en": "Glam Blowout hairstyle for female V",
+   "author": "beanie"
   },
   "Goth Girl Outfit and Footwear": {
    "ru": "Готический наряд и 4 пары обуви",
-   "en": "Goth outfit and 4 pairs of shoes"
+   "en": "Goth outfit and 4 pairs of shoes",
+   "author": "Tonydiz"
   },
   "Gripped Up - VanillaPlus": {
    "ru": "Машины лучше держат дорогу",
-   "en": "Better grip for all vehicles"
+   "en": "Better grip for all vehicles",
+   "author": "YokaiDealer"
   },
   "Hair Profiles CCXL 1.02": {
    "ru": "45 новых цветов волос, бровей и бороды",
-   "en": "45 new hair, brow and beard colours"
+   "en": "45 new hair, brow and beard colours",
+   "author": "island_dancer and psiberx"
   },
   "Hime Long Jelly - CCXL": {
    "ru": "Длинная причёска Hime в редакторе",
-   "en": "Long Hime hairstyle in the creator"
+   "en": "Long Hime hairstyle in the creator",
+   "author": "nutboy"
   },
   "Hime Medium - CCXL": {
    "ru": "Средняя причёска Hime в редакторе",
-   "en": "Medium Hime hairstyle in the creator"
+   "en": "Medium Hime hairstyle in the creator",
+   "author": "nutboy"
   },
   "HUD Painter 14935 1.4.1 2026": {
    "ru": "Меню для смены цветов интерфейса",
-   "en": "Menu to recolour the game HUD"
+   "en": "Menu to recolour the game HUD",
+   "author": "DJ_Kovrik"
   },
   "HunterFM": {
    "ru": "Бразильские радиостанции HunterFM",
-   "en": "HunterFM radio stations from Brazil"
+   "en": "HunterFM radio stations from Brazil",
+   "author": "Soncomander"
   },
   "Hyst_Angel_BodyMod 14896 3.0.0 2026": {
    "ru": "Тело ANGEL для женской Ви",
-   "en": "ANGEL body for female V"
+   "en": "ANGEL body for female V",
+   "author": "Hyst"
   },
   "HystAtelierStore": {
    "ru": "Магазин одежды Hyst в сети",
-   "en": "Hyst clothing store on the Net"
+   "en": "Hyst clothing store on the Net",
+   "author": "Hyst"
   },
   "Iconic Hair": {
    "ru": "Причёска Iconic для женской Ви",
-   "en": "Iconic hairstyle for female V"
+   "en": "Iconic hairstyle for female V",
+   "author": "Hyst"
   },
   "Immersive Bartenders": {
    "ru": "Бармены наливают напитки с анимацией",
-   "en": "Bartenders serve drinks with animations"
+   "en": "Bartenders serve drinks with animations",
+   "author": "Deceptious"
   },
   "Immersive Bartenders - Dogtown": {
    "ru": "Бармены Догтауна наливают с анимацией",
-   "en": "Dogtown bartenders serve drinks with animations"
+   "en": "Dogtown bartenders serve drinks with animations",
+   "author": "Deceptious"
   },
   "Immersive Cockpits Realistic version": {
    "ru": "Реалистичная камера из салона машин",
-   "en": "Realistic cockpit camera for vehicles"
+   "en": "Realistic cockpit camera for vehicles",
+   "author": "saul0097"
   },
   "Immersive First Person 2675 2.2.0 2026": {
    "ru": "Улучшенная камера от первого лица и рост Ви",
-   "en": "Better first-person camera and V height"
+   "en": "Better first-person camera and V height",
+   "author": "Bonaniki"
   },
   "Immersive Fixers": {
    "ru": "Знакомство с фиксерами плавнее и живее",
-   "en": "Smoother, more immersive fixer intros"
+   "en": "Smoother, more immersive fixer intros",
+   "author": "Deceptious"
   },
   "Immersive Food Vendors": {
    "ru": "Еда у торговцев с анимацией",
-   "en": "Food vendors with eating animations"
+   "en": "Food vendors with eating animations",
+   "author": "Deceptious"
   },
   "Immersive Food Vendors - Dogtown": {
    "ru": "Еда у торговцев Догтауна с анимацией",
-   "en": "Dogtown food vendors with eating animations"
+   "en": "Dogtown food vendors with eating animations",
+   "author": "Deceptious"
   },
   "Immersive Night City Fixes 20588 0.37 2026": {
    "ru": "Исправления мира Найт-Сити",
-   "en": "Fixes for the Night City world"
+   "en": "Fixes for the Night City world",
+   "author": "DBK"
   },
   "Immersive Night City Fixes CORE 27040 1.5 2026": {
    "ru": "Основа для исправлений мира Найт-Сити",
-   "en": "Core for Immersive Night City Fixes"
+   "en": "Core for Immersive Night City Fixes",
+   "author": "DBK"
   },
   "Immersive Rippers - Dogtown 10255 1.3.1 2026": {
    "ru": "Ви садится в кресло риперов в Догтауне",
-   "en": "V sits in the ripper chair in Dogtown"
+   "en": "V sits in the ripper chair in Dogtown",
+   "author": "Deceptious"
   },
   "Immersive Rippers 7064 2.6.2 2026": {
    "ru": "Ви садится в кресло риперов",
-   "en": "V sits in the ripper chair"
+   "en": "V sits in the ripper chair",
+   "author": "Deceptious"
   },
   "Immersive Timeskip 5115 2.2.3 2026": {
    "ru": "Пропуск времени выглядит естественнее",
-   "en": "A more immersive time skip"
+   "en": "A more immersive time skip",
+   "author": "DJ_Kovrik"
   },
   "Immersive V Dialogue Expanded 24377 1.1.0 2026": {
    "ru": "Ви говорит в бою, за рулём и при взломе",
-   "en": "V talks in combat, while driving and hacking"
+   "en": "V talks in combat, while driving and hacking",
+   "author": "skyrayfox"
   },
   "Immersive Vik": {
    "ru": "Ви садится в кресло у Вика",
-   "en": "V sits in Vik's chair"
+   "en": "V sits in Vik's chair",
+   "author": "Deceptious"
   },
   "ImprovedSlide": {
    "ru": "Подкат в стороны и дальше, не сбивается на ступеньках",
-   "en": "Side slides, longer slides, no stops on stairs"
+   "en": "Side slides, longer slides, no stops on stairs",
+   "author": "zouzoulle"
   },
   "InplaceSectorsNulled 14197 0.14 2026": {
    "ru": "Нужен модам, которые меняют мир игры",
-   "en": "Lets mods change world assets"
+   "en": "Lets mods change world assets",
+   "author": "sosuinepsixuyu"
   },
   "Input Loader v0.2.6 for 2.50 4575 0.2.6 2026": {
    "ru": "Нужен модам для своих клавиш",
-   "en": "Lets mods add their own keys"
+   "en": "Lets mods add their own keys",
+   "author": "Jack Humbert"
   },
   "Jess Hair": {
    "ru": "Причёска Jess для женской Ви",
-   "en": "Jess hairstyle for female V"
+   "en": "Jess hairstyle for female V",
+   "author": "wingdeer"
   },
   "JOHNAUGUSTxVEEGEE_Chain_Boots - Female": {
    "ru": "Ботинки с цепями, 10 цветов",
-   "en": "Chain boots in 10 colours"
+   "en": "Chain boots in 10 colours",
+   "author": "John and Veegee"
   },
   "Judy Romanced Enhanced": {
    "ru": "Джуди после романа ведёт себя живее, объятия и поцелуи",
-   "en": "Livelier romanced Judy, with hugs and kisses"
+   "en": "Livelier romanced Judy, with hugs and kisses",
+   "author": "Deceptious"
   },
   "Juri Clothes EBB - XL": {
    "ru": "Наряд Джури из Street Fighter 6",
-   "en": "Juri outfit from Street Fighter 6"
+   "en": "Juri outfit from Street Fighter 6",
+   "author": "Dusty2077"
   },
   "KAFU UI for HUD Painter": {
    "ru": "Бело-бирюзовая тема интерфейса KAFU",
-   "en": "KAFU white and teal HUD theme"
+   "en": "KAFU white and teal HUD theme",
+   "author": "mift712"
   },
   "Kala's Eyes Standalone": {
    "ru": "Новые текстуры глаз для Ви",
-   "en": "New eye textures for V"
+   "en": "New eye textures for V",
+   "author": "Kala"
   },
   "Karina Hair": {
    "ru": "Причёска Karina для женской Ви",
-   "en": "Karina hairstyle for female V"
+   "en": "Karina hairstyle for female V",
+   "author": "Hyst"
   },
   "Kelly Hair - PHYSCIS ENABLED": {
    "ru": "Причёска Kelly с физикой волос",
-   "en": "Kelly hairstyle with hair physics"
+   "en": "Kelly hairstyle with hair physics",
+   "author": "wingdeer"
   },
   "Kenny Hair - PHYSCIS ENABLED": {
    "ru": "Причёска Kenny с физикой волос",
-   "en": "Kenny hairstyle with hair physics"
+   "en": "Kenny hairstyle with hair physics",
+   "author": "wingdeer"
   },
   "Kerry Romanced Enhanced": {
    "ru": "Керри после романа: гитара, объятия и поцелуи",
-   "en": "Romanced Kerry: guitar, hugs and kisses"
+   "en": "Romanced Kerry: guitar, hugs and kisses",
+   "author": "Deceptious"
   },
   "Ket CombatTacticsTraining V1.3 36857 1.3 2026": {
    "ru": "Враги умнее: тактика отряда, гранаты, обходы",
-   "en": "Smarter enemies: squad tactics, grenades, flanks"
+   "en": "Smarter enemies: squad tactics, grenades, flanks",
+   "author": "Ketaroz"
   },
   "Kiroshi Night Vision Mod 2.1 8326 2.1 2026": {
    "ru": "Ночное зрение для глаз Kiroshi",
    "en": "Night vision for Kiroshi eyes",
-   "nexusModId": 8326
+   "nexusModId": 8326,
+   "author": "keanuWheeze"
   },
   "KRNLNIK Dodge Charger R T": {
    "ru": "Dodge Charger R/T 1969",
-   "en": "1969 Dodge Charger R/T"
+   "en": "1969 Dodge Charger R/T",
+   "author": "Cornmilf"
   },
   "KRNLNIK Ford Mustang Boss 302": {
    "ru": "Ford Mustang Boss 302 1969",
-   "en": "1969 Ford Mustang Boss 302"
+   "en": "1969 Ford Mustang Boss 302",
+   "author": "Cornmilf"
   },
   "KRNLNIK RTR Spec 5": {
    "ru": "Ford Mustang RTR Spec 5 2018",
-   "en": "2018 Ford Mustang RTR Spec 5"
+   "en": "2018 Ford Mustang RTR Spec 5",
+   "author": "Cornmilf"
   },
   "Lamborghini Veneno": {
    "ru": "Суперкар Lamborghini Veneno",
-   "en": "Lamborghini Veneno supercar"
+   "en": "Lamborghini Veneno supercar",
+   "author": "aalexbug"
   },
   "Law Enforcement Overhaul": {
    "ru": "Больше полиции: бронемашины SWAT, мехи, нетраннеры",
-   "en": "Bigger police: SWAT trucks, mechs, netrunners"
+   "en": "Bigger police: SWAT trucks, mechs, netrunners",
+   "author": "Yorpie"
   },
   "Law Enforcement Overhaul Reset - AIO 26045 1.3.1aio 2026": {
    "ru": "Совместимость полиции с другими модами",
-   "en": "Police spawn compatibility with other mods"
+   "en": "Police spawn compatibility with other mods",
+   "author": "Yorpie and ApoKrytia"
   },
   "Leather Outfit": {
    "ru": "Кожаный наряд для женской Ви",
-   "en": "Leather outfit for female V"
+   "en": "Leather outfit for female V",
+   "author": "Tonydiz"
   },
   "Leather Punk Outfit_Hyst_Big_Booba_Booty": {
    "ru": "Кожаный панк-наряд, 19 цветов",
-   "en": "Leather punk outfit, 19 colours"
+   "en": "Leather punk outfit, 19 colours",
+   "author": "AlvarixPT"
   },
   "Lee Hair - PHYSCIS ENABLED": {
    "ru": "Причёска Lee с физикой волос",
-   "en": "Lee hairstyle with hair physics"
+   "en": "Lee hairstyle with hair physics",
+   "author": "wingdeer"
   },
   "Lime Atelier": {
    "ru": "Магазин одежды Lime в сети",
-   "en": "Lime clothing store on the Net"
+   "en": "Lime clothing store on the Net",
+   "author": "Limerence"
   },
   "Limerence Morgana Boots": {
    "ru": "Готические ботинки Morgana для женской Ви",
-   "en": "Gothic Morgana boots for female V"
+   "en": "Gothic Morgana boots for female V",
+   "author": "Limerence"
   },
   "LiveALittle": {
    "ru": "Сюжет не торопит: есть время на прогулки",
-   "en": "Main quest gives V time to explore"
+   "en": "Main quest gives V time to explore",
+   "author": "DeepBlueFrog"
   },
   "Lizzy Wizzy": {
    "ru": "Причёска Lizzy Wizzy для женской Ви",
-   "en": "Lizzy Wizzy hairstyle for female V"
+   "en": "Lizzy Wizzy hairstyle for female V",
+   "author": "beanie"
   },
   "Load Begone 8144 3.4.0 2026": {
    "ru": "Пропуск заставок и экранов «Нажмите, чтобы продолжить»",
-   "en": "Skips intro screens and \"press to continue\" prompts"
+   "en": "Skips intro screens and \"press to continue\" prompts",
+   "author": "CyanideX"
   },
   "Lob with Bangs": {
    "ru": "Каре с чёлкой для женской Ви",
-   "en": "Lob with bangs for female V"
+   "en": "Lob with bangs for female V",
+   "author": "beanie"
   },
   "Long Mullet": {
    "ru": "Длинный маллет для женской Ви",
-   "en": "Long mullet for female V"
+   "en": "Long mullet for female V",
+   "author": "beanie"
   },
   "Low Bun": {
    "ru": "Низкий пучок для женской Ви",
-   "en": "Low bun for female V"
+   "en": "Low bun for female V",
+   "author": "beanie"
   },
   "LUT Pack GITS (Kuria)": {
    "ru": "Цветовой фильтр в стиле «Призрака в доспехах»",
-   "en": "Ghost in the Shell colour filter"
+   "en": "Ghost in the Shell colour filter",
+   "author": "CyanideX"
   },
   "LUT Pack Nova": {
    "ru": "Набор цветовых фильтров Nova",
-   "en": "Nova colour filter pack"
+   "en": "Nova colour filter pack",
+   "author": "CyanideX"
   },
   "LUTSwitcher 16310 3.5.0 2026": {
    "ru": "Переключение цветовых фильтров прямо в игре",
-   "en": "Switch colour filters in game"
+   "en": "Switch colour filters in game",
+   "author": "CyanideX"
   },
   "Lynn's Eyeliners And Eyeshadows Collection - Vol.1": {
    "ru": "7 новых подводок и теней для глаз",
-   "en": "7 new eyeliners and eyeshadows"
+   "en": "7 new eyeliners and eyeshadows",
+   "author": "Dynamo_Lynn"
   },
   "M1_MainFile": {
    "ru": "Машина BMW M1",
-   "en": "BMW M1 car"
+   "en": "BMW M1 car",
+   "author": "SDH0"
   },
   "Material and Texture Override (REDmod)": {
    "ru": "Нужен модам с новыми материалами",
-   "en": "Lets mods load new materials"
+   "en": "Lets mods load new materials",
+   "author": "Nim"
   },
   "McLaren Senna - version A": {
    "ru": "Суперкар McLaren Senna",
-   "en": "McLaren Senna supercar"
+   "en": "McLaren Senna supercar",
+   "author": "Morpheus"
   },
   "Melee Attacks Fixes And Enhancements": {
    "ru": "Исправления и улучшения ближнего боя",
-   "en": "Melee combat fixes and improvements"
+   "en": "Melee combat fixes and improvements",
+   "author": "sosuinepsixuyu"
   },
   "Mercedes Maybach S680 2021 V1.4 36416 4 2026": {
    "ru": "Mercedes-Maybach S680 2021, покупается в сети",
-   "en": "2021 Mercedes-Maybach S680, buy it on the Net"
+   "en": "2021 Mercedes-Maybach S680, buy it on the Net",
+   "author": "Kingospawno"
   },
   "Mercedes One AMG Livery": {
    "ru": "Гиперкар Mercedes One AMG",
-   "en": "Mercedes One AMG hypercar"
+   "en": "Mercedes One AMG hypercar",
+   "author": "aalexbug"
   },
   "Meredith Stout Romance Addon": {
    "ru": "Продолжение отношений с Мередит Стаут",
-   "en": "Continue things with Meredith Stout"
+   "en": "Continue things with Meredith Stout",
+   "author": "GetTenSO"
   },
   "Mid-Century Mansion - All-In-One 36445 1.2.1 2026": {
    "ru": "Особняк в холмах Норт-Оука с видом на город",
-   "en": "Mansion in the North Oak hills with a city view"
+   "en": "Mansion in the North Oak hills with a city view",
+   "author": "RedCatch22"
   },
   "Military Combat Armor": {
    "ru": "Военная броня из частей, 47 предметов",
-   "en": "Modular military armour, 47 items"
+   "en": "Modular military armour, 47 items",
+   "author": "ScorpionTank - Gorefiend"
   },
   "Military Combat Boots": {
    "ru": "Военные ботинки, 22 предмета",
-   "en": "Military boots, 22 items"
+   "en": "Military boots, 22 items",
+   "author": "ScorpionTank"
   },
   "Military Pistol Holsters": {
    "ru": "Кобуры для двух пистолетов, 60 предметов",
-   "en": "Dual pistol holsters, 60 items"
+   "en": "Dual pistol holsters, 60 items",
+   "author": "ScorpionTank"
   },
   "Mina Hair": {
    "ru": "Причёска Mina для женской Ви",
-   "en": "Mina hairstyle for female V"
+   "en": "Mina hairstyle for female V",
+   "author": "Hyst"
   },
   "Misty's New Look No Lipstick": {
    "ru": "Мисти в готическом образе",
-   "en": "Misty gets a goth look"
+   "en": "Misty gets a goth look",
+   "author": "EKT and LadyBella"
   },
   "Mod Settings v0.2.30 for 2.50 4885 0.2.30 2026": {
    "ru": "Меню настроек для модов",
    "en": "Settings menu for mods",
-   "nexusModId": 4885
+   "nexusModId": 4885,
+   "author": "Jack Humbert"
   },
   "More Head and Body Meshes": {
    "ru": "Нужен модам на тела и головы",
-   "en": "Framework for head and body mods"
+   "en": "Framework for head and body mods",
+   "author": "nutboy"
   },
   "Morph Texture Removal": {
    "ru": "Чище кожа лица Ви, без пикселей",
-   "en": "Cleaner skin on V's face, no pixelation"
+   "en": "Cleaner skin on V's face, no pixelation",
+   "author": "Halvkyrie"
   },
   "MovementFixes 35942 1.0.1 2026": {
    "ru": "Исправления движения: выносливость, бег, рывок",
-   "en": "Movement fixes: stamina, jogging, dash"
+   "en": "Movement fixes: stamina, jogging, dash",
+   "author": "alx713"
   },
   "Much Better Contracts 35142 2.4.6 2026": {
    "ru": "Бесконечные повторяемые заказы",
-   "en": "Endless repeatable gigs"
+   "en": "Endless repeatable gigs",
+   "author": "0nlyQ"
   },
   "Mustang_GTD": {
    "ru": "Ford Mustang GTD",
-   "en": "Ford Mustang GTD"
+   "en": "Ford Mustang GTD",
+   "author": "CyberDaaN"
   },
   "Muted Markers": {
    "ru": "Настройка значков взаимодействия и добычи",
-   "en": "Tweak interaction and loot markers"
+   "en": "Tweak interaction and loot markers",
+   "author": "DJ_Kovrik"
   },
   "Myers": {
    "ru": "Причёска Myers для женской Ви",
-   "en": "Myers hairstyle for female V"
+   "en": "Myers hairstyle for female V",
+   "author": "beanie"
   },
   "Native Interactions Framework 1.1.5 21422 1.1.5 2026": {
    "ru": "Можно сидеть, спать, пить и принимать душ в разных местах",
-   "en": "Sit, sleep, drink and shower in more places"
+   "en": "Sit, sleep, drink and shower in more places",
+   "author": "keanuWheeze"
   },
   "Native Settings UI 1.97 3518 1.97 2026": {
    "ru": "Меню настроек модов в игре",
    "en": "In-game settings menu for mods",
-   "nexusModId": 3518
+   "nexusModId": 3518,
+   "author": "keanuWheeze"
   },
   "Native Settings UI Side Menu Add-on 16218 1.6.0 2026": {
    "ru": "Боковое меню для настроек модов",
    "en": "Side menu for mod settings",
-   "nexusModId": 16218
+   "nexusModId": 16218,
+   "author": "anygoodname"
   },
   "NCI Badlands and Pacifica 15138 2.0.2 2026": {
    "ru": "Выпивка с партнёром в Пустошах и Пасифике",
-   "en": "Drinks with your partner in the Badlands and Pacifica"
+   "en": "Drinks with your partner in the Badlands and Pacifica",
+   "author": "Deceptious"
   },
   "NCI City Center": {
    "ru": "Выпивка с партнёром в центре города",
-   "en": "Drinks with your partner in the City Center"
+   "en": "Drinks with your partner in the City Center",
+   "author": "Deceptious"
   },
   "NCI Heywood": {
    "ru": "Выпивка с партнёром в Хейвуде",
-   "en": "Drinks with your partner in Heywood"
+   "en": "Drinks with your partner in Heywood",
+   "author": "Deceptious"
   },
   "NCI Santo Domingo": {
    "ru": "Выпивка с партнёром в Санто-Доминго",
-   "en": "Drinks with your partner in Santo Domingo"
+   "en": "Drinks with your partner in Santo Domingo",
+   "author": "Deceptious"
   },
   "NCI Watson": {
    "ru": "Выпивка с партнёром в Уотсоне",
-   "en": "Drinks with your partner in Watson"
+   "en": "Drinks with your partner in Watson",
+   "author": "Deceptious"
   },
   "NCI Westbrook": {
    "ru": "Выпивка с партнёром в Уэстбруке",
-   "en": "Drinks with your partner in Westbrook"
+   "en": "Drinks with your partner in Westbrook",
+   "author": "Deceptious"
   },
   "ND_Accessories_store": {
    "ru": "Магазин аксессуаров Nola Dreamer",
-   "en": "Nola Dreamer accessories store"
+   "en": "Nola Dreamer accessories store",
+   "author": "NolaDreamer"
   },
   "ND_After_Midnight_Outfit_FemV": {
    "ru": "Наряд After Midnight для женской Ви",
-   "en": "After Midnight outfit for female V"
+   "en": "After Midnight outfit for female V",
+   "author": "NolaDreamer"
   },
   "ND_Alt_jacket_and_pants_FemV": {
    "ru": "Куртка и брюки в стиле альт для женской Ви",
-   "en": "Alt jacket and pants for female V"
+   "en": "Alt jacket and pants for female V",
+   "author": "NolaDreamer"
   },
   "ND_Aquelyras_rockergirl_outfit_FemV": {
    "ru": "Наряд рокерши для женской Ви",
-   "en": "Rocker girl outfit for female V"
+   "en": "Rocker girl outfit for female V",
+   "author": "NolaDreamer and Aquelyras"
   },
   "ND_belly_chain_Hearts_FemV": {
    "ru": "Цепочка на талию с сердечками",
-   "en": "Heart belly chain"
+   "en": "Heart belly chain",
+   "author": "NolaDreamer"
   },
   "ND_Bracelets_Collection_FemV": {
    "ru": "15 браслетов в 3 цветах",
-   "en": "15 bracelets in 3 colours"
+   "en": "15 bracelets in 3 colours",
+   "author": "NolaDreamer"
   },
   "ND_CocktailBabe_FemV": {
    "ru": "Коктейльный наряд, 8 цветов",
-   "en": "Cocktail outfit, 8 colours"
+   "en": "Cocktail outfit, 8 colours",
+   "author": "NolaDreamer"
   },
   "ND_Eunji_Choi_hair_AXL": {
    "ru": "Причёска Eunji Choi с физикой волос",
-   "en": "Eunji Choi hairstyle with hair physics"
+   "en": "Eunji Choi hairstyle with hair physics",
+   "author": "NolaDreamer"
   },
   "ND_female_virtual_boutique 5114 7.6 2026": {
    "ru": "Магазин одежды Nola Dreamer в сети",
-   "en": "Nola Dreamer clothing store on the Net"
+   "en": "Nola Dreamer clothing store on the Net",
+   "author": "NolaDreamer"
   },
   "ND_fishnet_stockings_and_socks_FemV": {
    "ru": "Сетчатые чулки и носки",
-   "en": "Fishnet stockings and socks"
+   "en": "Fishnet stockings and socks",
+   "author": "NolaDreamer"
   },
   "ND_fishnet_tights_FemV": {
    "ru": "Сетчатые колготки",
-   "en": "Fishnet tights"
+   "en": "Fishnet tights",
+   "author": "NolaDreamer"
   },
   "ND_Girlfriend_Oufit_FemV": {
    "ru": "Водолазка и юбка, 8 цветов",
-   "en": "Turtleneck and skirt, 8 colours"
+   "en": "Turtleneck and skirt, 8 colours",
+   "author": "NolaDreamer"
   },
   "ND_Harmonia_Outfit_FemV": {
    "ru": "Наряд Harmonia с галстуком и маской",
-   "en": "Harmonia outfit with tie and mask"
+   "en": "Harmonia outfit with tie and mask",
+   "author": "NolaDreamer"
   },
   "ND_heart_choker_garters_FemV": {
    "ru": "Чокер с сердцем и подвязки",
-   "en": "Heart choker and garters"
+   "en": "Heart choker and garters",
+   "author": "NolaDreamer"
   },
   "ND_Lingerie_Bodysuit_FemV": {
    "ru": "Боди из белья, 8 вариантов",
-   "en": "Lingerie bodysuit, 8 variants"
+   "en": "Lingerie bodysuit, 8 variants",
+   "author": "NolaDreamer"
   },
   "ND_Loose_outfit_FemV": {
    "ru": "Свободный наряд для женской Ви, 40 вариантов",
-   "en": "Loose outfit for female V, 40 variants"
+   "en": "Loose outfit for female V, 40 variants",
+   "author": "NolaDreamer"
   },
   "ND_Loose_outfit_MascV": {
    "ru": "Свободный наряд для мужского Ви, 40 вариантов",
-   "en": "Loose outfit for male V, 40 variants"
+   "en": "Loose outfit for male V, 40 variants",
+   "author": "NolaDreamer"
   },
   "ND_loose_top_and_plaid_mini_skirt_FemV": {
    "ru": "Свободный топ и мини-юбка в клетку",
-   "en": "Loose top and plaid mini skirt"
+   "en": "Loose top and plaid mini skirt",
+   "author": "NolaDreamer"
   },
   "ND_male_virtual_boutique": {
    "ru": "Магазин мужской одежды Nola Dreamer в сети",
-   "en": "Nola Dreamer men's store on the Net"
+   "en": "Nola Dreamer men's store on the Net",
+   "author": "NolaDreamer"
   },
   "ND_Meluminary_clothes_part_1_FemV": {
    "ru": "Набор одежды Nola и Meluminary, часть 1",
-   "en": "Nola and Meluminary clothes, part 1"
+   "en": "Nola and Meluminary clothes, part 1",
+   "author": "NolaDreamer and Meluminary"
   },
   "ND_Meluminary_clothes_part_2_FemV": {
    "ru": "Набор одежды Nola и Meluminary, часть 2",
-   "en": "Nola and Meluminary clothes, part 2"
+   "en": "Nola and Meluminary clothes, part 2",
+   "author": "NolaDreamer"
   },
   "ND_Meluminary_clothes_part_3_FemV": {
    "ru": "Набор одежды Nola и Meluminary, часть 3",
-   "en": "Nola and Meluminary clothes, part 3"
+   "en": "Nola and Meluminary clothes, part 3",
+   "author": "NolaDreamer and Meluminary"
   },
   "ND_Moon_accessories_FemV": {
    "ru": "Украшения с луной: чокер, браслеты, анклеты",
-   "en": "Moon jewellery: choker, bracelets, anklets"
+   "en": "Moon jewellery: choker, bracelets, anklets",
+   "author": "NolaDreamer"
   },
   "ND_Nikki_hair_AXL прическа": {
    "ru": "Причёска Nikki с физикой волос",
-   "en": "Nikki hairstyle with hair physics"
+   "en": "Nikki hairstyle with hair physics",
+   "author": "NolaDreamer"
   },
   "ND_one_shoulder_shirt_FemV": {
    "ru": "Рубашка на одно плечо",
-   "en": "One-shoulder shirt"
+   "en": "One-shoulder shirt",
+   "author": "NolaDreamer"
   },
   "ND_overknee_socks_FemV": {
    "ru": "Гольфы выше колена, 12 вариантов",
-   "en": "Over-knee socks, 12 variants"
+   "en": "Over-knee socks, 12 variants",
+   "author": "NolaDreamer"
   },
   "ND_Roxy_hair_AXL прическа": {
    "ru": "Причёска Roxy с физикой волос",
-   "en": "Roxy hairstyle with hair physics"
+   "en": "Roxy hairstyle with hair physics",
+   "author": "NolaDreamer"
   },
   "ND_Spiked_Collar_BothV": {
    "ru": "Ошейник с шипами для обеих Ви",
-   "en": "Spiked collar for both Vs"
+   "en": "Spiked collar for both Vs",
+   "author": "NolaDreamer"
   },
   "Netrunner Suit Pt5 - DA": {
    "ru": "Костюм нетраннера для женской Ви",
-   "en": "Netrunner suit for female V"
+   "en": "Netrunner suit for female V",
+   "author": "Veegee"
   },
   "Nicki Hair - PHYSCIS ENABLED": {
    "ru": "Причёска Nicki с физикой волос",
-   "en": "Nicki hairstyle with hair physics"
+   "en": "Nicki hairstyle with hair physics",
+   "author": "wingdeer"
   },
   "Night City Fleet Expansion": {
    "ru": "Новые машины полиции, «Сетевого дозора», МаксТака и «Траумы»",
-   "en": "New NCPD, Netwatch, MaxTac and Trauma Team vehicles"
+   "en": "New NCPD, Netwatch, MaxTac and Trauma Team vehicles",
+   "author": "Alex Ashfold"
   },
   "Night City Interactions - Core 5519 4.1.1 2026": {
    "ru": "Основа «Взаимодействий Найт-Сити» и тур по местам «Бегущих по краю»",
-   "en": "Night City Interactions core and the Edgerunners tour"
+   "en": "Night City Interactions core and the Edgerunners tour",
+   "author": "Deceptious"
   },
   "Night Story hair CCXL": {
    "ru": "Причёска Night Story для женской Ви",
-   "en": "Night Story hairstyle for female V"
+   "en": "Night Story hairstyle for female V",
+   "author": "Atomiic"
   },
   "NightCityVisualsNulled": {
    "ru": "Исправляет освещение города для модов света",
-   "en": "Fixes city lighting for lighting mods"
+   "en": "Fixes city lighting for lighting mods",
+   "author": "NeHooYeY - robber804"
   },
   "Nina": {
    "ru": "Причёска Nina для женской Ви",
-   "en": "Nina hairstyle for female V"
+   "en": "Nina hairstyle for female V",
+   "author": "beanie"
   },
   "NLD_MPAF_MultiPosePackAndAnimationFramework.zip": {
    "ru": "Несколько наборов поз и анимаций сразу",
-   "en": "Use several pose and animation packs at once"
+   "en": "Use several pose and animation packs at once",
+   "author": "NoraLee"
   },
   "Nokota Stingray - Dark Steel": {
    "required": true,
    "ru": "Машина Nokota Stingray",
-   "en": "Nokota Stingray car"
+   "en": "Nokota Stingray car",
+   "author": "sabbath7991"
   },
   "Nola_and_Meluminary_feminine_atelier": {
    "ru": "Магазин одежды Nola и Meluminary в сети",
-   "en": "Nola and Meluminary store on the Net"
+   "en": "Nola and Meluminary store on the Net",
+   "author": "NolaDreamer and Meluminary"
   },
   "NolaXVeegee_Vintage_Outfit_FemV": {
    "ru": "Винтажный наряд для женской Ви",
-   "en": "Vintage outfit for female V"
+   "en": "Vintage outfit for female V",
+   "author": "Nola x Veegee"
   },
   "NolaXVeegeeXAquelyras_lethal_outfit_FemV": {
    "ru": "Наряд Lethal с маской, 10 цветов",
-   "en": "Lethal outfit with mask, 10 colours"
+   "en": "Lethal outfit with mask, 10 colours",
+   "author": "Nola x Veegee x Aquelyras"
   },
   "NoMoreMenuBackgrounds": {
    "ru": "Видно игру за меню, без фона",
-   "en": "See the game behind menus, no background"
+   "en": "See the game behind menus, no background",
+   "author": "TheArtificialEnhancer"
   },
   "northside garage flat 28911 2 2026": {
    "ru": "Квартира над гаражом в Нортсайде",
-   "en": "Flat above a garage in Northside"
+   "en": "Flat above a garage in Northside",
+   "author": "thumbsuckerr"
   },
   "Nova Rain": {
    "ru": "Реалистичный дождь, без ярких капель в темноте",
-   "en": "Realistic rain, no glowing drops at night"
+   "en": "Realistic rain, no glowing drops at night",
+   "author": "CyanideX"
   },
   "Nova Rain - Ripples": {
    "ru": "Улучшенные круги от капель на лужах",
-   "en": "Better rain ripples on puddles"
+   "en": "Better rain ripples on puddles",
+   "author": "CyanideX"
   },
   "Nova Scanner": {
    "ru": "Простой и красивый сканер",
-   "en": "A minimal, immersive scanner"
+   "en": "A minimal, immersive scanner",
+   "author": "CyanideX"
   },
   "NPC Vehicle Reactions Fixed 19530 1.1.0 2026": {
    "ru": "Прохожие больше не прыгают под машину",
-   "en": "NPCs no longer jump in front of your car"
+   "en": "NPCs no longer jump in front of your car",
+   "author": "icxrus"
   },
   "Okrasha_Shelby_Cobra_427": {
    "ru": "Shelby Cobra 427 1965",
-   "en": "1965 Shelby Cobra 427"
+   "en": "1965 Shelby Cobra 427",
+   "author": "Okrasha"
   },
   "One More Light 7834 2.2.1 2026": {
    "ru": "Новое задание после поминок Джеки",
-   "en": "New quest after Jackie's ofrenda"
+   "en": "New quest after Jackie's ofrenda",
+   "author": "Deceptious"
   },
   "Outdoor V - Canyon Forest": {
    "ru": "Лес в каньоне Восточных Пустошей",
-   "en": "A forest in the Eastern Badlands canyon"
+   "en": "A forest in the Eastern Badlands canyon",
+   "author": "Kaoziun"
   },
   "Overclocked Lynx Paws": {
    "ru": "Бег по стенам, лазанье и перекаты с «Лапами рыси»",
-   "en": "Wall running, climbing and rolls with Lynx Paws"
+   "en": "Wall running, climbing and rolls with Lynx Paws",
+   "author": "Frosthaven aka __Paladin__"
   },
   "Panam": {
    "ru": "Причёска Панам для женской Ви",
-   "en": "Panam hairstyle for female V"
+   "en": "Panam hairstyle for female V",
+   "author": "beanie"
   },
   "Panam Conversations Addon 32507 1.1.3 2026": {
    "ru": "Новые разговоры с Панам после сюжета",
-   "en": "New conversations with Panam after her story"
+   "en": "New conversations with Panam after her story",
+   "author": "GetTenSO"
   },
   "Panam Romanced Enhanced 4626 2.6.3 2026": {
    "ru": "Панам после романа живёт в лагере: ест, спит, обнимается",
-   "en": "Romanced Panam lives at camp: eats, sleeps, hugs"
+   "en": "Romanced Panam lives at camp: eats, sleeps, hugs",
+   "author": "Deceptious"
   },
   "Parking Spots Enhanced 15708 1.2.5 2026": {
    "ru": "Машина Ви появляется на парковке у дома",
-   "en": "V's car spawns at a parking spot near home"
+   "en": "V's car spawns at a parking spot near home",
+   "author": "Deceptious"
   },
   "Perk Addition Framework 22758 1.0.1 2026": {
    "ru": "Нужен модам, которые добавляют навыки",
-   "en": "Lets mods add perks to perk trees"
+   "en": "Lets mods add perks to perk trees",
+   "author": "JonnesTT"
   },
   "Pet Your Cat": {
    "ru": "Можно гладить кошку Ви",
-   "en": "Pet your cat"
+   "en": "Pet your cat",
+   "author": "Deceptious"
   },
   "Photo Mode Unlocker 2.3 XL": {
    "ru": "Фоторежим без ограничений и с новыми позами",
-   "en": "Unrestricted photo mode with new poses"
+   "en": "Unrestricted photo mode with new poses",
+   "author": "SilverEzredes"
   },
   "Photomode Facial Expression Mega Pack": {
    "ru": "195 выражений лица в фоторежиме",
-   "en": "195 facial expressions in photo mode"
+   "en": "195 facial expressions in photo mode",
+   "author": "xBaebsae"
   },
   "Photomode NPCs Extended": {
    "ru": "Более 200 новых персонажей в фоторежиме",
-   "en": "200+ more characters in photo mode"
+   "en": "200+ more characters in photo mode",
+   "author": "xBaebsae"
   },
   "Pistol Pack": {
    "required": true,
    "ru": "12 новых пистолетов",
-   "en": "12 new pistols"
+   "en": "12 new pistols",
+   "author": "sabbath7991"
   },
   "PMU - Bombshell Set - Vol 1": {
    "ru": "22 позы для женской Ви",
-   "en": "22 poses for female V"
+   "en": "22 poses for female V",
+   "author": "Zwei - Rev"
   },
   "PMU - Bombshell Set - Vol 2": {
    "ru": "24 позы для женской Ви",
-   "en": "24 poses for female V"
+   "en": "24 poses for female V",
+   "author": "Zwei - Rev"
   },
   "PMU - Bombshell Set - Vol 3": {
    "ru": "31 поза для женской Ви и парные позы",
-   "en": "31 poses for female V plus paired poses"
+   "en": "31 poses for female V plus paired poses",
+   "author": "Zwei - Rev"
   },
   "Porsche 911 GT3 RS White_Black": {
    "ru": "Porsche 911 GT3 RS 2023",
-   "en": "2023 Porsche 911 GT3 RS"
+   "en": "2023 Porsche 911 GT3 RS",
+   "author": "aalexbug"
   },
   "Preem Hair (2K) 8223 3.0.0b 2026": {
    "ru": "Более чёткие и мягкие волосы",
-   "en": "Sharper, softer-looking hair"
+   "en": "Sharper, softer-looking hair",
+   "author": "CyanideX"
   },
   "Preem Hair - Brunette Judy": {
    "ru": "Тёмные волосы для Джуди",
-   "en": "Brunette hair for Judy"
+   "en": "Brunette hair for Judy",
+   "author": "CyanideX"
   },
   "Preem Scope - Militech Holosight Compat": {
    "ru": "Чистый голографический прицел «Милитеха»",
-   "en": "Clean Militech holo sight"
+   "en": "Clean Militech holo sight",
+   "author": "CyanideX"
   },
   "Preem Scopes": {
    "ru": "Прицелы без помех, полос и тонировки",
-   "en": "Scopes without glitches, scanlines and tint"
+   "en": "Scopes without glitches, scanlines and tint",
+   "author": "CyanideX"
   },
   "Preem Scopes - Smart Weapons": {
    "ru": "Чистые прицелы для умного оружия",
-   "en": "Clean scopes for smart weapons"
+   "en": "Clean scopes for smart weapons",
+   "author": "CyanideX"
   },
   "Preem Water 2.0 - Paradise": {
    "ru": "Более естественная вода, вариант Paradise",
-   "en": "More natural water, Paradise option"
+   "en": "More natural water, Paradise option",
+   "author": "CyanideX"
   },
   "Preem Weather (with Vignette)": {
    "ru": "Новое освещение и погода, с виньеткой",
-   "en": "Lighting and weather overhaul, with vignette"
+   "en": "Lighting and weather overhaul, with vignette",
+   "author": "CyanideX"
   },
   "Purple Force": {
    "ru": "Причёска Purple Force для женской Ви",
-   "en": "Purple Force hairstyle for female V"
+   "en": "Purple Force hairstyle for female V",
+   "author": "beanie"
   },
   "QuestWidget - RightAligned 17229 1.3 2026": {
    "ru": "Список заданий справа экрана",
-   "en": "Quest widget on the right side"
+   "en": "Quest widget on the right side",
+   "author": "Scream81"
   },
   "Quickhack Hotkeys 7238 2.3.3 2026": {
    "ru": "Скрипт-атаки на цифровых клавишах",
-   "en": "Quickhacks on number keys"
+   "en": "Quickhacks on number keys",
+   "author": "DJ_Kovrik"
   },
   "RadioExt 2.92 4591 2.92 2026": {
    "ru": "Нужен модам с новыми радиостанциями",
-   "en": "Lets mods add radio stations"
+   "en": "Lets mods add radio stations",
+   "author": "keanuWheeze"
   },
   "Real Vendor Names 4941 2.1.1 2026": {
    "ru": "На карте имена торговцев, а не просто тип",
-   "en": "Map shows vendor names, not just types"
+   "en": "Map shows vendor names, not just types",
+   "author": "DJ_Kovrik"
   },
   "Really Want To Stay At Your House": {
    "ru": "Панам может пожить у Ви",
-   "en": "Panam can stay at V's place"
+   "en": "Panam can stay at V's place",
+   "author": "Deceptious"
   },
   "Really Want To Stay At Your House - Judy": {
    "ru": "Джуди может пожить у Ви",
-   "en": "Judy can stay at V's place"
+   "en": "Judy can stay at V's place",
+   "author": "Deceptious"
   },
   "Really Want To Stay At Your House - Kerry": {
    "ru": "Керри может пожить у Ви",
-   "en": "Kerry can stay at V's place"
+   "en": "Kerry can stay at V's place",
+   "author": "Deceptious"
   },
   "Really Want To Stay At Your House - River": {
    "ru": "Ривер может пожить у Ви",
-   "en": "River can stay at V's place"
+   "en": "River can stay at V's place",
+   "author": "Deceptious"
   },
   "RED4ext 2380 1.31.1 2026": {
    "ru": "Расширение движка игры, нужно другим модам",
-   "en": "Game engine extender other mods need"
+   "en": "Game engine extender other mods need",
+   "author": "WopsS"
   },
   "RedData 14139 0.11.1 2026": {
    "ru": "Нужен другим модам для работы с данными",
-   "en": "Data plugin other mods need"
+   "en": "Data plugin other mods need",
+   "author": "Rayshader"
   },
   "RedFileSystem 13378 0.16.0 2026": {
    "ru": "Нужен другим модам для работы с файлами",
    "en": "File plugin other mods need",
-   "nexusModId": 13378
+   "nexusModId": 13378,
+   "author": "Rayshader"
   },
   "RedFunctions 32312 0.16.0 2026": {
    "ru": "Нужен другим модам: дополнительные функции",
-   "en": "Extra functions other mods need"
+   "en": "Extra functions other mods need",
+   "author": "DigitalVixen"
   },
   "REDGraph 34967 0.7.1 2026": {
    "ru": "Нужен другим модам для отрисовки",
-   "en": "Render host other mods need"
+   "en": "Render host other mods need",
+   "author": "dimkatet"
   },
   "RedLogger 31920 1.5.0 2026": {
    "ru": "Журналы модов, видны прямо в игре",
-   "en": "Mod logs, viewable in game"
+   "en": "Mod logs, viewable in game",
+   "author": "DigitalVixen"
   },
   "REDscope 30739 3.0 2026": {
    "ru": "Записывает причину вылета для разбора",
-   "en": "Records crash details for diagnosis"
+   "en": "Records crash details for diagnosis",
+   "author": "0nlyQ"
   },
   "redscript 1511 0.5.32 2026": {
    "ru": "Нужен скриптовым модам",
-   "en": "Script compiler other mods need"
+   "en": "Script compiler other mods need",
+   "author": "jac3km4"
   },
   "Redscript Config Framework 30726 3.2.3 2026": {
    "ru": "Нужен модам для их настроек",
-   "en": "Settings framework other mods need"
+   "en": "Settings framework other mods need",
+   "author": "DigitalVixen"
   },
   "Reset Attributes always available 9240 1.0.0.7 2026": {
    "ru": "Сброс характеристик сколько угодно раз",
-   "en": "Reset attributes as many times as you like"
+   "en": "Reset attributes as many times as you like",
+   "author": "yakuzadeso"
   },
   "responsive_npcs": {
    "ru": "Прохожие реагируют на твою одежду, машину и поступки",
-   "en": "NPCs react to what you wear, drive and do"
+   "en": "NPCs react to what you wear, drive and do",
+   "author": "MisterChedda"
   },
   "ResponsiveV": {
    "ru": "Ви реагирует на события, Джонни комментирует в пути",
-   "en": "V reacts to events, Johnny comments on the road"
+   "en": "V reacts to events, Johnny comments on the road",
+   "author": "MisterChedda"
   },
   "Rev's Poses - Covergirl Pack": {
    "ru": "26 модных поз для фоторежима",
-   "en": "26 fashion poses for photo mode"
+   "en": "26 fashion poses for photo mode",
+   "author": "Rev - Zwei - Veegee"
   },
   "Rev's Poses - Pictures of You": {
    "ru": "21 поза для портретов женской Ви",
-   "en": "21 portrait poses for female V"
+   "en": "21 portrait poses for female V",
+   "author": "Rev"
   },
   "RIOT penthouse with garage 27515 2.1 2026": {
    "ru": "Пентхаус RIOT с гаражом и видом на город",
-   "en": "RIOT penthouse with garage and city views"
+   "en": "RIOT penthouse with garage and city views",
+   "author": "thumbsuckerr"
   },
   "River Romanced Enhanced 4870 2.7.1 2026": {
    "ru": "Ривер после романа живёт у трейлера: ест, спит, обнимается",
-   "en": "Romanced River lives at the trailer: eats, sleeps, hugs"
+   "en": "Romanced River lives at the trailer: eats, sleeps, hugs",
+   "author": "Deceptious"
   },
   "Rogue": {
    "ru": "Причёска Rogue для женской Ви",
-   "en": "Rogue hairstyle for female V"
+   "en": "Rogue hairstyle for female V",
+   "author": "beanie"
   },
   "Romance Hangouts Enhanced": {
    "ru": "Улучшенные встречи с партнёром после романа",
-   "en": "Better romance hangouts"
+   "en": "Better romance hangouts",
+   "author": "Deceptious"
   },
   "Running Man 26611 1.2.2 2026": {
    "ru": "3 новых навыка бега: бег в любую сторону и удары на бегу",
-   "en": "3 sprint perks: run any direction, strike while sprinting"
+   "en": "3 sprint perks: run any direction, strike while sprinting",
+   "author": "RMK"
   },
   "Sandevistan Fire Rate Restored 25489 1.2 2026": {
    "ru": "Возвращает скорострельность с Сандевистаном",
-   "en": "Restores fire rate with the Sandevistan"
+   "en": "Restores fire rate with the Sandevistan",
+   "author": "dnbnhlp"
   },
   "Say Something Damn It 22228 1.18.1 2026": {
    "ru": "Ви благодарит торговцев и прощается с персонажами",
    "en": "V thanks vendors and says goodbye to characters",
-   "nexusModId": 22228
+   "nexusModId": 22228,
+   "author": "anygoodname"
   },
   "SCPIT_compatible": {
    "ru": "Настройки движка и система дыхания",
-   "en": "Engine tweaks and a breathing system"
+   "en": "Engine tweaks and a breathing system",
+   "author": "biomax"
   },
   "SFXToggle-V1.4 20421 1.4 2026": {
    "ru": "Можно выключить любые звуки и боевую музыку",
-   "en": "Mute any sound effects and combat music"
+   "en": "Mute any sound effects and combat music",
+   "author": "MisterChedda"
   },
   "Short Choppy": {
    "ru": "Причёска Short Choppy для женской Ви",
-   "en": "Short Choppy hairstyle for female V"
+   "en": "Short Choppy hairstyle for female V",
+   "author": "beanie"
   },
   "Silent Silencers and Throwing Knives 4070 1.6.3 2026": {
    "ru": "Глушитель и метательные ножи не поднимают тревогу",
-   "en": "Silencers and throwing knives keep you hidden"
+   "en": "Silencers and throwing knives keep you hidden",
+   "author": "RMK"
   },
   "Simple Flashlight 2913 2.6 2026": {
    "ru": "Фонарик, который включается кнопкой",
-   "en": "A flashlight you can toggle"
+   "en": "A flashlight you can toggle",
+   "author": "keanuWheeze"
   },
   "SkillTrainers V-1-0-7.zip": {
    "ru": "Учителя поднимают навыки за плату",
-   "en": "Trainers teach you skills"
+   "en": "Trainers teach you skills",
+   "author": "prius310l"
   },
   "SmootherDodgeAndDash": {
    "ru": "Уклонение и рывок плавнее и чуть дальше",
-   "en": "Smoother, slightly longer dodge and dash"
+   "en": "Smoother, slightly longer dodge and dash",
+   "author": "zouzoulle"
   },
   "Songbird": {
    "ru": "Причёска Songbird для женской Ви",
-   "en": "Songbird hairstyle for female V"
+   "en": "Songbird hairstyle for female V",
+   "author": "beanie"
   },
   "Songbird Messy": {
    "ru": "Растрёпанная причёска Songbird",
-   "en": "Messy Songbird hairstyle"
+   "en": "Messy Songbird hairstyle",
+   "author": "beanie"
   },
   "Songbird Tucked": {
    "ru": "Убранная причёска Songbird",
-   "en": "Tucked Songbird hairstyle"
+   "en": "Tucked Songbird hairstyle",
+   "author": "beanie"
   },
   "Sonora Apex 25999 1.0.4 2026": {
    "ru": "Каньон Сонора и убежище в Пустошах с новым заданием",
-   "en": "Sonora canyon and a Badlands safehouse with a quest"
+   "en": "Sonora canyon and a Badlands safehouse with a quest",
+   "author": "Nox and MrBilL61 - with TPMG"
   },
   "Spark Hair": {
    "ru": "Причёска Spark для женской Ви",
-   "en": "Spark hairstyle for female V"
+   "en": "Spark hairstyle for female V",
+   "author": "Hyst"
   },
   "Speedometer Fixes": {
    "ru": "Спидометр показывает правильную скорость в км/ч",
-   "en": "Speedometer shows correct speed in km/h"
+   "en": "Speedometer shows correct speed in km/h",
+   "author": "Grapjasss"
   },
   "SPIDER'S LOOOONG HAIR": {
    "ru": "Очень длинные волосы для женской Ви",
-   "en": "Very long hair for female V"
+   "en": "Very long hair for female V",
+   "author": "wingdeer"
   },
   "Stash Search": {
    "ru": "Поиск в тайнике",
-   "en": "Search in the stash"
+   "en": "Search in the stash",
+   "author": "DJ_Kovrik"
   },
   "Stella": {
    "ru": "Причёска Stella для женской Ви",
-   "en": "Stella hairstyle for female V"
+   "en": "Stella hairstyle for female V",
+   "author": "beanie"
   },
   "Stellar Hair": {
    "ru": "Причёска Stellar для женской Ви",
-   "en": "Stellar hairstyle for female V"
+   "en": "Stellar hairstyle for female V",
+   "author": "Hyst"
   },
   "Steward Dress - Archive XL": {
    "ru": "Платье стюардессы для женской Ви",
-   "en": "Steward dress for female V"
+   "en": "Steward dress for female V",
+   "author": "Hyst"
   },
   "Streaming Bug Workaround": {
    "ru": "Обход ошибки подгрузки мира",
    "en": "Workaround for a world streaming bug",
-   "nexusModId": 22857
+   "nexusModId": 22857,
+   "author": "sosuinepsixuyu"
   },
   "Street outfit Vol 1": {
    "ru": "Уличный наряд для женской Ви, 11 цветов",
-   "en": "Street outfit for female V, 11 colours"
+   "en": "Street outfit for female V, 11 colours",
+   "author": "Tottes"
   },
   "Taxi Work in Night City 15624 0.4.7-hotfix 2026": {
    "ru": "Подработка таксистом в Найт-Сити",
-   "en": "Work as a taxi driver in Night City"
+   "en": "Work as a taxi driver in Night City",
+   "author": "RollermineC"
   },
   "Teko Font and Menus Recolor": {
    "ru": "Новый шрифт и цвет меню",
-   "en": "New font and menu colours"
+   "en": "New font and menu colours",
+   "author": "Vequa"
   },
   "The Gangs of Night City 7233 7.0.1 2026": {
    "ru": "Банды Найт-Сити живее: территории и события",
-   "en": "Livelier Night City gangs"
+   "en": "Livelier Night City gangs",
+   "author": "Eli"
   },
   "THE GLEN PROJECT - Garage Addon 20191 1.46 2026": {
    "ru": "Гараж для квартиры в Глене",
-   "en": "Garage for the Glen apartment"
+   "en": "Garage for the Glen apartment",
+   "author": "Ak3nax"
   },
   "THE GLEN PROJECT 20191 1.46 2026": {
    "ru": "Квартира в Глене: новый дизайн, лифт, гараж",
-   "en": "Glen apartment overhaul: new design, elevator, garage"
+   "en": "Glen apartment overhaul: new design, elevator, garage",
+   "author": "Ak3nax"
   },
   "Tony Casual Store (Virtual Atelier) V4.4 19563 4.4 2026": {
    "ru": "Магазин одежды Tony в сети",
-   "en": "Tony's clothing store on the Net"
+   "en": "Tony's clothing store on the Net",
+   "author": "Tonydiz"
   },
   "Tucked Back Long": {
    "ru": "Длинные убранные назад волосы",
-   "en": "Long tucked-back hair"
+   "en": "Long tucked-back hair",
+   "author": "beanie"
   },
   "TweakXL 4197 1.12.2 2026": {
    "ru": "Нужен модам, которые меняют данные игры",
-   "en": "Lets mods change game data"
+   "en": "Lets mods change game data",
+   "author": "psiberx"
   },
   "Two Buns": {
    "ru": "Причёска с двумя пучками",
-   "en": "Two buns hairstyle"
+   "en": "Two buns hairstyle",
+   "author": "beanie"
   },
   "Unique Eyes - Core": {
    "ru": "Основа для новых глаз Ви, NPC не меняются",
-   "en": "Core for custom V eyes, NPCs stay the same"
+   "en": "Core for custom V eyes, NPCs stay the same",
+   "author": "Halvkyrie"
   },
   "Unlock Me The Mods 2.01": {
    "ru": "Можно снять модули с оружия и прицелы",
-   "en": "Remove weapon mods and scopes"
+   "en": "Remove weapon mods and scopes",
+   "author": "CDPR and Me"
   },
   "Unzipped Tactical Suit - Archive XL": {
    "ru": "Расстёгнутый тактический костюм",
-   "en": "Unzipped tactical suit"
+   "en": "Unzipped tactical suit",
+   "author": "Hyst"
   },
   "V's Loooong Hair": {
    "ru": "Очень длинные волосы Ви",
-   "en": "Very long hair for V"
+   "en": "Very long hair for V",
+   "author": "wingdeer"
   },
   "Valentine Hair - PHYSCIS ENABLED": {
    "ru": "Причёска Valentine с физикой волос",
-   "en": "Valentine hairstyle with hair physics"
+   "en": "Valentine hairstyle with hair physics",
+   "author": "wingdeer"
   },
   "Valeria Hair - PHYSCIS ENABLED": {
    "ru": "Причёска Valeria с физикой волос",
-   "en": "Valeria hairstyle with hair physics"
+   "en": "Valeria hairstyle with hair physics",
+   "author": "wingdeer"
   },
   "Veegee Cyber Mask Pt2": {
    "ru": "Кибермаска для обеих Ви",
-   "en": "Cyber mask for both Vs"
+   "en": "Cyber mask for both Vs",
+   "author": "Veegee"
   },
   "Veegee JK Suit": {
    "ru": "Костюм JK для женской Ви",
-   "en": "JK suit for female V"
+   "en": "JK suit for female V",
+   "author": "Veegee"
   },
   "Veegee Rings - MALE Only": {
    "ru": "18 колец для мужского Ви",
-   "en": "18 rings for male V"
+   "en": "18 rings for male V",
+   "author": "Veegee"
   },
   "Veegee Shoes pack RB - FEM V": {
    "ru": "Набор обуви, 10 цветов",
-   "en": "Shoe pack, 10 colours"
+   "en": "Shoe pack, 10 colours",
+   "author": "Veegee"
   },
   "Veegee Shop": {
    "ru": "Магазин одежды Veegee в сети",
-   "en": "Veegee clothing store on the Net"
+   "en": "Veegee clothing store on the Net",
+   "author": "VeegeeAlvarez"
   },
   "Veegee Shop 2": {
    "ru": "Второй магазин одежды Veegee в сети",
-   "en": "Second Veegee clothing store on the Net"
+   "en": "Second Veegee clothing store on the Net",
+   "author": "Veegee"
   },
   "Veegee X Efgrank Cyborg Skull Mask": {
    "ru": "Маска-череп киборга для обеих Ви",
-   "en": "Cyborg skull mask for both Vs"
+   "en": "Cyborg skull mask for both Vs",
+   "author": "Veegee"
   },
   "Vehicle Lights 5082 2.8 2026": {
    "ru": "Фары машин видно дальше",
-   "en": "Car lights visible from farther away"
+   "en": "Car lights visible from farther away",
+   "author": "sosuinepsixuyu"
   },
   "Vehicle Summon Tweaks - Dismiss": {
    "ru": "Вызов машины: можно отпустить, ремонт дороже",
-   "en": "Vehicle summon tweaks: dismiss, pricier repairs"
+   "en": "Vehicle summon tweaks: dismiss, pricier repairs",
+   "author": "DJ_Kovrik"
   },
   "Vendor Search": {
    "ru": "Поиск в меню торговцев",
-   "en": "Search in vendor menus"
+   "en": "Search in vendor menus",
+   "author": "deceptious"
   },
   "VendorsXL": {
    "ru": "Нужен модам с новыми торговцами",
-   "en": "Lets mods add new vendors"
+   "en": "Lets mods add new vendors",
+   "author": "Deceptious"
   },
   "VermillionForest X Veegee TECHWEAR SET - DA": {
    "ru": "Комплект техвира для женской Ви",
-   "en": "Techwear set for female V"
+   "en": "Techwear set for female V",
+   "author": "Veegee"
   },
   "Versalife X Veegee Daisho Set - Both V": {
    "ru": "Комплект Daisho для обеих Ви",
-   "en": "Daisho set for both Vs"
+   "en": "Daisho set for both Vs",
+   "author": "Veegee"
   },
   "Villa V - Main File for 2.5 36764 1.3 2026": {
    "ru": "Вилла в Норт-Оуке: автосалон, галерея, кинозал",
-   "en": "North Oak villa: car showroom, gallery, cinema"
+   "en": "North Oak villa: car showroom, gallery, cinema",
+   "author": "FlyingNanoPenguin"
   },
   "Virtual Atelier 2987 1.6.4 2026": {
    "ru": "Магазины одежды в сети и примерка на Ви",
-   "en": "Online clothing stores and try-on for V"
+   "en": "Online clothing stores and try-on for V",
+   "author": "Pacings and djkovrik"
   },
   "Virtual Car Dealer 4454 2.3.0 2026": {
    "ru": "Магазин машин в сети",
-   "en": "Online car dealer"
+   "en": "Online car dealer",
+   "author": "DJ_Kovrik"
   },
   "Visual Holsters 21936 1.4 2026": {
    "ru": "Оружие видно в кобуре, когда оно убрано",
-   "en": "Holstered weapons stay visible"
+   "en": "Holstered weapons stay visible",
+   "author": "ripperdoc"
   },
   "VSS-Vintorez-Black-Wolf 34518 1.0.4 2026": {
    "ru": "Снайперская винтовка ВСС «Винторез»",
-   "en": "VSS Vintorez sniper rifle"
+   "en": "VSS Vintorez sniper rifle",
+   "author": "argisht"
   },
   "VTK Vanilla HD - Head": {
    "ru": "Детальная голова женской Ви в высоком разрешении",
-   "en": "HD head for female V"
+   "en": "HD head for female V",
+   "author": "xBaebsae"
   },
   "Wash Props 420 Smoking": {
    "ru": "Предметы для курения в AMM",
-   "en": "Smoking props for AMM"
+   "en": "Smoking props for AMM",
+   "author": "wash"
   },
   "Who Was That Again": {
    "ru": "Крупные аватары контактов с лицами персонажей",
-   "en": "Bigger contact avatars with character faces"
+   "en": "Bigger contact avatars with character faces",
+   "author": "Wistipouf"
   },
   "Windswept - V hair blowing while driving bikes": {
    "ru": "Волосы Ви развеваются на мотоцикле",
-   "en": "V's hair blows in the wind on bikes"
+   "en": "V's hair blows in the wind on bikes",
+   "author": "johnson"
   },
   "WINGDEER_Manavortex Hair": {
    "ru": "Причёска Manavortex для женской Ви",
-   "en": "Manavortex hairstyle for female V"
+   "en": "Manavortex hairstyle for female V",
+   "author": "wingdeer"
   },
   "Wolverine Claws - FEMALE Version 34078 4 2026": {
    "ru": "Когти Росомахи из кулаков",
-   "en": "Wolverine claws from your fists"
+   "en": "Wolverine claws from your fists",
+   "author": "AdamHartGaming"
   },
   "Zenitex Assault Helmet": {
    "ru": "Штурмовой шлем, 107 предметов",
-   "en": "Assault helmet, 107 items"
+   "en": "Assault helmet, 107 items",
+   "author": "ScorpionTank"
   },
   "Zenitex Assault Vest": {
    "ru": "Тяжёлый штурмовой жилет для мужского Ви",
-   "en": "Heavy assault vest for male V"
+   "en": "Heavy assault vest for male V",
+   "author": "ScorpionTank"
   },
   "Zenitex Caiman Ballistic Helmet": {
    "ru": "Тактический шлем Caiman, 63 предмета",
-   "en": "Caiman tactical helmet, 63 items"
+   "en": "Caiman tactical helmet, 63 items",
+   "author": "ScorpionTank"
   },
   "Zenitex Combat Gloves": {
    "ru": "Боевые перчатки, 45 предметов",
-   "en": "Combat gloves, 45 items"
+   "en": "Combat gloves, 45 items",
+   "author": "ScorpionTank - Kerensky"
   },
   "Zenitex Combat Goggles": {
    "ru": "Боевые очки, 47 предметов",
-   "en": "Combat goggles, 47 items"
+   "en": "Combat goggles, 47 items",
+   "author": "ScorpionTank - Adshield"
   },
   "Zenitex Combat Jacket": {
    "ru": "Военная куртка с закатанными рукавами",
-   "en": "Military jacket with rolled-up sleeves"
+   "en": "Military jacket with rolled-up sleeves",
+   "author": "ScorpionTank"
   },
   "Zenitex Combat Pants": {
    "ru": "Военные брюки, 39 предметов",
-   "en": "Military pants, 39 items"
+   "en": "Military pants, 39 items",
+   "author": "ScorpionTank - Raemaze"
   },
   "Zenitex Core Dependency": {
    "ru": "Основа для военной одежды Zenitex",
-   "en": "Core for Zenitex military gear"
+   "en": "Core for Zenitex military gear",
+   "author": "ScorpionTank"
   },
   "Zenitex Core Dependency - Black Decals": {
    "ru": "Чёрные нашивки для одежды Zenitex",
-   "en": "Black decals for Zenitex gear"
+   "en": "Black decals for Zenitex gear",
+   "author": "ScorpionTank"
   },
   "Zenitex Core Dependency - Coyote Set": {
    "ru": "Расцветка Coyote для одежды Zenitex",
-   "en": "Coyote colour set for Zenitex gear"
+   "en": "Coyote colour set for Zenitex gear",
+   "author": "ScorpionTank"
   },
   "Zenitex Core Dependency - Verdant Set": {
    "ru": "Расцветка Verdant для одежды Zenitex",
-   "en": "Verdant colour set for Zenitex gear"
+   "en": "Verdant colour set for Zenitex gear",
+   "author": "ScorpionTank"
   },
   "Zenitex Covert Leggings": {
    "ru": "Облегающие военные леггинсы",
-   "en": "Tight military leggings"
+   "en": "Tight military leggings",
+   "author": "ScorpionTank - NotMayoSan"
   },
   "Zenitex FM12 Respirator": {
    "ru": "Респиратор с цветным визором",
-   "en": "Respirator with coloured visor"
+   "en": "Respirator with coloured visor",
+   "author": "ScorpionTank"
   },
   "Zenitex Military Backpack": {
    "ru": "Военный рюкзак, 60 предметов",
-   "en": "Military backpack, 60 items"
+   "en": "Military backpack, 60 items",
+   "author": "ScorpionTank - Kerensky"
   },
   "Zenitex Panam Pants": {
    "ru": "Брюки как у Панам",
-   "en": "Panam-style pants"
+   "en": "Panam-style pants",
+   "author": "ScorpionTank"
   },
   "Zenitex Sleeveless Turtleneck": {
    "ru": "Тактическая водолазка без рукавов",
-   "en": "Sleeveless tactical turtleneck"
+   "en": "Sleeveless tactical turtleneck",
+   "author": "ScorpionTank"
   },
   "Zenitex Stealthsuit": {
    "ru": "Комбинезон-невидимка для женской Ви",
-   "en": "Stealth bodysuit for female V"
+   "en": "Stealth bodysuit for female V",
+   "author": "ScorpionTank - Adshield - Peachu"
   },
   "Zenitex Tactical Harness": {
    "ru": "Тактическая разгрузка",
-   "en": "Tactical harness"
+   "en": "Tactical harness",
+   "author": "ScorpionTank"
   },
   "Zenitex Underwear": {
    "ru": "Военное бельё",
-   "en": "Military underwear"
+   "en": "Military underwear",
+   "author": "ScorpionTank"
   },
   "Zenitex Virtual Atelier": {
    "ru": "Магазин снаряжения Zenitex в сети",
-   "en": "Zenitex gear store on the Net"
+   "en": "Zenitex gear store on the Net",
+   "author": "ScorpionTank"
   },
   "ZKV_StealthFinishers": {
    "ru": "Тихие добивания оружием ближнего боя",
-   "en": "Stealth takedowns with melee weapons"
+   "en": "Stealth takedowns with melee weapons",
+   "author": "Kvalyr"
   },
   "Zwei Custom PMU Pose Packs Core": {
    "ru": "Основа для наборов поз Zwei",
-   "en": "Core for Zwei pose packs"
+   "en": "Core for Zwei pose packs",
+   "author": "Zwei"
   },
   "Curbside 35922 1.0.1 2026": {
    "ru": "Вызванная машина подъезжает прямо к вам и едет следом",
-   "en": "Your summoned car pulls up right next to you and follows"
+   "en": "Your summoned car pulls up right next to you and follows",
+   "author": "RucaLT"
   },
   "Advanced Crash Reporter 34403 1.6 2026": {
    "ru": "После вылета показывает, какой мод его вызвал",
-   "en": "After a crash, shows which mod caused it"
+   "en": "After a crash, shows which mod caused it",
+   "author": "Akiway"
   }
  }
 }

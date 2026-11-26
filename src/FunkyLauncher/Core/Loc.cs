@@ -351,6 +351,7 @@ public static class Loc
         ["mods.row.hint.changed"] = ("Изменено тобой: {0}. Остальное — как в сборке.", "Changed by you: {0}. The rest is as in the modlist."),
         ["mods.open"] = ("Открыть список", "Open the list"),
         ["mods.page"] = ("Страница мода", "Mod page"),
+        ["mods.author"] = ("Автор: {0}", "Author: {0}"),
         ["site.tip"] = ("Наш сайт: сборки, инструкции, ответы на вопросы", "Our site: modlists, guides, FAQ"),
         ["site.name"] = ("Сайт", "Website"),
         ["site.modlist"] = ("Страница сборки на сайте", "Modlist page on the site"),

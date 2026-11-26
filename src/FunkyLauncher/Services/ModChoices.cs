@@ -17,6 +17,8 @@ public static class ModChoices
         public string About { get; init; } = "";
         /// <summary>The mod's page on Nexus, empty if unknown.</summary>
         public string Url { get; init; } = "";
+        /// <summary>0.1.24: the mod's author on Nexus, empty if unknown.</summary>
+        public string Author { get; init; } = "";
     }
 
     /// <summary>Frameworks the other mods stand on, when the order file has no "core" list (game chats can override).</summary>
@@ -41,7 +43,7 @@ public static class ModChoices
         var choices = Of(s, m);
         var off = new HashSet<string>(order.ModlistOff, StringComparer.OrdinalIgnoreCase);
         var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-        var about = Addons.About(m.Id, out var nexusIds);
+        var about = Addons.About(m.Id, out var nexusIds, out _, out var authors);
         foreach (var x in main.Mods)
         {
             if (x.ModFolder.Length == 0 || !seen.Add(x.ModFolder)) continue;
@@ -54,6 +56,7 @@ public static class ModChoices
             list.Add(new Item(x.ModFolder, name.Length > 0 ? name : x.ModFolder, def, on, core, x.Plugins.Count > 0)
             {
                 About = about.TryGetValue(x.ModFolder, out var a) ? a : "",
+                Author = authors.TryGetValue(x.ModFolder, out var who) ? who : "",
                 Url = x.Nexus is { ModId: > 0, Game.Length: > 0 } n
                     ? $"https://www.nexusmods.com/{n.Game}/mods/{(nexusIds.TryGetValue(x.ModFolder, out var fixedId) ? fixedId : n.ModId)}" : "",
             });

@@ -107,7 +107,7 @@ public sealed class ModsWindow : Window
         foreach (var i in _items)
         {
             if (q.Length > 0 && !i.Name.Contains(q, StringComparison.CurrentCultureIgnoreCase) && !i.Folder.Contains(q, StringComparison.OrdinalIgnoreCase)
-                && !i.About.Contains(q, StringComparison.CurrentCultureIgnoreCase)) continue;
+                && !i.About.Contains(q, StringComparison.CurrentCultureIgnoreCase) && !i.Author.Contains(q, StringComparison.CurrentCultureIgnoreCase)) continue;
             var on = _on[i.Folder];
             var changed = !i.Core && on != i.DefaultOn;
             var row = new DockPanel { Margin = new Thickness(8, 4, 8, 4) };
@@ -122,6 +122,8 @@ public sealed class ModsWindow : Window
                 text.Children.Add(new TextBlock { Text = i.About, FontSize = 12.5, Foreground = R("Muted"), TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 1, 0, 0) });
             var note = i.Core ? "🔒 " + Loc.T("mods.core") : !i.DefaultOn ? Loc.T("mods.offbydefault") : changed ? Loc.T("mods.changed") : "";
             var line = new WrapPanel { Margin = new Thickness(0, 1, 0, 0) };
+            // 0.1.24 (Legal 26.11): every mod belongs to its author — the name from Nexus next to the page link
+            if (i.Author.Length > 0) note = Loc.F("mods.author", i.Author) + (note.Length > 0 ? "  ·  " + note : "");
             if (note.Length > 0) line.Children.Add(new TextBlock { Text = note + (i.Url.Length > 0 ? "  ·  " : ""), FontSize = 11.5, Foreground = R("Muted") });
             if (i.Url.Length > 0)
             {
