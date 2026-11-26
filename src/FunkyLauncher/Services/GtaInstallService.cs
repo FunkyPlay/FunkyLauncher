@@ -367,6 +367,14 @@ public static class GtaInstallService
         if (dispatchDir != null) TryDeleteDir(dispatchDir);
         TryDeleteDir(work);
 
+        // with NVE its own dlclist (onigiri layer) is the one the game reads, so the add-on packs Simple Mods Loader serves
+        // (cars, Benny's, Real LA Peds) are not loaded: they are added to it at the end. The NVE file goes to the backup
+        // first, so "Restore clean game" (and a later Standard install) puts it back as NVE made it. Funky test 26.11.
+        if (plan.Nve)
+            try { AddPacksToNveDlclist(game, log); }
+            catch (Exception ex) { errors.Add(Loc.F("addon.err.unpack", "dlclist.xml", ex.Message)); }
+            finally { log.Save(); }
+
         // BattlEye blocks script mods in story mode: start without it (args.txt is read by the game itself)
         log.AppendLine(Path.Combine(game, "args.txt"), "-nobattleye");
         log.Save();
@@ -375,6 +383,31 @@ public static class GtaInstallService
         if (pruned > 0) RemoveEmptyDirs(game);
         AppLog.Write($"gta install: {done}/{plan.Install.Count}, manual {manual.Count}, errors {errors.Count}, skipped {skipped.Count}, old files removed {pruned}");
         return new Result(done, manual, errors, skipped);
+    }
+
+    /// <summary>Adds "dlcpacks:/name/" of every pack folder under mods\update\x64\dlcpacks that NVE's dlclist.xml lacks.</summary>
+    private static void AddPacksToNveDlclist(string game, InstallLog log)
+    {
+        var file = Path.Combine(game, "onigiri", "common", "data", "dlclist.xml");
+        var packs = Path.Combine(game, "mods", "update", "x64", "dlcpacks");
+        if (!File.Exists(file) || !Directory.Exists(packs)) return;
+        var text = File.ReadAllText(file);
+        var add = Directory.EnumerateDirectories(packs)
+            .Where(d => File.Exists(Path.Combine(d, "dlc.rpf")))
+            .Select(d => "dlcpacks:/" + Path.GetFileName(d) + "/")
+            .Where(item => text.IndexOf(item, StringComparison.OrdinalIgnoreCase) < 0)
+            .ToList();
+        if (add.Count == 0) return;
+        var end = text.LastIndexOf("</Paths>", StringComparison.OrdinalIgnoreCase);
+        if (end < 0) throw new InvalidDataException("no </Paths>");
+        var ins = string.Concat(add.Select(item => "\t\t<Item>" + item + "</Item>\r\n"));
+        // the closing tag keeps its own indentation: insert at the start of its line
+        var lineStart = text.LastIndexOf('\n', end) + 1;
+        text = text[..lineStart] + ins + text[lineStart..];
+        log.Edit(file);
+        File.Delete(file);                                            // written anew: never into a hard-linked original
+        File.WriteAllText(file, text);
+        AppLog.Write($"gta dlclist: {add.Count} pack(s) added to NVE's dlclist.xml");
     }
 
     private static void LayNested(string oiv, List<List<string>> map, Plan plan, string game, string downloads, InstallLog log, bool noOverwrite)
