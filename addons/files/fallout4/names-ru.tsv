@@ -527,89 +527,6 @@ owner_plugin	formid	record	field	ru
 3dscopes.esp	0D0376	OMOD	FULL	Точка: крест, дальномер (синяя)
 3dscopes.esp	0D0377	OMOD	FULL	Точка: крест, дальномер (зелёная)
 3dscopes.esp	0D0378	OMOD	FULL	Точка: крест, дальномер (красная)
-AmazingFollowerTweaks.esp	0035B6	MESG	FULL	@game:Fallout4:223278
-AmazingFollowerTweaks.esp	0035B8	MESG	FULL	@game:Fallout4:115574
-AmazingFollowerTweaks.esp	0035BA	MESG	FULL	@game:Fallout4:58396
-AmazingFollowerTweaks.esp	0035BD	MESG	FULL	@game:Fallout4:223211
-AmazingFollowerTweaks.esp	0035BE	MESG	FULL	@game:Fallout4:83587
-AmazingFollowerTweaks.esp	0035C2	MESG	FULL	@game:Fallout4:193493
-AmazingFollowerTweaks.esp	0035C3	MESG	FULL	@game:Fallout4:223250
-AmazingFollowerTweaks.esp	0035C4	MESG	FULL	@game:Fallout4:174938
-AmazingFollowerTweaks.esp	0035CA	MESG	FULL	@game:Fallout4:115767
-AmazingFollowerTweaks.esp	0035CD	MESG	FULL	@game:Fallout4:177113
-AmazingFollowerTweaks.esp	0035CE	MESG	FULL	@game:Fallout4:108655
-AmazingFollowerTweaks.esp	0035D4	MESG	FULL	@game:Fallout4:100673
-AmazingFollowerTweaks.esp	0035D6	MESG	FULL	@game:Fallout4:111416
-AmazingFollowerTweaks.esp	0035D9	MESG	FULL	@game:Fallout4:195123
-AmazingFollowerTweaks.esp	0035DA	MESG	FULL	@game:Fallout4:151268
-AmazingFollowerTweaks.esp	0035DB	MESG	FULL	@game:Fallout4:82530
-AmazingFollowerTweaks.esp	0035E1	MESG	FULL	@game:Fallout4:451
-AmazingFollowerTweaks.esp	0035E2	MESG	FULL	@game:Fallout4:88139
-AmazingFollowerTweaks.esp	0035E3	MESG	FULL	@game:Fallout4:187568
-AmazingFollowerTweaks.esp	0035E4	MESG	FULL	@game:Fallout4:137126
-AmazingFollowerTweaks.esp	0035E6	MESG	FULL	@game:DLCNukaWorld:14843
-AmazingFollowerTweaks.esp	0035E9	MESG	FULL	@game:Fallout4:131319
-AmazingFollowerTweaks.esp	0035EB	MESG	FULL	@game:DLCRobot:2070
-AmazingFollowerTweaks.esp	0035EE	MESG	FULL	@game:DLCCoast:18684
-AmazingFollowerTweaks.esp	017E49	NPC_	FULL	@game:Fallout4:81891
-AmazingFollowerTweaks.esp	017E4A	NPC_	FULL	@game:Fallout4:81891
-AmazingFollowerTweaks.esp	017E4B	NPC_	FULL	@game:Fallout4:81891
-AmazingFollowerTweaks.esp	0185E6	NPC_	FULL	@game:Fallout4:16946
-AmazingFollowerTweaks.esp	019519	NPC_	FULL	@game:Fallout4:81891
-AmazingFollowerTweaks.esp	01951A	NPC_	FULL	@game:Fallout4:81891
-AmazingFollowerTweaks.esp	019CB4	NPC_	FULL	@game:Fallout4:81891
-AmazingFollowerTweaks.esp	01A44E	NPC_	FULL	@game:Fallout4:81891
-AmazingFollowerTweaks.esp	01ABE8	NPC_	FULL	@game:Fallout4:81891
-AmazingFollowerTweaks.esp	01ABE9	NPC_	FULL	@game:Fallout4:81891
-AmazingFollowerTweaks.esp	01ABEA	NPC_	FULL	@game:Fallout4:81891
-AmazingFollowerTweaks.esp	01B386	NPC_	FULL	@game:Fallout4:81891
-AmazingFollowerTweaks.esp	02073C	MESG	FULL	@game:Fallout4:79328
-AmazingFollowerTweaks.esp	02073F	MESG	FULL	@game:Fallout4:120
-AmazingFollowerTweaks.esp	020740	MESG	FULL	@game:Fallout4:118969
-AmazingFollowerTweaks.esp	020746	MESG	FULL	@game:Fallout4:219829
-AmazingFollowerTweaks.esp	02074A	MESG	FULL	@game:Fallout4:87058
-AmazingFollowerTweaks.esp	02074F	MESG	FULL	@game:Fallout4:90588
-AmazingFollowerTweaks.esp	020751	MESG	FULL	@game:Fallout4:119435
-AmazingFollowerTweaks.esp	020755	MESG	FULL	@game:Fallout4:76234
-AmazingFollowerTweaks.esp	029B3D	WEAP	FULL	@game:Fallout4:154752
-AmazingFollowerTweaks.esp	02AF07	FURN	FULL	@game:Fallout4:109146
-AmazingFollowerTweaks.esp	02C5D4	WEAP	FULL	@game:Fallout4:154246
-AmazingFollowerTweaks.esp	02CD70	FURN	FULL	@game:Fallout4:97105
-AmazingFollowerTweaks.esp	02FB0D	FURN	FULL	@game:Fallout4:85911
-AmazingFollowerTweaks.esp	034EB2	MESG	FULL	@game:DLCNukaWorld:18898
-AmazingFollowerTweaks.esp	039AC7	BOOK	FULL	@game:Fallout4:83969
-AmazingFollowerTweaks.esp	03B939	MESG	FULL	@game:Fallout4:77458
-AmazingFollowerTweaks.esp	03B93B	MESG	FULL	@game:Fallout4:97678
-AmazingFollowerTweaks.esp	03B93C	MESG	FULL	@game:Fallout4:97360
-AmazingFollowerTweaks.esp	03B93D	MESG	FULL	@game:Fallout4:77566
-AmazingFollowerTweaks.esp	03B93E	MESG	FULL	@game:Fallout4:94634
-AmazingFollowerTweaks.esp	03B93F	MESG	FULL	@game:Fallout4:118368
-AmazingFollowerTweaks.esp	03B946	MESG	FULL	@game:Fallout4:223331
-AmazingFollowerTweaks.esp	03B96C	MESG	FULL	@game:Fallout4:84962
-AmazingFollowerTweaks.esp	03C8B3	MESG	FULL	@game:Fallout4:79328
-AmazingFollowerTweaks.esp	03C8BE	MESG	FULL	@game:Fallout4:119284
-AmazingFollowerTweaks.esp	03C8C3	MESG	FULL	@game:Fallout4:31398
-AmazingFollowerTweaks.esp	03C8C5	MESG	FULL	@game:Fallout4:94902
-AmazingFollowerTweaks.esp	03D065	MESG	FULL	@game:Fallout4:109124
-AmazingFollowerTweaks.esp	03D066	MESG	FULL	@game:Fallout4:117600
-AmazingFollowerTweaks.esp	03D0DE	MESG	FULL	@game:Fallout4:202797
-AmazingFollowerTweaks.esp	03D0E1	BOOK	FULL	@game:Fallout4:193499
-AmazingFollowerTweaks.esp	03D0E5	BOOK	FULL	@game:Fallout4:204840
-AmazingFollowerTweaks.esp	03E01A	MESG	FULL	@game:Fallout4:64800
-AmazingFollowerTweaks.esp	03FEC0	ACTI	FULL	@game:Fallout4:78610
-AmazingFollowerTweaks.esp	03FEC1	ACTI	FULL	@game:Fallout4:110338
-AmazingFollowerTweaks.esp	03FEC3	ACTI	FULL	@game:Fallout4:103297
-AmazingFollowerTweaks.esp	03FEC5	ACTI	FULL	@game:Fallout4:139448
-AmazingFollowerTweaks.esp	03FEC6	ACTI	FULL	@game:Fallout4:139448
-AmazingFollowerTweaks.esp	04023D	AVIF	FULL	@game:Fallout4:120714
-AmazingFollowerTweaks.esp	04023E	AVIF	FULL	@game:Fallout4:120704
-AmazingFollowerTweaks.esp	04023F	AVIF	FULL	@game:Fallout4:156679
-AmazingFollowerTweaks.esp	040240	AVIF	FULL	@game:Fallout4:120703
-AmazingFollowerTweaks.esp	040241	AVIF	FULL	@game:Fallout4:127571
-AmazingFollowerTweaks.esp	040242	AVIF	FULL	@game:Fallout4:132166
-AmazingFollowerTweaks.esp	0424D7	MESG	FULL	@game:Fallout4:45782
-AmazingFollowerTweaks.esp	043410	NPC_	FULL	@game:Fallout4:85555
-AmazingFollowerTweaks.esp	048098	NPC_	FULL	@game:Fallout4:82530
 AmericaRising2-Remnants.esl	000002	MISC	FULL	@game:DLCNukaWorld:16344
 AmericaRising2-Remnants.esl	000003	MISC	FULL	@game:Fallout4:206341
 AmericaRising2.esm	0349D7	CONT	FULL	@game:Fallout4:218143
@@ -707,37 +624,6 @@ CROSS_GoreCrits.esp	002E50	MGEF	FULL	@game:Fallout4:102011
 CROSS_GoreCrits.esp	002E51	MGEF	FULL	@game:Fallout4:204078
 CROSS_GoreCrits.esp	002E52	MGEF	FULL	@game:Fallout4:116186
 CROSS_GoreCrits.esp	0035D2	MGEF	FULL	@game:Fallout4:204078
-CW-NVLMG.esp	0001A3	OMOD	FULL	@game:Fallout4:126049
-CW-NVLMG.esp	000216	OMOD	FULL	@game:Fallout4:83721
-CW-NVLMG.esp	000218	OMOD	FULL	@game:Fallout4:83554
-CW-NVLMG.esp	000219	OMOD	FULL	@game:Fallout4:116817
-CW-NVLMG.esp	00021A	OMOD	FULL	@game:Fallout4:76714
-CW-NVLMG.esp	00021F	OMOD	FULL	@game:Fallout4:108884
-CW-NVLMG.esp	000220	OMOD	FULL	@game:Fallout4:88096
-CW-NVLMG.esp	000223	OMOD	FULL	@game:DLCNukaWorld:10321
-CW-NVLMG.esp	000224	OMOD	FULL	@game:Fallout4:76536
-CW-NVLMG.esp	000225	OMOD	FULL	@game:Fallout4:97668
-CW-NVLMG.esp	0008DC	OMOD	FULL	@game:Fallout4:79378
-CW-NVLMG.esp	0008DD	OMOD	FULL	@game:Fallout4:75788
-CW-NVLMG.esp	000951	ENCH	FULL	@game:Fallout4:181168
-CW-NVLMG.esp	000952	OMOD	FULL	@game:Fallout4:205538
-CW-NVLMG.esp	00095B	ENCH	FULL	@game:Fallout4:118195
-CW-NVLMG.esp	00095D	MGEF	FULL	@game:Fallout4:118195
-CW-NVLMG.esp	00095E	MGEF	FULL	@game:Fallout4:213685
-CW-NVLMG.esp	000960	SPEL	FULL	@game:Fallout4:213235
-CW-NVLMG.esp	0009DC	OMOD	FULL	@game:Fallout4:198564
-CW-NVLMG.esp	0009DD	OMOD	FULL	@game:Fallout4:96741
-CW-NVLMG.esp	0009DE	OMOD	FULL	@game:Fallout4:198756
-CW-NVLMG.esp	0009DF	OMOD	FULL	@game:Fallout4:99667
-CW-NVLMG.esp	000A8E	OMOD	FULL	@game:Fallout4:116180
-CW-NVLMG.esp	000A8F	OMOD	FULL	@game:Fallout4:201026
-CW-NVLMG.esp	000A90	OMOD	FULL	@game:Fallout4:118171
-CW-NVLMG.esp	000A91	OMOD	FULL	@game:Fallout4:80366
-CW-NVLMG.esp	000A92	OMOD	FULL	@game:Fallout4:79440
-CW-NVLMG.esp	000A9D	OMOD	FULL	@game:Fallout4:88374
-CW-NVLMG.esp	000A9E	OMOD	FULL	@game:Fallout4:87089
-CW-NVLMG.esp	000A9F	OMOD	FULL	@game:Fallout4:75674
-CW-NVLMG.esp	000AA0	OMOD	FULL	@game:Fallout4:199177
 DLCCoast.esm	001B7A	CELL	FULL	@game:DLCCoast:6501
 DLCCoast.esm	003392	CELL	FULL	@game:DLCCoast:1863
 DLCCoast.esm	003A6F	CELL	FULL	@game:DLCCoast:3804
@@ -2244,241 +2130,7 @@ INE_MiseryIsland.esp	FFDB78	NPC_	FULL	@game:Fallout4:186583
 INE_MiseryIsland.esp	FFDB79	NPC_	FULL	@game:Fallout4:150389
 INE_MiseryIsland.esp	FFDB7A	NPC_	FULL	@game:Fallout4:150389
 INE_MiseryIsland.esp	FFDB7E	NOTE	FULL	От администрации
-KSHairdos.esp	000874	HDPT	FULL	@game:Fallout4:39653
-KSHairdos.esp	00088F	HDPT	FULL	@game:Fallout4:102343
-KSHairdos.esp	00089B	HDPT	FULL	@game:DLCCoast:10334
-KSHairdos.esp	0008A1	HDPT	FULL	@game:Fallout4:223279
-KSHairdos.esp	0008A9	HDPT	FULL	@game:Fallout4:161613
-KSHairdos.esp	0008D3	HDPT	FULL	@game:Fallout4:149901
-KSHairdos.esp	0008DD	HDPT	FULL	@game:Fallout4:223287
-KSHairdos.esp	00091E	HDPT	FULL	@game:DLCRobot:1994
-KSHairdos.esp	00093E	HDPT	FULL	@game:Fallout4:223287
-KSHairdos.esp	00094A	HDPT	FULL	@game:Fallout4:139967
-KSHairdos.esp	000957	HDPT	FULL	@game:DLCRobot:1994
-KSHairdos.esp	00110A	HDPT	FULL	@game:Fallout4:223276
-KSHairdos.esp	00110F	HDPT	FULL	@game:Fallout4:100925
-KSHairdos.esp	001124	HDPT	FULL	@game:Fallout4:132259
-KSHairdos.esp	00112A	HDPT	FULL	@game:Fallout4:85050
-KSHairdos.esp	001141	HDPT	FULL	@game:Fallout4:108409
-KSHairdos.esp	001145	HDPT	FULL	@game:Fallout4:164374
-KSHairdos.esp	001149	HDPT	FULL	@game:Fallout4:213662
-KSHairdos.esp	00114E	HDPT	FULL	@game:Fallout4:222046
-KSHairdos.esp	001176	HDPT	FULL	@game:Fallout4:223166
 Loot Detector.esl	000862	NPC_	FULL	@game:Fallout4:31110
-Modern Military Pack.esp	011CAF	ENCH	FULL	@game:Fallout4:205254
-NCRPowerArmor.esp	00000F	ARMO	FULL	Тяжёлая броня НКР для левой руки
-NCRPowerArmor.esp	000010	ARMO	FULL	Тяжёлая броня НКР для правой ноги
-NCRPowerArmor.esp	000011	ARMO	FULL	Тяжёлая броня НКР для туловища
-NCRPowerArmor.esp	000012	ARMO	FULL	Тяжёлая броня НКР для правой руки
-NCRPowerArmor.esp	000013	ARMO	FULL	Тяжёлая броня НКР для левой ноги
-NCRPowerArmor.esp	000014	ARMO	FULL	Тяжёлый шлем НКР
-NCRPowerArmor.esp	000015	OMOD	FULL	@game:Fallout4:86212
-NCRPowerArmor.esp	000016	OMOD	FULL	@game:Fallout4:78901
-NCRPowerArmor.esp	000017	OMOD	FULL	@game:Fallout4:84678
-NCRPowerArmor.esp	000018	OMOD	FULL	@game:Fallout4:116802
-NCRPowerArmor.esp	000019	OMOD	FULL	@game:Fallout4:91869
-NCRPowerArmor.esp	00001A	OMOD	FULL	@game:Fallout4:95099
-NCRPowerArmor.esp	000024	OMOD	FULL	@game:Fallout4:187976
-NCRPowerArmor.esp	000025	OMOD	FULL	Синяя налобная лампа
-NCRPowerArmor.esp	000026	OMOD	FULL	Зелёная налобная лампа
-NCRPowerArmor.esp	000027	OMOD	FULL	Оранжевая налобная лампа
-NCRPowerArmor.esp	000028	OMOD	FULL	Фиолетовая налобная лампа
-NCRPowerArmor.esp	000029	OMOD	FULL	Красная тактическая налобная лампа
-NCRPowerArmor.esp	000030	MISC	FULL	Налобный фонарь рейнджера
-NCRPowerArmor.esp	000031	MISC	FULL	Синий налобный фонарь рейнджера
-NCRPowerArmor.esp	000032	MISC	FULL	Зелёный налобный фонарь рейнджера
-NCRPowerArmor.esp	000033	MISC	FULL	Оранжевый налобный фонарь рейнджера
-NCRPowerArmor.esp	000034	MISC	FULL	Фиолетовый налобный фонарь рейнджера
-NCRPowerArmor.esp	000035	MISC	FULL	Красный налобный фонарь рейнджера
-NCRPowerArmor.esp	000036	OMOD	FULL	@game:Fallout4:177333
-NCRPowerArmor.esp	000037	OMOD	FULL	@game:Fallout4:177333
-NCRPowerArmor.esp	000038	OMOD	FULL	@game:Fallout4:177333
-NCRPowerArmor.esp	000039	OMOD	FULL	@game:Fallout4:177333
-NCRPowerArmor.esp	00003A	OMOD	FULL	@game:Fallout4:92229
-NCRPowerArmor.esp	00003B	OMOD	FULL	@game:Fallout4:92229
-NCRPowerArmor.esp	00003C	OMOD	FULL	@game:Fallout4:92229
-NCRPowerArmor.esp	00003D	OMOD	FULL	@game:Fallout4:92229
-NCRPowerArmor.esp	00003E	OMOD	FULL	@game:Fallout4:78886
-NCRPowerArmor.esp	00003F	OMOD	FULL	@game:Fallout4:78886
-NCRPowerArmor.esp	000040	OMOD	FULL	@game:Fallout4:78886
-NCRPowerArmor.esp	000041	OMOD	FULL	@game:Fallout4:78886
-NCRPowerArmor.esp	000042	OMOD	FULL	@game:Fallout4:85513
-NCRPowerArmor.esp	000043	OMOD	FULL	@game:Fallout4:85513
-NCRPowerArmor.esp	000044	OMOD	FULL	@game:Fallout4:85513
-NCRPowerArmor.esp	000045	OMOD	FULL	@game:Fallout4:85513
-NCRPowerArmor.esp	000046	OMOD	FULL	@game:Fallout4:80592
-NCRPowerArmor.esp	000047	OMOD	FULL	@game:Fallout4:80592
-NCRPowerArmor.esp	000048	OMOD	FULL	@game:Fallout4:80592
-NCRPowerArmor.esp	000049	OMOD	FULL	@game:Fallout4:80592
-NCRPowerArmor.esp	00004A	MISC	FULL	Шлем рейнджера Mk2
-NCRPowerArmor.esp	00004B	MISC	FULL	Броня для рук Ranger Mk2
-NCRPowerArmor.esp	00004C	MISC	FULL	Броня для ног Ranger Mk2
-NCRPowerArmor.esp	00004D	MISC	FULL	Обшивка для туловища Ranger Mk2
-NCRPowerArmor.esp	00004E	MISC	FULL	Шлем Ranger Mk3
-NCRPowerArmor.esp	00004F	MISC	FULL	Броня для рук Ranger Mk3
-NCRPowerArmor.esp	000050	MISC	FULL	Броня для ног Ranger Mk3
-NCRPowerArmor.esp	000051	MISC	FULL	Обшивка для туловища Ranger Mk3
-NCRPowerArmor.esp	000052	MISC	FULL	Шлем Ranger Mk4
-NCRPowerArmor.esp	000053	MISC	FULL	Броня для рук Ranger Mk4
-NCRPowerArmor.esp	000054	MISC	FULL	Броня для левой руки Ranger Mk4
-NCRPowerArmor.esp	000055	MISC	FULL	Обшивка для туловища Ranger Mk4
-NCRPowerArmor.esp	000056	MISC	FULL	Шлем Ranger Mk5
-NCRPowerArmor.esp	000057	MISC	FULL	Броня для рук Ranger Mk5
-NCRPowerArmor.esp	000058	MISC	FULL	Броня для ног Ranger Mk5
-NCRPowerArmor.esp	000059	MISC	FULL	Обшивка для туловища Ranger Mk5
-NCRPowerArmor.esp	00005A	MISC	FULL	Шлем Ranger Mk6
-NCRPowerArmor.esp	00005B	MISC	FULL	Броня для рук Ranger Mk6
-NCRPowerArmor.esp	00005C	MISC	FULL	Броня для ног Ranger Mk6
-NCRPowerArmor.esp	00005D	MISC	FULL	Обшивка для туловища Ranger Mk6
-NCRPowerArmor.esp	00005E	OMOD	FULL	@game:Fallout4:110141
-NCRPowerArmor.esp	00005F	OMOD	FULL	@game:Fallout4:110141
-NCRPowerArmor.esp	000060	OMOD	FULL	@game:Fallout4:110141
-NCRPowerArmor.esp	000061	OMOD	FULL	@game:Fallout4:110141
-NCRPowerArmor.esp	00007A	OMOD	FULL	@game:Fallout4:114169
-NCRPowerArmor.esp	00007B	OMOD	FULL	@game:Fallout4:80285
-NCRPowerArmor.esp	00007C	OMOD	FULL	@game:Fallout4:92738
-NCRPowerArmor.esp	00007D	OMOD	FULL	@game:Fallout4:95606
-NCRPowerArmor.esp	00007E	OMOD	FULL	@game:Fallout4:117626
-NCRPowerArmor.esp	000081	MISC	FULL	Внутренняя база данных силовой брони Ranger
-NCRPowerArmor.esp	000082	MISC	FULL	Радиационные фильтры силовой брони Ranger
-NCRPowerArmor.esp	000083	MISC	FULL	Сенсорная решётка силовой брони Ranger
-NCRPowerArmor.esp	000084	MISC	FULL	Матричная накладка V.A.T.S. для силовой брони Ranger
-NCRPowerArmor.esp	000086	MISC	FULL	Разведывательные датчики силовой брони Ranger
-NCRPowerArmor.esp	000089	OMOD	FULL	Линзы ночного видения
-NCRPowerArmor.esp	00008A	OMOD	FULL	Инфракрасные линзы
-NCRPowerArmor.esp	00008B	OMOD	FULL	Тепловые линзы
-NCRPowerArmor.esp	00008E	MGEF	FULL	@game:Fallout4:204561
-NCRPowerArmor.esp	000093	PERK	FULL	Эффект ночного видения силовой брони
-NCRPowerArmor.esp	000098	ALCH	FULL	Оптический контроллер силовой брони Ranger
-NCRPowerArmor.esp	00009A	MGEF	FULL	Взгляд охотника
-NCRPowerArmor.esp	00009F	MGEF	FULL	Тепловизор
-NCRPowerArmor.esp	0000A1	MGEF	FULL	@game:Fallout4:118195
-NCRPowerArmor.esp	0000A2	MGEF	FULL	@game:Fallout4:213685
-NCRPowerArmor.esp	0000A3	SPEL	FULL	@game:Fallout4:213235
-NCRPowerArmor.esp	0000A5	MISC	FULL	Модуль инфракрасных линз для силовой брони Ranger
-NCRPowerArmor.esp	0000A6	MISC	FULL	Модуль линз ночного видения для силовой брони Ranger
-NCRPowerArmor.esp	0000A7	MISC	FULL	Модуль тепловых линз для силовой брони Ranger
-NCRPowerArmor.esp	0000AC	OMOD	FULL	Без линз
-NCRPowerArmor.esp	0000AE	OMOD	FULL	@game:Fallout4:86414
-NCRPowerArmor.esp	0000AF	OMOD	FULL	@game:Fallout4:117633
-NCRPowerArmor.esp	0000B0	OMOD	FULL	@game:Fallout4:202569
-NCRPowerArmor.esp	0000B1	OMOD	FULL	@game:Fallout4:108684
-NCRPowerArmor.esp	0000B2	OMOD	FULL	@game:Fallout4:98451
-NCRPowerArmor.esp	0000B3	MISC	FULL	Форсированные сервоприводы силовой брони Ranger
-NCRPowerArmor.esp	0000B5	MISC	FULL	Взрывной клапан силовой брони Ranger
-NCRPowerArmor.esp	0000B7	MISC	FULL	Кинетические сервоприводы силовой брони Ranger
-NCRPowerArmor.esp	0000B9	MISC	FULL	Оптимизированные сервоприводы силовой брони Ranger
-NCRPowerArmor.esp	0000BE	OMOD	FULL	Защитное покрытие
-NCRPowerArmor.esp	0000BF	OMOD	FULL	Защитное покрытие
-NCRPowerArmor.esp	0000C3	MISC	FULL	Накладки на ноги силовой брони Ranger
-NCRPowerArmor.esp	0000C4	MISC	FULL	Калиброванные амортизаторы силовой брони Ranger
-NCRPowerArmor.esp	0000C7	OMOD	FULL	Кобура для пистолета
-NCRPowerArmor.esp	0000C8	OMOD	FULL	Кобура для пистолета
-NCRPowerArmor.esp	0000CD	MISC	FULL	Кобура для пистолета на ноге силовой брони Ranger
-NCRPowerArmor.esp	0000D0	OMOD	FULL	Пояс с осколочными гранатами
-NCRPowerArmor.esp	0000D1	OMOD	FULL	Пояс с осколочными гранатами
-NCRPowerArmor.esp	0000D2	PERK	FULL	Пояс со взрывчаткой
-NCRPowerArmor.esp	0000D3	MGEF	FULL	Бонус к взрывчатке
-NCRPowerArmor.esp	0000D4	MISC	FULL	Пояс с осколочными гранатами на ноге силовой брони Ranger
-NCRPowerArmor.esp	0000D7	OMOD	FULL	Без снаряжения на ногах
-NCRPowerArmor.esp	0000D8	OMOD	FULL	Без снаряжения на ногах
-NCRPowerArmor.esp	0000D9	OMOD	FULL	Без накладки
-NCRPowerArmor.esp	0000DA	OMOD	FULL	Без накладки
-NCRPowerArmor.esp	0000E3	MISC	FULL	Ржавые кастеты силовой брони Ranger
-NCRPowerArmor.esp	0000E4	OMOD	FULL	@game:Fallout4:134295
-NCRPowerArmor.esp	0000E6	MISC	FULL	Теслабраслеты силовой брони Ranger
-NCRPowerArmor.esp	0000E7	OMOD	FULL	@game:Fallout4:118189
-NCRPowerArmor.esp	0000E9	MISC	FULL	Гидравлические браслеты силовой брони Ranger
-NCRPowerArmor.esp	0000EA	OMOD	FULL	@game:Fallout4:118022
-NCRPowerArmor.esp	0000EC	MISC	FULL	Оптимизированные браслеты силовой брони Ranger
-NCRPowerArmor.esp	0000ED	OMOD	FULL	@game:Fallout4:144456
-NCRPowerArmor.esp	0000EF	OMOD	FULL	Без снаряжения на наплечниках
-NCRPowerArmor.esp	0000F0	OMOD	FULL	Без снаряжения на наплечниках
-NCRPowerArmor.esp	0000F1	OMOD	FULL	Без снаряжения на руках
-NCRPowerArmor.esp	0000F2	OMOD	FULL	Без снаряжения на руках
-NCRPowerArmor.esp	0000F7	OMOD	FULL	Защитное покрытие
-NCRPowerArmor.esp	0000F8	OMOD	FULL	Защитное покрытие
-NCRPowerArmor.esp	0000F9	MISC	FULL	Накладки на наплечники силовой брони Ranger
-NCRPowerArmor.esp	0000FA	OMOD	FULL	Трофей яо-гай
-NCRPowerArmor.esp	0000FB	OMOD	FULL	Трофей яо-гай
-NCRPowerArmor.esp	0000FC	MISC	FULL	Трофей яо-гай для силовой брони Ranger
-NCRPowerArmor.esp	0000FF	OMOD	FULL	Трофей Легиона
-NCRPowerArmor.esp	000100	OMOD	FULL	Трофей Легиона
-NCRPowerArmor.esp	000101	MISC	FULL	Трофей Легиона для силовой брони Ranger
-NCRPowerArmor.esp	000102	OMOD	FULL	Цепи на руки
-NCRPowerArmor.esp	000103	OMOD	FULL	Цепи на руки
-NCRPowerArmor.esp	000104	MISC	FULL	Цепи на руки для силовой брони Ranger
-NCRPowerArmor.esp	000107	OMOD	FULL	Патронташ
-NCRPowerArmor.esp	000109	OMOD	FULL	Патронташ
-NCRPowerArmor.esp	00010A	MISC	FULL	Патронташ на предплечье силовой брони Ranger
-NCRPowerArmor.esp	00010D	OMOD	FULL	Гранатный пояс
-NCRPowerArmor.esp	00010F	OMOD	FULL	Гранатный пояс
-NCRPowerArmor.esp	000110	MISC	FULL	Гранатный пояс на предплечье силовой брони Ranger
-NCRPowerArmor.esp	000117	MISC	FULL	Гранатный пояс на предплечье силовой брони Ranger
-NCRPowerArmor.esp	000118	MISC	FULL	Патронташ на предплечье силовой брони Ranger
-NCRPowerArmor.esp	000119	MISC	FULL	Цепи на руки для силовой брони Ranger
-NCRPowerArmor.esp	00011A	MISC	FULL	Трофей Легиона для силовой брони Ranger
-NCRPowerArmor.esp	00011B	MISC	FULL	Трофей яо-гай для силовой брони Ranger
-NCRPowerArmor.esp	00011C	MISC	FULL	Накладки на наплечники силовой брони Ranger
-NCRPowerArmor.esp	00011D	MISC	FULL	Пояс с осколочными гранатами на ноге силовой брони Ranger
-NCRPowerArmor.esp	00011E	MISC	FULL	Кобура для пистолета на ноге силовой брони Ranger
-NCRPowerArmor.esp	00011F	MISC	FULL	Накладки на ноги силовой брони Ranger
-NCRPowerArmor.esp	000120	OMOD	FULL	@game:Fallout4:100117
-NCRPowerArmor.esp	000121	OMOD	FULL	@game:Fallout4:117781
-NCRPowerArmor.esp	000122	MISC	FULL	Очиститель крови силовой брони Ranger
-NCRPowerArmor.esp	000123	MISC	FULL	Медицинская помпа силовой брони Ranger
-NCRPowerArmor.esp	000126	MISC	FULL	Блок ядра силовой брони Ranger
-NCRPowerArmor.esp	000127	OMOD	FULL	@game:Fallout4:117713
-NCRPowerArmor.esp	000129	MISC	FULL	Кинетическая динамо-машина силовой брони Ranger
-NCRPowerArmor.esp	00012A	OMOD	FULL	@game:Fallout4:177577
-NCRPowerArmor.esp	00012C	MISC	FULL	Сервоприводы содействия движению силовой брони Ranger
-NCRPowerArmor.esp	00012D	OMOD	FULL	@game:Fallout4:118205
-NCRPowerArmor.esp	00012F	MISC	FULL	Реактивные пластины силовой брони Ranger
-NCRPowerArmor.esp	000130	OMOD	FULL	@game:Fallout4:98378
-NCRPowerArmor.esp	000132	MISC	FULL	Стелс-бой силовой брони Ranger
-NCRPowerArmor.esp	000133	OMOD	FULL	@game:Fallout4:86885
-NCRPowerArmor.esp	000135	MISC	FULL	Катушки Теслы силовой брони Ranger
-NCRPowerArmor.esp	000136	OMOD	FULL	@game:Fallout4:103504
-NCRPowerArmor.esp	00013B	OMOD	FULL	Без рюкзака
-NCRPowerArmor.esp	00013C	OMOD	FULL	Без снаряжения
-NCRPowerArmor.esp	00013D	OMOD	FULL	Без аксессуаров
-NCRPowerArmor.esp	00013E	OMOD	FULL	Рюкзак со снаряжением
-NCRPowerArmor.esp	000140	OMOD	FULL	Рюкзак оператора
-NCRPowerArmor.esp	000142	OMOD	FULL	Медицинский рюкзак
-NCRPowerArmor.esp	000143	OMOD	FULL	Рюкзак для патронов
-NCRPowerArmor.esp	000145	MISC	FULL	Рюкзак силовой брони Ranger
-NCRPowerArmor.esp	000146	MISC	FULL	Рюкзак оператора силовой брони Ranger
-NCRPowerArmor.esp	000147	MISC	FULL	Медицинский рюкзак силовой брони Ranger
-NCRPowerArmor.esp	000148	MISC	FULL	Рюкзак для патронов силовой брони Ranger
-NCRPowerArmor.esp	00014E	OMOD	FULL	Защитное покрытие
-NCRPowerArmor.esp	00014F	OMOD	FULL	Защитное покрытие с капюшоном
-NCRPowerArmor.esp	000150	OMOD	FULL	Капюшон из шкуры когтя смерти
-NCRPowerArmor.esp	000155	MISC	FULL	Накладка на туловище силовой брони Ranger
-NCRPowerArmor.esp	000156	MISC	FULL	Накладка на туловище с капюшоном силовой брони Ranger
-NCRPowerArmor.esp	000157	MISC	FULL	Капюшон из когтя смерти на туловище силовой брони Ranger
-NCRPowerArmor.esp	000158	OMOD	FULL	Снаряжение стрелка
-NCRPowerArmor.esp	000159	OMOD	FULL	Снаряжение коммандос
-NCRPowerArmor.esp	00015B	OMOD	FULL	Снаряжение для лазерного оружия
-NCRPowerArmor.esp	00015C	OMOD	FULL	Снаряжение тяжёлого стрелка
-NCRPowerArmor.esp	000163	OMOD	FULL	Инженерное снаряжение
-NCRPowerArmor.esp	000165	MISC	FULL	Разгрузка для винтовок на туловище силовой брони Ranger
-NCRPowerArmor.esp	000166	MISC	FULL	Разгрузка коммандос на туловище силовой брони Ranger
-NCRPowerArmor.esp	000167	MISC	FULL	Разгрузка для лазерного оружия на туловище силовой брони Ranger
-NCRPowerArmor.esp	000168	MISC	FULL	Разгрузка стрелка на туловище силовой брони Ranger
-NCRPowerArmor.esp	000169	MISC	FULL	Инженерная разгрузка на туловище силовой брони Ranger
-NCRPowerArmor.esp	00016A	OMOD	FULL	Окраска «Пустынный рейнджер»
-NCRPowerArmor.esp	00016B	OMOD	FULL	Окраска «Выжженная Сьерра»
-NCRPowerArmor.esp	00016C	OMOD	FULL	Окраска минитменов
-NCRPowerArmor.esp	00016D	OMOD	FULL	Окраска «Перебежчик»
-NCRPowerArmor.esp	000172	MISC	FULL	Пустынная краска для силовой брони Ranger
-NCRPowerArmor.esp	000173	MISC	FULL	Краска «Перебежчик» для силовой брони Ranger
-NCRPowerArmor.esp	000174	MISC	FULL	Краска минитменов для силовой брони Ranger
-NCRPowerArmor.esp	000175	MISC	FULL	Краска «Выжженная Сьерра» для силовой брони Ranger
-NCRPowerArmor.esp	000183	OMOD	FULL	Окраска Новой Калифорнийской Республики
-NCRPowerArmor.esp	0001A5	FURN	FULL	@game:Fallout4:76133
-NCRPowerArmor.esp	0001B2	TERM	FULL	@game:Fallout4:75648
-NCRPowerArmor.esp	0001C4	NPC_	FULL	Рейнджер Уолш
-NCRPowerArmor.esp	0001D8	ACTI	FULL	@game:Fallout4:88896
 OWR.esp	002C86	ACTI	FULL	@game:Fallout4:77290
 OWR.esp	002C87	ACTI	FULL	@game:Fallout4:77290
 OWR.esp	002D7E	ACTI	FULL	@game:Fallout4:77290
@@ -2537,9 +2189,6 @@ OWR.esp	0056D5	ACTI	FULL	@game:Fallout4:77290
 OWR.esp	0056D6	ACTI	FULL	@game:Fallout4:77290
 OWR.esp	005AB6	ACTI	FULL	@game:Fallout4:77290
 OWR.esp	005AB7	ACTI	FULL	@game:Fallout4:77290
-RussianAssaultPack.esp	006D4C	OMOD	FULL	@game:Fallout4:200113
-RussianAssaultPack.esp	009B8A	MGEF	FULL	@game:Fallout4:213235
-RussianAssaultPack.esp	009B8F	SPEL	FULL	@game:Fallout4:213235
 SettleObjExpandPack.esp	000822	DOOR	FULL	@game:Fallout4:89375
 SettleObjExpandPack.esp	000824	STAT	FULL	@game:Fallout4:100864
 SettleObjExpandPack.esp	000825	STAT	FULL	@game:Fallout4:90
@@ -2754,196 +2403,6 @@ SettleObjExpandPack.esp	102B00	DOOR	FULL	@game:Fallout4:79730
 SettleObjExpandPack.esp	10B3CE	STAT	FULL	@game:Fallout4:201129
 SettleObjExpandPack.esp	129695	LIGH	FULL	@game:DLCworkshop01:351
 SettleObjExpandPack.esp	129696	LIGH	FULL	@game:DLCworkshop01:351
-SF Beards N Staches.esp	000001	HDPT	FULL	Пробор, Lazy Morning
-SF Beards N Staches.esp	000002	HDPT	FULL	Пробор, Lone Wanderer
-SF Beards N Staches.esp	000003	HDPT	FULL	Пробор, Freerider
-SF Beards N Staches.esp	000004	HDPT	FULL	Пробор, Rough Stuff
-SF Beards N Staches.esp	000005	HDPT	FULL	Пробор, Street Brawler
-SF Beards N Staches.esp	000006	HDPT	FULL	Пробор, Cheek Burns
-SF Beards N Staches.esp	000007	HDPT	FULL	Пробор, Leprechaun
-SF Beards N Staches.esp	000008	HDPT	FULL	Пробор, Dashing Rogue
-SF Beards N Staches.esp	000009	HDPT	FULL	Пробор, Gunslinger
-SF Beards N Staches.esp	00000A	HDPT	FULL	Пробор, Renegade
-SF Beards N Staches.esp	00000B	HDPT	FULL	Пробор, Swashbuckler
-SF Beards N Staches.esp	00000C	HDPT	FULL	Часть: Mephistopheles
-SF Beards N Staches.esp	00000D	HDPT	FULL	Часть: Man's Man
-SF Beards N Staches.esp	00000E	HDPT	FULL	Часть: Suave
-SF Beards N Staches.esp	00000F	HDPT	FULL	Часть: Daddy O
-SF Beards N Staches.esp	000010	HDPT	FULL	Часть: Hard Road
-SF Beards N Staches.esp	000011	HDPT	FULL	Часть: Playboy
-SF Beards N Staches.esp	000012	HDPT	FULL	Часть: Poetry Slam
-SF Beards N Staches.esp	000013	HDPT	FULL	Часть: Chin Dusting
-SF Beards N Staches.esp	000014	HDPT	FULL	Часть: The Gentleman
-SF Beards N Staches.esp	000015	HDPT	FULL	Часть: Outdoorsman
-SF Beards N Staches.esp	000016	HDPT	FULL	Часть: Broken Razor
-SF Beards N Staches.esp	000017	HDPT	FULL	Часть: Soul Patch
-SF Beards N Staches.esp	000018	HDPT	FULL	Часть: Commonwealthy
-SF Beards N Staches.esp	000019	HDPT	FULL	Часть: Goatee
-SF Beards N Staches.esp	00001A	HDPT	FULL	Часть: Chopper
-SF Beards N Staches.esp	00001B	HDPT	FULL	Часть: The Bard
-SF Beards N Staches.esp	00001C	HDPT	FULL	Часть: Survivalist
-SF Beards N Staches.esp	00001D	HDPT	FULL	Часть: Muttonstache
-SF Beards N Staches.esp	00001E	HDPT	FULL	Часть: Hombre
-SF Beards N Staches.esp	00001F	HDPT	FULL	Часть: Full Throttle
-SF Beards N Staches.esp	000020	HDPT	FULL	Часть: Prospector
-SF Beards N Staches.esp	000021	HDPT	FULL	Часть: O My
-SF Beards N Staches.esp	000022	HDPT	FULL	Часть: Smooth Operator
-SF Beards N Staches.esp	000023	HDPT	FULL	Часть: Dead Man's Hand
-SF Beards N Staches.esp	000024	HDPT	FULL	Часть: Hollywood Classic
-SF Beards N Staches.esp	000025	HDPT	FULL	Часть: Shenandoah
-SF Beards N Staches.esp	000026	HDPT	FULL	Часть: Doomsday Prepped
-SF Beards N Staches.esp	000027	HDPT	FULL	Часть: Appomatox
-SF Beards N Staches.esp	000028	HDPT	FULL	Часть: Gettysburg
-SF Beards N Staches.esp	000029	HDPT	FULL	Часть: Straight Flush
-SF Beards N Staches.esp	00002A	HDPT	FULL	Часть: The Beast
-SF Beards N Staches.esp	00002B	HDPT	FULL	Часть: Honest Abe
-SF Beards N Staches.esp	00002C	HDPT	FULL	Часть: The Imperial
-SF Beards N Staches.esp	00008D	HDPT	FULL	Козлиная бородка Chopper I
-SF Beards N Staches.esp	00008E	HDPT	FULL	Козлиная бородка Chopper II
-SF Beards N Staches.esp	00008F	HDPT	FULL	Козлиная бородка Chopper III
-SF Beards N Staches.esp	000090	HDPT	FULL	Козлиная бородка Chopper IV
-SF Beards N Staches.esp	000091	HDPT	FULL	Козлиная бородка Chopper V
-SF Beards N Staches.esp	000092	HDPT	FULL	Козлиная бородка Chopper VI
-SF Beards N Staches.esp	000093	HDPT	FULL	Козлиная бородка Chopper VII
-SF Beards N Staches.esp	000094	HDPT	FULL	Козлиная бородка Chopper VIII
-SF Beards N Staches.esp	0000BC	HDPT	FULL	Козлиная бородка I
-SF Beards N Staches.esp	0000BD	HDPT	FULL	Козлиная бородка II
-SF Beards N Staches.esp	0000BE	HDPT	FULL	Козлиная бородка III
-SF Beards N Staches.esp	0000BF	HDPT	FULL	Козлиная бородка IV
-SF Beards N Staches.esp	0000C0	HDPT	FULL	Козлиная бородка V
-SF Beards N Staches.esp	0000C1	HDPT	FULL	Козлиная бородка VI
-SF Beards N Staches.esp	0000C2	HDPT	FULL	Козлиная бородка VII
-SF Beards N Staches.esp	0000C3	HDPT	FULL	Hollywood, классика I
-SF Beards N Staches.esp	0000C4	HDPT	FULL	Hollywood, классика II
-SF Beards N Staches.esp	0000C5	HDPT	FULL	Hollywood, классика III
-SF Beards N Staches.esp	0000C6	HDPT	FULL	Hollywood, классика IV
-SF Beards N Staches.esp	0000C7	HDPT	FULL	Hollywood, классика V
-SF Beards N Staches.esp	0000C8	HDPT	FULL	Hollywood, классика VI
-SF Beards N Staches.esp	0000C9	HDPT	FULL	Hollywood, классика VII
-SF Beards N Staches.esp	0000CA	HDPT	FULL	Hollywood, классика VIII
-SF Beards N Staches.esp	0000CB	HDPT	FULL	Hollywood, классика IX
-SF Beards N Staches.esp	0000D4	HDPT	FULL	Hollywood, рука мертвеца IX
-SF Beards N Staches.esp	0000D5	HDPT	FULL	Hollywood, рука мертвеца X
-SF Beards N Staches.esp	0000D6	HDPT	FULL	Hollywood, душа мертвеца I
-SF Beards N Staches.esp	0000D7	HDPT	FULL	Hollywood, душа мертвеца II
-SF Beards N Staches.esp	0000D8	HDPT	FULL	Hollywood, душа мертвеца III
-SF Beards N Staches.esp	0000D9	HDPT	FULL	Hollywood, душа мертвеца IV
-SF Beards N Staches.esp	0000DA	HDPT	FULL	Hollywood, душа мертвеца V
-SF Beards N Staches.esp	0000DB	HDPT	FULL	Hollywood, душа мертвеца VI
-SF Beards N Staches.esp	0000DC	HDPT	FULL	Hollywood, душа мертвеца VII
-SF Beards N Staches.esp	0000DD	HDPT	FULL	Hollywood, душа мертвеца VIII
-SF Beards N Staches.esp	0000DE	HDPT	FULL	Hollywood, душа мертвеца IX
-SF Beards N Staches.esp	0000DF	HDPT	FULL	Hollywood, душа мертвеца X
-SF Beards N Staches.esp	0000FA	HDPT	FULL	Muttonstache, зверь I
-SF Beards N Staches.esp	0000FB	HDPT	FULL	Muttonstache, зверь II
-SF Beards N Staches.esp	0000FC	HDPT	FULL	Muttonstache, зверь III
-SF Beards N Staches.esp	0000FD	HDPT	FULL	Muttonstache, зверь IV
-SF Beards N Staches.esp	0000FE	HDPT	FULL	Muttonstache, зверь V
-SF Beards N Staches.esp	0000FF	HDPT	FULL	Muttonstache, зверь VI
-SF Beards N Staches.esp	000100	HDPT	FULL	Muttonstache, зверь VII
-SF Beards N Staches.esp	000101	HDPT	FULL	Muttonstache, зверь VIII
-SF Beards N Staches.esp	000102	HDPT	FULL	Старатель I
-SF Beards N Staches.esp	000103	HDPT	FULL	Старатель II
-SF Beards N Staches.esp	000104	HDPT	FULL	Старатель III
-SF Beards N Staches.esp	000105	HDPT	FULL	Старатель IV
-SF Beards N Staches.esp	000106	HDPT	FULL	Старатель V
-SF Beards N Staches.esp	000107	HDPT	FULL	Старатель VI
-SF Beards N Staches.esp	000108	HDPT	FULL	Старатель VII
-SF Beards N Staches.esp	000109	HDPT	FULL	Старатель VIII
-SF Beards N Staches.esp	00010A	HDPT	FULL	Старатель IX
-SF Beards N Staches.esp	00010B	HDPT	FULL	Старатель X
-SF Beards N Staches.esp	00010C	HDPT	FULL	Душа старателя I
-SF Beards N Staches.esp	00010D	HDPT	FULL	Душа старателя II
-SF Beards N Staches.esp	00010E	HDPT	FULL	Душа старателя III
-SF Beards N Staches.esp	00010F	HDPT	FULL	Душа старателя IV
-SF Beards N Staches.esp	000110	HDPT	FULL	Душа старателя V
-SF Beards N Staches.esp	000111	HDPT	FULL	Душа старателя VI
-SF Beards N Staches.esp	000112	HDPT	FULL	Душа старателя VII
-SF Beards N Staches.esp	000113	HDPT	FULL	Душа старателя VIII
-SF Beards N Staches.esp	000114	HDPT	FULL	Душа старателя IX
-SF Beards N Staches.esp	000115	HDPT	FULL	Душа старателя X
-SF Beards N Staches.esp	000116	HDPT	FULL	Козлиная бородка старателя I
-SF Beards N Staches.esp	000117	HDPT	FULL	Козлиная бородка старателя II
-SF Beards N Staches.esp	000118	HDPT	FULL	Козлиная бородка старателя III
-SF Beards N Staches.esp	000119	HDPT	FULL	Козлиная бородка старателя IV
-SF Beards N Staches.esp	00011A	HDPT	FULL	Козлиная бородка старателя V
-SF Beards N Staches.esp	00011B	HDPT	FULL	Козлиная бородка старателя VI
-SF Beards N Staches.esp	00011C	HDPT	FULL	Козлиная бородка старателя VII
-SF Beards N Staches.esp	00011D	HDPT	FULL	Козлиная бородка старателя VIII
-SF Beards N Staches.esp	00011E	HDPT	FULL	Козлиная бородка старателя IX
-SF Beards N Staches.esp	00011F	HDPT	FULL	Козлиная бородка старателя X
-SF Beards N Staches.esp	000120	HDPT	FULL	Ловкач I
-SF Beards N Staches.esp	000121	HDPT	FULL	Ловкач II
-SF Beards N Staches.esp	000122	HDPT	FULL	Ловкач III
-SF Beards N Staches.esp	000123	HDPT	FULL	Ловкач IV
-SF Beards N Staches.esp	000124	HDPT	FULL	Ловкач V
-SF Beards N Staches.esp	000125	HDPT	FULL	Ловкач VI
-SF Beards N Staches.esp	000126	HDPT	FULL	Ловкач VII
-SF Beards N Staches.esp	000127	HDPT	FULL	Ловкач VIII
-SF Beards N Staches.esp	000128	HDPT	FULL	Клочок под губой I
-SF Beards N Staches.esp	000129	HDPT	FULL	Клочок под губой II
-SF Beards N Staches.esp	00012A	HDPT	FULL	Клочок под губой III
-SF Beards N Staches.esp	00012B	HDPT	FULL	Клочок под губой IV
-SF Beards N Staches.esp	00012C	HDPT	FULL	Клочок под губой V
-SF Beards N Staches.esp	00012D	HDPT	FULL	Клочок под губой VI
-SF Beards N Staches.esp	00012E	HDPT	FULL	Клочок под губой VII
-SF Beards N Staches.esp	00012F	HDPT	FULL	Клочок под губой VIII
-SF Beards N Staches.esp	000130	HDPT	FULL	Стрит-флеш I
-SF Beards N Staches.esp	000131	HDPT	FULL	Стрит-флеш II
-SF Beards N Staches.esp	000132	HDPT	FULL	Стрит-флеш III
-SF Beards N Staches.esp	000133	HDPT	FULL	Стрит-флеш IV
-SF Beards N Staches.esp	000134	HDPT	FULL	Стрит-флеш V
-SF Beards N Staches.esp	000135	HDPT	FULL	Стрит-флеш VI
-SF Beards N Staches.esp	000136	HDPT	FULL	Бард I
-SF Beards N Staches.esp	000137	HDPT	FULL	Бард II
-SF Beards N Staches.esp	000149	HDPT	FULL	Выживальщик I
-SF Beards N Staches.esp	00014A	HDPT	FULL	Выживальщик II
-SF Beards N Staches.esp	00014B	HDPT	FULL	Выживальщик III
-SF Beards N Staches.esp	00014C	HDPT	FULL	Выживальщик Beast I
-SF Beards N Staches.esp	00014D	HDPT	FULL	Выживальщик Beast II
-SF Beards N Staches.esp	00014E	HDPT	FULL	Выживальщик Beast III
-SF Beards N Staches.esp	00014F	HDPT	FULL	Выживальщик Beast IV
-SF Beards N Staches.esp	000150	HDPT	FULL	Выживальщик Hollywood I
-SF Beards N Staches.esp	000151	HDPT	FULL	Выживальщик Hollywood II
-SF Beards N Staches.esp	000152	HDPT	FULL	Выживальщик Hollywood III
-SF Beards N Staches.esp	000153	HDPT	FULL	Выживальщик Hollywood IV
-SF Beards N Staches.esp	000154	HDPT	FULL	Выживание мертвеца I
-SF Beards N Staches.esp	000155	HDPT	FULL	Выживание мертвеца II
-SF Beards N Staches.esp	000156	HDPT	FULL	Выживание мертвеца III
-SF Beards N Staches.esp	000157	HDPT	FULL	Выживание мертвеца IV
-SF Beards N Staches.esp	000158	HDPT	FULL	Мёртвый выживальщик Hollywood I
-SF Beards N Staches.esp	000159	HDPT	FULL	Мёртвый выживальщик Hollywood II
-SF Beards N Staches.esp	00015A	HDPT	FULL	Мёртвый выживальщик Hollywood III
-SF Beards N Staches.esp	00015B	HDPT	FULL	Мёртвый выживальщик Hollywood IV
-SF Beards N Staches.esp	00015C	HDPT	FULL	Выживание мёртвого Beast I
-SF Beards N Staches.esp	00015D	HDPT	FULL	Выживание мёртвого Beast II
-SF Beards N Staches.esp	00015E	HDPT	FULL	Выживание мёртвого Beast III
-SF Beards N Staches.esp	00015F	HDPT	FULL	Выживание мёртвого Beast IV
-SF Beards N Staches.esp	000160	HDPT	FULL	Прямой выживальщик I
-SF Beards N Staches.esp	000161	HDPT	FULL	Прямой выживальщик II
-SF Beards N Staches.esp	000162	HDPT	FULL	Прямое выживание Beast I
-SF Beards N Staches.esp	000163	HDPT	FULL	Прямое выживание Beast II
-SF Beards N Staches.esp	000164	HDPT	FULL	Выживание Bard I
-SF Beards N Staches.esp	000165	HDPT	FULL	Выживание Bard II
-SF Beards N Staches.esp	000166	HDPT	FULL	Выживание Bard III
-SF Beards N Staches.esp	000167	HDPT	FULL	Выживание Bard IV
-SF Beards N Staches.esp	000168	HDPT	FULL	Выживание Bard V
-SF Beards N Staches.esp	000169	HDPT	FULL	Выживание Bard VI
-SF Beards N Staches.esp	00016A	HDPT	FULL	Выживание Bard VII
-SF Beards N Staches.esp	00016B	HDPT	FULL	Выживание Bard VIII
-SF Beards N Staches.esp	00016C	HDPT	FULL	Doomsday, подготовленный I
-SF Beards N Staches.esp	00016F	HDPT	FULL	Doomsday, классическая I
-SF Beards N Staches.esp	000170	HDPT	FULL	Doomsday, классическая II
-SF Beards N Staches.esp	000171	HDPT	FULL	Doomsday, мертвец I
-SF Beards N Staches.esp	000172	HDPT	FULL	Doomsday, мертвец II
-SF Beards N Staches.esp	000173	HDPT	FULL	Doomsday, классика мертвеца I
-SF Beards N Staches.esp	000174	HDPT	FULL	Doomsday, классика мертвеца II
-SF Beards N Staches.esp	000175	HDPT	FULL	Doomsday, мёртвый Beast I
-SF Beards N Staches.esp	000176	HDPT	FULL	Doomsday, мёртвый Beast II
-Sidearms of the Wasteland.esp	000521	OMOD	FULL	@game:Fallout4:116370
-Sidearms of the Wasteland.esp	0005DF	MISC	FULL	@game:Fallout4:107952
-Sidearms of the Wasteland.esp	0005E6	MISC	FULL	@game:Fallout4:107952
-Sidearms of the Wasteland.esp	00085D	OMOD	FULL	@game:Fallout4:107952
 SS2.esm	00EBDF	CELL	FULL	@game:Fallout4:89383
 SS2.esm	00EBE2	CELL	FULL	@game:Fallout4:89383
 SS2_XPAC_Chapter2.esm	00C8E7	CELL	FULL	@game:Fallout4:89383
@@ -4086,16 +3545,6 @@ VtawWardrobe9.esp	03251C	OMOD	FULL	@game:Fallout4:451
 VtawWardrobe9.esp	03251F	OMOD	FULL	@game:Fallout4:106886
 VtawWardrobe9.esp	032525	OMOD	FULL	@game:Fallout4:132247
 VtawWardrobe9.esp	032528	OMOD	FULL	@game:Fallout4:223261
-WestTekTacticalOptics.esp	000808	OMOD	FULL	@game:Fallout4:223340
-WestTekTacticalOptics.esp	00080B	OMOD	FULL	@game:Fallout4:204561
-WestTekTacticalOptics.esp	000815	MGEF	FULL	@game:Fallout4:204561
-WestTekTacticalOptics.esp	0026E8	OMOD	FULL	@game:Fallout4:204561
-WestTekTacticalOptics.esp	003DA7	OMOD	FULL	@game:Fallout4:117626
-WestTekTacticalOptics.esp	003DA9	ENCH	FULL	@game:Fallout4:202755
-WestTekTacticalOptics.esp	004CE1	OMOD	FULL	@game:Fallout4:118195
-WestTekTacticalOptics.esp	004CE5	OMOD	FULL	@game:Fallout4:95606
-WestTekTacticalOptics.esp	00A833	ENCH	FULL	@game:Fallout4:118195
-WestTekTacticalOptics.esp	00AFD3	SPEL	FULL	@game:Fallout4:204561
 3DNPC_FO4.esp	003622	ACTI	ATTX	@game:Fallout4:223706
 3DNPC_FO4.esp	00692F	ACTI	ATTX	@game:Fallout4:204216
 3DNPC_FO4.esp	006C2C	ACTI	ATTX	@game:Fallout4:204216
@@ -4235,17 +3684,9 @@ NCRPowerArmor.esp	00001B	INNR	WNAM#22	@game:Fallout4:222053
 NCRPowerArmor.esp	00001B	INNR	WNAM#23	@game:Fallout4:222021
 NCRPowerArmor.esp	00001B	INNR	WNAM#24	@game:Fallout4:221967
 NCRPowerArmor.esp	00001B	INNR	WNAM#25	@game:Fallout4:221978
-NCRPowerArmor.esp	00001B	INNR	WNAM#26	НКР
 NCRPowerArmor.esp	00001B	INNR	WNAM#27	@game:Fallout4:222012
 NCRPowerArmor.esp	00001B	INNR	WNAM#28	@game:Fallout4:224083
-NCRPowerArmor.esp	00001B	INNR	WNAM#29	Пустынный
 NCRPowerArmor.esp	00001B	INNR	WNAM#3	@game:Fallout4:216046
-NCRPowerArmor.esp	00001B	INNR	WNAM#30	Перебежчик
-NCRPowerArmor.esp	00001B	INNR	WNAM#31	Рейнджер Mk1
-NCRPowerArmor.esp	00001B	INNR	WNAM#32	Рейнджер Mk2
-NCRPowerArmor.esp	00001B	INNR	WNAM#33	Рейнджер Mk3
-NCRPowerArmor.esp	00001B	INNR	WNAM#34	Рейнджер Mk4
-NCRPowerArmor.esp	00001B	INNR	WNAM#35	Рейнджер Mk5
 NCRPowerArmor.esp	00001B	INNR	WNAM#36	@game:Fallout4:221979
 NCRPowerArmor.esp	00001B	INNR	WNAM#37	@game:Fallout4:221980
 NCRPowerArmor.esp	00001B	INNR	WNAM#38	@game:Fallout4:221995
@@ -4265,7 +3706,6 @@ NCRPowerArmor.esp	00001B	INNR	WNAM#5	@game:Fallout4:222017
 NCRPowerArmor.esp	00001B	INNR	WNAM#50	@game:Fallout4:221993
 NCRPowerArmor.esp	00001B	INNR	WNAM#51	@game:Fallout4:222011
 NCRPowerArmor.esp	00001B	INNR	WNAM#52	@game:Fallout4:222000
-NCRPowerArmor.esp	00001B	INNR	WNAM#53	Рейнджер
 NCRPowerArmor.esp	00001B	INNR	WNAM#54	@game:Fallout4:222042
 NCRPowerArmor.esp	00001B	INNR	WNAM#55	@game:Fallout4:222007
 NCRPowerArmor.esp	00001B	INNR	WNAM#56	@game:Fallout4:221966
@@ -4291,7 +3731,6 @@ NCRPowerArmor.esp	00001B	INNR	WNAM#73	@game:Fallout4:222002
 NCRPowerArmor.esp	00001B	INNR	WNAM#74	@game:Fallout4:221988
 NCRPowerArmor.esp	00001B	INNR	WNAM#8	@game:Fallout4:216441
 NCRPowerArmor.esp	00001B	INNR	WNAM#9	@game:Fallout4:218392
-NCRPowerArmor.esp	0001A5	FURN	ATTX	Войти
 NCRPowerArmor.esp	0001D8	ACTI	ATTX	@game:Fallout4:160632
 SettleObjExpandPack.esp	000C86	ACTI	ATTX	@game:Fallout4:211888
 SettleObjExpandPack.esp	000C87	ACTI	ATTX	@game:Fallout4:211888

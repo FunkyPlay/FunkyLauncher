@@ -5950,8 +5950,7 @@
     "choices": [
      "Base Mod: Base Mod"
     ]
-   },
-   "onlyWithout": "ru"
+   }
   },
   {
    "id": "Sons of Steel - Brotherhood Infantry Armor",
@@ -5980,8 +5979,7 @@
     "type": "copyAll",
     "from": "",
     "fomod": false
-   },
-   "onlyWithout": "ru"
+   }
   }
  ]
 }
