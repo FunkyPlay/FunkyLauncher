@@ -7,19 +7,84 @@
   "dicts": [
    {
     "path": "files/fallout4/names-ru.tsv",
-    "sha256": "7a92b8fa039fc6f97c6f6884c43a6c4028cac64a5a3df632a4321bb48a9f9f8d"
+    "sha256": "4550ad621b93bf4f3926be54a4647ed8d0b6cf3b7c59f81bcd0d39e0c7611e6c"
    }
   ],
   "credits": [
    {
-    "mod": "Amazing FollowerTweaks",
-    "author": "Dheuster",
-    "url": "https://www.nexusmods.com/fallout4/mods/26976"
+    "mod": "русские переводы Sim Settlements 2 и Heather Casdin — ставятся как есть, без нашего перевода",
+    "author": "Beowulf (beowulfmax)",
+    "url": "https://www.nexusmods.com/profile/beowulfmax/mods"
    },
    {
-    "mod": "Sidearms of the Wasteland",
-    "author": "Gecko In A Can 77",
-    "url": "https://www.nexusmods.com/fallout4/mods/96613"
+    "mod": "русские переводы Better Goodneighbor и Service Rifle — ставятся как есть, без нашего перевода",
+    "author": "buildanation",
+    "url": "https://www.nexusmods.com/profile/buildanation/mods"
+   },
+   {
+    "mod": "русский перевод Outcasts and Remnants — ставится как есть, без нашего перевода",
+    "author": "DeVViL1994",
+    "url": "https://www.nexusmods.com/fallout4/mods/45832"
+   },
+   {
+    "mod": "русский перевод Cheat Terminal — ставится как есть, без нашего перевода",
+    "author": "MrBeard8",
+    "url": "https://www.nexusmods.com/fallout4/mods/109601"
+   },
+   {
+    "mod": "русский перевод Mutant Menagerie — ставится как есть, без нашего перевода",
+    "author": "NezertorcheaT",
+    "url": "https://www.nexusmods.com/fallout4/mods/78968"
+   },
+   {
+    "mod": "русский перевод Better Locational Damage — ставится как есть, без нашего перевода",
+    "author": "Kotin",
+    "url": "https://www.nexusmods.com/fallout4/mods/89523"
+   },
+   {
+    "mod": "русский перевод In The Flesh — ставится как есть, без нашего перевода",
+    "author": "Kandeha",
+    "url": "https://www.nexusmods.com/fallout4/mods/78774"
+   },
+   {
+    "mod": "русский перевод Fusion City Rising — ставится как есть, без нашего перевода",
+    "author": "cat-boy",
+    "url": "https://www.nexusmods.com/fallout4/mods/41821"
+   },
+   {
+    "mod": "русский перевод Snap'n Build — ставится как есть, без нашего перевода",
+    "author": "VASABY",
+    "url": "https://www.nexusmods.com/fallout4/mods/92279"
+   },
+   {
+    "mod": "русский перевод AK74M — ставится как есть, без нашего перевода",
+    "author": "kopasov",
+    "url": "https://www.nexusmods.com/fallout4/mods/92573"
+   },
+   {
+    "mod": "русский перевод True Storms — ставится как есть, без нашего перевода",
+    "author": "MENTALNEKIT",
+    "url": "https://www.nexusmods.com/fallout4/mods/69526"
+   },
+   {
+    "mod": "русский перевод Community Fixes Merged — ставится как есть, без нашего перевода",
+    "author": "NiBlockGames",
+    "url": "https://www.nexusmods.com/fallout4/mods/95205"
+   },
+   {
+    "mod": "See Through Scopes",
+    "author": "henkspamadres",
+    "url": "https://www.nexusmods.com/fallout4/mods/9476"
+   },
+   {
+    "mod": "русский перевод America Rising 2 — ставится как есть, без нашего перевода",
+    "author": "IGorkaI",
+    "url": "https://www.nexusmods.com/fallout4/mods/83848"
+   },
+   {
+    "mod": "русские переводы 9 модов (You And What Army 2, Backpacks of the Commonwealth, Player Comments and Head Tracking и др.) — ставятся как есть, без нашего перевода",
+    "author": "NB - Nillck (NiblokGames)",
+    "url": "https://www.nexusmods.com/profile/NiblokGames/mods"
    },
    {
     "mod": "Boon Island - Isles Of New England",
@@ -37,19 +102,19 @@
     "url": "https://www.nexusmods.com/fallout4/mods/75647"
    },
    {
-    "mod": "Eli's Armour Compendium",
-    "author": "Elianora",
-    "url": "https://www.nexusmods.com/fallout4/mods/22431"
+    "mod": "Ranger Power Armor",
+    "author": "AriesThe_Ram - TEMMIS (загрузил PrincessAries)",
+    "url": "https://www.nexusmods.com/fallout4/mods/98482"
    },
    {
-    "mod": "West Tek Tactical Optics",
-    "author": "fadingsignal",
-    "url": "https://www.nexusmods.com/fallout4/mods/12220"
+    "mod": "Beards N' Staches",
+    "author": "iSiralex",
+    "url": "https://www.nexusmods.com/fallout4/mods/72573"
    },
    {
-    "mod": "K-9 Harness",
-    "author": "fadingsignal",
-    "url": "https://www.nexusmods.com/fallout4/mods/17686"
+    "mod": "NPCs Travel",
+    "author": "aiueoooo (загрузил win2009)",
+    "url": "https://www.nexusmods.com/fallout4/mods/16987"
    }
   ]
  },
