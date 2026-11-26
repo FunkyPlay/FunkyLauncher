@@ -151,6 +151,8 @@ public sealed class Modlist
 
     /// <summary>0.1.23: a modlist still "soon" for older launchers, released from this launcher version on (GTA V: its own installer).</summary>
     [JsonPropertyName("readyFrom")] public string ReadyFrom { get; set; } = "";
+    /// <summary>0.1.24 (Funky 26.11): a modlist out as a beta (GTA V) — "Beta" next to its chip in the Library.</summary>
+    [JsonPropertyName("beta")] public bool Beta { get; set; }
     public long RequiredFreeBytes => (SizeGb + 5L) * 1024 * 1024 * 1024;
 }
 

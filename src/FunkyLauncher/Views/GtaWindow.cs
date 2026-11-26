@@ -53,6 +53,17 @@ public sealed class GtaWindow : Window
         var head = new StackPanel();
         head.Children.Add(new TextBlock { Text = "GRAND THEFT AUTO V ENHANCED", FontSize = 22, FontWeight = FontWeights.Bold });
         head.Children.Add(new TextBlock { Text = Loc.T("gta.intro"), FontSize = 13, Foreground = R("Muted"), TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 6, 0, 12) });
+        // Funky 26.11: GTA comes in 0.1.24 as a beta -> say so on top and ask the players to report what they find
+        var beta = new DockPanel { Margin = new Thickness(0, 0, 0, 12) };
+        var report = new Button { Content = Loc.T("flaw.button"), Style = St("SecondaryButton"), Height = 32, Padding = new Thickness(12, 0, 12, 0), Margin = new Thickness(12, 0, 0, 0), VerticalAlignment = VerticalAlignment.Center };
+        report.Click += (_, _) => FlawWindow.Open(this, _s, _m);
+        DockPanel.SetDock(report, Dock.Right);
+        beta.Children.Add(report);
+        var betaText = new TextBlock { FontSize = 13, TextWrapping = TextWrapping.Wrap, VerticalAlignment = VerticalAlignment.Center };
+        betaText.Inlines.Add(new System.Windows.Documents.Run(Loc.T("gta.beta.badge") + "  ") { Foreground = R("Pink"), FontWeight = FontWeights.Bold });
+        betaText.Inlines.Add(new System.Windows.Documents.Run(Loc.T("gta.beta.text")) { Foreground = R("Cyan") });
+        beta.Children.Add(betaText);
+        head.Children.Add(beta);
         DockPanel.SetDock(head, Dock.Top);
         root.Children.Add(head);
 

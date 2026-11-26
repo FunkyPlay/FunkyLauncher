@@ -236,6 +236,7 @@ public partial class LibraryView : UserControl
         var (chipText, chipFg, chipBg) = !m.IsReleased
             ? (Loc.T("lib.soon"), "#C9C9D6", "#CC33333F")
             : installed ? (Loc.T("lib.installed"), "#9AF2FF", "#CC0F2A33") : (Loc.F("lib.available", m.SizeGb), "#FF7AD9", "#CC2A1426");
+        if (m.Beta && m.IsReleased) chipText += " · " + Loc.T("lib.beta");
         var bc = new BrushConverter();
 
         var grid = new Grid();

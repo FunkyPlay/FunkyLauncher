@@ -614,6 +614,7 @@
       "version": "",
       "status": "soon",
       "readyFrom": "0.1.24",
+      "beta": true,
       "installer": "gta",
       "gameExe": "GTA5_Enhanced.exe",
       "gameVersion": "1.0.1158.16",
@@ -622,12 +623,12 @@
       "defaultInstallDir": "C:\\Games\\FunkyPlay-GTA5",
       "game": "Grand Theft Auto V Enhanced",
       "tag": {
-        "ru": "Grand Theft Auto V Enhanced · в работе",
-        "en": "Grand Theft Auto V Enhanced · in progress"
+        "ru": "Grand Theft Auto V Enhanced · бета",
+        "en": "Grand Theft Auto V Enhanced · beta"
       },
       "description": {
-        "ru": "Следующая сборка FunkyPlay — в работе.",
-        "en": "The next FunkyPlay modlist — in progress."
+        "ru": "Сборка GTA V в бета-версии: мы продолжаем над ней работать. Нашли ошибку — нажмите «Сообщить о недочёте», это очень помогает.",
+        "en": "The GTA V modlist is in beta: we keep working on it. Found a bug? Click \"Report a flaw\" — it helps a lot."
       },
       "banner": "",
       "wabbajackFile": "",
