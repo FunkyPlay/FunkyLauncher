@@ -2867,6 +2867,39 @@
    "onlyWith": "high"
   },
   {
+   "id": "RU - Modern Combat AI - F4SE RU",
+   "modFolder": "RU - Modern Combat AI - F4SE RU",
+   "displayName": {
+    "ru": "Modern Combat AI - F4SE RU",
+    "en": "Modern Combat AI - F4SE RU"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 109624,
+    "fileId": 418756,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/109624?tab=files&file_id=418756"
+   },
+   "version": "1.2.1",
+   "archive": {
+    "nexusFileName": "a9/3d/62/a93d620d-7cb2-416e-bf53-e7a606d85073",
+    "localFileName": "a9/3d/62/a93d620d-7cb2-416e-bf53-e7a606d85073",
+    "size": 7314,
+    "sha256": "fc6d13f7c1cf97ac8c186917ba2a80cbb38940532c755e8481ca8eef9d98e6bf"
+   },
+   "plugins": [],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "MCM/Config/ModernCombatAIRD/config.json",
+      "MCM/Config/ModernCombatAIRD/config.json"
+     ]
+    ],
+    "fomod": false
+   },
+   "onlyWith": "high"
+  },
+  {
    "id": "RU - FO4HHS Russian Translation",
    "modFolder": "RU - FO4HHS Russian Translation",
    "displayName": {
