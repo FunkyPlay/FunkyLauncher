@@ -56,6 +56,13 @@
      ]
     ]
    },
+   "iniSet": {
+    "ReShade.ini": {
+     "GENERAL": {
+      "PresetPath": ".\\RL ENHANCED.ini"
+     }
+    }
+   },
    "order": 2,
    "modFolder": "RL ENHANCED preset"
   },

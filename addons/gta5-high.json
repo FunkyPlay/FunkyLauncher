@@ -30,6 +30,13 @@
    },
    "required": true,
    "provides": "nve",
+   "iniSet": {
+    "ReShade.ini": {
+     "INPUT": {
+      "KeyOverlay": "114,0,0,0"
+     }
+    }
+   },
    "order": 1,
    "modFolder": "NaturalVision Enhanced"
   },

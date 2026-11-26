@@ -9,6 +9,7 @@
  "gameVersion": "1.0.1158.16",
  "tokens": {
   "nve": {
+   "{common_base}": "onigiri/common",
    "{common}": "onigiri/common",
    "{platform}": "onigiri/platform",
    "{dlc_patch}": "onigiri/dlc_patch",
@@ -17,6 +18,7 @@
    "{ov_platform}": "mods/update/update.rpf/x64"
   },
   "std": {
+   "{common_base}": "mods/common.rpf",
    "{common}": "mods/update/update.rpf/common",
    "{platform}": "mods/update/update.rpf/x64",
    "{dlc_patch}": "mods/update/update.rpf/dlc_patch",
@@ -790,7 +792,7 @@
     ],
     [
      "0.Main/onigiri/common/data/ai/crimeinformation.meta",
-     "{common}/data/ai/crimeinformation.meta"
+     "{common_base}/data/ai/crimeinformation.meta"
     ],
     [
      "0.Main/onigiri/common/data/dispatch.meta",
