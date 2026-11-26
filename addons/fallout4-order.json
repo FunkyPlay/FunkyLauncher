@@ -7,10 +7,15 @@
   "dicts": [
    {
     "path": "files/fallout4/names-ru.tsv",
-    "sha256": "7a92b8fa039fc6f97c6f6884c43a6c4028cac64a5a3df632a4321bb48a9f9f8d"
+    "sha256": "1137b17a24dcb7e0300b0287484c390273dc3077ae42751be594b7fc434e2313"
    }
   ],
   "credits": [
+   {
+    "mod": "русские переводы 9 модов (You And What Army 2, Backpacks of the Commonwealth, Player Comments and Head Tracking и др.) — ставятся как есть, без нашего перевода",
+    "author": "NB - Nillck (NiblokGames)",
+    "url": "https://www.nexusmods.com/profile/NiblokGames/mods"
+   },
    {
     "mod": "Amazing FollowerTweaks",
     "author": "Dheuster",
