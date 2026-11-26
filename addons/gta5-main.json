@@ -154,7 +154,8 @@
    "iniSet": {
     "TweaksV.ini": {
      "RAGEOPENV": {
-      "ENABLED": "0"
+      "ENABLED": "{nve?0:1}",
+      "MODS_FOLDER": "0"
      },
      "STRAIGHTTOSTORYMODE": {
       "ENABLED": "{nve?0:1}"
