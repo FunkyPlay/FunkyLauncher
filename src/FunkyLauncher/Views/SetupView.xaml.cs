@@ -222,7 +222,7 @@ public partial class SetupView : UserControl
             var on = AddonService.Prefs(s, pack!).On;
             // space on disk: the archive plus what it unpacks to (about the same again), in GB as the cards write it
             var gb = Math.Max(1, (int)Math.Round(pack!.Mods.Sum(x => x.Archive.Size + x.Archives.Sum(p => p.Size)) * 2 / 1e9));
-            var row = Row(Loc.T("comp." + kind), Loc.F("comp." + kind + ".hint", gb), out var right);
+            var row = Row(Loc.T("comp." + kind), Loc.F(Loc.For("comp." + kind + ".hint", Ml.Id), gb), out var right);
             var box = new CheckBox { IsChecked = on, VerticalAlignment = VerticalAlignment.Center, IsEnabled = !_busy };
             var p = pack;
             box.Click += (_, _) => _ = ExtraClickedAsync(p, box.IsChecked == true);

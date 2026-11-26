@@ -24,6 +24,9 @@ public static class Loc
 
     public static string F(string key, params object[] args) => string.Format(T(key), args);
 
+    /// <summary>A text written for one modlist ("key.modlistId") when there is one, the common text otherwise.</summary>
+    public static string For(string key, string modlistId) => Texts.ContainsKey(key + "." + modlistId) ? key + "." + modlistId : key;
+
     private static readonly Dictionary<string, (string Ru, string En)> Texts = new()
     {
         ["nav.home"] = ("Главная", "Home"),
@@ -717,6 +720,9 @@ public static class Loc
         ["comp.voice.link.hint"] = ("Ставится отдельно со страницы авторов, по их инструкции: включить её в сборку без их разрешения мы не можем.", "Installed separately from the authors' page, following their instructions: we can't include it in the modlist without their permission."),
         ["comp.voice"] = ("Русская озвучка", "Russian voice-over"),
         ["comp.voice.hint"] = ("Для русской версии: ~{0} ГБ, лаунчер скачает и поставит её сам.", "For the Russian version: ~{0} GB, the launcher downloads and installs it."),
+        // 0.1.25 (Starfield, NGC404): the parts are downloaded by the player on the author's PlayGround page
+        ["comp.voice.hint.starfield"] = ("Для русской версии: ~{0} ГБ на диске. Лаунчер откроет страницу автора на PlayGround — нажми там «Скачать» у каждой из трёх частей (перед скачиванием сайт ждёт около минуты), дальше лаунчер поставит всё сам.",
+            "For the Russian version: ~{0} GB on disk. The launcher opens the author's PlayGround page — press \"Download\" for each of the three parts (the site waits about a minute before each download), then the launcher installs everything itself."),
         ["manual.hint.site"] = ("Нажми на странице кнопку «Скачать». Лаунчер сам поймает файл и поставит его в сборку.", "Press the Download button on the page. The launcher catches the file and installs it into the modlist."),
         ["comp.extra.working"] = ("Ставим дополнение…", "Installing the add-on…"),
         ["comp.extra.on"] = ("Дополнение включено", "The add-on is on"),
