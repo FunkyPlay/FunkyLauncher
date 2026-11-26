@@ -114,6 +114,21 @@ public static partial class Mo2Profile
                 lines[i] = "-" + lines[i][1..];
                 changed = true;
             }
+        // 0.1.24 (support 031): a damaged plugin DLL of a mod that is on (RED4ext "error 193") — only written to the log,
+        // so the error report names it; "Verify files" finds it too and unpacks the mod again
+        try
+        {
+            var modsDir = Path.Combine(s.InstallDir(m), "mods");
+            foreach (var l in lines.Where(l => l.StartsWith('+')))
+                foreach (var sub in new[] { "red4ext", "bin" })
+                {
+                    var d = Path.Combine(modsDir, l[1..], sub);
+                    if (!Directory.Exists(d)) continue;
+                    var bad = NexusInstallService.BrokenNativeFiles(d);
+                    if (bad.Count > 0) AppLog.Write($"broken native file(s) in {l[1..]}: {string.Join(", ", bad.Select(b => Path.Combine(sub, b)))}");
+                }
+        }
+        catch { }
         if (made.Count == 0) { if (changed) File.WriteAllLines(listPath, lines); return; }
         foreach (var f in made)
         {

@@ -83,6 +83,29 @@ public static class AddonService
         return 0;
     }
 
+    /// <summary>
+    /// 0.1.24: the next INSTALL unpacks this mod again (a damaged file was found in it): its layout mark in meta.ini no
+    /// longer matches, so <see cref="IsCurrent"/> says no. Nothing is removed here; INSTALL sets the old folder aside.
+    /// </summary>
+    public static void MarkForReinstall(string modDir)
+    {
+        try
+        {
+            var meta = Path.Combine(modDir, "meta.ini");
+            var lines = File.Exists(meta) ? File.ReadAllLines(meta).ToList() : new List<string> { "[General]" };
+            var i = lines.FindIndex(l => l.StartsWith("funkyLayout="));
+            if (i >= 0) lines[i] = "funkyLayout=damaged";
+            else
+            {
+                var g = lines.FindIndex(l => l.Trim().Equals("[General]", StringComparison.OrdinalIgnoreCase));
+                if (g < 0) { lines.Insert(0, "[General]"); g = 0; }
+                lines.Insert(g + 1, "funkyLayout=damaged");
+            }
+            File.WriteAllLines(meta, lines);
+        }
+        catch (Exception ex) { AppLog.Write($"mark for reinstall {modDir}: {ex.Message}"); }
+    }
+
     /// <summary>Installed and of the same Nexus file (a new modlist version may switch a mod to a newer file).</summary>
     private static bool IsCurrent(string mods, AddonMod x)
     {

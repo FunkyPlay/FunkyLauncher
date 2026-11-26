@@ -254,9 +254,70 @@ public static class NexusInstallService
             {
                 var d = Path.Combine(mods, x.ModFolder);
                 if (!Directory.Exists(d) || !Directory.EnumerateFileSystemEntries(d).Any(e => !e.EndsWith("meta.ini", StringComparison.OrdinalIgnoreCase)))
+                {
                     missing.Add(x.DisplayName.ToString());
+                    continue;
+                }
+                // 0.1.24 (support 031, 26.11): a damaged DLL inside a mod that is there (RED4ext "error 193", Cyber Sight's
+                // CyberSnakeHost.dll) — the folder check alone said "all good". The mod is marked to be unpacked again:
+                // INSTALL sets the old folder aside and lays it down fresh from the archive already downloaded
+                var broken = BrokenNativeFiles(d);
+                if (broken.Count == 0) continue;
+                AppLog.Write($"broken native file(s) in {x.ModFolder}: {string.Join(", ", broken)}");
+                AddonService.MarkForReinstall(d);
+                missing.Add($"{x.DisplayName} ({string.Join(", ", broken.Select(Path.GetFileName))})");
             }
         }
         return (missing.Count == 0, missing);
+    }
+
+    private static readonly string[] NativeExt = { ".dll", ".asi", ".exe" };
+
+    /// <summary>
+    /// Program files of a mod folder (.dll / .asi / .exe) that Windows can't load: empty, cut short, or not a Windows
+    /// program at all ("MZ" header and a "PE" signature where the header points). Paths relative to the folder.
+    /// </summary>
+    public static List<string> BrokenNativeFiles(string modDir)
+    {
+        var bad = new List<string>();
+        try
+        {
+            foreach (var f in Directory.EnumerateFiles(modDir, "*", SearchOption.AllDirectories))
+            {
+                if (!NativeExt.Contains(Path.GetExtension(f), StringComparer.OrdinalIgnoreCase)) continue;
+                if (!LooksLikePe(f)) bad.Add(Path.GetRelativePath(modDir, f));
+            }
+        }
+        catch (Exception ex) { AppLog.Write($"native check {modDir}: {ex.Message}"); }
+        return bad;
+    }
+
+    private static bool LooksLikePe(string file)
+    {
+        try
+        {
+            using var fs = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.ReadWrite | FileShare.Delete);
+            if (fs.Length < 0x40) return false;
+            var head = new byte[0x40];
+            if (fs.Read(head, 0, head.Length) != head.Length || head[0] != (byte)'M' || head[1] != (byte)'Z') return false;
+            var peAt = BitConverter.ToInt32(head, 0x3C);
+            if (peAt < 0x40 || peAt > fs.Length - 4) return false;
+            fs.Position = peAt;
+            var pe = new byte[24];   // "PE\0\0" + the COFF header
+            if (fs.Read(pe, 0, pe.Length) != pe.Length || pe[0] != (byte)'P' || pe[1] != (byte)'E' || pe[2] != 0 || pe[3] != 0) return false;
+            // cut short: every section's data must be inside the file
+            int sections = BitConverter.ToUInt16(pe, 6), optional = BitConverter.ToUInt16(pe, 20);
+            fs.Position = peAt + 24 + optional;
+            var sec = new byte[40];
+            for (var i = 0; i < sections; i++)
+            {
+                if (fs.Read(sec, 0, sec.Length) != sec.Length) return false;
+                long size = BitConverter.ToUInt32(sec, 16), at = BitConverter.ToUInt32(sec, 20);
+                if (size > 0 && at + size > fs.Length) return false;
+            }
+            return true;
+        }
+        catch (IOException) { return true; }   // locked by a running game: not a sign of damage
+        catch (UnauthorizedAccessException) { return true; }
     }
 }
