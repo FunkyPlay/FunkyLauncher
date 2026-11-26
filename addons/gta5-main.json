@@ -667,6 +667,7 @@
      ]
     ]
    },
+   "legal": "Юридические 26.11: в сборки можно; указать разработчиков Script Hook V (Alexander Blade) и ScriptHookVDotNet (crosire)",
    "order": 15,
    "modFolder": "GTA 5 HUD Toggle"
   },
@@ -1583,75 +1584,23 @@
   {
    "id": "GTA SPA II",
    "displayName": "GTA SPA II",
-   "nexus": {
-    "game": "gta5enhanced",
-    "modId": 1632,
-    "fileId": 3556,
-    "filePage": "https://www.nexusmods.com/gta5enhanced/mods/1632?tab=files&file_id=3556"
-   },
+   "nexus": {},
    "archive": {
-    "localFileName": "GTA SPA2 For Enhanced V.4.1fixed 1632 4.1fixed 2026-11-11T14-54Z 3yc67YUzy.7z",
-    "size": 1827370,
-    "sha256": "44795f39479b1a727c16e58421cbecf7c116bb03753a359ff156a1c917bfd164"
+    "localFileName": ""
    },
    "install": {
-    "type": "files",
-    "map": [
-     [
-      "scripts/SPA II/NightClubMusic/put mp3 music here.txt",
-      "{gameRoot}/scripts/SPA II/NightClubMusic/put mp3 music here.txt"
-     ],
-     [
-      "scripts/SPA II/Sounds/Assistant/README_VOICE.txt",
-      "{gameRoot}/scripts/SPA II/Sounds/Assistant/README_VOICE.txt"
-     ],
-     [
-      "scripts/SPA II/VehicleCatalog.tsv",
-      "{gameRoot}/scripts/SPA II/VehicleCatalog.tsv"
-     ],
-     [
-      "scripts/SPA II/Sounds/mechanic_cant_get_your_ride.wav",
-      "{gameRoot}/scripts/SPA II/Sounds/mechanic_cant_get_your_ride.wav"
-     ],
-     [
-      "scripts/SPA II/Sounds/mechanic_get_back_to_work_then.wav",
-      "{gameRoot}/scripts/SPA II/Sounds/mechanic_get_back_to_work_then.wav"
-     ],
-     [
-      "scripts/SPA II/Sounds/mechanic_get_there_as_soon_as_i_can.wav",
-      "{gameRoot}/scripts/SPA II/Sounds/mechanic_get_there_as_soon_as_i_can.wav"
-     ],
-     [
-      "scripts/SPA II/Sounds/mechanic_on_the_clock_some_wheels.wav",
-      "{gameRoot}/scripts/SPA II/Sounds/mechanic_on_the_clock_some_wheels.wav"
-     ],
-     [
-      "scripts/SPA II/Sounds/mechanic_u_need_something_huh.wav",
-      "{gameRoot}/scripts/SPA II/Sounds/mechanic_u_need_something_huh.wav"
-     ],
-     [
-      "scripts/iFruitAddon2.dll",
-      "{gameRoot}/scripts/iFruitAddon2.dll"
-     ],
-     [
-      "scripts/INMNativeUI.dll",
-      "{gameRoot}/scripts/INMNativeUI.dll"
-     ],
-     [
-      "scripts/Metadata.dll",
-      "{gameRoot}/scripts/Metadata.dll"
-     ],
-     [
-      "scripts/SPA II/SPAII_Setting.exe",
-      "{gameRoot}/scripts/SPA II/SPAII_Setting.exe"
-     ],
-     [
-      "scripts/SPAII.dll",
-      "{gameRoot}/scripts/SPAII.dll"
-     ]
-    ]
+    "type": "manual",
+    "page": "https://www.nexusmods.com/gta5enhanced/mods/1632",
+    "check": [
+     "scripts/SPAII.dll"
+    ],
+    "note": {
+     "ru": "Необязательно, ставится вручную со страницы автора (по его инструкции). Автор не разрешает включать мод в сборки.",
+     "en": "Optional, manual install from the author's page (author's guide). The author does not allow bundling this mod."
+    }
    },
-   "note": "blips toggle F10; based on GPL-3 code",
+   "default": false,
+   "legal": "Юридические 26.11: только ссылкой, выключено, до разрешения автора",
    "order": 29,
    "modFolder": "GTA SPA II"
   },
@@ -1750,66 +1699,6 @@
    "modFolder": "Collectibles on Map and Radar"
   },
   {
-   "id": "Swap Main Ride",
-   "displayName": "Swap Main Ride",
-   "nexus": {
-    "game": "gta5enhanced",
-    "modId": 157,
-    "fileId": 3211,
-    "filePage": "https://www.nexusmods.com/gta5enhanced/mods/157?tab=files&file_id=3211"
-   },
-   "archive": {
-    "localFileName": "Swap Main Ride 157 2.1 2026-10-13T01-16Z KXJj8yi0S.zip",
-    "size": 346189,
-    "sha256": "4c664b7100c2df0e5f3b0c932dc2292a5b3be66abcf8e73ad48a744cb66da6c4"
-   },
-   "install": {
-    "type": "files",
-    "map": [
-     [
-      "SwapMainRide.asi",
-      "{gameRoot}/SwapMainRide.asi"
-     ]
-    ]
-   },
-   "order": 33,
-   "modFolder": "Swap Main Ride"
-  },
-  {
-   "id": "Swap Main Ride .ini",
-   "displayName": "Swap Main Ride .ini",
-   "nexus": {
-    "game": "gta5enhanced",
-    "modId": 157,
-    "fileId": 299,
-    "filePage": "https://www.nexusmods.com/gta5enhanced/mods/157?tab=files&file_id=299"
-   },
-   "archive": {
-    "localFileName": "Swap Main Ride .ini-157-1-0-1756383559.zip",
-    "size": 746,
-    "sha256": "d6beea7818214af368a0219d5817d0f9f59bd7980e2e96ecce3742ec73faffa5"
-   },
-   "install": {
-    "type": "files",
-    "map": [
-     [
-      "SwapMainRide.ini",
-      "{gameRoot}/SwapMainRide.ini"
-     ]
-    ]
-   },
-   "iniSet": {
-    "SwapMainRide.ini": {
-     "Settings": {
-      "OPEN_MENU_KEY": "117"
-     }
-    }
-   },
-   "note": "F7 -> F6 (F7 = Army Chaos)",
-   "order": 34,
-   "modFolder": "Swap Main Ride .ini"
-  },
-  {
    "id": "Urban Car Pack",
    "displayName": "Urban Car Pack",
    "nexus": {},
@@ -1829,7 +1718,7 @@
    },
    "default": false,
    "legal": "Юридические 25.11: только ссылкой, не по умолчанию",
-   "order": 35,
+   "order": 33,
    "modFolder": "Urban Car Pack"
   },
   {
@@ -2237,7 +2126,7 @@
     ]
    },
    "legal": "Юридические 25.11: ставим как Neon; OpenIV/OpenRPF не нужны — файлы читает Simple Mods Loader",
-   "order": 36,
+   "order": 34,
    "modFolder": "Satellite Map"
   },
   {
@@ -2258,7 +2147,7 @@
    },
    "default": false,
    "legal": "Юридические 25.11: только ссылкой; автосборка пака (build_police_pack.py) — после ответа автора lspfr",
-   "order": 37,
+   "order": 35,
    "modFolder": "Police Pack"
   }
  ]
