@@ -305,6 +305,7 @@ public static class Addons
         "https://raw.githubusercontent.com/FunkyPlay/FunkyLauncher/"
         + (Environment.GetEnvironmentVariable("FUNKYLAUNCHER_ADDONS_BRANCH") is { Length: > 0 } b && b.All(c => char.IsLetterOrDigit(c) || c is '-' or '_' or '.') ? b : "main")
         + "/addons/";
+    private static readonly JsonSerializerOptions GtaJson = new() { PropertyNameCaseInsensitive = true, ReadCommentHandling = JsonCommentHandling.Skip };
     private static string CacheFile(string modlistId, string kind) =>
         Path.Combine(AppConfig.DataDir, "addons", $"{modlistId}-{kind}.json");
 
@@ -321,7 +322,17 @@ public static class Addons
                 try
                 {
                     var json = await http.GetStringAsync(OnlineBase + Uri.EscapeDataString($"{id}-{kind}.json"), token);
-                    if (kind == "order")
+                    if (id == Services.GtaInstallService.ModlistId)
+                    {
+                        // 0.1.24: the GTA packs have their own shape (GtaInstallService.Pack) — the AddonFile check threw
+                        // on them, so the launcher kept the copy built into it and installed old data (GTA 5 chat 26.11)
+                        if (kind is not ("main" or "high" or "heavy")) continue;
+                        using var d = JsonDocument.Parse(json);
+                        if (!d.RootElement.TryGetProperty("modlistId", out var mid) || mid.GetString() != id
+                            || !d.RootElement.TryGetProperty("mods", out var mods) || mods.ValueKind != JsonValueKind.Array || mods.GetArrayLength() == 0) continue;
+                        if (System.Text.Json.JsonSerializer.Deserialize<Services.GtaInstallService.Pack>(json, GtaJson) == null) continue;
+                    }
+                    else if (kind == "order")
                     {
                         var o = JsonSerializer.Deserialize<ModOrder>(json);
                         if (o == null || o.ModlistId != id || o.Modlist.Count == 0) continue;
