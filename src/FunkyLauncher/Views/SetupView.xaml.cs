@@ -181,7 +181,7 @@ public partial class SetupView : UserControl
         if (showLang == "ru" && TranslationService.Spec(Ml) is { } names)
         {
             CompositionPanel.Children.Add(Separator());
-            var row = Row(Loc.T("trans.title"), Loc.T("trans.note"), out var right);
+            var row = Row(Loc.T("trans.title"), Loc.T("trans.note") + (names.GameType == "starfield" ? " " + Loc.T("trans.note.starfield") : ""), out var right);
             var rebuild = new Button
             {
                 Content = Loc.T("trans.rebuild"), Style = (Style)FindResource("SecondaryButton"),

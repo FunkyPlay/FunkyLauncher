@@ -838,6 +838,114 @@
   "NoSuitCrimson.esp"
  ],
  "modlistId": "starfield",
+ "translation": {
+  "modFolder": "FunkyPlay - Русские названия",
+  "prefix": "FunkyPlay_RU_Names",
+  "gameType": "starfield",
+  "dicts": [
+   {
+    "path": "files/starfield/starfield-names-ru.tsv",
+    "sha256": "51c9c664cf141476f8330c5dea48daf9678bf025dce10e14916bcc802b91ab04"
+   },
+   {
+    "path": "files/starfield/starfield-template-names-ru.tsv",
+    "sha256": "faff005e97ae9c070dd772e125f64010bc740247860733c24bf5cceb5062d32d"
+   }
+  ],
+  "credits": [
+   {
+    "mod": "50 GS",
+    "author": "Overshoot999",
+    "url": "https://www.nexusmods.com/starfield/mods/13213"
+   },
+   {
+    "mod": "Avontech Suit Power Cores",
+    "author": "kaosnyrb",
+    "url": "https://www.nexusmods.com/starfield/mods/6182"
+   },
+   {
+    "mod": "Dark Universe - Outlaws 01",
+    "author": "kaosnyrb",
+    "url": "https://www.nexusmods.com/starfield/mods/15316"
+   },
+   {
+    "mod": "Destiny 2 - armor pack",
+    "author": "HooliG4N83",
+    "url": "https://www.nexusmods.com/starfield/mods/13706"
+   },
+   {
+    "mod": "Dream Home",
+    "author": "DownfallNemesis",
+    "url": "https://www.nexusmods.com/starfield/mods/10294"
+   },
+   {
+    "mod": "Fortuna Ship Habs",
+    "author": "DownfallNemesis",
+    "url": "https://www.nexusmods.com/starfield/mods/10891"
+   },
+   {
+    "mod": "Glock 19",
+    "author": "Overshoot999",
+    "url": "https://www.nexusmods.com/starfield/mods/13001"
+   },
+   {
+    "mod": "Hi-Point JXP 10mm",
+    "author": "Overshoot999",
+    "url": "https://www.nexusmods.com/starfield/mods/15307"
+   },
+   {
+    "mod": "Jaeger-45",
+    "author": "jkninethree",
+    "url": "https://www.nexusmods.com/starfield/mods/17752"
+   },
+   {
+    "mod": "KBAR-32 (AA BAR-32)",
+    "author": "jkninethree",
+    "url": "https://www.nexusmods.com/starfield/mods/12271"
+   },
+   {
+    "mod": "Kriss Vector Gen 2",
+    "author": "Overshoot999",
+    "url": "https://www.nexusmods.com/starfield/mods/15738"
+   },
+   {
+    "mod": "Munitions Expansion Framework",
+    "author": "Overshoot999",
+    "url": "https://www.nexusmods.com/starfield/mods/8342"
+   },
+   {
+    "mod": "Pathfinder armor - Standalone",
+    "author": "HooliG4N83",
+    "url": "https://www.nexusmods.com/starfield/mods/7399"
+   },
+   {
+    "mod": "PDSW 528",
+    "author": "Overshoot999",
+    "url": "https://www.nexusmods.com/starfield/mods/13872"
+   },
+   {
+    "mod": "Rampart-17",
+    "author": "jkninethree",
+    "url": "https://www.nexusmods.com/starfield/mods/15774"
+   },
+   {
+    "mod": "Starfield Extended - Craftable Quality",
+    "author": "Gambit77",
+    "url": "https://www.nexusmods.com/starfield/mods/5721"
+   },
+   {
+    "mod": "Starfield Extended - Craftable Quality Extended",
+    "author": "Gambit77",
+    "url": "https://www.nexusmods.com/starfield/mods/7496"
+   },
+   {
+    "mod": "T77 7.77mm Pistol 2277",
+    "author": "Outrora",
+    "url": "https://www.nexusmods.com/starfield/mods/8950",
+    "license": "CC BY 4.0"
+   }
+  ]
+ },
  "ini": [
   "[Archive]",
   "sResourceEnglishVoiceList=Starfield - Voices01.ba2, Starfield - Voices02.ba2, Starfield - VoicesPatch.ba2",
