@@ -183,6 +183,10 @@ public sealed class GtaWindow : Window
         if (!nve && Level == 0 && GtaInstallService.LoadPack("high")?.Mods.FirstOrDefault(x => x.Provides == "nve") is { } nveMod)
             steps.Children.Add(Step(nveMod.DisplayName.Length > 0 ? nveMod.DisplayName : nveMod.Id, nveMod.Install.Note.ToString(),
                 false, false, nveMod.Install.Page, null));
+        // High / Ultra with NVE, after the install: our add-on packs must be in NVE's own dlclist.xml, which we may not
+        // change (Legal 26.11) -> the player pastes the lines himself; the step turns done when they are all there
+        if (nve && Level >= 1 && installed && GtaInstallService.MissingNveDlcItems(_game) is { } missing)
+            steps.Children.Add(NveDlcStep(missing, GtaInstallService.NveDlclist(_game)));
         // the player's own steps go right under the game folder: they decide whether INSTALL opens
         _body.Children.Insert(1, Wrap(steps));
 
@@ -245,6 +249,29 @@ public sealed class GtaWindow : Window
         if (!done && note.Length > 0) left.Children.Add(Muted(note));
         box.Children.Add(left);
         return box;
+    }
+
+    private FrameworkElement NveDlcStep(List<string> missing, string file)
+    {
+        var done = missing.Count == 0;
+        var step = (DockPanel)Step(Loc.T("gta.nvedlc.title"), Loc.F("gta.nvedlc.note", missing.Count), done, false, "", null);
+        if (done) return step;
+        // three buttons: under the text, not beside it (the note is long)
+        var actions = new WrapPanel { Margin = new Thickness(-8, 8, 0, 0) };
+        ((StackPanel)step.Children[1]).Children.Add(actions);
+        var copy = new Button { Content = Loc.T("gta.nvedlc.copy"), Style = St("SecondaryButton"), Height = 32, Padding = new Thickness(12, 0, 12, 0), Margin = new Thickness(8, 0, 0, 0) };
+        copy.Click += (_, _) =>
+        {
+            try { Clipboard.SetText(string.Join("\r\n", missing) + "\r\n"); copy.Content = Loc.T("gta.nvedlc.copied"); } catch { }
+        };
+        var open = new Button { Content = Loc.T("gta.nvedlc.open"), Style = St("SecondaryButton"), Height = 32, Padding = new Thickness(12, 0, 12, 0), Margin = new Thickness(8, 0, 0, 0) };
+        open.Click += (_, _) => { try { Process.Start("explorer.exe", $"/select,\"{file}\""); } catch { } };
+        var check = new Button { Content = Loc.T("gta.nvedlc.check"), Style = St("SecondaryButton"), Height = 32, Padding = new Thickness(12, 0, 12, 0), Margin = new Thickness(8, 0, 0, 0) };
+        check.Click += (_, _) => { if (!_busy) Render(); };
+        actions.Children.Add(copy);
+        actions.Children.Add(open);
+        actions.Children.Add(check);
+        return step;
     }
 
     // ---------------------------------------------------------------- actions

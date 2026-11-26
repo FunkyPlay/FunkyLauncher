@@ -125,6 +125,30 @@ public static class GtaInstallService
         File.Exists(Path.Combine(game, "NVE.asi")) && File.Exists(Path.Combine(game, "onigiri.asi"))
         && Directory.Exists(Path.Combine(game, "onigiri", "dlcpacks", "NVE_update"));
 
+    /// <summary>NVE's own pack list: with NVE the game reads this one (onigiri layer), not the one Simple Mods Loader extends.</summary>
+    public static string NveDlclist(string game) => Path.Combine(game, "onigiri", "common", "data", "dlclist.xml");
+
+    /// <summary>
+    /// The lines NVE's dlclist.xml still lacks for our add-on packs (mods\update\x64\dlcpacks\&lt;name&gt;\dlc.rpf: cars,
+    /// Benny's, Real LA Peds). The file is only read: Legal 26.11 — NVE's terms forbid us to change its files, so the
+    /// player adds the lines himself (the page shows them with "Copy"). Null when there is no such file.
+    /// </summary>
+    public static List<string>? MissingNveDlcItems(string game)
+    {
+        var file = NveDlclist(game);
+        var packs = Path.Combine(game, "mods", "update", "x64", "dlcpacks");
+        if (!File.Exists(file)) return null;
+        string text;
+        try { text = File.ReadAllText(file); } catch { return null; }
+        if (!Directory.Exists(packs)) return new();
+        return Directory.EnumerateDirectories(packs)
+            .Where(d => File.Exists(Path.Combine(d, "dlc.rpf")))
+            .Select(d => "dlcpacks:/" + Path.GetFileName(d) + "/")
+            .Where(item => text.IndexOf(item, StringComparison.OrdinalIgnoreCase) < 0)
+            .Select(item => "\t\t<Item>" + item + "</Item>")
+            .ToList();
+    }
+
     private static string OursDir(string game) => Path.Combine(game, "_FunkyPlay");
     private static string InstalledList(string game) => Path.Combine(OursDir(game), "installed.txt");
     private static string BackupDir(string game) => Path.Combine(OursDir(game), "backup");
