@@ -1399,6 +1399,8 @@
      ]
     ]
    },
+   "when": "nve",
+   "note": "Funky 26.11: without NVE its bennys_sp pack hangs the game on \"GTA Online\" (Simple Mods Loader) -> Standard without Benny's for now",
    "order": 25,
    "modFolder": "Benny's Motor Works Revamped"
   },
