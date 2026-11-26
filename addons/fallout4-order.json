@@ -7,10 +7,70 @@
   "dicts": [
    {
     "path": "files/fallout4/names-ru.tsv",
-    "sha256": "1386c1e63d2c5fd995e15d0cdd4b688ffecb13d23fb145729ecded2ff00e9c83"
+    "sha256": "6f16c89f8dd63daf1e66e8aa8bac1c8eb8fc7da8d6c7b4e73208f8ef5558a29b"
    }
   ],
   "credits": [
+   {
+    "mod": "русские переводы Sim Settlements 2 и Heather Casdin — ставятся как есть, без нашего перевода",
+    "author": "Beowulf (beowulfmax)",
+    "url": "https://www.nexusmods.com/profile/beowulfmax/mods"
+   },
+   {
+    "mod": "русские переводы Better Goodneighbor и Service Rifle — ставятся как есть, без нашего перевода",
+    "author": "buildanation",
+    "url": "https://www.nexusmods.com/profile/buildanation/mods"
+   },
+   {
+    "mod": "русский перевод Outcasts and Remnants — ставится как есть, без нашего перевода",
+    "author": "DeVViL1994",
+    "url": "https://www.nexusmods.com/fallout4/mods/45832"
+   },
+   {
+    "mod": "русский перевод Cheat Terminal — ставится как есть, без нашего перевода",
+    "author": "MrBeard8",
+    "url": "https://www.nexusmods.com/fallout4/mods/109601"
+   },
+   {
+    "mod": "русский перевод Mutant Menagerie — ставится как есть, без нашего перевода",
+    "author": "NezertorcheaT",
+    "url": "https://www.nexusmods.com/fallout4/mods/78968"
+   },
+   {
+    "mod": "русский перевод Better Locational Damage — ставится как есть, без нашего перевода",
+    "author": "Kotin",
+    "url": "https://www.nexusmods.com/fallout4/mods/89523"
+   },
+   {
+    "mod": "русский перевод In The Flesh — ставится как есть, без нашего перевода",
+    "author": "Kandeha",
+    "url": "https://www.nexusmods.com/fallout4/mods/78774"
+   },
+   {
+    "mod": "русский перевод Fusion City Rising — ставится как есть, без нашего перевода",
+    "author": "cat-boy",
+    "url": "https://www.nexusmods.com/fallout4/mods/41821"
+   },
+   {
+    "mod": "русский перевод Snap'n Build — ставится как есть, без нашего перевода",
+    "author": "VASABY",
+    "url": "https://www.nexusmods.com/fallout4/mods/92279"
+   },
+   {
+    "mod": "русский перевод AK74M — ставится как есть, без нашего перевода",
+    "author": "kopasov",
+    "url": "https://www.nexusmods.com/fallout4/mods/92573"
+   },
+   {
+    "mod": "русский перевод True Storms — ставится как есть, без нашего перевода",
+    "author": "MENTALNEKIT",
+    "url": "https://www.nexusmods.com/fallout4/mods/69526"
+   },
+   {
+    "mod": "русский перевод Community Fixes Merged — ставится как есть, без нашего перевода",
+    "author": "NiBlockGames",
+    "url": "https://www.nexusmods.com/fallout4/mods/95205"
+   },
    {
     "mod": "See Through Scopes",
     "author": "henkspamadres",
