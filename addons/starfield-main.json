@@ -2288,7 +2288,7 @@
    "plugins": [
     "BattensWrecks.esm"
    ],
-   "ru": "noTranslation",
+   "ru": "translated",
    "install": {
     "type": "copyAll",
     "from": "",

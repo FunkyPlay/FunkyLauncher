@@ -1719,6 +1719,43 @@
     "ru": "Wicked Outpost Projeckt 2 v2.0.2 RU",
     "en": "Wicked Outpost Projeckt 2 v2.0.2 RU"
    }
+  },
+  {
+   "id": "BattensWrecksRUS",
+   "modFolder": "BattensWrecksRUS",
+   "nexus": {
+    "game": "starfield",
+    "modId": 14435,
+    "fileId": 55016
+   },
+   "version": "0.4.1",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "BattensWrecksRUS-14435-0-4-1-1753287083.zip",
+    "size": 21088090,
+    "sha256": "4011c79f04f7b3c179067ce1c3fd79c4dee0d7ba3f60ce56fc886278bb4996af",
+    "localFileName": "BattensWrecksRUS-14435-0-4-1-1753287083.zip"
+   },
+   "translates": [
+    {
+     "modId": 10577,
+     "name": "Batten's Shipwrecks (POIs)"
+    }
+   ],
+   "author": "VallesSpb",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "BattensWrecks.esm"
+   ],
+   "displayName": {
+    "ru": "BattensWrecksRUS",
+    "en": "BattensWrecksRUS"
+   }
   }
  ]
 }
