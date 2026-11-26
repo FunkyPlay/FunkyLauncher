@@ -152,6 +152,13 @@ public sealed class GtaWindow : Window
         ver.Children.Add(seg);
         if (!nve) ver.Children.Add(Muted(Loc.T("gta.version.nonve"), R("Cyan")));
         else ver.Children.Add(Muted(Loc.T("gta.version.advice")));
+        // 0.1.24 (Legal 26.11): the authors of what this version installs ("author" in the packs), e.g. the ReShade effects
+        var credits = new[] { "main", "high", "heavy" }.Take(Level + 1)
+            .SelectMany(k => GtaInstallService.LoadPack(k)?.Mods ?? new())
+            .Where(x => x.Author.Length > 0)
+            .Select(x => $"{(x.DisplayName.Length > 0 ? x.DisplayName : x.Id)} — {x.Author}")
+            .Distinct().ToList();
+        if (credits.Count > 0) ver.Children.Add(Muted(Loc.F("gta.version.authors", string.Join(" · ", credits))));
         _body.Children.Add(Wrap(ver));
 
         // the steps the player does himself

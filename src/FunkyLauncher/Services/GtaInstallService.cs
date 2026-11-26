@@ -52,6 +52,8 @@ public static class GtaInstallService
     {
         [JsonPropertyName("id")] public string Id { get; set; } = "";
         [JsonPropertyName("displayName")] public string DisplayName { get; set; } = "";
+        /// <summary>0.1.24 (Legal 26.11): shown on the page under the versions.</summary>
+        [JsonPropertyName("author")] public string Author { get; set; } = "";
         [JsonPropertyName("modFolder")] public string ModFolder { get; set; } = "";
         [JsonPropertyName("nexus")] public AddonNexus Nexus { get; set; } = new();
         [JsonPropertyName("download")] public Download? Download { get; set; }

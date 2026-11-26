@@ -874,6 +874,7 @@ public static class Loc
         ["gta.version.high.hint"] = ("высокая — с NaturalVision Enhanced: новая графика, паки машин, реальные здания и люди.", "high — with NaturalVision Enhanced: new graphics, car packs, real buildings and people."),
         ["gta.version.ultra.hint"] = ("ультра — всё из высокой плюс пресет ReShade.", "ultra — everything from High plus a ReShade preset."),
         ["gta.version.nonve"] = ("Высокая и Ультра — с NaturalVision Enhanced. Поставьте его по инструкции автора (шаг ниже), и выбор откроется.", "High and Ultra need NaturalVision Enhanced. Install it per the author's guide (step below) and the choice opens."),
+        ["gta.version.authors"] = ("Авторы: {0}. Всё скачивается со страниц авторов.", "Authors: {0}. Everything is downloaded from the authors' pages."),
         ["gta.version.advice"] = ("Совет по графике (в настройках игры): 2560×1440, DLSS «Сбалансированный» и генерация кадров 2X, остальное «Высокое»; лучевые эффекты — по силе ПК.", "Graphics tip (in the game settings): 2560×1440, DLSS Balanced and 2X frame generation, the rest High; ray tracing as your PC allows."),
         ["gta.steps.title"] = ("Что поставить самому", "What you install yourself"),
         ["gta.step.page"] = ("Открыть страницу", "Open page"),

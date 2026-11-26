@@ -567,7 +567,9 @@ public partial class MainWindow
                 try
                 {
                     var (gb, gbg, gw, gh) = Views.GtaWindow.ForShots(Settings, gm, gtaDir);
-                    var gholder = new System.Windows.Controls.Border { Background = gbg, Child = gb, Width = gw - 16, Height = gh - 40 };
+                    var gholder = new System.Windows.Controls.Border { Background = gbg, Child = gb, Width = gw - 16,
+                        // FUNKYLAUNCHER_SHOTS_GTA_H: a taller frame, to see the whole page (versions, authors) in one picture
+                        Height = double.TryParse(Environment.GetEnvironmentVariable("FUNKYLAUNCHER_SHOTS_GTA_H"), out var gtaH) ? gtaH : gh - 40 };
                     gholder.Measure(new Size(gholder.Width, gholder.Height));
                     gholder.Arrange(new Rect(gholder.DesiredSize));
                     gholder.UpdateLayout();
