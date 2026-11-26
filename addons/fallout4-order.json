@@ -7,7 +7,7 @@
   "dicts": [
    {
     "path": "files/fallout4/names-ru.tsv",
-    "sha256": "6f16c89f8dd63daf1e66e8aa8bac1c8eb8fc7da8d6c7b4e73208f8ef5558a29b"
+    "sha256": "4550ad621b93bf4f3926be54a4647ed8d0b6cf3b7c59f81bcd0d39e0c7611e6c"
    }
   ],
   "credits": [
@@ -87,16 +87,6 @@
     "url": "https://www.nexusmods.com/profile/NiblokGames/mods"
    },
    {
-    "mod": "Amazing FollowerTweaks",
-    "author": "Dheuster",
-    "url": "https://www.nexusmods.com/fallout4/mods/26976"
-   },
-   {
-    "mod": "Sidearms of the Wasteland",
-    "author": "Gecko In A Can 77",
-    "url": "https://www.nexusmods.com/fallout4/mods/96613"
-   },
-   {
     "mod": "Boon Island - Isles Of New England",
     "author": "Tenhats и Shreddah4",
     "url": "https://www.nexusmods.com/fallout4/mods/84449"
@@ -112,19 +102,19 @@
     "url": "https://www.nexusmods.com/fallout4/mods/75647"
    },
    {
-    "mod": "Eli's Armour Compendium",
-    "author": "Elianora",
-    "url": "https://www.nexusmods.com/fallout4/mods/22431"
+    "mod": "Ranger Power Armor",
+    "author": "AriesThe_Ram - TEMMIS (загрузил PrincessAries)",
+    "url": "https://www.nexusmods.com/fallout4/mods/98482"
    },
    {
-    "mod": "West Tek Tactical Optics",
-    "author": "fadingsignal",
-    "url": "https://www.nexusmods.com/fallout4/mods/12220"
+    "mod": "Beards N' Staches",
+    "author": "iSiralex",
+    "url": "https://www.nexusmods.com/fallout4/mods/72573"
    },
    {
-    "mod": "K-9 Harness",
-    "author": "fadingsignal",
-    "url": "https://www.nexusmods.com/fallout4/mods/17686"
+    "mod": "NPCs Travel",
+    "author": "aiueoooo (загрузил win2009)",
+    "url": "https://www.nexusmods.com/fallout4/mods/16987"
    }
   ]
  },
