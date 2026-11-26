@@ -197,7 +197,8 @@ public sealed class GtaWindow : Window
         // High / Ultra with NVE, after the install: our add-on packs must be in NVE's own dlclist.xml, which we may not
         // change (Legal 26.11) -> the player pastes the lines himself; the step turns done when they are all there
         if (nve && Level >= 1 && installed && GtaInstallService.MissingNveDlcItems(_game) is { } missing)
-            steps.Children.Add(NveDlcStep(missing, GtaInstallService.NveDlclist(_game)));
+            // first in the list and marked as needed (Funky 26.11: at the bottom as "optional" it was missed)
+            steps.Children.Insert(1, NveDlcStep(missing, GtaInstallService.NveDlclist(_game)));
         // the player's own steps go right under the game folder: they decide whether INSTALL opens
         _body.Children.Insert(1, Wrap(steps));
 
@@ -265,7 +266,7 @@ public sealed class GtaWindow : Window
     private FrameworkElement NveDlcStep(List<string> missing, string file)
     {
         var done = missing.Count == 0;
-        var step = (DockPanel)Step(Loc.T("gta.nvedlc.title"), Loc.F("gta.nvedlc.note", missing.Count), done, false, "", null);
+        var step = (DockPanel)Step(Loc.T("gta.nvedlc.title"), Loc.F("gta.nvedlc.note", missing.Count), done, true, "", null);
         if (done) return step;
         // three buttons: under the text, not beside it (the note is long)
         var actions = new WrapPanel { Margin = new Thickness(-8, 8, 0, 0) };
