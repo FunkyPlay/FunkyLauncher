@@ -29,14 +29,14 @@
      "sha256": null
     },
     {
-     "localFileName": "",
-     "size": 0,
+     "localFileName": "Starfield_RUS.rar",
+     "size": 2255179946,
      "sha256": null
     }
    ],
    "install": {
     "type": "files",
-    "note": "Многотомный RAR: распаковывать с part1. Из основного архива взять Starfield/Data/NGC404 - Voices01.ba2; из архива DLC — 5 ba2 ниже (путь внутри архива не записан, искать по имени). Всё в корень папки мода.",
+    "note": "Многотомный RAR: распаковывать с part1. Из основного архива взять Starfield/Data/NGC404 - Voices01.ba2; из архива DLC (Starfield_RUS.rar) — 5 ba2 ниже (путь внутри архива не записан, искать по имени). Всё в корень папки мода.",
     "map": [
      [
       "Starfield/Data/NGC404 - Voices01.ba2",
@@ -87,7 +87,9 @@
     "ru": "Русская озвучка NGC404",
     "en": "Russian voice-over NGC404"
    },
-   "status": "waitingAuthorPermission"
+   "status": "ready",
+   "author": "NGC404",
+   "support": "https://boosty.to/ngc404"
   }
  ],
  "default": true,
