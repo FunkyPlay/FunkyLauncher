@@ -211,6 +211,7 @@ public partial class SetupView : UserControl
             }
         }
 
+
         var highPack = extras.FirstOrDefault(x => x.Kind == "high").Pack;
         var heavyPack = extras.FirstOrDefault(x => x.Kind == "heavy").Pack;
         foreach (var (kind, pack) in extras)
@@ -227,6 +228,17 @@ public partial class SetupView : UserControl
             box.Click += (_, _) => _ = ExtraClickedAsync(p, box.IsChecked == true);
             right.Child = box;
             CompositionPanel.Children.Add(row);
+            // 0.1.25 (promised to NGC404, 26.11): the author and his support page right under the pack
+            foreach (var v in pack.Mods.Where(x => x.Author is { Length: > 0 } && x.Support is { } sup && sup.StartsWith("https://")))
+            {
+                var vline = new TextBlock { FontSize = 12, Foreground = (Brush)FindResource("Muted"), TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 2, 0, 0) };
+                vline.Inlines.Add(new System.Windows.Documents.Run(Loc.F("pack.credit", v.Author!)));
+                var vurl = v.Support!;
+                var vlink = new System.Windows.Documents.Hyperlink(new System.Windows.Documents.Run(vurl.Replace("https://", ""))) { Foreground = (Brush)FindResource("Cyan") };
+                vlink.Click += (_, _) => PlayService.OpenUrl(vurl);
+                vline.Inlines.Add(vlink);
+                CompositionPanel.Children.Add(vline);
+            }
         }
 
         // 0.1.22 (Funky 24.11): single mods on/off without MO2 — once the modlist is on disk

@@ -30,6 +30,9 @@ public sealed class AddonFile
 public sealed class AddonMod
 {
     [JsonPropertyName("id")] public string Id { get; set; } = "";
+    /// <summary>0.1.25 (promised to NGC404, 26.11): the author and his support page, shown on the setup page.</summary>
+    [JsonPropertyName("author")] public string? Author { get; set; }
+    [JsonPropertyName("support")] public string? Support { get; set; }
     [JsonPropertyName("level")] public int Level { get; set; } = 1;
     /// <summary>A mod we decided not to ship (kept in the file for the record).</summary>
     [JsonPropertyName("blocked")] public bool Blocked { get; set; }
