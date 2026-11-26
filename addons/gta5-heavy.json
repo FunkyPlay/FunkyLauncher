@@ -321,10 +321,6 @@
       "{gameRoot}/reshade-shaders/Shaders/AdaptiveSharpen.fx"
      ],
      [
-      "reshade-shaders-legacy/Shaders/AmbientLight.fx",
-      "{gameRoot}/reshade-shaders/Shaders/AmbientLight.fx"
-     ],
-     [
       "reshade-shaders-legacy/Shaders/Bloom.fx",
       "{gameRoot}/reshade-shaders/Shaders/Bloom.fx"
      ],
@@ -339,10 +335,6 @@
      [
       "reshade-shaders-legacy/Shaders/Denoise.fx",
       "{gameRoot}/reshade-shaders/Shaders/Denoise.fx"
-     ],
-     [
-      "reshade-shaders-legacy/Shaders/FakeMotionBlur.fx",
-      "{gameRoot}/reshade-shaders/Shaders/FakeMotionBlur.fx"
      ],
      [
       "reshade-shaders-legacy/Shaders/FilmGrain2.fx",
