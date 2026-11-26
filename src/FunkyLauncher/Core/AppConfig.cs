@@ -26,7 +26,7 @@ public static class AppConfig
     public const string BrowserHome = "https://www.nexusmods.com/games/cyberpunk2077";
 
     public static string Version =>
-        System.Reflection.Assembly.GetExecutingAssembly().GetName().Version?.ToString(3) ?? "0.1.0";
+        System.Reflection.Assembly.GetExecutingAssembly().GetName().Version is { } av ? av.ToString(av.Revision > 0 ? 4 : 3) : "0.1.0";
 
     /// <summary>
     /// Online catalog of modlists (raw catalog.json on GitHub). If it can't be loaded,
