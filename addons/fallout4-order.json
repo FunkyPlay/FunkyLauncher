@@ -7,10 +7,20 @@
   "dicts": [
    {
     "path": "files/fallout4/names-ru.tsv",
-    "sha256": "1137b17a24dcb7e0300b0287484c390273dc3077ae42751be594b7fc434e2313"
+    "sha256": "1386c1e63d2c5fd995e15d0cdd4b688ffecb13d23fb145729ecded2ff00e9c83"
    }
   ],
   "credits": [
+   {
+    "mod": "See Through Scopes",
+    "author": "henkspamadres",
+    "url": "https://www.nexusmods.com/fallout4/mods/9476"
+   },
+   {
+    "mod": "русский перевод America Rising 2 — ставится как есть, без нашего перевода",
+    "author": "IGorkaI",
+    "url": "https://www.nexusmods.com/fallout4/mods/83848"
+   },
    {
     "mod": "русские переводы 9 модов (You And What Army 2, Backpacks of the Commonwealth, Player Comments and Head Tracking и др.) — ставятся как есть, без нашего перевода",
     "author": "NB - Nillck (NiblokGames)",
