@@ -142,6 +142,8 @@
    },
    "noOverwrite": true,
    "note": "branch archive: sha256 changes when the repo updates; pin a commit before release",
+   "author": "crosire and contributors",
+   "legal": "Юридические 26.11: только скачиванием из репозитория автора у игрока, не храним, не меняем, не в Pro; авторы в описании Ультры",
    "order": 3,
    "modFolder": "ReShade Standard effects"
   },
@@ -297,6 +299,8 @@
    },
    "noOverwrite": true,
    "note": "branch archive: sha256 changes when the repo updates; pin a commit before release",
+   "author": "CeeJay.dk",
+   "legal": "Юридические 26.11: только скачиванием из репозитория автора у игрока, не храним, не меняем, не в Pro; авторы в описании Ультры",
    "order": 4,
    "modFolder": "SweetFX"
   },
@@ -440,6 +444,8 @@
    },
    "noOverwrite": true,
    "note": "branch archive: sha256 changes when the repo updates; pin a commit before release",
+   "author": "crosire and contributors",
+   "legal": "Юридические 26.11: только скачиванием из репозитория автора у игрока, не храним, не меняем, не в Pro; авторы в описании Ультры",
    "order": 5,
    "modFolder": "ReShade Legacy effects"
   },
@@ -631,6 +637,8 @@
    },
    "noOverwrite": true,
    "note": "branch archive: sha256 changes when the repo updates; pin a commit before release",
+   "author": "prod80 (Bas Veth)",
+   "legal": "Юридические 26.11: только скачиванием из репозитория автора у игрока, не храним, не меняем, не в Pro; авторы в описании Ультры",
    "order": 6,
    "modFolder": "prod80 effects"
   },
@@ -686,6 +694,8 @@
    },
    "noOverwrite": true,
    "note": "branch archive: sha256 changes when the repo updates; pin a commit before release",
+   "author": "Pascal Gilcher (Marty McFly)",
+   "legal": "Юридические 26.11: только скачиванием из репозитория автора у игрока, не храним, не меняем, не в Pro; авторы в описании Ультры",
    "order": 7,
    "modFolder": "qUINT"
   },
@@ -693,6 +703,8 @@
    "id": "Clarity + PPFX Bloom",
    "displayName": "Clarity + PPFX Bloom",
    "nexus": {},
+   "author": "Clarity: Ioxa; PPFX Bloom: Pascal Matthäus (Euda), split out by Marot Satil",
+   "legal": "Юридические 26.11: только скачиванием из репозитория автора у игрока, не храним, не меняем, не в Pro; авторы в описании Ультры",
    "download": {
     "urls": [
      "https://raw.githubusercontent.com/crosire/reshade-shaders/a2314cbf9a6c96de4d434b2f9ab8fa9265b8e575/Shaders/Clarity.fx",
