@@ -15,6 +15,45 @@ public static class TestInstall
 
     public static async Task<int> RunAsync(string[] args)
     {
+        // Nexus registration test build (ticket 279278): "--test-install --nexus <log file> key <api key> | browser | status |
+        // link <game> <modId> <fileId> | logout". The key and tokens are never written to the log.
+        if (args.Length >= 4 && args[1] == "--nexus")
+        {
+            var nlog = new List<string> { $"{DateTime.Now:yyyy-MM-dd HH:mm:ss} {NexusApi.AppName} {AppConfig.Version} nexus {args[3]}" };
+            try
+            {
+                switch (args[3])
+                {
+                    case "key" when args.Length >= 5:
+                        var k = await NexusApi.LoginWithKeyAsync(args[4], CancellationToken.None);
+                        nlog.Add($"logged in (personal key, testing): {k.UserName}, premium={k.Premium}");
+                        break;
+                    case "browser":
+                        using (var cts = new CancellationTokenSource(TimeSpan.FromMinutes(5)))
+                        {
+                            var b = await NexusApi.LoginWithBrowserAsync(PlayService.OpenUrl, cts.Token);
+                            nlog.Add($"logged in (OAuth PKCE): {b.UserName}, premium={b.Premium}");
+                        }
+                        break;
+                    case "status":
+                        if (NexusApi.Load() is { } s) { await NexusApi.ValidateAsync(s, CancellationToken.None); nlog.Add($"{s.Kind}: {s.UserName}, premium={s.Premium}"); }
+                        else nlog.Add("not logged in");
+                        break;
+                    case "link" when args.Length >= 7:
+                        var url = await NexusApi.DownloadLinkAsync(args[4], long.Parse(args[5]), long.Parse(args[6]), null, null, CancellationToken.None);
+                        nlog.Add(url == null ? "no direct link (no Premium) → manual path: the file page" : "direct link: " + new Uri(url).Host);
+                        break;
+                    case "logout":
+                        NexusApi.LogOut();
+                        nlog.Add("logged out on this PC");
+                        break;
+                    default: nlog.Add("unknown command"); break;
+                }
+                File.WriteAllLines(args[2], nlog);
+                return 0;
+            }
+            catch (Exception ex) { File.WriteAllLines(args[2], nlog.Append("error: " + ex.Message)); return 1; }
+        }
         // "--test-install --extract <archive> <folder>": unpack one archive exactly like an install does
         if (args.Length >= 4 && args[1] == "--extract")
         {

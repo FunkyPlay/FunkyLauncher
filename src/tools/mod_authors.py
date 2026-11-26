@@ -13,7 +13,7 @@ Q = "query($ids:[CompositeDomainWithIdInput!]!){legacyModsByDomain(ids:$ids){nod
 
 def fetch(pairs):
     body = json.dumps({"query": Q, "variables": {"ids": [{"gameDomain": g, "modId": m} for g, m in pairs]}}).encode()
-    req = urllib.request.Request(API, body, {"Content-Type": "application/json", "User-Agent": "FunkyLauncher-tools"})
+    req = urllib.request.Request(API, body, {"Content-Type": "application/json", "User-Agent": "FunkyLauncher-tools", "Application-Name": "Funky Launcher", "Application-Version": "tools-1"})
     with urllib.request.urlopen(req, timeout=60) as r:
         data = json.load(r)
     if data.get("errors"):
