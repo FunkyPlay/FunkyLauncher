@@ -2183,6 +2183,721 @@
     "from": "",
     "fomod": false
    }
+  },
+  {
+   "id": "RU - Amazing Follower Tweaks - Russian Translation",
+   "modFolder": "RU - Amazing Follower Tweaks - Russian Translation",
+   "displayName": {
+    "ru": "Amazing Follower Tweaks - Russian Translation",
+    "en": "Amazing Follower Tweaks - Russian Translation"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 100003,
+    "fileId": 380631,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/100003?tab=files&file_id=380631"
+   },
+   "version": "1.23",
+   "archive": {
+    "nexusFileName": "Amazing Follower Tweaks - Russian Translation-100003-1-23-1768058237.zip",
+    "localFileName": "Amazing Follower Tweaks - Russian Translation-100003-1-23-1768058237.zip",
+    "size": 329466,
+    "sha256": "78b9c74b85e3fdb0c730d63eb11b4997e66a883e461acd30b15abd7d8be82fcf"
+   },
+   "plugins": [
+    "AmazingFollowerTweaks.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "*/AmazingFollowerTweaks.esp",
+      "AmazingFollowerTweaks.esp"
+     ]
+    ],
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Russian Assault Pack (Russian translation)",
+   "modFolder": "RU - Russian Assault Pack (Russian translation)",
+   "displayName": {
+    "ru": "Russian Assault Pack (Russian translation)",
+    "en": "Russian Assault Pack (Russian translation)"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 71230,
+    "fileId": 276947,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/71230?tab=files&file_id=276947"
+   },
+   "version": "1.0",
+   "archive": {
+    "nexusFileName": "Russian Assault Pack(Russian Translation 1.0)-71230-1-0-1683840246.7z",
+    "localFileName": "Russian Assault Pack(Russian Translation 1.0)-71230-1-0-1683840246.7z",
+    "size": 50504,
+    "sha256": "1074b45c12100e2277e2aeb5a8175180c46a6ea1beca9cf3e2831e80d8626cff"
+   },
+   "plugins": [
+    "RussianAssaultPack.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "*/RussianAssaultPack.esp",
+      "RussianAssaultPack.esp"
+     ]
+    ],
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Sidearms of the Wasteland - RU (ESL)",
+   "modFolder": "RU - Sidearms of the Wasteland - RU (ESL)",
+   "displayName": {
+    "ru": "Sidearms of the Wasteland - RU (ESL)",
+    "en": "Sidearms of the Wasteland - RU (ESL)"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 97035,
+    "fileId": 372932,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/97035?tab=files&file_id=372932"
+   },
+   "version": "V1.4",
+   "archive": {
+    "nexusFileName": "Sidearms of the Wasteland - Esl version - RU-97035-V1-4-1762653859.rar",
+    "localFileName": "Sidearms of the Wasteland - Esl version - RU-97035-V1-4-1762653859.rar",
+    "size": 34990,
+    "sha256": "30de63283433497617ad9f7690b6f24023cfe48fbca8673330e7133ae9c938f3"
+   },
+   "plugins": [
+    "Sidearms of the Wasteland.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "*/Sidearms of the Wasteland.esp",
+      "Sidearms of the Wasteland.esp"
+     ]
+    ],
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - RUS Beards N Staches v1.2",
+   "modFolder": "RU - RUS Beards N Staches v1.2",
+   "displayName": {
+    "ru": "RUS Beards N Staches v1.2",
+    "en": "RUS Beards N Staches v1.2"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 110021,
+    "fileId": 415820,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/110021?tab=files&file_id=415820"
+   },
+   "version": "1.2",
+   "archive": {
+    "nexusFileName": "RUS Beards N Staches V1.2 110021 1 2026-10-11T15-48Z gXceq1deO.zip",
+    "localFileName": "RUS Beards N Staches V1.2 110021 1 2026-10-11T15-48Z gXceq1deO.zip",
+    "size": 10126,
+    "sha256": "f7cae7e7e4f45f85ae755d786ddea7a669f95db93b4cd425b6e7526374ccd4a3"
+   },
+   "plugins": [
+    "SF Beards N Staches.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "*/SF Beards N Staches.esp",
+      "SF Beards N Staches.esp"
+     ]
+    ],
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Modern Military Pack - Russian Translate",
+   "modFolder": "RU - Modern Military Pack - Russian Translate",
+   "displayName": {
+    "ru": "Modern Military Pack - Russian Translate",
+    "en": "Modern Military Pack - Russian Translate"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 80680,
+    "fileId": 321020,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/80680?tab=files&file_id=321020"
+   },
+   "version": "2.0",
+   "archive": {
+    "nexusFileName": "Translate-80680-2-0-1717517143.rar",
+    "localFileName": "Translate-80680-2-0-1717517143.rar",
+    "size": 26436,
+    "sha256": "8fc54d4eac95dd95e1075ee7a834a58630ce98719a8b3ef6e5235006ac758d99"
+   },
+   "plugins": [
+    "Modern Military Pack.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "*/Modern Military Pack.esp",
+      "Modern Military Pack.esp"
+     ]
+    ],
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Commonwealth Cuts - KS Hairdos - Russian",
+   "modFolder": "RU - Commonwealth Cuts - KS Hairdos - Russian",
+   "displayName": {
+    "ru": "Commonwealth Cuts - KS Hairdos - Russian",
+    "en": "Commonwealth Cuts - KS Hairdos - Russian"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 84575,
+    "fileId": 322624,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/84575?tab=files&file_id=322624"
+   },
+   "version": "2.5.1",
+   "archive": {
+    "nexusFileName": "Commonwealth Cuts - KS Hairdos - ApachiiSkyHair Ru-84575-2-5-1-1718364350.7z",
+    "localFileName": "Commonwealth Cuts - KS Hairdos - ApachiiSkyHair Ru-84575-2-5-1-1718364350.7z",
+    "size": 430696,
+    "sha256": "2a449b7b171dcdc631bffe9e8708db74e5072b0cf15cb85f48411617c9726d78"
+   },
+   "plugins": [
+    "KSHairdos.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "*/KSHairdos.esp",
+      "KSHairdos.esp"
+     ]
+    ],
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Lots More Male Hairstyles - RU",
+   "modFolder": "RU - Lots More Male Hairstyles - RU",
+   "displayName": {
+    "ru": "Lots More Male Hairstyles - RU",
+    "en": "Lots More Male Hairstyles - RU"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 106417,
+    "fileId": 405538,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/106417?tab=files&file_id=405538"
+   },
+   "version": "1.21",
+   "archive": {
+    "nexusFileName": "Lots More Male Hairstyles V. 1.21 - RU 106417 1.21 2026-08-02T05-16Z vogSNYYYq.7z",
+    "localFileName": "Lots More Male Hairstyles V. 1.21 - RU 106417 1.21 2026-08-02T05-16Z vogSNYYYq.7z",
+    "size": 7057,
+    "sha256": "6a1a1de04390f21ec2052adea20934f0024fa0364d0cd49e2c980c5498808576"
+   },
+   "plugins": [
+    "Lots More Male Hairstyles.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "*/Lots More Male Hairstyles.esp",
+      "Lots More Male Hairstyles.esp"
+     ]
+    ],
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Ranger Power Armor - RU",
+   "modFolder": "RU - Ranger Power Armor - RU",
+   "displayName": {
+    "ru": "Ranger Power Armor - RU",
+    "en": "Ranger Power Armor - RU"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 98485,
+    "fileId": 375309,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/98485?tab=files&file_id=375309"
+   },
+   "version": "1.2",
+   "archive": {
+    "nexusFileName": "Ranger Power Armor - RU-98485-1-1-1764036556.rar",
+    "localFileName": "Ranger Power Armor - RU-98485-1-1-1764036556.rar",
+    "size": 44653,
+    "sha256": "6c2d81219cbafe586ae48a136bdb5dea787d118d569e5f7cabfb52593ef36890"
+   },
+   "plugins": [
+    "NCRPowerArmor.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "*/NCRPowerArmor.esp",
+      "NCRPowerArmor.esp"
+     ]
+    ],
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - West Tek Tactical Optics - Russian",
+   "modFolder": "RU - West Tek Tactical Optics - Russian",
+   "displayName": {
+    "ru": "West Tek Tactical Optics - Russian",
+    "en": "West Tek Tactical Optics - Russian"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 73055,
+    "fileId": 283815,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/73055?tab=files&file_id=283815"
+   },
+   "version": "2.0.1",
+   "archive": {
+    "nexusFileName": "WTTO - Russian-73055-2-0-1-1689778875.7z",
+    "localFileName": "WTTO - Russian-73055-2-0-1-1689778875.7z",
+    "size": 25107,
+    "sha256": "f35cbc8052037a05d7742f689c11436f1d9dc6c3f915a70477f3ffde60124c1f"
+   },
+   "plugins": [
+    "WestTekTacticalOptics.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "*/WestTekTacticalOptics.esp",
+      "WestTekTacticalOptics.esp"
+     ]
+    ],
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - The Light Machine Gun - Fallout New Vegas LMG - RU",
+   "modFolder": "RU - The Light Machine Gun - Fallout New Vegas LMG - RU",
+   "displayName": {
+    "ru": "The Light Machine Gun - Fallout New Vegas LMG - RU",
+    "en": "The Light Machine Gun - Fallout New Vegas LMG - RU"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 95177,
+    "fileId": 362481,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/95177?tab=files&file_id=362481"
+   },
+   "version": "1.0.4",
+   "archive": {
+    "nexusFileName": "CW Light Machine Gun - RU-95177-1-0-4-1753638202.rar",
+    "localFileName": "CW Light Machine Gun - RU-95177-1-0-4-1753638202.rar",
+    "size": 65418,
+    "sha256": "ccb70e296301f434e57dac37766f6bf73ee6b43ee33b037fd3762261ae01d5e4"
+   },
+   "plugins": [
+    "CW-NVLMG.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "*/CW-NVLMG.esp",
+      "CW-NVLMG.esp"
+     ]
+    ],
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Ponytail Hairstyles by Azar - Russian translation",
+   "modFolder": "RU - Ponytail Hairstyles by Azar - Russian translation",
+   "displayName": {
+    "ru": "Ponytail Hairstyles by Azar - Russian translation",
+    "en": "Ponytail Hairstyles by Azar - Russian translation"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 59216,
+    "fileId": 310261,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/59216?tab=files&file_id=310261"
+   },
+   "version": "3.0",
+   "archive": {
+    "nexusFileName": "Ponytail Hairstyles by Azar _F4_v3.0_RU_NX-59216-3-0-1713189402.7z",
+    "localFileName": "Ponytail Hairstyles by Azar _F4_v3.0_RU_NX-59216-3-0-1713189402.7z",
+    "size": 2451,
+    "sha256": "75701a5a789adf8ef0d996009598cc783eb8dff7d97d6e82c7eeefe427299ef7"
+   },
+   "plugins": [
+    "AzarPonytailHairstyles.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "*/AzarPonytailHairstyles.esp",
+      "AzarPonytailHairstyles.esp"
+     ]
+    ],
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - K-9 Harness - Russian",
+   "modFolder": "RU - K-9 Harness - Russian",
+   "displayName": {
+    "ru": "K-9 Harness - Russian",
+    "en": "K-9 Harness - Russian"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 28195,
+    "fileId": 208697,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/28195?tab=files&file_id=208697"
+   },
+   "version": "1.1",
+   "archive": {
+    "nexusFileName": "K-9 Harness-28195-1-1-1621938998.zip",
+    "localFileName": "K-9 Harness-28195-1-1-1621938998.zip",
+    "size": 4377,
+    "sha256": "fd2961721bad2a39d22208ac23a59563fd0c3db5416961aec5137520c3a3245d"
+   },
+   "plugins": [
+    "K9TacticalHarness.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "*/K9Harness.esl",
+      "K9TacticalHarness.esp"
+     ]
+    ],
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Wall Pass-Through Power Conduits (RU)",
+   "modFolder": "RU - Wall Pass-Through Power Conduits (RU)",
+   "displayName": {
+    "ru": "Wall Pass-Through Power Conduits (RU)",
+    "en": "Wall Pass-Through Power Conduits (RU)"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 36293,
+    "fileId": 147472,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/36293?tab=files&file_id=147472"
+   },
+   "version": "1.3",
+   "archive": {
+    "nexusFileName": "Wall Pass-Through Power Conduits-36293-1-0-3-1544180939.zip",
+    "localFileName": "Wall Pass-Through Power Conduits-36293-1-0-3-1544180939.zip",
+    "size": 1070,
+    "sha256": "17af38f922dd369e7fde0ca6145c1a2a0cee1b3ed2be856e983afcf3246e75b4"
+   },
+   "plugins": [
+    "Passthrough.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "*/Passthrough.esp",
+      "Passthrough.esp"
+     ]
+    ],
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Previsibines Repair Pack - PRP RU - 81.10",
+   "modFolder": "RU - Previsibines Repair Pack - PRP RU - 81.10",
+   "displayName": {
+    "ru": "Previsibines Repair Pack - PRP RU - 81.10",
+    "en": "Previsibines Repair Pack - PRP RU - 81.10"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 109162,
+    "fileId": 421484,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/109162?tab=files&file_id=421484"
+   },
+   "version": "81.10",
+   "archive": {
+    "nexusFileName": "Previsibines Repair Pack - Full (1.11.240) RU 109162 81.10-1 2026-11-17T20-23Z FLyfQeV4Q.zip",
+    "localFileName": "Previsibines Repair Pack - Full (1.11.240) RU 109162 81.10-1 2026-11-17T20-23Z FLyfQeV4Q.zip",
+    "size": 52776396,
+    "sha256": "00791cb50ce1638902d99db12601281b55ff70f551324cd21dabed80a47aad7b"
+   },
+   "plugins": [
+    "ppf.esm",
+    "prp.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "payload/main_81_10/prp.esp",
+      "prp.esp"
+     ],
+     [
+      "payload/main_81_10/ppf.esm",
+      "ppf.esm"
+     ]
+    ],
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Blood Fixes RU - 1.02",
+   "modFolder": "RU - Blood Fixes RU - 1.02",
+   "displayName": {
+    "ru": "Blood Fixes RU - 1.02",
+    "en": "Blood Fixes RU - 1.02"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 109528,
+    "fileId": 413342,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/109528?tab=files&file_id=413342"
+   },
+   "version": "1.02",
+   "archive": {
+    "nexusFileName": "Blood Fixes - RU 109528 1.02 2026-09-28T20-54Z VZ2gWdOyB.zip",
+    "localFileName": "Blood Fixes - RU 109528 1.02 2026-09-28T20-54Z VZ2gWdOyB.zip",
+    "size": 993701,
+    "sha256": "7bf5fe6a84b04d041065ff27e423226500107922d4c809cfb37a2f2c66be1aa7"
+   },
+   "plugins": [
+    "BloodFixes.esm"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "*/BloodFixes.esm",
+      "BloodFixes.esm"
+     ]
+    ],
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Flutter Flicker Fixer For Foliage - RU",
+   "modFolder": "RU - Flutter Flicker Fixer For Foliage - RU",
+   "displayName": {
+    "ru": "Flutter Flicker Fixer For Foliage - RU",
+    "en": "Flutter Flicker Fixer For Foliage - RU"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 108824,
+    "fileId": 410488,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/108824?tab=files&file_id=410488"
+   },
+   "version": "2.0",
+   "archive": {
+    "nexusFileName": "Flutter Flicker Fixer For Foliage - PRP - RU 108824 2.0 2026-09-07T20-19Z gXceq17PK.zip",
+    "localFileName": "Flutter Flicker Fixer For Foliage - PRP - RU 108824 2.0 2026-09-07T20-19Z gXceq17PK.zip",
+    "size": 38686,
+    "sha256": "392930768d17166d85a48f484c0fced610f0c5b388bedc6a651ab2ae82e12f5f"
+   },
+   "plugins": [
+    "Flutter Flicker Fixer For Foliage.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "*/Flutter Flicker Fixer For Foliage.esp",
+      "Flutter Flicker Fixer For Foliage.esp"
+     ]
+    ],
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - CSEP Presents - Detour - RU",
+   "modFolder": "RU - CSEP Presents - Detour - RU",
+   "displayName": {
+    "ru": "CSEP Presents - Detour - RU",
+    "en": "CSEP Presents - Detour - RU"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 110045,
+    "fileId": 419617,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/110045?tab=files&file_id=419617"
+   },
+   "version": "1.1.2",
+   "archive": {
+    "nexusFileName": "CSEP Presents - Detour - RU 110045 1.1.2 2026-11-07T03-08Z Gpr9A6VFJ.zip",
+    "localFileName": "CSEP Presents - Detour - RU 110045 1.1.2 2026-11-07T03-08Z Gpr9A6VFJ.zip",
+    "size": 537266,
+    "sha256": "b79d2c91b929819937723c548b99af8cfd16af2caa7f657ca869c5d9e7bb4669"
+   },
+   "plugins": [
+    "CSEPDetour.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "*/CSEPDetour.esp",
+      "CSEPDetour.esp"
+     ]
+    ],
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Sons of Steel - Brotherhood Infantry Armor - RU",
+   "modFolder": "RU - Sons of Steel - Brotherhood Infantry Armor - RU",
+   "displayName": {
+    "ru": "Sons of Steel - Brotherhood Infantry Armor - RU",
+    "en": "Sons of Steel - Brotherhood Infantry Armor - RU"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 107626,
+    "fileId": 415176,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/107626?tab=files&file_id=415176"
+   },
+   "version": "1.8",
+   "archive": {
+    "nexusFileName": "BoS Armor - RU 107626 1.8 2026-10-07T02-07Z 4ak7SoiXe.7z",
+    "localFileName": "BoS Armor - RU 107626 1.8 2026-10-07T02-07Z 4ak7SoiXe.7z",
+    "size": 21914,
+    "sha256": "dff4f2cdb6ff9895b95155a863702a7f86a336ecec7f1259ebff291574797124"
+   },
+   "plugins": [
+    "BrotherhoodInfantryArmor.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "*/BrotherhoodInfantryArmor.esp",
+      "BrotherhoodInfantryArmor.esp"
+     ]
+    ],
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - Companion Status HUD - MCM Settings Menu RU",
+   "modFolder": "RU - Companion Status HUD - MCM Settings Menu RU",
+   "displayName": {
+    "ru": "Companion Status HUD - MCM Settings Menu RU",
+    "en": "Companion Status HUD - MCM Settings Menu RU"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 99575,
+    "fileId": 379194,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/99575?tab=files&file_id=379194"
+   },
+   "version": "1.0",
+   "archive": {
+    "nexusFileName": "Companion Status HUD - MCM Settings Menu RU-99575-1-0-1767120077.zip",
+    "localFileName": "Companion Status HUD - MCM Settings Menu RU-99575-1-0-1767120077.zip",
+    "size": 1357,
+    "sha256": "71fcb6845a5533299d90d9dfe0e1678cd743d0904a0c46cd338144c23a60fcfc"
+   },
+   "plugins": [],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "MCM/Config/CompanionStatusHUD/Translation/MCM_CompanionStatusHUD_ru.txt",
+      "MCM/Config/CompanionStatusHUD/Translation/MCM_CompanionStatusHUD_ru.txt"
+     ]
+    ],
+    "fomod": false
+   }
+  },
+  {
+   "id": "RU - NPCs Use Items (Ru)",
+   "modFolder": "RU - NPCs Use Items (Ru)",
+   "displayName": {
+    "ru": "NPCs Use Items (Ru)",
+    "en": "NPCs Use Items (Ru)"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 80588,
+    "fileId": 346841,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/80588?tab=files&file_id=346841"
+   },
+   "version": "1.2.1",
+   "archive": {
+    "nexusFileName": "NPCs Use Items (Ru)-80588-1-2-1-1738369765.zip",
+    "localFileName": "NPCs Use Items (Ru)-80588-1-2-1-1738369765.zip",
+    "size": 2365,
+    "sha256": "d6fcea02d6baef0777cb1a8383a762a82f31b8e1794708386fefa5459a283a88"
+   },
+   "plugins": [],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "MCM/Config/NPCs Use Items/config.json",
+      "MCM/Config/NPCs Use Items/config.json"
+     ]
+    ],
+    "fomod": false
+   },
+   "onlyWith": "high"
+  },
+  {
+   "id": "RU - FO4HHS Russian Translation",
+   "modFolder": "RU - FO4HHS Russian Translation",
+   "displayName": {
+    "ru": "FO4HHS Russian Translation",
+    "en": "FO4HHS Russian Translation"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 72583,
+    "fileId": 383645,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/72583?tab=files&file_id=383645"
+   },
+   "version": "1.9.2",
+   "archive": {
+    "nexusFileName": "FO4HHS Russian Translation-72583-1-9-2-1769868175.zip",
+    "localFileName": "FO4HHS Russian Translation-72583-1-9-2-1769868175.zip",
+    "size": 4116,
+    "sha256": "d5adf8ede6c3ccc60c4b7d40279fab63be12af3d613499d5621808e1abda17ad"
+   },
+   "plugins": [],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "Data/Interface/Translations/FO4HHS_Ru.txt",
+      "Interface/Translations/FO4HHS_Ru.txt"
+     ]
+    ],
+    "fomod": false
+   },
+   "onlyWith": "adult"
   }
  ],
  "note": "Переводы модов. Каждый проверен: число записей и мастера плагина совпадают с оригиналом. Моды с onlyWith=adult ставить только вместе с пакетом adult."

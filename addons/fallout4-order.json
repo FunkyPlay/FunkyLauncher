@@ -7,7 +7,7 @@
   "dicts": [
    {
     "path": "files/fallout4/names-ru.tsv",
-    "sha256": "4550ad621b93bf4f3926be54a4647ed8d0b6cf3b7c59f81bcd0d39e0c7611e6c"
+    "sha256": "bd6b8a7798d74e8fc51de7e3e4f292c6b766d64d8ad09bbdadf75de2afe994ed"
    }
   ],
   "credits": [
@@ -67,7 +67,7 @@
     "url": "https://www.nexusmods.com/fallout4/mods/69526"
    },
    {
-    "mod": "русский перевод Community Fixes Merged — ставится как есть, без нашего перевода",
+    "mod": "русские переводы Community Fixes Merged и Sons of Steel — ставятся как есть, без нашего перевода",
     "author": "NiBlockGames",
     "url": "https://www.nexusmods.com/fallout4/mods/95205"
    },
@@ -82,7 +82,7 @@
     "url": "https://www.nexusmods.com/fallout4/mods/83848"
    },
    {
-    "mod": "русские переводы 9 модов (You And What Army 2, Backpacks of the Commonwealth, Player Comments and Head Tracking и др.) — ставятся как есть, без нашего перевода",
+    "mod": "русские переводы модов (Sidearms of the Wasteland, Ranger Power Armor, The Light Machine Gun, You And What Army 2, Backpacks of the Commonwealth, Player Comments and Head Tracking и др.) — ставятся как есть, без нашего перевода",
     "author": "NB - Nillck (NiblokGames)",
     "url": "https://www.nexusmods.com/profile/NiblokGames/mods"
    },
@@ -102,19 +102,79 @@
     "url": "https://www.nexusmods.com/fallout4/mods/75647"
    },
    {
-    "mod": "Ranger Power Armor",
-    "author": "AriesThe_Ram - TEMMIS (загрузил PrincessAries)",
-    "url": "https://www.nexusmods.com/fallout4/mods/98482"
-   },
-   {
-    "mod": "Beards N' Staches",
-    "author": "iSiralex",
-    "url": "https://www.nexusmods.com/fallout4/mods/72573"
-   },
-   {
     "mod": "NPCs Travel",
     "author": "aiueoooo (win2009)",
     "url": "https://www.nexusmods.com/fallout4/mods/16987"
+   },
+   {
+    "mod": "русский перевод Amazing FollowerTweaks — ставится как есть, без нашего перевода",
+    "author": "n0fate666",
+    "url": "https://www.nexusmods.com/fallout4/mods/100003"
+   },
+   {
+    "mod": "русский перевод Russian Assault Pack — ставится как есть, без нашего перевода",
+    "author": "Thompson228",
+    "url": "https://www.nexusmods.com/fallout4/mods/71230"
+   },
+   {
+    "mod": "русский перевод Beards N' Staches — ставится как есть, без нашего перевода",
+    "author": "BARRSSIK",
+    "url": "https://www.nexusmods.com/fallout4/mods/110021"
+   },
+   {
+    "mod": "русский перевод Modern Military Pack — ставится как есть, без нашего перевода",
+    "author": "hxntxihero",
+    "url": "https://www.nexusmods.com/fallout4/mods/80680"
+   },
+   {
+    "mod": "русский перевод Commonwealth Cuts — ставится как есть, без нашего перевода",
+    "author": "CookieDLC",
+    "url": "https://www.nexusmods.com/fallout4/mods/84575"
+   },
+   {
+    "mod": "русский перевод Lots More Male Hairstyles — ставится как есть, без нашего перевода",
+    "author": "Keshadion",
+    "url": "https://www.nexusmods.com/fallout4/mods/106417"
+   },
+   {
+    "mod": "русский перевод West Tek Tactical Optics — ставится как есть, без нашего перевода",
+    "author": "SystemBreakdown",
+    "url": "https://www.nexusmods.com/fallout4/mods/73055"
+   },
+   {
+    "mod": "русский перевод Ponytail Hairstyles by Azar — ставится как есть, без нашего перевода",
+    "author": "Koul99",
+    "url": "https://www.nexusmods.com/profile/Koul99/mods"
+   },
+   {
+    "mod": "русский перевод K-9 Harness — ставится как есть, без нашего перевода",
+    "author": "Snoopy81S",
+    "url": "https://www.nexusmods.com/fallout4/mods/28195"
+   },
+   {
+    "mod": "русский перевод Wall Pass-Through Power Conduits — ставится как есть, без нашего перевода",
+    "author": "Mi4ok",
+    "url": "https://www.nexusmods.com/fallout4/mods/36293"
+   },
+   {
+    "mod": "русские переводы PRP, Blood Fixes, Companion Status HUD (MCM) — ставятся как есть, без нашего перевода",
+    "author": "MrBeard8",
+    "url": "https://www.nexusmods.com/profile/MrBeard8/mods"
+   },
+   {
+    "mod": "русские переводы Flutter Flicker Fixer и CSEP Detour — ставятся как есть, без нашего перевода",
+    "author": "pinaevsergey",
+    "url": "https://www.nexusmods.com/profile/pinaevsergey/mods"
+   },
+   {
+    "mod": "русский перевод NPCs Use Items (MCM) — ставится как есть, без нашего перевода",
+    "author": "CosmoP1lot",
+    "url": "https://www.nexusmods.com/fallout4/mods/80588"
+   },
+   {
+    "mod": "русский перевод FO4 High Heels System — ставится как есть, без нашего перевода",
+    "author": "JonnyBr0",
+    "url": "https://www.nexusmods.com/fallout4/mods/72583"
    }
   ]
  },
@@ -126,6 +186,27 @@
   "FunkyPlay - Fallout 4 Fixes",
   "RU Voice - Russian voice for Fallout 4 - RusVoiceDLC",
   "RU Voice - Russian voice for Fallout 4 - RusVoiceVanilla",
+  "RU - Amazing Follower Tweaks - Russian Translation",
+  "RU - Russian Assault Pack (Russian translation)",
+  "RU - Sidearms of the Wasteland - RU (ESL)",
+  "RU - RUS Beards N Staches v1.2",
+  "RU - Modern Military Pack - Russian Translate",
+  "RU - Commonwealth Cuts - KS Hairdos - Russian",
+  "RU - Lots More Male Hairstyles - RU",
+  "RU - Ranger Power Armor - RU",
+  "RU - West Tek Tactical Optics - Russian",
+  "RU - The Light Machine Gun - Fallout New Vegas LMG - RU",
+  "RU - Ponytail Hairstyles by Azar - Russian translation",
+  "RU - K-9 Harness - Russian",
+  "RU - Wall Pass-Through Power Conduits (RU)",
+  "RU - Previsibines Repair Pack - PRP RU - 81.10",
+  "RU - Blood Fixes RU - 1.02",
+  "RU - Flutter Flicker Fixer For Foliage - RU",
+  "RU - CSEP Presents - Detour - RU",
+  "RU - Sons of Steel - Brotherhood Infantry Armor - RU",
+  "RU - Companion Status HUD - MCM Settings Menu RU",
+  "RU - NPCs Use Items (Ru)",
+  "RU - FO4HHS Russian Translation",
   "RU - Full Body First Person - F4SE RU - 1.2.3",
   "RU - Laser RCW - Fallout New Vegas - RU",
   "RU - Munitions - Ammo Expansion Project - 1.3.4 RU",
