@@ -1171,6 +1171,138 @@
    }
   },
   {
+   "id": "Taxi Work in Night City RU 16336 0.4.7",
+   "modFolder": "Taxi Work in Night City RU 16336 0.4.7",
+   "nexus": {
+    "game": "cyberpunk2077",
+    "modId": 16336,
+    "fileId": 171948,
+    "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/16336?tab=files&file_id=171948"
+   },
+   "version": "d2026.11.26.0",
+   "translates": [
+    {
+     "modId": 15624,
+     "name": "Taxi Work in Night City"
+    }
+   ],
+   "modlist": {
+    "insertAbove": "AVA_Output",
+    "fallbackInsertBelow": "Neon Nights - Defaults"
+   },
+   "archive": {
+    "localFileName": "Taxi Work in Night City RU 16336 0.4.7 2026-11-01T09-38Z FKtYKrCCX.zip",
+    "size": 4425,
+    "sha256": "7577434a3203d86beae39af3d600c3691b781613f041a2e2ed31692d3f1a912f"
+   },
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "to": "",
+    "fomod": false,
+    "fileCount": 2
+   }
+  },
+  {
+   "id": "Night City Interactions - Core RU 18452 2.1",
+   "modFolder": "Night City Interactions - Core RU 18452 2.1",
+   "nexus": {
+    "game": "cyberpunk2077",
+    "modId": 18452,
+    "fileId": 173186,
+    "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/18452?tab=files&file_id=173186"
+   },
+   "version": "d2026.11.26.0",
+   "translates": [
+    {
+     "modId": 5519,
+     "name": "Night City Interactions - Core"
+    }
+   ],
+   "modlist": {
+    "insertAbove": "AVA_Output",
+    "fallbackInsertBelow": "Neon Nights - Defaults"
+   },
+   "archive": {
+    "localFileName": "Night City Interactions - Core 4.1.1 18452 2.1 2026-11-03T18-18Z YfTif7dz1.rar",
+    "size": 2847,
+    "sha256": "222e8c191b65823a7974bfb87c56d882f200fee585f50744d4e0bdbf87f8a055"
+   },
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "to": "",
+    "fomod": false,
+    "fileCount": 3
+   }
+  },
+  {
+   "id": "CallList-VehicleDetailsOverlay-CET-RU 20424 1.6",
+   "modFolder": "CallList-VehicleDetailsOverlay-CET-RU 20424 1.6",
+   "nexus": {
+    "game": "cyberpunk2077",
+    "modId": 20424,
+    "fileId": 104388,
+    "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/20424?tab=files&file_id=104388"
+   },
+   "version": "d2026.11.26.0",
+   "translates": [
+    {
+     "modId": 18920,
+     "name": "Call List Vehicle Details Overlay - CET"
+    }
+   ],
+   "modlist": {
+    "insertAbove": "AVA_Output",
+    "fallbackInsertBelow": "Neon Nights - Defaults"
+   },
+   "archive": {
+    "localFileName": "CallList-VehicleDetailsOverlay-CET-RU-20424-1-6-1742425711.zip",
+    "size": 6535,
+    "sha256": "61d8367edb149cf67d2f6530c8eb387cdf0e28c9a30ab822bb8a9e970684d541"
+   },
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "to": "",
+    "fomod": false,
+    "fileCount": 1
+   }
+  },
+  {
+   "id": "Curbside RU 39020 1",
+   "modFolder": "Curbside RU 39020 1",
+   "nexus": {
+    "game": "cyberpunk2077",
+    "modId": 39020,
+    "fileId": 180932,
+    "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/39020?tab=files&file_id=180932"
+   },
+   "version": "d2026.11.26.0",
+   "translates": [
+    {
+     "modId": 35922,
+     "name": "Curbside - Improved Vehicle Summoning"
+    }
+   ],
+   "modlist": {
+    "insertAbove": "AVA_Output",
+    "fallbackInsertBelow": "Neon Nights - Defaults"
+   },
+   "archive": {
+    "localFileName": "Curbside RU 39020 1 2026-11-19T19-16Z RXDpXN26D.zip",
+    "size": 1401,
+    "sha256": "41f9ee9dbe1ab1bd166caa22d5de818e20f0597895c73d9fd6af477d96559113"
+   },
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "to": "",
+    "fomod": false,
+    "fileCount": 1
+   }
+  },
+  {
    "id": "Neon Nights - RU Names",
    "modFolder": "Neon Nights - RU Names",
    "nexus": {},
@@ -1197,6 +1329,7 @@
  "changes": [
   "14.11: под 0.1.2 — якоря DigitalVixenCore, RedFunctions, Lizzie's Braindances переименованы на новые версии.",
   "0.1.3 (2026-11-17): +5 переводов к новым модам — Better Loot Markers RU, Autoloot RU, Load Begone RU, Say Something Damn It RU, Immersive V Dialogue Expanded RU (русская озвучка).",
-  "0.1.4 (2026-11-19): +Auto Drive Enhanced RU 23229; +Neon Nights - RU Names — наш перевод названий предметов модов (3 517 строк, ИИ), новый тип установки 'bundled'."
+  "0.1.4 (2026-11-19): +Auto Drive Enhanced RU 23229; +Neon Nights - RU Names — наш перевод названий предметов модов (3 517 строк, ИИ), новый тип установки 'bundled'.",
+  "26.11: +4 перевода людей с Nexus (у игрока скачиваются с Nexus, проверка sha256): Taxi Work in Night City RU 16336 (ValikBLR), Night City Interactions - Core RU 18452 (Masuryan), CallList-VehicleDetailsOverlay-CET-RU 20424 (Lavallet), Curbside RU 39020 (infinitirusorg). Сверены с нашими версиями модов (ключи/код). ИИ-строки Taxi Work 15624 из RU Names убраны."
  ]
 }

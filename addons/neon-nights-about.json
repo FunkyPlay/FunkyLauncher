@@ -1983,6 +1983,26 @@
    "ru": "После вылета показывает, какой мод его вызвал",
    "en": "After a crash, shows which mod caused it",
    "author": "Akiway"
+  },
+  "Taxi Work in Night City RU 16336 0.4.7": {
+   "ru": "Русский перевод квеста «Работа в такси» (перевод ValikBLR)",
+   "en": "Russian translation of the taxi job quest (by ValikBLR)",
+   "author": "ValikBLR"
+  },
+  "Night City Interactions - Core RU 18452 2.1": {
+   "ru": "Русский перевод Night City Interactions (перевод Masuryan)",
+   "en": "Russian translation of Night City Interactions (by Masuryan)",
+   "author": "Masuryan"
+  },
+  "CallList-VehicleDetailsOverlay-CET-RU 20424 1.6": {
+   "ru": "Русский перевод окна с данными машины при вызове транспорта (перевод Lavallet)",
+   "en": "Russian translation of the vehicle details window in the call list (by Lavallet)",
+   "author": "Lavallet"
+  },
+  "Curbside RU 39020 1": {
+   "ru": "Русский перевод настроек Curbside (перевод infinitirusorg)",
+   "en": "Russian translation of Curbside settings (by infinitirusorg)",
+   "author": "infinitirusorg"
   }
  }
 }
