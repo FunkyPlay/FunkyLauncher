@@ -300,6 +300,30 @@ public partial class MainWindow
                         await Task.Delay(300);
                         SaveElement(rb, Path.Combine(dir, $"{lang}-24-rollback-ask.png"));
                     }
+                    // 26.11 (Design, shorts): the safety checks players meet — low disk space, foreign mods, a path with
+                    // Russian letters, the error report. Sample folders only, nothing on this PC is read or changed.
+                    {
+                        var ru = Core.Loc.Lang == "ru";
+                        var shotsDlg = new[]
+                        {
+                            ("31-disk-short", Views.Dialog.ForShots(Core.Loc.F("disk.short.text", Core.Loc.F("disk.short.line", "C:", 38, 112)), Core.Loc.T("disk.short.title"),
+                                MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No, Core.Loc.T("disk.short.go"), Core.Loc.T("disk.short.cancel"))),
+                            ("32-foreign-mods", Views.Dialog.ForShots(Core.Loc.F("foreign.text", @"D:\Games\Cyberpunk 2077", "• archive\\pc\\mod\\SuperCarPack.archive\n• r6\\scripts\\OldHudTweak.reds"), "NEON NIGHTS",
+                                MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.Yes)),
+                            ("33-plain-path", Views.Dialog.ForShots(Core.Loc.F("plainpath.text", ru ? @"C:\Игры\Моя сборка" : @"C:\Games\My Modlist", @"C:\Games\FunkyPlay-NeonNights"), Core.Loc.T("check.folder.chars"),
+                                MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes, Core.Loc.T("plainpath.yes"), Core.Loc.T("plainpath.no"))),
+                            ("34-error-report", Views.Dialog.ForShots(Core.Loc.F("start.report.done", "FunkyLauncher-report-2026-11-26_15-40.zip"), Core.Loc.T("start.support.report"),
+                                MessageBoxButton.OK, MessageBoxImage.Information)),
+                        };
+                        foreach (var (nm, dlg) in shotsDlg)
+                        {
+                            dlg.Measure(new Size(dlg.Width, double.PositiveInfinity));
+                            dlg.Arrange(new Rect(dlg.DesiredSize));
+                            dlg.UpdateLayout();
+                            await Task.Delay(300);
+                            SaveElement(dlg, Path.Combine(dir, $"{lang}-{nm}.png"));
+                        }
+                    }
                     // 0.1.19: "Full graphics / Lightweight" — the three states of the Design mock-up (a test pack of ~6 GB)
                     foreach (var (vram, full, nm) in new[] { (6.0, false, "25-graphics"), (6.0, true, "25b-graphics-full"), (12.0, true, "25c-graphics-12gb") })
                     {
