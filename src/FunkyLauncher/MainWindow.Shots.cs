@@ -304,7 +304,7 @@ public partial class MainWindow
                                 MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.Yes)),
                             ("33-plain-path", Views.Dialog.ForShots(Core.Loc.F("plainpath.text", ru ? @"C:\Игры\Моя сборка" : @"C:\Games\My Modlist", @"C:\Games\FunkyPlay-NeonNights"), Core.Loc.T("check.folder.chars"),
                                 MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes, Core.Loc.T("plainpath.yes"), Core.Loc.T("plainpath.no"))),
-                            ("34-error-report", Views.Dialog.ForShots(Core.Loc.F("start.report.done", "FunkyLauncher-report-2026-11-26_15-40.zip"), Core.Loc.T("start.support.report"),
+                            ("34-error-report", Views.Dialog.ForShots(Core.Loc.F(Core.AppConfig.NexusEdition ? "start.report.done.nexus" : "start.report.done", "FunkyLauncher-report-2026-11-26_15-40.zip"), Core.Loc.T("start.support.report"),
                                 MessageBoxButton.OK, MessageBoxImage.Information)),
                         };
                         foreach (var (nm, dlg) in shotsDlg)

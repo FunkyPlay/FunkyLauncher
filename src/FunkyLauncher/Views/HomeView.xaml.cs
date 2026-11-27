@@ -93,7 +93,7 @@ public partial class HomeView : UserControl
     public void Refresh()
     {
         ApplyThemeColors();
-        BrandTag.Text = Loc.T("start.brand");
+        BrandTag.Text = Loc.T(AppConfig.NexusEdition ? "start.brand.nexus" : "start.brand");
         StartTitle.Text = Loc.T("start.title");
         RenderTiles();
         StartText.Text = Loc.T("start.text");
@@ -108,6 +108,8 @@ public partial class HomeView : UserControl
         SupportText.Text = Loc.T(AppConfig.NexusEdition ? "start.support.text.nexus" : "start.support.text");
         SupportButton.Content = Loc.T("start.support.write");
         ReportButton.Content = Loc.T("start.support.report");
+        SupportButton.Visibility = AppConfig.NexusEdition ? Visibility.Collapsed : Visibility.Visible; // Nexus version: no support chat
+        WhatsNewCard.Visibility = AppConfig.NexusEdition ? Visibility.Collapsed : Visibility.Visible; // Nexus version: its changes are on the Nexus page
         GitHubButton.Visibility = AppConfig.NexusEdition ? Visibility.Collapsed : Visibility.Visible; // Nexus version: no link to the regular version
         RenderNews();
         RenderUpdate();
@@ -146,6 +148,7 @@ public partial class HomeView : UserControl
         var own = ThemeColors.IsDefault;
         string Hex(Color c) => $"#{c.R:X2}{c.G:X2}{c.B:X2}";
         Tiles.Children.Add(Tile("🎮", "tile.mods", Hex(ThemeColors.Pink), () => _main.ShowLibrary()));
+        if (!AppConfig.NexusEdition) // Nexus version: no Software page
         Tiles.Children.Add(Tile("🧰", "tile.soft", Hex(ThemeColors.Cyan), () => _main.ShowSoft()));
         if (!AppConfig.NexusEdition) Tiles.Children.Add(Tile("▶", "tile.video", own ? "#B9A2F2" : Hex(ThemeColors.Mix(ThemeColors.Pink, ThemeColors.Cyan, 0.5)), () => PlayService.OpenUrl(Catalog.YouTube)));
     }
@@ -260,7 +263,7 @@ public partial class HomeView : UserControl
         try
         {
             var file = await ReportService.CreateAsync(_main.Settings, _main.Selected, CancellationToken.None);
-            ReportText.Text = Loc.F("start.report.done", Path.GetFileName(file));
+            ReportText.Text = Loc.F(AppConfig.NexusEdition ? "start.report.done.nexus" : "start.report.done", Path.GetFileName(file));
             Process.Start(new ProcessStartInfo("explorer.exe", $"/select,\"{file}\"") { UseShellExecute = true });
             PlayService.OpenSupportChat(Loc.F("report.send.text", Path.GetFileName(file)), _main.Settings, _main.Selected, file);
         }

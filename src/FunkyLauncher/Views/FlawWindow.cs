@@ -51,6 +51,7 @@ public sealed class FlawWindow : Window
     /// <summary>Opens (or brings forward) the window for the modlist; <paramref name="picture"/> prefills the screenshot.</summary>
     public static void Open(Window? owner, Settings s, Modlist m, string? picture = null)
     {
+        if (AppConfig.NexusEdition) return; // Nexus version: no "Report a flaw" (it sends to our server)
         if (_open != null && _open._m.Id != m.Id) { _open.Close(); _open = null; }
         if (_open == null)
         {

@@ -30,9 +30,9 @@ public partial class SettingsView : UserControl
         NewsCheck.Content = Loc.T("settings.news");
         CatalogCheck.Content = Loc.T("settings.catalog");
         NewsCheck.IsChecked = _main.Settings.LoadNews;
-        NewsCheck.Visibility = AppConfig.NexusEdition ? Visibility.Collapsed : Visibility.Visible; // Nexus version: no Telegram news
+        NewsCheck.Visibility = CatalogCheck.Visibility = AppConfig.NexusEdition ? Visibility.Collapsed : Visibility.Visible; // Nexus version: no Telegram news, no online catalog
         CatalogCheck.IsChecked = _main.Settings.UpdateCatalog;
-        PrivacyText.Text = Loc.T("settings.privacy.text");
+        PrivacyText.Text = Loc.T(AppConfig.NexusEdition ? "settings.privacy.text.nexus" : "settings.privacy.text");
         PrivacyLink.Text = Loc.T("settings.privacy.link");
         // 27.11 (Funky, Nexus rules): launcher betas are free — the launcher only, never modlists
         BetaCheck.Content = Loc.Lang == "en" ? "Get launcher beta versions" : "Получать бета-версии лаунчера";

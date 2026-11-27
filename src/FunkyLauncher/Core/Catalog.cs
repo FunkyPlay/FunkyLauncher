@@ -271,7 +271,7 @@ public static class Catalog
         BuiltInSoftware = builtIn.Software.Where(x => x.Winget.Length > 0 || x.Langs.Count > 0).GroupBy(SoftKey).ToDictionary(g => g.Key, g => g.First());
         Apply(builtIn);
         Source = "built-in";
-        if (File.Exists(CachePath))
+        if (!AppConfig.NexusEdition && File.Exists(CachePath)) // the Nexus version uses only its own built-in catalog
         {
             try
             {
@@ -299,7 +299,7 @@ public static class Catalog
             if (m.PcCheck == null && BuiltInPcChecks.TryGetValue(m.Id, out var pc)) m.PcCheck = pc;
             if (m.GameLoaders.Count == 0 && BuiltInLoaders.TryGetValue(m.Id, out var gl)) { m.GameLoaders = gl.Loaders; m.GameCleanup = gl.Cleanup; }
         }
-        Items = c.Modlists;
+        Items = AppConfig.NexusEdition ? c.Modlists.Where(m => m.Installer != "gta" && m.Id != "gta5").ToList() : c.Modlists;
         Software = c.Software.Where(x => x.Name.Length > 0 && x.Url.StartsWith("https://")).ToList();
         foreach (var s in Software)
         {

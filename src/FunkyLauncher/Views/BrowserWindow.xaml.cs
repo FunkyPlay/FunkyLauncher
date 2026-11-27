@@ -1,4 +1,4 @@
-// Funky Launcher — Copyright (C) 2026 Funky. Licensed under GPL-3.0-or-later.
+﻿// Funky Launcher — Copyright (C) 2026 Funky. Licensed under GPL-3.0-or-later.
 using System.Windows;
 using System.Windows.Input;
 using FunkyLauncher.Core;
@@ -51,7 +51,7 @@ public partial class BrowserWindow : Window
         var text = Address.Text.Trim();
         if (text.Length == 0) return;
         // a web address or a search
-        var url = text.Contains(' ') || !text.Contains('.')
+        var url = (text.Contains(' ') || !text.Contains('.')) && !AppConfig.NexusEdition
             ? "https://www.google.com/search?q=" + Uri.EscapeDataString(text)
             : text.StartsWith("http://") || text.StartsWith("https://") ? text : "https://" + text;
         Web.CoreWebView2.Navigate(url);

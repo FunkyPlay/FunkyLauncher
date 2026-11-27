@@ -39,6 +39,7 @@ public partial class MainWindow : Window
         _settingsView = new SettingsView(this);
 
         (Loc.Lang == "en" ? LangEn : LangRu).IsChecked = true;
+        if (AppConfig.NexusEdition) LangSwitch.Visibility = Visibility.Collapsed; // English only, no RU/EN switch
         Loc.Changed += ApplyTexts;
         ApplyTexts();
         Page.Content = _home;
@@ -84,7 +85,7 @@ public partial class MainWindow : Window
         SetupShots(args);
         // Funky Desktops is a test only for Funky: turned on once with --enable-desktops
         if (args.Contains("--enable-desktops") && !Settings.DesktopsBeta) { Settings.DesktopsBeta = true; Settings.Save(); }
-        StartDesktops();
+        if (!AppConfig.NexusEdition) StartDesktops(); // no Funky Desktops in the Nexus version
         var i = Array.IndexOf(args, "--test-manual");
         // "--test-manual N big" → N-1 smallest files + one file of about 500 MB (slow download test)
         // developer test: FunkyLauncher.exe --test-problem → shows the "game crashed" window
@@ -176,7 +177,7 @@ public partial class MainWindow : Window
     private void ShowPrivacyNoticeOnce()
     {
         if (Settings.PrivacyNoticeShown) return;
-        Views.Dialog.Show(this, Loc.T("privacy.notice"), Loc.T("settings.privacy"), MessageBoxButton.OK, MessageBoxImage.Information);
+        Views.Dialog.Show(this, Loc.T(AppConfig.NexusEdition ? "privacy.notice.nexus" : "privacy.notice"), Loc.T("settings.privacy"), MessageBoxButton.OK, MessageBoxImage.Information);
         Settings.PrivacyNoticeShown = true;
         Settings.Save();
     }
@@ -184,6 +185,7 @@ public partial class MainWindow : Window
     private async Task RefreshCatalogAsync()
     {
         if (!Settings.UpdateCatalog) return; // privacy: use the cached / built-in catalog only
+        if (AppConfig.NexusEdition) return; // Nexus version (Funky 27.11): modlists update only with a new launcher file on Nexus
         if (await Catalog.RefreshAsync(CancellationToken.None))
         {
             _home.Refresh();
@@ -240,6 +242,8 @@ public partial class MainWindow : Window
         SiteSideButton.Content = "🌐 funkylauncher.com";
         SiteSideButton.ToolTip = Loc.T("site.tip");
         SiteSideButton.Visibility = AppConfig.NexusEdition ? Visibility.Collapsed : Visibility.Visible; // Nexus version: no link to our site
+        // Nexus version (Legal 27.11, Nexus rule on programs that go online): no Software page (winget), no built-in browser
+        NavSoft.Visibility = BrowserButton.Visibility = SupportSideButton.Visibility = AppConfig.NexusEdition ? Visibility.Collapsed : Visibility.Visible;
         var ok = WabbajackService.IsNexusLoggedIn;
         NexusStatus.Text = "● " + Loc.T(ok ? "check.nexus.ok" : "check.nexus.no");
         NexusStatus.SetResourceReference(System.Windows.Controls.TextBlock.ForegroundProperty, ok ? "Cyan" : "Pink"); // 0.1.22: follows a theme switched later
@@ -373,7 +377,7 @@ public partial class MainWindow : Window
     {
         if (_hwnd == IntPtr.Zero) return true;
         foreach (var id in new[] { ScreenAreaId, ScreenFullId, ScreenRecId }) UnregisterHotKey(_hwnd, id);
-        if (!Settings.ScreenHotkeys) return true;
+        if (!Settings.ScreenHotkeys || AppConfig.NexusEdition) return true; // no Funky Screen in the Nexus version
         const uint mods = 0x2 | 0x4 | 0x4000; // CONTROL | SHIFT | NOREPEAT
         var ok = RegisterHotKey(_hwnd, ScreenAreaId, mods, 0x53);
         ok &= RegisterHotKey(_hwnd, ScreenFullId, mods, 0x46);
@@ -386,7 +390,7 @@ public partial class MainWindow : Window
         var src = System.Windows.Interop.HwndSource.FromHwnd(new System.Windows.Interop.WindowInteropHelper(this).Handle);
         if (src == null) return;
         // MOD_ALT | MOD_CONTROL | MOD_NOREPEAT, VK_F12. If another program owns it, the button still works.
-        RegisterHotKey(src.Handle, ShootHotkeyId, 0x1 | 0x2 | 0x4000, 0x7B);
+        if (!AppConfig.NexusEdition) RegisterHotKey(src.Handle, ShootHotkeyId, 0x1 | 0x2 | 0x4000, 0x7B); // no recording mode in the Nexus version
         _hwnd = src.Handle;
         ApplyScreenHotkeys();
         src.AddHook((IntPtr hwnd, int msg, IntPtr wp, IntPtr lp, ref bool handled) =>

@@ -154,33 +154,6 @@
    }
   },
   {
-   "id": "Modern Combat AI - F4SE",
-   "modFolder": "Modern Combat AI - F4SE",
-   "displayName": {
-    "ru": "Modern Combat AI - F4SE",
-    "en": "Modern Combat AI - F4SE"
-   },
-   "nexus": {
-    "game": "fallout4",
-    "modId": 109544,
-    "fileId": 418742,
-    "filePage": "https://www.nexusmods.com/fallout4/mods/109544?tab=files&file_id=418742"
-   },
-   "version": "1.2.1",
-   "archive": {
-    "nexusFileName": "b6/e0/6e/b6e06e2f-b15d-4cbd-b9c2-32dc3c3e52b8",
-    "localFileName": "b6/e0/6e/b6e06e2f-b15d-4cbd-b9c2-32dc3c3e52b8",
-    "size": 578016,
-    "sha256": "954fcc6eef50448a0f4b757aaae0d59bd1bf2ddf1d71f56adf981be2a3ae1d8b"
-   },
-   "plugins": [],
-   "install": {
-    "type": "copyAll",
-    "from": "",
-    "fomod": false
-   }
-  },
-  {
    "id": "Random Encounter Framework",
    "modFolder": "Random Encounter Framework",
    "displayName": {

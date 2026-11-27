@@ -53,6 +53,7 @@ public static class PlayService
     /// </summary>
     public static void OpenSupportChat(string text, Settings s, Modlist m, string? attach = null)
     {
+        if (AppConfig.NexusEdition) return; // Nexus version: support is the comments on its Nexus Mods page
         // 0.1.9: support chat inside the launcher (same queue as the bot; the game / modlist / version label goes
         // with every message). Telegram stays one click away inside the chat window.
         Views.SupportChatWindow.Open(System.Windows.Application.Current?.MainWindow, s, m, text, attach);
@@ -60,6 +61,7 @@ public static class PlayService
 
     public static void OpenSupportChat(string text)
     {
+        if (AppConfig.NexusEdition) return;
         try { System.Windows.Clipboard.SetText(text); } catch { }
         var enc = Uri.EscapeDataString(text);
         try { OpenUrl($"tg://resolve?domain={AppConfig.SupportBotName}&text={enc}"); }

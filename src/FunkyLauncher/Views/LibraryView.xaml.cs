@@ -24,7 +24,7 @@ public partial class LibraryView : UserControl
     public void Refresh()
     {
         PageTitle.Text = Loc.T("lib.title");
-        Subtitle.Text = Loc.T("lib.subtitle");
+        Subtitle.Text = Loc.T(AppConfig.NexusEdition ? "lib.subtitle.nexus" : "lib.subtitle");
         Cards.Children.Clear();
         foreach (var m in Catalog.Items) Cards.Children.Add(Card(m));
         RefreshSelected();
@@ -137,7 +137,7 @@ public partial class LibraryView : UserControl
     /// <summary>"Report a flaw" (0.1.15, free): a button next to MO2 and one grey line under the row (design 20.11).</summary>
     private void ShowFlawLine(Modlist m, bool installed)
     {
-        FlawButton.Visibility = FlawLine.Visibility = installed ? Visibility.Visible : Visibility.Collapsed;
+        FlawButton.Visibility = FlawLine.Visibility = installed && !AppConfig.NexusEdition ? Visibility.Visible : Visibility.Collapsed;
         FlawButton.Content = Loc.T("flaw.button");
         FlawLine.Text = Loc.T("flaw.call") + " " + Loc.T("flaw.call.mod");
     }
@@ -368,7 +368,7 @@ public partial class LibraryView : UserControl
 
             // 3) game mode (if the player turned it on for PLAY): close the picked programs before the game
             var gameModeByUs = false;
-            if (s.GameOnPlay && !GameMode.IsActive)
+            if (s.GameOnPlay && !GameMode.IsActive && !AppConfig.NexusEdition) // no game mode in the Nexus version
             {
                 PlayMessage.Text = Loc.T("game.play.on");
                 try { await Task.Run(() => GameMode.Enable(ToolsView.GameOptions(s, byPlay: true))); gameModeByUs = true; }
@@ -446,7 +446,7 @@ public partial class LibraryView : UserControl
                 try
                 {
                     var file = await ReportService.CreateAsync(_main.Settings, m, CancellationToken.None);
-                    PlayMessage.Text = Loc.F("start.report.done", Path.GetFileName(file));
+                    PlayMessage.Text = Loc.F(AppConfig.NexusEdition ? "start.report.done.nexus" : "start.report.done", Path.GetFileName(file));
                     System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("explorer.exe", $"/select,\"{file}\"") { UseShellExecute = true });
                     PlayService.OpenSupportChat(Loc.F("report.send.text", Path.GetFileName(file)), _main.Settings, m, file);
                 }

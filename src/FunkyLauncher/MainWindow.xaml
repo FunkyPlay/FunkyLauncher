@@ -34,7 +34,7 @@
                 <RadioButton x:Name="NavTools" DockPanel.Dock="Top" Style="{StaticResource NavButton}" GroupName="nav" Checked="Nav_Checked" Click="Nav_Click"/>
                 <RadioButton x:Name="NavSettings" DockPanel.Dock="Top" Style="{StaticResource NavButton}" GroupName="nav" Checked="Nav_Checked" Click="Nav_Click"/>
 
-                <UniformGrid DockPanel.Dock="Bottom" Columns="2" Margin="0,10,0,0">
+                <UniformGrid x:Name="LangSwitch" DockPanel.Dock="Bottom" Columns="2" Margin="0,10,0,0">
                     <RadioButton x:Name="LangRu" Content="RU" Style="{StaticResource LangButton}" GroupName="lang" Margin="0,0,3,0" Checked="Lang_Checked"/>
                     <RadioButton x:Name="LangEn" Content="EN" Style="{StaticResource LangButton}" GroupName="lang" Margin="3,0,0,0" Checked="Lang_Checked"/>
                 </UniformGrid>

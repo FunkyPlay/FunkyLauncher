@@ -45,16 +45,20 @@ public partial class ToolsView : UserControl
         Subtitle.Text = Loc.T("tools.subtitle");
         ToolCards.Children.Clear();
         ToolCards.Children.Add(ToolCard("⟲", Loc.T("tools.backup"), Loc.T("tools.backup.text"), "#FF3FD2", "backup", null));
+        if (!AppConfig.NexusEdition) // Nexus version: no recording mode and no game mode
         ToolCards.Children.Add(ToolCard("●", Loc.T("tools.shoot"), Loc.T("tools.shoot.text"), "#DC71E2", "shoot",
             RecordingMode.IsActive ? Loc.T("tools.on") : null));
+        if (!AppConfig.NexusEdition)
         ToolCards.Children.Add(ToolCard("▶", Loc.T("tools.game"), Loc.T("tools.game.text"), "#B9A2F2", "game",
             GameMode.IsActive ? Loc.T("tools.on") : null));
         ToolCards.Children.Add(ToolCard("✓", Loc.T("tools.pc"), Loc.T("tools.pc.text"), "#9AC5F8", "pc", null));
+        if (!AppConfig.NexusEdition) // Nexus version: no Funky Player and Funky Screen (they download mpv / FFmpeg)
         ToolCards.Children.Add(ToolCard("▷", Loc.T("tools.player"), Loc.T("tools.player.text"), "#7AE8FF", "player", null));
+        if (!AppConfig.NexusEdition)
         ToolCards.Children.Add(ToolCard("◳", Loc.T("tools.screen"), Loc.T("tools.screen.text"), "#FF8FE3", "screen",
             FunkyScreen.Recording ? Loc.T("screen.rec.badge") : null));
         ToolCards.Children.Add(ToolCard("☰", BuildCardTitle, BuildCardText, "#5FF0D0", "build", null)); // 27.11: modlist tools, free
-        if (S.DesktopsBeta) // a test, turned on with --enable-desktops
+        if (S.DesktopsBeta && !AppConfig.NexusEdition) // a test, turned on with --enable-desktops
             ToolCards.Children.Add(ToolCard("▦", Loc.T("tools.desktops"), Loc.T("tools.desktops.text"), "#FFFFFF", "desktops",
                 S.DesktopsOn ? Loc.T("tools.on") : null));
         if (_tool == "pro" || _tool.StartsWith("pro:")) _tool = "backup"; // an old saved page

@@ -3,8 +3,8 @@
  "modlistId": "neon-nights",
  "packId": "neon-nights-ru",
  "aiTranslated": true,
- "listVersion": "0.1.9",
- "forMainVersion": "0.1.9",
+ "listVersion": "0.1.7",
+ "forMainVersion": "0.1.8",
  "draft": true,
  "generated": "2026-11-24",
  "rules": {

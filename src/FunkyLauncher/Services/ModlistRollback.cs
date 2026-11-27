@@ -244,6 +244,7 @@ public static class ModlistRollback
     /// </summary>
     private static async Task FetchOldListsAsync(Modlist m, string version, string into, CancellationToken token)
     {
+        if (AppConfig.NexusEdition) return; // Nexus version: nothing from the internet but the install itself
         try
         {
             using var http = new HttpClient { Timeout = TimeSpan.FromSeconds(20) };

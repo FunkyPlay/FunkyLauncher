@@ -30,9 +30,6 @@ public sealed class AddonFile
 public sealed class AddonMod
 {
     [JsonPropertyName("id")] public string Id { get; set; } = "";
-    /// <summary>0.1.25 (promised to NGC404, 26.11): the author and his support page, shown on the setup page.</summary>
-    [JsonPropertyName("author")] public string? Author { get; set; }
-    [JsonPropertyName("support")] public string? Support { get; set; }
     [JsonPropertyName("level")] public int Level { get; set; } = 1;
     /// <summary>A mod we decided not to ship (kept in the file for the record).</summary>
     [JsonPropertyName("blocked")] public bool Blocked { get; set; }
@@ -223,7 +220,8 @@ public static class Addons
     public static AddonFile? Adult(string modlistId) => Load(modlistId, "adult");
 
     /// <summary>The Russian pack (mod translations on top of the English base), or null if the modlist has none.</summary>
-    public static AddonFile? Russian(string modlistId) => Load(modlistId, "ru");
+    // the Nexus version is for the English-speaking audience: no Russian pack and no voice-over packs (Legal 27.11)
+    public static AddonFile? Russian(string modlistId) => AppConfig.NexusEdition ? null : Load(modlistId, "ru");
 
     /// <summary>The base of a modlist installed from a plain Nexus list (Starfield) instead of a .wabbajack file.</summary>
     public static AddonFile? Base(string modlistId) => Load(modlistId, "main");
@@ -237,7 +235,8 @@ public static class Addons
     public static readonly string[] ExtraKinds = { "hd", "upscaling", "voice", "heavy", "high" };
 
     public static IEnumerable<(string Kind, AddonFile Pack)> Extras(string modlistId) =>
-        ExtraKinds.Select(k => (k, Load(modlistId, k))).Where(x => x.Item2 != null).Select(x => (x.k, x.Item2!));
+        ExtraKinds.Where(k => !(AppConfig.NexusEdition && k == "voice"))
+            .Select(k => (k, Load(modlistId, k))).Where(x => x.Item2 != null).Select(x => (x.k, x.Item2!));
 
     /// <summary>The pack of a kind ("ru", "adult", "hd", …) — for mods that come "onlyWith" another pack.</summary>
     public static AddonFile? OfKind(string modlistId, string kind) => Load(modlistId, kind);
@@ -463,7 +462,7 @@ public static class Addons
                 if (pinned == null) return null; // the installed version had no such pack
                 a = JsonSerializer.Deserialize<AddonFile>(pinned);
             }
-            else if (File.Exists(cached))
+            else if (!AppConfig.NexusEdition && File.Exists(cached)) // Nexus version: only the lists built into this file
                 try { a = JsonSerializer.Deserialize<AddonFile>(File.ReadAllText(cached)); } catch { a = null; }
             if (a == null || a.ModlistId != modlistId)
             {

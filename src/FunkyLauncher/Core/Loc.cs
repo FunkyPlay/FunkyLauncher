@@ -12,7 +12,7 @@ public static class Loc
 
     public static void Set(string lang)
     {
-        Lang = lang == "en" ? "en" : "ru";
+        Lang = lang == "en" || AppConfig.NexusEdition ? "en" : "ru"; // Funky 27.11: the Nexus version is English only
         Changed?.Invoke();
     }
 
@@ -23,9 +23,6 @@ public static class Loc
         Texts.TryGetValue(key, out var pair) ? (Lang == "en" ? pair.En : pair.Ru) : key;
 
     public static string F(string key, params object[] args) => string.Format(T(key), args);
-
-    /// <summary>A text written for one modlist ("key.modlistId") when there is one, the common text otherwise.</summary>
-    public static string For(string key, string modlistId) => Texts.ContainsKey(key + "." + modlistId) ? key + "." + modlistId : key;
 
     private static readonly Dictionary<string, (string Ru, string En)> Texts = new()
     {
@@ -266,6 +263,7 @@ public static class Loc
 
         ["lib.title"] = ("Библиотека", "Library"),
         ["lib.subtitle"] = ("Сборки by Funky. Новые появляются здесь сами — лаунчер обновлять не нужно.", "Modlists by Funky. New ones appear here automatically — no need to update the launcher."),
+        ["lib.subtitle.nexus"] = ("Сборки by Funky. Новые версии сборок выходят вместе с новым файлом лаунчера на Nexus Mods.", "Modlists by Funky. New modlist versions come with a new launcher file on Nexus Mods."),
         ["lib.more"] = ("Подробнее ▾", "More ▾"),
         ["lib.less"] = ("Свернуть ▴", "Less ▴"),
         ["lib.requirements"] = ("Требования", "Requirements"),
@@ -274,6 +272,7 @@ public static class Loc
 
         ["start.title"] = ("FUNKY LAUNCHER", "FUNKY LAUNCHER"),
         ["start.brand"] = ("FUNKYPLAY  ·  ИГРЫ  ·  МОДЫ  ·  СОФТ", "FUNKYPLAY  ·  GAMES  ·  MODS  ·  SOFTWARE"),
+        ["start.brand.nexus"] = ("FUNKYPLAY  ·  ИГРЫ  ·  МОДЫ", "FUNKYPLAY  ·  GAMES  ·  MODS"),
         ["tile.mods"] = ("Сборки модов", "Mod packs"),
         ["tile.mods.text"] = ("Neon Nights, Nova Nights и Atomic Nights — Cyberpunk 2077, Starfield и Fallout 4", "Neon Nights, Nova Nights and Atomic Nights — Cyberpunk 2077, Starfield and Fallout 4"),
         ["tile.soft"] = ("Софт", "Software"),
@@ -311,11 +310,12 @@ public static class Loc
         ["start.whatsnew.items"] = ("• Окно «Моды сборки» для Neon Nights, Nova Nights и Atomic Nights: у каждого мода описание на русском и английском, ссылка «Страница мода» и поиск по тому, что мод делает\n• Отдельные моды сборки можно включать и выключать прямо в лаунчере, без Mod Organizer; важные моды под замком\n• Перед установкой и обновлением лаунчер проверяет свободное место на диске — по каждому диску\n• Neon Nights: улучшен русский перевод, часть названий и описаний переведена с помощью ИИ", "• \"Modlist mods\" window for Neon Nights, Nova Nights and Atomic Nights: every mod has a description in Russian and English, a \"Mod page\" link and a search by what the mod does\n• You can turn individual mods of a modlist on and off right in the launcher, without Mod Organizer; important mods are locked\n• Before installing and updating, the launcher checks free disk space — on each drive\n• Neon Nights: improved Russian translation, part of the item names and descriptions are AI-translated"),
         ["start.support"] = ("Поддержка", "Support"),
         ["start.support.text"] = ("Что-то не работает? Соберите отчёт и отправьте его нам в Telegram — разберёмся.", "Something not working? Make a report and send it to us on Telegram — we'll sort it out."),
-        ["start.support.text.nexus"] = ("Что-то не работает? Напиши в поддержку прямо из лаунчера или собери отчёт об ошибке — разберёмся.", "Something not working? Write to support right here in the launcher or make an error report — we'll sort it out."),
+        ["start.support.text.nexus"] = ("Что-то не работает? Нажми «Собрать отчёт об ошибке» и напиши в комментариях на странице лаунчера на Nexus Mods — разберёмся.", "Something not working? Press \"Make an error report\" and write in the comments on the launcher's Nexus Mods page — we'll sort it out."),
         ["start.support.write"] = ("Написать в поддержку", "Contact support"),
         ["start.support.report"] = ("Собрать отчёт об ошибке", "Make an error report"),
         ["start.report.working"] = ("Собираем отчёт…", "Making the report…"),
         ["start.report.done"] = ("Отчёт сохранён на рабочий стол: {0}. Открыли чат поддержки с готовым сообщением — перетащите туда файл из открывшейся папки, допишите, что случилось, и отправьте.", "Report saved to the Desktop: {0}. The support chat is open with a ready message — drag the file from the opened folder into it, add what happened and send."),
+        ["start.report.done.nexus"] = ("Отчёт сохранён на рабочий стол: {0}. Напишите, что случилось, в комментарии или в bug reports на странице лаунчера на Nexus Mods; отчёт пригодится, если мы о нём спросим.", "Report saved to the Desktop: {0}. Say what happened in a comment or a bug report on the launcher's Nexus Mods page; keep the report in case we ask about it."),
         ["start.report.error"] = ("Не удалось собрать отчёт: {0}", "Could not make the report: {0}"),
 
         ["nexus.logout"] = ("Выйти из аккаунта", "Log out"),
@@ -379,7 +379,6 @@ public static class Loc
         ["trans.note"] = ("Названия в русской версии переведены автоматически с помощью ИИ, возможны ошибки. Моды и их названия принадлежат авторам, их файлы не изменяются. Перевод названий — наш отдельный патч, он собирается на компьютере игрока.", "Russian item names are machine-translated with AI, mistakes are possible. Mods and their names belong to their authors; their files are not modified. The translation is our separate patch built on the player's PC."),
         ["trans.note.starfield"] = ("Часть названий самой игры пока останется на английском: ждём разрешения переводчика игры.", "Some of the game's own item names stay in English for now: we are waiting for permission from the game's translator."),
         ["trans.credit"] = ("Авторство: {0} — {1}, страница на Nexus Mods: ", "Credit: {0} — {1}, Nexus Mods page: "),
-        ["pack.credit"] = ("Автор: {0}. Поддержать автора: ", "By {0}. Support the author: "),
         ["trans.credit.tail"] = (" Перевод названий — наш отдельный патч, файлы авторов не меняются и не раздаются.", " The name translation is our separate patch; the authors' files are not modified or redistributed."),
         ["trans.credits.general"] = ("Все моды сборки принадлежат их авторам. Ссылка на страницу каждого мода — в списке модов сборки.", "All mods in this modlist belong to their authors. Each mod's page is linked in the modlist."),
         ["trans.rebuild"] = ("Пересобрать русские названия", "Rebuild the Russian names"),
@@ -452,6 +451,7 @@ public static class Loc
         ["problem.crash.title"] = ("Игра вылетела", "The game crashed"),
         ["problem.crash.text"] = ("Игра закрылась с ошибкой через {0} мин. Если это случилось один раз — просто запустите снова.", "The game closed with an error after {0} min. If it happened once, just start it again."),
         ["problem.help"] = ("Что можно сделать:\n• Починить — лаунчер проверит файлы сборки и подскажет, как вернуть испорченные. Скачанные архивы уже есть, интернет почти не нужен.\n• Вернуться к прошлой версии — если недавно обновляли сборку.\n• Собрать отчёт и отправить его в поддержку (@FunkyLauncherBot в Telegram).", "What you can do:\n• Repair — the launcher checks the modlist files and helps restore damaged ones. The archives are already downloaded, so almost no internet is needed.\n• Go back to the previous version — if you recently updated the modlist.\n• Make a report and send it to support (@FunkyLauncherBot on Telegram)."),
+        ["problem.help.nexus"] = ("Что можно сделать:\n• Починить — лаунчер проверит файлы сборки и подскажет, как вернуть испорченные. Скачанные архивы уже есть, интернет почти не нужен.\n• Вернуться к прошлой версии — если недавно обновляли сборку.\n• Собрать отчёт — он сохранится на рабочий стол; опишите вылет в комментарии на странице лаунчера на Nexus Mods.", "What you can do:\n• Repair — the launcher checks the modlist files and helps restore damaged ones. The archives are already downloaded, so almost no internet is needed.\n• Go back to the previous version — if you recently updated the modlist.\n• Make a report — it is saved to your Desktop; describe the crash in a comment on the launcher's Nexus Mods page."),
         ["problem.crashfile"] = ("Отчёт о вылете: {0}", "Crash report: {0}"),
         ["problem.repair"] = ("ПОЧИНИТЬ", "REPAIR"),
         ["problem.rollback"] = ("Вернуться к версии {0}", "Back to version {0}"),
@@ -559,7 +559,6 @@ public static class Loc
         ["gfx3.why.vram"] = ("видеопамять {0} ГБ", "{0} GB of video memory"),
         ["gfx3.why.ram"] = ("оперативная память {0} ГБ", "{0} GB of RAM"),
         ["gfx3.why.cpu"] = ("процессор на {0} потоков", "a {0}-thread processor"),
-        ["gfx3.why.both"] = ("оперативная память {0} ГБ и видеопамять {1} ГБ", "{0} GB of RAM and {1} GB of video memory"),
         ["gfx3.why.hdd"] = ("сборка на обычном жёстком диске (не SSD)", "the modlist is on a hard disk (not an SSD)"),
         ["gfx3.switch"] = ("Перейти на версию «{0}»? Моды, которых в ней нет, выключатся, файлы останутся на диске; недостающие докачаются.", "Switch to the {0} version? Mods it doesn't have will be turned off, their files stay on the disk; missing ones will be downloaded."),
         ["gfx3.done"] = ("Готово: версия «{0}»", "Done: {0} version"),
@@ -672,9 +671,6 @@ public static class Loc
         ["comp.voice.link.hint"] = ("Ставится отдельно со страницы авторов, по их инструкции: включить её в сборку без их разрешения мы не можем.", "Installed separately from the authors' page, following their instructions: we can't include it in the modlist without their permission."),
         ["comp.voice"] = ("Русская озвучка", "Russian voice-over"),
         ["comp.voice.hint"] = ("Для русской версии: ~{0} ГБ, лаунчер скачает и поставит её сам.", "For the Russian version: ~{0} GB, the launcher downloads and installs it."),
-        // 0.1.25 (Starfield, NGC404): the parts are downloaded by the player on the author's PlayGround page
-        ["comp.voice.hint.starfield"] = ("Для русской версии: ~{0} ГБ на диске. Лаунчер откроет страницу автора на PlayGround — нажми там «Скачать» у каждой из трёх частей (перед скачиванием сайт ждёт около минуты), дальше лаунчер поставит всё сам.",
-            "For the Russian version: ~{0} GB on disk. The launcher opens the author's PlayGround page — press \"Download\" for each of the three parts (the site waits about a minute before each download), then the launcher installs everything itself."),
         ["manual.hint.site"] = ("Нажми на странице кнопку «Скачать». Лаунчер сам поймает файл и поставит его в сборку.", "Press the Download button on the page. The launcher catches the file and installs it into the modlist."),
         ["comp.extra.working"] = ("Ставим дополнение…", "Installing the add-on…"),
         ["comp.extra.on"] = ("Дополнение включено", "The add-on is on"),
@@ -815,6 +811,8 @@ public static class Loc
         ["settings.privacy.link"] = ("Политика конфиденциальности →", "Privacy policy →"),
         ["home.news.off"] = ("Новости выключены в «Настройках».", "News are turned off in Settings."),
         ["privacy.notice"] = ("Funky Launcher не собирает личные данные и не отправляет статистику.\n\nПри запуске он загружает новости из публичного Telegram-канала @FunkyPlayTV и список сборок с GitHub. При установке скачивает Wabbajack и файл сборки с GitHub, а моды — с Nexus Mods.\n\nНовости и обновление списка можно выключить в «Настройках» → «Конфиденциальность». Подробнее — в политике конфиденциальности на GitHub (PRIVACY.md).", "Funky Launcher collects no personal data and sends no statistics.\n\nOn start it loads news from the public Telegram channel @FunkyPlayTV and the modlist catalog from GitHub. When you install, it downloads Wabbajack and the modlist file from GitHub and the mods from Nexus Mods.\n\nNews and catalog updates can be turned off in Settings → Privacy. More in the privacy policy on GitHub (PRIVACY.md)."),
+        ["settings.privacy.text.nexus"] = ("Лаунчер не собирает личные данные и не отправляет статистику. В интернет он обращается только при установке сборки (Wabbajack и Mod Organizer 2 с GitHub, моды с Nexus Mods) и когда вы нажимаете ссылку.", "The launcher collects no personal data and sends no statistics. It goes online only to install a modlist (Wabbajack and Mod Organizer 2 from GitHub, mods from Nexus Mods) and when you click a link."),
+        ["privacy.notice.nexus"] = ("Funky Launcher не собирает личные данные и не отправляет статистику.\n\nВ интернет он обращается только при установке сборки: Wabbajack и Mod Organizer 2 — с GitHub их авторов, моды — со страниц авторов на Nexus Mods. Ещё — когда вы сами нажимаете ссылку. Сам себя он не обновляет: новые версии выходят файлом на странице Nexus Mods.", "Funky Launcher collects no personal data and sends no statistics.\n\nIt goes online only to install a modlist: Wabbajack and Mod Organizer 2 from their authors' GitHub, mods from their authors' pages on Nexus Mods — and when you click a link yourself. It never updates itself: new versions come as a file on its Nexus Mods page."),
         ["settings.about"] = ("О программе", "About"),
         ["settings.about.text"] = ("Funky Launcher {0} — открытый код, лицензия GPL-3.0. Моды скачиваются с Nexus Mods через официальный Wabbajack. Каталог сборок: {1}.", "Funky Launcher {0} — open source, GPL-3.0 license. Mods are downloaded from Nexus Mods through the official Wabbajack. Modlist catalog: {1}."),
         // 0.1.23 (Legal 25.11): the third-party programs and libraries, with their licenses

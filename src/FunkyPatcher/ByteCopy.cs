@@ -19,8 +19,7 @@ internal static class ByteCopy
 {
     /// <summary>Index of the sub-record a dictionary field points to (-1 = there is none).
     /// FULL: the record's own name (before any object template); OBTE-FULL#n: the n-th FULL after the first OBTE;
-    /// WNAM#n: the n-th WNAM; ATTX: the first ATTX; QOBJ-NNAM#n: the text of quest objective number n (the NNAM after
-    /// the QOBJ that holds n, before the next QOBJ).</summary>
+    /// WNAM#n: the n-th WNAM; ATTX: the first ATTX.</summary>
     public static int FindSub(List<RawPlugin.Sub> subs, string field)
     {
         var firstObte = subs.FindIndex(s => s.Type == "OBTE");
@@ -38,15 +37,6 @@ internal static class ByteCopy
             for (var i = 0; i < subs.Count; i++) if (subs[i].Type == "WNAM" && n-- == 0) return i;
             return -1;
         }
-        if (head.Equals("QOBJ-NNAM", StringComparison.OrdinalIgnoreCase))
-        {
-            // Fallout 4 27.11: an English mod rewrites a game quest and its objectives stay in English; the dictionary gives
-            // back the game's own Russian text of the same objective (by its number, not by its place in the record)
-            var at = subs.FindIndex(x => x.Type == "QOBJ" && x.Data.Length >= 2 && BitConverter.ToUInt16(x.Data, 0) == n);
-            if (at < 0) return -1;
-            for (var i = at + 1; i < subs.Count && subs[i].Type != "QOBJ"; i++) if (subs[i].Type == "NNAM") return i;
-            return -1;
-        }
         if (head.Equals("OBTE-FULL", StringComparison.OrdinalIgnoreCase) && firstObte >= 0)
         {
             for (var i = firstObte + 1; i < subs.Count; i++) if (subs[i].Type == "FULL" && n-- == 0) return i;
@@ -60,8 +50,7 @@ internal static class ByteCopy
         if (f.Equals("FULL", StringComparison.OrdinalIgnoreCase) || f.Equals("ATTX", StringComparison.OrdinalIgnoreCase)) return true;
         var hash = f.IndexOf('#');
         return hash > 0 && int.TryParse(f[(hash + 1)..], out var n) && n >= 0
-            && (f[..hash].Equals("WNAM", StringComparison.OrdinalIgnoreCase) || f[..hash].Equals("OBTE-FULL", StringComparison.OrdinalIgnoreCase)
-                || f[..hash].Equals("QOBJ-NNAM", StringComparison.OrdinalIgnoreCase));
+            && (f[..hash].Equals("WNAM", StringComparison.OrdinalIgnoreCase) || f[..hash].Equals("OBTE-FULL", StringComparison.OrdinalIgnoreCase));
     }
 
     /// <summary>The plugin's own record in the form the patch needs: the winner is the last master of its kind in the patch's list.</summary>

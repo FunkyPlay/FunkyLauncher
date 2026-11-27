@@ -86,7 +86,7 @@ public sealed class Settings
     /// <summary>Language of each modlist ("ru" / "en") the player chose on the install page. Default: the launcher language.</summary>
     public Dictionary<string, string> ModlistLang { get; set; } = new();
 
-    public string LangOf(string modlistId) =>
+    public string LangOf(string modlistId) => AppConfig.NexusEdition ? "en" : // the Nexus version: English only
         ModlistLang.TryGetValue(modlistId, out var l) && l is "ru" or "en" ? l : (Loc.Lang == "en" ? "en" : "ru");
 
     /// <summary>The player ticked "18+ add-on" before installing: offer it right after the install.</summary>

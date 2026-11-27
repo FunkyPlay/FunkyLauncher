@@ -7,7 +7,7 @@
   "dicts": [
    {
     "path": "files/fallout4/names-ru.tsv",
-    "sha256": "81614599a4af5efb87eeb809eb01f716789a4b927d79dcf5a01c36d8da8ba93c"
+    "sha256": "bd6b8a7798d74e8fc51de7e3e4f292c6b766d64d8ad09bbdadf75de2afe994ed"
    }
   ],
   "credits": [
@@ -172,11 +172,6 @@
     "url": "https://www.nexusmods.com/fallout4/mods/80588"
    },
    {
-    "mod": "русский перевод Modern Combat AI (MCM) — ставится как есть, без нашего перевода",
-    "author": "MrBeard8",
-    "url": "https://www.nexusmods.com/fallout4/mods/109624"
-   },
-   {
     "mod": "русский перевод FO4 High Heels System — ставится как есть, без нашего перевода",
     "author": "JonnyBr0",
     "url": "https://www.nexusmods.com/fallout4/mods/72583"
@@ -211,7 +206,6 @@
   "RU - Sons of Steel - Brotherhood Infantry Armor - RU",
   "RU - Companion Status HUD - MCM Settings Menu RU",
   "RU - NPCs Use Items (Ru)",
-  "RU - Modern Combat AI - F4SE RU",
   "RU - FO4HHS Russian Translation",
   "RU - Full Body First Person - F4SE RU - 1.2.3",
   "RU - Laser RCW - Fallout New Vegas - RU",
@@ -320,7 +314,6 @@
   "Shaikujin's Better warning for settlements being attacked",
   "Locksmith - Lock Your Doors 'n' Containers",
   "Loot Detector",
-  "Modern Combat AI - F4SE",
   "Take Cover",
   "Rockin' Red Rocket",
   "Basement Living - Bunker and Basement Player Homes (with standalone Workshops)",

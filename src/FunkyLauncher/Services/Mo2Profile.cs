@@ -49,7 +49,10 @@ public static partial class Mo2Profile
                 if (w && !string.IsNullOrEmpty(x.OnlyWithout))
                     w = !(Addons.OfKind(m.Id, x.OnlyWithout) is { } other2 && PackOn(other2));
                 map[x.ModFolder] = map.TryGetValue(x.ModFolder, out var prev) ? prev || w : w;
-                if (w) foreach (var r in x.Replaces) replaced.Add(r);
+                // 0.1.25 (Fallout 4 chat 27.11): only a replacement that is really installed switches the other mod off
+                // (18+ ticked but not installed must not leave the face without Rusty Face Fix)
+                if (w && x.Replaces.Count > 0 && Directory.Exists(Path.Combine(s.InstallDir(m), "mods", x.ModFolder)))
+                    foreach (var r in x.Replaces) replaced.Add(r);
             }
         }
         foreach (var r in replaced) map[r] = false;

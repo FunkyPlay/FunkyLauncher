@@ -17,6 +17,8 @@ System.Management 11.0.0, System.CodeDom 11.0.0 — © Microsoft Corporation. MI
 
 SharpCompress 0.50.9 — Copyright (c) 2025 Adam Hathcock. MIT license (text below).
   https://github.com/adamhathcock/sharpcompress
+ArchiveXL by psiberx (a patched copy of ArchiveXL.dll inside the Neon Nights fixes) — Copyright (c) 2021 Pavel Siberx.
+  MIT license (text below). Source: https://github.com/psiberx/cp2077-archive-xl
 
 Microsoft.Web.WebView2 1.0.4314.35 — Copyright (C) Microsoft Corporation. BSD-style license: WebView2-LICENSE.txt,
   notices: WebView2-NOTICE.txt. The WebView2 runtime itself is part of Windows / Microsoft Edge and is not

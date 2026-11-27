@@ -2,8 +2,8 @@
  "schema": 1,
  "modlistId": "neon-nights",
  "addonId": "neon-nights-main",
- "listVersion": "0.1.9",
- "forMainVersion": "0.1.9",
+ "listVersion": "0.1.8",
+ "forMainVersion": "0.1.8",
  "generated": "2026-11-25",
  "source": "NeonNights-0.1.8.wabbajack",
  "mods": [

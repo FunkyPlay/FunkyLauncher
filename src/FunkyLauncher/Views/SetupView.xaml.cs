@@ -211,7 +211,6 @@ public partial class SetupView : UserControl
             }
         }
 
-
         var highPack = extras.FirstOrDefault(x => x.Kind == "high").Pack;
         var heavyPack = extras.FirstOrDefault(x => x.Kind == "heavy").Pack;
         foreach (var (kind, pack) in extras)
@@ -222,23 +221,12 @@ public partial class SetupView : UserControl
             var on = AddonService.Prefs(s, pack!).On;
             // space on disk: the archive plus what it unpacks to (about the same again), in GB as the cards write it
             var gb = Math.Max(1, (int)Math.Round(pack!.Mods.Sum(x => x.Archive.Size + x.Archives.Sum(p => p.Size)) * 2 / 1e9));
-            var row = Row(Loc.T("comp." + kind), Loc.F(Loc.For("comp." + kind + ".hint", Ml.Id), gb), out var right);
+            var row = Row(Loc.T("comp." + kind), Loc.F("comp." + kind + ".hint", gb), out var right);
             var box = new CheckBox { IsChecked = on, VerticalAlignment = VerticalAlignment.Center, IsEnabled = !_busy };
             var p = pack;
             box.Click += (_, _) => _ = ExtraClickedAsync(p, box.IsChecked == true);
             right.Child = box;
             CompositionPanel.Children.Add(row);
-            // 0.1.25 (promised to NGC404, 26.11): the author and his support page right under the pack
-            foreach (var v in pack.Mods.Where(x => x.Author is { Length: > 0 } && x.Support is { } sup && sup.StartsWith("https://")))
-            {
-                var vline = new TextBlock { FontSize = 12, Foreground = (Brush)FindResource("Muted"), TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 2, 0, 0) };
-                vline.Inlines.Add(new System.Windows.Documents.Run(Loc.F("pack.credit", v.Author!)));
-                var vurl = v.Support!;
-                var vlink = new System.Windows.Documents.Hyperlink(new System.Windows.Documents.Run(vurl.Replace("https://", ""))) { Foreground = (Brush)FindResource("Cyan") };
-                vlink.Click += (_, _) => PlayService.OpenUrl(vurl);
-                vline.Inlines.Add(vlink);
-                CompositionPanel.Children.Add(vline);
-            }
         }
 
         // 0.1.22 (Funky 24.11): single mods on/off without MO2 — once the modlist is on disk
@@ -472,10 +460,6 @@ public partial class SetupView : UserControl
         if (h.RamGb > 0) parts.Add((h.RamGb < 12 ? 0 : h.RamGb < 24 ? 1 : 2, Loc.F("gfx3.why.ram", Math.Round(h.RamGb))));
         if (h.Threads > 0) parts.Add((h.Threads < 8 ? 0 : h.Threads < 12 ? 1 : 2, Loc.F("gfx3.why.cpu", h.Threads)));
         if (h.Ssd == false) parts.Add((1, Loc.T("gfx3.why.hdd")));
-        // 0.1.9 (support 025, 26.11): 16 GB of RAM together with an 8 GB card ran out of memory on the full modlist
-        // (under 1.2 GB of RAM free, video memory full) — each alone says High, both at once: Standard
-        if (h.RamGb is > 0 and < 24 && h.VramGb is > 0 and <= 8.5)
-            parts.Add((0, Loc.F("gfx3.why.both", Math.Round(h.RamGb), Math.Round(h.VramGb))));
         if (parts.Count == 0) return (null, "");
         var worst = parts.OrderBy(p => p.Level).First();
         return worst.Level >= 2 ? (null, "") : (worst.Level, worst.Why);
@@ -1043,7 +1027,7 @@ public partial class SetupView : UserControl
                 {
                     FillDone();
                     DoneTelegramText.Text = Loc.T("inst.done.telegram");
-                    DoneTelegram.Visibility = Loc.Lang == "en" ? Visibility.Collapsed : Visibility.Visible; // Russian channel: RU only
+                    DoneTelegram.Visibility = Loc.Lang == "en" || AppConfig.NexusEdition ? Visibility.Collapsed : Visibility.Visible; // Russian channel: RU only; none in the Nexus version
                     try { await AfterInstallAsync(); }
                     catch (Exception ex) { ProgressText.Text += "\n" + ex.Message; }
                     if (firstInstall) SubscribeWindow.ShowOnce(_main); // once ever, after the first modlist install (not after an update)

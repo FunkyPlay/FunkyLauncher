@@ -21,7 +21,7 @@ public partial class LaunchProblemWindow : Window
             LaunchResult.ClosedEarly => (Loc.T("problem.early.title"), Loc.F("problem.early.text", (int)report.RunTime.TotalSeconds)),
             _ => (Loc.T("problem.crash.title"), Loc.F("problem.crash.text", Math.Max(1, (int)report.RunTime.TotalMinutes))),
         };
-        HelpText.Text = Loc.T("problem.help");
+        HelpText.Text = Loc.T(AppConfig.NexusEdition ? "problem.help.nexus" : "problem.help");
         CrashText.Text = report.CrashFile != null ? Loc.F("problem.crashfile", report.CrashFile) : "";
         RepairButton.Content = Loc.T("problem.repair");
         RollbackButton.Content = previous != null ? Loc.F("problem.rollback", previous.Version) : "";
