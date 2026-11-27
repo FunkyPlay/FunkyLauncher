@@ -1,0 +1,323 @@
+// Funky Launcher — Copyright (C) 2026 Funky. Licensed under GPL-3.0-or-later.
+using System.Security.Cryptography;
+using FunkyLauncher.Core;
+
+namespace FunkyLauncher.Services;
+
+/// <summary>
+/// Installs a modlist from plain Nexus lists (Starfield) instead of a .wabbajack file: Wabbajack checks the game's own
+/// files against a known release and would refuse a game version it does not know, while this only checks the game
+/// exe's version. Steps: the game → the official Mod Organizer 2 as a portable instance next to nothing else →
+/// every mod of the base list (and HD planets if chosen) downloaded under the player's own Nexus login (wabbajack-cli),
+/// checked by SHA-256 and unpacked → the MO2 profile written from the order file. Russian and 18+ come right after,
+/// through the same add-on code as for Neon Nights.
+/// </summary>
+public static class NexusInstallService
+{
+    /// <summary>Files the last run could not download (free Nexus account): shown in the manual download window.</summary>
+    public static List<ManualItem> LastManual { get; private set; } = new();
+    /// <summary>Problems of the last run (hash mismatches, unpack errors) for the screen and a report.</summary>
+    public static List<string> LastErrors { get; private set; } = new();
+
+    /// <summary>
+    /// 0.1.22: one of our own mod folders ("bundled" in a pack) laid down from the launcher's own files, also for modlists
+    /// Wabbajack installs (Neon Nights - RU Names stayed an empty switch since 0.1.4: the folder was in no .wabbajack,
+    /// chat Cyberpunk 25.11). Always rewritten — small, and a new launcher brings a newer copy. False = not in our files.
+    /// </summary>
+    /// <summary>A file of our own mod folder on disk is missing or differs from the launcher's copy (byte by byte; the files are small).</summary>
+    public static bool OwnFolderDiffers(string installDir, ModOrder order, string folder)
+    {
+        if (order.OwnFiles.Length == 0 || folder.Length == 0) return false;
+        try
+        {
+            var res = System.Windows.Application.GetResourceStream(new Uri("pack://application:,,,/addons/" + order.OwnFiles.Replace('\\', '/')));
+            if (res == null) return false;
+            var prefix = "mods/" + folder + "/";
+            using var zip = new System.IO.Compression.ZipArchive(res.Stream);
+            foreach (var e in zip.Entries)
+            {
+                if (e.FullName.EndsWith('/') || !e.FullName.Replace('\\', '/').StartsWith(prefix, StringComparison.OrdinalIgnoreCase)) continue;
+                if (e.Name.Equals("meta.ini", StringComparison.OrdinalIgnoreCase)) continue; // MO2 rewrites it
+                var f = Path.Combine(installDir, e.FullName.Replace('/', '\\'));
+                if (!File.Exists(f) || new FileInfo(f).Length != e.Length) return true;
+                using var es = e.Open();
+                using var ms = new MemoryStream();
+                es.CopyTo(ms);
+                if (!ms.ToArray().AsSpan().SequenceEqual(File.ReadAllBytes(f))) return true;
+            }
+            return false;
+        }
+        catch { return false; }
+    }
+
+    public static bool ExtractOwnFolder(string installDir, ModOrder order, string folder, List<string> errors)
+    {
+        if (order.OwnFiles.Length == 0 || folder.Length == 0) return false;
+        try
+        {
+            var res = System.Windows.Application.GetResourceStream(new Uri("pack://application:,,,/addons/" + order.OwnFiles.Replace('\\', '/')));
+            if (res == null) return false;
+            var root = Path.GetFullPath(installDir).TrimEnd('\\') + "\\";
+            var prefix = "mods/" + folder + "/";
+            var any = false;
+            using var zip = new System.IO.Compression.ZipArchive(res.Stream);
+            foreach (var e in zip.Entries)
+            {
+                if (e.FullName.EndsWith('/') || !e.FullName.Replace('\\', '/').StartsWith(prefix, StringComparison.OrdinalIgnoreCase)) continue;
+                var dst = Path.GetFullPath(Path.Combine(installDir, e.FullName));
+                if (!dst.StartsWith(root, StringComparison.OrdinalIgnoreCase)) continue;
+                Directory.CreateDirectory(Path.GetDirectoryName(dst)!);
+                using (var es = e.Open())
+                using (var fs = File.Create(dst)) es.CopyTo(fs);
+                any = true;
+            }
+            return any;
+        }
+        catch (Exception ex) { errors.Add($"own folder {folder}: {ex.Message}"); return false; }
+    }
+
+    /// <summary>
+    /// Our own files (profile files, own mod folders), the MO2 separators and the deltas a modlist applies to a few mod
+    /// files (Neon Nights: what Wabbajack used to do). Safe to repeat: a delta changes only the exact original it was made for.
+    /// </summary>
+    public static void ApplyOwnFiles(string installDir, ModOrder order, List<string> errors)
+    {
+        var root = Path.GetFullPath(installDir).TrimEnd('\\') + "\\";
+        if (order.OwnFiles.Length > 0)
+            try
+            {
+                var res = System.Windows.Application.GetResourceStream(new Uri("pack://application:,,,/addons/" + order.OwnFiles.Replace('\\', '/')))
+                    ?? throw new FileNotFoundException(order.OwnFiles);
+                using var zip = new System.IO.Compression.ZipArchive(res.Stream);
+                foreach (var e in zip.Entries)
+                {
+                    if (e.FullName.EndsWith('/')) continue;
+                    var dst = Path.GetFullPath(Path.Combine(installDir, e.FullName));
+                    if (!dst.StartsWith(root, StringComparison.OrdinalIgnoreCase)) continue;
+                    Directory.CreateDirectory(Path.GetDirectoryName(dst)!);
+                    ModlistRollback.BeforeWrite(installDir, dst); // 0.1.19: an update keeps the old file for going back
+                    using (var es = e.Open())
+                    using (var fs = File.Create(dst)) es.CopyTo(fs);
+                }
+            }
+            catch (Exception ex) { errors.Add("own files: " + ex.Message); }
+
+        foreach (var sep in order.Separators)
+            try { Directory.CreateDirectory(Path.Combine(installDir, "mods", sep)); } catch { }
+
+        foreach (var p in order.Patches)
+        {
+            var file = Path.Combine(installDir, "mods", p.ModFolder, p.File.Replace('/', '\\'));
+            if (!File.Exists(file)) continue; // the mod is not installed yet (e.g. waits for a manual download)
+            try
+            {
+                var res = System.Windows.Application.GetResourceStream(new Uri("pack://application:,,,/addons/" + p.Delta.Replace('\\', '/')))
+                    ?? throw new FileNotFoundException(p.Delta);
+                using var ms = new MemoryStream();
+                using (var s = res.Stream) s.CopyTo(ms);
+                ms.Position = 0;
+                ModlistRollback.BeforeWrite(installDir, file);
+                OctoDelta.Apply(file, ms, p.Size, p.SourceSha256, p.ResultSha256);
+            }
+            catch (Exception ex) { errors.Add($"patch {p.ModFolder}/{p.File}: {ex.Message}"); }
+        }
+    }
+
+    public static async Task<(InstallOutcome Outcome, int ExitCode, int Manual)> RunAsync(
+        Settings s, Modlist ml, IProgress<InstallProgress> progress, CancellationToken token)
+    {
+        LastManual = new();
+        LastErrors = new();
+        var success = false;
+        try
+        {
+            // 0.1.19: an update in place keeps the old version for "back to the previous version" (before the lists are
+            // read: while it runs, the new lists are used, not the installed version's own copy)
+            if (s.IsInstalled(ml) && s.InstalledVersion(ml) is { Length: > 0 } from && from != ml.Version)
+                await ModlistRollback.BeginAsync(s, ml, from, token);
+            var main = Addons.Base(ml.Id) ?? throw new InvalidOperationException(Loc.T("check.list.no"));
+            var order = Addons.Order(ml.Id) ?? throw new InvalidOperationException(Loc.T("check.list.no"));
+
+            progress.Report(new InstallProgress(Loc.T("inst.preparing"), 0, 0, null));
+            if (WabbajackService.FindCli() == null)
+            {
+                var dl = new Progress<int>(p => progress.Report(new InstallProgress(Loc.F("inst.wj.download", p), 0, 0, null)));
+                await WabbajackService.DownloadAsync(dl, token);
+            }
+
+            progress.Report(new InstallProgress(Loc.T("inst.checkgame"), 0, 0, null));
+            var game = await SystemCheck.EnsureGameReadyAndGetAsync(ml, token);
+
+            var installDir = s.InstallDir(ml);
+            var downloads = s.DownloadsDir(ml);
+            Directory.CreateDirectory(installDir);
+            Directory.CreateDirectory(downloads);
+            if (!s.DownloadDirs.ContainsKey(ml.Id)) { s.DownloadDirs[ml.Id] = downloads; s.Save(); }
+
+            await EnsureMo2Async(installDir, downloads, progress, token);
+            if (!File.Exists(Path.Combine(installDir, "ModOrganizer.ini")) || Mo2Profile.GamePath(installDir) is not { } gp
+                || !gp.Equals(game.Path, StringComparison.OrdinalIgnoreCase))
+                Mo2Profile.WriteInstance(installDir, ml, game.Path);
+
+            // base first, then HD planets if the player ticked them (both: every mod of the list)
+            var packs = new List<AddonFile> { main };
+            // optional packs that are ticked; the Russian voice-over only for the Russian version (it can be 10 GB)
+            packs.AddRange(Addons.Extras(ml.Id).Where(x => AddonService.Prefs(s, x.Pack).On && (x.Kind != "voice" || s.LangOf(ml.Id) == "ru"))
+                .Select(x => x.Pack));
+            var total = packs.Sum(p => p.Mods.Count);
+            var before = 0;
+            foreach (var pack in packs)
+            {
+                var start = before;
+                var text = new Progress<string>(t => progress.Report(new InstallProgress(Loc.T("inst.running"), -1, total, t)));
+                var r = await AddonService.InstallAsync(s, ml, pack, level2: true, text, token,
+                    (done, _) => progress.Report(new InstallProgress(Loc.T("inst.running"), start + done, total, null)));
+                if (pack == main) { AddonService.Prefs(s, main).On = true; s.Save(); }
+                LastManual.AddRange(r.NeedManual);
+                LastErrors.AddRange(r.Errors);
+                before += pack.Mods.Count;
+            }
+            ApplyOwnFiles(installDir, order, LastErrors);
+            Mo2Profile.Write(s, ml, order);
+
+            if (LastManual.Count > 0) return (InstallOutcome.NeedsManualDownloads, 3, LastManual.Count);
+            if (LastErrors.Count > 0) return (InstallOutcome.Failed, LastErrors.Count, 0);
+            success = true;
+            return (InstallOutcome.Success, 0, 0);
+        }
+        catch (OperationCanceledException)
+        {
+            return (InstallOutcome.Cancelled, -1, 0);
+        }
+        finally { ModlistRollback.End(s, ml, success); }
+    }
+
+    /// <summary>Official MO2 release (catalog "mo2": url + sha256), unpacked into the install folder once.</summary>
+    private static async Task EnsureMo2Async(string installDir, string downloads, IProgress<InstallProgress> progress, CancellationToken token)
+    {
+        if (File.Exists(Path.Combine(installDir, "ModOrganizer.exe"))) return;
+        var src = Catalog.Mo2 ?? throw new InvalidOperationException("Mod Organizer 2: no download source in the catalog");
+        var archive = Path.Combine(downloads, Path.GetFileName(new Uri(src.Url).LocalPath));
+        if (!File.Exists(archive) || !await HashOk(archive, src.Sha256, token))
+        {
+            var dl = new Progress<int>(p => progress.Report(new InstallProgress(Loc.F("inst.mo2.download", p), 0, 0, null)));
+            await WabbajackService.DownloadFileAsync(src.Url, archive, dl, token);
+            if (!await HashOk(archive, src.Sha256, token)) throw new InvalidOperationException(Loc.F("addon.err.hash", "Mod Organizer 2"));
+        }
+        progress.Report(new InstallProgress(Loc.T("inst.mo2.unpack"), 0, 0, null));
+        var tmp = Path.Combine(installDir, ".mo2-unpack");
+        if (Directory.Exists(tmp)) Directory.Delete(tmp, true);
+        var code = 0;
+        try { await Archives.ExtractAsync(archive, tmp, token); }
+        catch (OperationCanceledException) { throw; }
+        catch { code = 1; }
+        var root = tmp;
+        // some releases have one top folder
+        while (!File.Exists(Path.Combine(root, "ModOrganizer.exe")) && Directory.GetDirectories(root) is { Length: 1 } one && Directory.GetFiles(root).Length == 0)
+            root = one[0];
+        if (code != 0 || !File.Exists(Path.Combine(root, "ModOrganizer.exe")))
+        {
+            Directory.Delete(tmp, true);
+            throw new InvalidOperationException("Mod Organizer 2: unpack failed (" + code + ")");
+        }
+        foreach (var e in Directory.EnumerateFileSystemEntries(root))
+        {
+            var dst = Path.Combine(installDir, Path.GetFileName(e));
+            if (Directory.Exists(e)) { if (!Directory.Exists(dst)) Directory.Move(e, dst); }
+            else File.Move(e, dst, overwrite: true);
+        }
+        Directory.Delete(tmp, true);
+    }
+
+    private static async Task<bool> HashOk(string file, string sha256, CancellationToken token)
+    {
+        await using var f = File.OpenRead(file);
+        return Convert.ToHexString(await SHA256.HashDataAsync(f, token)).Equals(sha256, StringComparison.OrdinalIgnoreCase);
+    }
+
+    /// <summary>
+    /// "Verify files" for a Nexus-list modlist: MO2 is there, every wanted mod of the base and the packs that are on
+    /// has its folder with content. Returns the missing ones (they come back with INSTALL — downloaded archives are reused).
+    /// </summary>
+    public static (bool Ok, List<string> Missing) Verify(Settings s, Modlist ml)
+    {
+        var missing = new List<string>();
+        var dir = s.InstallDir(ml);
+        if (!File.Exists(Path.Combine(dir, "ModOrganizer.exe"))) missing.Add("ModOrganizer.exe");
+        var mods = Path.Combine(dir, "mods");
+        var mainId = Addons.Base(ml.Id)?.AddonId;
+        foreach (var a in Addons.All(ml.Id))
+        {
+            var p = AddonService.Prefs(s, a);
+            if (a.AddonId != mainId && !p.On) continue;
+            foreach (var x in AddonService.Wanted(a, a.AddonId == mainId || p.Level2))
+            {
+                var d = Path.Combine(mods, x.ModFolder);
+                if (!Directory.Exists(d) || !Directory.EnumerateFileSystemEntries(d).Any(e => !e.EndsWith("meta.ini", StringComparison.OrdinalIgnoreCase)))
+                {
+                    missing.Add(x.DisplayName.ToString());
+                    continue;
+                }
+                // 0.1.24 (support 031, 26.11): a damaged DLL inside a mod that is there (RED4ext "error 193", Cyber Sight's
+                // CyberSnakeHost.dll) — the folder check alone said "all good". The mod is marked to be unpacked again:
+                // INSTALL sets the old folder aside and lays it down fresh from the archive already downloaded
+                var broken = BrokenNativeFiles(d);
+                if (broken.Count == 0) continue;
+                AppLog.Write($"broken native file(s) in {x.ModFolder}: {string.Join(", ", broken)}");
+                AddonService.MarkForReinstall(d);
+                missing.Add($"{x.DisplayName} ({string.Join(", ", broken.Select(Path.GetFileName))})");
+            }
+        }
+        return (missing.Count == 0, missing);
+    }
+
+    private static readonly string[] NativeExt = { ".dll", ".asi", ".exe" };
+
+    /// <summary>
+    /// Program files of a mod folder (.dll / .asi / .exe) that Windows can't load: empty, cut short, or not a Windows
+    /// program at all ("MZ" header and a "PE" signature where the header points). Paths relative to the folder.
+    /// </summary>
+    public static List<string> BrokenNativeFiles(string modDir)
+    {
+        var bad = new List<string>();
+        try
+        {
+            foreach (var f in Directory.EnumerateFiles(modDir, "*", SearchOption.AllDirectories))
+            {
+                if (!NativeExt.Contains(Path.GetExtension(f), StringComparer.OrdinalIgnoreCase)) continue;
+                if (!LooksLikePe(f)) bad.Add(Path.GetRelativePath(modDir, f));
+            }
+        }
+        catch (Exception ex) { AppLog.Write($"native check {modDir}: {ex.Message}"); }
+        return bad;
+    }
+
+    private static bool LooksLikePe(string file)
+    {
+        try
+        {
+            using var fs = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.ReadWrite | FileShare.Delete);
+            if (fs.Length < 0x40) return false;
+            var head = new byte[0x40];
+            if (fs.Read(head, 0, head.Length) != head.Length || head[0] != (byte)'M' || head[1] != (byte)'Z') return false;
+            var peAt = BitConverter.ToInt32(head, 0x3C);
+            if (peAt < 0x40 || peAt > fs.Length - 4) return false;
+            fs.Position = peAt;
+            var pe = new byte[24];   // "PE\0\0" + the COFF header
+            if (fs.Read(pe, 0, pe.Length) != pe.Length || pe[0] != (byte)'P' || pe[1] != (byte)'E' || pe[2] != 0 || pe[3] != 0) return false;
+            // cut short: every section's data must be inside the file
+            int sections = BitConverter.ToUInt16(pe, 6), optional = BitConverter.ToUInt16(pe, 20);
+            fs.Position = peAt + 24 + optional;
+            var sec = new byte[40];
+            for (var i = 0; i < sections; i++)
+            {
+                if (fs.Read(sec, 0, sec.Length) != sec.Length) return false;
+                long size = BitConverter.ToUInt32(sec, 16), at = BitConverter.ToUInt32(sec, 20);
+                if (size > 0 && at + size > fs.Length) return false;
+            }
+            return true;
+        }
+        catch (IOException) { return true; }   // locked by a running game: not a sign of damage
+        catch (UnauthorizedAccessException) { return true; }
+    }
+}

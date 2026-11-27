@@ -1,0 +1,91 @@
+<UserControl x:Class="FunkyLauncher.Views.SetupView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid>
+    <!-- Welcome background: night city on top, fades into the launcher color -->
+    <Image Source="/Assets/home_bg.jpg" Stretch="UniformToFill" VerticalAlignment="Top" Opacity="0.35" IsHitTestVisible="False"/>
+    <Grid Margin="40,32">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="0,0,0,20">
+            <TextBlock x:Name="BackLink" FontSize="13" Foreground="{DynamicResource Cyan}" Cursor="Hand" Margin="0,0,0,8" HorizontalAlignment="Left" MouseLeftButtonUp="Back_Click"/>
+            <TextBlock x:Name="PageTitle" FontFamily="{StaticResource TitleFont}" FontSize="30"/>
+            <TextBlock x:Name="Subtitle" FontSize="15" Foreground="#C9C9D6" Margin="0,6,0,0"/>
+        </StackPanel>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="28"/>
+                <ColumnDefinition Width="400"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Checks -->
+            <DockPanel Grid.Column="0">
+                <DockPanel DockPanel.Dock="Top" Margin="0,0,0,10">
+                    <Button x:Name="RecheckButton" DockPanel.Dock="Right" Style="{StaticResource SecondaryButton}" Height="36" Click="Recheck_Click"/>
+                    <Button x:Name="GameFolderButton" DockPanel.Dock="Right" Style="{StaticResource SecondaryButton}" Height="36" Margin="0,0,10,0" Visibility="Collapsed" Click="GameFolder_Click"/>
+                    <TextBlock x:Name="CheckTitle" FontSize="17" FontWeight="Bold" VerticalAlignment="Center"/>
+                </DockPanel>
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel x:Name="CheckList"/>
+                </ScrollViewer>
+            </DockPanel>
+
+            <!-- Folder + actions (scrolls in a small window so "Apply changes" is never hidden under the status line) -->
+            <ScrollViewer Grid.Column="2" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <TextBlock x:Name="FolderLabel" FontSize="14" FontWeight="SemiBold" Foreground="{StaticResource Muted}" Margin="0,0,0,8"/>
+                <DockPanel>
+                    <Button x:Name="BrowseButton" DockPanel.Dock="Right" Style="{StaticResource SecondaryButton}" Margin="10,0,0,0" Click="Browse_Click"/>
+                    <TextBox x:Name="FolderBox" LostFocus="FolderBox_LostFocus"/>
+                </DockPanel>
+                <TextBlock x:Name="DownloadsText" FontSize="12" Foreground="{StaticResource Muted}" Margin="0,8,0,0"/>
+
+                <Border x:Name="InstalledNote" Style="{StaticResource CardBorder}" Margin="0,20,0,0" BorderBrush="{DynamicResource Cyan}" BorderThickness="1" Visibility="Collapsed">
+                    <TextBlock x:Name="InstalledText" FontSize="13" Foreground="#9AF2FF"/>
+                </Border>
+                <Button x:Name="PlayButton" Style="{StaticResource PrimaryButton}" Margin="0,20,0,0" Visibility="Collapsed" Click="Play_Click"/>
+                <!-- Modlist composition: language (Russian pack) and the 18+ add-on — designer mock-up 12.11 -->
+                <Border x:Name="CompositionBox" Style="{StaticResource CardBorder}" Margin="0,16,0,0" BorderBrush="#5A2A55" BorderThickness="1" Visibility="Collapsed">
+                    <StackPanel x:Name="CompositionPanel"/>
+                </Border>
+                <Button x:Name="ApplyButton" Style="{StaticResource SecondaryButton}" Margin="0,10,0,0" Visibility="Collapsed" Click="Apply_Click"/>
+                <Button x:Name="NexusButton" Style="{StaticResource SecondaryButton}" Margin="0,14,0,0" Click="Nexus_Click"/>
+                <Button x:Name="InstallButton" Style="{StaticResource PrimaryButton}" Margin="0,14,0,0" Click="Install_Click"/>
+                <Button x:Name="ReinstallButton" Style="{StaticResource SecondaryButton}" Margin="0,10,0,0" Visibility="Collapsed" Click="Reinstall_Click"/>
+                <Button x:Name="CancelButton" Style="{StaticResource SecondaryButton}" Margin="0,10,0,0" Visibility="Collapsed" Click="Cancel_Click"/>
+            </StackPanel>
+            </ScrollViewer>
+        </Grid>
+
+        <!-- Progress -->
+        <StackPanel Grid.Row="2" x:Name="ProgressPanel" Margin="0,18,0,0" Visibility="Collapsed">
+            <DockPanel>
+                <TextBlock x:Name="ProgressPercent" DockPanel.Dock="Right" FontFamily="{StaticResource TitleFont}" FontSize="18" Foreground="#FF7AD9"/>
+                <TextBlock x:Name="ProgressText" FontSize="16" FontWeight="Bold" TextWrapping="Wrap"/>
+            </DockPanel>
+            <Border Height="12" CornerRadius="6" Background="{DynamicResource CardActive}" Margin="0,10,0,6" ClipToBounds="True">
+                <Grid>
+                    <Border x:Name="ProgressFill" HorizontalAlignment="Left" Width="0" CornerRadius="6">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="#FF3FD2" Offset="0"/>
+                                <GradientStop Color="#7AE8FF" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                    </Border>
+                </Grid>
+            </Border>
+            <TextBlock x:Name="LogLine" FontSize="12" Foreground="{StaticResource Muted}" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap"/>
+            <TextBlock x:Name="ContinueHint" FontSize="12" Foreground="{StaticResource Muted}" Margin="0,4,0,0"/>
+            <!-- its own line under the bar (it used to sit next to the status text and run into it) -->
+            <TextBlock x:Name="DoneTelegram" Visibility="Collapsed" FontSize="13.5" Margin="0,10,0,0" TextWrapping="Wrap"><Run x:Name="DoneTelegramText"/> <Hyperlink Click="DoneTelegram_Click" Foreground="{DynamicResource Cyan}"><Run Text="@FunkyPlayTV"/></Hyperlink></TextBlock>
+        </StackPanel>
+    </Grid>
+    </Grid>
+</UserControl>

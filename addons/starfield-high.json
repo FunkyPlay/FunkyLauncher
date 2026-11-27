@@ -1,0 +1,73 @@
+{
+ "schema": 1,
+ "modlistId": "starfield",
+ "addonId": "starfield-high",
+ "listVersion": "0.1.0",
+ "forMainVersion": "0.1.1",
+ "generated": "2026-11-24",
+ "default": true,
+ "mods": [
+  {
+   "id": "Starfield Memory Fixes - Memory Fixes",
+   "modFolder": "Starfield Memory Fixes - Memory Fixes",
+   "order": 320,
+   "nexus": {
+    "game": "starfield",
+    "modId": 14925,
+    "fileId": 67895,
+    "filePage": "https://www.nexusmods.com/starfield/mods/14925?tab=files&file_id=67895"
+   },
+   "version": "1.1.5",
+   "adultOnNexus": false,
+   "archive": {
+    "nexusFileName": "b8/92/80/b89280be-ed3c-4861-9cdc-8763605b2166",
+    "size": 31936,
+    "sha256": "f0ae2c8a45e0d5d45dcc2d068c2f0cfd196e7bd0baa0226a90d394bd321d4357",
+    "localFileName": "Memory Fixes 14925 1.1.5 2026-06-13T23-42Z 2frBl77yn.zip"
+   },
+   "plugins": [],
+   "ru": "noText",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 2
+   },
+   "displayName": {
+    "ru": "Starfield Memory Fixes - Memory Fixes",
+    "en": "Starfield Memory Fixes - Memory Fixes"
+   }
+  },
+  {
+   "id": "Starfield High Priority Launcher - SF High Priority Launcher",
+   "modFolder": "Starfield High Priority Launcher - SF High Priority Launcher",
+   "nexus": {
+    "game": "starfield",
+    "modId": 14902,
+    "fileId": 67896,
+    "filePage": "https://www.nexusmods.com/starfield/mods/14902?tab=files&file_id=67896"
+   },
+   "version": "1.1.5",
+   "adultOnNexus": false,
+   "archive": {
+    "nexusFileName": "SF High Priority Launcher 14902 1.1.5 2026-06-13T23-46Z HqFZQYY9P.zip",
+    "size": 27345,
+    "sha256": "ccd2dc286ebf2a3336672a564e6667ced8fb6e0526c1e3b7c8db89b49684de65",
+    "localFileName": "SF High Priority Launcher 14902 1.1.5 2026-06-13T23-46Z HqFZQYY9P.zip"
+   },
+   "plugins": [],
+   "ru": "noText",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 2
+   },
+   "order": 377,
+   "displayName": {
+    "ru": "Starfield High Priority Launcher - SF High Priority Launcher",
+    "en": "Starfield High Priority Launcher - SF High Priority Launcher"
+   }
+  }
+ ]
+}

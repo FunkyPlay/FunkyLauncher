@@ -1,0 +1,1456 @@
+{
+ "schema": 1,
+ "modlistId": "fallout4",
+ "addonId": "fallout4-adult",
+ "listVersion": "0.1.0",
+ "forMainVersion": "0.1.2",
+ "forGameVersion": "1.11.240",
+ "draft": true,
+ "generated": "2026-11-17",
+ "mods": [
+  {
+   "id": "Caliente's Beautiful Bodies Enhancer -CBBE-",
+   "modFolder": "Caliente's Beautiful Bodies Enhancer -CBBE-",
+   "displayName": {
+    "ru": "Caliente's Beautiful Bodies Enhancer -CBBE-",
+    "en": "Caliente's Beautiful Bodies Enhancer -CBBE-"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 15,
+    "fileId": 378308,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/15?tab=files&file_id=378308"
+   },
+   "version": "2.7.2",
+   "archive": {
+    "nexusFileName": "Caliente's Beautiful Bodies Enhancer - v2.7.2-15-2-7-2-1766404952.7z",
+    "localFileName": "Caliente's Beautiful Bodies Enhancer - v2.7.2-15-2-7-2-1766404952.7z",
+    "size": 502983310,
+    "sha256": "4a332a9e800d0da1b04753e4dbce7f242e2616d83304acbab30f721c138c3abb"
+   },
+   "plugins": [
+    "CBBE.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "00 Required",
+      ""
+     ],
+     [
+      "06 Outfits Slim - Vanilla",
+      ""
+     ],
+     [
+      "07 Outfits Slim - Automatron",
+      ""
+     ],
+     [
+      "08 Outfits Slim - Far Harbor",
+      ""
+     ],
+     [
+      "09 Outfits Slim - Nuka World",
+      ""
+     ],
+     [
+      "18 Outfits BodySlide - Vanilla",
+      ""
+     ],
+     [
+      "19 Outfits BodySlide - Automatron",
+      ""
+     ],
+     [
+      "20 Outfits BodySlide - Far Harbor",
+      ""
+     ],
+     [
+      "21 Outfits BodySlide - Nuka World",
+      ""
+     ],
+     [
+      "22 Outfits TRI - Vanilla",
+      ""
+     ],
+     [
+      "23 Outfits TRI - Automatron",
+      ""
+     ],
+     [
+      "24 Outfits TRI - Far Harbor",
+      ""
+     ],
+     [
+      "25 Outfits TRI - Nuka World",
+      ""
+     ],
+     [
+      "26 F4EE Morphs",
+      ""
+     ],
+     [
+      "27 Outfits - Creation Club",
+      ""
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "Body Shape: Curvy",
+     "Underwear Options: -",
+     "Outfit Options: Vanilla Outfits, Automatron Outfits, Far Harbor Outfits, Nuka World Outfits, Creation Club Outfits",
+     "Misc Options: F4EE Morphs"
+    ]
+   }
+  },
+  {
+   "id": "BodySlide and Outfit Studio",
+   "modFolder": "BodySlide and Outfit Studio",
+   "displayName": {
+    "ru": "BodySlide and Outfit Studio",
+    "en": "BodySlide and Outfit Studio"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 25,
+    "fileId": 419259,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/25?tab=files&file_id=419259"
+   },
+   "version": "6.1.0",
+   "archive": {
+    "nexusFileName": "7c/85/a7/7c85a76c-6566-4144-b538-74e3b71b1087",
+    "localFileName": "7c/85/a7/7c85a76c-6566-4144-b538-74e3b71b1087",
+    "size": 22161224,
+    "sha256": "f2313a00a17c245fed94ae786b8e089ee6f67a57a92785f4fe74db61d4b2d44a"
+   },
+   "plugins": [],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "Tools/BodySlide/BodySlide.exe",
+      "Tools/BodySlide/BodySlide.exe"
+     ],
+     [
+      "Tools/BodySlide/Config.xml",
+      "Tools/BodySlide/Config.xml"
+     ],
+     [
+      "Tools/BodySlide/ConversionSets/References.osp",
+      "Tools/BodySlide/ConversionSets/References.osp"
+     ],
+     [
+      "Tools/BodySlide/OutfitStudio.exe",
+      "Tools/BodySlide/OutfitStudio.exe"
+     ],
+     [
+      "Tools/BodySlide/ReadMe.txt",
+      "Tools/BodySlide/ReadMe.txt"
+     ],
+     [
+      "Tools/BodySlide/RefTemplates.xml",
+      "Tools/BodySlide/RefTemplates.xml"
+     ],
+     [
+      "Tools/BodySlide/ShapeData/References/CBBEToJaneBody.nif",
+      "Tools/BodySlide/ShapeData/References/CBBEToJaneBody.nif"
+     ],
+     [
+      "Tools/BodySlide/ShapeData/References/CBBEToJaneBody.osd",
+      "Tools/BodySlide/ShapeData/References/CBBEToJaneBody.osd"
+     ],
+     [
+      "Tools/BodySlide/ShapeData/References/CBBEToVanilla.nif",
+      "Tools/BodySlide/ShapeData/References/CBBEToVanilla.nif"
+     ],
+     [
+      "Tools/BodySlide/ShapeData/References/CBBEToVanilla.osd",
+      "Tools/BodySlide/ShapeData/References/CBBEToVanilla.osd"
+     ],
+     [
+      "Tools/BodySlide/ShapeData/References/CBBEUniboob.nif",
+      "Tools/BodySlide/ShapeData/References/CBBEUniboob.nif"
+     ],
+     [
+      "Tools/BodySlide/ShapeData/References/CBBEUniboob.osd",
+      "Tools/BodySlide/ShapeData/References/CBBEUniboob.osd"
+     ],
+     [
+      "Tools/BodySlide/ShapeData/References/CBBEUniboobNoNips.nif",
+      "Tools/BodySlide/ShapeData/References/CBBEUniboobNoNips.nif"
+     ],
+     [
+      "Tools/BodySlide/ShapeData/References/CBBEUniboobNoNips.osd",
+      "Tools/BodySlide/ShapeData/References/CBBEUniboobNoNips.osd"
+     ],
+     [
+      "Tools/BodySlide/ShapeData/References/FO4CBBEToSkyrimCBBE.nif",
+      "Tools/BodySlide/ShapeData/References/FO4CBBEToSkyrimCBBE.nif"
+     ],
+     [
+      "Tools/BodySlide/ShapeData/References/FO4CBBEToSkyrimCBBE.osd",
+      "Tools/BodySlide/ShapeData/References/FO4CBBEToSkyrimCBBE.osd"
+     ],
+     [
+      "Tools/BodySlide/ShapeData/References/JaneBodyToCBBE.nif",
+      "Tools/BodySlide/ShapeData/References/JaneBodyToCBBE.nif"
+     ],
+     [
+      "Tools/BodySlide/ShapeData/References/JaneBodyToCBBE.osd",
+      "Tools/BodySlide/ShapeData/References/JaneBodyToCBBE.osd"
+     ],
+     [
+      "Tools/BodySlide/ShapeData/References/SkyrimCBBEToFO4CBBE.nif",
+      "Tools/BodySlide/ShapeData/References/SkyrimCBBEToFO4CBBE.nif"
+     ],
+     [
+      "Tools/BodySlide/ShapeData/References/SkyrimCBBEToFO4CBBE.osd",
+      "Tools/BodySlide/ShapeData/References/SkyrimCBBEToFO4CBBE.osd"
+     ],
+     [
+      "Tools/BodySlide/ShapeData/References/VanillaToCBBE.nif",
+      "Tools/BodySlide/ShapeData/References/VanillaToCBBE.nif"
+     ],
+     [
+      "Tools/BodySlide/ShapeData/References/VanillaToCBBE.osd",
+      "Tools/BodySlide/ShapeData/References/VanillaToCBBE.osd"
+     ],
+     [
+      "Tools/BodySlide/lang/BodySlide.pot",
+      "Tools/BodySlide/lang/BodySlide.pot"
+     ],
+     [
+      "Tools/BodySlide/lang/af/BodySlide.mo",
+      "Tools/BodySlide/lang/af/BodySlide.mo"
+     ],
+     [
+      "Tools/BodySlide/lang/af/BodySlide.po",
+      "Tools/BodySlide/lang/af/BodySlide.po"
+     ],
+     [
+      "Tools/BodySlide/lang/an/BodySlide.mo",
+      "Tools/BodySlide/lang/an/BodySlide.mo"
+     ],
+     [
+      "Tools/BodySlide/lang/an/BodySlide.po",
+      "Tools/BodySlide/lang/an/BodySlide.po"
+     ],
+     [
+      "Tools/BodySlide/lang/ar/BodySlide.mo",
+      "Tools/BodySlide/lang/ar/BodySlide.mo"
+     ],
+     [
+      "Tools/BodySlide/lang/ar/BodySlide.po",
+      "Tools/BodySlide/lang/ar/BodySlide.po"
+     ],
+     [
+      "Tools/BodySlide/lang/ca/BodySlide.mo",
+      "Tools/BodySlide/lang/ca/BodySlide.mo"
+     ],
+     [
+      "Tools/BodySlide/lang/ca/BodySlide.po",
+      "Tools/BodySlide/lang/ca/BodySlide.po"
+     ],
+     [
+      "Tools/BodySlide/lang/cs/BodySlide.mo",
+      "Tools/BodySlide/lang/cs/BodySlide.mo"
+     ],
+     [
+      "Tools/BodySlide/lang/cs/BodySlide.po",
+      "Tools/BodySlide/lang/cs/BodySlide.po"
+     ],
+     [
+      "Tools/BodySlide/lang/da/BodySlide.mo",
+      "Tools/BodySlide/lang/da/BodySlide.mo"
+     ],
+     [
+      "Tools/BodySlide/lang/da/BodySlide.po",
+      "Tools/BodySlide/lang/da/BodySlide.po"
+     ],
+     [
+      "Tools/BodySlide/lang/de/BodySlide.mo",
+      "Tools/BodySlide/lang/de/BodySlide.mo"
+     ],
+     [
+      "Tools/BodySlide/lang/de/BodySlide.po",
+      "Tools/BodySlide/lang/de/BodySlide.po"
+     ],
+     [
+      "Tools/BodySlide/lang/el/BodySlide.mo",
+      "Tools/BodySlide/lang/el/BodySlide.mo"
+     ],
+     [
+      "Tools/BodySlide/lang/el/BodySlide.po",
+      "Tools/BodySlide/lang/el/BodySlide.po"
+     ],
+     [
+      "Tools/BodySlide/lang/es/BodySlide.mo",
+      "Tools/BodySlide/lang/es/BodySlide.mo"
+     ],
+     [
+      "Tools/BodySlide/lang/es/BodySlide.po",
+      "Tools/BodySlide/lang/es/BodySlide.po"
+     ],
+     [
+      "Tools/BodySlide/lang/eu/BodySlide.mo",
+      "Tools/BodySlide/lang/eu/BodySlide.mo"
+     ],
+     [
+      "Tools/BodySlide/lang/eu/BodySlide.po",
+      "Tools/BodySlide/lang/eu/BodySlide.po"
+     ],
+     [
+      "Tools/BodySlide/lang/fi/BodySlide.mo",
+      "Tools/BodySlide/lang/fi/BodySlide.mo"
+     ],
+     [
+      "Tools/BodySlide/lang/fi/BodySlide.po",
+      "Tools/BodySlide/lang/fi/BodySlide.po"
+     ],
+     [
+      "Tools/BodySlide/lang/fr/BodySlide.mo",
+      "Tools/BodySlide/lang/fr/BodySlide.mo"
+     ],
+     [
+      "Tools/BodySlide/lang/fr/BodySlide.po",
+      "Tools/BodySlide/lang/fr/BodySlide.po"
+     ],
+     [
+      "Tools/BodySlide/lang/hi/BodySlide.mo",
+      "Tools/BodySlide/lang/hi/BodySlide.mo"
+     ],
+     [
+      "Tools/BodySlide/lang/hi/BodySlide.po",
+      "Tools/BodySlide/lang/hi/BodySlide.po"
+     ],
+     [
+      "Tools/BodySlide/lang/hu/BodySlide.mo",
+      "Tools/BodySlide/lang/hu/BodySlide.mo"
+     ],
+     [
+      "Tools/BodySlide/lang/hu/BodySlide.po",
+      "Tools/BodySlide/lang/hu/BodySlide.po"
+     ],
+     [
+      "Tools/BodySlide/lang/id/BodySlide.mo",
+      "Tools/BodySlide/lang/id/BodySlide.mo"
+     ],
+     [
+      "Tools/BodySlide/lang/id/BodySlide.po",
+      "Tools/BodySlide/lang/id/BodySlide.po"
+     ],
+     [
+      "Tools/BodySlide/lang/it/BodySlide.mo",
+      "Tools/BodySlide/lang/it/BodySlide.mo"
+     ],
+     [
+      "Tools/BodySlide/lang/it/BodySlide.po",
+      "Tools/BodySlide/lang/it/BodySlide.po"
+     ],
+     [
+      "Tools/BodySlide/lang/ja/BodySlide.mo",
+      "Tools/BodySlide/lang/ja/BodySlide.mo"
+     ],
+     [
+      "Tools/BodySlide/lang/ja/BodySlide.po",
+      "Tools/BodySlide/lang/ja/BodySlide.po"
+     ],
+     [
+      "Tools/BodySlide/lang/ko/BodySlide.mo",
+      "Tools/BodySlide/lang/ko/BodySlide.mo"
+     ],
+     [
+      "Tools/BodySlide/lang/ko/BodySlide.po",
+      "Tools/BodySlide/lang/ko/BodySlide.po"
+     ],
+     [
+      "Tools/BodySlide/lang/lt/BodySlide.mo",
+      "Tools/BodySlide/lang/lt/BodySlide.mo"
+     ],
+     [
+      "Tools/BodySlide/lang/lt/BodySlide.po",
+      "Tools/BodySlide/lang/lt/BodySlide.po"
+     ],
+     [
+      "Tools/BodySlide/lang/lv/BodySlide.mo",
+      "Tools/BodySlide/lang/lv/BodySlide.mo"
+     ],
+     [
+      "Tools/BodySlide/lang/lv/BodySlide.po",
+      "Tools/BodySlide/lang/lv/BodySlide.po"
+     ],
+     [
+      "Tools/BodySlide/lang/ms/BodySlide.mo",
+      "Tools/BodySlide/lang/ms/BodySlide.mo"
+     ],
+     [
+      "Tools/BodySlide/lang/ms/BodySlide.po",
+      "Tools/BodySlide/lang/ms/BodySlide.po"
+     ],
+     [
+      "Tools/BodySlide/lang/nb/BodySlide.mo",
+      "Tools/BodySlide/lang/nb/BodySlide.mo"
+     ],
+     [
+      "Tools/BodySlide/lang/nb/BodySlide.po",
+      "Tools/BodySlide/lang/nb/BodySlide.po"
+     ],
+     [
+      "Tools/BodySlide/lang/ne/BodySlide.mo",
+      "Tools/BodySlide/lang/ne/BodySlide.mo"
+     ],
+     [
+      "Tools/BodySlide/lang/ne/BodySlide.po",
+      "Tools/BodySlide/lang/ne/BodySlide.po"
+     ],
+     [
+      "Tools/BodySlide/lang/nl/BodySlide.mo",
+      "Tools/BodySlide/lang/nl/BodySlide.mo"
+     ],
+     [
+      "Tools/BodySlide/lang/nl/BodySlide.po",
+      "Tools/BodySlide/lang/nl/BodySlide.po"
+     ],
+     [
+      "Tools/BodySlide/lang/pl/BodySlide.mo",
+      "Tools/BodySlide/lang/pl/BodySlide.mo"
+     ],
+     [
+      "Tools/BodySlide/lang/pl/BodySlide.po",
+      "Tools/BodySlide/lang/pl/BodySlide.po"
+     ],
+     [
+      "Tools/BodySlide/lang/pt/BodySlide.mo",
+      "Tools/BodySlide/lang/pt/BodySlide.mo"
+     ],
+     [
+      "Tools/BodySlide/lang/pt/BodySlide.po",
+      "Tools/BodySlide/lang/pt/BodySlide.po"
+     ],
+     [
+      "Tools/BodySlide/lang/ro/BodySlide.mo",
+      "Tools/BodySlide/lang/ro/BodySlide.mo"
+     ],
+     [
+      "Tools/BodySlide/lang/ro/BodySlide.po",
+      "Tools/BodySlide/lang/ro/BodySlide.po"
+     ],
+     [
+      "Tools/BodySlide/lang/ru/BodySlide.mo",
+      "Tools/BodySlide/lang/ru/BodySlide.mo"
+     ],
+     [
+      "Tools/BodySlide/lang/ru/BodySlide.po",
+      "Tools/BodySlide/lang/ru/BodySlide.po"
+     ],
+     [
+      "Tools/BodySlide/lang/sk/BodySlide.mo",
+      "Tools/BodySlide/lang/sk/BodySlide.mo"
+     ],
+     [
+      "Tools/BodySlide/lang/sk/BodySlide.po",
+      "Tools/BodySlide/lang/sk/BodySlide.po"
+     ],
+     [
+      "Tools/BodySlide/lang/sl/BodySlide.mo",
+      "Tools/BodySlide/lang/sl/BodySlide.mo"
+     ],
+     [
+      "Tools/BodySlide/lang/sl/BodySlide.po",
+      "Tools/BodySlide/lang/sl/BodySlide.po"
+     ],
+     [
+      "Tools/BodySlide/lang/sq/BodySlide.mo",
+      "Tools/BodySlide/lang/sq/BodySlide.mo"
+     ],
+     [
+      "Tools/BodySlide/lang/sq/BodySlide.po",
+      "Tools/BodySlide/lang/sq/BodySlide.po"
+     ],
+     [
+      "Tools/BodySlide/lang/sv/BodySlide.mo",
+      "Tools/BodySlide/lang/sv/BodySlide.mo"
+     ],
+     [
+      "Tools/BodySlide/lang/sv/BodySlide.po",
+      "Tools/BodySlide/lang/sv/BodySlide.po"
+     ],
+     [
+      "Tools/BodySlide/lang/ta/BodySlide.mo",
+      "Tools/BodySlide/lang/ta/BodySlide.mo"
+     ],
+     [
+      "Tools/BodySlide/lang/ta/BodySlide.po",
+      "Tools/BodySlide/lang/ta/BodySlide.po"
+     ],
+     [
+      "Tools/BodySlide/lang/tr/BodySlide.mo",
+      "Tools/BodySlide/lang/tr/BodySlide.mo"
+     ],
+     [
+      "Tools/BodySlide/lang/tr/BodySlide.po",
+      "Tools/BodySlide/lang/tr/BodySlide.po"
+     ],
+     [
+      "Tools/BodySlide/lang/uk/BodySlide.mo",
+      "Tools/BodySlide/lang/uk/BodySlide.mo"
+     ],
+     [
+      "Tools/BodySlide/lang/uk/BodySlide.po",
+      "Tools/BodySlide/lang/uk/BodySlide.po"
+     ],
+     [
+      "Tools/BodySlide/lang/vi/BodySlide.mo",
+      "Tools/BodySlide/lang/vi/BodySlide.mo"
+     ],
+     [
+      "Tools/BodySlide/lang/vi/BodySlide.po",
+      "Tools/BodySlide/lang/vi/BodySlide.po"
+     ],
+     [
+      "Tools/BodySlide/lang/xrctext.cpp",
+      "Tools/BodySlide/lang/xrctext.cpp"
+     ],
+     [
+      "Tools/BodySlide/lang/zh/BodySlide.mo",
+      "Tools/BodySlide/lang/zh/BodySlide.mo"
+     ],
+     [
+      "Tools/BodySlide/lang/zh/BodySlide.po",
+      "Tools/BodySlide/lang/zh/BodySlide.po"
+     ],
+     [
+      "Tools/BodySlide/res/Maya FBX FO4 Fix.txt",
+      "Tools/BodySlide/res/Maya FBX FO4 Fix.txt"
+     ],
+     [
+      "Tools/BodySlide/res/Maya FBX Skyrim Fix.txt",
+      "Tools/BodySlide/res/Maya FBX Skyrim Fix.txt"
+     ],
+     [
+      "Tools/BodySlide/res/hdri/city.exr",
+      "Tools/BodySlide/res/hdri/city.exr"
+     ],
+     [
+      "Tools/BodySlide/res/hdri/courtyard.exr",
+      "Tools/BodySlide/res/hdri/courtyard.exr"
+     ],
+     [
+      "Tools/BodySlide/res/hdri/forest.exr",
+      "Tools/BodySlide/res/hdri/forest.exr"
+     ],
+     [
+      "Tools/BodySlide/res/hdri/interior.exr",
+      "Tools/BodySlide/res/hdri/interior.exr"
+     ],
+     [
+      "Tools/BodySlide/res/hdri/license.txt",
+      "Tools/BodySlide/res/hdri/license.txt"
+     ],
+     [
+      "Tools/BodySlide/res/hdri/night.exr",
+      "Tools/BodySlide/res/hdri/night.exr"
+     ],
+     [
+      "Tools/BodySlide/res/hdri/studio.exr",
+      "Tools/BodySlide/res/hdri/studio.exr"
+     ],
+     [
+      "Tools/BodySlide/res/hdri/sunrise.exr",
+      "Tools/BodySlide/res/hdri/sunrise.exr"
+     ],
+     [
+      "Tools/BodySlide/res/hdri/sunset.exr",
+      "Tools/BodySlide/res/hdri/sunset.exr"
+     ],
+     [
+      "Tools/BodySlide/res/images/AlphaBrush.png",
+      "Tools/BodySlide/res/images/AlphaBrush.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/AlphaBrush_d.png",
+      "Tools/BodySlide/res/images/AlphaBrush_d.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/BodySlide.png",
+      "Tools/BodySlide/res/images/BodySlide.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/Bones.png",
+      "Tools/BodySlide/res/images/Bones.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/CollapseVertex.png",
+      "Tools/BodySlide/res/images/CollapseVertex.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/CollapseVertex_d.png",
+      "Tools/BodySlide/res/images/CollapseVertex_d.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/ColorBrush.png",
+      "Tools/BodySlide/res/images/ColorBrush.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/ColorBrush_d.png",
+      "Tools/BodySlide/res/images/ColorBrush_d.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/DeflateBrush.png",
+      "Tools/BodySlide/res/images/DeflateBrush.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/DeflateBrush_d.png",
+      "Tools/BodySlide/res/images/DeflateBrush_d.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/Discord.png",
+      "Tools/BodySlide/res/images/Discord.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/EdgeSlide.png",
+      "Tools/BodySlide/res/images/EdgeSlide.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/EdgeSlide_d.png",
+      "Tools/BodySlide/res/images/EdgeSlide_d.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/EditConnected.png",
+      "Tools/BodySlide/res/images/EditConnected.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/EditSmall.png",
+      "Tools/BodySlide/res/images/EditSmall.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/EditSmall_d.png",
+      "Tools/BodySlide/res/images/EditSmall_d.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/EditSmall_green.png",
+      "Tools/BodySlide/res/images/EditSmall_green.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/FavoriteStar.png",
+      "Tools/BodySlide/res/images/FavoriteStar.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/FavoriteStarEmpty.png",
+      "Tools/BodySlide/res/images/FavoriteStarEmpty.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/FlipEdge.png",
+      "Tools/BodySlide/res/images/FlipEdge.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/FlipEdge_d.png",
+      "Tools/BodySlide/res/images/FlipEdge_d.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/Floor.png",
+      "Tools/BodySlide/res/images/Floor.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/GitHub.png",
+      "Tools/BodySlide/res/images/GitHub.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/InflateBrush.png",
+      "Tools/BodySlide/res/images/InflateBrush.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/InflateBrush_d.png",
+      "Tools/BodySlide/res/images/InflateBrush_d.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/LoadProj.png",
+      "Tools/BodySlide/res/images/LoadProj.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/LoadProj_sm.png",
+      "Tools/BodySlide/res/images/LoadProj_sm.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/MaskBrush.png",
+      "Tools/BodySlide/res/images/MaskBrush.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/MaskBrush_d.png",
+      "Tools/BodySlide/res/images/MaskBrush_d.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/Merge.png",
+      "Tools/BodySlide/res/images/Merge.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/MoveBrush.png",
+      "Tools/BodySlide/res/images/MoveBrush.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/MoveBrush_d.png",
+      "Tools/BodySlide/res/images/MoveBrush_d.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/MoveVertex.png",
+      "Tools/BodySlide/res/images/MoveVertex.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/NewProj.png",
+      "Tools/BodySlide/res/images/NewProj.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/NoImg.png",
+      "Tools/BodySlide/res/images/NoImg.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/Nodes.png",
+      "Tools/BodySlide/res/images/Nodes.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/OutfitStudio.png",
+      "Tools/BodySlide/res/images/OutfitStudio.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/PayPal.png",
+      "Tools/BodySlide/res/images/PayPal.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/Pivot.png",
+      "Tools/BodySlide/res/images/Pivot.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/Pivot_d.png",
+      "Tools/BodySlide/res/images/Pivot_d.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/PopIn.png",
+      "Tools/BodySlide/res/images/PopIn.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/PopOut.png",
+      "Tools/BodySlide/res/images/PopOut.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/Redo.png",
+      "Tools/BodySlide/res/images/Redo.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/Redo_d.png",
+      "Tools/BodySlide/res/images/Redo_d.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/RestrictNormal.png",
+      "Tools/BodySlide/res/images/RestrictNormal.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/RestrictPlane.png",
+      "Tools/BodySlide/res/images/RestrictPlane.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/RestrictSurface.png",
+      "Tools/BodySlide/res/images/RestrictSurface.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/RopeSelection.png",
+      "Tools/BodySlide/res/images/RopeSelection.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/RopeSelection_d.png",
+      "Tools/BodySlide/res/images/RopeSelection_d.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/RotateTool.png",
+      "Tools/BodySlide/res/images/RotateTool.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/RotateTool_d.png",
+      "Tools/BodySlide/res/images/RotateTool_d.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/SeamEdges.png",
+      "Tools/BodySlide/res/images/SeamEdges.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/SeamEdges_d.png",
+      "Tools/BodySlide/res/images/SeamEdges_d.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/SelectBrush.png",
+      "Tools/BodySlide/res/images/SelectBrush.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/SelectBrush_d.png",
+      "Tools/BodySlide/res/images/SelectBrush_d.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/Settings.png",
+      "Tools/BodySlide/res/images/Settings.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/SmoothBrush.png",
+      "Tools/BodySlide/res/images/SmoothBrush.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/SmoothBrush_d.png",
+      "Tools/BodySlide/res/images/SmoothBrush_d.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/SplitEdge.png",
+      "Tools/BodySlide/res/images/SplitEdge.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/SplitEdge_d.png",
+      "Tools/BodySlide/res/images/SplitEdge_d.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/TransformTool.png",
+      "Tools/BodySlide/res/images/TransformTool.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/TransformTool_d.png",
+      "Tools/BodySlide/res/images/TransformTool_d.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/UndiffBrush.png",
+      "Tools/BodySlide/res/images/UndiffBrush.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/UndiffBrush_d.png",
+      "Tools/BodySlide/res/images/UndiffBrush_d.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/Undo.png",
+      "Tools/BodySlide/res/images/Undo.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/Undo_d.png",
+      "Tools/BodySlide/res/images/Undo_d.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/VertexEdit.png",
+      "Tools/BodySlide/res/images/VertexEdit.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/VertexEdit_d.png",
+      "Tools/BodySlide/res/images/VertexEdit_d.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/ViewBack.png",
+      "Tools/BodySlide/res/images/ViewBack.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/ViewFront.png",
+      "Tools/BodySlide/res/images/ViewFront.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/ViewLeft.png",
+      "Tools/BodySlide/res/images/ViewLeft.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/ViewPerspective.png",
+      "Tools/BodySlide/res/images/ViewPerspective.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/ViewRight.png",
+      "Tools/BodySlide/res/images/ViewRight.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/WeightBrush.png",
+      "Tools/BodySlide/res/images/WeightBrush.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/WeightBrush_d.png",
+      "Tools/BodySlide/res/images/WeightBrush_d.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/Weld.png",
+      "Tools/BodySlide/res/images/Weld.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/XMirror.png",
+      "Tools/BodySlide/res/images/XMirror.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/XMirror_d.png",
+      "Tools/BodySlide/res/images/XMirror_d.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/greygrid.png",
+      "Tools/BodySlide/res/images/greygrid.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/greygrid_inv.png",
+      "Tools/BodySlide/res/images/greygrid_inv.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/icoBrokenBone.png",
+      "Tools/BodySlide/res/images/icoBrokenBone.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/icoBrokenBoneChange.png",
+      "Tools/BodySlide/res/images/icoBrokenBoneChange.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/icoChange.png",
+      "Tools/BodySlide/res/images/icoChange.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/icoInvisible.png",
+      "Tools/BodySlide/res/images/icoInvisible.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/icoNone.png",
+      "Tools/BodySlide/res/images/icoNone.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/icoVisible.png",
+      "Tools/BodySlide/res/images/icoVisible.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/icoWireframe.png",
+      "Tools/BodySlide/res/images/icoWireframe.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/save.png",
+      "Tools/BodySlide/res/images/save.png"
+     ],
+     [
+      "Tools/BodySlide/res/images/whitegrid.png",
+      "Tools/BodySlide/res/images/whitegrid.png"
+     ],
+     [
+      "Tools/BodySlide/res/mcp/guides/basics.md",
+      "Tools/BodySlide/res/mcp/guides/basics.md"
+     ],
+     [
+      "Tools/BodySlide/res/mcp/guides/body-conversion.md",
+      "Tools/BodySlide/res/mcp/guides/body-conversion.md"
+     ],
+     [
+      "Tools/BodySlide/res/mcp/guides/bone-weights.md",
+      "Tools/BodySlide/res/mcp/guides/bone-weights.md"
+     ],
+     [
+      "Tools/BodySlide/res/mcp/guides/conform-sliders.md",
+      "Tools/BodySlide/res/mcp/guides/conform-sliders.md"
+     ],
+     [
+      "Tools/BodySlide/res/mcp/guides/cross-game.md",
+      "Tools/BodySlide/res/mcp/guides/cross-game.md"
+     ],
+     [
+      "Tools/BodySlide/res/mcp/guides/external-models.md",
+      "Tools/BodySlide/res/mcp/guides/external-models.md"
+     ],
+     [
+      "Tools/BodySlide/res/mcp/guides/fix-clipping.md",
+      "Tools/BodySlide/res/mcp/guides/fix-clipping.md"
+     ],
+     [
+      "Tools/BodySlide/res/mcp/guides/posing.md",
+      "Tools/BodySlide/res/mcp/guides/posing.md"
+     ],
+     [
+      "Tools/BodySlide/res/shaders/default.frag",
+      "Tools/BodySlide/res/shaders/default.frag"
+     ],
+     [
+      "Tools/BodySlide/res/shaders/default.vert",
+      "Tools/BodySlide/res/shaders/default.vert"
+     ],
+     [
+      "Tools/BodySlide/res/shaders/fo4_default.frag",
+      "Tools/BodySlide/res/shaders/fo4_default.frag"
+     ],
+     [
+      "Tools/BodySlide/res/shaders/fo4_default.vert",
+      "Tools/BodySlide/res/shaders/fo4_default.vert"
+     ],
+     [
+      "Tools/BodySlide/res/shaders/fullscreentri.frag",
+      "Tools/BodySlide/res/shaders/fullscreentri.frag"
+     ],
+     [
+      "Tools/BodySlide/res/shaders/fullscreentri.vert",
+      "Tools/BodySlide/res/shaders/fullscreentri.vert"
+     ],
+     [
+      "Tools/BodySlide/res/shaders/hdri_background.frag",
+      "Tools/BodySlide/res/shaders/hdri_background.frag"
+     ],
+     [
+      "Tools/BodySlide/res/shaders/hdri_equirect.frag",
+      "Tools/BodySlide/res/shaders/hdri_equirect.frag"
+     ],
+     [
+      "Tools/BodySlide/res/shaders/hdri_prefilter.frag",
+      "Tools/BodySlide/res/shaders/hdri_prefilter.frag"
+     ],
+     [
+      "Tools/BodySlide/res/shaders/normalshade.frag",
+      "Tools/BodySlide/res/shaders/normalshade.frag"
+     ],
+     [
+      "Tools/BodySlide/res/shaders/normalshade.vert",
+      "Tools/BodySlide/res/shaders/normalshade.vert"
+     ],
+     [
+      "Tools/BodySlide/res/shaders/ob_default.frag",
+      "Tools/BodySlide/res/shaders/ob_default.frag"
+     ],
+     [
+      "Tools/BodySlide/res/shaders/ob_default.vert",
+      "Tools/BodySlide/res/shaders/ob_default.vert"
+     ],
+     [
+      "Tools/BodySlide/res/shaders/pbr_common.glsl",
+      "Tools/BodySlide/res/shaders/pbr_common.glsl"
+     ],
+     [
+      "Tools/BodySlide/res/shaders/points.frag",
+      "Tools/BodySlide/res/shaders/points.frag"
+     ],
+     [
+      "Tools/BodySlide/res/shaders/points.vert",
+      "Tools/BodySlide/res/shaders/points.vert"
+     ],
+     [
+      "Tools/BodySlide/res/shaders/primitive.frag",
+      "Tools/BodySlide/res/shaders/primitive.frag"
+     ],
+     [
+      "Tools/BodySlide/res/shaders/primitive.vert",
+      "Tools/BodySlide/res/shaders/primitive.vert"
+     ],
+     [
+      "Tools/BodySlide/res/shaders/sf_default.frag",
+      "Tools/BodySlide/res/shaders/sf_default.frag"
+     ],
+     [
+      "Tools/BodySlide/res/shaders/sf_default.vert",
+      "Tools/BodySlide/res/shaders/sf_default.vert"
+     ],
+     [
+      "Tools/BodySlide/res/shaders/sk_truepbr.frag",
+      "Tools/BodySlide/res/shaders/sk_truepbr.frag"
+     ],
+     [
+      "Tools/BodySlide/res/shaders/sk_truepbr.vert",
+      "Tools/BodySlide/res/shaders/sk_truepbr.vert"
+     ],
+     [
+      "Tools/BodySlide/res/skeleton_female_sf.nif",
+      "Tools/BodySlide/res/skeleton_female_sf.nif"
+     ],
+     [
+      "Tools/BodySlide/res/skeleton_female_sk.hkx",
+      "Tools/BodySlide/res/skeleton_female_sk.hkx"
+     ],
+     [
+      "Tools/BodySlide/res/skeleton_female_sk.nif",
+      "Tools/BodySlide/res/skeleton_female_sk.nif"
+     ],
+     [
+      "Tools/BodySlide/res/skeleton_female_sse.hkx",
+      "Tools/BodySlide/res/skeleton_female_sse.hkx"
+     ],
+     [
+      "Tools/BodySlide/res/skeleton_female_sse.nif",
+      "Tools/BodySlide/res/skeleton_female_sse.nif"
+     ],
+     [
+      "Tools/BodySlide/res/skeleton_fo3nv.nif",
+      "Tools/BodySlide/res/skeleton_fo3nv.nif"
+     ],
+     [
+      "Tools/BodySlide/res/skeleton_fo4.hkx",
+      "Tools/BodySlide/res/skeleton_fo4.hkx"
+     ],
+     [
+      "Tools/BodySlide/res/skeleton_fo4.nif",
+      "Tools/BodySlide/res/skeleton_fo4.nif"
+     ],
+     [
+      "Tools/BodySlide/res/skeleton_male_sf.nif",
+      "Tools/BodySlide/res/skeleton_male_sf.nif"
+     ],
+     [
+      "Tools/BodySlide/res/skeleton_male_sk.hkx",
+      "Tools/BodySlide/res/skeleton_male_sk.hkx"
+     ],
+     [
+      "Tools/BodySlide/res/skeleton_male_sk.nif",
+      "Tools/BodySlide/res/skeleton_male_sk.nif"
+     ],
+     [
+      "Tools/BodySlide/res/skeleton_male_sse.hkx",
+      "Tools/BodySlide/res/skeleton_male_sse.hkx"
+     ],
+     [
+      "Tools/BodySlide/res/skeleton_male_sse.nif",
+      "Tools/BodySlide/res/skeleton_male_sse.nif"
+     ],
+     [
+      "Tools/BodySlide/res/skeleton_ob.nif",
+      "Tools/BodySlide/res/skeleton_ob.nif"
+     ],
+     [
+      "Tools/BodySlide/res/xrc/About.xrc",
+      "Tools/BodySlide/res/xrc/About.xrc"
+     ],
+     [
+      "Tools/BodySlide/res/xrc/Actions.xrc",
+      "Tools/BodySlide/res/xrc/Actions.xrc"
+     ],
+     [
+      "Tools/BodySlide/res/xrc/AddProject.xrc",
+      "Tools/BodySlide/res/xrc/AddProject.xrc"
+     ],
+     [
+      "Tools/BodySlide/res/xrc/ArchiveBrowser.xrc",
+      "Tools/BodySlide/res/xrc/ArchiveBrowser.xrc"
+     ],
+     [
+      "Tools/BodySlide/res/xrc/Automation.xrc",
+      "Tools/BodySlide/res/xrc/Automation.xrc"
+     ],
+     [
+      "Tools/BodySlide/res/xrc/BatchBuild.xrc",
+      "Tools/BodySlide/res/xrc/BatchBuild.xrc"
+     ],
+     [
+      "Tools/BodySlide/res/xrc/BodySlide.xrc",
+      "Tools/BodySlide/res/xrc/BodySlide.xrc"
+     ],
+     [
+      "Tools/BodySlide/res/xrc/ConvertBodyReference.xrc",
+      "Tools/BodySlide/res/xrc/ConvertBodyReference.xrc"
+     ],
+     [
+      "Tools/BodySlide/res/xrc/EditUV.xrc",
+      "Tools/BodySlide/res/xrc/EditUV.xrc"
+     ],
+     [
+      "Tools/BodySlide/res/xrc/GroupManager.xrc",
+      "Tools/BodySlide/res/xrc/GroupManager.xrc"
+     ],
+     [
+      "Tools/BodySlide/res/xrc/ImportDialog.xrc",
+      "Tools/BodySlide/res/xrc/ImportDialog.xrc"
+     ],
+     [
+      "Tools/BodySlide/res/xrc/NormalsGenDlg.xrc",
+      "Tools/BodySlide/res/xrc/NormalsGenDlg.xrc"
+     ],
+     [
+      "Tools/BodySlide/res/xrc/OutfitStudio.xrc",
+      "Tools/BodySlide/res/xrc/OutfitStudio.xrc"
+     ],
+     [
+      "Tools/BodySlide/res/xrc/Project.xrc",
+      "Tools/BodySlide/res/xrc/Project.xrc"
+     ],
+     [
+      "Tools/BodySlide/res/xrc/SavePreset.xrc",
+      "Tools/BodySlide/res/xrc/SavePreset.xrc"
+     ],
+     [
+      "Tools/BodySlide/res/xrc/Settings.xrc",
+      "Tools/BodySlide/res/xrc/Settings.xrc"
+     ],
+     [
+      "Tools/BodySlide/res/xrc/Setup.xrc",
+      "Tools/BodySlide/res/xrc/Setup.xrc"
+     ],
+     [
+      "Tools/BodySlide/res/xrc/ShapeProperties.xrc",
+      "Tools/BodySlide/res/xrc/ShapeProperties.xrc"
+     ],
+     [
+      "Tools/BodySlide/res/xrc/Skeleton.xrc",
+      "Tools/BodySlide/res/xrc/Skeleton.xrc"
+     ],
+     [
+      "Tools/BodySlide/res/xrc/Slider.xrc",
+      "Tools/BodySlide/res/xrc/Slider.xrc"
+     ],
+     [
+      "Tools/BodySlide/res/xrc/SliderDataImport.xrc",
+      "Tools/BodySlide/res/xrc/SliderDataImport.xrc"
+     ],
+     [
+      "Tools/BodySlide/res/xrc/WeightCopy.xrc",
+      "Tools/BodySlide/res/xrc/WeightCopy.xrc"
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "all"
+    ]
+   }
+  },
+  {
+   "id": "HiPoly Faces REDUX (Seamless Kit - CBBE - TWB - FG - AB)",
+   "modFolder": "HiPoly Faces REDUX (Seamless Kit - CBBE - TWB - FG - AB)",
+   "displayName": {
+    "ru": "HiPoly Faces REDUX (Seamless Kit - CBBE - TWB - FG - AB)",
+    "en": "HiPoly Faces REDUX (Seamless Kit - CBBE - TWB - FG - AB)"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 58950,
+    "fileId": 330670,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/58950?tab=files&file_id=330670"
+   },
+   "version": "1.6",
+   "archive": {
+    "nexusFileName": "HiPoly Faces REDUX - Seamless Kit (CBBE-TWB)-58950-1-6-1723973155.7z",
+    "localFileName": "HiPoly Faces REDUX - Seamless Kit (CBBE-TWB)-58950-1-6-1723973155.7z",
+    "size": 60080147,
+    "sha256": "773e33df03bd137717680569f02d65cc096c5a5dd509bea4f01c3df16348aa15"
+   },
+   "plugins": [
+    "HiPolyFaces.esp",
+    "HiPolyFacesCompanionPlugin.esl"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   },
+   "replaces": [
+    "Rusty Face Fix"
+   ]
+  },
+  {
+   "id": "Live Dismemberment",
+   "modFolder": "Live Dismemberment",
+   "displayName": {
+    "ru": "Live Dismemberment",
+    "en": "Live Dismemberment"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 16400,
+    "fileId": 65679,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/16400?tab=files&file_id=65679"
+   },
+   "version": "1",
+   "archive": {
+    "nexusFileName": "Live Dismemberment - No Increased Headshot Damage-16400-1.rar",
+    "localFileName": "Live Dismemberment - No Increased Headshot Damage-16400-1.rar",
+    "size": 770241,
+    "sha256": "cde865782e06b691fee22622457e704ab24dac7c997724edccda22b15aef4e50"
+   },
+   "plugins": [
+    "Live Dismemberment - RegularNoHeadshots.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "CROSS Crit Gore-verhaul",
+   "modFolder": "CROSS Crit Gore-verhaul",
+   "displayName": {
+    "ru": "CROSS Crit Gore-verhaul",
+    "en": "CROSS Crit Gore-verhaul"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 23780,
+    "fileId": 100286,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/23780?tab=files&file_id=100286"
+   },
+   "version": ".91g",
+   "archive": {
+    "nexusFileName": "CROSS_GoreCrits_91g-23780--91g.7z",
+    "localFileName": "CROSS_GoreCrits_91g-23780--91g.7z",
+    "size": 27535172,
+    "sha256": "6da199cd034fd807a5d0f0a105b6f7c8fda16742086ba47567bbcdcb405bf641"
+   },
+   "plugins": [
+    "CROSS_GoreCrits.esp",
+    "CROSS_GoreCrits_FarHarborPatch.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "CROSS_GoreCrits_91g",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Fallout 4 High Heels System - FO4HHS Main Fomod",
+   "modFolder": "Fallout 4 High Heels System - FO4HHS Main Fomod",
+   "displayName": {
+    "ru": "Fallout 4 High Heels System",
+    "en": "Fallout 4 High Heels System"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 39850,
+    "fileId": 373891,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/39850?tab=files&file_id=373891"
+   },
+   "version": "1.9.2",
+   "archive": {
+    "nexusFileName": "FO4HHS-39850-1-9-2-1763255760.zip",
+    "localFileName": "FO4HHS-39850-1-9-2-1763255760.zip",
+    "size": 2225269,
+    "sha256": "6b0947516794ba4455dd71b54e1dd26b5b68cfe85210cf20240059da9ea25332"
+   },
+   "plugins": [
+    "FO4HHS.esp"
+   ],
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "00 - Main Files",
+      ""
+     ],
+     [
+      "02 - AAF Disabled",
+      ""
+     ],
+     [
+      "04 - Empty ESP File",
+      ""
+     ],
+     [
+      "40 - Preset",
+      ""
+     ]
+    ],
+    "fomod": true,
+    "choices": [
+     "Install Main Files: Main Files (esp flagged esl)",
+     "Install HHS Plugin: -",
+     "Install HHS Fixes Preset: Fixes file (optional but suggested)",
+     "Install modified Skeleton: -",
+     "Install modified Skeleton for 1st Person and Mannequins (optional): -",
+     "Install other files: -",
+     "Thanks: -"
+    ]
+   }
+  },
+  {
+   "id": "Fallout 4 High Heels System - FO4HHS AE 1.11.240",
+   "modFolder": "Fallout 4 High Heels System - FO4HHS AE 1.11.240",
+   "displayName": {
+    "ru": "Fallout 4 High Heels System",
+    "en": "Fallout 4 High Heels System"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 39850,
+    "fileId": 408389,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/39850?tab=files&file_id=408389"
+   },
+   "version": "1.9.2",
+   "archive": {
+    "nexusFileName": "0d/bd/7c/0dbd7c31-ea19-48bc-aed2-2905d52f3806",
+    "localFileName": "0d/bd/7c/0dbd7c31-ea19-48bc-aed2-2905d52f3806",
+    "size": 335367,
+    "sha256": "c867f46fc376acafbaf060e629a5ed02479078906149a15d0edd52ed94333400"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Fusion City Rising - Quest Mod Plus",
+   "modFolder": "Fusion City Rising - Quest Mod Plus",
+   "displayName": {
+    "ru": "Fusion City Rising - Quest Mod Plus",
+    "en": "Fusion City Rising - Quest Mod Plus"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 16423,
+    "fileId": 86749,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/16423?tab=files&file_id=86749"
+   },
+   "version": "1.0",
+   "archive": {
+    "nexusFileName": "Fusion City Rising v.1.0-16423-1-0.rar",
+    "localFileName": "Fusion City Rising v.1.0-16423-1-0.rar",
+    "size": 926500227,
+    "sha256": "b300c66aefe3975a0e098b9ad090a9a7638cc8c56398ccdc60cfa69c1807bbc8"
+   },
+   "plugins": [
+    "AA FusionCityRising.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Vtaw Wardrobe 9 - CBBE - BodySlide - Vtaw Wardrobe 9 Main 2K",
+   "modFolder": "Vtaw Wardrobe 9 - CBBE - BodySlide - Vtaw Wardrobe 9 Main 2K",
+   "displayName": {
+    "ru": "Vtaw Wardrobe 9 - CBBE - BodySlide",
+    "en": "Vtaw Wardrobe 9 - CBBE - BodySlide"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 78169,
+    "fileId": 301685,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/78169?tab=files&file_id=301685"
+   },
+   "version": "1.0",
+   "archive": {
+    "nexusFileName": "VtawWardrobe 9 Main 2K-78169-1-0-1706705240.7z",
+    "localFileName": "VtawWardrobe 9 Main 2K-78169-1-0-1706705240.7z",
+    "size": 1545396908,
+    "sha256": "7029cfea8ef310b7b7d1495c3128d876a938841580fde6e980049bb3ae1150d8"
+   },
+   "plugins": [
+    "VtawWardrobe9.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "Vtaw Wardrobe 9 2K",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Vtaw Wardrobe 9 - CBBE - BodySlide - Vtaw Wardrobe 9 Materials 2K",
+   "modFolder": "Vtaw Wardrobe 9 - CBBE - BodySlide - Vtaw Wardrobe 9 Materials 2K",
+   "displayName": {
+    "ru": "Vtaw Wardrobe 9 - CBBE - BodySlide",
+    "en": "Vtaw Wardrobe 9 - CBBE - BodySlide"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 78169,
+    "fileId": 301691,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/78169?tab=files&file_id=301691"
+   },
+   "version": "1.0",
+   "archive": {
+    "nexusFileName": "Vtaw Wardrobe 9 Materials 2K-78169-1-0-1706706460.7z",
+    "localFileName": "Vtaw Wardrobe 9 Materials 2K-78169-1-0-1706706460.7z",
+    "size": 8594936797,
+    "sha256": "1042e918e20875cec68854e41827a4534df8e2b94beed82972e58aa276b793a5"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "Vtaw Wardrobe 9 Materials 2K",
+    "fomod": false
+   }
+  }
+ ],
+ "default": false,
+ "note": "Галочка 18+, по умолчанию выключена. CBBE-одежда и Vtaw Wardrobe 9 без сборки в BodySlide могут выглядеть неправильно."
+}

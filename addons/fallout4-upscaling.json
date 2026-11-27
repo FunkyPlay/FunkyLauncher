@@ -1,0 +1,134 @@
+{
+ "schema": 1,
+ "modlistId": "fallout4",
+ "addonId": "fallout4-upscaling",
+ "listVersion": "0.1.0",
+ "forMainVersion": "0.1.2",
+ "forGameVersion": "1.11.240",
+ "draft": true,
+ "generated": "2026-11-17",
+ "mods": [
+  {
+   "id": "Motion Vector Fixes",
+   "modFolder": "Motion Vector Fixes",
+   "displayName": {
+    "ru": "Motion Vector Fixes",
+    "en": "Motion Vector Fixes"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 98544,
+    "fileId": 378213,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/98544?tab=files&file_id=378213"
+   },
+   "version": "1.0.4",
+   "archive": {
+    "nexusFileName": "Motion Vector Fixes-98544-1-0-4-1766347704.zip",
+    "localFileName": "Motion Vector Fixes-98544-1-0-4-1766347704.zip",
+    "size": 4639941,
+    "sha256": "261f2646e649f4e8a1bc62266b3f0379f463fafab8d844edf2f04f81b088d56c"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "This Made My Spline Stiff",
+   "modFolder": "This Made My Spline Stiff",
+   "displayName": {
+    "ru": "This Made My Spline Stiff",
+    "en": "This Made My Spline Stiff"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 98935,
+    "fileId": 376653,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/98935?tab=files&file_id=376653"
+   },
+   "version": "1.0",
+   "archive": {
+    "nexusFileName": "This Made My Spline Stiff-98935-1-0-1765039476.zip",
+    "localFileName": "This Made My Spline Stiff-98935-1-0-1765039476.zip",
+    "size": 472,
+    "sha256": "f829fbf9dd9a170688b67749b030af861c939fc8721b50eec26cb17cd5ae5dca"
+   },
+   "plugins": [
+    "Stiff Splines.esp"
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Upscaling",
+   "modFolder": "Upscaling",
+   "displayName": {
+    "ru": "Upscaling",
+    "en": "Upscaling"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 99130,
+    "fileId": 378665,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/99130?tab=files&file_id=378665"
+   },
+   "version": "1.1.1",
+   "archive": {
+    "nexusFileName": "Upscaling-99130-1-1-1-1766713689.zip",
+    "localFileName": "Upscaling-99130-1-1-1-1766713689.zip",
+    "size": 24918006,
+    "sha256": "ce03894ea219de1eeacc5feaec9d74694dfe68e8642697612f28243aebedc5d4"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  },
+  {
+   "id": "Frame Generation",
+   "modFolder": "Frame Generation",
+   "displayName": {
+    "ru": "Frame Generation",
+    "en": "Frame Generation"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 98208,
+    "fileId": 377752,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/98208?tab=files&file_id=377752"
+   },
+   "version": "1.3.3",
+   "archive": {
+    "nexusFileName": "Frame Generation-98208-1-3-3-1766014396.zip",
+    "localFileName": "Frame Generation-98208-1-3-3-1766014396.zip",
+    "size": 8976804,
+    "sha256": "9012082d2cf827ea8c9be2297816474060f1c0f814647db34a2a97ecd9350cf6"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   }
+  }
+ ],
+ "default": true,
+ "note": "DLSS 4 / FSR 3.1 (сам выбирает DLSS на NVIDIA RTX, иначе FSR). Включено по умолчанию (решение Funky 17.11). Генерация кадров выключена правкой INI: требует DirectX 12 и мешает оверлеям FPS; игрок включает в MCM.",
+ "filePatches": [
+  {
+   "modFolder": "Frame Generation",
+   "file": "F4SE/Plugins/FrameGeneration.ini",
+   "section": "Settings",
+   "key": "bFrameGenerationMode",
+   "value": "false",
+   "why": "генерация кадров по умолчанию выключена: нужна видеокарта с DirectX 12, конфликтует с оверлеями FPS"
+  }
+ ]
+}

@@ -1,0 +1,231 @@
+{
+ "schema": 1,
+ "modlistId": "starfield",
+ "addonId": "starfield-adult",
+ "listVersion": "0.1.0",
+ "forMainVersion": "0.1.1",
+ "generated": "2026-11-17",
+ "mods": [
+  {
+   "id": "KZ Aggregation of Scraps",
+   "modFolder": "KZ Aggregation of Scraps",
+   "order": 102,
+   "nexus": {
+    "game": "starfield",
+    "modId": 11471,
+    "fileId": 68995,
+    "filePage": "https://www.nexusmods.com/starfield/mods/11471?tab=files&file_id=68995"
+   },
+   "version": "1.6",
+   "adultOnNexus": true,
+   "archive": {
+    "nexusFileName": "29/7f/9c/297f9c25-7865-48a7-adc3-91bdc25e4b0b",
+    "size": 1868978473,
+    "sha256": "5f048e1fe7a7ffa05f4cc1356bdab706005c1f8db9c73c97b7c8a3b4ffb27fb9",
+    "localFileName": "KZ Aggregation of Scraps 11471 1.6 2026-07-06T11-46Z zBaYm0TuM.7z"
+   },
+   "plugins": [
+    "KZ_AOS.esm"
+   ],
+   "ru": "translated",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 3
+   },
+   "displayName": {
+    "ru": "KZ Aggregation of Scraps",
+    "en": "KZ Aggregation of Scraps"
+   }
+  },
+  {
+   "id": "ENHANCE Outfits - Tank Tops and Mini Skirts - ZY5 Tank Top and Miniskirts",
+   "modFolder": "ENHANCE Outfits - Tank Tops and Mini Skirts - ZY5 Tank Top and Miniskirts",
+   "order": 109,
+   "nexus": {
+    "game": "starfield",
+    "modId": 7951,
+    "fileId": 41511,
+    "filePage": "https://www.nexusmods.com/starfield/mods/7951?tab=files&file_id=41511"
+   },
+   "version": "2.1.1",
+   "adultOnNexus": true,
+   "archive": {
+    "nexusFileName": "ZY5 Tank Top and Miniskirts-7951-2-1-1-1723345210.zip",
+    "size": 21664886,
+    "sha256": "65155eae15f70bc5a68a542d5f57c5924f713e0c68dbcfc90b6374e8854cb7a0",
+    "localFileName": "ZY5 Tank Top and Miniskirts-7951-2-1-1-1723345210.zip"
+   },
+   "plugins": [
+    "ZY5_TankTop_and_Skirts.esm"
+   ],
+   "ru": "noTranslation",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 3
+   },
+   "displayName": {
+    "ru": "ENHANCE Outfits - Tank Tops and Mini Skirts - ZY5 Tank Top and Miniskirts",
+    "en": "ENHANCE Outfits - Tank Tops and Mini Skirts - ZY5 Tank Top and Miniskirts"
+   }
+  },
+  {
+   "id": "ENHANCE Slooty Flightsuit - Standalone Outfit. ESM (Light) - ZY1S Slooty Flightsuit",
+   "modFolder": "ENHANCE Slooty Flightsuit - Standalone Outfit. ESM (Light) - ZY1S Slooty Flightsuit",
+   "order": 110,
+   "nexus": {
+    "game": "starfield",
+    "modId": 10008,
+    "fileId": 55095,
+    "filePage": "https://www.nexusmods.com/starfield/mods/10008?tab=files&file_id=55095"
+   },
+   "version": "1.7.2",
+   "adultOnNexus": true,
+   "archive": {
+    "nexusFileName": "ZY1S Slooty Flightsuit-10008-1-7-2-1753594114.zip",
+    "size": 67876181,
+    "sha256": "715f91dba4b1d7acbf5494bb931fc29bbb8d0a5ae95a1f773d143fe83fe0578c",
+    "localFileName": "ZY1S Slooty Flightsuit-10008-1-7-2-1753594114.zip"
+   },
+   "plugins": [
+    "ZY1S_Slooty_Flightsuit.esm"
+   ],
+   "ru": "noTranslation",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 3
+   },
+   "displayName": {
+    "ru": "ENHANCE Slooty Flightsuit - Standalone Outfit. ESM (Light) - ZY1S Slooty Flightsuit",
+    "en": "ENHANCE Slooty Flightsuit - Standalone Outfit. ESM (Light) - ZY1S Slooty Flightsuit"
+   }
+  },
+  {
+   "id": "Remove Ecliptic spacesuits in breathable conditions - Ecliptic No Suit",
+   "modFolder": "Remove Ecliptic spacesuits in breathable conditions - Ecliptic No Suit",
+   "nexus": {
+    "game": "starfield",
+    "modId": 12269,
+    "fileId": 57352,
+    "filePage": "https://www.nexusmods.com/starfield/mods/12269?tab=files&file_id=57352"
+   },
+   "version": "1.1",
+   "adultOnNexus": false,
+   "archive": {
+    "nexusFileName": "Ecliptic No Suit-12269-1-1-1760213001.rar",
+    "size": 22170,
+    "sha256": "2399ed54283e03179897c669bc0573d6b0a95368ceb8db2fb1dc7a5eee44eaa6",
+    "localFileName": "Ecliptic No Suit-12269-1-1-1760213001.rar"
+   },
+   "plugins": [
+    "EclipticNoSuit.esm"
+   ],
+   "ru": "noTranslation",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1,
+    "priority": "плагин после KZ_AOS.esm (мастер)"
+   },
+   "displayName": {
+    "ru": "Remove Ecliptic spacesuits in breathable conditions - Ecliptic No Suit",
+    "en": "Remove Ecliptic spacesuits in breathable conditions - Ecliptic No Suit"
+   }
+  },
+  {
+   "id": "ZBB - Yoga swimsuit (optional)",
+   "modFolder": "ZBB - Yoga swimsuit (optional)",
+   "nexus": {
+    "game": "starfield",
+    "modId": 11832,
+    "fileId": 45287,
+    "filePage": "https://www.nexusmods.com/starfield/mods/11832?tab=files&file_id=45287"
+   },
+   "version": "1.0",
+   "adultOnNexus": true,
+   "archive": {
+    "nexusFileName": "ZBB (Yoga swimsuit)-11832-1-0-1728284498.zip",
+    "size": 682163,
+    "sha256": "7ad6f0967b462c2d0867802199cd16f87c99b43bae8ce9fd0c96699e493b8a8c",
+    "localFileName": "ZBB (Yoga swimsuit)-11832-1-0-1728284498.zip"
+   },
+   "plugins": [],
+   "ru": "noText",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 8,
+    "note": "проверить подпапку архива при тестовой установке (в MO2 файлы лежат в корне: Materials/Textures/geometries/meshes)"
+   },
+   "rules": "выше по приоритету (раньше в modlist), чем ZBB и STARQUEEN 5",
+   "order": 111,
+   "displayName": {
+    "ru": "ZBB - Yoga swimsuit (optional)",
+    "en": "ZBB - Yoga swimsuit (optional)"
+   }
+  },
+  {
+   "id": "STARQUEEN 5 (NSFW)",
+   "modFolder": "STARQUEEN 5 - Starfield Female Skin Textures (SFST) - FA - STARQUEEN 5 - Starfield Female Skin Textures",
+   "order": 291,
+   "nexus": {
+    "game": "starfield",
+    "modId": 6293,
+    "fileId": 41882,
+    "filePage": "https://www.nexusmods.com/starfield/mods/6293?tab=files&file_id=41882"
+   },
+   "version": "5.1",
+   "adultOnNexus": true,
+   "archive": {
+    "nexusFileName": "FA - STARQUEEN 5 - Starfield Female Skin Textures-6293-5-1-1724022920.7z",
+    "size": 742146481,
+    "sha256": "44a774af9988957f413c0468b86322ed70ef83836fd0d0ead3a38515f89d8368",
+    "localFileName": "FA - STARQUEEN 5 - Starfield Female Skin Textures-6293-5-1-1724022920.7z"
+   },
+   "plugins": [],
+   "ru": "noText",
+   "install": {
+    "type": "files",
+    "fomod": true,
+    "choices": [
+     "Intro [SelectAll]: Core Files",
+     "Texture Styles [SelectExactlyOne]: NSFW - Nude Bare",
+     "Complete [SelectAll]: Use with CRT"
+    ],
+    "overrides": {
+     "Texture Styles": [
+      "NSFW - Nude Bare"
+     ]
+    },
+    "map": [
+     [
+      "FA - STARQUEEN 5.1 - Starfield Female Skin/Shared All",
+      ""
+     ],
+     [
+      "FA - STARQUEEN 5.1 - Starfield Female Skin/Nude/Bare",
+      ""
+     ],
+     [
+      "FA - STARQUEEN 5.1 - Starfield Female Skin/Shared Nude",
+      ""
+     ]
+    ]
+   },
+   "displayName": {
+    "ru": "STARQUEEN 5 (NSFW)",
+    "en": "STARQUEEN 5 (NSFW)"
+   },
+   "replaces": [
+    "STARQUEEN 5 (SFW, публичная)"
+   ]
+  }
+ ]
+}

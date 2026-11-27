@@ -1,0 +1,109 @@
+﻿<UserControl x:Class="FunkyLauncher.Views.HomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+    <StackPanel Margin="28,24">
+
+        <!-- A newer launcher is out (GitHub latest release) -->
+        <Border x:Name="UpdateBar" CornerRadius="12" Background="#C02A1426" BorderBrush="#FF3FD2" BorderThickness="1" Padding="16,10" Margin="0,0,0,14" Visibility="Collapsed">
+            <DockPanel>
+                <Button x:Name="UpdateButton" DockPanel.Dock="Right" Style="{StaticResource PrimaryButton}" Height="36" Padding="16,0" Click="Update_Click"/>
+                <TextBlock x:Name="UpdateText" FontSize="14" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" Margin="0,0,14,0"/>
+            </DockPanel>
+        </Border>
+
+        <!-- Hero: FunkyPlay brand, not tied to one game -->
+        <Border x:Name="Hero" CornerRadius="18" ClipToBounds="True" Height="330">
+            <Border.Background>
+                <ImageBrush ImageSource="/Assets/home_bg.jpg" Stretch="UniformToFill" AlignmentY="Center"/>
+            </Border.Background>
+            <Grid x:Name="HeroGrid">
+                <Border CornerRadius="18">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Color="#F50F0F14" Offset="0"/>
+                            <GradientStop Color="#D00F0F14" Offset="0.45"/>
+                            <GradientStop Color="#300F0F14" Offset="0.9"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                </Border>
+                <StackPanel VerticalAlignment="Center" Margin="36,0,170,0" MaxWidth="780" HorizontalAlignment="Left">
+                    <TextBlock x:Name="BrandTag" FontSize="12" FontWeight="SemiBold" Foreground="#FF7AD9" Margin="0,0,0,8"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Assets/icon.png" Width="52" Height="52" RenderOptions.BitmapScalingMode="HighQuality"/>
+                        <TextBlock x:Name="StartTitle" FontFamily="{StaticResource TitleFont}" FontSize="42" Margin="14,0,0,0" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <TextBlock x:Name="StartText" FontSize="14.5" LineHeight="21" Foreground="#D6D6E2" TextWrapping="Wrap" Margin="0,12,0,0"/>
+                    <Grid Margin="0,14,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border x:Name="PremiumBox" CornerRadius="10" Background="#C02A1426" BorderBrush="#66FF3FD2" BorderThickness="1" Padding="12,7">
+                            <TextBlock x:Name="PremiumText" FontSize="12.5" Foreground="#FFC6EE" TextWrapping="Wrap"/>
+                        </Border>
+                        <Border x:Name="FreeBox" Grid.Column="2" CornerRadius="10" Background="#C00F2A33" BorderBrush="#667AE8FF" BorderThickness="1" Padding="12,7">
+                            <TextBlock x:Name="FreeText" FontSize="12.5" Foreground="#C6F7FF" TextWrapping="Wrap"/>
+                        </Border>
+                    </Grid>
+                    <Button x:Name="LibraryButton" Style="{StaticResource PrimaryButton}" HorizontalAlignment="Left" Margin="0,18,0,0" Click="Library_Click"/>
+                </StackPanel>
+
+                <!-- corners of the picture -->
+                <Button x:Name="GitHubButton" Content="GitHub" Style="{StaticResource SecondaryButton}" Height="40" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,18,18,0" Click="GitHub_Click"/>
+                <StackPanel x:Name="SocialButtons" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,18,18">
+                    <Button x:Name="TelegramButton" Content="Telegram" Style="{StaticResource SecondaryButton}" Height="44" Margin="0,0,10,0" Click="Telegram_Click"/>
+                    <Button Content="YouTube" Style="{StaticResource SecondaryButton}" Height="44" Click="YouTube_Click"/>
+                    <!-- English only: Instagram and TikTok are for the English-speaking audience (links come from the catalog) -->
+                    <Button x:Name="InstagramButton" Content="Instagram" Style="{StaticResource SecondaryButton}" Height="44" Margin="10,0,0,0" Click="Instagram_Click"/>
+                    <Button x:Name="TikTokButton" Content="TikTok" Style="{StaticResource SecondaryButton}" Height="44" Margin="10,0,0,0" Click="TikTok_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- What FunkyPlay is about: three directions -->
+        <UniformGrid x:Name="Tiles" Columns="3" Margin="0,18,0,0"/>
+
+        <!-- News | What's new + Support -->
+        <Grid Margin="0,22,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="22"/>
+                <ColumnDefinition Width="320"/>
+            </Grid.ColumnDefinitions>
+            <DockPanel x:Name="NewsPanel" Grid.Column="0" VerticalAlignment="Top">
+                <DockPanel DockPanel.Dock="Top" Margin="0,0,0,12">
+                    <TextBlock x:Name="AllNews" DockPanel.Dock="Right" FontSize="13" Foreground="{DynamicResource Cyan}" Cursor="Hand" MouseLeftButtonUp="AllNews_Click"/>
+                    <TextBlock x:Name="NewsTitle" FontSize="18" FontWeight="Bold"/>
+                </DockPanel>
+                <UniformGrid x:Name="NewsGrid" Columns="3" VerticalAlignment="Top"/>
+            </DockPanel>
+
+            <!-- RU: two cards one under the other on the right; EN (no Russian news feed): side by side across the page -->
+            <Grid x:Name="SidePanel" Grid.Column="2" VerticalAlignment="Top">
+                <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+                <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition x:Name="SideCol2" Width="0"/></Grid.ColumnDefinitions>
+                <Border x:Name="WhatsNewCard" Style="{StaticResource CardBorder}" Padding="18,12">
+                    <StackPanel>
+                        <Border x:Name="WhatsNewBadge" HorizontalAlignment="Left" CornerRadius="8" Padding="8,2" Margin="0,0,0,6" Background="{DynamicResource Pink}" Visibility="Collapsed">
+                            <TextBlock x:Name="WhatsNewBadgeText" FontSize="11" FontWeight="Bold" Foreground="#0F0F14"/>
+                        </Border>
+                        <TextBlock x:Name="WhatsNewTitle" FontSize="15" FontWeight="Bold" Margin="0,0,0,8"/>
+                        <TextBlock x:Name="WhatsNewText" FontSize="12.5" LineHeight="19" Foreground="#C9C9D6" TextWrapping="Wrap"/>
+                    </StackPanel>
+                </Border>
+                <Border x:Name="SupportCard" Grid.Row="1" Style="{StaticResource CardBorder}" Padding="18,12" Margin="0,12,0,0">
+                    <StackPanel>
+                        <TextBlock x:Name="SupportTitle" FontSize="15" FontWeight="Bold" Margin="0,0,0,6"/>
+                        <TextBlock x:Name="SupportText" FontSize="12.5" Foreground="#C9C9D6" TextWrapping="Wrap" Margin="0,0,0,10"/>
+                        <Button x:Name="SupportButton" Style="{StaticResource SecondaryButton}" Height="38" Click="Support_Click"/>
+                        <Button x:Name="ReportButton" Style="{StaticResource SecondaryButton}" Height="38" Margin="0,8,0,0" Click="Report_Click"/>
+                        <TextBlock x:Name="ReportText" FontSize="12" Foreground="{DynamicResource Cyan}" TextWrapping="Wrap" Margin="0,6,0,0"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Grid>
+    </StackPanel>
+    </ScrollViewer>
+</UserControl>

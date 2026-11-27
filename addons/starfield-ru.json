@@ -1,0 +1,1761 @@
+{
+ "schema": 1,
+ "modlistId": "starfield",
+ "addonId": "starfield-ru",
+ "listVersion": "0.1.0",
+ "forMainVersion": "0.1.1",
+ "generated": "2026-11-17",
+ "mods": [
+  {
+   "id": "Russian - Segnet",
+   "modFolder": "Русский перевод Starfield (Segnet)",
+   "nexus": {
+    "game": "starfield",
+    "modId": 1357,
+    "fileId": 70775
+   },
+   "version": "1.1.5.7",
+   "archive": {
+    "nexusFileName": "c4/8e/8c/c48e8cf2-4744-4df2-931d-9604e86cebb2",
+    "size": 20184141,
+    "sha256": "2a1417816beec0a09d93ca1069fca687de9fc970e34b04560428aa5ea11aa2f5",
+    "localFileName": "documents_deeptrans 1357 1.1.5.7 2026-08-23T16-22Z qd5Tg9FYk.zip"
+   },
+   "translates": [
+    {
+     "modId": 0,
+     "name": "Starfield (игра)"
+    }
+   ],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 151
+   },
+   "displayName": {
+    "ru": "Russian - Segnet",
+    "en": "Russian - Segnet"
+   }
+  },
+  {
+   "id": "Allied Assault Rifle AA-15 - RU",
+   "modFolder": "Allied Assault Rifle AA-15 - RU",
+   "nexus": {
+    "game": "starfield",
+    "modId": 15722,
+    "fileId": 59251
+   },
+   "version": "1.03",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "Allied Assault Rifle AA-15 - RU-15722-1-03-1766266522.7z",
+    "size": 9692,
+    "sha256": "cbb1217a03550fe745bfc089717c80243109d66e40155b54472dca3b09d5c0d7",
+    "localFileName": "Allied Assault Rifle AA-15 - RU-15722-1-03-1766266522.7z"
+   },
+   "translates": [
+    {
+     "modId": 13470,
+     "name": "Allied Assault Rifle AA-15"
+    }
+   ],
+   "author": "MrDmitrij",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "outrora_arx_01.esm"
+   ],
+   "displayName": {
+    "ru": "Allied Assault Rifle AA-15 - RU",
+    "en": "Allied Assault Rifle AA-15 - RU"
+   }
+  },
+  {
+   "id": "Anchorpoint Expanded - RU",
+   "modFolder": "Anchorpoint Expanded - RU",
+   "nexus": {
+    "game": "starfield",
+    "modId": 17588,
+    "fileId": 68831
+   },
+   "version": "1.1.2",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "c4/37/00/c437003c-f185-4479-b6a1-0ada90cbe43c",
+    "size": 5986,
+    "sha256": "3ff2e9bfe8c465d9eb82e3616ecd9812bfb1aaf2a289fbd25849c8e028ce13b3",
+    "localFileName": "Anchorpoint Expanded - RU 17588 1.1.2 2026-07-02T15-02Z LsN5BvvGE.zip"
+   },
+   "translates": [
+    {
+     "modId": 16742,
+     "name": "Anchorpoint Expanded"
+    }
+   ],
+   "author": "MrDmitrij",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 3
+   },
+   "displayName": {
+    "ru": "Anchorpoint Expanded - RU",
+    "en": "Anchorpoint Expanded - RU"
+   }
+  },
+  {
+   "id": "ARX-15 (Vanilla Version) - RU",
+   "modFolder": "ARX-15 (Vanilla Version) - RU",
+   "nexus": {
+    "game": "starfield",
+    "modId": 15697,
+    "fileId": 69248
+   },
+   "version": "1.2",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "c7/16/e5/c716e577-2ea1-4f84-8819-3d14a0a779b7",
+    "size": 13206,
+    "sha256": "3908d6df1bad99a26e812955a9c6c870d00ea9a574e4113844fdd8ff143167fc",
+    "localFileName": "ARX-15 (Vanilla Version) - RU 15697 1.2 2026-07-13T07-09Z gn9b52YMB.zip"
+   },
+   "translates": [
+    {
+     "modId": 13471,
+     "name": "ARX-15"
+    }
+   ],
+   "author": "MrDmitrij",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "ARX-15.esm"
+   ],
+   "displayName": {
+    "ru": "ARX-15 (Vanilla Version) - RU",
+    "en": "ARX-15 (Vanilla Version) - RU"
+   }
+  },
+  {
+   "id": "Avontech Shipyards Rus",
+   "modFolder": "Avontech Shipyards Rus",
+   "nexus": {
+    "game": "starfield",
+    "modId": 14731,
+    "fileId": 57574
+   },
+   "version": "2.3.1",
+   "versionMatch": false,
+   "archive": {
+    "nexusFileName": "Avontech Shipyards Rus-14731-2-3-1-1760941385.zip",
+    "size": 59451,
+    "sha256": "ea052e53137e672bdeee09cfd883d3760b2ee75c4f8cbfbc59eb678b2c96e24f",
+    "localFileName": "Avontech Shipyards Rus-14731-2-3-1-1760941385.zip"
+   },
+   "translates": [
+    {
+     "modId": 8057,
+     "name": "Avontech Shipyards"
+    }
+   ],
+   "author": "Bulgat2012",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "avontechshipyards.esm"
+   ],
+   "displayName": {
+    "ru": "Avontech Shipyards Rus",
+    "en": "Avontech Shipyards Rus"
+   }
+  },
+  {
+   "id": "Bedlam - Dungeon Randomizer Russian",
+   "modFolder": "Bedlam - Dungeon Randomizer Russian",
+   "nexus": {
+    "game": "starfield",
+    "modId": 14946,
+    "fileId": 56898
+   },
+   "version": "2.0.0",
+   "versionMatch": false,
+   "archive": {
+    "nexusFileName": "Bedlam - Dungeon Randomizer Russian-14946-2-0-0-1758604164.rar",
+    "size": 35248,
+    "sha256": "871910b11696a3f16bf8890af09cf5a21ccdc69b2a298d1fbb23c80e9771f384",
+    "localFileName": "Bedlam - Dungeon Randomizer Russian-14946-2-0-0-1758604164.rar"
+   },
+   "translates": [
+    {
+     "modId": 10717,
+     "name": "Bedlam - Dungeon Randomizer"
+    }
+   ],
+   "author": "Un8alanced",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "Bedlam RU.esm"
+   ],
+   "displayName": {
+    "ru": "Bedlam - Dungeon Randomizer Russian",
+    "en": "Bedlam - Dungeon Randomizer Russian"
+   }
+  },
+  {
+   "id": "Better Explosives - An Explosive Overhaul - RU",
+   "modFolder": "Better Explosives - An Explosive Overhaul - RU",
+   "nexus": {
+    "game": "starfield",
+    "modId": 15471,
+    "fileId": 68434
+   },
+   "version": "1.0.3",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "f0/f0/71/f0f07115-f452-4746-84d9-9d17fe937213",
+    "size": 5064,
+    "sha256": "954b0daa9674f12f7cccaec50f404c362dd1950900bf2fa47fbe9fcbda2da4ee",
+    "localFileName": "Better Explosives - An Explosive Overhaul - RU 15471 1.0.3 2026-06-23T12-21Z AHEeGDDGd.zip"
+   },
+   "translates": [
+    {
+     "modId": 9650,
+     "name": "Better Explosives - An Explosive Overhaul"
+    }
+   ],
+   "author": "MrDmitrij",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "Better Explosives.esm"
+   ],
+   "displayName": {
+    "ru": "Better Explosives - An Explosive Overhaul - RU",
+    "en": "Better Explosives - An Explosive Overhaul - RU"
+   }
+  },
+  {
+   "id": "Better Living II - Outpost Stuff - RU v1.0",
+   "modFolder": "Better Living II - Outpost Stuff - RU v1.0",
+   "nexus": {
+    "game": "starfield",
+    "modId": 12018,
+    "fileId": 45628
+   },
+   "version": "1.0",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "Better Living II - Outpost Stuff - RU v1.0-12018-1-0-1728726650.7z",
+    "size": 1380376,
+    "sha256": "8e4f559b38e91bc1631144d3502d9fc3058e8250606232057565414a528086e8",
+    "localFileName": "Better Living II - Outpost Stuff - RU v1.0-12018-1-0-1728726650.7z"
+   },
+   "translates": [
+    {
+     "modId": 11971,
+     "name": "Better Living - Shattered Space DLC Edition"
+    }
+   ],
+   "author": "dagnir77",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "Better_Living_II.esm"
+   ],
+   "displayName": {
+    "ru": "Better Living II - Outpost Stuff - RU v1.0",
+    "en": "Better Living II - Outpost Stuff - RU v1.0"
+   }
+  },
+  {
+   "id": "CharGenMenu RU",
+   "modFolder": "CharGenMenu RU",
+   "nexus": {
+    "game": "starfield",
+    "modId": 15681,
+    "fileId": 59128
+   },
+   "version": ".1.0.20",
+   "versionMatch": false,
+   "archive": {
+    "nexusFileName": "CharGenMenu RU-15681--1-0-20-1765813933.7z",
+    "size": 2539,
+    "sha256": "38f551d87a4b3fdfaea6ef84491a59ea8258ad5f3d89e254115e853da8d0ae56",
+    "localFileName": "CharGenMenu RU-15681--1-0-20-1765813933.7z"
+   },
+   "translates": [
+    {
+     "modId": 6850,
+     "name": "CharGenMenu"
+    }
+   ],
+   "author": "Milota50",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "displayName": {
+    "ru": "CharGenMenu RU",
+    "en": "CharGenMenu RU"
+   }
+  },
+  {
+   "id": "Echoes of Cydonia - RU",
+   "modFolder": "Echoes of Cydonia - RU",
+   "nexus": {
+    "game": "starfield",
+    "modId": 15630,
+    "fileId": 68364
+   },
+   "version": "1.2.1",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "77/80/b1/7780b1e9-77c8-46ad-879e-2f2e4d87e1c4",
+    "size": 761744,
+    "sha256": "8664ad370b187bb9f906fba7fba3adea038cb61ba01aa77a44dec7c2b4d8a939",
+    "localFileName": "Echoes of Cydonia - RU 15630 1.2.1 2026-06-21T13-59Z Siqx4ggdc.zip"
+   },
+   "translates": [
+    {
+     "modId": 12853,
+     "name": "Echoes of Cydonia"
+    }
+   ],
+   "author": "MrDmitrij",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "CydoniaCheck.esm"
+   ],
+   "displayName": {
+    "ru": "Echoes of Cydonia - RU",
+    "en": "Echoes of Cydonia - RU"
+   }
+  },
+  {
+   "id": "Eit Clothiers Plus - Russian",
+   "modFolder": "Eit Clothiers Plus - Russian",
+   "nexus": {
+    "game": "starfield",
+    "modId": 11152,
+    "fileId": 71955
+   },
+   "version": "2.2",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "1f/28/94/1f2894cb-8b84-4d16-81c0-c229171605c9",
+    "size": 26261,
+    "sha256": "6dd41753aa3169a5057cab35841b7a8c9c616cd1d7b5e0ee3ddad9bbb335c74e",
+    "localFileName": "Eit Clothiers Plus - Russian 11152 2.2 2026-09-21T09-26Z tmbST8R3S.zip"
+   },
+   "translates": [
+    {
+     "modId": 8473,
+     "name": "Eit Clothiers Plus - Clothes jackets belts gloves glasses necklace - ZBB"
+    }
+   ],
+   "author": "Death3IHOH",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "Eit_Clothiers_Z.esm"
+   ],
+   "displayName": {
+    "ru": "Eit Clothiers Plus - Russian",
+    "en": "Eit Clothiers Plus - Russian"
+   }
+  },
+  {
+   "id": "G36C Redux - RU",
+   "modFolder": "G36C Redux - RU",
+   "nexus": {
+    "game": "starfield",
+    "modId": 15728,
+    "fileId": 59265
+   },
+   "version": "1.01",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "G36C Redux - RU-15728-1-01-1766313765.7z",
+    "size": 8249,
+    "sha256": "b13a64f64c0358e1407b8e363b023b8bff02fb011616a19163b6ea72ed2d421c",
+    "localFileName": "G36C Redux - RU-15728-1-01-1766313765.7z"
+   },
+   "translates": [
+    {
+     "modId": 12606,
+     "name": "G36C Redux"
+    }
+   ],
+   "author": "MrDmitrij",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "G36CRedux.esm"
+   ],
+   "displayName": {
+    "ru": "G36C Redux - RU",
+    "en": "G36C Redux - RU"
+   }
+  },
+  {
+   "id": "Hopetech Ship Hab (HSHE)RUS",
+   "modFolder": "Hopetech Ship Hab (HSHE)RUS",
+   "nexus": {
+    "game": "starfield",
+    "modId": 14728,
+    "fileId": 65510
+   },
+   "version": "3.2.0",
+   "versionMatch": false,
+   "archive": {
+    "nexusFileName": "Hopetech Ship Hab (HSHE)RUS-14728-3-2-0-1778322506.zip",
+    "size": 526299,
+    "sha256": "2f24bca1d708fc9ae13601fa92b6e7546580e2732cfe943c46b7b93b19090f6f",
+    "localFileName": "Hopetech Ship Hab (HSHE)RUS-14728-3-2-0-1778322506.zip"
+   },
+   "translates": [
+    {
+     "modId": 14328,
+     "name": "Hopetech Ship Hab Expansion (HSHE)"
+    }
+   ],
+   "author": "Bulgat2012",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "HSHE.esm"
+   ],
+   "displayName": {
+    "ru": "Hopetech Ship Hab (HSHE)RUS",
+    "en": "Hopetech Ship Hab (HSHE)RUS"
+   }
+  },
+  {
+   "id": "Immersive Cargo Halls Rus",
+   "modFolder": "Immersive Cargo Halls Rus",
+   "nexus": {
+    "game": "starfield",
+    "modId": 14704,
+    "fileId": 56113
+   },
+   "version": "1.0.1",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "Immersive Cargo Halls Rus-14704-1-0-1-1756496606.rar",
+    "size": 142154,
+    "sha256": "20e7841367adeefff276c9bb5c6f22b9226fc05e8e5214f84e672c6c137efb24",
+    "localFileName": "Immersive Cargo Halls Rus-14704-1-0-1-1756496606.rar"
+   },
+   "translates": [
+    {
+     "modId": 14217,
+     "name": "Immersive Cargo Halls"
+    }
+   ],
+   "author": "Bulgat2012",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "DWN_ImmersiveCargoHolds.esm"
+   ],
+   "displayName": {
+    "ru": "Immersive Cargo Halls Rus",
+    "en": "Immersive Cargo Halls Rus"
+   }
+  },
+  {
+   "id": "KZ Meridian Transit Regalia - RU",
+   "modFolder": "KZ Meridian Transit Regalia - RU",
+   "nexus": {
+    "game": "starfield",
+    "modId": 15066,
+    "fileId": 69169
+   },
+   "version": "1.2",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "9c/87/dc/9c87dc53-b430-47ae-b74d-b2e3cb1eb072",
+    "size": 32661,
+    "sha256": "7c5368c570047790662b99710157d93cbb9b3fe04ec4a8d6a98caecf14bbf28f",
+    "localFileName": "KZ Meridian Transit Regalia - RU 15066 1.2 2026-07-11T06-29Z ZTp3RjwWo.zip"
+   },
+   "translates": [
+    {
+     "modId": 14467,
+     "name": "KZ Meridian Transit Regalia"
+    }
+   ],
+   "author": "MrDmitrij",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "KZ_MTR.esm"
+   ],
+   "displayName": {
+    "ru": "KZ Meridian Transit Regalia - RU",
+    "en": "KZ Meridian Transit Regalia - RU"
+   }
+  },
+  {
+   "id": "KZ Tachyonic Core Arsenal - RU",
+   "modFolder": "KZ Tachyonic Core Arsenal - RU",
+   "nexus": {
+    "game": "starfield",
+    "modId": 15568,
+    "fileId": 69174
+   },
+   "version": "1.4",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "92/7e/c4/927ec4fd-e918-42b5-9139-f3510a84ed38",
+    "size": 414862,
+    "sha256": "c83498e4653319829156dc0e0a27209e4f7257af7a934db6d2ae25f71aa541c4",
+    "localFileName": "KZ Tachyonic Core Arsenal - RU 15568 1.4 2026-07-11T08-10Z ID3oOHVl5.zip"
+   },
+   "translates": [
+    {
+     "modId": 13032,
+     "name": "KZ Tachyonic Core Arsenal"
+    }
+   ],
+   "author": "MrDmitrij",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "KZ_TCA.esm"
+   ],
+   "displayName": {
+    "ru": "KZ Tachyonic Core Arsenal - RU",
+    "en": "KZ Tachyonic Core Arsenal - RU"
+   }
+  },
+  {
+   "id": "KZ Techno-Corporate Repository - RU",
+   "modFolder": "KZ Techno-Corporate Repository - RU",
+   "nexus": {
+    "game": "starfield",
+    "modId": 15703,
+    "fileId": 69175
+   },
+   "version": "1.2",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "66/59/52/6659523e-0d87-485a-b05c-118eb22de76a",
+    "size": 19654,
+    "sha256": "87e7311dc3e5098343424f6be07c60bcbd432b32a130c90c572e53b49e381241",
+    "localFileName": "KZ Techno-Corporate Repository - RU 15703 1.2 2026-07-11T08-16Z Keusfol8y.zip"
+   },
+   "translates": [
+    {
+     "modId": 13949,
+     "name": "KZ Techno-Corporate Repository"
+    }
+   ],
+   "author": "MrDmitrij",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "KZ_TCR.esm"
+   ],
+   "displayName": {
+    "ru": "KZ Techno-Corporate Repository - RU",
+    "en": "KZ Techno-Corporate Repository - RU"
+   }
+  },
+  {
+   "id": "KZ United Colonies Depository - RU Translation",
+   "modFolder": "KZ United Colonies Depository - RU Translation",
+   "nexus": {
+    "game": "starfield",
+    "modId": 16776,
+    "fileId": 64155
+   },
+   "version": "1.0.4",
+   "versionMatch": false,
+   "archive": {
+    "nexusFileName": "KZ United Colonies Depository - RU Translation-16776-1-0-4-1777026960.zip",
+    "size": 138103,
+    "sha256": "c6d0ff956b220a1dd1b1e94b5228a23f5c61eb42a0eac4f7892627cc829ee37d",
+    "localFileName": "KZ United Colonies Depository - RU Translation-16776-1-0-4-1777026960.zip"
+   },
+   "translates": [
+    {
+     "modId": 16200,
+     "name": "KZ United Colonies Depository"
+    }
+   ],
+   "author": "MosherH",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "KZ_UCD.esm"
+   ],
+   "displayName": {
+    "ru": "KZ United Colonies Depository - RU Translation",
+    "en": "KZ United Colonies Depository - RU Translation"
+   }
+  },
+  {
+   "id": "KZ Venatorial Frontiers Armory - RU Translation",
+   "modFolder": "KZ Venatorial Frontiers Armory - RU Translation",
+   "nexus": {
+    "game": "starfield",
+    "modId": 16778,
+    "fileId": 69177
+   },
+   "version": "1.1",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "88/05/cc/8805cc7e-02c0-4de2-8c66-c95bad7ca162",
+    "size": 173241,
+    "sha256": "695dec823191d8c83611cf89f159b37853767fd098ab86316a26324baff02248",
+    "localFileName": "KZ Venatorial Frontiers Armory - RU Translation 16778 1.1 2026-07-11T10-02Z 6MfXKu2bi.zip"
+   },
+   "translates": [
+    {
+     "modId": 15844,
+     "name": "KZ Venatorial Frontiers Armory"
+    }
+   ],
+   "author": "MosherH",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "KZ_VFA.esm"
+   ],
+   "displayName": {
+    "ru": "KZ Venatorial Frontiers Armory - RU Translation",
+    "en": "KZ Venatorial Frontiers Armory - RU Translation"
+   }
+  },
+  {
+   "id": "M4A1 Assault Rifle 1.01 RU",
+   "modFolder": "M4A1 Assault Rifle 1.01 RU",
+   "nexus": {
+    "game": "starfield",
+    "modId": 18383,
+    "fileId": 72487
+   },
+   "version": "1.01",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "3a/1d/18/3a1d181f-f776-4cac-9274-bb26aad0f339",
+    "size": 8781,
+    "sha256": "c2a7f25b10ae10dfdba5bdacf25662da05ed7ce91f286a759508447942b0a5cc",
+    "localFileName": "M4A1 Assault Rifle 1.01 RU 18383 1.01 2026-10-05T06-01Z GQDkESIfN.7z"
+   },
+   "translates": [
+    {
+     "modId": 12380,
+     "name": "M4A1 - Assault Rifle"
+    }
+   ],
+   "author": "Milota50",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "M4A1AssaultRifle.esm"
+   ],
+   "displayName": {
+    "ru": "M4A1 Assault Rifle 1.01 RU",
+    "en": "M4A1 Assault Rifle 1.01 RU"
+   }
+  },
+  {
+   "id": "Marika The Deputy - A Visual Replacer - RU",
+   "modFolder": "Marika The Deputy - A Visual Replacer - RU",
+   "nexus": {
+    "game": "starfield",
+    "modId": 17562,
+    "fileId": 68498
+   },
+   "version": "1",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "48/86/1f/48861f7f-1529-400d-b55f-89757ea4b7cd",
+    "size": 2257,
+    "sha256": "37eaa5cb5dd72c5d01cf35e08bb0fa0bce8b7ea74e704ec826d98d0f753248ee",
+    "localFileName": "Marika The Deputy - A Visual Replacer - RU 17562 1 2026-06-24T16-50Z yxZI1RR7f.zip"
+   },
+   "translates": [
+    {
+     "modId": 17503,
+     "name": "Marika The Deputy - A Visual Replacer"
+    }
+   ],
+   "author": "MrDmitrij",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "MarikaDeputy.esm"
+   ],
+   "displayName": {
+    "ru": "Marika The Deputy - A Visual Replacer - RU",
+    "en": "Marika The Deputy - A Visual Replacer - RU"
+   }
+  },
+  {
+   "id": "Nem's Deco Pack - RU",
+   "modFolder": "Nem's Deco Pack - RU",
+   "nexus": {
+    "game": "starfield",
+    "modId": 15030,
+    "fileId": 68983
+   },
+   "version": "1.8.1",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "72/7f/f9/727ff9b9-a49d-4198-8269-b11f479bc3ca",
+    "size": 180630,
+    "sha256": "a4c6419a9d4a4a502899e8ad9b44dea4271cbcdaa23cfad02f4916c22213c8da",
+    "localFileName": "Nem's Deco Pack - RU 15030 1.8.1 2026-07-05T21-35Z ZTp3Rjwnv.zip"
+   },
+   "translates": [
+    {
+     "modId": 11750,
+     "name": "Nem's Deco Pack"
+    }
+   ],
+   "author": "MrDmitrij",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "DWN_DecorativePack.esm"
+   ],
+   "displayName": {
+    "ru": "Nem's Deco Pack - RU",
+    "en": "Nem's Deco Pack - RU"
+   }
+  },
+  {
+   "id": "Outpost Habs Expanded - RU",
+   "modFolder": "Outpost Habs Expanded - RU",
+   "nexus": {
+    "game": "starfield",
+    "modId": 15028,
+    "fileId": 57194
+   },
+   "version": "1.8",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "Outpost Habs Expanded - RU-15028-1-8-1759666648.7z",
+    "size": 172145,
+    "sha256": "84b70abacae1d9ff09eca357e3b98c7ad9355bff2b0e506e5fe95d5d7b027775",
+    "localFileName": "Outpost Habs Expanded - RU-15028-1-8-1759666648.7z"
+   },
+   "translates": [
+    {
+     "modId": 10998,
+     "name": "Outpost Habs Expanded"
+    }
+   ],
+   "author": "MrDmitrij",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "DWN_OutpostHabsExpanded.esm"
+   ],
+   "displayName": {
+    "ru": "Outpost Habs Expanded - RU",
+    "en": "Outpost Habs Expanded - RU"
+   }
+  },
+  {
+   "id": "Place Doors Yourself Rus",
+   "modFolder": "Place Doors Yourself Rus",
+   "nexus": {
+    "game": "starfield",
+    "modId": 14717,
+    "fileId": 56135
+   },
+   "version": "2.0.7beta",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "Place Doors Yourself Rus-14717-1-1756499968.rar",
+    "size": 13572,
+    "sha256": "4c216ddd33be56f48be9bfba001c1cc0d25c0c3fcaedf993e9271e98cd7e5249",
+    "localFileName": "Place Doors Yourself Rus-14717-1-1756499968.rar"
+   },
+   "translates": [
+    {
+     "modId": 6601,
+     "name": "Place Doors Yourself"
+    }
+   ],
+   "author": "Bulgat2012",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "PlaceDoorsYourself.esm"
+   ],
+   "displayName": {
+    "ru": "Place Doors Yourself Rus",
+    "en": "Place Doors Yourself Rus"
+   }
+  },
+  {
+   "id": "Navigate Using City Terminal Rus",
+   "modFolder": "Navigate Using City Terminal Rus",
+   "nexus": {
+    "game": "starfield",
+    "modId": 8584,
+    "fileId": 32050
+   },
+   "version": "0.1.4",
+   "versionMatch": false,
+   "archive": {
+    "nexusFileName": "Navigate Using City Terminal Rus-8584-0-1-4-1708683185.zip",
+    "size": 12270,
+    "sha256": "67603765256125a96ad81575ce59f197f5e6880e13bf660e3eac271f5b672d11",
+    "localFileName": "Navigate Using City Terminal Rus-8584-0-1-4-1708683185.zip"
+   },
+   "translates": [
+    {
+     "modId": 6079,
+     "name": "Seeking out Stores - Navigate Using City Info Kiosks"
+    }
+   ],
+   "author": "SurTis",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "NavigateUsingCityTerminalsRus.esm"
+   ],
+   "displayName": {
+    "ru": "Navigate Using City Terminal Rus",
+    "en": "Navigate Using City Terminal Rus"
+   }
+  },
+  {
+   "id": "Sit To Add Ship To Fleet - RU Translation",
+   "modFolder": "Sit To Add Ship To Fleet - RU Translation",
+   "nexus": {
+    "game": "starfield",
+    "modId": 9517,
+    "fileId": 63399
+   },
+   "version": "0.2.5",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "Sit To Add Ship To Fleet - RU Translation-9517-0-2-5-1776533448.zip",
+    "size": 1178,
+    "sha256": "37452fe51eeb2d4206f8171462e6e9f10b118b90cc38620e62fd65de4abf374b",
+    "localFileName": "Sit To Add Ship To Fleet - RU Translation-9517-0-2-5-1776533448.zip"
+   },
+   "translates": [
+    {
+     "modId": 6493,
+     "name": "Sit To Add Ship to Fleet"
+    }
+   ],
+   "author": "MosherH",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "Sit To Add Ship.esm"
+   ],
+   "displayName": {
+    "ru": "Sit To Add Ship To Fleet - RU Translation",
+    "en": "Sit To Add Ship To Fleet - RU Translation"
+   }
+  },
+  {
+   "id": "Starfield Fleet Expansion - Russian Translation",
+   "modFolder": "Starfield Fleet Expansion - Russian Translation",
+   "nexus": {
+    "game": "starfield",
+    "modId": 11223,
+    "fileId": 42679
+   },
+   "version": "1.0",
+   "versionMatch": false,
+   "archive": {
+    "nexusFileName": "Starfield Fleet Expansion - Russian Translation-11223-1-0-1724958897.zip",
+    "size": 692029,
+    "sha256": "936c277a4843d663506baa24585f517b3338883f70fadb15473b4a59020aa47d",
+    "localFileName": "Starfield Fleet Expansion - Russian Translation-11223-1-0-1724958897.zip"
+   },
+   "translates": [
+    {
+     "modId": 10727,
+     "name": "Starfield Fleet Expansion"
+    }
+   ],
+   "author": "Waillio",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "starfieldfleetexpansion.esm"
+   ],
+   "displayName": {
+    "ru": "Starfield Fleet Expansion - Russian Translation",
+    "en": "Starfield Fleet Expansion - Russian Translation"
+   }
+  },
+  {
+   "id": "Starfield Neuroamps Russian Translation",
+   "modFolder": "Starfield Neuroamps Russian Translation",
+   "nexus": {
+    "game": "starfield",
+    "modId": 11174,
+    "fileId": 42455
+   },
+   "version": "1.2",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "Starfield Neuroamps Russian Translation-11174-1-2-1724659979.zip",
+    "size": 3042,
+    "sha256": "f1612ee7cfff5aab5a1b0cf8bfc733014a12cd88b8c23f6029b25faf1e9ac54b",
+    "localFileName": "Starfield Neuroamps Russian Translation-11174-1-2-1724659979.zip"
+   },
+   "translates": [
+    {
+     "modId": 8774,
+     "name": "Starfield Neuroamps"
+    }
+   ],
+   "author": "Death3IHOH",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "Starfield_Neuroamps_Z.esm"
+   ],
+   "displayName": {
+    "ru": "Starfield Neuroamps Russian Translation",
+    "en": "Starfield Neuroamps Russian Translation"
+   }
+  },
+  {
+   "id": "StarUI HUD RU",
+   "modFolder": "StarUI HUD RU",
+   "nexus": {
+    "game": "starfield",
+    "modId": 16664,
+    "fileId": 71354
+   },
+   "version": "1.4",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "0a/70/86/0a708699-2e6d-43ae-8a79-80b7e0bb8746",
+    "size": 24991,
+    "sha256": "f7f56617696136a95e08d8f696bba3d760c3db55a9b84dd30af93ed3cf99024d",
+    "localFileName": "StarUI HUD RU 16664 1.4 2026-09-06T04-23Z b0Lq8BjfO.zip"
+   },
+   "translates": [
+    {
+     "modId": 3444,
+     "name": "StarUI HUD"
+    }
+   ],
+   "author": "MrBeard8",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 2
+   },
+   "displayName": {
+    "ru": "StarUI HUD RU",
+    "en": "StarUI HUD RU"
+   }
+  },
+  {
+   "id": "StarUI Inventory - Russian Translation",
+   "modFolder": "StarUI Inventory - Russian Translation",
+   "nexus": {
+    "game": "starfield",
+    "modId": 792,
+    "fileId": 11397
+   },
+   "version": "2.4",
+   "versionMatch": false,
+   "archive": {
+    "nexusFileName": "StarUI Inventory - Russian Translation-792-2-2-1695542590.zip",
+    "size": 1313,
+    "sha256": "db75013d91624e229d9bf3cb373330382ae22e38df878cf0f59f66638722d428",
+    "localFileName": "StarUI Inventory - Russian Translation-792-2-2-1695542590.zip"
+   },
+   "translates": [
+    {
+     "modId": 773,
+     "name": "StarUI Inventory"
+    }
+   ],
+   "author": "TehnoMag55",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "displayName": {
+    "ru": "StarUI Inventory - Russian Translation",
+    "en": "StarUI Inventory - Russian Translation"
+   }
+  },
+  {
+   "id": "StarUI Workbench - Russian",
+   "modFolder": "StarUI Workbench - Russian",
+   "nexus": {
+    "game": "starfield",
+    "modId": 5008,
+    "fileId": 16506
+   },
+   "version": "1.0",
+   "versionMatch": false,
+   "archive": {
+    "nexusFileName": "StarUI Workbench - Russian-5008-1-0-1696815450.zip",
+    "size": 1132,
+    "sha256": "aa422856ebb70f1b4735fd5ccb17fb628b8ab4eeea606d5da88563af1ccea57c",
+    "localFileName": "StarUI Workbench - Russian-5008-1-0-1696815450.zip"
+   },
+   "translates": [
+    {
+     "modId": 4966,
+     "name": "StarUI Workbench"
+    }
+   ],
+   "author": "Nitablade",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "displayName": {
+    "ru": "StarUI Workbench - Russian",
+    "en": "StarUI Workbench - Russian"
+   }
+  },
+  {
+   "id": "The Den Astrodynamics Rus",
+   "modFolder": "The Den Astrodynamics Rus",
+   "nexus": {
+    "game": "starfield",
+    "modId": 15142,
+    "fileId": 57619
+   },
+   "version": "1.0",
+   "versionMatch": false,
+   "archive": {
+    "nexusFileName": "The Den Astrodynamics Rus-15142-1-0-1761066015.7z",
+    "size": 120374,
+    "sha256": "beafae8d9fa19f74d8e761894946ca9f08e7e3115cc52f1899f97dc37b94faef",
+    "localFileName": "The Den Astrodynamics Rus-15142-1-0-1761066015.7z"
+   },
+   "translates": [
+    {
+     "modId": 8809,
+     "name": "The Den Astrodynamics"
+    }
+   ],
+   "author": "Drelazz",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "vcDenAstrodynamics_rus.esm"
+   ],
+   "displayName": {
+    "ru": "The Den Astrodynamics Rus",
+    "en": "The Den Astrodynamics Rus"
+   }
+  },
+  {
+   "id": "Upgraded Companions - RU",
+   "modFolder": "Upgraded Companions - RU",
+   "nexus": {
+    "game": "starfield",
+    "modId": 14598,
+    "fileId": 68450
+   },
+   "version": "1.5",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "02/48/45/02484557-372d-4884-8f0f-c1d444d656cf",
+    "size": 44496,
+    "sha256": "13c20056b7a3a7216b4d5d82f22c4861c1c92c87b1485c2f45d2b7c547bd4e74",
+    "localFileName": "Upgraded Companions - RU 14598 1.5 2026-06-23T20-00Z 9KlL2rr2y.zip"
+   },
+   "translates": [
+    {
+     "modId": 12030,
+     "name": "Upgraded Companions"
+    }
+   ],
+   "author": "MrDmitrij",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 3
+   },
+   "displayName": {
+    "ru": "Upgraded Companions - RU",
+    "en": "Upgraded Companions - RU"
+   }
+  },
+  {
+   "id": "Var'uun'kai - Dazra - Furnished Player Home - RU",
+   "modFolder": "Var'uun'kai - Dazra - Furnished Player Home - RU",
+   "nexus": {
+    "game": "starfield",
+    "modId": 15043,
+    "fileId": 68972
+   },
+   "version": "1.0",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "a3/da/a8/a3daa888-de95-4479-bab1-fdd2cafb74cf",
+    "size": 19912034,
+    "sha256": "edca5090e3c20a2d5e52e0ccf00a8b8367c39dde482af50d3dc8962e332700d2",
+    "localFileName": "Var'uun'kai - Dazra - Furnished Player Home - RU 15043 1.0 2026-07-05T18-58Z QgYRFiDsX.zip"
+   },
+   "translates": [
+    {
+     "modId": 11888,
+     "name": "Var'uun'kai - Dazra - Furnished Player Home"
+    }
+   ],
+   "author": "MrDmitrij",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "DWN_DazraHomeFurnished.esm"
+   ],
+   "displayName": {
+    "ru": "Var'uun'kai - Dazra - Furnished Player Home - RU",
+    "en": "Var'uun'kai - Dazra - Furnished Player Home - RU"
+   }
+  },
+  {
+   "id": "Winds of Akila -RU",
+   "modFolder": "Winds of Akila -RU",
+   "nexus": {
+    "game": "starfield",
+    "modId": 15611,
+    "fileId": 58928
+   },
+   "version": "1.6.5",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "Winds of Akila -RU-15611-1-6-5-1765298230.7z",
+    "size": 6199427,
+    "sha256": "0517cb17d2a7b3589541c6835f817c98ece590d018bef85b3b4bcd33a0ec2764",
+    "localFileName": "Winds of Akila -RU-15611-1-6-5-1765298230.7z"
+   },
+   "translates": [
+    {
+     "modId": 12696,
+     "name": "Winds of Akila"
+    }
+   ],
+   "author": "MrDmitrij",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "Winds of Akila.esm"
+   ],
+   "displayName": {
+    "ru": "Winds of Akila -RU",
+    "en": "Winds of Akila -RU"
+   }
+  },
+  {
+   "id": "ZoNE79 Clothing Pack - Russian Translation",
+   "modFolder": "ZoNE79 Clothing Pack - Russian Translation",
+   "nexus": {
+    "game": "starfield",
+    "modId": 11267,
+    "fileId": 71953
+   },
+   "version": "1.6",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "28/7f/ee/287fee7b-a105-4a4e-83bf-b73c11f1da7f",
+    "size": 38549,
+    "sha256": "53fe6f2897be0650fc8f6704dda34e04d7e72abca2a852239d175c0d1f6b429a",
+    "localFileName": "ZoNE79 Clothing Pack - Russian Translation 11267 1.6 2026-09-21T09-19Z qd5Tg9FRW.zip"
+   },
+   "translates": [
+    {
+     "modId": 11255,
+     "name": "ZoNE79 Clothing Pack"
+    }
+   ],
+   "author": "Death3IHOH",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "ClothingPack_Standalone_Z.esm"
+   ],
+   "displayName": {
+    "ru": "ZoNE79 Clothing Pack - Russian Translation",
+    "en": "ZoNE79 Clothing Pack - Russian Translation"
+   }
+  },
+  {
+   "id": "Ammo Framework - RU",
+   "modFolder": "Ammo Framework - RU",
+   "nexus": {
+    "game": "starfield",
+    "modId": 15144,
+    "fileId": 57620
+   },
+   "version": "1.05",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "Ammo Framework - RU-15144-1-05-1761067102.7z",
+    "size": 1337,
+    "sha256": "c534e12ffcbff1b796e89d912e51c1b4588b074f6e18a64ccdbc8e217d7b1e0e",
+    "localFileName": "Ammo Framework - RU-15144-1-05-1761067102.7z"
+   },
+   "translates": [
+    {
+     "modId": 12296,
+     "name": "Ammo Framework"
+    }
+   ],
+   "author": "MrDmitrij",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "AmmoFramework.esm"
+   ],
+   "displayName": {
+    "ru": "Ammo Framework - RU",
+    "en": "Ammo Framework - RU"
+   }
+  },
+  {
+   "id": "Paradiso Evolved - RU",
+   "modFolder": "Paradiso Evolved - RU",
+   "nexus": {
+    "game": "starfield",
+    "modId": 15696,
+    "fileId": 68365
+   },
+   "version": "1.1.2",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "d5/4e/d3/d54ed347-2777-4527-a97b-f1ec948ff5a7",
+    "size": 7437100,
+    "sha256": "ee6e619fd96434acc4fdadb4a06c10e241f9cf8ade6301678345d32b2866bd6c",
+    "localFileName": "Paradiso Evolved - RU 15696 1.1.2 2026-06-21T14-09Z LsN5BvvhH.zip"
+   },
+   "translates": [
+    {
+     "modId": 14026,
+     "name": "Paradiso Evolved"
+    }
+   ],
+   "author": "MrDmitrij",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "ParadisoEvolved.esm"
+   ],
+   "displayName": {
+    "ru": "Paradiso Evolved - RU",
+    "en": "Paradiso Evolved - RU"
+   }
+  },
+  {
+   "id": "Royal Weathers - Climate and Proc Gen - RU",
+   "modFolder": "Royal Weathers - Climate and Proc Gen - RU",
+   "nexus": {
+    "game": "starfield",
+    "modId": 14891,
+    "fileId": 68403
+   },
+   "version": "1.6",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "53/b9/96/53b99651-aba3-4642-a9a6-e63c5347baa2",
+    "size": 14008,
+    "sha256": "3ef1e8cf6aa502059d04a7fb2df3bb3073874c54a5fc53fbf43fbf5124fc8499",
+    "localFileName": "Royal Weathers - Climate and Proc Gen - RU 14891 1.6 2026-06-22T21-08Z kRcAwxxjh.zip"
+   },
+   "translates": [
+    {
+     "modId": 7946,
+     "name": "Royal Weathers - An Immersive Starfield Climate Overhaul"
+    }
+   ],
+   "author": "MrDmitrij",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "RoyalWeathers.esm"
+   ],
+   "displayName": {
+    "ru": "Royal Weathers - Climate and Proc Gen - RU",
+    "en": "Royal Weathers - Climate and Proc Gen - RU"
+   }
+  },
+  {
+   "id": "Royal Weathers - Va'Ruun'kai - RU",
+   "modFolder": "Royal Weathers - Va'Ruun'kai - RU",
+   "nexus": {
+    "game": "starfield",
+    "modId": 14891,
+    "fileId": 56698
+   },
+   "version": "1.2",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "Royal Weathers - Va'Ruun'kai - RU-14891-1-2-1757871131.7z",
+    "size": 3703,
+    "sha256": "d8c71d4972dede2be369e55b9bde8e0b7e186060910d55fa0a80543ef265e759",
+    "localFileName": "Royal Weathers - Va'Ruun'kai - RU-14891-1-2-1757871131.7z"
+   },
+   "translates": [
+    {
+     "modId": 11835,
+     "name": "Royal Weathers - Va'Ruun'kai"
+    }
+   ],
+   "author": "MrDmitrij",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "RoyalWeathersVaRuunkai2.esm"
+   ],
+   "displayName": {
+    "ru": "Royal Weathers - Va'Ruun'kai - RU",
+    "en": "Royal Weathers - Va'Ruun'kai - RU"
+   }
+  },
+  {
+   "id": "Supply Mission Fix - RU",
+   "modFolder": "Supply Mission Fix - RU",
+   "nexus": {
+    "game": "starfield",
+    "modId": 17512,
+    "fileId": 68353
+   },
+   "version": "1.5a",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "8c/c1/b8/8cc1b828-e1f4-4f66-bdbe-8928f4fe2932",
+    "size": 441980,
+    "sha256": "a7ba412e92a3d3986176909d423f5fae4a7fb27f9be81bcb4915e82947f11356",
+    "localFileName": "Supply Mission Fix RU 17512 1.5a 2026-06-21T09-19Z QgYRFiifQ.zip"
+   },
+   "translates": [
+    {
+     "modId": 13456,
+     "name": "Supply Mission Fix"
+    }
+   ],
+   "author": "MrDmitrij",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "EAASupplyMissionFix.esm"
+   ],
+   "displayName": {
+    "ru": "Supply Mission Fix - RU",
+    "en": "Supply Mission Fix - RU"
+   }
+  },
+  {
+   "id": "Better Living I - Outpost Stuff - RU v2.2",
+   "modFolder": "Better Living I - Outpost Stuff - RU v2.2",
+   "nexus": {
+    "game": "starfield",
+    "modId": 12016,
+    "fileId": 46712
+   },
+   "version": "2.2",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "Edit Better Living I - RU v2.2-12016-2-2-1730308487.7z",
+    "size": 390400,
+    "sha256": "22c29aee2c69cedc03340ccc7c6fe4b199bbda23e534d876e5d8ef461bb27f9d",
+    "localFileName": "Edit Better Living I - RU v2.2-12016-2-2-1730308487.7z"
+   },
+   "translates": [
+    {
+     "modId": 10290,
+     "name": "Better Living - Outpost Decor"
+    }
+   ],
+   "author": "dagnir77",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "Better_Living.esm"
+   ],
+   "displayName": {
+    "ru": "Better Living I - Outpost Stuff - RU v2.2",
+    "en": "Better Living I - Outpost Stuff - RU v2.2"
+   }
+  },
+  {
+   "id": "Enemies Boarding My Ship (RUS)",
+   "modFolder": "Enemies Boarding My Ship (RUS)",
+   "nexus": {
+    "game": "starfield",
+    "modId": 14056,
+    "fileId": 68911
+   },
+   "version": "V1.61",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "36/9c/56/369c5697-b0d2-44c9-8e81-3089ea858dea",
+    "size": 1837,
+    "sha256": "9b012e720be87a721a2ebe526add9a2731297c4d6764c0dac50a97cc85f97d20",
+    "localFileName": "Enemies Boarding My Ship RUS 14056 V1.61 2026-07-04T11-16Z QgYRFiiQX.7z"
+   },
+   "translates": [
+    {
+     "modId": 13999,
+     "name": "Enemies Boarding My Ship"
+    }
+   ],
+   "author": "Krasgerts",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "Encounters_Boarding_MyShip.esm"
+   ],
+   "displayName": {
+    "ru": "Enemies Boarding My Ship (RUS)",
+    "en": "Enemies Boarding My Ship (RUS)"
+   }
+  },
+  {
+   "id": "Stroud Premium Edition (RUS)",
+   "modFolder": "Stroud Premium Edition (RUS)",
+   "nexus": {
+    "game": "starfield",
+    "modId": 17915,
+    "fileId": 70712
+   },
+   "version": "2.7.0",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "43/85/e4/4385e4be-e748-4cde-a673-9eb569e73e7e",
+    "size": 19330,
+    "sha256": "cca67baab8555a8e81d0e48c14c2ba4e5ea42e81056b60339af48541bee3d11b",
+    "localFileName": "Stroud Premium Edition RUS 17915 2.7.0 2026-08-22T05-19Z 4Cgtq5Q98.7z"
+   },
+   "translates": [
+    {
+     "modId": 12330,
+     "name": "Stroud Premium Edition"
+    }
+   ],
+   "author": "Krasgerts",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 3
+   },
+   "plugins": [],
+   "displayName": {
+    "ru": "Stroud Premium Edition (RUS)",
+    "en": "Stroud Premium Edition (RUS)"
+   }
+  },
+  {
+   "id": "Immersive Landing Ramps - Russian Translation",
+   "modFolder": "Immersive Landing Ramps - Russian Translation",
+   "nexus": {
+    "game": "starfield",
+    "modId": 11723,
+    "fileId": 62468
+   },
+   "version": "3.1.0",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "Immersive Landing Ramps - Russian Translation-11723-3-1-0-1775940029.zip",
+    "size": 81680,
+    "sha256": "513a7eee7c264e4e167cd5cc3f249da3b44e6621487116bcae68b4986afff94e",
+    "localFileName": "Immersive Landing Ramps - Russian Translation-11723-3-1-0-1775940029.zip"
+   },
+   "translates": [
+    {
+     "modId": 8093,
+     "name": "Immersive Landing Ramps"
+    }
+   ],
+   "author": "Death3IHOH",
+   "install": {
+    "type": "copyAll",
+    "from": "data",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "SP2_ImmersiveLandingRamps.esm"
+   ],
+   "displayName": {
+    "ru": "Immersive Landing Ramps - Russian Translation",
+    "en": "Immersive Landing Ramps - Russian Translation"
+   }
+  },
+  {
+   "id": "Owl Tech Ship Living - RU translation",
+   "modFolder": "Owl Tech Ship Living - RU translation",
+   "nexus": {
+    "game": "starfield",
+    "modId": 16693,
+    "fileId": 63668
+   },
+   "version": "2.3",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "Owl Tech Ship Living - RU Translation-16693-2-3-1776712232.zip",
+    "size": 1189147,
+    "sha256": "fd3a5957029236e5e74a1aa5d5e7acf21982b8d84b70c960553bc0098f554dcf",
+    "localFileName": "Owl Tech Ship Living - RU Translation-16693-2-3-1776712232.zip"
+   },
+   "translates": [
+    {
+     "modId": 12431,
+     "name": "Owl Tech Ship Living"
+    }
+   ],
+   "author": "MosherH",
+   "install": {
+    "type": "copyAll",
+    "from": "Data",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "OwlTech_Habs_Ship_Living.esm"
+   ],
+   "displayName": {
+    "ru": "Owl Tech Ship Living - RU translation",
+    "en": "Owl Tech Ship Living - RU translation"
+   }
+  },
+  {
+   "id": "Wicked Outpost Projeckt 2 v2.0.2 RU",
+   "modFolder": "Wicked Outpost Projeckt 2 v2.0.2 RU",
+   "nexus": {
+    "game": "starfield",
+    "modId": 18148,
+    "fileId": 71312
+   },
+   "version": "1",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "71/83/ed/7183eddd-440a-41a4-b92f-71aa93f11c3a",
+    "size": 556968,
+    "sha256": "61c2c53ebf2b9da479f0cb8ed99bd7749b7f2a1861055fa8114a6fcf883e269e",
+    "localFileName": "Wicked Outpost Projeckt 2 V2.0.2 RU 18148 1 2026-09-05T13-06Z PEOuI3W0X.7z"
+   },
+   "translates": [
+    {
+     "modId": 12456,
+     "name": "Wicked Workshop - Outpost Projeckt 2"
+    }
+   ],
+   "author": "ziv07",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "Wicked Outpost Projeckt 2.esm"
+   ],
+   "displayName": {
+    "ru": "Wicked Outpost Projeckt 2 v2.0.2 RU",
+    "en": "Wicked Outpost Projeckt 2 v2.0.2 RU"
+   }
+  },
+  {
+   "id": "BattensWrecksRUS",
+   "modFolder": "BattensWrecksRUS",
+   "nexus": {
+    "game": "starfield",
+    "modId": 14435,
+    "fileId": 55016
+   },
+   "version": "0.4.1",
+   "versionMatch": true,
+   "archive": {
+    "nexusFileName": "BattensWrecksRUS-14435-0-4-1-1753287083.zip",
+    "size": 21088090,
+    "sha256": "4011c79f04f7b3c179067ce1c3fd79c4dee0d7ba3f60ce56fc886278bb4996af",
+    "localFileName": "BattensWrecksRUS-14435-0-4-1-1753287083.zip"
+   },
+   "translates": [
+    {
+     "modId": 10577,
+     "name": "Batten's Shipwrecks (POIs)"
+    }
+   ],
+   "author": "VallesSpb",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "plugins": [
+    "BattensWrecks.esm"
+   ],
+   "displayName": {
+    "ru": "BattensWrecksRUS",
+    "en": "BattensWrecksRUS"
+   }
+  }
+ ]
+}

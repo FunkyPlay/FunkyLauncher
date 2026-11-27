@@ -1,0 +1,2885 @@
+{
+ "schema": 1,
+ "modlistId": "neon-nights",
+ "addonId": "neon-nights-high",
+ "listVersion": "0.1.9",
+ "forMainVersion": "0.1.9",
+ "generated": "2026-11-24",
+ "default": true,
+ "tiers": {
+  "standard": "heavy off + high off",
+  "high": "heavy off + high on",
+  "ultra": "heavy on + high on"
+ },
+ "mods": [
+  {
+   "id": "Night City Allies - AIO 27625 1.6.12 2026",
+   "modFolder": "Night City Allies - AIO 27625 1.6.12 2026",
+   "order": 71,
+   "nexus": {
+    "game": "cyberpunk2077",
+    "modId": 27625,
+    "fileId": 175044,
+    "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/27625?tab=files&file_id=175044"
+   },
+   "archive": {
+    "localFileName": "Night City Allies - AIO 27625 1.6.12 2026-11-07T16-50Z PYMIYqW6c.zip",
+    "size": 2854843,
+    "sha256": "bf3cfa5a451b1f77ffe35efaeb5d33752b95d94aa3c3bac62897ab311e495850"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "r6/scripts/NightCityAllies/NCAConstants.reds",
+      "r6/scripts/NightCityAllies/NCAConstants.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Event/EventBus.reds",
+      "r6/scripts/NightCityAllies/Event/EventBus.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/UI/DebugLog.reds",
+      "r6/scripts/NightCityAllies/UI/DebugLog.reds"
+     ],
+     [
+      "r6/scripts/NightCityAlliesModules/Animations/SwimmingAnimationsModule.reds",
+      "r6/scripts/NightCityAlliesModules/Animations/SwimmingAnimationsModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAlliesModules/Locations/KabukiModule.reds",
+      "r6/scripts/NightCityAlliesModules/Locations/KabukiModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Npc/Hooks/NpcHooks.reds",
+      "r6/scripts/NightCityAllies/Npc/Hooks/NpcHooks.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/UI/Interactions/SendAwayEntry.reds",
+      "r6/scripts/NightCityAllies/UI/Interactions/SendAwayEntry.reds"
+     ],
+     [
+      "bin/x64/plugins/cyber_engine_tweaks/mods/NightCityAllies/Interactions/greet_example.lua.txt",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/NightCityAllies/Interactions/greet_example.lua.txt"
+     ],
+     [
+      "r6/tweaks/NightCityAllies/nca_equipment.yaml",
+      "r6/tweaks/NightCityAllies/nca_equipment.yaml"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Factor/FactorSystem.reds",
+      "r6/scripts/NightCityAllies/Factor/FactorSystem.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/UI/EquipmentAction.reds",
+      "r6/scripts/NightCityAllies/UI/EquipmentAction.reds"
+     ],
+     [
+      "r6/scripts/NightCityAlliesModules/Animations/SyncedSittingAnimationsModule.reds",
+      "r6/scripts/NightCityAlliesModules/Animations/SyncedSittingAnimationsModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAlliesModules/Locations/LittleChinaModule.reds",
+      "r6/scripts/NightCityAlliesModules/Locations/LittleChinaModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Location/Entity/Path.reds",
+      "r6/scripts/NightCityAllies/Location/Entity/Path.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Npc/Hooks/ProximityHooks.reds",
+      "r6/scripts/NightCityAllies/Npc/Hooks/ProximityHooks.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/UI/Interactions/StayHereEntry.reds",
+      "r6/scripts/NightCityAllies/UI/Interactions/StayHereEntry.reds"
+     ],
+     [
+      "bin/x64/plugins/cyber_engine_tweaks/mods/NightCityAllies/Modules/README.txt",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/NightCityAllies/Modules/README.txt"
+     ],
+     [
+      "r6/tweaks/NightCityAllies/nca_icons.yaml",
+      "r6/tweaks/NightCityAllies/nca_icons.yaml"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Localization/NCALabels.reds",
+      "r6/scripts/NightCityAllies/Localization/NCALabels.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/UI/EquipmentActionsController.reds",
+      "r6/scripts/NightCityAllies/UI/EquipmentActionsController.reds"
+     ],
+     [
+      "r6/scripts/NightCityAlliesModules/Animations/SyncedStandingAnimationsModule.reds",
+      "r6/scripts/NightCityAlliesModules/Animations/SyncedStandingAnimationsModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAlliesModules/Locations/LizziesModule.reds",
+      "r6/scripts/NightCityAlliesModules/Locations/LizziesModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Location/Entity/Prop.reds",
+      "r6/scripts/NightCityAllies/Location/Entity/Prop.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Persistence/Hooks/BlackboardListeners.reds",
+      "r6/scripts/NightCityAllies/Persistence/Hooks/BlackboardListeners.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Location/LocationSystem.reds",
+      "r6/scripts/NightCityAllies/Location/LocationSystem.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/UI/EquipmentPanelController.reds",
+      "r6/scripts/NightCityAllies/UI/EquipmentPanelController.reds"
+     ],
+     [
+      "r6/scripts/NightCityAlliesModules/Characters/GoroModule.reds",
+      "r6/scripts/NightCityAlliesModules/Characters/GoroModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAlliesModules/Locations/NorthsideApartmentModule.reds",
+      "r6/scripts/NightCityAlliesModules/Locations/NorthsideApartmentModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Location/Entity/Spawn.reds",
+      "r6/scripts/NightCityAllies/Location/Entity/Spawn.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Persistence/Hooks/ContextHooks.reds",
+      "r6/scripts/NightCityAllies/Persistence/Hooks/ContextHooks.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Metadata/CompanionMetadata.reds",
+      "r6/scripts/NightCityAllies/Metadata/CompanionMetadata.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/UI/HealthBarVisibility.reds",
+      "r6/scripts/NightCityAllies/UI/HealthBarVisibility.reds"
+     ],
+     [
+      "r6/scripts/NightCityAlliesModules/Characters/JackieModule.reds",
+      "r6/scripts/NightCityAlliesModules/Characters/JackieModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAlliesModules/Locations/NorthsideModule.reds",
+      "r6/scripts/NightCityAlliesModules/Locations/NorthsideModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Location/Trigger/LocationTrigger.reds",
+      "r6/scripts/NightCityAllies/Location/Trigger/LocationTrigger.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Persistence/Hooks/TimeListeners.reds",
+      "r6/scripts/NightCityAllies/Persistence/Hooks/TimeListeners.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Metadata/NCAMetadataSystem.reds",
+      "r6/scripts/NightCityAllies/Metadata/NCAMetadataSystem.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/UI/InteractionMenu.reds",
+      "r6/scripts/NightCityAllies/UI/InteractionMenu.reds"
+     ],
+     [
+      "r6/scripts/NightCityAlliesModules/Characters/JudyModule.reds",
+      "r6/scripts/NightCityAlliesModules/Characters/JudyModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAlliesModules/Locations/RedDirtModule.reds",
+      "r6/scripts/NightCityAlliesModules/Locations/RedDirtModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Npc/Behavior/AcquirableBehavior.reds",
+      "r6/scripts/NightCityAllies/Npc/Behavior/AcquirableBehavior.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Phone/Hooks/NativeHooks.reds",
+      "r6/scripts/NightCityAllies/Phone/Hooks/NativeHooks.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Migration/Migrations.reds",
+      "r6/scripts/NightCityAllies/Migration/Migrations.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/UI/OutfitsPanel.reds",
+      "r6/scripts/NightCityAllies/UI/OutfitsPanel.reds"
+     ],
+     [
+      "r6/scripts/NightCityAlliesModules/Characters/KerryModule.reds",
+      "r6/scripts/NightCityAlliesModules/Characters/KerryModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAlliesModules/Locations/TotentazModule.reds",
+      "r6/scripts/NightCityAlliesModules/Locations/TotentazModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Npc/Behavior/AcquirableRoamBehavior.reds",
+      "r6/scripts/NightCityAllies/Npc/Behavior/AcquirableRoamBehavior.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Phone/View/ConversationPhoneView.reds",
+      "r6/scripts/NightCityAllies/Phone/View/ConversationPhoneView.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Modules/NCAModule.reds",
+      "r6/scripts/NightCityAllies/Modules/NCAModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/UI/SettingsDropdownRow.reds",
+      "r6/scripts/NightCityAllies/UI/SettingsDropdownRow.reds"
+     ],
+     [
+      "r6/scripts/NightCityAlliesModules/Characters/MistyModule.reds",
+      "r6/scripts/NightCityAlliesModules/Characters/MistyModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAlliesModules/Mercs/AfterlifeMercsModule.reds",
+      "r6/scripts/NightCityAlliesModules/Mercs/AfterlifeMercsModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Npc/Behavior/Approach.reds",
+      "r6/scripts/NightCityAllies/Npc/Behavior/Approach.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Phone/View/CustomConversationView.reds",
+      "r6/scripts/NightCityAllies/Phone/View/CustomConversationView.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Modules/NCAModuleSystem.reds",
+      "r6/scripts/NightCityAllies/Modules/NCAModuleSystem.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/UI/SquadContainerController.reds",
+      "r6/scripts/NightCityAllies/UI/SquadContainerController.reds"
+     ],
+     [
+      "r6/scripts/NightCityAlliesModules/Characters/PanamModule.reds",
+      "r6/scripts/NightCityAlliesModules/Characters/PanamModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAlliesModules/Mercs/MaelstromMercsModule.reds",
+      "r6/scripts/NightCityAlliesModules/Mercs/MaelstromMercsModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Npc/Behavior/CatchUpToPlayerBehavior.reds",
+      "r6/scripts/NightCityAllies/Npc/Behavior/CatchUpToPlayerBehavior.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Phone/View/MercListPhoneView.reds",
+      "r6/scripts/NightCityAllies/Phone/View/MercListPhoneView.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Modules/NCARegistration.reds",
+      "r6/scripts/NightCityAllies/Modules/NCARegistration.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/UI/SquadMemberController.reds",
+      "r6/scripts/NightCityAllies/UI/SquadMemberController.reds"
+     ],
+     [
+      "r6/scripts/NightCityAlliesModules/Characters/RiverModule.reds",
+      "r6/scripts/NightCityAlliesModules/Characters/RiverModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAlliesModules/Mercs/MoxMercsModule.reds",
+      "r6/scripts/NightCityAlliesModules/Mercs/MoxMercsModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Npc/Behavior/ChauffeurBehavior.reds",
+      "r6/scripts/NightCityAllies/Npc/Behavior/ChauffeurBehavior.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Phone/View/NoMercsPhoneView.reds",
+      "r6/scripts/NightCityAllies/Phone/View/NoMercsPhoneView.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Npc/DamageTracker.reds",
+      "r6/scripts/NightCityAllies/Npc/DamageTracker.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/UI/UISystem.reds",
+      "r6/scripts/NightCityAllies/UI/UISystem.reds"
+     ],
+     [
+      "r6/scripts/NightCityAlliesModules/Characters/RogueModule.reds",
+      "r6/scripts/NightCityAlliesModules/Characters/RogueModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAlliesModules/Mercs/RoyceAndBrickModule.reds",
+      "r6/scripts/NightCityAlliesModules/Mercs/RoyceAndBrickModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Npc/Behavior/CombatBehavior.reds",
+      "r6/scripts/NightCityAllies/Npc/Behavior/CombatBehavior.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Phone/View/PhoneView.reds",
+      "r6/scripts/NightCityAllies/Phone/View/PhoneView.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Npc/EntityResolver.reds",
+      "r6/scripts/NightCityAllies/Npc/EntityResolver.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/UI/WeaponActionsPanel.reds",
+      "r6/scripts/NightCityAllies/UI/WeaponActionsPanel.reds"
+     ],
+     [
+      "r6/scripts/NightCityAlliesModules/Core/ContractsModule.reds",
+      "r6/scripts/NightCityAlliesModules/Core/ContractsModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAlliesModules/Mercs/TygerClawsMercsModule.reds",
+      "r6/scripts/NightCityAlliesModules/Mercs/TygerClawsMercsModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Npc/Behavior/DriverBehavior.reds",
+      "r6/scripts/NightCityAllies/Npc/Behavior/DriverBehavior.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/UI/Hooks/InteractionMenuHooks.reds",
+      "r6/scripts/NightCityAllies/UI/Hooks/InteractionMenuHooks.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Npc/ExpLogic.reds",
+      "r6/scripts/NightCityAllies/Npc/ExpLogic.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/UI/Website.reds",
+      "r6/scripts/NightCityAllies/UI/Website.reds"
+     ],
+     [
+      "r6/scripts/NightCityAlliesModules/Core/EffectsModule.reds",
+      "r6/scripts/NightCityAlliesModules/Core/EffectsModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAlliesModules/Mercs/ValentinosMercsModule.reds",
+      "r6/scripts/NightCityAlliesModules/Mercs/ValentinosMercsModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Npc/Behavior/ElevatorBehavior.reds",
+      "r6/scripts/NightCityAllies/Npc/Behavior/ElevatorBehavior.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/UI/Hooks/ItemDisplayHooks.reds",
+      "r6/scripts/NightCityAllies/UI/Hooks/ItemDisplayHooks.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Npc/NpcHandle.reds",
+      "r6/scripts/NightCityAllies/Npc/NpcHandle.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Util/NCAUtil.reds",
+      "r6/scripts/NightCityAllies/Util/NCAUtil.reds"
+     ],
+     [
+      "r6/scripts/NightCityAlliesModules/Core/EquipmentActionsModule.reds",
+      "r6/scripts/NightCityAlliesModules/Core/EquipmentActionsModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Npc/Behavior/ExploreLocationBehavior.reds",
+      "r6/scripts/NightCityAllies/Npc/Behavior/ExploreLocationBehavior.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/UI/Hooks/LookAtListeners.reds",
+      "r6/scripts/NightCityAllies/UI/Hooks/LookAtListeners.reds"
+     ],
+     [
+      "archive/pc/mod/Night City Allies - Immersive Companion System.archive",
+      "archive/pc/mod/Night City Allies - Immersive Companion System.archive"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Npc/NpcManager.reds",
+      "r6/scripts/NightCityAllies/Npc/NpcManager.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Vehicle/Vehicle.reds",
+      "r6/scripts/NightCityAllies/Vehicle/Vehicle.reds"
+     ],
+     [
+      "r6/scripts/NightCityAlliesModules/Core/FactorsModule.reds",
+      "r6/scripts/NightCityAlliesModules/Core/FactorsModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Npc/Behavior/FollowPlayerBehavior.reds",
+      "r6/scripts/NightCityAllies/Npc/Behavior/FollowPlayerBehavior.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/UI/Hooks/NotificationListeners.reds",
+      "r6/scripts/NightCityAllies/UI/Hooks/NotificationListeners.reds"
+     ],
+     [
+      "r6/scripts/InkGUI/BrowserExtension.reds",
+      "r6/scripts/InkGUI/BrowserExtension.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Animation/AnimationHandle.reds",
+      "r6/scripts/NightCityAllies/Animation/AnimationHandle.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Persistence/ContextSystem.reds",
+      "r6/scripts/NightCityAllies/Persistence/ContextSystem.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Vehicle/VehicleHandle.reds",
+      "r6/scripts/NightCityAllies/Vehicle/VehicleHandle.reds"
+     ],
+     [
+      "r6/scripts/NightCityAlliesModules/Core/InteractionMenuModule.reds",
+      "r6/scripts/NightCityAlliesModules/Core/InteractionMenuModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Npc/Behavior/FollowTargetBehavior.reds",
+      "r6/scripts/NightCityAllies/Npc/Behavior/FollowTargetBehavior.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/UI/Interactions/EquipmentPanelEntry.reds",
+      "r6/scripts/NightCityAllies/UI/Interactions/EquipmentPanelEntry.reds"
+     ],
+     [
+      "r6/scripts/InkGUI/InkGUI.reds",
+      "r6/scripts/InkGUI/InkGUI.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Animation/AnimationSet.reds",
+      "r6/scripts/NightCityAllies/Animation/AnimationSet.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Persistence/PersistenceSystem.reds",
+      "r6/scripts/NightCityAllies/Persistence/PersistenceSystem.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Vehicle/VehicleSystem.reds",
+      "r6/scripts/NightCityAllies/Vehicle/VehicleSystem.reds"
+     ],
+     [
+      "r6/scripts/NightCityAlliesModules/Core/VehicleDealerModule.reds",
+      "r6/scripts/NightCityAlliesModules/Core/VehicleDealerModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Npc/Behavior/HoldPositionBehavior.reds",
+      "r6/scripts/NightCityAllies/Npc/Behavior/HoldPositionBehavior.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/UI/Interactions/FollowEntry.reds",
+      "r6/scripts/NightCityAllies/UI/Interactions/FollowEntry.reds"
+     ],
+     [
+      "r6/scripts/InkGUI/Lua.reds",
+      "r6/scripts/InkGUI/Lua.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Animation/AnimationSystem.reds",
+      "r6/scripts/NightCityAllies/Animation/AnimationSystem.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Phone/ConversationBuilder.reds",
+      "r6/scripts/NightCityAllies/Phone/ConversationBuilder.reds"
+     ],
+     [
+      "r6/scripts/NightCityAlliesModules/Animations/ArcadeAnimationsModule.reds",
+      "r6/scripts/NightCityAlliesModules/Animations/ArcadeAnimationsModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAlliesModules/Core/WebsiteModule.reds",
+      "r6/scripts/NightCityAlliesModules/Core/WebsiteModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Npc/Behavior/MoveToPositionBehavior.reds",
+      "r6/scripts/NightCityAllies/Npc/Behavior/MoveToPositionBehavior.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/UI/Interactions/GreetEntry.reds",
+      "r6/scripts/NightCityAllies/UI/Interactions/GreetEntry.reds"
+     ],
+     [
+      "r6/scripts/InkGUI/Notification.reds",
+      "r6/scripts/InkGUI/Notification.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Animation/Routine.reds",
+      "r6/scripts/NightCityAllies/Animation/Routine.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Phone/NCAPhoneSystem.reds",
+      "r6/scripts/NightCityAllies/Phone/NCAPhoneSystem.reds"
+     ],
+     [
+      "r6/scripts/NightCityAlliesModules/Animations/BarkeeperAnimationsModule.reds",
+      "r6/scripts/NightCityAlliesModules/Animations/BarkeeperAnimationsModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAlliesModules/Locations/AfterlifeModule.reds",
+      "r6/scripts/NightCityAlliesModules/Locations/AfterlifeModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Npc/Behavior/NCABehavior.reds",
+      "r6/scripts/NightCityAllies/Npc/Behavior/NCABehavior.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/UI/Interactions/HireEntry.reds",
+      "r6/scripts/NightCityAllies/UI/Interactions/HireEntry.reds"
+     ],
+     [
+      "r6/scripts/InkGUI/Panel.reds",
+      "r6/scripts/InkGUI/Panel.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Contract/ContractSystem.reds",
+      "r6/scripts/NightCityAllies/Contract/ContractSystem.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Settings/NCASettings.reds",
+      "r6/scripts/NightCityAllies/Settings/NCASettings.reds"
+     ],
+     [
+      "r6/scripts/NightCityAlliesModules/Animations/BathroomAnimationsModule.reds",
+      "r6/scripts/NightCityAlliesModules/Animations/BathroomAnimationsModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAlliesModules/Locations/CorpoPlazaApartmentModule.reds",
+      "r6/scripts/NightCityAlliesModules/Locations/CorpoPlazaApartmentModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Npc/Behavior/PassengerBehavior.reds",
+      "r6/scripts/NightCityAllies/Npc/Behavior/PassengerBehavior.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/UI/Interactions/HoldPositionEntry.reds",
+      "r6/scripts/NightCityAllies/UI/Interactions/HoldPositionEntry.reds"
+     ],
+     [
+      "r6/scripts/InkGUI/StatRow.reds",
+      "r6/scripts/InkGUI/StatRow.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Contract/ContractTemplate.reds",
+      "r6/scripts/NightCityAllies/Contract/ContractTemplate.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Spawn/SpawnSystem.reds",
+      "r6/scripts/NightCityAllies/Spawn/SpawnSystem.reds"
+     ],
+     [
+      "r6/scripts/NightCityAlliesModules/Animations/DanceAnimationsModule.reds",
+      "r6/scripts/NightCityAlliesModules/Animations/DanceAnimationsModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAlliesModules/Locations/GlenApartmentModule.reds",
+      "r6/scripts/NightCityAlliesModules/Locations/GlenApartmentModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Npc/Behavior/PreviewBehavior.reds",
+      "r6/scripts/NightCityAllies/Npc/Behavior/PreviewBehavior.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/UI/Interactions/InteractionEntry.reds",
+      "r6/scripts/NightCityAllies/UI/Interactions/InteractionEntry.reds"
+     ],
+     [
+      "r6/scripts/InkGUI/Website.reds",
+      "r6/scripts/InkGUI/Website.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Effect/EffectSystem.reds",
+      "r6/scripts/NightCityAllies/Effect/EffectSystem.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Timer/NCATimerSystem.reds",
+      "r6/scripts/NightCityAllies/Timer/NCATimerSystem.reds"
+     ],
+     [
+      "r6/scripts/NightCityAlliesModules/Animations/LyingAnimationsModule.reds",
+      "r6/scripts/NightCityAlliesModules/Animations/LyingAnimationsModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAlliesModules/Locations/GlenModule.reds",
+      "r6/scripts/NightCityAlliesModules/Locations/GlenModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Npc/Behavior/RoamBehavior.reds",
+      "r6/scripts/NightCityAllies/Npc/Behavior/RoamBehavior.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/UI/Interactions/JoinSquadEntry.reds",
+      "r6/scripts/NightCityAllies/UI/Interactions/JoinSquadEntry.reds"
+     ],
+     [
+      "bin/x64/plugins/cyber_engine_tweaks/mods/InkGUI/init.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/InkGUI/init.lua"
+     ],
+     [
+      "bin/x64/plugins/cyber_engine_tweaks/mods/NightCityAllies/Application/IO/characterLoader.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/NightCityAllies/Application/IO/characterLoader.lua"
+     ],
+     [
+      "r6/scripts/NightCityAllies/LICENSE.md",
+      "r6/scripts/NightCityAllies/LICENSE.md"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Equipment/EquipmentRecords.reds",
+      "r6/scripts/NightCityAllies/Equipment/EquipmentRecords.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/UI/CompanionStatsView.reds",
+      "r6/scripts/NightCityAllies/UI/CompanionStatsView.reds"
+     ],
+     [
+      "r6/scripts/NightCityAlliesModules/Animations/SittingAnimationsModule.reds",
+      "r6/scripts/NightCityAlliesModules/Animations/SittingAnimationsModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAlliesModules/Locations/H10ApartmentModule.reds",
+      "r6/scripts/NightCityAlliesModules/Locations/H10ApartmentModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Npc/Behavior/WalkAheadBehavior.reds",
+      "r6/scripts/NightCityAllies/Npc/Behavior/WalkAheadBehavior.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/UI/Interactions/LuaEntry.reds",
+      "r6/scripts/NightCityAllies/UI/Interactions/LuaEntry.reds"
+     ],
+     [
+      "bin/x64/plugins/cyber_engine_tweaks/mods/NightCityAllies/help.txt",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/NightCityAllies/help.txt"
+     ],
+     [
+      "bin/x64/plugins/cyber_engine_tweaks/mods/NightCityAllies/Application/app.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/NightCityAllies/Application/app.lua"
+     ],
+     [
+      "bin/x64/plugins/cyber_engine_tweaks/mods/NightCityAllies/Application/IO/moduleLoader.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/NightCityAllies/Application/IO/moduleLoader.lua"
+     ],
+     [
+      "r6/scripts/NightCityAllies/NCA.reds",
+      "r6/scripts/NightCityAllies/NCA.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Equipment/EquipmentSystem.reds",
+      "r6/scripts/NightCityAllies/Equipment/EquipmentSystem.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/UI/DealerWebsite.reds",
+      "r6/scripts/NightCityAllies/UI/DealerWebsite.reds"
+     ],
+     [
+      "r6/scripts/NightCityAlliesModules/Animations/StandingAnimationsModule.reds",
+      "r6/scripts/NightCityAlliesModules/Animations/StandingAnimationsModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAlliesModules/Locations/JapanTownApartmentModule.reds",
+      "r6/scripts/NightCityAlliesModules/Locations/JapanTownApartmentModule.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/Npc/Hooks/ExpHooks.reds",
+      "r6/scripts/NightCityAllies/Npc/Hooks/ExpHooks.reds"
+     ],
+     [
+      "r6/scripts/NightCityAllies/UI/Interactions/RoutineEntry.reds",
+      "r6/scripts/NightCityAllies/UI/Interactions/RoutineEntry.reds"
+     ],
+     [
+      "bin/x64/plugins/cyber_engine_tweaks/mods/NightCityAllies/init.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/NightCityAllies/init.lua"
+     ],
+     [
+      "bin/x64/plugins/cyber_engine_tweaks/mods/NightCityAllies/Characters/README.txt",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/NightCityAllies/Characters/README.txt"
+     ],
+     [
+      "bin/x64/plugins/cyber_engine_tweaks/mods/NightCityAllies/Application/Lib/debug.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/NightCityAllies/Application/Lib/debug.lua"
+     ]
+    ],
+    "fomod": false,
+    "fileCount": 166
+   },
+   "displayName": {
+    "ru": "Night City Allies - AIO 27625 1.6.12 2026",
+    "en": "Night City Allies - AIO 27625 1.6.12 2026"
+   }
+  },
+  {
+   "id": "Merc Protocol - Perk Gameplay Expansion 26751 2.13 2026",
+   "modFolder": "Merc Protocol - Perk Gameplay Expansion 26751 2.13 2026",
+   "order": 58,
+   "nexus": {
+    "game": "cyberpunk2077",
+    "modId": 26751,
+    "fileId": 167194,
+    "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/26751?tab=files&file_id=167194"
+   },
+   "archive": {
+    "localFileName": "Merc Protocol - Perk Gameplay Expansion 26751 2.13 2026-10-20T02-52Z NEnvE33QA.rar",
+    "size": 100992,
+    "sha256": "74923a6f98cb8c13d097dd73f7920fe34afe0a181cd9a83dce45f6dc518fb5b4"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "r6/scripts/MercProtocol/utils.reds",
+      "r6/scripts/MercProtocol/utils.reds"
+     ],
+     [
+      "r6/scripts/MercProtocol/Player/player_setup.reds",
+      "r6/scripts/MercProtocol/Player/player_setup.reds"
+     ],
+     [
+      "r6/tweaks/MercProtocol/status_effects_body.yaml",
+      "r6/tweaks/MercProtocol/status_effects_body.yaml"
+     ],
+     [
+      "r6/scripts/MercProtocol/Player/player_setup_part2.reds",
+      "r6/scripts/MercProtocol/Player/player_setup_part2.reds"
+     ],
+     [
+      "r6/tweaks/MercProtocol/status_effects_cool.yaml",
+      "r6/tweaks/MercProtocol/status_effects_cool.yaml"
+     ],
+     [
+      "r6/scripts/MercProtocol/Progression/milestone_sync.reds",
+      "r6/scripts/MercProtocol/Progression/milestone_sync.reds"
+     ],
+     [
+      "r6/tweaks/MercProtocol/status_effects_intelligence.yaml",
+      "r6/tweaks/MercProtocol/status_effects_intelligence.yaml"
+     ],
+     [
+      "r6/scripts/MercProtocol/HubMenu/StatsComponent.reds",
+      "r6/scripts/MercProtocol/HubMenu/StatsComponent.reds"
+     ],
+     [
+      "r6/scripts/MercProtocol/Progression/milestone_tracking.reds",
+      "r6/scripts/MercProtocol/Progression/milestone_tracking.reds"
+     ],
+     [
+      "r6/tweaks/MercProtocol/status_effects_iron_will.yaml",
+      "r6/tweaks/MercProtocol/status_effects_iron_will.yaml"
+     ],
+     [
+      "r6/scripts/MercProtocol/Localization/LocalizationProvider.reds",
+      "r6/scripts/MercProtocol/Localization/LocalizationProvider.reds"
+     ],
+     [
+      "r6/scripts/MercProtocol/Progression/progression.reds",
+      "r6/scripts/MercProtocol/Progression/progression.reds"
+     ],
+     [
+      "r6/tweaks/MercProtocol/status_effects_keystone.yaml",
+      "r6/tweaks/MercProtocol/status_effects_keystone.yaml"
+     ],
+     [
+      "r6/scripts/MercProtocol/Perks/perk_body.reds",
+      "r6/scripts/MercProtocol/Perks/perk_body.reds"
+     ],
+     [
+      "r6/scripts/MercProtocol/Progression/progression_part2.reds",
+      "r6/scripts/MercProtocol/Progression/progression_part2.reds"
+     ],
+     [
+      "r6/tweaks/MercProtocol/status_effects_overkill.yaml",
+      "r6/tweaks/MercProtocol/status_effects_overkill.yaml"
+     ],
+     [
+      "r6/scripts/MercProtocol/Perks/perk_body_part2.reds",
+      "r6/scripts/MercProtocol/Perks/perk_body_part2.reds"
+     ],
+     [
+      "r6/scripts/MercProtocol/UI/notification.reds",
+      "r6/scripts/MercProtocol/UI/notification.reds"
+     ],
+     [
+      "r6/tweaks/MercProtocol/status_effects_reflexes.yaml",
+      "r6/tweaks/MercProtocol/status_effects_reflexes.yaml"
+     ],
+     [
+      "r6/scripts/MercProtocol/Perks/perk_body_part3.reds",
+      "r6/scripts/MercProtocol/Perks/perk_body_part3.reds"
+     ],
+     [
+      "r6/scripts/MercProtocol/UI/notification_part2.reds",
+      "r6/scripts/MercProtocol/UI/notification_part2.reds"
+     ],
+     [
+      "r6/tweaks/MercProtocol/status_effects_technical.yaml",
+      "r6/tweaks/MercProtocol/status_effects_technical.yaml"
+     ],
+     [
+      "r6/scripts/MercProtocol/Perks/perk_cool.reds",
+      "r6/scripts/MercProtocol/Perks/perk_cool.reds"
+     ],
+     [
+      "r6/scripts/MercProtocol/Perks/perk_cool_part2.reds",
+      "r6/scripts/MercProtocol/Perks/perk_cool_part2.reds"
+     ],
+     [
+      "r6/scripts/MercProtocol/HubMenu/Components/AssaultAdjuster.reds",
+      "r6/scripts/MercProtocol/HubMenu/Components/AssaultAdjuster.reds"
+     ],
+     [
+      "r6/scripts/MercProtocol/Perks/perk_cool_part3.reds",
+      "r6/scripts/MercProtocol/Perks/perk_cool_part3.reds"
+     ],
+     [
+      "r6/scripts/MercProtocol/HubMenu/Components/FlavorText.reds",
+      "r6/scripts/MercProtocol/HubMenu/Components/FlavorText.reds"
+     ],
+     [
+      "r6/scripts/MercProtocol/Perks/perk_intelligence.reds",
+      "r6/scripts/MercProtocol/Perks/perk_intelligence.reds"
+     ],
+     [
+      "r6/scripts/MercProtocol/HubMenu/Components/PerkArea.reds",
+      "r6/scripts/MercProtocol/HubMenu/Components/PerkArea.reds"
+     ],
+     [
+      "r6/scripts/MercProtocol/Perks/perk_intelligence_hacklink.reds",
+      "r6/scripts/MercProtocol/Perks/perk_intelligence_hacklink.reds"
+     ],
+     [
+      "r6/scripts/MercProtocol/HubMenu/Components/Rewards.reds",
+      "r6/scripts/MercProtocol/HubMenu/Components/Rewards.reds"
+     ],
+     [
+      "r6/scripts/MercProtocol/Perks/perk_intelligence_part2.reds",
+      "r6/scripts/MercProtocol/Perks/perk_intelligence_part2.reds"
+     ],
+     [
+      "r6/scripts/MercProtocol/HubMenu/Components/StatList.reds",
+      "r6/scripts/MercProtocol/HubMenu/Components/StatList.reds"
+     ],
+     [
+      "r6/scripts/MercProtocol/Perks/perk_intelligence_part3.reds",
+      "r6/scripts/MercProtocol/Perks/perk_intelligence_part3.reds"
+     ],
+     [
+      "r6/scripts/MercProtocol/HubMenu/Components/StreetCredPanel.reds",
+      "r6/scripts/MercProtocol/HubMenu/Components/StreetCredPanel.reds"
+     ],
+     [
+      "r6/scripts/MercProtocol/Perks/perk_keystone.reds",
+      "r6/scripts/MercProtocol/Perks/perk_keystone.reds"
+     ],
+     [
+      "r6/scripts/MercProtocol/HubMenu/Elements/CustomPerk.reds",
+      "r6/scripts/MercProtocol/HubMenu/Elements/CustomPerk.reds"
+     ],
+     [
+      "r6/scripts/MercProtocol/Perks/perk_reflexes.reds",
+      "r6/scripts/MercProtocol/Perks/perk_reflexes.reds"
+     ],
+     [
+      "r6/scripts/MercProtocol/HubMenu/Elements/CustomUINotification.reds",
+      "r6/scripts/MercProtocol/HubMenu/Elements/CustomUINotification.reds"
+     ],
+     [
+      "r6/scripts/MercProtocol/Perks/perk_reflexes_part2.reds",
+      "r6/scripts/MercProtocol/Perks/perk_reflexes_part2.reds"
+     ],
+     [
+      "r6/scripts/MercProtocol/Localization/Packages/English.reds",
+      "r6/scripts/MercProtocol/Localization/Packages/English.reds"
+     ],
+     [
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MercProtocol/GameSession.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MercProtocol/GameSession.lua"
+     ],
+     [
+      "r6/config/redsUserHints/MercProtocol.toml",
+      "r6/config/redsUserHints/MercProtocol.toml"
+     ],
+     [
+      "r6/scripts/MercProtocol/Perks/perk_reflexes_part3.reds",
+      "r6/scripts/MercProtocol/Perks/perk_reflexes_part3.reds"
+     ],
+     [
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MercProtocol/GameSettings.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MercProtocol/GameSettings.lua"
+     ],
+     [
+      "r6/scripts/MercProtocol/config.reds",
+      "r6/scripts/MercProtocol/config.reds"
+     ],
+     [
+      "r6/scripts/MercProtocol/Perks/perk_sharedfate.reds",
+      "r6/scripts/MercProtocol/Perks/perk_sharedfate.reds"
+     ],
+     [
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MercProtocol/GameUI.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MercProtocol/GameUI.lua"
+     ],
+     [
+      "r6/scripts/MercProtocol/FrameworkIntegration.reds",
+      "r6/scripts/MercProtocol/FrameworkIntegration.reds"
+     ],
+     [
+      "r6/scripts/MercProtocol/Perks/perk_technical.reds",
+      "r6/scripts/MercProtocol/Perks/perk_technical.reds"
+     ],
+     [
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MercProtocol/init.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MercProtocol/init.lua"
+     ],
+     [
+      "r6/scripts/MercProtocol/hashmap.reds",
+      "r6/scripts/MercProtocol/hashmap.reds"
+     ],
+     [
+      "r6/scripts/MercProtocol/Perks/perk_technical_part2.reds",
+      "r6/scripts/MercProtocol/Perks/perk_technical_part2.reds"
+     ],
+     [
+      "r6/scripts/MercProtocol/module.reds",
+      "r6/scripts/MercProtocol/module.reds"
+     ],
+     [
+      "r6/scripts/MercProtocol/Perks/perk_technical_part3.reds",
+      "r6/scripts/MercProtocol/Perks/perk_technical_part3.reds"
+     ],
+     [
+      "r6/scripts/MercProtocol/perk_enum.reds",
+      "r6/scripts/MercProtocol/perk_enum.reds"
+     ],
+     [
+      "r6/scripts/MercProtocol/Player/inkVirtualAspectRatioListener.reds",
+      "r6/scripts/MercProtocol/Player/inkVirtualAspectRatioListener.reds"
+     ]
+    ],
+    "fomod": false,
+    "fileCount": 57
+   },
+   "displayName": {
+    "ru": "Merc Protocol - Perk Gameplay Expansion 26751 2.13 2026",
+    "en": "Merc Protocol - Perk Gameplay Expansion 26751 2.13 2026"
+   }
+  },
+  {
+   "id": "gambling-system-blackjack 19575 1.1.5 2026",
+   "modFolder": "gambling-system-blackjack 19575 1.1.5 2026",
+   "order": 100,
+   "nexus": {
+    "game": "cyberpunk2077",
+    "modId": 19575,
+    "fileId": 173782,
+    "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/19575?tab=files&file_id=173782"
+   },
+   "archive": {
+    "localFileName": "gambling-system-blackjack 19575 1.1.5 2026-11-04T23-38Z cB3xB01j8.zip",
+    "size": 458102,
+    "sha256": "ed69bd5748ee5612067aeea28d41fdc8e21a54f62d19440967098e6253b5789a"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/gambling-system-blackjack/README.md",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/gambling-system-blackjack/README.md"
+     ],
+     [
+      "1/bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/RelativeCoordinateCalulator.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/gambling-system-blackjack/RelativeCoordinateCalulator.lua"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/gambling-system-blackjack/SimpleCasinoChip.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/gambling-system-blackjack/SimpleCasinoChip.lua"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/gambling-system-blackjack/singleRoundLogic.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/gambling-system-blackjack/singleRoundLogic.lua"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/gambling-system-blackjack/SpotManager.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/gambling-system-blackjack/SpotManager.lua"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/gambling-system-blackjack/TableManager.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/gambling-system-blackjack/TableManager.lua"
+     ],
+     [
+      "1/bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/addons/null.txt",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/gambling-system-blackjack/addons/null.txt"
+     ],
+     [
+      "2/bin/x64/plugins/cyber_engine_tweaks/mods/AppearanceMenuMod/External/Cron.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/gambling-system-blackjack/External/Cron.lua"
+     ],
+     [
+      "0/archive/pc/mod/gambling-system-blackjack.archive",
+      "archive/pc/mod/gambling-system-blackjack.archive"
+     ],
+     [
+      "1/bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/External/GameLocale.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/gambling-system-blackjack/External/GameLocale.lua"
+     ],
+     [
+      "0/archive/pc/mod/gambling-system-blackjack.xl",
+      "archive/pc/mod/gambling-system-blackjack.xl"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/gambling-system-blackjack/External/GameSession.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/gambling-system-blackjack/External/GameSession.lua"
+     ],
+     [
+      "3/bin/x64/plugins/cyber_engine_tweaks/mods/ConflictBegone/Modules/GameUI.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/gambling-system-blackjack/External/GameUI.lua"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/gambling-system-blackjack/External/interactionUI.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/gambling-system-blackjack/External/interactionUI.lua"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/gambling-system-blackjack/lang/en-us.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/gambling-system-blackjack/lang/en-us.lua"
+     ],
+     [
+      "1/bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/addons/null.txt",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/gambling-system-blackjack/sessions/null.txt"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/gambling-system-blackjack/BlackjackCoordinates.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/gambling-system-blackjack/BlackjackCoordinates.lua"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/gambling-system-blackjack/BlackjackMainMenu.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/gambling-system-blackjack/BlackjackMainMenu.lua"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/gambling-system-blackjack/CardEngine.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/gambling-system-blackjack/CardEngine.lua"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/gambling-system-blackjack/HandCountDisplay.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/gambling-system-blackjack/HandCountDisplay.lua"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/gambling-system-blackjack/HolographicValueDisplay.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/gambling-system-blackjack/HolographicValueDisplay.lua"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/gambling-system-blackjack/init.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/gambling-system-blackjack/init.lua"
+     ],
+     [
+      "1/bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/JsonData.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/gambling-system-blackjack/JsonData.lua"
+     ]
+    ],
+    "fomod": false,
+    "fileCount": 23,
+    "perArchiveFolders": true
+   },
+   "displayName": {
+    "ru": "gambling-system-blackjack 19575 1.1.5 2026",
+    "en": "gambling-system-blackjack 19575 1.1.5 2026"
+   },
+   "archives": [
+    {
+     "localFileName": "gambling-system-blackjack 19575 1.1.5 2026-11-04T23-38Z cB3xB01j8.zip",
+     "size": 458102,
+     "sha256": "ed69bd5748ee5612067aeea28d41fdc8e21a54f62d19440967098e6253b5789a",
+     "nexus": {
+      "game": "cyberpunk2077",
+      "modId": 19575,
+      "fileId": 173782
+     }
+    },
+    {
+     "localFileName": "Gambling System - Roulette 15450 1.1.4 2026-11-05T02-23Z tvQTvsRxv.zip",
+     "size": 503433,
+     "sha256": "85a1f86d21d0e558056bd9c13f890df80f866c27213e1ed78fda28771ba22ff5",
+     "nexus": {
+      "game": "cyberpunk2077",
+      "modId": 15450,
+      "fileId": 173827
+     }
+    },
+    {
+     "localFileName": "Appearance Menu Mod 790 2.17.0 2026-11-06T18-46Z NEnvE305K.zip",
+     "size": 86269447,
+     "sha256": "6f3d27a400b6ffe717ced0884f93edaf2a923a0119e731904fdb645fc6368b5c",
+     "nexus": {
+      "game": "cyberpunk2077",
+      "modId": 790,
+      "fileId": 174572
+     }
+    },
+    {
+     "localFileName": "Conflict Begone 21912 1.4.0 2026-08-08T21-00Z IieOigRcG.zip",
+     "size": 21036,
+     "sha256": "c7bdb485b842faf6e102051ba5995b31e81c6bfa41ac483e34132f0e3fe4eb66",
+     "nexus": {
+      "game": "cyberpunk2077",
+      "modId": 21912,
+      "fileId": 155422
+     }
+    }
+   ]
+  },
+  {
+   "id": "Gambling System - Roulette 15450 1.1.4 2026",
+   "modFolder": "Gambling System - Roulette 15450 1.1.4 2026",
+   "order": 105,
+   "nexus": {
+    "game": "cyberpunk2077",
+    "modId": 15450,
+    "fileId": 173827,
+    "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/15450?tab=files&file_id=173827"
+   },
+   "archive": {
+    "localFileName": "Gambling System - Roulette 15450 1.1.4 2026-11-05T02-23Z tvQTvsRxv.zip",
+    "size": 503433,
+    "sha256": "85a1f86d21d0e558056bd9c13f890df80f866c27213e1ed78fda28771ba22ff5"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/External/GameLocale.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/External/GameLocale.lua"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/External/GameSession.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/External/GameSession.lua"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/External/GameUI.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/External/GameUI.lua"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/chipBetPiles.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/chipBetPiles.lua"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/External/interactionUI.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/External/interactionUI.lua"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/chipPlayerPile.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/chipPlayerPile.lua"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/lang/en-us.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/lang/en-us.lua"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/chipUtils.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/chipUtils.lua"
+     ],
+     [
+      "0/archive/pc/mod/Gambling System - Roulette.archive",
+      "archive/pc/mod/Gambling System - Roulette.archive"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/EntityManager.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/EntityManager.lua"
+     ],
+     [
+      "0/archive/pc/mod/gambling_system_roulette.xl",
+      "archive/pc/mod/gambling_system_roulette.xl"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/HolographicValueDisplay.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/HolographicValueDisplay.lua"
+     ],
+     [
+      "0/archive/pc/mod/gambling_system_roulette_auto_generated.xl",
+      "archive/pc/mod/gambling_system_roulette_auto_generated.xl"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/init.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/init.lua"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/JsonData.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/JsonData.lua"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/README.md",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/README.md"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/RelativeCoordinateCalulator.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/RelativeCoordinateCalulator.lua"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/RouletteAnimations.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/RouletteAnimations.lua"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/RouletteCoordinates.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/RouletteCoordinates.lua"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/RouletteMainMenu.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/RouletteMainMenu.lua"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/SpotManager.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/SpotManager.lua"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/TableManager.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/TableManager.lua"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/addons/null.txt",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/addons/null.txt"
+     ],
+     [
+      "1/bin/x64/plugins/cyber_engine_tweaks/mods/AppearanceMenuMod/External/Cron.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/External/Cron.lua"
+     ]
+    ],
+    "fomod": false,
+    "fileCount": 24,
+    "perArchiveFolders": true
+   },
+   "displayName": {
+    "ru": "Gambling System - Roulette 15450 1.1.4 2026",
+    "en": "Gambling System - Roulette 15450 1.1.4 2026"
+   },
+   "archives": [
+    {
+     "localFileName": "Gambling System - Roulette 15450 1.1.4 2026-11-05T02-23Z tvQTvsRxv.zip",
+     "size": 503433,
+     "sha256": "85a1f86d21d0e558056bd9c13f890df80f866c27213e1ed78fda28771ba22ff5",
+     "nexus": {
+      "game": "cyberpunk2077",
+      "modId": 15450,
+      "fileId": 173827
+     }
+    },
+    {
+     "localFileName": "Appearance Menu Mod 790 2.17.0 2026-11-06T18-46Z NEnvE305K.zip",
+     "size": 86269447,
+     "sha256": "6f3d27a400b6ffe717ced0884f93edaf2a923a0119e731904fdb645fc6368b5c",
+     "nexus": {
+      "game": "cyberpunk2077",
+      "modId": 790,
+      "fileId": 174572
+     }
+    }
+   ]
+  },
+  {
+   "id": "Go on a Date",
+   "modFolder": "Go on a Date",
+   "order": 8,
+   "nexus": {
+    "game": "cyberpunk2077",
+    "modId": 31375,
+    "fileId": 155446,
+    "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/31375?tab=files&file_id=155446"
+   },
+   "archive": {
+    "localFileName": "Go on a Date (Judy) - Quest 31375 2.0 2026-08-09T00-52Z HncQn2zTG.rar",
+    "size": 139972,
+    "sha256": "5be503ade2b33ed71957677c420d024ca84c356932c461cd91b876ed1b1d3e2b"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/Dedrajudygoonadate/ra/dedera22535431.json",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Dedrajudygoonadate/ra/dedera22535431.json"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/Dedrajudygoonadate/ra/judy_date_xyz.json",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Dedrajudygoonadate/ra/judy_date_xyz.json"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/nativeInteractions/projects/judygoonadte.json",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/nativeInteractions/projects/judygoonadte.json"
+     ],
+     [
+      "1/bin/x64/plugins/cyber_engine_tweaks/mods/##EgghancedBloodFx/db.sqlite3",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Dedrajudygoonadate/db.sqlite3"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/Dedrajudygoonadate/init.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Dedrajudygoonadate/init.lua"
+     ],
+     [
+      "0/archive/pc/mod/GoonadateJudy.archive",
+      "archive/pc/mod/GoonadateJudy.archive"
+     ],
+     [
+      "0/archive/pc/mod/goonadatejudy2.xl",
+      "archive/pc/mod/goonadatejudy2.xl"
+     ],
+     [
+      "0/archive/pc/mod/judygoondatededra.archive",
+      "archive/pc/mod/judygoondatededra.archive"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/Dedrajudygoonadate/modules/Cron.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Dedrajudygoonadate/modules/Cron.lua"
+     ],
+     [
+      "0/archive/pc/mod/judy_date_journal.archive.xl",
+      "archive/pc/mod/judy_date_journal.archive.xl"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/Dedrajudygoonadate/modules/GameHUD.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Dedrajudygoonadate/modules/GameHUD.lua"
+     ],
+     [
+      "0/r6/scripts/JudyDateSMS/JudyDateSMS.reds",
+      "r6/scripts/JudyDateSMS/JudyDateSMS.reds"
+     ],
+     [
+      "2/bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/External/GameSession.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Dedrajudygoonadate/modules/GameSession.lua"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/Dedrajudygoonadate/modules/GameUI.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Dedrajudygoonadate/modules/GameUI.lua"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/Dedrajudygoonadate/modules/interactionUI.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Dedrajudygoonadate/modules/interactionUI.lua"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/Dedrajudygoonadate/modules/lang.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Dedrajudygoonadate/modules/lang.lua"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/Dedrajudygoonadate/modules/messenger.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Dedrajudygoonadate/modules/messenger.lua"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/Dedrajudygoonadate/modules/nativeJudyDateJournal.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Dedrajudygoonadate/modules/nativeJudyDateJournal.lua"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/Dedrajudygoonadate/modules/utils.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Dedrajudygoonadate/modules/utils.lua"
+     ]
+    ],
+    "fomod": false,
+    "fileCount": 19,
+    "perArchiveFolders": true
+   },
+   "displayName": {
+    "ru": "Go on a Date",
+    "en": "Go on a Date"
+   },
+   "archives": [
+    {
+     "localFileName": "Go on a Date (Judy) - Quest 31375 2.0 2026-08-09T00-52Z HncQn2zTG.rar",
+     "size": 139972,
+     "sha256": "5be503ade2b33ed71957677c420d024ca84c356932c461cd91b876ed1b1d3e2b",
+     "nexus": {
+      "game": "cyberpunk2077",
+      "modId": 31375,
+      "fileId": 155446
+     }
+    },
+    {
+     "localFileName": "Egghanced Blood Fx v2 - BALANCED-11834-v1-0-0-0-1709270069.rar",
+     "size": 108521592,
+     "sha256": "def5bda55b9304544fe0afa4fc7a2267d78c23a82cb17d7068b19519d8115824",
+     "nexus": {
+      "game": "cyberpunk2077",
+      "modId": 11834,
+      "fileId": 70297
+     }
+    },
+    {
+     "localFileName": "Gambling System - Roulette 15450 1.1.4 2026-11-05T02-23Z tvQTvsRxv.zip",
+     "size": 503433,
+     "sha256": "85a1f86d21d0e558056bd9c13f890df80f866c27213e1ed78fda28771ba22ff5",
+     "nexus": {
+      "game": "cyberpunk2077",
+      "modId": 15450,
+      "fileId": 173827
+     }
+    }
+   ]
+  },
+  {
+   "id": "Go on a Date (Panam)",
+   "modFolder": "Go on a Date (Panam)",
+   "order": 45,
+   "nexus": {
+    "game": "cyberpunk2077",
+    "modId": 26613,
+    "fileId": 138268,
+    "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/26613?tab=files&file_id=138268"
+   },
+   "archive": {
+    "localFileName": "Go on a Date (Panam)-26613-2-1-1772500512.rar",
+    "size": 4381593,
+    "sha256": "a22c78dab414ae62a7515bc48cd87ece7add757fd2434222a38133c596145781"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "0/archive/pc/mod/panamshootinggg1.xl",
+      "archive/pc/mod/panamshootinggg1.xl"
+     ],
+     [
+      "0/r6/audioware/pb1/panamd4.wav",
+      "r6/audioware/pb1/panamd4.wav"
+     ],
+     [
+      "0/r6/audioware/pb1/panamgrill.wav",
+      "r6/audioware/pb1/panamgrill.wav"
+     ],
+     [
+      "0/r6/audioware/pb1/panamgun.wav",
+      "r6/audioware/pb1/panamgun.wav"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/Dedrapanamgoondate/modules/Cron.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Dedrapanamgoondate/modules/Cron.lua"
+     ],
+     [
+      "0/r6/audioware/pb1/pb1.yml",
+      "r6/audioware/pb1/pb1.yml"
+     ],
+     [
+      "1/bin/x64/plugins/cyber_engine_tweaks/mods/Dedrajudygoonadate/modules/GameHUD.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Dedrapanamgoondate/modules/GameHUD.lua"
+     ],
+     [
+      "0/r6/audioware/pb1/pship.wav",
+      "r6/audioware/pb1/pship.wav"
+     ],
+     [
+      "2/bin/x64/plugins/cyber_engine_tweaks/mods/Gambling System - Roulette/External/GameSession.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Dedrapanamgoondate/modules/GameSession.lua"
+     ],
+     [
+      "0/r6/audioware/pb1/pwhale.wav",
+      "r6/audioware/pb1/pwhale.wav"
+     ],
+     [
+      "1/bin/x64/plugins/cyber_engine_tweaks/mods/Dedrajudygoonadate/modules/GameUI.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Dedrapanamgoondate/modules/GameUI.lua"
+     ],
+     [
+      "0/r6/scripts/panamdateicon/panamdateicon.reds",
+      "r6/scripts/panamdateicon/panamdateicon.reds"
+     ],
+     [
+      "1/bin/x64/plugins/cyber_engine_tweaks/mods/Dedrajudygoonadate/modules/interactionUI.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Dedrapanamgoondate/modules/interactionUI.lua"
+     ],
+     [
+      "3/SyberLillyRadio/bin/x64/plugins/cyber_engine_tweaks/mods/radioExt/radios/SyberLilly FM/__folder_managed_by_vortex",
+      "r6/scripts/panamdateicon/__folder_managed_by_vortex"
+     ],
+     [
+      "4/bin/x64/plugins/cyber_engine_tweaks/mods/##EgghancedBloodFx/db.sqlite3",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Dedrapanamgoondate/db.sqlite3"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/Dedrapanamgoondate/modules/lang.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Dedrapanamgoondate/modules/lang.lua"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/Dedrapanamgoondate/modules/messenger.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Dedrapanamgoondate/modules/messenger.lua"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/Dedrapanamgoondate/init.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Dedrapanamgoondate/init.lua"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/Dedrapanamgoondate/modules/utils.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Dedrapanamgoondate/modules/utils.lua"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/Dedrapanamgoondate/PanamDateSMS_hud_restore.json",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Dedrapanamgoondate/PanamDateSMS_hud_restore.json"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/Dedrapanamgoondate/ra/dedera221.json",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Dedrapanamgoondate/ra/dedera221.json"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/Dedrapanamgoondate/sessions/ignorethis.txt",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/Dedrapanamgoondate/sessions/ignorethis.txt"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/nativeInteractions/projects/panambeach.json",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/nativeInteractions/projects/panambeach.json"
+     ],
+     [
+      "0/archive/pc/mod/Dedrapanamdatebeach.archive",
+      "archive/pc/mod/Dedrapanamdatebeach.archive"
+     ],
+     [
+      "0/archive/pc/mod/Dedrapanamdates.archive",
+      "archive/pc/mod/Dedrapanamdates.archive"
+     ],
+     [
+      "0/archive/pc/mod/Dedrapanamguitar.archive",
+      "archive/pc/mod/Dedrapanamguitar.archive"
+     ],
+     [
+      "0/archive/pc/mod/Dedrapanamguitar.xl",
+      "archive/pc/mod/Dedrapanamguitar.xl"
+     ],
+     [
+      "0/archive/pc/mod/Dedrapanam_beach.xl",
+      "archive/pc/mod/Dedrapanam_beach.xl"
+     ],
+     [
+      "0/archive/pc/mod/panamdateggg.xl",
+      "archive/pc/mod/panamdateggg.xl"
+     ]
+    ],
+    "fomod": false,
+    "fileCount": 29,
+    "perArchiveFolders": true
+   },
+   "displayName": {
+    "ru": "Go on a Date (Panam)",
+    "en": "Go on a Date (Panam)"
+   },
+   "archives": [
+    {
+     "localFileName": "Go on a Date (Panam)-26613-2-1-1772500512.rar",
+     "size": 4381593,
+     "sha256": "a22c78dab414ae62a7515bc48cd87ece7add757fd2434222a38133c596145781",
+     "nexus": {
+      "game": "cyberpunk2077",
+      "modId": 26613,
+      "fileId": 138268
+     }
+    },
+    {
+     "localFileName": "Go on a Date (Judy) - Quest 31375 2.0 2026-08-09T00-52Z HncQn2zTG.rar",
+     "size": 139972,
+     "sha256": "5be503ade2b33ed71957677c420d024ca84c356932c461cd91b876ed1b1d3e2b",
+     "nexus": {
+      "game": "cyberpunk2077",
+      "modId": 31375,
+      "fileId": 155446
+     }
+    },
+    {
+     "localFileName": "Gambling System - Roulette 15450 1.1.4 2026-11-05T02-23Z tvQTvsRxv.zip",
+     "size": 503433,
+     "sha256": "85a1f86d21d0e558056bd9c13f890df80f866c27213e1ed78fda28771ba22ff5",
+     "nexus": {
+      "game": "cyberpunk2077",
+      "modId": 15450,
+      "fileId": 173827
+     }
+    },
+    {
+     "localFileName": "105.1 SyberLilly FM-6163-0-6-1667453155.zip",
+     "size": 61729844,
+     "sha256": "4bd4c7204a98d292a10912426add07bb632f4084c658bf239c2f0cedaab81eb2",
+     "nexus": {
+      "game": "cyberpunk2077",
+      "modId": 6163,
+      "fileId": 32537
+     }
+    },
+    {
+     "localFileName": "Egghanced Blood Fx v2 - BALANCED-11834-v1-0-0-0-1709270069.rar",
+     "size": 108521592,
+     "sha256": "def5bda55b9304544fe0afa4fc7a2267d78c23a82cb17d7068b19519d8115824",
+     "nexus": {
+      "game": "cyberpunk2077",
+      "modId": 11834,
+      "fileId": 70297
+     }
+    }
+   ]
+  },
+  {
+   "id": "Ragdoll Physics Overhaul 3.0 BETA + HOTFIX",
+   "modFolder": "Ragdoll Physics Overhaul 3.0 BETA + HOTFIX",
+   "order": 75,
+   "nexus": {
+    "game": "cyberpunk2077",
+    "modId": 3858,
+    "fileId": 175098,
+    "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/3858?tab=files&file_id=175098"
+   },
+   "archive": {
+    "localFileName": "Ragdoll Physics Overhaul 3.0 BETA 3858 3.0 2026-11-07T18-42Z vD6JDHX5y.zip",
+    "size": 945537,
+    "sha256": "2490d60cf756cdad08501d515e77474a82ceeae9acaefa80b93c2826c15eae2f"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "0/r6/scripts/RagdollPhysicsOverhaul/RPO_MaxTac.reds",
+      "r6/scripts/RagdollPhysicsOverhaul/RPO_MaxTac.reds"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_falling2.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_falling2.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_gutshotstateB4.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_gutshotstateB4.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_legshotL3.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_legshotL3.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_rollstopside.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_rollstopside.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotgunblast2after2.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotgunblast2after2.txt"
+     ],
+     [
+      "0/r6/scripts/RagdollPhysicsOverhaul/RPO_Native.reds",
+      "r6/scripts/RagdollPhysicsOverhaul/RPO_Native.reds"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_falling3.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_falling3.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_gutshotstateC1.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_gutshotstateC1.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_legshotR1.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_legshotR1.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_rollstopsupine.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_rollstopsupine.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotlegL.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotlegL.txt"
+     ],
+     [
+      "0/r6/scripts/RagdollPhysicsOverhaul/RPO_Suite.reds",
+      "r6/scripts/RagdollPhysicsOverhaul/RPO_Suite.reds"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_falling4.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_falling4.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_gutshotstateC2.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_gutshotstateC2.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_legshotR2.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_legshotR2.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_settleLside.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_settleLside.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotlegR.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotlegR.txt"
+     ],
+     [
+      "0/r6/scripts/RagdollPhysicsOverhaul/RPO_Takedown.reds",
+      "r6/scripts/RagdollPhysicsOverhaul/RPO_Takedown.reds"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_fliptosupineA1.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_fliptosupineA1.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_gutshotstateC3.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_gutshotstateC3.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_legshotR3.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_legshotR3.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_settleRside.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_settleRside.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_torsosideL.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_torsosideL.txt"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/RagdollPhysicsSuite/info_popups.txt",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/RagdollPhysicsSuite/info_popups.txt"
+     ],
+     [
+      "0/r6/scripts/RagdollPhysicsOverhaul/RPO_Throw.reds",
+      "r6/scripts/RagdollPhysicsOverhaul/RPO_Throw.reds"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_fliptosupineA2.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_fliptosupineA2.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_gutshotstateC4.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_gutshotstateC4.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_legshotstateL1.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_legshotstateL1.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotarmL.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotarmL.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_torsosideR.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_torsosideR.txt"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/RagdollPhysicsSuite/init.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/RagdollPhysicsSuite/init.lua"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/activeragdoll.ini",
+      "red4ext/plugins/RagdollPhysicsOverhaul/activeragdoll.ini"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_fliptosupineA3.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_fliptosupineA3.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_headshot.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_headshot.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_legshotstateL2.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_legshotstateL2.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotarmL2.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotarmL2.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_tpose.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_tpose.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/modsettings.ini",
+      "red4ext/plugins/RagdollPhysicsOverhaul/modsettings.ini"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_fliptosupineB1.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_fliptosupineB1.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_headshotback1.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_headshotback1.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_legshotstateL3.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_legshotstateL3.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotarmL3.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotarmL3.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/ragdoll.ini",
+      "red4ext/plugins/RagdollPhysicsOverhaul/ragdoll.ini"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_fliptosupineB2.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_fliptosupineB2.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_headshotback1after.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_headshotback1after.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_legshotstateL4.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_legshotstateL4.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotarmL4.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotarmL4.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/ragdolladvanced.ini",
+      "red4ext/plugins/RagdollPhysicsOverhaul/ragdolladvanced.ini"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_fliptosupineB3.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_fliptosupineB3.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_headshotback1after2.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_headshotback1after2.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_legshotstateR1.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_legshotstateR1.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotarmL5.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotarmL5.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/ragdolleffects.ini",
+      "red4ext/plugins/RagdollPhysicsOverhaul/ragdolleffects.ini"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_gutshot.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_gutshot.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_headshotfront1.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_headshotfront1.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_legshotstateR2.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_legshotstateR2.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotarmL6.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotarmL6.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RagdollPhysicsOverhaul.dll",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RagdollPhysicsOverhaul.dll"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_gutshot2.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_gutshot2.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_headshotfront1after.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_headshotfront1after.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_legshotstateR3.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_legshotstateR3.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotarmR.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotarmR.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RagdollSuiteUIConfig.ini",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RagdollSuiteUIConfig.ini"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_gutshot3.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_gutshot3.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_headshotfront1after2.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_headshotfront1after2.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_legshotstateR4.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_legshotstateR4.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotarmR2.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotarmR2.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_gutshot4.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_gutshot4.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_headshotfront2.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_headshotfront2.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_meleedowntoup.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_meleedowntoup.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotarmR3.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotarmR3.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_gutshotprone1.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_gutshotprone1.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_headshotfront2after.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_headshotfront2after.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_meleelefttoright.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_meleelefttoright.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotarmR4.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotarmR4.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_backshot.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_backshot.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_gutshotprone2.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_gutshotprone2.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_headshotfront2after2.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_headshotfront2after2.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_meleerighttoleft.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_meleerighttoleft.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotarmR5.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotarmR5.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_deathpose1.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_deathpose1.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_gutshotprone3.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_gutshotprone3.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_headshotsideL1.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_headshotsideL1.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_pronedeath1.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_pronedeath1.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotarmR6.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotarmR6.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_deathposeprone1.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_deathposeprone1.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_gutshotprone4.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_gutshotprone4.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_headshotsideL1after.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_headshotsideL1after.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_pronetoRsideend.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_pronetoRsideend.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotchest1.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotchest1.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_deathposeprone2.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_deathposeprone2.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_gutshotstateA1.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_gutshotstateA1.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_headshotsideL1after2.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_headshotsideL1after2.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_pronetoRsidestart.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_pronetoRsidestart.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotchest2.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotchest2.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_deathposesup1.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_deathposesup1.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_gutshotstateA2.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_gutshotstateA2.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_headshotsideR1.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_headshotsideR1.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_pronetoRsideturn.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_pronetoRsideturn.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotchest3.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotchest3.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_deathposesup2.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_deathposesup2.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_gutshotstateA3.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_gutshotstateA3.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_headshotsideR1after.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_headshotsideR1after.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_roll1.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_roll1.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotgunblast1.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotgunblast1.txt"
+     ],
+     [
+      "0/r6/scripts/RagdollPhysicsOverhaul/RPO_ActiveRagdoll.reds",
+      "r6/scripts/RagdollPhysicsOverhaul/RPO_ActiveRagdoll.reds"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_deathspasm1.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_deathspasm1.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_gutshotstateA4.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_gutshotstateA4.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_headshotsideR1after2.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_headshotsideR1after2.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_roll2.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_roll2.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotgunblast1after1.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotgunblast1after1.txt"
+     ],
+     [
+      "1/r6/scripts/RagdollPhysicsOverhaul/RPO_DeathRagdoll.reds",
+      "r6/scripts/RagdollPhysicsOverhaul/RPO_DeathRagdoll.reds"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_decapitation.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_decapitation.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_gutshotstateB1.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_gutshotstateB1.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_headshot_after.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_headshot_after.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_roll3.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_roll3.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotgunblast1after2.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotgunblast1after2.txt"
+     ],
+     [
+      "0/r6/scripts/RagdollPhysicsOverhaul/RPO_Delays.reds",
+      "r6/scripts/RagdollPhysicsOverhaul/RPO_Delays.reds"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_decapitation2.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_decapitation2.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_gutshotstateB2.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_gutshotstateB2.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_legshotL1.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_legshotL1.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_roll4.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_roll4.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotgunblast2.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotgunblast2.txt"
+     ],
+     [
+      "0/r6/scripts/RagdollPhysicsOverhaul/RPO_Dust.reds",
+      "r6/scripts/RagdollPhysicsOverhaul/RPO_Dust.reds"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_falling1.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_falling1.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_gutshotstateB3.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_gutshotstateB3.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_legshotL2.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_legshotL2.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_rollstopprone.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_rollstopprone.txt"
+     ],
+     [
+      "0/red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotgunblast2after1.txt",
+      "red4ext/plugins/RagdollPhysicsOverhaul/RPO_BlendPoses/BlendPose_shotgunblast2after1.txt"
+     ]
+    ],
+    "fomod": false,
+    "fileCount": 130,
+    "perArchiveFolders": true
+   },
+   "displayName": {
+    "ru": "Ragdoll Physics Overhaul 3.0 BETA + HOTFIX",
+    "en": "Ragdoll Physics Overhaul 3.0 BETA + HOTFIX"
+   },
+   "archives": [
+    {
+     "localFileName": "Ragdoll Physics Overhaul 3.0 BETA 3858 3.0 2026-11-07T18-42Z vD6JDHX5y.zip",
+     "size": 945537,
+     "sha256": "2490d60cf756cdad08501d515e77474a82ceeae9acaefa80b93c2826c15eae2f",
+     "nexus": {
+      "game": "cyberpunk2077",
+      "modId": 3858,
+      "fileId": 175098
+     }
+    },
+    {
+     "localFileName": "RPO 3.0 HOTFIX - SlowMo-Related Crash 3858 3.0 2026-11-07T22-37Z ujWojT7Zm.zip",
+     "size": 20035,
+     "sha256": "d835563da35d03bf036d2fda87795e9fc14e1d7e43968ac79e26eb7dbdda1c99",
+     "nexus": {
+      "game": "cyberpunk2077",
+      "modId": 3858,
+      "fileId": 175215
+     }
+    }
+   ]
+  },
+  {
+   "id": "Enable Finisher Ragdolls v0.1",
+   "modFolder": "Enable Finisher Ragdolls v0.1",
+   "order": 344,
+   "nexus": {
+    "game": "cyberpunk2077",
+    "modId": 9496,
+    "fileId": 50640,
+    "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/9496?tab=files&file_id=50640"
+   },
+   "archive": {
+    "localFileName": "v0.1-9496-0-1-1696257681.zip",
+    "size": 857,
+    "sha256": "b70381296bec8697cdcd306259b895901855e1b7e11bf3e613e8c6cfe3d28d41"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "r6/scripts/ZKV_EnableFinisherRagdolls.reds",
+      "r6/scripts/ZKV_EnableFinisherRagdolls.reds"
+     ]
+    ],
+    "fomod": false,
+    "fileCount": 1
+   },
+   "displayName": {
+    "ru": "Enable Finisher Ragdolls v0.1",
+    "en": "Enable Finisher Ragdolls v0.1"
+   }
+  },
+  {
+   "id": "Lizzie's Braindances 11077 3.22.1 2026",
+   "modFolder": "Lizzie's Braindances 11077 3.22.1 2026",
+   "order": 55,
+   "nexus": {
+    "game": "cyberpunk2077",
+    "modId": 11077,
+    "fileId": 177210,
+    "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/11077?tab=files&file_id=177210"
+   },
+   "archive": {
+    "localFileName": "Lizzie's Braindances-11077-177210.zip",
+    "size": 190762069,
+    "sha256": "c4bb9b8e21235201737c901f90b4c8c2e630e41637b19181815ae644152bd663"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "r6/scripts/LizziesBDs/MenuUIController.reds",
+      "r6/scripts/LizziesBDs/MenuUIController.reds"
+     ],
+     [
+      "red4ext/plugins/LizziesBDs/Scripts/LizziesBDs.Classes.reds",
+      "red4ext/plugins/LizziesBDs/Scripts/LizziesBDs.Classes.reds"
+     ],
+     [
+      "r6/scripts/LizziesBDs/NPCPuppet.reds",
+      "r6/scripts/LizziesBDs/NPCPuppet.reds"
+     ],
+     [
+      "red4ext/plugins/LizziesBDs/Scripts/LizziesBDs.Console.reds",
+      "red4ext/plugins/LizziesBDs/Scripts/LizziesBDs.Console.reds"
+     ],
+     [
+      "r6/scripts/LizziesBDs/OnlineFeatures.reds",
+      "r6/scripts/LizziesBDs/OnlineFeatures.reds"
+     ],
+     [
+      "red4ext/plugins/LizziesBDs/Scripts/LizziesBDs.CreditsUIController.reds",
+      "red4ext/plugins/LizziesBDs/Scripts/LizziesBDs.CreditsUIController.reds"
+     ],
+     [
+      "r6/scripts/LizziesBDs/OnlyStaff.reds",
+      "r6/scripts/LizziesBDs/OnlyStaff.reds"
+     ],
+     [
+      "red4ext/plugins/LizziesBDs/Scripts/LizziesBDs.Data.reds",
+      "red4ext/plugins/LizziesBDs/Scripts/LizziesBDs.Data.reds"
+     ],
+     [
+      "r6/scripts/LizziesBDs/PlayerPuppet.reds",
+      "r6/scripts/LizziesBDs/PlayerPuppet.reds"
+     ],
+     [
+      "red4ext/plugins/LizziesBDs/Scripts/LizziesBDs.ERUIController.reds",
+      "red4ext/plugins/LizziesBDs/Scripts/LizziesBDs.ERUIController.reds"
+     ],
+     [
+      "r6/scripts/LizziesBDs/Resources.reds",
+      "r6/scripts/LizziesBDs/Resources.reds"
+     ],
+     [
+      "red4ext/plugins/LizziesBDs/Scripts/LizziesBDs.LizziesBDsMain.reds",
+      "red4ext/plugins/LizziesBDs/Scripts/LizziesBDs.LizziesBDsMain.reds"
+     ],
+     [
+      "r6/scripts/LizziesBDs/Storage.reds",
+      "r6/scripts/LizziesBDs/Storage.reds"
+     ],
+     [
+      "red4ext/plugins/LizziesBDs/Scripts/LizziesBDs.Mappin.reds",
+      "red4ext/plugins/LizziesBDs/Scripts/LizziesBDs.Mappin.reds"
+     ],
+     [
+      "r6/scripts/LizziesBDs/UI.reds",
+      "r6/scripts/LizziesBDs/UI.reds"
+     ],
+     [
+      "red4ext/plugins/LizziesBDs/Scripts/LizziesBDs.MenuUIController.reds",
+      "red4ext/plugins/LizziesBDs/Scripts/LizziesBDs.MenuUIController.reds"
+     ],
+     [
+      "r6/tweaks/LizziesBDs/Ads.yaml",
+      "r6/tweaks/LizziesBDs/Ads.yaml"
+     ],
+     [
+      "red4ext/plugins/LizziesBDs/Scripts/LizziesBDs.NPCPuppet.reds",
+      "red4ext/plugins/LizziesBDs/Scripts/LizziesBDs.NPCPuppet.reds"
+     ],
+     [
+      "r6/tweaks/LizziesBDs/Items.yaml",
+      "r6/tweaks/LizziesBDs/Items.yaml"
+     ],
+     [
+      "red4ext/plugins/LizziesBDs/Scripts/LizziesBDs.OnlineFeatures.reds",
+      "red4ext/plugins/LizziesBDs/Scripts/LizziesBDs.OnlineFeatures.reds"
+     ],
+     [
+      "archive/pc/mod/LizziesBDs.archive",
+      "archive/pc/mod/LizziesBDs.archive"
+     ],
+     [
+      "r6/tweaks/LizziesBDs/LizziesBDs.yaml",
+      "r6/tweaks/LizziesBDs/LizziesBDs.yaml"
+     ],
+     [
+      "red4ext/plugins/LizziesBDs/Scripts/LizziesBDs.PlayerPuppet.reds",
+      "red4ext/plugins/LizziesBDs/Scripts/LizziesBDs.PlayerPuppet.reds"
+     ],
+     [
+      "archive/pc/mod/LizziesBDs.archive.xl",
+      "archive/pc/mod/LizziesBDs.archive.xl"
+     ],
+     [
+      "r6/tweaks/LizziesBDs/Prices.yaml",
+      "r6/tweaks/LizziesBDs/Prices.yaml"
+     ],
+     [
+      "red4ext/plugins/LizziesBDs/Scripts/LizziesBDs.Resources.reds",
+      "red4ext/plugins/LizziesBDs/Scripts/LizziesBDs.Resources.reds"
+     ],
+     [
+      "archive/pc/mod/LizziesBDsLanguages.archive.xl",
+      "archive/pc/mod/LizziesBDsLanguages.archive.xl"
+     ],
+     [
+      "red4ext/plugins/LizziesBDs/LizziesBDs.dll",
+      "red4ext/plugins/LizziesBDs/LizziesBDs.dll"
+     ],
+     [
+      "red4ext/plugins/LizziesBDs/Scripts/LizziesBDs.Storage.reds",
+      "red4ext/plugins/LizziesBDs/Scripts/LizziesBDs.Storage.reds"
+     ],
+     [
+      "archive/pc/mod/LizziesBDsSectors.archive.xl",
+      "archive/pc/mod/LizziesBDsSectors.archive.xl"
+     ],
+     [
+      "red4ext/plugins/LizziesBDs/Scripts/LizziesBDs.UI.reds",
+      "red4ext/plugins/LizziesBDs/Scripts/LizziesBDs.UI.reds"
+     ],
+     [
+      "r6/config/redsUserHints/LizziesBDs.toml",
+      "r6/config/redsUserHints/LizziesBDs.toml"
+     ],
+     [
+      "red4ext/plugins/LizziesBDs/Scripts/LizziesBDsLib.reds",
+      "red4ext/plugins/LizziesBDs/Scripts/LizziesBDsLib.reds"
+     ],
+     [
+      "r6/scripts/LizziesBDs/Audio.reds",
+      "r6/scripts/LizziesBDs/Audio.reds"
+     ],
+     [
+      "red4ext/plugins/LizziesBDs/Tweaks/Ads.yaml",
+      "red4ext/plugins/LizziesBDs/Tweaks/Ads.yaml"
+     ],
+     [
+      "r6/scripts/LizziesBDs/ChoiceHubsActiveTweak.reds",
+      "r6/scripts/LizziesBDs/ChoiceHubsActiveTweak.reds"
+     ],
+     [
+      "red4ext/plugins/LizziesBDs/Tweaks/Items.yaml",
+      "red4ext/plugins/LizziesBDs/Tweaks/Items.yaml"
+     ],
+     [
+      "r6/scripts/LizziesBDs/Classes.reds",
+      "r6/scripts/LizziesBDs/Classes.reds"
+     ],
+     [
+      "red4ext/plugins/LizziesBDs/Tweaks/LizziesBDs.yaml",
+      "red4ext/plugins/LizziesBDs/Tweaks/LizziesBDs.yaml"
+     ],
+     [
+      "r6/scripts/LizziesBDs/Console.reds",
+      "r6/scripts/LizziesBDs/Console.reds"
+     ],
+     [
+      "red4ext/plugins/LizziesBDs/Tweaks/Prices.yaml",
+      "red4ext/plugins/LizziesBDs/Tweaks/Prices.yaml"
+     ],
+     [
+      "r6/scripts/LizziesBDs/CreditsUIController.reds",
+      "r6/scripts/LizziesBDs/CreditsUIController.reds"
+     ],
+     [
+      "r6/scripts/LizziesBDs/Data.reds",
+      "r6/scripts/LizziesBDs/Data.reds"
+     ],
+     [
+      "r6/scripts/LizziesBDs/Compatibility/DarkFuture.reds",
+      "r6/scripts/LizziesBDs/Compatibility/DarkFuture.reds"
+     ],
+     [
+      "r6/scripts/LizziesBDs/ERUIController.reds",
+      "r6/scripts/LizziesBDs/ERUIController.reds"
+     ],
+     [
+      "r6/scripts/LizziesBDs/Compatibility/NativeInteractionsFramework.reds",
+      "r6/scripts/LizziesBDs/Compatibility/NativeInteractionsFramework.reds"
+     ],
+     [
+      "r6/scripts/LizziesBDs/LizziesBDsMain.reds",
+      "r6/scripts/LizziesBDs/LizziesBDsMain.reds"
+     ],
+     [
+      "red4ext/plugins/LizziesBDs/Scripts/LizziesBDs.Audio.reds",
+      "red4ext/plugins/LizziesBDs/Scripts/LizziesBDs.Audio.reds"
+     ],
+     [
+      "r6/scripts/LizziesBDs/Mappin.reds",
+      "r6/scripts/LizziesBDs/Mappin.reds"
+     ],
+     [
+      "red4ext/plugins/LizziesBDs/Scripts/LizziesBDs.ChoiceHubsActiveTweak.reds",
+      "red4ext/plugins/LizziesBDs/Scripts/LizziesBDs.ChoiceHubsActiveTweak.reds"
+     ]
+    ],
+    "fomod": false,
+    "fileCount": 50
+   },
+   "displayName": {
+    "ru": "Lizzie's Braindances 11077 3.22.1 2026",
+    "en": "Lizzie's Braindances 11077 3.22.1 2026"
+   }
+  },
+  {
+   "id": "Lizzie's Braindances Language Pack 19713 3.22.1.1 2026",
+   "modFolder": "Lizzie's Braindances Language Pack 19713 3.22.1.1 2026",
+   "order": 234,
+   "nexus": {
+    "game": "cyberpunk2077",
+    "modId": 19713,
+    "fileId": 177604,
+    "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/19713?tab=files&file_id=177604"
+   },
+   "archive": {
+    "localFileName": "Lizzie's Braindances Language Pack-19713-177604.zip",
+    "size": 979347,
+    "sha256": "55fddfc728fbd6ec5439ff78f8fc32c0e0a1d608ad898b2acc1abb4ea20f3ab2"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "archive/pc/mod/#LizziesBDsLanguages.archive",
+      "archive/pc/mod/#LizziesBDsLanguages.archive"
+     ]
+    ],
+    "fomod": false,
+    "fileCount": 1
+   },
+   "displayName": {
+    "ru": "Lizzie's Braindances Language Pack 19713 3.22.1.1 2026",
+    "en": "Lizzie's Braindances Language Pack 19713 3.22.1.1 2026"
+   }
+  },
+  {
+   "id": "Missing Persons - Fixer's Hidden Gems",
+   "modFolder": "Missing Persons - Fixer's Hidden Gems",
+   "order": 101,
+   "nexus": {
+    "game": "cyberpunk2077",
+    "modId": 5058,
+    "fileId": 123462,
+    "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/5058?tab=files&file_id=123462"
+   },
+   "archive": {
+    "localFileName": "Missing Persons - Fixer's Hidden Gems-5058-2-3-0-1759457709.zip",
+    "size": 799323,
+    "sha256": "59a3ff06407fc6e50d1a9fbc56910b7941e60dbc247c6cef4f9e1a44d9994380"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/db.sqlite3",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/db.sqlite3"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/cz-cz-sms.json",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/cz-cz-sms.json"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/ru-ru-sms.json",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/ru-ru-sms.json"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/init.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/init.lua"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/cz-cz.json",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/cz-cz.json"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/ru-ru.json",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/ru-ru.json"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/de-de-sms.json",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/de-de-sms.json"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/th-th-sms.json",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/th-th-sms.json"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/de-de.json",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/de-de.json"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/th-th.json",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/th-th.json"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/r6/scripts/MissingPersons.reds",
+      "r6/scripts/MissingPersons.reds"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/en-us-sms.json",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/en-us-sms.json"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/tr-tr-sms.json",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/tr-tr-sms.json"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/en-us.json",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/en-us.json"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/tr-tr.json",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/tr-tr.json"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/es-es-sms.json",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/es-es-sms.json"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/ua-ua-sms.json",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/ua-ua-sms.json"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/es-es.json",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/es-es.json"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/ua-ua.json",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/ua-ua.json"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/es-mx-sms.json",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/es-mx-sms.json"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/zh-cn-sms.json",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/zh-cn-sms.json"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/es-mx.json",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/es-mx.json"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/zh-cn.json",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/zh-cn.json"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/fr-fr-sms.json",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/fr-fr-sms.json"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/zh-tw-sms.json",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/zh-tw-sms.json"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/fr-fr.json",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/fr-fr.json"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/zh-tw.json",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/zh-tw.json"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/hu-hu-sms.json",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/hu-hu-sms.json"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/modules/Messenger.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/modules/Messenger.lua"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/hu-hu.json",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/hu-hu.json"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/modules/Quests.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/modules/Quests.lua"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/it-it-sms.json",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/it-it-sms.json"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/modules/Settings.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/modules/Settings.lua"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/it-it.json",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/it-it.json"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/modules/Utilities.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/modules/Utilities.lua"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/jp-jp-sms.json",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/jp-jp-sms.json"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/jp-jp.json",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/jp-jp.json"
+     ],
+     [
+      "1/bin/x64/plugins/cyber_engine_tweaks/mods/Dedrapanamgoondate/modules/Cron.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/external/Cron.lua"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/kr-kr-sms.json",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/kr-kr-sms.json"
+     ],
+     [
+      "2/bin/x64/plugins/cyber_engine_tweaks/mods/Dedrajudygoonadate/modules/GameHUD.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/external/GameHUD.lua"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/kr-kr.json",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/kr-kr.json"
+     ],
+     [
+      "2/bin/x64/plugins/cyber_engine_tweaks/mods/Dedrajudygoonadate/modules/GameUI.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/external/GameUI.lua"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/pl-pl-sms.json",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/pl-pl-sms.json"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/external/LICENSE-CETKIT",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/external/LICENSE-CETKIT"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/pl-pl.json",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/pl-pl.json"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/ar-ar-sms.json",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/ar-ar-sms.json"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/pt-br-sms.json",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/pt-br-sms.json"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/ar-ar.json",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/ar-ar.json"
+     ],
+     [
+      "0/Missing Persons - Fixers Hidden Gems/bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/pt-br.json",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/MissingPersons/languages/pt-br.json"
+     ]
+    ],
+    "fomod": false,
+    "fileCount": 49,
+    "perArchiveFolders": true
+   },
+   "displayName": {
+    "ru": "Missing Persons - Fixer's Hidden Gems",
+    "en": "Missing Persons - Fixer's Hidden Gems"
+   },
+   "archives": [
+    {
+     "localFileName": "Missing Persons - Fixer's Hidden Gems-5058-2-3-0-1759457709.zip",
+     "size": 799323,
+     "sha256": "59a3ff06407fc6e50d1a9fbc56910b7941e60dbc247c6cef4f9e1a44d9994380",
+     "nexus": {
+      "game": "cyberpunk2077",
+      "modId": 5058,
+      "fileId": 123462
+     }
+    },
+    {
+     "localFileName": "Go on a Date (Panam)-26613-2-1-1772500512.rar",
+     "size": 4381593,
+     "sha256": "a22c78dab414ae62a7515bc48cd87ece7add757fd2434222a38133c596145781",
+     "nexus": {
+      "game": "cyberpunk2077",
+      "modId": 26613,
+      "fileId": 138268
+     }
+    },
+    {
+     "localFileName": "Go on a Date (Judy) - Quest 31375 2.0 2026-08-09T00-52Z HncQn2zTG.rar",
+     "size": 139972,
+     "sha256": "5be503ade2b33ed71957677c420d024ca84c356932c461cd91b876ed1b1d3e2b",
+     "nexus": {
+      "game": "cyberpunk2077",
+      "modId": 31375,
+      "fileId": 155446
+     }
+    }
+   ]
+  },
+  {
+   "id": "DynamicNPCItems",
+   "modFolder": "DynamicNPCItems",
+   "order": 119,
+   "nexus": {
+    "game": "cyberpunk2077",
+    "modId": 16158,
+    "fileId": 104732,
+    "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/16158?tab=files&file_id=104732"
+   },
+   "archive": {
+    "localFileName": "DynamicNPCItems-v1.5-16158-1-5-1742833376.zip",
+    "size": 413849,
+    "sha256": "317bd5139569666fa06528d51ad366d6dab8612bbe2f261931f7b3fe6a8df068"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "archive/pc/mod/Dynamic NPC Items.archive",
+      "archive/pc/mod/Dynamic NPC Items.archive"
+     ],
+     [
+      "archive/pc/mod/DynamicNPCItems.archive.xl",
+      "archive/pc/mod/DynamicNPCItems.archive.xl"
+     ],
+     [
+      "r6/scripts/DynamicNPCItems/Main.reds",
+      "r6/scripts/DynamicNPCItems/Main.reds"
+     ],
+     [
+      "r6/scripts/DynamicNPCItems/Settings.reds",
+      "r6/scripts/DynamicNPCItems/Settings.reds"
+     ]
+    ],
+    "fomod": false,
+    "fileCount": 4
+   },
+   "displayName": {
+    "ru": "DynamicNPCItems",
+    "en": "DynamicNPCItems"
+   }
+  },
+  {
+   "id": "Enhanced Air Traffic 20208 1.2.0 2026",
+   "modFolder": "Enhanced Air Traffic 20208 1.2.0 2026",
+   "order": 238,
+   "nexus": {
+    "game": "cyberpunk2077",
+    "modId": 20208,
+    "fileId": 171361,
+    "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/20208?tab=files&file_id=171361"
+   },
+   "archive": {
+    "localFileName": "Enhanced Air Traffic 20208 1.2.0 2026-10-31T05-00Z lcXrcZM83.zip",
+    "size": 240022,
+    "sha256": "e7e74c45acb73267dbd8b8e4d59c8683a8a532d1df3cc03a47ad6b66cf7253ab"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "archive/pc/mod/AerialTrafficSurge.archive",
+      "archive/pc/mod/AerialTrafficSurge.archive"
+     ],
+     [
+      "archive/pc/mod/AerialTrafficSurge.xl",
+      "archive/pc/mod/AerialTrafficSurge.xl"
+     ],
+     [
+      "bin/x64/plugins/cyber_engine_tweaks/mods/AerialTrafficSurge/init.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/AerialTrafficSurge/init.lua"
+     ],
+     [
+      "bin/x64/plugins/cyber_engine_tweaks/mods/AerialTrafficSurge/Debug/debug.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/AerialTrafficSurge/Debug/debug.lua"
+     ],
+     [
+      "bin/x64/plugins/cyber_engine_tweaks/mods/AerialTrafficSurge/External/Cron.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/AerialTrafficSurge/External/Cron.lua"
+     ],
+     [
+      "bin/x64/plugins/cyber_engine_tweaks/mods/AerialTrafficSurge/External/GameUI.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/AerialTrafficSurge/External/GameUI.lua"
+     ]
+    ],
+    "fomod": false,
+    "fileCount": 6
+   },
+   "displayName": {
+    "ru": "Enhanced Air Traffic 20208 1.2.0 2026",
+    "en": "Enhanced Air Traffic 20208 1.2.0 2026"
+   }
+  },
+  {
+   "id": "CET NPC Body Tweaks with Codeware Extensions 10458 2.2.6 2026",
+   "modFolder": "CET NPC Body Tweaks with Codeware Extensions 10458 2.2.6 2026",
+   "order": 183,
+   "nexus": {
+    "game": "cyberpunk2077",
+    "modId": 10458,
+    "fileId": 167822,
+    "filePage": "https://www.nexusmods.com/cyberpunk2077/mods/10458?tab=files&file_id=167822"
+   },
+   "archive": {
+    "localFileName": "CET NPC Body Tweaks with Codeware Extensions 10458 2.2.6 2026-10-23T13-49Z IieOiggAX.zip",
+    "size": 16721680,
+    "sha256": "346de69962b097a737281560e350df090530c01be20c3eab068bc94c53634b18"
+   },
+   "install": {
+    "type": "files",
+    "map": [
+     [
+      "0/archive/pc/mod/cet_base_bodies_woman_average_body_tweaks.archive",
+      "archive/pc/mod/cet_base_bodies_woman_average_body_tweaks.archive"
+     ],
+     [
+      "0/r6/scripts/CET_NPC_Body_Tweaks/CET_NPC_Body_Tweaks_helper.reds",
+      "r6/scripts/CET_NPC_Body_Tweaks/CET_NPC_Body_Tweaks_helper.reds"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/CET_NPC_Body_Tweaks/init.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/CET_NPC_Body_Tweaks/init.lua"
+     ],
+     [
+      "1/bin/x64/plugins/cyber_engine_tweaks/mods/AutoLoot/lib/LICENSE",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/CET_NPC_Body_Tweaks/LICENSE"
+     ],
+     [
+      "1/bin/x64/plugins/cyber_engine_tweaks/mods/AutoLoot/lib/Ref.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/CET_NPC_Body_Tweaks/Ref.lua"
+     ],
+     [
+      "0/bin/x64/plugins/cyber_engine_tweaks/mods/CET_NPC_Body_Tweaks/supported_mods.lua",
+      "bin/x64/plugins/cyber_engine_tweaks/mods/CET_NPC_Body_Tweaks/supported_mods.lua"
+     ]
+    ],
+    "fomod": false,
+    "fileCount": 6,
+    "perArchiveFolders": true
+   },
+   "displayName": {
+    "ru": "CET NPC Body Tweaks with Codeware Extensions 10458 2.2.6 2026",
+    "en": "CET NPC Body Tweaks with Codeware Extensions 10458 2.2.6 2026"
+   },
+   "archives": [
+    {
+     "localFileName": "CET NPC Body Tweaks with Codeware Extensions 10458 2.2.6 2026-10-23T13-49Z IieOiggAX.zip",
+     "size": 16721680,
+     "sha256": "346de69962b097a737281560e350df090530c01be20c3eab068bc94c53634b18",
+     "nexus": {
+      "game": "cyberpunk2077",
+      "modId": 10458,
+      "fileId": 167822
+     }
+    },
+    {
+     "localFileName": "Autoloot-5202-174950.zip",
+     "size": 72189,
+     "sha256": "5a16519b6d005af5bdffdd8f71a9b01c5ddf7d649ed16ff52739190987ad7d44",
+     "nexus": {
+      "game": "cyberpunk2077",
+      "modId": 5202,
+      "fileId": 174950
+     }
+    }
+   ]
+  }
+ ]
+}

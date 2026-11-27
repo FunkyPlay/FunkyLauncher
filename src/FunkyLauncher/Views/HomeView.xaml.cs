@@ -1,0 +1,323 @@
+﻿// Funky Launcher — Copyright (C) 2026 Funky. Licensed under GPL-3.0-or-later.
+using System.Diagnostics;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
+using FunkyLauncher.Core;
+using FunkyLauncher.Services;
+
+namespace FunkyLauncher.Views;
+
+/// <summary>Home: about Funky Launcher, FunkyPlay news, what's new, support.</summary>
+public partial class HomeView : UserControl
+{
+    private readonly MainWindow _main;
+    private List<NewsPost>? _news;
+    private bool _newsFailed;
+
+    private System.Windows.Media.Brush? _heroDefault;
+    private MediaElement? _heroVideo;
+
+    /// <summary>The player's own picture or video (mp4/wmv, muted, looped) behind the home header; null = ours.</summary>
+    public void SetHeroBackground(string? file)
+    {
+        _heroDefault ??= Hero.Background;
+        if (_heroVideo != null) { _heroVideo.Stop(); HeroGrid.Children.Remove(_heroVideo); _heroVideo = null; }
+        Hero.Background = _heroDefault;
+        _heroTinted = false;
+        if (file == null || !File.Exists(file)) { ApplyThemeColors(); return; }
+        var ext = Path.GetExtension(file).ToLowerInvariant();
+        if (ext is ".mp4" or ".wmv" or ".mov" or ".avi")
+        {
+            _heroVideo = new MediaElement { Source = new Uri(file), IsMuted = true, Stretch = System.Windows.Media.Stretch.UniformToFill, LoadedBehavior = MediaState.Manual };
+            _heroVideo.MediaEnded += (_, _) => { _heroVideo!.Position = TimeSpan.Zero; _heroVideo.Play(); };
+            HeroGrid.Children.Insert(0, _heroVideo);
+            _heroVideo.Play();
+        }
+        else
+        {
+            var bi = new System.Windows.Media.Imaging.BitmapImage();
+            bi.BeginInit(); bi.CacheOption = System.Windows.Media.Imaging.BitmapCacheOption.OnLoad; bi.DecodePixelWidth = 1920; bi.UriSource = new Uri(file); bi.EndInit();
+            Hero.Background = new System.Windows.Media.ImageBrush(bi) { Stretch = System.Windows.Media.Stretch.UniformToFill, AlignmentY = System.Windows.Media.AlignmentY.Center };
+        }
+    }
+
+    public HomeView(MainWindow main)
+    {
+        InitializeComponent();
+        _main = main;
+        Loc.Changed += Refresh;
+        Refresh();
+        _ = LoadNewsAsync();
+        _ = CheckUpdateAsync();
+    }
+
+    private string? _newVersion;
+    private LauncherUpdate.Release? _release;
+    private bool _offered;
+
+    private async Task CheckUpdateAsync()
+    {
+        _release = await LauncherUpdate.NewerAsync(CancellationToken.None);
+        _newVersion = _release?.Version;
+        RenderUpdate();
+        // once per start: the window with what changed and Update / Later
+        if (_release != null && !_offered && !_main.ShotsMode)
+        {
+            _offered = true;
+            await Dispatcher.InvokeAsync(ShowUpdateWindow, System.Windows.Threading.DispatcherPriority.ApplicationIdle);
+        }
+    }
+
+    private void ShowUpdateWindow()
+    {
+        if (_release == null || !_main.IsLoaded || !_main.IsVisible) return;
+        new UpdateWindow(_main, _release).ShowDialog();
+    }
+
+    private void RenderUpdate()
+    {
+        UpdateBar.Visibility = _newVersion != null ? Visibility.Visible : Visibility.Collapsed;
+        if (_newVersion == null) return;
+        UpdateText.Text = Loc.F("update.bar", _newVersion, AppConfig.Version);
+        UpdateButton.Content = Loc.T("update.button");
+    }
+
+    private void Update_Click(object sender, RoutedEventArgs e)
+    {
+        if (_release != null) ShowUpdateWindow();
+        else PlayService.OpenUrl(LauncherUpdate.DownloadUrl);
+    }
+
+
+    public void Refresh()
+    {
+        ApplyThemeColors();
+        BrandTag.Text = Loc.T("start.brand");
+        StartTitle.Text = Loc.T("start.title");
+        RenderTiles();
+        StartText.Text = Loc.T("start.text");
+        PremiumText.Text = Loc.T("start.premium");
+        FreeText.Text = Loc.T("start.free");
+        LibraryButton.Content = Loc.T("start.library");
+        NewsTitle.Text = Loc.T("home.news");
+        AllNews.Text = Loc.T("home.news.all");
+        WhatsNewTitle.Text = Loc.F("start.whatsnew", AppConfig.Version);
+        RenderWhatsNew();
+        SupportTitle.Text = Loc.T("start.support");
+        SupportText.Text = Loc.T(AppConfig.NexusEdition ? "start.support.text.nexus" : "start.support.text");
+        SupportButton.Content = Loc.T("start.support.write");
+        ReportButton.Content = Loc.T("start.support.report");
+        GitHubButton.Visibility = AppConfig.NexusEdition ? Visibility.Collapsed : Visibility.Visible; // Nexus version: no link to the regular version
+        RenderNews();
+        RenderUpdate();
+        ApplyAudience();
+    }
+
+    /// <summary>
+    /// EN: Instagram/TikTok instead of the Russian Telegram channels, no Russian news feed (decision of Funky and the design team, 13.11).
+    /// RU: as before. The support bot stays in both.
+    /// </summary>
+    private void ApplyAudience()
+    {
+        var en = Loc.Lang == "en";
+        TelegramButton.Visibility = en ? Visibility.Collapsed : Visibility.Visible;
+        InstagramButton.Visibility = en && Catalog.Social.Instagram.Length > 0 ? Visibility.Visible : Visibility.Collapsed;
+        TikTokButton.Visibility = en && Catalog.Social.TikTok.Length > 0 ? Visibility.Visible : Visibility.Collapsed;
+        NewsPanel.Visibility = en || AppConfig.NexusEdition ? Visibility.Collapsed : Visibility.Visible;
+        SocialButtons.Visibility = AppConfig.NexusEdition ? Visibility.Collapsed : Visibility.Visible; // Nexus version: no links to our channels
+        Grid.SetColumn(SidePanel, en ? 0 : 2);
+        Grid.SetColumnSpan(SidePanel, en ? 3 : 1);
+        SideCol2.Width = en ? new GridLength(1, GridUnitType.Star) : new GridLength(0);
+        Grid.SetRow(SupportCard, en ? 0 : 1);
+        Grid.SetColumn(SupportCard, en ? 1 : 0);
+        SupportCard.Margin = en ? new Thickness(12, 0, 0, 0) : new Thickness(0, 12, 0, 0);
+    }
+
+    // the Nexus version: these keep the regular page markup compiling (its own source drops those buttons)
+    private void HelpSend_Click(object sender, RoutedEventArgs e) { }
+    private void Help_Click(object sender, RoutedEventArgs e) { }
+
+    /// <summary>Three FunkyPlay directions: modlists, software, videos.</summary>
+    private void RenderTiles()
+    {
+        Tiles.Children.Clear();
+        // 0.1.22: the icon frames follow the theme (accent, second colour, a mix of both); Neon keeps its own three
+        var own = ThemeColors.IsDefault;
+        string Hex(Color c) => $"#{c.R:X2}{c.G:X2}{c.B:X2}";
+        Tiles.Children.Add(Tile("🎮", "tile.mods", Hex(ThemeColors.Pink), () => _main.ShowLibrary()));
+        Tiles.Children.Add(Tile("🧰", "tile.soft", Hex(ThemeColors.Cyan), () => _main.ShowSoft()));
+        if (!AppConfig.NexusEdition) Tiles.Children.Add(Tile("▶", "tile.video", own ? "#B9A2F2" : Hex(ThemeColors.Mix(ThemeColors.Pink, ThemeColors.Cyan, 0.5)), () => PlayService.OpenUrl(Catalog.YouTube)));
+    }
+
+    /// <summary>
+    /// 0.1.22 (Design 24.11): the tag line, the Premium box, the update bar and the stripes of the header picture follow
+    /// another accent colour. With the launcher's own look nothing changes.
+    /// </summary>
+    private void ApplyThemeColors()
+    {
+        var pink = ThemeColors.Pink;
+        var own = ThemeColors.IsDefault;
+        BrandTag.Foreground = ThemeColors.Brush(own ? Color.FromRgb(0xFF, 0x7A, 0xD9) : ThemeColors.Mix(pink, Colors.White, 0.25));
+        PremiumBox.BorderBrush = ThemeColors.Brush(ThemeColors.WithAlpha(pink, 0x66));
+        PremiumBox.Background = ThemeColors.Brush(own ? Color.FromArgb(0xC0, 0x2A, 0x14, 0x26) : ThemeColors.WithAlpha(ThemeColors.Mix(pink, Color.FromRgb(0x0F, 0x0F, 0x14), 0.85), 0xC0));
+        PremiumText.Foreground = ThemeColors.Brush(own ? Color.FromRgb(0xFF, 0xC6, 0xEE) : ThemeColors.Mix(pink, Colors.White, 0.75));
+        UpdateBar.BorderBrush = ThemeColors.Brush(pink);
+        // "Without Premium" box: the theme's second colour (Design 25.11)
+        var cyan = ThemeColors.Cyan;
+        FreeBox.BorderBrush = ThemeColors.Brush(ThemeColors.WithAlpha(cyan, 0x66));
+        FreeBox.Background = ThemeColors.Brush(own ? Color.FromArgb(0xC0, 0x0F, 0x2A, 0x33) : ThemeColors.WithAlpha(ThemeColors.Mix(cyan, Color.FromRgb(0x0F, 0x0F, 0x14), 0.85), 0xC0));
+        FreeText.Foreground = ThemeColors.Brush(own ? Color.FromRgb(0xC6, 0xF7, 0xFF) : ThemeColors.Mix(cyan, Colors.White, 0.75));
+        if (_heroVideo == null && Hero.Background is ImageBrush ib && (_heroDefault == null || ReferenceEquals(Hero.Background, _heroDefault) || _heroTinted))
+        {
+            _heroDefault ??= Hero.Background;
+            if (own) { Hero.Background = _heroDefault; _heroTinted = false; }
+            else if (((ImageBrush)_heroDefault).ImageSource is System.Windows.Media.Imaging.BitmapSource src)
+                try
+                {
+                    Hero.Background = new ImageBrush(ThemeColors.Tint(src, pink)) { Stretch = ib.Stretch, AlignmentY = ib.AlignmentY };
+                    _heroTinted = true;
+                }
+                catch (Exception ex) { AppLog.Write("hero tint: " + ex.Message); }
+        }
+    }
+
+    private bool _heroTinted;
+
+    private Border Tile(string icon, string key, string color, Action open)
+    {
+        var accent = (Brush)new BrushConverter().ConvertFrom(color)!;
+        var iconBox = new Border
+        {
+            Width = 46, Height = 46, CornerRadius = new CornerRadius(12), Margin = new Thickness(0, 0, 14, 0),
+            Background = new SolidColorBrush(((SolidColorBrush)accent).Color) { Opacity = 0.18 },
+            BorderBrush = accent, BorderThickness = new Thickness(1),
+            Child = new TextBlock { Text = icon, FontSize = 20, Foreground = accent, HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center },
+        };
+        var texts = new StackPanel { VerticalAlignment = VerticalAlignment.Center };
+        texts.Children.Add(new TextBlock { Text = Loc.T(key), FontSize = 16, FontWeight = FontWeights.Bold });
+        texts.Children.Add(new TextBlock { Text = Loc.T(key + ".text"), FontSize = 12.5, Foreground = (Brush)FindResource("Muted"), TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 3, 0, 0) });
+        var row = new DockPanel();
+        DockPanel.SetDock(iconBox, Dock.Left);
+        row.Children.Add(iconBox);
+        row.Children.Add(texts);
+        var tile = new Border
+        {
+            Style = (Style)FindResource("CardBorder"), Padding = new Thickness(18, 14, 18, 14), Margin = new Thickness(0, 0, 14, 0),
+            Cursor = System.Windows.Input.Cursors.Hand, Child = row,
+            BorderBrush = (Brush)new BrushConverter().ConvertFrom("#2A2A36")!, BorderThickness = new Thickness(1),
+        };
+        tile.MouseEnter += (_, _) => tile.BorderBrush = accent;
+        tile.MouseLeave += (_, _) => tile.BorderBrush = (Brush)new BrushConverter().ConvertFrom("#2A2A36")!;
+        tile.MouseLeftButtonUp += (_, _) => open();
+        return tile;
+    }
+
+    /// <summary>Called when "Load news" is switched in Settings.</summary>
+    public void ReloadNews()
+    {
+        _news = null;
+        _newsFailed = false;
+        _ = LoadNewsAsync();
+    }
+
+    private async Task LoadNewsAsync()
+    {
+        if (!_main.Settings.LoadNews) { RenderNews(); return; } // privacy: news turned off
+        try { _news = await NewsService.LoadAsync(3, CancellationToken.None); }
+        catch { _newsFailed = true; }
+        RenderNews();
+    }
+
+    private void RenderNews()
+    {
+        NewsGrid.Children.Clear();
+        if (!_main.Settings.LoadNews) { NewsGrid.Children.Add(NewsCard(null, Loc.T("home.news.off"), null)); return; }
+        if (_news == null && !_newsFailed) { NewsGrid.Children.Add(NewsCard(null, Loc.T("home.news.loading"), null)); return; }
+        if (_news == null || _news.Count == 0) { NewsGrid.Children.Add(NewsCard(null, Loc.T("home.news.empty"), null)); return; }
+        foreach (var p in _news) NewsGrid.Children.Add(NewsCard(p.Date, p.Text, p.Url));
+    }
+
+    private Border NewsCard(DateTimeOffset? date, string text, string? url)
+    {
+        var panel = new StackPanel();
+        if (date != null)
+            panel.Children.Add(new TextBlock { Text = date.Value.ToLocalTime().ToString("dd.MM.yyyy"), FontSize = 12, FontWeight = FontWeights.SemiBold, Foreground = ThemeColors.Brush(ThemeColors.IsDefault ? Color.FromRgb(0xFF, 0x7A, 0xD9) : ThemeColors.Mix(ThemeColors.Pink, Colors.White, 0.25)), Margin = new Thickness(0, 0, 0, 6) });
+        panel.Children.Add(new TextBlock { Text = text, FontSize = 13, LineHeight = 19, TextWrapping = TextWrapping.Wrap, TextTrimming = TextTrimming.WordEllipsis, Foreground = new SolidColorBrush(Color.FromRgb(0xE2, 0xE2, 0xEA)) });
+        var card = new Border { Style = (Style)FindResource("CardBorder"), Margin = new Thickness(0, 0, 14, 0), Child = panel };
+        if (url != null)
+        {
+            card.Cursor = System.Windows.Input.Cursors.Hand;
+            card.MouseLeftButtonUp += (_, _) => PlayService.OpenUrl(url);
+        }
+        return card;
+    }
+
+    private async void Report_Click(object sender, RoutedEventArgs e)
+    {
+        ReportButton.IsEnabled = false;
+        ReportText.Text = Loc.T("start.report.working");
+        try
+        {
+            var file = await ReportService.CreateAsync(_main.Settings, _main.Selected, CancellationToken.None);
+            ReportText.Text = Loc.F("start.report.done", Path.GetFileName(file));
+            Process.Start(new ProcessStartInfo("explorer.exe", $"/select,\"{file}\"") { UseShellExecute = true });
+            PlayService.OpenSupportChat(Loc.F("report.send.text", Path.GetFileName(file)), _main.Settings, _main.Selected, file);
+        }
+        catch (Exception ex)
+        {
+            ReportText.Text = Loc.F("start.report.error", ex.Message);
+        }
+        ReportButton.IsEnabled = true;
+    }
+
+    private void Library_Click(object sender, RoutedEventArgs e) => _main.ShowLibrary();
+    // "Contact support": the support bot with a ready message (was the news channel)
+    private void Support_Click(object sender, RoutedEventArgs e) =>
+        PlayService.OpenSupportChat(Loc.T("support.write.text"), _main.Settings, _main.Selected);
+    private void Telegram_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(AppConfig.Telegram);
+    private void YouTube_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(Catalog.YouTube);
+    private void Instagram_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(Catalog.Social.Instagram);
+    private void TikTok_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(Catalog.Social.TikTok);
+    private void GitHub_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(AppConfig.GitHubUrl + "/tree/" + AppConfig.SourceBranch);
+    private void AllNews_Click(object sender, System.Windows.Input.MouseButtonEventArgs e) => PlayService.OpenUrl(AppConfig.Telegram);
+
+    private static bool? _whatsNewFresh;
+
+    /// <summary>Funky 24.11: "What's new" stands out — a pink frame and a "NEW" badge the first time this launcher version
+    /// is opened; each line's lead-in up to the colon in bold; the modlist line (Neon Nights 0.1.x…) apart with its own mark.</summary>
+    private void RenderWhatsNew()
+    {
+        var s = _main.Settings;
+        if (_whatsNewFresh == null)
+        {
+            _whatsNewFresh = _main.ShotsMode || s.WhatsNewSeen != AppConfig.Version;
+            if (!_main.ShotsMode && s.WhatsNewSeen != AppConfig.Version) { s.WhatsNewSeen = AppConfig.Version; s.Save(); }
+        }
+        var fresh = _whatsNewFresh == true;
+        WhatsNewBadge.Visibility = fresh ? Visibility.Visible : Visibility.Collapsed;
+        WhatsNewBadgeText.Text = Loc.T("start.whatsnew.badge");
+        if (fresh) { WhatsNewCard.BorderBrush = (Brush)FindResource("Pink"); WhatsNewCard.BorderThickness = new Thickness(2); }
+        else { WhatsNewCard.ClearValue(Border.BorderBrushProperty); WhatsNewCard.ClearValue(Border.BorderThicknessProperty); }
+
+        WhatsNewText.Inlines.Clear();
+        var lines = Loc.T("start.whatsnew.items").Split('\n', StringSplitOptions.RemoveEmptyEntries);
+        var first = true;
+        foreach (var raw in lines)
+        {
+            var line = raw.TrimStart('•', ' ');
+            var modlist = line.Contains(" Nights ", StringComparison.Ordinal) && line.IndexOf(" Nights ", StringComparison.Ordinal) < 8;
+            if (!first) WhatsNewText.Inlines.Add(new System.Windows.Documents.LineBreak());
+            if (modlist && !first) WhatsNewText.Inlines.Add(new System.Windows.Documents.LineBreak());
+            first = false;
+            WhatsNewText.Inlines.Add(new System.Windows.Documents.Run(modlist ? "🎮 " : "• ") { Foreground = (Brush)FindResource(modlist ? "Cyan" : "Pink") });
+            var colon = line.IndexOf(':');
+            if (colon > 0 && colon < 40)
+            {
+                WhatsNewText.Inlines.Add(new System.Windows.Documents.Run(line[..(colon + 1)]) { FontWeight = FontWeights.Bold, Foreground = Brushes.White });
+                WhatsNewText.Inlines.Add(new System.Windows.Documents.Run(line[(colon + 1)..]));
+            }
+            else WhatsNewText.Inlines.Add(new System.Windows.Documents.Run(line));
+        }
+    }
+}

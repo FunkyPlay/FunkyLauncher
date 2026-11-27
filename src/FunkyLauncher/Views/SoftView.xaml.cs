@@ -1,0 +1,133 @@
+﻿// Funky Launcher — Copyright (C) 2026 Funky. Licensed under GPL-3.0-or-later.
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
+using FunkyLauncher.Core;
+using FunkyLauncher.Services;
+
+namespace FunkyLauncher.Views;
+
+/// <summary>Useful software from the catalog. Each button opens the program's official website.</summary>
+public partial class SoftView : UserControl
+{
+    public SoftView()
+    {
+        InitializeComponent();
+        Loc.Changed += Refresh;
+        Refresh();
+    }
+
+    public void Refresh()
+    {
+        PageTitle.Text = Loc.T("soft.title");
+        Subtitle.Text = Loc.T("soft.subtitle");
+        WeeklyText.Text = Loc.T("soft.weekly");
+        WeeklyLine.Visibility = Loc.Lang == "en" || AppConfig.NexusEdition ? Visibility.Collapsed : Visibility.Visible; // Russian channel: RU only
+        Items.Children.Clear();
+        foreach (var s in Catalog.Software.Where(x => (x.Langs.Count == 0 || x.Langs.Contains(Loc.Lang)) && !(AppConfig.NexusEdition && PlayService.IsOwnLink(x.Url)))) Items.Children.Add(Card(s));
+    }
+
+    private Border Card(SoftwareItem s)
+    {
+        Brush color;
+        try { color = (Brush)new BrushConverter().ConvertFrom(s.Color)!; } catch { color = (Brush)FindResource("Cyan"); }
+
+        var tile = new Border
+        {
+            Width = 48, Height = 48, CornerRadius = new CornerRadius(12), Background = color,
+            Child = new TextBlock
+            {
+                Text = s.Name.TrimStart('.').Substring(0, 1).ToUpperInvariant(),
+                FontFamily = (FontFamily)FindResource("TitleFont"), FontSize = 22, Foreground = Brushes.White,
+                HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center,
+            },
+        };
+        var head = new DockPanel();
+        DockPanel.SetDock(tile, Dock.Left);
+        head.Children.Add(tile);
+        var names = new StackPanel { Margin = new Thickness(12, 0, 0, 0), VerticalAlignment = VerticalAlignment.Center };
+        names.Children.Add(new TextBlock { Text = s.Name, FontSize = 16, FontWeight = FontWeights.Bold, TextTrimming = TextTrimming.CharacterEllipsis });
+        names.Children.Add(new TextBlock { Text = s.Category.ToString(), FontSize = 12, Foreground = (Brush)FindResource("Muted") });
+        head.Children.Add(names);
+
+        FrameworkElement buttons;
+        if (s.Winget.Length > 0)
+        {
+            // One-click install via winget + a small Website button; falls back to the website if winget is missing.
+            var install = new Button { Content = Loc.T("soft.install"), Style = (Style)FindResource("SecondaryButton"), Height = 38 };
+            var site = new Button { Content = Loc.T("soft.site"), Style = (Style)FindResource("SecondaryButton"), Height = 38, Margin = new Thickness(8, 0, 0, 0), Padding = new Thickness(14, 0, 14, 0) };
+            site.Click += (_, _) => PlayService.OpenUrl(s.Url);
+            install.Click += async (_, _) => await InstallAsync(s, install);
+            var row = new DockPanel { Margin = new Thickness(0, 12, 0, 0) };
+            DockPanel.SetDock(site, Dock.Right);
+            row.Children.Add(site);
+            row.Children.Add(install);
+            buttons = row;
+            _ = CheckInstalledAsync(s, install);
+        }
+        else
+        {
+            var button = new Button { Content = Loc.T(s.Url.StartsWith("https://t.me/") ? "soft.open.tg" : "soft.open"), Style = (Style)FindResource("SecondaryButton"), Height = 38, Margin = new Thickness(0, 12, 0, 0) };
+            button.Click += (_, _) => PlayService.OpenUrl(s.Url);
+            buttons = button;
+        }
+
+        var body = new DockPanel();
+        DockPanel.SetDock(head, Dock.Top);
+        DockPanel.SetDock(buttons, Dock.Bottom);
+        body.Children.Add(head);
+        body.Children.Add(buttons);
+        body.Children.Add(new TextBlock { Text = s.Description.ToString(), FontSize = 13, LineHeight = 19, Foreground = new SolidColorBrush(Color.FromRgb(0xC9, 0xC9, 0xD6)), TextWrapping = TextWrapping.Wrap, Margin = new Thickness(0, 12, 0, 0) });
+
+        return new Border { Style = (Style)FindResource("CardBorder"), Padding = new Thickness(18, 16, 18, 16), Margin = new Thickness(0, 0, 16, 16), Height = 210, Child = body };
+    }
+
+    private static readonly SemaphoreSlim WingetLock = new(1, 1); // one winget at a time
+
+    private static async Task CheckInstalledAsync(SoftwareItem s, Button install)
+    {
+        if (!await WingetService.AvailableAsync()) { install.Content = Loc.T("soft.open"); return; }
+        await WingetLock.WaitAsync();
+        try
+        {
+            if (await WingetService.IsInstalledAsync(s.Winget, s.WingetSource))
+            {
+                install.Content = Loc.T("soft.installed");
+                install.IsEnabled = false;
+            }
+        }
+        finally { WingetLock.Release(); }
+    }
+
+    private async Task InstallAsync(SoftwareItem s, Button install)
+    {
+        if (!await WingetService.AvailableAsync()) { PlayService.OpenUrl(s.Url); return; }
+        var owner = Window.GetWindow(this);
+        var settings = ((MainWindow)Application.Current.MainWindow).Settings;
+        var offered = Catalog.Software.Where(x => x.Winget.Length > 0).ToList();
+        if (!settings.WingetConsent || offered.Any(x => !settings.WingetConsented.Contains(x.Winget)))
+        {
+            var names = string.Join(", ", offered.Select(x => x.Name));
+            if (Views.Dialog.Show(owner, Loc.F("soft.consent", names), Loc.T("soft.title"), MessageBoxButton.YesNo, MessageBoxImage.Information, MessageBoxResult.No) != MessageBoxResult.Yes) return;
+            settings.WingetConsent = true;
+            settings.WingetConsented = offered.Select(x => x.Winget).ToList();
+            settings.Save();
+        }
+        var warning = s.Warning.ToString();
+        if (warning.Length > 0) warning = "\n\n⚠ " + warning;
+        if (Views.Dialog.Show(owner, Loc.F("soft.install.confirm", s.Name, warning), s.Name, MessageBoxButton.YesNo, warning.Length > 0 ? MessageBoxImage.Warning : MessageBoxImage.Question, MessageBoxResult.No) != MessageBoxResult.Yes) return;
+        install.IsEnabled = false;
+        install.Content = Loc.T("soft.installing");
+        await WingetLock.WaitAsync();
+        string? error;
+        try { error = await WingetService.InstallAsync(s.Winget, s.WingetSource); }
+        catch (Exception e) { error = e.Message; }
+        finally { WingetLock.Release(); }
+        if (error == null) { install.Content = Loc.T("soft.installed"); return; }
+        install.Content = Loc.T("soft.install");
+        install.IsEnabled = true;
+        Views.Dialog.Show(Window.GetWindow(this), Loc.F("soft.install.fail", s.Name, error), s.Name, MessageBoxButton.OK, MessageBoxImage.Warning);
+    }
+
+    private void Weekly_Click(object sender, RoutedEventArgs e) => PlayService.OpenUrl(AppConfig.TelegramUrl);
+}

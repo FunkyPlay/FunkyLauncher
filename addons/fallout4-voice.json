@@ -1,0 +1,70 @@
+{
+ "schema": 1,
+ "modlistId": "fallout4",
+ "addonId": "fallout4-voice",
+ "listVersion": "0.1.0",
+ "forMainVersion": "0.1.2",
+ "forGameVersion": "1.11.240",
+ "draft": true,
+ "generated": "2026-11-17",
+ "mods": [
+  {
+   "id": "RU Voice - Russian voice for Fallout 4 - RusVoiceVanilla",
+   "modFolder": "RU Voice - Russian voice for Fallout 4 - RusVoiceVanilla",
+   "displayName": {
+    "ru": "Russian voice for Fallout 4",
+    "en": "Russian voice for Fallout 4"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 85110,
+    "fileId": 390118,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/85110?tab=files&file_id=390118"
+   },
+   "version": "2.4",
+   "archive": {
+    "nexusFileName": "RusVoiceVanilla-85110-2-4-1773890579.7z",
+    "localFileName": "RusVoiceVanilla-85110-2-4-1773890579.7z",
+    "size": 3880949107,
+    "sha256": "7f84885affb691394662bc94cc23bee9c92845f15f9773dc8647750fc9342590"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   },
+   "onlyWith": "ru"
+  },
+  {
+   "id": "RU Voice - Russian voice for Fallout 4 - RusVoiceDLC",
+   "modFolder": "RU Voice - Russian voice for Fallout 4 - RusVoiceDLC",
+   "displayName": {
+    "ru": "Russian voice for Fallout 4",
+    "en": "Russian voice for Fallout 4"
+   },
+   "nexus": {
+    "game": "fallout4",
+    "modId": 85110,
+    "fileId": 390119,
+    "filePage": "https://www.nexusmods.com/fallout4/mods/85110?tab=files&file_id=390119"
+   },
+   "version": "2.4",
+   "archive": {
+    "nexusFileName": "RusVoiceDLC-85110-2-4-1773891388.7z",
+    "localFileName": "RusVoiceDLC-85110-2-4-1773891388.7z",
+    "size": 1197426858,
+    "sha256": "a9a62b1dfe5c32130197d37cb4b4773790c6b1775b0b4b3fb4fddca0593a9608"
+   },
+   "plugins": [],
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false
+   },
+   "onlyWith": "ru"
+  }
+ ],
+ "default": true,
+ "note": "Русская озвучка (нейросеть + актёры), Nexus 85110 «Russian voice for Fallout 4» 2.4. Ставится только с пакетом ru. Заменяет голосовые архивы игры одноимёнными BA2 (Fallout4 - Voices.ba2, DLC* - Voices_en.ba2) в папке мода — MO2 перекрывает файлы игры, INI не нужен. Решение Funky 17.11."
+}

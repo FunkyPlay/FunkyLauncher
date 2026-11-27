@@ -1,0 +1,902 @@
+{
+ "schema": 1,
+ "modlistId": "fallout4",
+ "kind": "about",
+ "generated": "2026-11-25",
+ "mods": {
+  "F4SE Scripts": {
+   "ru": "Расширение скриптов игры, нужно другим модам",
+   "en": "Script extender other mods need",
+   "author": "F4SE Team"
+  },
+  "Address Library for F4SE Plugins": {
+   "ru": "Нужен модам-плагинам F4SE",
+   "en": "Needed by F4SE plugin mods",
+   "author": "Ryan"
+  },
+  "Runtime Database": {
+   "ru": "Помогает модам работать на любой версии игры",
+   "en": "Keeps mods working across game versions",
+   "author": "Zzyxzz"
+  },
+  "Unofficial Fallout 4 Patch - UFO4P": {
+   "ru": "Неофициальный патч: исправляет тысячи ошибок игры",
+   "en": "Unofficial patch: fixes thousands of game bugs",
+   "author": "The Unofficial Patch Project Team"
+  },
+  "Community Fixes Merged": {
+   "ru": "Сборник исправлений от сообщества",
+   "en": "A collection of community fixes",
+   "author": "The Community"
+  },
+  "Addictol - Addictol 1.8.0": {
+   "ru": "Исправления движка игры",
+   "en": "Game engine fixes",
+   "author": "Dear Modding FO4 and DoubleYouC"
+  },
+  "Addictol - Addictol Crash Logger": {
+   "ru": "Записывает причину вылета для разбора",
+   "en": "Records crash details for diagnosis",
+   "author": "Dear Modding FO4 and DoubleYouC"
+  },
+  "High FPS Physics Fix": {
+   "ru": "Игра не ускоряется при высоком FPS, быстрее загрузки",
+   "en": "Game speed no longer tied to FPS, faster loading",
+   "author": "Antonix35"
+  },
+  "Weapon Debris Crash Fix": {
+   "ru": "Нет вылетов от осколков при стрельбе",
+   "en": "No crashes from weapon debris",
+   "author": "Antonix35"
+  },
+  "Sprint Stuttering Fix": {
+   "ru": "Нет рывков камеры при беге от первого лица",
+   "en": "No stutter when sprinting in first person",
+   "author": "AntoniX"
+  },
+  "Long Loading Times Fix": {
+   "ru": "Загрузки заметно быстрее",
+   "en": "Much faster loading screens",
+   "author": "Antonix35"
+  },
+  "Armor Penetration Bug Fix - F4SE": {
+   "ru": "Правильный расчёт бронепробития",
+   "en": "Correct armour penetration stats",
+   "author": "Zzyxzz"
+  },
+  "Magic Effect and Spell Engine Fixes - F4SE": {
+   "ru": "Исправления эффектов, перков и улучшений предметов",
+   "en": "Fixes for effects, perks and item enhancements",
+   "author": "LarannKiar"
+  },
+  "Empty Vendor List Bug Fix - F4SE": {
+   "ru": "У торговцев не пропадает список товаров",
+   "en": "Vendors no longer show an empty item list",
+   "author": "LarannKiar"
+  },
+  "Follower AI Approach Reaction Fix - F4SE": {
+   "ru": "Спутники не отворачиваются, подходя к тебе",
+   "en": "Companions no longer turn away when approaching",
+   "author": "LarannKiar"
+  },
+  "Companion Shoots At Player Fix - F4SE": {
+   "ru": "Спутники не стреляют в тебя после боя",
+   "en": "Companions no longer shoot at you after combat",
+   "author": "LarannKiar"
+  },
+  "Energy Weapon Calculation Fix": {
+   "ru": "Энергетическое оружие наносит правильный урон",
+   "en": "Energy weapons deal correct damage",
+   "author": "Zzyxzz"
+  },
+  "Garden of Eden Papyrus Script Extender": {
+   "ru": "Нужен модам: 1150 новых функций скриптов",
+   "en": "1,150 new script functions other mods need",
+   "author": "LarannKiar"
+  },
+  "Crafting Highlight Fix": {
+   "ru": "Видно предмет на верстаке, без подсветки",
+   "en": "See items at workbenches without the glow",
+   "author": "registrator2000"
+  },
+  "Smooth Cell Loading - F4SE": {
+   "ru": "Нет рывков при входе в новые места",
+   "en": "No stutter when entering new areas",
+   "author": "Zzyxzz"
+  },
+  "Light Gobo Fix - F4SE": {
+   "ru": "Фонарик и узоры света отображаются правильно",
+   "en": "Flashlights and light patterns display correctly",
+   "author": "Zzyxzz"
+  },
+  "Godrays Performance Fix Redux": {
+   "ru": "Лучи солнца без потери FPS",
+   "en": "God rays without the FPS hit",
+   "author": "bp42s"
+  },
+  "Wetness Shader Fix": {
+   "ru": "Предметы не блестят слишком сильно под дождём",
+   "en": "Objects no longer over-shine in rain",
+   "author": "Ablaze666"
+  },
+  "Fallout 4 Particle Patch - No More Glowing Objects": {
+   "ru": "Предметы больше не светятся без причины",
+   "en": "No more glowing objects",
+   "author": "fadingsignal"
+  },
+  "Flutter Flicker Fixer For Foliage": {
+   "ru": "Листва не мерцает на ветру",
+   "en": "Foliage no longer flickers in the wind",
+   "author": "DoubleYou"
+  },
+  "Blood Fixes": {
+   "ru": "Пятна крови лежат ровно",
+   "en": "Blood decals placed properly",
+   "author": "Glitchfinder"
+  },
+  "3rd Person Behavior Fixes": {
+   "ru": "Исправления камеры от третьего лица",
+   "en": "Third-person camera fixes",
+   "author": "Bingle"
+  },
+  "Mod Configuration Menu": {
+   "ru": "Меню настроек для модов",
+   "en": "Settings menu for mods",
+   "author": "reg2k - Neanka - shadowslasher410"
+  },
+  "FallUI - Inventory": {
+   "ru": "Удобный инвентарь для ПК",
+   "en": "A better PC inventory",
+   "author": "m8r98a4f2"
+  },
+  "FallUI - HUD": {
+   "ru": "Интерфейс на экране, который можно настроить",
+   "en": "A fully configurable HUD",
+   "author": "m8r98a4f2"
+  },
+  "FallUI - Workbench": {
+   "ru": "Удобный верстак: больше места и сравнение модов",
+   "en": "Better workbench menu with mod comparison",
+   "author": "m8r98a4f2"
+  },
+  "FallUI - Map": {
+   "ru": "Карта со списком мест, поиском и избранным",
+   "en": "Map with a location list, search and favourites",
+   "author": "m8r98a4f2"
+  },
+  "FallUI - Confirm Boxes (incl. Yes Im Sure)": {
+   "ru": "Новые окна подтверждения",
+   "en": "New confirmation boxes",
+   "author": "m8r98a4f2"
+  },
+  "FallUI - Icon Library": {
+   "ru": "Набор значков для FallUI",
+   "en": "Icon library for FallUI",
+   "author": "m8r98a4f2"
+  },
+  "FallUI - Sleep and Wait": {
+   "ru": "Удобное меню сна и ожидания",
+   "en": "Better sleep and wait menu",
+   "author": "m8r98a4f2"
+  },
+  "Extended Dialogue Interface": {
+   "ru": "Больше четырёх вариантов в диалогах",
+   "en": "More than four dialogue options",
+   "author": "reg2k and Neanka"
+  },
+  "HUDFramework": {
+   "ru": "Нужен модам, которые добавляют элементы на экран",
+   "en": "Lets mods add HUD elements",
+   "author": "registrator2000"
+  },
+  "LooksMenu": {
+   "ru": "Больше настроек в редакторе персонажа",
+   "en": "More options in character creation",
+   "author": "Expired6978"
+  },
+  "Place Everywhere": {
+   "ru": "Строй в поселениях где угодно",
+   "en": "Build anywhere in settlements",
+   "author": "TheLich"
+  },
+  "Simple FOV Slider": {
+   "ru": "Настройка угла обзора",
+   "en": "Field of view slider",
+   "author": "SoleVaultBoy"
+  },
+  "Faster Terminal Displays": {
+   "ru": "Текст на терминалах выводится быстрее",
+   "en": "Faster terminal text",
+   "author": "Old Nick"
+  },
+  "Visible Companion Affinity": {
+   "ru": "Видно, как спутник к тебе относится",
+   "en": "See your companion's affinity",
+   "author": "CDante"
+  },
+  "Faster Workbench Exit": {
+   "ru": "Быстрый выход из верстака",
+   "en": "Faster workbench exit",
+   "author": "Hudd"
+  },
+  "True Storms - Wasteland Edition (Thunder-Rain-Weather Redone)": {
+   "ru": "Настоящие грозы и новая погода",
+   "en": "Real thunderstorms and new weather",
+   "author": "fadingsignal"
+  },
+  "Darker Nights": {
+   "ru": "Ночи темнее",
+   "en": "Darker nights",
+   "author": "unforbidable"
+  },
+  "Interiors Enhanced - Darker Ambient Light and Fog": {
+   "ru": "Помещения темнее и с туманом",
+   "en": "Darker interiors with fog",
+   "author": "fadingsignal"
+  },
+  "Water Enhanced": {
+   "ru": "Вода в высоком разрешении",
+   "en": "High-resolution water",
+   "author": "jmane2009"
+  },
+  "Valentine REBORN - Nick Face Retexture - HD Synth Eyes and Teeth - Gen1 Metal Skeleton": {
+   "ru": "Новое лицо Ника Валентайна в HD",
+   "en": "HD face for Nick Valentine",
+   "author": "83Willow"
+  },
+  "Delightful Ivy - HD Vine Retexture - a natural and realistic green and brown plant overhaul": {
+   "ru": "Плющ и лозы в HD",
+   "en": "HD ivy and vines",
+   "author": "83Willow"
+  },
+  "Fallout Texture Overhaul PipBoy (Pip-Boy) UHD 4K": {
+   "ru": "Пип-Бой в 4K",
+   "en": "4K Pip-Boy",
+   "author": "Gorgulla"
+  },
+  "Fallout Texture Overhaul Stars": {
+   "ru": "Звёзды в 4K",
+   "en": "4K stars",
+   "author": "Gorgulla"
+  },
+  "Immersive Mouth and Teeth": {
+   "ru": "Более аккуратные рты и зубы у персонажей",
+   "en": "Cleaner mouths and teeth",
+   "author": "ClearanceClarence"
+  },
+  "Eye Normal Map Fix Fallout 4 Edition": {
+   "ru": "Исправляет отображение глаз",
+   "en": "Fixes how eyes look",
+   "author": "Mr Dave"
+  },
+  "Ponytail Hairstyles by Azar v3.0": {
+   "ru": "Новые причёски с хвостом",
+   "en": "New ponytail hairstyles",
+   "author": "Azar"
+  },
+  "Commonwealth Cuts - KS Hairdos - ApachiiSkyHair": {
+   "ru": "Причёски, перенесённые из Skyrim",
+   "en": "Hairstyles converted from Skyrim",
+   "author": "Aarwyn and ANiceOakTree"
+  },
+  "Lots More Male Hairstyles": {
+   "ru": "Около 150 новых мужских причёсок",
+   "en": "About 150 new male hairstyles",
+   "author": "Recluse"
+  },
+  "Lots More Female Hairstyles": {
+   "ru": "Много новых женских причёсок",
+   "en": "Lots of new female hairstyles",
+   "author": "Recluse"
+  },
+  "Beards N' Staches - A Facial Hair Expansion": {
+   "ru": "Больше бород и усов",
+   "en": "More beards and moustaches",
+   "author": "iSiralex"
+  },
+  "Rusty Face Fix": {
+   "ru": "Лица не становятся коричневыми после загрузки",
+   "en": "Faces no longer turn brown after loading",
+   "author": "Seb263"
+  },
+  "High Res DLC Black Face Fix": {
+   "ru": "Лица не чернеют с HD-текстурами",
+   "en": "No black faces with the HD texture pack",
+   "author": "HizFather"
+  },
+  "Everyone's Best Friend (Dogmeat and Companion At Same Time - No Console - No Hack)": {
+   "ru": "Псина ходит вместе с другим спутником",
+   "en": "Dogmeat plus another companion at once",
+   "author": "Valdacil"
+  },
+  "Lowered Weapons": {
+   "ru": "Оружие опущено, когда не целишься",
+   "en": "Weapon lowered when not aiming",
+   "author": "lesma666"
+  },
+  "See Through Scopes": {
+   "ru": "Прицелы, через которые всё видно",
+   "en": "See-through scopes",
+   "author": "henkspamadres"
+  },
+  "Bullet Counted Reload System (BCR)": {
+   "ru": "Перезарядка по одному патрону",
+   "en": "Bullet-by-bullet reloads",
+   "author": "shavkacagarikia"
+  },
+  "Classic Holstered Weapons System (CHW)": {
+   "ru": "Оружие видно на теле, когда убрано",
+   "en": "Holstered weapons visible on the body",
+   "author": "shavkacagarikia"
+  },
+  "Tactical Reload": {
+   "ru": "Быстрая перезарядка, если в магазине остались патроны",
+   "en": "Tactical reload when the magazine is not empty",
+   "author": "Bwones"
+  },
+  "Immersive Animation Framework": {
+   "ru": "Анимации еды, питья и лечения",
+   "en": "Animations for eating, drinking and healing",
+   "author": "AnotherOne aka RetroPaladin - Octodecoy"
+  },
+  "Pip-Boy Flashlight (Pipboy - Power Armor - Lamp Overhaul)": {
+   "ru": "Фонарь Пип-Боя светит лучом",
+   "en": "Pip-Boy light becomes a beam",
+   "author": "AKcelsior"
+  },
+  "Durable Vertibirds": {
+   "ru": "Винтокрылы крепче и умеют отступать",
+   "en": "Tougher vertibirds that can retreat",
+   "author": "Utherix"
+  },
+  "Nuka World - Skip raiding your own settlements": {
+   "ru": "Можно не нападать на свои поселения в Нука-Мире",
+   "en": "Skip raiding your own settlements in Nuka-World",
+   "author": "raznek34"
+  },
+  "To Your Face FO4": {
+   "ru": "Прохожие здороваются в лицо, а не в спину",
+   "en": "NPCs greet you face to face, not from behind",
+   "author": "underthesky and PK0"
+  },
+  "Eli's Armour Compendium - EAC - EAC - 2.1.1 VANILLA BODY": {
+   "ru": "80+ новых видов брони",
+   "en": "80+ new armour pieces",
+   "author": "Elianora"
+  },
+  "Eli's Armour Compendium - EAC - Eli Armour Compendium HOTFIX 2.1.1": {
+   "ru": "Исправление для набора брони Eli",
+   "en": "Hotfix for Eli's armour pack",
+   "author": "Elianora"
+  },
+  "Backpacks of the Commonwealth": {
+   "ru": "29 новых рюкзаков",
+   "en": "29 new backpacks",
+   "author": "BmanBlazer"
+  },
+  "Enhanced Vanilla Armor and Clothing - EVAC": {
+   "ru": "Обновлённый вид брони и одежды игры",
+   "en": "Overhauled look for vanilla armour and clothing",
+   "author": "DoubleYou"
+  },
+  "K-9 Harness -- Tactical Body Armor and Backpack for Dogmeat": {
+   "ru": "Бронежилет и рюкзак для Псины",
+   "en": "Armour and a backpack for Dogmeat",
+   "author": "fadingsignal"
+  },
+  "Service Rifle": {
+   "ru": "Служебная винтовка из New Vegas",
+   "en": "Service Rifle from New Vegas",
+   "author": "Painter2099"
+  },
+  "Wattz 3000 mkII Laser gun": {
+   "ru": "Лазерный пистолет Wattz 3000",
+   "en": "Wattz 3000 laser gun",
+   "author": "Painter2099"
+  },
+  "Hunting Shotgun - A New Vegas Classic - Remington 870": {
+   "ru": "Охотничий дробовик из New Vegas",
+   "en": "Hunting shotgun from New Vegas",
+   "author": "Commonwealth Weaponry"
+  },
+  "The 9mm Pistol (Browning Hi-Power) Fallout New Vegas": {
+   "ru": "Пистолет 9 мм из New Vegas",
+   "en": "9mm pistol from New Vegas",
+   "author": "Commonwealth Weaponry"
+  },
+  "The Riot Shotgun - Fallout New Vegas": {
+   "ru": "Штурмовой дробовик из New Vegas",
+   "en": "Riot shotgun from New Vegas",
+   "author": "Dak and Peg"
+  },
+  "Laser RCW - Fallout New Vegas": {
+   "ru": "Лазерный пистолет-пулемёт из New Vegas",
+   "en": "Laser RCW from New Vegas",
+   "author": "Commonwealth Weaponry"
+  },
+  "The Plasma Defender - Fallout New Vegas Classic": {
+   "ru": "Плазменный пистолет из New Vegas",
+   "en": "Plasma Defender from New Vegas",
+   "author": "Commonwealth Weaponry"
+  },
+  "The Light Machine Gun - Fallout New Vegas LMG": {
+   "ru": "Ручной пулемёт из New Vegas",
+   "en": "Light machine gun from New Vegas",
+   "author": "Commonwealth Weaponry"
+  },
+  "Sidearms of the Wasteland (Classic 10mm - Wattz 1000 - Glock 86 - 45 pistol (1911) - 9mm pistol (Hi Power) - Beretta 92)": {
+   "ru": "Набор пистолетов Пустоши",
+   "en": "A pack of wasteland pistols",
+   "author": "Gecko In A Can 77"
+  },
+  "The Attachment Pack": {
+   "ru": "Новые обвесы для оружия",
+   "en": "New weapon attachments",
+   "author": "DegenerateDak and Pig"
+  },
+  "Dak's Combat Rifle remesh REDUX": {
+   "ru": "Обновлённая боевая винтовка",
+   "en": "Remade combat rifle",
+   "author": "DegenerateDak And Pig"
+  },
+  "Unique Uniques - Unique Weapons Redone": {
+   "ru": "Уникальный вид для всего уникального оружия",
+   "en": "Unique looks for all unique weapons",
+   "author": "Trainwiz"
+  },
+  "Workshop Framework": {
+   "ru": "Основа для модов поселений, скрипты стабильнее",
+   "en": "Settlement framework, more stable scripts",
+   "author": "kinggath"
+  },
+  "Workshop Plus": {
+   "ru": "Строительство как в симуляторе: полёт, отмена, копирование",
+   "en": "Builder tools: flight, undo, cloning",
+   "author": "kinggath"
+  },
+  "Homemaker - Expanded Settlements": {
+   "ru": "1000+ новых предметов для поселений",
+   "en": "1,000+ new settlement objects",
+   "author": "bombasticmori"
+  },
+  "Settlement Menu Manager": {
+   "ru": "Нужен модам с меню строительства",
+   "en": "Lets mods add build menus",
+   "author": "cadpnq"
+  },
+  "Longer Power Lines": {
+   "ru": "Провода можно тянуть дальше",
+   "en": "Longer power lines",
+   "author": "Puma"
+  },
+  "Better Settlers": {
+   "ru": "240+ новых поселенцев",
+   "en": "240+ new settlers",
+   "author": "Thom293"
+  },
+  "Quieter Settlements": {
+   "ru": "Поселения тише: генераторы и турели",
+   "en": "Quieter settlements: generators and turrets",
+   "author": "Lemures"
+  },
+  "Salvage Beacons": {
+   "ru": "Поселенцы относят добычу в поселение",
+   "en": "Settlers carry your loot home",
+   "author": "kinggath"
+  },
+  "Wall Pass-Through Power Conduits": {
+   "ru": "Провода через стены",
+   "en": "Power conduits through walls",
+   "author": "Daedragon"
+  },
+  "Workshop Highlight Fix": {
+   "ru": "При строительстве видно контур, а не заливку",
+   "en": "Workshop shows an outline, not a full highlight",
+   "author": "SoleVaultBoy"
+  },
+  "Reverb and Ambiance Overhaul": {
+   "ru": "Реалистичное эхо и звуки окружения",
+   "en": "Realistic reverb and ambience",
+   "author": "mm137"
+  },
+  "Project Reality Footsteps FO4": {
+   "ru": "Реалистичные звуки шагов",
+   "en": "Realistic footstep sounds",
+   "author": "HULKHOD3N x PR BF2 DevTeam"
+  },
+  "P.A.M.S - Power Armor Movement Sounds": {
+   "ru": "Силовая броня звучит тяжелее",
+   "en": "Heavier power armour sounds",
+   "author": "ONIXer"
+  },
+  "Fallout 4 Resound Project - Guns": {
+   "ru": "Новые звуки оружия",
+   "en": "New gun sounds",
+   "author": "ReeseSFX"
+  },
+  "Hydra": {
+   "ru": "Нужен другим модам: инструменты и исправления",
+   "en": "Utilities and engine fixes other mods need",
+   "author": "SoleVaultBoy"
+  },
+  "Interiors Enhanced  - PRP 81.x Patch (Previsibines Repair Pack)": {
+   "ru": "Совместимость Interiors Enhanced с PRP",
+   "en": "Interiors Enhanced patch for PRP",
+   "author": "Xsrw"
+  },
+  "Previsibines Repair Pack Stable Branch - PRP": {
+   "ru": "Меньше просадок FPS в городе",
+   "en": "Fewer FPS drops in built-up areas",
+   "author": "BenRierimanu"
+  },
+  "RobCo Patcher": {
+   "ru": "Нужен модам, которые меняют данные игры",
+   "en": "Lets mods change game data",
+   "author": "Zzyxzz"
+  },
+  "Scopes Framework": {
+   "ru": "Нужен модам со своими прицелами",
+   "en": "Lets mods add custom scopes",
+   "author": "Scrivener07"
+  },
+  "Sim Settlements 2": {
+   "ru": "Sim Settlements 2: город строится сам, большой сюжет",
+   "en": "Sim Settlements 2: self-building towns and a story",
+   "author": "Sim Settlements Team"
+  },
+  "Sim Settlements 2 - Chapter 2": {
+   "ru": "Sim Settlements 2, глава 2",
+   "en": "Sim Settlements 2, chapter 2",
+   "author": "Sim Settlements Team"
+  },
+  "Sim Settlements 2 - Chapter 3": {
+   "ru": "Sim Settlements 2, глава 3: финал",
+   "en": "Sim Settlements 2, chapter 3: the finale",
+   "author": "Sim Settlements Team"
+  },
+  "America Rising 2 - Legacy of the Enclave": {
+   "ru": "Большое сюжетное дополнение про Анклав",
+   "en": "A big Enclave story expansion",
+   "author": "Otellino"
+  },
+  "America Rising 2 - Patches and Resources - America Rising 2 - DLC PreVis Patch": {
+   "ru": "Исправление для America Rising 2",
+   "en": "Patch for America Rising 2",
+   "author": "Otellino"
+  },
+  "America Rising 2 - Patches and Resources - America Rising 2 - The Remnants Patch": {
+   "ru": "Совместимость America Rising 2 с The Remnants",
+   "en": "America Rising 2 and The Remnants patch",
+   "author": "Otellino"
+  },
+  "Outcasts and Remnants - Quest Mod Plus": {
+   "ru": "Большое задание: 20 часов, новые фракции и места",
+   "en": "Big quest mod: 20 hours, new factions and places",
+   "author": "Thuggysmurf Recluse and Formado721"
+  },
+  "Atomic Radio and Tales from the Commonwealth - Tales from the Commonwealth": {
+   "ru": "Новые задания и спутники",
+   "en": "New quests and companions",
+   "author": "Kris Takahashi"
+  },
+  "Atomic Radio and Tales from the Commonwealth - Atomic Radio v2.6": {
+   "ru": "Новая радиостанция",
+   "en": "A new radio station",
+   "author": "Kris Takahashi"
+  },
+  "Heather Casdin - A Unique Companion Experience by llamaRCA": {
+   "ru": "Новый спутник Хизер с историей",
+   "en": "Heather, a story-driven companion",
+   "author": "llamaRCA"
+  },
+  "Amazing FollowerTweaks": {
+   "ru": "Несколько спутников и много настроек для них",
+   "en": "Multiple followers and lots of options",
+   "author": "Dheuster"
+  },
+  "Equipment and Crafting Overhaul (ECO) - Redux": {
+   "ru": "Обновлённое снаряжение и крафт",
+   "en": "Equipment and crafting overhaul",
+   "author": "Dank Rafft"
+  },
+  "Better Locational Damage and Optional Gameplay Overhauls": {
+   "ru": "Урон зависит от места попадания",
+   "en": "Damage depends on where you hit",
+   "author": "Zzyxzz"
+  },
+  "Modern Combat AI - F4SE": {
+   "ru": "Враги воюют отрядом: фланги, прикрытие, гранаты за укрытие",
+   "en": "Enemies fight as a squad: flanks, cover fire, grenades behind cover",
+   "author": "Zzyxzz"
+  },
+  "Bastion - A Power Armor Overhaul": {
+   "ru": "Силовая броня держит урон по частям",
+   "en": "Power armour absorbs damage part by part",
+   "author": "Zzyxzz"
+  },
+  "Campsite - Simple Wasteland Camping (and HD Sleeping Bags)": {
+   "ru": "Лагерь в Пустоши и спальники",
+   "en": "Wasteland camping and sleeping bags",
+   "author": "fadingsignal"
+  },
+  "Survival Options": {
+   "ru": "Настройка режима выживания",
+   "en": "Survival mode options",
+   "author": "Jekod"
+  },
+  "Cheat Terminal": {
+   "ru": "Голодиск с читами: крышки, стимпаки, очки",
+   "en": "Cheat holotape: caps, stimpaks, points",
+   "author": "BriskyMods"
+  },
+  "Combined Arms - Modern Weapon Pack": {
+   "ru": "Большой набор современного оружия",
+   "en": "A big modern weapon pack",
+   "author": "Nova and Friends"
+  },
+  "RU556 - Assault rifle": {
+   "ru": "Автомат RU556",
+   "en": "RU556 assault rifle",
+   "author": "FX0x01 - F34R - Navaro  - other"
+  },
+  "MK18 CQBR": {
+   "ru": "Карабин MK18 с заданием",
+   "en": "MK18 carbine with a quest",
+   "author": "FX0x01 - F34R - Navaro - Yukzx - Spiffy"
+  },
+  "AK74M - Assault Rifle": {
+   "ru": "Автомат АК-74М",
+   "en": "AK-74M assault rifle",
+   "author": "FX0x01 - Ha_ru - Navaro -  Vadim Spiridonov"
+  },
+  "Russian Assault Pack - SVD Dragunov - Saiga 12 - PP-19 Bizon - Stechkin APS - MP412 REX": {
+   "ru": "Российское оружие: СВД, Сайга, Бизон, АПС",
+   "en": "Russian weapons: SVD, Saiga, Bizon, APS",
+   "author": "Nova i_code_i Darkman"
+  },
+  "West Tek Tactical Optics - Night Vision Thermal Vision Goggles and More": {
+   "ru": "Очки ночного и теплового зрения",
+   "en": "Night vision and thermal goggles",
+   "author": "fadingsignal"
+  },
+  "NCR Ranger Veteran Armor": {
+   "ru": "Броня ветерана рейнджеров НКР",
+   "en": "NCR Veteran Ranger armour",
+   "author": "DogtoothCG Unoctium"
+  },
+  "Tumbajamba's Gunner Armor Collection": {
+   "ru": "Броня стрелков, 24+ предмета",
+   "en": "Gunner armour, 24+ items",
+   "author": "tumbajamba and tenhats"
+  },
+  "Militarized Minutemen": {
+   "ru": "Военная форма для минитменов",
+   "en": "Military gear for the Minutemen",
+   "author": "Corvalho"
+  },
+  "Legendary Modification": {
+   "ru": "Легендарный эффект можно поставить на верстаке",
+   "en": "Craft legendary mods at the workbench",
+   "author": "teaLz"
+  },
+  "Better Goodneighbor": {
+   "ru": "Обновлённый Добрососедство с новыми NPC",
+   "en": "Goodneighbor overhaul with new NPCs",
+   "author": "Mika999"
+  },
+  "Companion Status HUD": {
+   "ru": "Здоровье спутников на экране",
+   "en": "Companion health on the HUD",
+   "author": "registrator2000"
+  },
+  "HoloTime - HUD Clock Widget": {
+   "ru": "Часы на экране",
+   "en": "A clock on the HUD",
+   "author": "registrator2000"
+  },
+  "powerofthree's Photo Mode": {
+   "ru": "Фоторежим",
+   "en": "Photo mode",
+   "author": "powerofthree"
+  },
+  "Settlement Objects Expansion Pack": {
+   "ru": "Новые предметы для поселений",
+   "en": "New settlement objects",
+   "author": "ccmads"
+  },
+  "Snap'n Build 2.0": {
+   "ru": "Детали стыкуются при строительстве",
+   "en": "Snap building pieces together",
+   "author": "ad3d0"
+  },
+  "Workshop Rearranged": {
+   "ru": "Новые предметы и функции мастерской",
+   "en": "New workshop items and features",
+   "author": "d81"
+  },
+  "Transfer Settlements - Shareable Settlement Blueprints": {
+   "ru": "Можно сохранить и перенести поселение",
+   "en": "Save and share your settlements",
+   "author": "CDante"
+  },
+  "OLD WORLD RADIO - BOSTON": {
+   "ru": "30+ новых радиостанций с озвучкой",
+   "en": "30+ new voiced radio stations",
+   "author": "Brandoman neeher and cdante"
+  },
+  "Baka Framework": {
+   "ru": "Нужен другим модам, исправляет ошибки",
+   "en": "Data and bug fixes other mods need",
+   "author": "shad0wshayd3"
+  },
+  "ImGui Fonts": {
+   "ru": "Шрифты для фоторежима",
+   "en": "Fonts for photo mode",
+   "author": "powerofthree"
+  },
+  "Boon Island - Isles Of New England": {
+   "ru": "Новый остров Бун",
+   "en": "A new location: Boon Island",
+   "author": "Tenhats and Shreddah4"
+  },
+  "Misery Island - Isles Of New England": {
+   "ru": "Новый остров Мизери",
+   "en": "A new location: Misery Island",
+   "author": "Tenhats and Shreddah4"
+  },
+  "Caves Of The Commonwealth": {
+   "ru": "5 новых пещер и 5 заданий",
+   "en": "5 new caves and 5 quests",
+   "author": "shreddah4"
+  },
+  "Subway Runner - Revival": {
+   "ru": "Подземка: новые туннели и задания",
+   "en": "Subway tunnels with quests",
+   "author": "haplessAccreditation ghostfc3s and Tenhats"
+  },
+  "In The Flesh - A Horror Quest Mod": {
+   "ru": "Хоррор-подземелье с новыми врагами",
+   "en": "A horror dungeon with new enemies",
+   "author": "RascalArt"
+  },
+  "Mutant Menagerie - Life Finds A Way - Mutant Menagerie Main Files (No Textures)": {
+   "ru": "Больше мутантов и живности в Пустоши",
+   "en": "More mutants and creatures in the wasteland",
+   "author": "StamperDoesMods"
+  },
+  "Mutant Menagerie - Life Finds A Way - Mutant Menagerie Textures - Performance": {
+   "ru": "Текстуры для мутантов (облегчённые)",
+   "en": "Mutant textures (performance)",
+   "author": "StamperDoesMods"
+  },
+  "Basement Living - Bunker and Basement Player Homes (with standalone Workshops)": {
+   "ru": "10 домов-бункеров и подвалов",
+   "en": "10 bunker and basement homes",
+   "author": "Rob Vogel - fadingsignal"
+  },
+  "Rockin' Red Rocket": {
+   "ru": "Обновлённая заправка «Красная ракета»",
+   "en": "Red Rocket truck stop overhaul",
+   "author": "Elianora"
+  },
+  "Loot Detector": {
+   "ru": "Подсветка добычи с перком «Мусорщик»",
+   "en": "Loot glows with the Scrapper perk",
+   "author": "xatmos"
+  },
+  "Locksmith - Lock Your Doors 'n' Containers": {
+   "ru": "Можно запереть двери и контейнеры",
+   "en": "Lock your doors and containers",
+   "author": "Testudini"
+  },
+  "Shaikujin's Better warning for settlements being attacked": {
+   "ru": "Заметное предупреждение о нападении на поселение",
+   "en": "Clear warning when a settlement is attacked",
+   "author": "Shaikujin"
+  },
+  "Munitions - Ammo Expansion Project": {
+   "ru": "Новые виды патронов",
+   "en": "New ammo types",
+   "author": "Crash and many others"
+  },
+  "Brawl Bug Fix": {
+   "ru": "Драки в заданиях не ломаются",
+   "en": "Quest brawls no longer break",
+   "author": "Ersh"
+  },
+  "Rain Bug Fix - F4SE": {
+   "ru": "Дождь не пропадает при повороте",
+   "en": "Rain no longer disappears when you turn",
+   "author": "Zzyxzz"
+  },
+  "Stuck LOD Fix - F4SE": {
+   "ru": "Дальние объекты не застревают в низкой детализации",
+   "en": "Distant objects no longer stay low-detail",
+   "author": "Zzyxzz"
+  },
+  "Faster Cell Lookup": {
+   "ru": "Места загружаются быстрее",
+   "en": "Faster area loading",
+   "author": "Asciim0v"
+  },
+  "Terrain Freckles Be Gone": {
+   "ru": "Земля вдали без пятен",
+   "en": "No speckles on distant terrain",
+   "author": "DoubleYou"
+  },
+  "Visible Favorites - F4SE": {
+   "ru": "Избранное оружие видно на теле",
+   "en": "Favourite weapons visible on the body",
+   "author": "Flip777"
+  },
+  "Mod Configuration Menu - RD": {
+   "ru": "Меню настроек модов, новая версия",
+   "en": "Mod settings menu, updated version",
+   "author": "Zzyxzz"
+  },
+  "Ranger Power Armor": {
+   "ru": "Силовая броня рейнджеров НКР",
+   "en": "NCR Ranger power armour",
+   "author": "AriesThe_Ram - TEMMIS"
+  },
+  "Full Body First Person - F4SE": {
+   "ru": "Видно своё тело от первого лица",
+   "en": "See your full body in first person",
+   "author": "Zzyxzz"
+  },
+  "Modern Military Pack": {
+   "ru": "Современная военная форма",
+   "en": "Modern military clothing",
+   "author": "FafnyB aka Fafnesbane"
+  },
+  "Diamond City Expansion": {
+   "hidden": true,
+   "author": "Statsmakten"
+  },
+  "Weapon Subgraph Accelerator - F4SE": {
+   "ru": "Нет рывков при смене оружия, загрузки быстрее",
+   "en": "No stutter when switching weapons, faster loading",
+   "author": "tryname"
+  },
+  "Lighting Fixes": {
+   "ru": "Исправляет ошибки освещения, например у стекла",
+   "en": "Fixes lighting bugs, such as on glass",
+   "author": "doodlum"
+  },
+  "Draw Calls Reducer - FPS Boost": {
+   "ru": "Больше FPS: тени и объекты рисуются экономнее",
+   "en": "More FPS: shadows and objects are drawn more efficiently",
+   "author": "Antonix35"
+  },
+  "Dynamic Grass": {
+   "ru": "Трава не растёт сквозь полы и постройки",
+   "en": "Grass no longer grows through floors and buildings",
+   "author": "Zzyxzz"
+  },
+  "Acoustic Occlusion - F4SE": {
+   "ru": "Стены и двери глушат звук",
+   "en": "Walls and doors muffle sound",
+   "author": "Zzyxzz"
+  },
+  "Workshop and Settlement Fixes": {
+   "ru": "Исправления строительства и жизни поселений",
+   "en": "Fixes for building and settlement life",
+   "author": "Zzyxzz"
+  },
+  "Black Landscape Fix - F4SE": {
+   "ru": "Земля больше не бывает чёрной",
+   "en": "No more black ground textures",
+   "author": "Zzyxzz"
+  },
+  "CSEP Presents - Detour - New Town and Quest Mod": {
+   "ru": "Новый город с жителями, заданиями и торговцами (только английская версия)",
+   "en": "A new town with characters, quests and vendors",
+   "author": "Pig"
+  },
+  "Sons of Steel - Brotherhood Infantry Armor": {
+   "ru": "Новая броня пехоты Братства Стали (только английская версия)",
+   "en": "New Brotherhood of Steel infantry armour",
+   "author": "PrincessAries"
+  }
+ }
+}

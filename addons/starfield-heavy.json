@@ -1,0 +1,135 @@
+{
+ "schema": 1,
+ "modlistId": "starfield",
+ "addonId": "starfield-heavy",
+ "listVersion": "0.1.1",
+ "forMainVersion": "0.1.1",
+ "generated": "2026-11-21",
+ "default": true,
+ "mods": [
+  {
+   "id": "Royal Weathers  - An Immersive Starfield Climate Overhaul - Royal Weathers - Textures",
+   "modFolder": "Royal Weathers  - An Immersive Starfield Climate Overhaul - Royal Weathers - Textures",
+   "order": 65,
+   "nexus": {
+    "game": "starfield",
+    "modId": 7946,
+    "fileId": 32126,
+    "filePage": "https://www.nexusmods.com/starfield/mods/7946?tab=files&file_id=32126"
+   },
+   "version": "1.31",
+   "adultOnNexus": false,
+   "archive": {
+    "nexusFileName": "Royal Weathers - Textures-7946-1-31-1708873536.zip",
+    "size": 988518709,
+    "sha256": "ca1fc450148c104a82cfe6233779f128d350f75203c831851a5aec6cc49f3b4f",
+    "localFileName": "Royal Weathers - Textures-7946-1-31-1708873536.zip"
+   },
+   "plugins": [],
+   "ru": "noTranslation",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "displayName": {
+    "ru": "Royal Weathers  - An Immersive Starfield Climate Overhaul - Royal Weathers - Textures",
+    "en": "Royal Weathers  - An Immersive Starfield Climate Overhaul - Royal Weathers - Textures"
+   }
+  },
+  {
+   "id": "The Eyes of Beauty - Starfield Edition - The Eyes of Beauty - Replacer Installer tool",
+   "modFolder": "The Eyes of Beauty - Starfield Edition - The Eyes of Beauty - Replacer Installer tool",
+   "order": 281,
+   "nexus": {
+    "game": "starfield",
+    "modId": 493,
+    "fileId": 16756,
+    "filePage": "https://www.nexusmods.com/starfield/mods/493?tab=files&file_id=16756"
+   },
+   "version": "1.1.1",
+   "adultOnNexus": false,
+   "archive": {
+    "nexusFileName": "The Eyes of Beauty - Replacer Installer tool-493-1-1-1-1696897353.rar",
+    "size": 322478553,
+    "sha256": "a6174cc81518f429503d2e406fc78509bf6e65b4866e1dfa9d0e06abf6c2f374",
+    "localFileName": "The Eyes of Beauty - Replacer Installer tool-493-1-1-1-1696897353.rar"
+   },
+   "plugins": [],
+   "ru": "noText",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 169
+   },
+   "displayName": {
+    "ru": "The Eyes of Beauty - Starfield Edition - The Eyes of Beauty - Replacer Installer tool",
+    "en": "The Eyes of Beauty - Starfield Edition - The Eyes of Beauty - Replacer Installer tool"
+   }
+  },
+  {
+   "id": "SavrenX Hair - SavrenX Hair 2K",
+   "modFolder": "SavrenX Hair - SavrenX Hair 2K",
+   "order": 280,
+   "nexus": {
+    "game": "starfield",
+    "modId": 3890,
+    "fileId": 11715,
+    "filePage": "https://www.nexusmods.com/starfield/mods/3890?tab=files&file_id=11715"
+   },
+   "version": "1.0",
+   "adultOnNexus": false,
+   "archive": {
+    "nexusFileName": "SavrenX Hair 2K-3890-1-0-1695620367.7z",
+    "size": 287501612,
+    "sha256": "0e9bd300c217785c5ebecb5ae17a993db6ab7ce4884972ec23b7d3049c19d166",
+    "localFileName": "SavrenX Hair 2K-3890-1-0-1695620367.7z"
+   },
+   "plugins": [],
+   "ru": "noText",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 185
+   },
+   "displayName": {
+    "ru": "SavrenX Hair - SavrenX Hair 2K",
+    "en": "SavrenX Hair - SavrenX Hair 2K"
+   }
+  },
+  {
+   "id": "Dreaming Star - Main Menu - Main Menu Music - Pause Menu - Loading Screens - Magazines - Artifact Visions - DreamingStarMainMenu4Remastered4k",
+   "modFolder": "Dreaming Star - Main Menu - Main Menu Music - Pause Menu - Loading Screens - Magazines - Artifact Visions - DreamingStarMainMenu4Remastered4k",
+   "order": 365,
+   "nexus": {
+    "game": "starfield",
+    "modId": 616,
+    "fileId": 70177,
+    "filePage": "https://www.nexusmods.com/starfield/mods/616?tab=files&file_id=70177"
+   },
+   "version": "4",
+   "adultOnNexus": false,
+   "archive": {
+    "nexusFileName": "68/3e/ed/683eed87-c649-47b2-8495-efeab0968eb7",
+    "size": 590926224,
+    "sha256": "53d1522cfa04fac4f3bf46dabe62da87db87732dad94120934d6eb05ffdab4dc",
+    "localFileName": "DreamingStarMainMenu4Remastered4k 616 4 2026-08-07T17-35Z UAPKhIvqj.zip"
+   },
+   "plugins": [],
+   "ru": "noText",
+   "install": {
+    "type": "copyAll",
+    "from": "",
+    "fomod": false,
+    "fileCount": 1
+   },
+   "displayName": {
+    "ru": "Dreaming Star - Main Menu - Main Menu Music - Pause Menu - Loading Screens - Magazines - Artifact Visions - DreamingStarMainMenu4Remastered4k",
+    "en": "Dreaming Star - Main Menu - Main Menu Music - Pause Menu - Loading Screens - Magazines - Artifact Visions - DreamingStarMainMenu4Remastered4k"
+   }
+  }
+ ]
+}
