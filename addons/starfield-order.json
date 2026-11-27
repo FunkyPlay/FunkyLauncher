@@ -845,14 +845,29 @@
   "dicts": [
    {
     "path": "files/starfield/starfield-names-ru.tsv",
-    "sha256": "60dc1becd180eade8c2e8b7e38904599f8bce602b402644213bc2289db71e4a2"
+    "sha256": "335ef4b6088a7a03283f1958b92af83414fd5008266dcc89215a26f56beeadd6"
    },
    {
     "path": "files/starfield/starfield-template-names-ru.tsv",
-    "sha256": "faff005e97ae9c070dd772e125f64010bc740247860733c24bf5cceb5062d32d"
+    "sha256": "143238309faa164635b27d5463f5f7a6ffa2e3dbd45ae2af48f52eb4a03f07ef"
    }
   ],
   "credits": [
+   {
+    "mod": "Dream Home Basement",
+    "author": "b0bulat0r",
+    "url": "https://www.nexusmods.com/starfield/mods/9793"
+   },
+   {
+    "mod": "kine's Armada Skin Pack Repository",
+    "author": "kinesthesia07",
+    "url": "https://www.nexusmods.com/starfield/mods/16342"
+   },
+   {
+    "mod": "theenco's Glasses Updated",
+    "author": "justinn227",
+    "url": "https://www.nexusmods.com/starfield/mods/16458"
+   },
    {
     "mod": "50 GS",
     "author": "Overshoot999",

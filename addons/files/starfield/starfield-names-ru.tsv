@@ -5010,3 +5010,269 @@ PXC_AA_PDW27_Redux.esm	000E9F	OMOD	FULL	Белая засветка: розов�
 PXC_AA_PDW27_Redux.esm	000EA9	OMOD	FULL	Белая засветка: фиолетовый
 PXC_AA_PDW27_Redux.esm	000EB3	OMOD	FULL	Белая засветка: красный
 PXC_AA_PDW27_Redux.esm	000EC7	OMOD	FULL	Белая засветка: жёлтый
+Dreamhome_Extension.esm	000002	CONT	FULL	Лёгкие частичные запалы
+Dreamhome_Extension.esm	000007	CONT	FULL	Защищённый ящик
+Dreamhome_Extension.esm	00000A	CONT	FULL	Гранаты
+Dreamhome_Extension.esm	00000C	CONT	FULL	Ящик с оружием
+Dreamhome_Extension.esm	00000E	CONT	FULL	Инфопланшеты
+Dreamhome_Extension.esm	00000F	CONT	FULL	Лазер 3KV
+Dreamhome_Extension.esm	000013	CONT	FULL	Поставка: Тору
+Dreamhome_Extension.esm	000014	CONT	FULL	Поставка: аванпост «Феникс»
+Dreamhome_Extension.esm	000018	CONT	FULL	Поставка: Дастхарбор
+Dreamhome_Extension.esm	00001D	CONT	FULL	Тяжёлые частичные запалы
+Dreamhome_Extension.esm	00001E	CONT	FULL	Мины
+Dreamhome_Extension.esm	000020	CONT	FULL	Дробовые патроны
+Dreamhome_Extension.esm	000022	CONT	FULL	Заклёпки
+Dreamhome_Extension.esm	000023	DOOR	FULL	Дверь хранилища
+Dreamhome_Extension.esm	00003E	WEAP	FULL	Облакорез
+Dreamhome_Extension.esm	00003F	WEAP	FULL	Последний закат
+Dreamhome_Extension.esm	000041	WEAP	FULL	Штормовая пушка
+Dreamhome_Extension.esm	000806	CELL	FULL	Подвал
+Dreamhome_Extension.esm	00080D	LCTN	FULL	Подвал Dream Home
+Dreamhome_Extension.esm	000891	TMLM	FULL	Система управления «Санктуарий»
+Dreamhome_Extension.esm	000892	TMLM	FULL	Эл. почта
+Dreamhome_Extension.esm	000D78	DOOR	FULL	Дверь хранилища
+TheencoGlasses.esm	000800	ARMO	FULL	Очки - тактические
+TheencoGlasses.esm	000809	OMOD	FULL	Чёрный
+TheencoGlasses.esm	000829	ARMO	FULL	Очки - авиаторы
+TheencoGlasses.esm	00082F	ARMO	FULL	Очки - научно-фантастические
+TheencoGlasses.esm	000837	ARMO	FULL	Очки - лёгкие
+TheencoGlasses.esm	00083B	ARMO	FULL	Очки - круглые
+TheencoGlasses.esm	000840	ARMO	FULL	Очки - вайфареры
+TheencoGlasses.esm	000844	ARMO	FULL	Очки - сердечки
+TheencoGlasses.esm	00084A	OMOD	FULL	Прозрачный
+TheencoGlasses.esm	00085A	OMOD	FULL	Жёлтый
+TheencoGlasses.esm	000861	OMOD	FULL	Зелёный
+TheencoGlasses.esm	000867	OMOD	FULL	Бирюзовый
+TheencoGlasses.esm	000873	OMOD	FULL	Красный
+TheencoGlasses.esm	000875	ARMO	FULL	Очки - нео
+TheencoGlasses.esm	000876	ARMO	FULL	Очки - массивные
+kine_spacesuit_apollo.esm	000806	OMOD	FULL	Чёрный
+kine_spacesuit_apollo.esm	000818	OMOD	FULL	Коричневый
+kine_spacesuit_apollo.esm	000821	OMOD	FULL	Багровый
+kine_spacesuit_apollo.esm	00082A	OMOD	FULL	Зелёный
+kine_spacesuit_apollo.esm	000833	OMOD	FULL	Серый
+kine_spacesuit_apollo.esm	00083C	OMOD	FULL	Оливковый
+kine_spacesuit_apollo.esm	000857	OMOD	FULL	Красный
+kine_spacesuit_apollo.esm	000860	OMOD	FULL	Бирюзовый
+kine_spacesuit_apollo.esm	000871	OMOD	FULL	Белый
+kine_spacesuit_apollo.esm	00087B	OMOD	FULL	Жёлтый
+kine_spacesuit_armada.esm	000901	OMOD	FULL	Чёрный
+kine_spacesuit_armada.esm	000903	OMOD	FULL	Коричневый
+kine_spacesuit_armada.esm	000904	OMOD	FULL	Багровый
+kine_spacesuit_armada.esm	000905	OMOD	FULL	Зелёный
+kine_spacesuit_armada.esm	000906	OMOD	FULL	Серый
+kine_spacesuit_armada.esm	000907	OMOD	FULL	Оливковый
+kine_spacesuit_armada.esm	000910	OMOD	FULL	Красный
+kine_spacesuit_armada.esm	000911	OMOD	FULL	Бирюзовый
+kine_spacesuit_armada.esm	000913	OMOD	FULL	Белый
+kine_spacesuit_armada.esm	000914	OMOD	FULL	Жёлтый
+kine_spacesuit_armada.esm	000915	OMOD	FULL	Чёрный камуфляж
+kine_spacesuit_armada.esm	000916	OMOD	FULL	Синий камуфляж
+kine_spacesuit_armada.esm	000917	OMOD	FULL	Коричневый камуфляж
+kine_spacesuit_armada.esm	000918	OMOD	FULL	Багровый камуфляж
+kine_spacesuit_armada.esm	000919	OMOD	FULL	Зелёный камуфляж
+kine_spacesuit_armada.esm	000920	OMOD	FULL	Серый камуфляж
+kine_spacesuit_armada.esm	000921	OMOD	FULL	Оливковый камуфляж
+kine_spacesuit_armada.esm	000922	OMOD	FULL	Оранжевый камуфляж
+kine_spacesuit_armada.esm	000923	OMOD	FULL	Розовый камуфляж
+kine_spacesuit_armada.esm	000924	OMOD	FULL	Красный камуфляж
+kine_spacesuit_armada.esm	000925	OMOD	FULL	Бирюзовый камуфляж
+kine_spacesuit_armada.esm	000926	OMOD	FULL	Фиолетовый камуфляж
+kine_spacesuit_armada.esm	000927	OMOD	FULL	Белый камуфляж
+kine_spacesuit_armada.esm	000928	OMOD	FULL	Жёлтый камуфляж
+kine_spacesuit_armada.esm	000929	OMOD	FULL	Чёрный тигровый
+kine_spacesuit_armada.esm	000930	OMOD	FULL	Синий тигровый
+kine_spacesuit_armada.esm	000931	OMOD	FULL	Коричневый тигровый
+kine_spacesuit_armada.esm	000932	OMOD	FULL	Багровый тигровый
+kine_spacesuit_armada.esm	000933	OMOD	FULL	Зелёный тигровый
+kine_spacesuit_armada.esm	000934	OMOD	FULL	Серый тигровый
+kine_spacesuit_armada.esm	000935	OMOD	FULL	Оливковый тигровый
+kine_spacesuit_armada.esm	000936	OMOD	FULL	Оранжевый тигровый
+kine_spacesuit_armada.esm	000937	OMOD	FULL	Розовый тигровый
+kine_spacesuit_armada.esm	000938	OMOD	FULL	Красный тигровый
+kine_spacesuit_armada.esm	000939	OMOD	FULL	Бирюзовый тигровый
+kine_spacesuit_armada.esm	000940	OMOD	FULL	Фиолетовый тигровый
+kine_spacesuit_armada.esm	000941	OMOD	FULL	Белый тигровый
+kine_spacesuit_armada.esm	000942	OMOD	FULL	Жёлтый тигровый
+kine_spacesuit_armada.esm	000943	OMOD	FULL	.Старая Земля: засушливый город
+kine_spacesuit_armada.esm	000944	OMOD	FULL	.Старая Земля: зелёная листва
+kine_spacesuit_armada.esm	000945	OMOD	FULL	.Старая Земля: арктическая тундра
+kine_spacesuit_armada.esm	000946	OMOD	FULL	.Старая Земля: ATACS-TDX
+kine_spacesuit_armada.esm	000947	OMOD	FULL	.Старая Земля: флектарн
+kine_spacesuit_armada.esm	000948	OMOD	FULL	.Старая Земля: MARPAT
+kine_spacesuit_armada.esm	000949	OMOD	FULL	.Старая Земля: Multicam
+kine_spacesuit_armada.esm	000950	OMOD	FULL	.Старая Земля: тигровый
+kine_spacesuit_hmpr.esm	000400	OMOD	FULL	Цвет: чёрный
+kine_spacesuit_hmpr.esm	000401	OMOD	FULL	Цвет: синий
+kine_spacesuit_hmpr.esm	000402	OMOD	FULL	Цвет: коричневый
+kine_spacesuit_hmpr.esm	000403	OMOD	FULL	Цвет: багровый
+kine_spacesuit_hmpr.esm	000404	OMOD	FULL	Цвет: зелёный
+kine_spacesuit_hmpr.esm	000405	OMOD	FULL	Цвет: серый
+kine_spacesuit_hmpr.esm	000406	OMOD	FULL	Цвет: оливковый
+kine_spacesuit_hmpr.esm	000407	OMOD	FULL	Цвет: оранжевый
+kine_spacesuit_hmpr.esm	000408	OMOD	FULL	Цвет: розовый
+kine_spacesuit_hmpr.esm	000409	OMOD	FULL	Цвет: красный
+kine_spacesuit_hmpr.esm	00040A	OMOD	FULL	Цвет: бирюзовый
+kine_spacesuit_hmpr.esm	00040B	OMOD	FULL	Цвет: фиолетовый
+kine_spacesuit_hmpr.esm	00040C	OMOD	FULL	Цвет: белый
+kine_spacesuit_hmpr.esm	00040D	OMOD	FULL	Цвет: жёлтый
+kine_spacesuit_hmpr.esm	00089C	COBJ	FULL	Горный каркас терранского робота
+kine_spacesuit_hmpr.esm	00089D	COBJ	FULL	Горный каркас терранского робота v2
+kine_spacesuit_hmpr.esm	000A01	ARMO	FULL	Силовой каркас терранского робота
+kine_spacesuit_hmpr.esm	000A02	ARMO	FULL	Силовой каркас терранского робота v2
+kine_spacesuit_hyperpadded.esm	000901	OMOD	FULL	Чёрный
+kine_spacesuit_hyperpadded.esm	000903	OMOD	FULL	Коричневый
+kine_spacesuit_hyperpadded.esm	000904	OMOD	FULL	Багровый
+kine_spacesuit_hyperpadded.esm	000905	OMOD	FULL	Зелёный
+kine_spacesuit_hyperpadded.esm	000906	OMOD	FULL	Серый
+kine_spacesuit_hyperpadded.esm	000907	OMOD	FULL	Оливковый
+kine_spacesuit_hyperpadded.esm	000910	OMOD	FULL	Красный
+kine_spacesuit_hyperpadded.esm	000911	OMOD	FULL	Бирюзовый
+kine_spacesuit_hyperpadded.esm	000913	OMOD	FULL	Белый
+kine_spacesuit_hyperpadded.esm	000914	OMOD	FULL	Жёлтый
+kine_spacesuit_luxurious.esm	000001	ARMO	FULL	Сияние солнечной птицы
+kine_spacesuit_luxurious.esm	000002	ARMO	FULL	Крылья солнечной птицы
+kine_spacesuit_luxurious.esm	000003	ARMO	FULL	Гребень солнечной птицы
+kine_spacesuit_luxurious.esm	000004	ARMO	FULL	Саван некроманта
+kine_spacesuit_luxurious.esm	000005	ARMO	FULL	Полёт некроманта
+kine_spacesuit_luxurious.esm	000006	ARMO	FULL	Лик некроманта
+kine_spacesuit_luxurious.esm	000901	OMOD	FULL	Чёрный
+kine_spacesuit_luxurious.esm	000903	OMOD	FULL	Коричневый
+kine_spacesuit_luxurious.esm	000904	OMOD	FULL	Багровый
+kine_spacesuit_luxurious.esm	000905	OMOD	FULL	Зелёный
+kine_spacesuit_luxurious.esm	000906	OMOD	FULL	Серый
+kine_spacesuit_luxurious.esm	000907	OMOD	FULL	Оливковый
+kine_spacesuit_luxurious.esm	000910	OMOD	FULL	Красный
+kine_spacesuit_luxurious.esm	000911	OMOD	FULL	Бирюзовый
+kine_spacesuit_luxurious.esm	000913	OMOD	FULL	Белый
+kine_spacesuit_luxurious.esm	000914	OMOD	FULL	Жёлтый
+kine_spacesuit_luxurious.esm	000915	OMOD	FULL	Монохромный чёрный
+kine_spacesuit_luxurious.esm	000916	OMOD	FULL	Монохромный синий
+kine_spacesuit_luxurious.esm	000917	OMOD	FULL	Монохромный коричневый
+kine_spacesuit_luxurious.esm	000918	OMOD	FULL	Монохромный багровый
+kine_spacesuit_luxurious.esm	000919	OMOD	FULL	Монохромный зелёный
+kine_spacesuit_luxurious.esm	000920	OMOD	FULL	Монохромный серый
+kine_spacesuit_luxurious.esm	000921	OMOD	FULL	Монохромный оливковый
+kine_spacesuit_luxurious.esm	000922	OMOD	FULL	Монохромный оранжевый
+kine_spacesuit_luxurious.esm	000923	OMOD	FULL	Монохромный розовый
+kine_spacesuit_luxurious.esm	000924	OMOD	FULL	Монохромный красный
+kine_spacesuit_luxurious.esm	000925	OMOD	FULL	Монохромный бирюзовый
+kine_spacesuit_luxurious.esm	000926	OMOD	FULL	Монохромный фиолетовый
+kine_spacesuit_luxurious.esm	000928	OMOD	FULL	Монохромный жёлтый
+kine_spacesuit_luxurious.esm	000929	OMOD	FULL	Тёмный лунный камень
+kine_spacesuit_luxurious.esm	000930	OMOD	FULL	Тёмно-синий
+kine_spacesuit_luxurious.esm	000931	OMOD	FULL	Тёмно-коричневый
+kine_spacesuit_luxurious.esm	000932	OMOD	FULL	Тёмно-багровый
+kine_spacesuit_luxurious.esm	000933	OMOD	FULL	Тёмно-зелёный
+kine_spacesuit_luxurious.esm	000934	OMOD	FULL	Тёмно-серый
+kine_spacesuit_luxurious.esm	000935	OMOD	FULL	Тёмно-оливковый
+kine_spacesuit_luxurious.esm	000936	OMOD	FULL	Тёмно-оранжевый
+kine_spacesuit_luxurious.esm	000937	OMOD	FULL	Тёмно-розовый
+kine_spacesuit_luxurious.esm	000938	OMOD	FULL	Тёмно-красный
+kine_spacesuit_luxurious.esm	000939	OMOD	FULL	Тёмно-бирюзовый
+kine_spacesuit_luxurious.esm	000940	OMOD	FULL	Тёмно-фиолетовый
+kine_spacesuit_luxurious.esm	000942	OMOD	FULL	Тёмно-жёлтый
+kine_spacesuit_luxurious.esm	000943	OMOD	FULL	Лунный камень
+kine_spacesuit_luxurious.esm	000944	OMOD	FULL	Лунный камень, синий
+kine_spacesuit_luxurious.esm	000945	OMOD	FULL	Лунный камень, коричневый
+kine_spacesuit_luxurious.esm	000946	OMOD	FULL	Лунный камень, багровый
+kine_spacesuit_luxurious.esm	000947	OMOD	FULL	Лунный камень, зелёный
+kine_spacesuit_luxurious.esm	000948	OMOD	FULL	Лунный камень, серый
+kine_spacesuit_luxurious.esm	000949	OMOD	FULL	Лунный камень, оливковый
+kine_spacesuit_luxurious.esm	000950	OMOD	FULL	Лунный камень, оранжевый
+kine_spacesuit_luxurious.esm	000951	OMOD	FULL	Лунный камень, розовый
+kine_spacesuit_luxurious.esm	000952	OMOD	FULL	Лунный камень, красный
+kine_spacesuit_luxurious.esm	000953	OMOD	FULL	Лунный камень, бирюзовый
+kine_spacesuit_luxurious.esm	000954	OMOD	FULL	Лунный камень, фиолетовый
+kine_spacesuit_luxurious.esm	000955	OMOD	FULL	Лунный камень, белый
+kine_spacesuit_luxurious.esm	000956	OMOD	FULL	Лунный камень, жёлтый
+kine_spacesuit_luxurious.esm	000957	OMOD	FULL	Усиление: сплочение себя
+kine_spacesuit_luxurious.esm	000958	OMOD	FULL	Заблокировано текущим владельцем: @AdoringFan
+kine_spacesuit_luxurious.esm	000959	OMOD	FULL	Принесите это к промышленному верстаку, чтобы разблокировать.
+kine_spacesuit_luxurious.esm	000960	OMOD	FULL	Легендарный инструмент оптимизации заказов
+kine_spacesuit_luxurious.esm	000962	OMOD	FULL	Экспериментальный модуль некромага (пробный период истёк)
+kine_spacesuit_luxurious.esm	000963	OMOD	FULL	Заблокировано текущим владельцем: @MSiarkiewicz
+kine_spacesuit_luxurious.esm	000964	OMOD	FULL	Принесите это к промышленному верстаку, чтобы разблокировать.
+kine_spacesuit_luxurious.esm	000965	OMOD	FULL	Замена «Tombstone Blackout» для элитной команды
+kine_spacesuit_luxurious.esm	000999	WEAP	FULL	Гремучник, ТОЛЬКО ДЛЯ ЭЛИТНОЙ КОМАНДЫ
+kine_spacesuit_powerassistarmor.esm	000901	OMOD	FULL	Чёрный
+kine_spacesuit_powerassistarmor.esm	000903	OMOD	FULL	Коричневый
+kine_spacesuit_powerassistarmor.esm	000904	OMOD	FULL	Багровый
+kine_spacesuit_powerassistarmor.esm	000905	OMOD	FULL	Зелёный
+kine_spacesuit_powerassistarmor.esm	000906	OMOD	FULL	Серый
+kine_spacesuit_powerassistarmor.esm	000907	OMOD	FULL	Оливковый
+kine_spacesuit_powerassistarmor.esm	000910	OMOD	FULL	Красный
+kine_spacesuit_powerassistarmor.esm	000911	OMOD	FULL	Бирюзовый
+kine_spacesuit_powerassistarmor.esm	000913	OMOD	FULL	Белый
+kine_spacesuit_powerassistarmor.esm	000914	OMOD	FULL	Жёлтый
+kine_spacesuit_powerassistarmor.esm	000915	OMOD	FULL	Чёрный альтернативный
+kine_spacesuit_powerassistarmor.esm	000916	OMOD	FULL	Синий альтернативный
+kine_spacesuit_powerassistarmor.esm	000917	OMOD	FULL	Коричневый, альтернативный
+kine_spacesuit_powerassistarmor.esm	000918	OMOD	FULL	Багровый, альтернативный
+kine_spacesuit_powerassistarmor.esm	000919	OMOD	FULL	Зелёный, альтернативный
+kine_spacesuit_powerassistarmor.esm	000920	OMOD	FULL	Серый, альтернативный
+kine_spacesuit_powerassistarmor.esm	000921	OMOD	FULL	Оливковый, альтернативный
+kine_spacesuit_powerassistarmor.esm	000922	OMOD	FULL	Оранжевый, альтернативный
+kine_spacesuit_powerassistarmor.esm	000923	OMOD	FULL	Розовый, альтернативный
+kine_spacesuit_powerassistarmor.esm	000924	OMOD	FULL	Красный, альтернативный
+kine_spacesuit_powerassistarmor.esm	000925	OMOD	FULL	Бирюзовый альтернативный
+kine_spacesuit_powerassistarmor.esm	000926	OMOD	FULL	Фиолетовый альтернативный
+kine_spacesuit_powerassistarmor.esm	000927	OMOD	FULL	Белый альтернативный
+kine_spacesuit_powerassistarmor.esm	000928	OMOD	FULL	Жёлтый альтернативный
+kine_spacesuit_ryujinstealth.esm	000806	OMOD	FULL	Чёрный
+kine_spacesuit_ryujinstealth.esm	000818	OMOD	FULL	Коричневый
+kine_spacesuit_ryujinstealth.esm	000821	OMOD	FULL	Багровый
+kine_spacesuit_ryujinstealth.esm	00082A	OMOD	FULL	Зелёный
+kine_spacesuit_ryujinstealth.esm	000833	OMOD	FULL	Серый
+kine_spacesuit_ryujinstealth.esm	00083C	OMOD	FULL	Оливковый
+kine_spacesuit_ryujinstealth.esm	000857	OMOD	FULL	Красный
+kine_spacesuit_ryujinstealth.esm	000860	OMOD	FULL	Бирюзовый
+kine_spacesuit_ryujinstealth.esm	000871	OMOD	FULL	Белый
+kine_spacesuit_ryujinstealth.esm	00087B	OMOD	FULL	Жёлтый
+kine_spacesuit_scav.esm	000400	OMOD	FULL	Цвет: чёрный
+kine_spacesuit_scav.esm	000401	OMOD	FULL	Цвет: синий
+kine_spacesuit_scav.esm	000402	OMOD	FULL	Цвет: коричневый
+kine_spacesuit_scav.esm	000403	OMOD	FULL	Цвет: багровый
+kine_spacesuit_scav.esm	000404	OMOD	FULL	Цвет: зелёный
+kine_spacesuit_scav.esm	000405	OMOD	FULL	Цвет: серый
+kine_spacesuit_scav.esm	000406	OMOD	FULL	Цвет: оливковый
+kine_spacesuit_scav.esm	000407	OMOD	FULL	Цвет: оранжевый
+kine_spacesuit_scav.esm	000408	OMOD	FULL	Цвет: розовый
+kine_spacesuit_scav.esm	000409	OMOD	FULL	Цвет: красный
+kine_spacesuit_scav.esm	00040A	OMOD	FULL	Цвет: бирюзовый
+kine_spacesuit_scav.esm	00040B	OMOD	FULL	Цвет: фиолетовый
+kine_spacesuit_scav.esm	00040C	OMOD	FULL	Цвет: белый
+kine_spacesuit_scav.esm	00040D	OMOD	FULL	Цвет: жёлтый
+kine_spacesuit_scav.esm	00040E	OMOD	FULL	Старая Земля: засушливый город
+kine_spacesuit_scav.esm	00040F	OMOD	FULL	Старая Земля: зелёная листва
+kine_spacesuit_scav.esm	000410	OMOD	FULL	Старая Земля: арктическая тундра
+kine_spacesuit_scav.esm	000411	OMOD	FULL	Старая Земля: лесной
+kine_spacesuit_scav.esm	000412	OMOD	FULL	Старая Земля: флектарн
+kine_spacesuit_scav.esm	000413	OMOD	FULL	Старая Земля: Multicam
+kine_spacesuit_scav.esm	000414	OMOD	FULL	Старая Земля: MARPAT
+kine_spacesuit_scav.esm	000415	OMOD	FULL	Старая Земля: тигровый
+kine_spacesuit_uctactical.esm	000901	OMOD	FULL	Чёрный
+kine_spacesuit_uctactical.esm	000903	OMOD	FULL	Коричневый
+kine_spacesuit_uctactical.esm	000904	OMOD	FULL	Багровый
+kine_spacesuit_uctactical.esm	000905	OMOD	FULL	Зелёный
+kine_spacesuit_uctactical.esm	000906	OMOD	FULL	Серый
+kine_spacesuit_uctactical.esm	000907	OMOD	FULL	Оливковый
+kine_spacesuit_uctactical.esm	000910	OMOD	FULL	Красный
+kine_spacesuit_uctactical.esm	000911	OMOD	FULL	Бирюзовый
+kine_spacesuit_uctactical.esm	000913	OMOD	FULL	Белый
+kine_spacesuit_uctactical.esm	000914	OMOD	FULL	Жёлтый
+kine_spacesuit_uctactical.esm	000915	OMOD	FULL	Чёрный Mk II
+kine_spacesuit_uctactical.esm	000916	OMOD	FULL	Синий Mk II
+kine_spacesuit_uctactical.esm	000917	OMOD	FULL	Коричневый Mk II
+kine_spacesuit_uctactical.esm	000918	OMOD	FULL	Багровый Mk II
+kine_spacesuit_uctactical.esm	000919	OMOD	FULL	Зелёный Mk II
+kine_spacesuit_uctactical.esm	000920	OMOD	FULL	Серый Mk II
+kine_spacesuit_uctactical.esm	000921	OMOD	FULL	Оливковый Mk II
+kine_spacesuit_uctactical.esm	000922	OMOD	FULL	Оранжевый Mk II
+kine_spacesuit_uctactical.esm	000923	OMOD	FULL	Розовый Mk II
+kine_spacesuit_uctactical.esm	000924	OMOD	FULL	Красный MK II
+kine_spacesuit_uctactical.esm	000925	OMOD	FULL	Бирюзовый MK II
+kine_spacesuit_uctactical.esm	000926	OMOD	FULL	Фиолетовый MK II
+kine_spacesuit_uctactical.esm	000927	OMOD	FULL	Белый MK II
+kine_spacesuit_uctactical.esm	000928	OMOD	FULL	Жёлтый MK II
