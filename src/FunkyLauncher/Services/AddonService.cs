@@ -1,4 +1,4 @@
-// Funky Launcher — Copyright (C) 2026 Funky. Licensed under GPL-3.0-or-later.
+﻿// Funky Launcher — Copyright (C) 2026 Funky. Licensed under GPL-3.0-or-later.
 using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Text;
@@ -380,8 +380,23 @@ public static class AddonService
         return i;
     }
 
+    // 27.11 (#336): with a free Nexus account every "download-url" fails after a few seconds; trying all ~200 files first
+    // kept the manual window away for half an hour. After 3 failures in a row the rest goes straight to the manual window
+    // (a success resets it; a new start of the launcher tries again).
+    private static int _cliFailsInARow;
+    private const int CliGiveUp = 3;
+
     /// <summary>wabbajack-cli download-url: the Nexus file through the player's Wabbajack login (works for Premium).</summary>
     internal static async Task<bool> DownloadAsync(AddonMod x, string archive, CancellationToken token)
+    {
+        if (_cliFailsInARow >= CliGiveUp) return false; // free account: the manual window takes it
+        var ok = await DownloadOnceAsync(x, archive, token);
+        if (ok) _cliFailsInARow = 0;
+        else if (++_cliFailsInARow == CliGiveUp) AppLog.Write($"download-url failed {CliGiveUp} times in a row: the rest goes to the manual download window");
+        return ok;
+    }
+
+    private static async Task<bool> DownloadOnceAsync(AddonMod x, string archive, CancellationToken token)
     {
         var tmp = archive + ".addon-part";
         try

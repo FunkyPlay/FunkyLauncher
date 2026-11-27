@@ -105,7 +105,7 @@ public partial class ManualDownloadWindow : Window
             foreach (var (item, file) in found)
             {
                 StatusText.Text = Loc.F("manual.saving", item.ArchiveName, 100);
-                var target = Path.Combine(_downloadsDir, item.ArchiveName);
+                var target = Path.GetFullPath(Path.Combine(_downloadsDir, item.ArchiveName.Replace('/', Path.DirectorySeparatorChar)));
                 try
                 {
                     await Task.Run(() => { Directory.CreateDirectory(Path.GetDirectoryName(target)!); if (!ManualQueue.IsPresent(_downloadsDir, item.ArchiveName, item.Size)) File.Copy(file, target, true); });
@@ -206,11 +206,13 @@ public partial class ManualDownloadWindow : Window
                 if (item.Key != null) NameMap.Set(_downloadsDir, item.Key, suggested);
             }
         }
-        var target = Path.Combine(_downloadsDir, item.ArchiveName);
+        // a full Windows path with backslashes only: WebView2 never writes to a ResultFilePath with "/" in it (0%, #336)
+        var target = Path.GetFullPath(Path.Combine(_downloadsDir, item.ArchiveName.Replace('/', Path.DirectorySeparatorChar)));
         // newer Nexus files are kept under their site path ("06/67/0a/<id>"): the sub-folders must exist, or WebView2
         // never starts writing and the window sits at 0% (free Nexus, Fallout 4 #336, 27.11)
         Directory.CreateDirectory(Path.GetDirectoryName(target)!);
         e.ResultFilePath = target;
+        AppLog.Write("manual download to " + target);
         e.Handled = true; // hide the browser's own download bubble
         var op = e.DownloadOperation;
         op.BytesReceivedChanged += (_, _) =>
@@ -220,6 +222,8 @@ public partial class ManualDownloadWindow : Window
         };
         op.StateChanged += (_, _) =>
         {
+            if (op.State == CoreWebView2DownloadState.Interrupted)
+                AppLog.Write($"manual download interrupted: {item.ArchiveName} ({op.InterruptReason}) → {op.ResultFilePath}");
             if (op.State != CoreWebView2DownloadState.Completed) return;
             if (ManualQueue.IsPresent(_downloadsDir, item.ArchiveName, item.Size))
             {
