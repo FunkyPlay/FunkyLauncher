@@ -108,7 +108,7 @@ public partial class ManualDownloadWindow : Window
                 var target = Path.Combine(_downloadsDir, item.ArchiveName);
                 try
                 {
-                    await Task.Run(() => { Directory.CreateDirectory(_downloadsDir); if (!ManualQueue.IsPresent(_downloadsDir, item.ArchiveName, item.Size)) File.Copy(file, target, true); });
+                    await Task.Run(() => { Directory.CreateDirectory(Path.GetDirectoryName(target)!); if (!ManualQueue.IsPresent(_downloadsDir, item.ArchiveName, item.Size)) File.Copy(file, target, true); });
                     item.Done = true;
                     AppLog.Write("manual download taken from Downloads: " + item.ArchiveName);
                 }
@@ -207,7 +207,9 @@ public partial class ManualDownloadWindow : Window
             }
         }
         var target = Path.Combine(_downloadsDir, item.ArchiveName);
-        Directory.CreateDirectory(_downloadsDir);
+        // newer Nexus files are kept under their site path ("06/67/0a/<id>"): the sub-folders must exist, or WebView2
+        // never starts writing and the window sits at 0% (free Nexus, Fallout 4 #336, 27.11)
+        Directory.CreateDirectory(Path.GetDirectoryName(target)!);
         e.ResultFilePath = target;
         e.Handled = true; // hide the browser's own download bubble
         var op = e.DownloadOperation;
