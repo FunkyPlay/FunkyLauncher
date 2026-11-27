@@ -3,7 +3,7 @@
  "modlistId": "neon-nights",
  "addonId": "neon-nights-high",
  "listVersion": "0.1.7",
- "forMainVersion": "0.1.7",
+ "forMainVersion": "0.1.8",
  "generated": "2026-11-24",
  "default": true,
  "tiers": {
