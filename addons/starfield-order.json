@@ -845,7 +845,7 @@
   "dicts": [
    {
     "path": "files/starfield/starfield-names-ru.tsv",
-    "sha256": "51c9c664cf141476f8330c5dea48daf9678bf025dce10e14916bcc802b91ab04"
+    "sha256": "60dc1becd180eade8c2e8b7e38904599f8bce602b402644213bc2289db71e4a2"
    },
    {
     "path": "files/starfield/starfield-template-names-ru.tsv",
@@ -943,6 +943,16 @@
     "author": "Outrora",
     "url": "https://www.nexusmods.com/starfield/mods/8950",
     "license": "CC BY 4.0"
+   },
+   {
+    "mod": "Allied Armaments PDW-27 Redux",
+    "author": "ProfX1527",
+    "url": "https://www.nexusmods.com/starfield/mods/12825"
+   },
+   {
+    "mod": "More Power Assist Spacesuit Colors",
+    "author": "Ghostrider231",
+    "url": "https://www.nexusmods.com/starfield/mods/16874"
    }
   ]
  },

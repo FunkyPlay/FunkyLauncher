@@ -4741,3 +4741,272 @@ Starfield Extended - Craftable Quality.esm	000A7D	OMOD	FULL	Уровень ка�
 Starfield Extended - Craftable Quality.esm	000A7E	OMOD	FULL	Уровень качества 06
 Starfield Extended - Craftable Quality.esm	0009B0	KYWD	FULL	Качество
 Starfield Extended - Craftable Quality.esm	0008BB	KYWD	FULL	Качество
+G231_PowerAssistSpacesuitSkinColors.esm	00081B	OMOD	FULL	Золотой вариант покраски
+G231_PowerAssistSpacesuitSkinColors.esm	000827	OMOD	FULL	Синий вариант покраски
+G231_PowerAssistSpacesuitSkinColors.esm	000843	OMOD	FULL	Бронзовый вариант покраски
+G231_PowerAssistSpacesuitSkinColors.esm	00086F	OMOD	FULL	Чёрный вариант покраски
+G231_PowerAssistSpacesuitSkinColors.esm	000885	OMOD	FULL	Розовый вариант покраски
+G231_PowerAssistSpacesuitSkinColors.esm	00089B	OMOD	FULL	Фиолетовый вариант покраски
+G231_PowerAssistSpacesuitSkinColors.esm	0008B1	OMOD	FULL	Бирюзовый вариант покраски
+PXC_AA_PDW27_Redux.esm	000803	OMOD	FULL	Unity: улучшенный 02
+PXC_AA_PDW27_Redux.esm	00080E	OMOD	FULL	Марка коллиматора: вариант A
+PXC_AA_PDW27_Redux.esm	000817	OMOD	FULL	Unity: улучшенный 01
+PXC_AA_PDW27_Redux.esm	00081A	OMOD	FULL	Коллиматорный прицел A
+PXC_AA_PDW27_Redux.esm	00081C	OMOD	FULL	Коллиматорный прицел B
+PXC_AA_PDW27_Redux.esm	000825	OMOD	FULL	Шаблон: экспериментальный
+PXC_AA_PDW27_Redux.esm	000827	OMOD	FULL	1.5KV, полностью автоматический, длинный ствол
+PXC_AA_PDW27_Redux.esm	00082C	OMOD	FULL	1.5KV, полностью автоматический
+PXC_AA_PDW27_Redux.esm	000837	OMOD	FULL	Приклад «Слайсер»
+PXC_AA_PDW27_Redux.esm	00083E	OMOD	FULL	Лазерный прицел (красный)
+PXC_AA_PDW27_Redux.esm	00083F	PERK	FULL	Перк игрока: модификации оружия NGP
+PXC_AA_PDW27_Redux.esm	000844	OMOD	FULL	Коллиматорный прицел C
+PXC_AA_PDW27_Redux.esm	000851	OMOD	FULL	1.5KV, стрельба очередями
+PXC_AA_PDW27_Redux.esm	000855	OMOD	FULL	Разведывательный лазерный целеуказатель (зелёный)
+PXC_AA_PDW27_Redux.esm	000866	OMOD	FULL	Unity: улучшенный 03
+PXC_AA_PDW27_Redux.esm	000867	OMOD	FULL	Unity: улучшенный 04
+PXC_AA_PDW27_Redux.esm	000868	OMOD	FULL	Unity: улучшенный 05
+PXC_AA_PDW27_Redux.esm	000869	OMOD	FULL	Unity: улучшенный 06
+PXC_AA_PDW27_Redux.esm	00086A	OMOD	FULL	Unity: улучшенный 07
+PXC_AA_PDW27_Redux.esm	00086B	OMOD	FULL	Unity: улучшенный 08
+PXC_AA_PDW27_Redux.esm	00086C	OMOD	FULL	Unity: улучшенный 09
+PXC_AA_PDW27_Redux.esm	00086D	OMOD	FULL	Unity: улучшенный 10
+PXC_AA_PDW27_Redux.esm	000876	OMOD	FULL	Затемнение красный
+PXC_AA_PDW27_Redux.esm	00087F	OMOD	FULL	3KV, полностью автоматический, длинный ствол
+PXC_AA_PDW27_Redux.esm	000882	OMOD	FULL	3KV, полностью автоматический
+PXC_AA_PDW27_Redux.esm	000883	OMOD	FULL	3KV, стрельба очередями
+PXC_AA_PDW27_Redux.esm	00088C	OMOD	FULL	Затемнение
+PXC_AA_PDW27_Redux.esm	000899	OMOD	FULL	Затемнение оранжевый
+PXC_AA_PDW27_Redux.esm	00089E	OMOD	FULL	Затемнение синий
+PXC_AA_PDW27_Redux.esm	0008AE	OMOD	FULL	Затемнение розовый
+PXC_AA_PDW27_Redux.esm	0008B7	OMOD	FULL	Затемнение фиолетовый
+PXC_AA_PDW27_Redux.esm	0008C3	OMOD	FULL	Затемнение жёлтый
+PXC_AA_PDW27_Redux.esm	0008CD	OMOD	FULL	Затемнение серый
+PXC_AA_PDW27_Redux.esm	0008E1	OMOD	FULL	Белая засветка: серая
+PXC_AA_PDW27_Redux.esm	0008F2	OMOD	FULL	Затемнение голубой
+PXC_AA_PDW27_Redux.esm	000900	OMOD	FULL	Затемнение зелёный
+PXC_AA_PDW27_Redux.esm	00090A	OMOD	FULL	Белая засветка: синяя
+PXC_AA_PDW27_Redux.esm	000914	OMOD	FULL	Инструмент
+PXC_AA_PDW27_Redux.esm	000916	OMOD	FULL	Лазер (по умолчанию)
+PXC_AA_PDW27_Redux.esm	000917	OMOD	FULL	Уровень качества 02 (калиброванный)
+PXC_AA_PDW27_Redux.esm	000918	OMOD	FULL	Уровень качества 01 (базовый)
+PXC_AA_PDW27_Redux.esm	00091A	OMOD	FULL	Белая засветка: голубая
+PXC_AA_PDW27_Redux.esm	000924	OMOD	FULL	Белая засветка: зелёная
+PXC_AA_PDW27_Redux.esm	00092E	OMOD	FULL	Белая засветка: оранжевая
+PXC_AA_PDW27_Redux.esm	000938	OMOD	FULL	Белая засветка: розовая
+PXC_AA_PDW27_Redux.esm	000942	OMOD	FULL	Белая засветка: фиолетовая
+PXC_AA_PDW27_Redux.esm	00094C	OMOD	FULL	Белая засветка: красная
+PXC_AA_PDW27_Redux.esm	000956	OMOD	FULL	Белая засветка: жёлтая
+PXC_AA_PDW27_Redux.esm	00096A	OMOD	FULL	Уровень качества 03 (улучшенный)
+PXC_AA_PDW27_Redux.esm	00096C	OMOD	FULL	Уровень качества 04 (продвинутый)
+PXC_AA_PDW27_Redux.esm	00096D	OMOD	FULL	Без прицельной марки
+PXC_AA_PDW27_Redux.esm	000990	OMOD	FULL	«Созвездие», тёмный
+PXC_AA_PDW27_Redux.esm	00099A	OMOD	FULL	Лазерный прицел (синий)
+PXC_AA_PDW27_Redux.esm	00099B	OMOD	FULL	Лазерный прицел (голубой)
+PXC_AA_PDW27_Redux.esm	00099D	OMOD	FULL	Лазерный прицел (жёлтый)
+PXC_AA_PDW27_Redux.esm	00099F	OMOD	FULL	Лазерный прицел (янтарный)
+PXC_AA_PDW27_Redux.esm	0009A4	OMOD	FULL	Лазерный прицел (зелёный)
+PXC_AA_PDW27_Redux.esm	0009A6	OMOD	FULL	Разведывательный лазерный целеуказатель (янтарный)
+PXC_AA_PDW27_Redux.esm	0009A8	OMOD	FULL	Разведывательный лазерный целеуказатель (жёлтый)
+PXC_AA_PDW27_Redux.esm	0009AA	OMOD	FULL	Разведывательный лазерный целеуказатель (голубой)
+PXC_AA_PDW27_Redux.esm	0009AC	OMOD	FULL	Разведывательный лазерный целеуказатель (синий)
+PXC_AA_PDW27_Redux.esm	0009B0	OMOD	FULL	Кодама (по умолчанию)
+PXC_AA_PDW27_Redux.esm	0009B1	OMOD	FULL	Разведывательный лазерный целеуказатель (красный)
+PXC_AA_PDW27_Redux.esm	0009B3	OMOD	FULL	Лазер Allied
+PXC_AA_PDW27_Redux.esm	0009B9	OMOD	FULL	Копьё из частиц
+PXC_AA_PDW27_Redux.esm	0009C6	OMOD	FULL	Лазерный прицел (зелёный + точка)
+PXC_AA_PDW27_Redux.esm	0009CA	OMOD	FULL	Лазерный прицел (жёлтый + точка)
+PXC_AA_PDW27_Redux.esm	0009CC	OMOD	FULL	Лазерный прицел (голубой + точка)
+PXC_AA_PDW27_Redux.esm	0009CE	OMOD	FULL	Лазерный прицел (синий + точка)
+PXC_AA_PDW27_Redux.esm	0009CF	OMOD	FULL	Лазерный прицел (янтарный + точка)
+PXC_AA_PDW27_Redux.esm	0009D0	OMOD	FULL	Разведывательный лазерный целеуказатель (янтарный + точка)
+PXC_AA_PDW27_Redux.esm	0009D1	OMOD	FULL	Разведывательный лазерный целеуказатель (синий + точка)
+PXC_AA_PDW27_Redux.esm	0009D3	OMOD	FULL	Разведывательный лазерный целеуказатель (голубой + точка)
+PXC_AA_PDW27_Redux.esm	0009D5	OMOD	FULL	Разведывательный лазерный целеуказатель (зелёный + точка)
+PXC_AA_PDW27_Redux.esm	0009D7	OMOD	FULL	Лазерный прицел (красный + точка)
+PXC_AA_PDW27_Redux.esm	0009D8	OMOD	FULL	Разведывательный лазерный целеуказатель (красный + точка)
+PXC_AA_PDW27_Redux.esm	0009D9	OMOD	FULL	Разведывательный лазерный целеуказатель (жёлтый + точка)
+PXC_AA_PDW27_Redux.esm	000A00	OMOD	FULL	Лазерный прицел (только янтарная точка)
+PXC_AA_PDW27_Redux.esm	000A01	OMOD	FULL	Лазерный прицел (только синяя точка)
+PXC_AA_PDW27_Redux.esm	000A02	OMOD	FULL	Лазерный прицел (только голубая точка)
+PXC_AA_PDW27_Redux.esm	000A03	OMOD	FULL	Лазерный прицел (только зелёная точка)
+PXC_AA_PDW27_Redux.esm	000A04	OMOD	FULL	Лазерный прицел (только красная точка)
+PXC_AA_PDW27_Redux.esm	000A05	OMOD	FULL	Лазерный прицел (только жёлтая точка)
+PXC_AA_PDW27_Redux.esm	000A06	OMOD	FULL	Разведывательный лазерный целеуказатель (только янтарная точка)
+PXC_AA_PDW27_Redux.esm	000A07	OMOD	FULL	Разведывательный лазерный целеуказатель (только синяя точка)
+PXC_AA_PDW27_Redux.esm	000A08	OMOD	FULL	Разведывательный лазерный целеуказатель (только голубая точка)
+PXC_AA_PDW27_Redux.esm	000A09	OMOD	FULL	Разведывательный лазерный целеуказатель (только зелёная точка)
+PXC_AA_PDW27_Redux.esm	000A0A	OMOD	FULL	Разведывательный лазерный целеуказатель (только красная точка)
+PXC_AA_PDW27_Redux.esm	000A0B	OMOD	FULL	Разведывательный лазерный целеуказатель (только жёлтая точка)
+PXC_AA_PDW27_Redux.esm	000A42	BOOK	FULL	Информация о PDW-27 Redux
+PXC_AA_PDW27_Redux.esm	000A44	OMOD	FULL	Лазерный прицел (янтарный)
+PXC_AA_PDW27_Redux.esm	000A45	OMOD	FULL	Лазерный прицел (янтарный + точка)
+PXC_AA_PDW27_Redux.esm	000A46	OMOD	FULL	Лазерный прицел (только янтарная точка)
+PXC_AA_PDW27_Redux.esm	000A47	OMOD	FULL	Лазерный прицел (синий)
+PXC_AA_PDW27_Redux.esm	000A48	OMOD	FULL	Лазерный прицел (синий + точка)
+PXC_AA_PDW27_Redux.esm	000A49	OMOD	FULL	Лазерный прицел (только синяя точка)
+PXC_AA_PDW27_Redux.esm	000A4A	OMOD	FULL	Лазерный прицел (голубой)
+PXC_AA_PDW27_Redux.esm	000A4B	OMOD	FULL	Лазерный прицел (голубой + точка)
+PXC_AA_PDW27_Redux.esm	000A4D	OMOD	FULL	Лазерный прицел (только голубая точка)
+PXC_AA_PDW27_Redux.esm	000A4F	OMOD	FULL	Лазерный прицел (зелёный)
+PXC_AA_PDW27_Redux.esm	000A50	OMOD	FULL	Лазерный прицел (зелёный + точка)
+PXC_AA_PDW27_Redux.esm	000A51	OMOD	FULL	Лазерный прицел (только зелёная точка)
+PXC_AA_PDW27_Redux.esm	000A53	OMOD	FULL	Лазерный прицел (красный)
+PXC_AA_PDW27_Redux.esm	000A54	OMOD	FULL	Лазерный прицел (красный + точка)
+PXC_AA_PDW27_Redux.esm	000A55	OMOD	FULL	Лазерный прицел (только красная точка)
+PXC_AA_PDW27_Redux.esm	000A56	OMOD	FULL	Лазерный прицел (жёлтый)
+PXC_AA_PDW27_Redux.esm	000A58	OMOD	FULL	Лазерный прицел (жёлтый + точка)
+PXC_AA_PDW27_Redux.esm	000A59	OMOD	FULL	Лазерный прицел (только жёлтая точка)
+PXC_AA_PDW27_Redux.esm	000A5B	OMOD	FULL	Разведывательный лазерный целеуказатель (янтарный)
+PXC_AA_PDW27_Redux.esm	000A5C	OMOD	FULL	Разведывательный лазерный целеуказатель (янтарный + точка)
+PXC_AA_PDW27_Redux.esm	000A5D	OMOD	FULL	Разведывательный лазерный целеуказатель (только янтарная точка)
+PXC_AA_PDW27_Redux.esm	000A5E	OMOD	FULL	Разведывательный лазерный целеуказатель (синий)
+PXC_AA_PDW27_Redux.esm	000A5F	OMOD	FULL	Разведывательный лазерный целеуказатель (синий + точка)
+PXC_AA_PDW27_Redux.esm	000A60	OMOD	FULL	Разведывательный лазерный целеуказатель (только синяя точка)
+PXC_AA_PDW27_Redux.esm	000A61	OMOD	FULL	Разведывательный лазерный целеуказатель (голубой)
+PXC_AA_PDW27_Redux.esm	000A62	OMOD	FULL	Разведывательный лазерный целеуказатель (голубой + точка)
+PXC_AA_PDW27_Redux.esm	000A63	OMOD	FULL	Разведывательный лазерный целеуказатель (только голубая точка)
+PXC_AA_PDW27_Redux.esm	000A64	OMOD	FULL	Разведывательный лазерный целеуказатель (зелёный)
+PXC_AA_PDW27_Redux.esm	000A65	OMOD	FULL	Разведывательный лазерный целеуказатель (зелёный + точка)
+PXC_AA_PDW27_Redux.esm	000A67	OMOD	FULL	Разведывательный лазерный целеуказатель (только зелёная точка)
+PXC_AA_PDW27_Redux.esm	000A68	OMOD	FULL	Разведывательный лазерный целеуказатель (красный)
+PXC_AA_PDW27_Redux.esm	000A69	OMOD	FULL	Разведывательный лазерный целеуказатель (красный + точка)
+PXC_AA_PDW27_Redux.esm	000A6A	OMOD	FULL	Разведывательный лазерный целеуказатель (только красная точка)
+PXC_AA_PDW27_Redux.esm	000A6C	OMOD	FULL	Разведывательный лазерный целеуказатель (жёлтый)
+PXC_AA_PDW27_Redux.esm	000A6D	OMOD	FULL	Разведывательный лазерный целеуказатель (жёлтый + точка)
+PXC_AA_PDW27_Redux.esm	000A6E	OMOD	FULL	Разведывательный лазерный целеуказатель (только жёлтая точка)
+PXC_AA_PDW27_Redux.esm	000A6F	OMOD	FULL	Лучи-аннигиляторы
+PXC_AA_PDW27_Redux.esm	000A70	OMOD	FULL	Бронебойные лучи
+PXC_AA_PDW27_Redux.esm	000A7C	OMOD	FULL	Коллиматорный прицел: A
+PXC_AA_PDW27_Redux.esm	000A7D	OMOD	FULL	Коллиматорный прицел: B
+PXC_AA_PDW27_Redux.esm	000A7E	OMOD	FULL	Коллиматорный прицел: C
+PXC_AA_PDW27_Redux.esm	000A7F	OMOD	FULL	Прицел: короткий
+PXC_AA_PDW27_Redux.esm	000A85	OMOD	FULL	Уровень качества 05 (превосходный)
+PXC_AA_PDW27_Redux.esm	000A86	OMOD	FULL	Уровень качества 06 (элитный)
+PXC_AA_PDW27_Redux.esm	000A87	OMOD	FULL	Уровень качества 07 (высший)
+PXC_AA_PDW27_Redux.esm	000A88	OMOD	FULL	Стандартный полуавтомат
+PXC_AA_PDW27_Redux.esm	000A8A	OMOD	FULL	Стандартная стрельба очередями
+PXC_AA_PDW27_Redux.esm	000A8C	OMOD	FULL	Стандартный полный автомат
+PXC_AA_PDW27_Redux.esm	000A8E	OMOD	FULL	Шаблон: экспериментальный
+PXC_AA_PDW27_Redux.esm	000A8F	OMOD	FULL	Шаблон: повышение точности оружия
+PXC_AA_PDW27_Redux.esm	000A90	OMOD	FULL	Длинный ствол, полуавтомат
+PXC_AA_PDW27_Redux.esm	000A91	OMOD	FULL	Длинный ствол, стрельба очередями
+PXC_AA_PDW27_Redux.esm	000A94	OMOD	FULL	Длинный ствол, полностью автоматический
+PXC_AA_PDW27_Redux.esm	000A95	OMOD	FULL	Марксманская винтовка, полуавтомат
+PXC_AA_PDW27_Redux.esm	000A96	OMOD	FULL	Прицел: разведывательный
+PXC_AA_PDW27_Redux.esm	000A97	OMOD	FULL	Прицел: средний
+PXC_AA_PDW27_Redux.esm	000A9A	OMOD	FULL	Марка коллиматора: вариант B
+PXC_AA_PDW27_Redux.esm	000AA7	OMOD	FULL	Прицельная марка: нет
+PXC_AA_PDW27_Redux.esm	000AA9	OMOD	FULL	Звуковые эффекты: «Кодама» (по умолчанию)
+PXC_AA_PDW27_Redux.esm	000AAA	OMOD	FULL	Прицельная марка: точка
+PXC_AA_PDW27_Redux.esm	000AAB	OMOD	FULL	Прицельная марка: лазер (по умолчанию)
+PXC_AA_PDW27_Redux.esm	000AAC	OMOD	FULL	Прицельная марка: резак
+PXC_AA_PDW27_Redux.esm	000AAD	OMOD	FULL	Прицельная марка: пистолет
+PXC_AA_PDW27_Redux.esm	000AAE	OMOD	FULL	Прицельная марка: винтовка
+PXC_AA_PDW27_Redux.esm	000AAF	OMOD	FULL	Прицельная марка: дробовик
+PXC_AA_PDW27_Redux.esm	000AB0	OMOD	FULL	Прицельная марка: инструмент
+PXC_AA_PDW27_Redux.esm	000AB1	OMOD	FULL	Звуковые эффекты: MagShear
+PXC_AA_PDW27_Redux.esm	000AB2	OMOD	FULL	Звуковые эффекты: «Равноденствие»
+PXC_AA_PDW27_Redux.esm	000AB3	OMOD	FULL	Звуковые эффекты: MagShot
+PXC_AA_PDW27_Redux.esm	000AB5	OMOD	FULL	Звуковые эффекты: «Орион»
+PXC_AA_PDW27_Redux.esm	000AB6	OMOD	FULL	Звуковые эффекты: MagStorm
+PXC_AA_PDW27_Redux.esm	000AB7	OMOD	FULL	Звуковые эффекты: лазер Allied
+PXC_AA_PDW27_Redux.esm	000AB8	OMOD	FULL	Звуковые эффекты: «Новосвет»
+PXC_AA_PDW27_Redux.esm	000AB9	OMOD	FULL	Звуковые эффекты: копьё частиц
+PXC_AA_PDW27_Redux.esm	000ABA	OMOD	FULL	Звуковые эффекты: «Солнцестояние»
+PXC_AA_PDW27_Redux.esm	000ABD	OMOD	FULL	Unity: улучшенный 02
+PXC_AA_PDW27_Redux.esm	000ABE	OMOD	FULL	Складной приклад (сложен)
+PXC_AA_PDW27_Redux.esm	000ABF	OMOD	FULL	Приклад «Слайсер»
+PXC_AA_PDW27_Redux.esm	000AC1	OMOD	FULL	Unity: улучшенный 03
+PXC_AA_PDW27_Redux.esm	000AC2	OMOD	FULL	Unity: улучшенный 06
+PXC_AA_PDW27_Redux.esm	000AC3	OMOD	FULL	Unity: улучшенный 01
+PXC_AA_PDW27_Redux.esm	000AC4	OMOD	FULL	Unity: улучшенный 05
+PXC_AA_PDW27_Redux.esm	000AC5	OMOD	FULL	Unity: улучшенный 09
+PXC_AA_PDW27_Redux.esm	000AC7	OMOD	FULL	Unity: улучшенный 10
+PXC_AA_PDW27_Redux.esm	000AC8	OMOD	FULL	Unity: улучшенный 04
+PXC_AA_PDW27_Redux.esm	000AC9	OMOD	FULL	Unity: улучшенный 07
+PXC_AA_PDW27_Redux.esm	000ACA	OMOD	FULL	Unity: улучшенный 08
+PXC_AA_PDW27_Redux.esm	000AD9	OMOD	FULL	Стекло коллиматора: чистое/прозрачное
+PXC_AA_PDW27_Redux.esm	000B37	OMOD	FULL	Лазерный прицел (фиолетовый)
+PXC_AA_PDW27_Redux.esm	000B38	OMOD	FULL	Лазерный прицел (фиолетовый + точка)
+PXC_AA_PDW27_Redux.esm	000B39	OMOD	FULL	Лазерный прицел (только фиолетовая точка)
+PXC_AA_PDW27_Redux.esm	000B3A	OMOD	FULL	Разведывательный лазерный целеуказатель (фиолетовый)
+PXC_AA_PDW27_Redux.esm	000B3B	OMOD	FULL	Разведывательный лазерный целеуказатель (фиолетовый + точка)
+PXC_AA_PDW27_Redux.esm	000B3C	OMOD	FULL	Разведывательный лазерный целеуказатель (только фиолетовая точка)
+PXC_AA_PDW27_Redux.esm	000B56	OMOD	FULL	Разведывательный лазерный целеуказатель (без луча и точки)
+PXC_AA_PDW27_Redux.esm	000B58	OMOD	FULL	Лазерный прицел (без луча и точки)
+PXC_AA_PDW27_Redux.esm	000B7E	OMOD	FULL	Марка коллиматора: вариант C
+PXC_AA_PDW27_Redux.esm	000B88	OMOD	FULL	Марка коллиматора: стандартная
+PXC_AA_PDW27_Redux.esm	000B92	OMOD	FULL	Марка коллиматора: вариант D
+PXC_AA_PDW27_Redux.esm	000B9C	OMOD	FULL	Марка коллиматора: вариант E
+PXC_AA_PDW27_Redux.esm	000BA6	OMOD	FULL	Марка коллиматора: вариант F
+PXC_AA_PDW27_Redux.esm	000BB0	OMOD	FULL	Марка коллиматора: вариант G
+PXC_AA_PDW27_Redux.esm	000BBC	OMOD	FULL	Затемнение: синий
+PXC_AA_PDW27_Redux.esm	000BC6	BOOK	FULL	Список изменений PDW-27 Redux
+PXC_AA_PDW27_Redux.esm	000BC7	OMOD	FULL	Затемнение
+PXC_AA_PDW27_Redux.esm	000BC8	OMOD	FULL	Стекло коллиматора: по умолчанию
+PXC_AA_PDW27_Redux.esm	000BD4	OMOD	FULL	Затемнение: синий
+PXC_AA_PDW27_Redux.esm	000BDE	OMOD	FULL	Затемнение: голубой
+PXC_AA_PDW27_Redux.esm	000BE8	OMOD	FULL	Затемнение: серый
+PXC_AA_PDW27_Redux.esm	000BF2	OMOD	FULL	Затемнение: зелёный
+PXC_AA_PDW27_Redux.esm	000BFC	OMOD	FULL	Затемнение: оранжевый
+PXC_AA_PDW27_Redux.esm	000C06	OMOD	FULL	Затемнение: розовый
+PXC_AA_PDW27_Redux.esm	000C10	OMOD	FULL	Затемнение: фиолетовый
+PXC_AA_PDW27_Redux.esm	000C1A	OMOD	FULL	Затемнение: красный
+PXC_AA_PDW27_Redux.esm	000C24	OMOD	FULL	Затемнение: жёлтый
+PXC_AA_PDW27_Redux.esm	000C2E	OMOD	FULL	Цифровой камуфляж: арктический
+PXC_AA_PDW27_Redux.esm	000C38	OMOD	FULL	Цифровой камуфляж: морской
+PXC_AA_PDW27_Redux.esm	000C42	OMOD	FULL	Цифровой камуфляж: пустынный
+PXC_AA_PDW27_Redux.esm	000C4C	OMOD	FULL	Цифровой камуфляж: тёмный
+PXC_AA_PDW27_Redux.esm	000C56	OMOD	FULL	Цифровой камуфляж: лесной
+PXC_AA_PDW27_Redux.esm	000C60	OMOD	FULL	Цифровой камуфляж: розовый
+PXC_AA_PDW27_Redux.esm	000C6A	OMOD	FULL	Цифровой камуфляж: фиолетовый
+PXC_AA_PDW27_Redux.esm	000C74	OMOD	FULL	Цифровой камуфляж: красно-чёрный
+PXC_AA_PDW27_Redux.esm	000C7E	OMOD	FULL	Фракция: «Созвездие»
+PXC_AA_PDW27_Redux.esm	000C88	OMOD	FULL	Фракция: «Созвездие», тёмный
+PXC_AA_PDW27_Redux.esm	000C92	OMOD	FULL	Фракция: Багровый флот
+PXC_AA_PDW27_Redux.esm	000CA6	OMOD	FULL	Hello Kitty, тёмный
+PXC_AA_PDW27_Redux.esm	000CBA	OMOD	FULL	Фракция: ОК
+PXC_AA_PDW27_Redux.esm	000CC4	OMOD	FULL	Фракция: UCSEC
+PXC_AA_PDW27_Redux.esm	000CCE	OMOD	FULL	Фракция: Авангард ОК
+PXC_AA_PDW27_Redux.esm	000CE2	OMOD	FULL	Белая засветка: синий
+PXC_AA_PDW27_Redux.esm	000CEC	OMOD	FULL	Белая засветка: голубой
+PXC_AA_PDW27_Redux.esm	000CF6	OMOD	FULL	Белая засветка: серый
+PXC_AA_PDW27_Redux.esm	000D00	OMOD	FULL	Белая засветка: зелёный
+PXC_AA_PDW27_Redux.esm	000D0A	OMOD	FULL	Белая засветка: оранжевый
+PXC_AA_PDW27_Redux.esm	000D14	OMOD	FULL	Белая засветка: розовый
+PXC_AA_PDW27_Redux.esm	000D1E	OMOD	FULL	Белая засветка: фиолетовый
+PXC_AA_PDW27_Redux.esm	000D28	OMOD	FULL	Белая засветка: красный
+PXC_AA_PDW27_Redux.esm	000D32	OMOD	FULL	Белая засветка: жёлтый
+PXC_AA_PDW27_Redux.esm	000D69	OMOD	FULL	Затемнение: голубой
+PXC_AA_PDW27_Redux.esm	000D73	OMOD	FULL	Затемнение: серый
+PXC_AA_PDW27_Redux.esm	000D7D	OMOD	FULL	Затемнение: зелёный
+PXC_AA_PDW27_Redux.esm	000D87	OMOD	FULL	Затемнение: оранжевый
+PXC_AA_PDW27_Redux.esm	000D91	OMOD	FULL	Затемнение: розовый
+PXC_AA_PDW27_Redux.esm	000D9B	OMOD	FULL	Затемнение: фиолетовый
+PXC_AA_PDW27_Redux.esm	000DA5	OMOD	FULL	Затемнение: красный
+PXC_AA_PDW27_Redux.esm	000DAF	OMOD	FULL	Затемнение
+PXC_AA_PDW27_Redux.esm	000DB9	OMOD	FULL	Затемнение: жёлтый
+PXC_AA_PDW27_Redux.esm	000DC3	OMOD	FULL	Цифровой камуфляж: арктический
+PXC_AA_PDW27_Redux.esm	000DCD	OMOD	FULL	Цифровой камуфляж: морской
+PXC_AA_PDW27_Redux.esm	000DD7	OMOD	FULL	Цифровой камуфляж: пустынный
+PXC_AA_PDW27_Redux.esm	000DE1	OMOD	FULL	Цифровой камуфляж: тёмный
+PXC_AA_PDW27_Redux.esm	000DEB	OMOD	FULL	Цифровой камуфляж: лесной
+PXC_AA_PDW27_Redux.esm	000DF5	OMOD	FULL	Цифровой камуфляж: розовый
+PXC_AA_PDW27_Redux.esm	000DFF	OMOD	FULL	Цифровой камуфляж: фиолетовый
+PXC_AA_PDW27_Redux.esm	000E09	OMOD	FULL	Цифровой камуфляж: красно-чёрный
+PXC_AA_PDW27_Redux.esm	000E13	OMOD	FULL	Фракция: «Созвездие»
+PXC_AA_PDW27_Redux.esm	000E1D	OMOD	FULL	Фракция: «Созвездие», тёмный
+PXC_AA_PDW27_Redux.esm	000E27	OMOD	FULL	Фракция: Багровый флот
+PXC_AA_PDW27_Redux.esm	000E3B	OMOD	FULL	Hello Kitty, тёмный
+PXC_AA_PDW27_Redux.esm	000E4F	OMOD	FULL	Фракция: ОК
+PXC_AA_PDW27_Redux.esm	000E59	OMOD	FULL	Фракция: UCSEC
+PXC_AA_PDW27_Redux.esm	000E63	OMOD	FULL	Фракция: Авангард ОК
+PXC_AA_PDW27_Redux.esm	000E6D	OMOD	FULL	Белая засветка: синий
+PXC_AA_PDW27_Redux.esm	000E77	OMOD	FULL	Белая засветка: голубой
+PXC_AA_PDW27_Redux.esm	000E81	OMOD	FULL	Белая засветка: серый
+PXC_AA_PDW27_Redux.esm	000E8B	OMOD	FULL	Белая засветка: зелёный
+PXC_AA_PDW27_Redux.esm	000E95	OMOD	FULL	Белая засветка: оранжевый
+PXC_AA_PDW27_Redux.esm	000E9F	OMOD	FULL	Белая засветка: розовый
+PXC_AA_PDW27_Redux.esm	000EA9	OMOD	FULL	Белая засветка: фиолетовый
+PXC_AA_PDW27_Redux.esm	000EB3	OMOD	FULL	Белая засветка: красный
+PXC_AA_PDW27_Redux.esm	000EC7	OMOD	FULL	Белая засветка: жёлтый
